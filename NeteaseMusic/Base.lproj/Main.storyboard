@@ -1118,6 +1118,9 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="BZu-Vt-Sen">
+                                <rect key="frame" x="0.0" y="77" width="220" height="5"/>
+                            </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Kg-1r-HAJ">
                                 <rect key="frame" x="78" y="43" width="37" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1129,9 +1132,12 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="BZu-Vt-Sen" firstAttribute="leading" secondItem="bbs-PF-jIQ" secondAttribute="leading" id="92N-WI-CyR"/>
+                            <constraint firstItem="BZu-Vt-Sen" firstAttribute="top" secondItem="bbs-PF-jIQ" secondAttribute="top" id="VDS-AB-1Bz"/>
                             <constraint firstItem="uzb-kk-556" firstAttribute="top" secondItem="bbs-PF-jIQ" secondAttribute="top" constant="10" id="VrL-p0-RWr"/>
                             <constraint firstItem="uzb-kk-556" firstAttribute="leading" secondItem="bbs-PF-jIQ" secondAttribute="leading" constant="10" id="f6t-fR-hqf"/>
                             <constraint firstAttribute="bottom" secondItem="uzb-kk-556" secondAttribute="bottom" constant="10" id="gzI-GH-9RX"/>
+                            <constraint firstAttribute="trailing" secondItem="BZu-Vt-Sen" secondAttribute="trailing" id="mGR-eT-R3Z"/>
                         </constraints>
                     </view>
                 </viewController>
