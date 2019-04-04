@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="7ud-Bg-8qw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -791,6 +792,98 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="lY5-Rm-rk4">
+            <objects>
+                <windowController id="7ud-Bg-8qw" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vlm-VC-wm5">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="7ud-Bg-8qw" id="piy-kP-d38"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="2EM-e8-1Aw" kind="relationship" relationship="window.shadowedContentViewController" id="xPT-t9-gh8"/>
+                    </connections>
+                </windowController>
+                <customObject id="4TP-7U-dPf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="937" y="144"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="hjy-zf-tVW">
+            <objects>
+                <viewController id="2EM-e8-1Aw" customClass="LoginViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="1nb-Fc-BPB">
+                        <rect key="frame" x="0.0" y="0.0" width="594" height="480"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v4u-Vf-3my">
+                                <rect key="frame" x="14" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Ze-Xk-NzY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancel:" target="2EM-e8-1Aw" id="bvw-Gx-adU"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-SG-8Xj">
+                                <rect key="frame" x="498" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ec-OP-gkf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="done:" target="2EM-e8-1Aw" id="BOr-jO-gau"/>
+                                </connections>
+                            </button>
+                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7B-HZ-eev">
+                                <rect key="frame" x="20" y="61" width="554" height="399"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="3gM-SU-kUn">
+                                <rect key="frame" x="20" y="61" width="554" height="399"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Gyh-SG-8Xj" secondAttribute="bottom" constant="20" id="8VX-r7-A6u"/>
+                            <constraint firstAttribute="trailing" secondItem="3gM-SU-kUn" secondAttribute="trailing" constant="20" id="F7s-Hi-D69"/>
+                            <constraint firstItem="v4u-Vf-3my" firstAttribute="width" secondItem="Gyh-SG-8Xj" secondAttribute="width" id="NNu-dO-MvK"/>
+                            <constraint firstAttribute="bottom" secondItem="v4u-Vf-3my" secondAttribute="bottom" constant="20" id="QE8-gc-2yx"/>
+                            <constraint firstItem="v4u-Vf-3my" firstAttribute="top" secondItem="3gM-SU-kUn" secondAttribute="bottom" constant="20" id="QqT-XU-2uE"/>
+                            <constraint firstAttribute="trailing" secondItem="f7B-HZ-eev" secondAttribute="trailing" constant="20" id="VQB-Hw-o0D"/>
+                            <constraint firstItem="v4u-Vf-3my" firstAttribute="leading" secondItem="1nb-Fc-BPB" secondAttribute="leading" constant="20" id="XgE-ON-70i"/>
+                            <constraint firstItem="3gM-SU-kUn" firstAttribute="leading" secondItem="1nb-Fc-BPB" secondAttribute="leading" constant="20" id="Yzu-no-cuO"/>
+                            <constraint firstItem="f7B-HZ-eev" firstAttribute="top" secondItem="1nb-Fc-BPB" secondAttribute="top" constant="20" id="iE1-T2-4kl"/>
+                            <constraint firstItem="3gM-SU-kUn" firstAttribute="top" secondItem="1nb-Fc-BPB" secondAttribute="top" constant="20" id="jYO-ls-3rP"/>
+                            <constraint firstItem="f7B-HZ-eev" firstAttribute="leading" secondItem="1nb-Fc-BPB" secondAttribute="leading" constant="20" id="oFr-5D-glB"/>
+                            <constraint firstItem="v4u-Vf-3my" firstAttribute="top" secondItem="f7B-HZ-eev" secondAttribute="bottom" constant="20" id="tqs-Ff-2co"/>
+                            <constraint firstAttribute="trailing" secondItem="Gyh-SG-8Xj" secondAttribute="trailing" constant="20" id="yhg-g4-Io0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="Gyh-SG-8Xj" id="0cs-3B-y1q"/>
+                        <outlet property="viewForWeb" destination="3gM-SU-kUn" id="s7d-Rr-KgJ"/>
+                        <outlet property="webView" destination="f7B-HZ-eev" id="yzX-0K-WIA"/>
+                    </connections>
+                </viewController>
+                <customObject id="Pj3-lA-bCl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618" y="187"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
