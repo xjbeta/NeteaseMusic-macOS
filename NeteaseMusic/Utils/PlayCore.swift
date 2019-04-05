@@ -15,5 +15,6 @@ class PlayCore: NSObject {
         
     }
     
+    let api = NeteaseMusicAPI()
     
 }
