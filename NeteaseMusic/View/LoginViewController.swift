@@ -11,23 +11,46 @@ import WebKit
 
 class LoginViewController: NSViewController {
     @IBAction func cancel(_ sender: NSButton) {
+        view.window?.close()
     }
     
     @IBOutlet weak var doneButton: NSButton!
     @IBAction func done(_ sender: NSButton) {
+        if shouldTryAgain {
+            initViews()
+        } else {
+            view.window?.close()
+        }
+    }
+    
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet weak var tabView: NSTabView!
+    @IBOutlet weak var resultTextField: NSTextField!
+    enum Tabs: Int {
+        case webView, progress, result
     }
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var viewForWeb: NSView!
     var thirdPartyWebView: WKWebView?
+    let loginUrlStr = URL(string: "https://music.163.com/#/login")
+    var shouldTryAgain = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        clearCookies()
-        
+//        clearCookies()
+        initViews()
+    }
+    
+    func initViews() {
+        doneButton.stringValue = "Done"
+        doneButton.isEnabled = false
+        thirdPartyWebView = nil
+        thirdPartyWebView?.isHidden = true
+        progressIndicator.startAnimation(nil)
+        selectTab(.progress)
         loadWebView()
     }
-    let loginUrlStr = URL(string: "https://music.163.com/#/login")
     
     func loadWebView() {
         
@@ -46,6 +69,18 @@ class LoginViewController: NSViewController {
                 WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
             }
         }
+    }
+    
+    func selectTab(_ tab: Tabs) {
+        tabView.selectTabViewItem(at: tab.rawValue)
+    }
+    
+    func showUnknownError() {
+        selectTab(.result)
+        resultTextField.stringValue = "Unkown error."
+        shouldTryAgain = true
+        doneButton.stringValue = "Try Again"
+        doneButton.isEnabled = true
     }
     
 }
@@ -72,8 +107,8 @@ document.getElementById('g_iframe').contentDocument.getElementsByClassName('m-su
                     print(err ?? "")
                 }
             }
+            selectTab(.webView)
         }
-        
     }
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
