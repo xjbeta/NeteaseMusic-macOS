@@ -848,35 +848,114 @@ DQ
                                     <action selector="done:" target="2EM-e8-1Aw" id="BOr-jO-gau"/>
                                 </connections>
                             </button>
-                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7B-HZ-eev">
+                            <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="7gq-bB-6Na">
                                 <rect key="frame" x="20" y="61" width="554" height="399"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="3gM-SU-kUn">
-                                <rect key="frame" x="20" y="61" width="554" height="399"/>
-                            </customView>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="Tab" identifier="1" id="T2p-jp-VXP" userLabel="WebView">
+                                        <view key="view" id="L9Y-3z-Nap">
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7B-HZ-eev">
+                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                                    <wkWebViewConfiguration key="configuration">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="3gM-SU-kUn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                                </customView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f7B-HZ-eev" firstAttribute="leading" secondItem="L9Y-3z-Nap" secondAttribute="leading" id="Cpq-A4-MJ3"/>
+                                                <constraint firstItem="f7B-HZ-eev" firstAttribute="top" secondItem="L9Y-3z-Nap" secondAttribute="top" id="MTJ-1u-gtU"/>
+                                                <constraint firstAttribute="trailing" secondItem="3gM-SU-kUn" secondAttribute="trailing" id="Rtc-Gp-EhH"/>
+                                                <constraint firstAttribute="trailing" secondItem="f7B-HZ-eev" secondAttribute="trailing" id="TIY-nF-caS"/>
+                                                <constraint firstAttribute="bottom" secondItem="3gM-SU-kUn" secondAttribute="bottom" id="WXr-TO-PYw"/>
+                                                <constraint firstItem="3gM-SU-kUn" firstAttribute="leading" secondItem="L9Y-3z-Nap" secondAttribute="leading" id="dcL-6C-k2y"/>
+                                                <constraint firstAttribute="bottom" secondItem="f7B-HZ-eev" secondAttribute="bottom" id="j7G-pe-ikW"/>
+                                                <constraint firstItem="3gM-SU-kUn" firstAttribute="top" secondItem="L9Y-3z-Nap" secondAttribute="top" id="xij-TL-Wok"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="View" identifier="2" id="hC1-W2-AOV" userLabel="Progress">
+                                        <view key="view" id="Ey3-pS-Vbk">
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="26" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V6a-6O-alw">
+                                                    <rect key="frame" x="247" y="162" width="60" height="75"/>
+                                                    <subviews>
+                                                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WN6-oD-60D">
+                                                            <rect key="frame" x="14" y="43" width="32" height="32"/>
+                                                        </progressIndicator>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uQ7-xg-DxT">
+                                                            <rect key="frame" x="-2" y="0.0" width="64" height="17"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Loading..." id="h6U-ee-HhW">
+                                                                <font key="font" usesAppearanceFont="YES"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="V6a-6O-alw" firstAttribute="centerX" secondItem="Ey3-pS-Vbk" secondAttribute="centerX" id="hWQ-UO-hvN"/>
+                                                <constraint firstItem="V6a-6O-alw" firstAttribute="centerY" secondItem="Ey3-pS-Vbk" secondAttribute="centerY" id="jal-md-J0G"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Item 2" identifier="" id="sbe-ru-KnA" userLabel="Result">
+                                        <view key="view" id="fZ8-Vf-gaI">
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tuQ-Kd-ULl">
+                                                    <rect key="frame" x="273" y="191" width="8" height="17"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="bEE-Vo-qJ6">
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tuQ-Kd-ULl" firstAttribute="centerX" secondItem="fZ8-Vf-gaI" secondAttribute="centerX" id="8Od-UO-H6s"/>
+                                                <constraint firstItem="tuQ-Kd-ULl" firstAttribute="centerY" secondItem="fZ8-Vf-gaI" secondAttribute="centerY" id="Ohs-ZP-IGd"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="v4u-Vf-3my" firstAttribute="top" secondItem="7gq-bB-6Na" secondAttribute="bottom" constant="20" id="6FR-4L-bS6"/>
                             <constraint firstAttribute="bottom" secondItem="Gyh-SG-8Xj" secondAttribute="bottom" constant="20" id="8VX-r7-A6u"/>
-                            <constraint firstAttribute="trailing" secondItem="3gM-SU-kUn" secondAttribute="trailing" constant="20" id="F7s-Hi-D69"/>
+                            <constraint firstItem="7gq-bB-6Na" firstAttribute="leading" secondItem="1nb-Fc-BPB" secondAttribute="leading" constant="20" id="JEo-hZ-LOE"/>
+                            <constraint firstAttribute="trailing" secondItem="7gq-bB-6Na" secondAttribute="trailing" constant="20" id="JQT-U5-VJI"/>
                             <constraint firstItem="v4u-Vf-3my" firstAttribute="width" secondItem="Gyh-SG-8Xj" secondAttribute="width" id="NNu-dO-MvK"/>
                             <constraint firstAttribute="bottom" secondItem="v4u-Vf-3my" secondAttribute="bottom" constant="20" id="QE8-gc-2yx"/>
-                            <constraint firstItem="v4u-Vf-3my" firstAttribute="top" secondItem="3gM-SU-kUn" secondAttribute="bottom" constant="20" id="QqT-XU-2uE"/>
-                            <constraint firstAttribute="trailing" secondItem="f7B-HZ-eev" secondAttribute="trailing" constant="20" id="VQB-Hw-o0D"/>
                             <constraint firstItem="v4u-Vf-3my" firstAttribute="leading" secondItem="1nb-Fc-BPB" secondAttribute="leading" constant="20" id="XgE-ON-70i"/>
-                            <constraint firstItem="3gM-SU-kUn" firstAttribute="leading" secondItem="1nb-Fc-BPB" secondAttribute="leading" constant="20" id="Yzu-no-cuO"/>
-                            <constraint firstItem="f7B-HZ-eev" firstAttribute="top" secondItem="1nb-Fc-BPB" secondAttribute="top" constant="20" id="iE1-T2-4kl"/>
-                            <constraint firstItem="3gM-SU-kUn" firstAttribute="top" secondItem="1nb-Fc-BPB" secondAttribute="top" constant="20" id="jYO-ls-3rP"/>
-                            <constraint firstItem="f7B-HZ-eev" firstAttribute="leading" secondItem="1nb-Fc-BPB" secondAttribute="leading" constant="20" id="oFr-5D-glB"/>
-                            <constraint firstItem="v4u-Vf-3my" firstAttribute="top" secondItem="f7B-HZ-eev" secondAttribute="bottom" constant="20" id="tqs-Ff-2co"/>
+                            <constraint firstItem="7gq-bB-6Na" firstAttribute="top" secondItem="1nb-Fc-BPB" secondAttribute="top" constant="20" id="g4g-aU-980"/>
                             <constraint firstAttribute="trailing" secondItem="Gyh-SG-8Xj" secondAttribute="trailing" constant="20" id="yhg-g4-Io0"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="doneButton" destination="Gyh-SG-8Xj" id="0cs-3B-y1q"/>
+                        <outlet property="progressIndicator" destination="WN6-oD-60D" id="Ihz-3a-KNp"/>
+                        <outlet property="resultTextField" destination="tuQ-Kd-ULl" id="5bu-0u-ite"/>
+                        <outlet property="tabView" destination="7gq-bB-6Na" id="Eo9-sO-UQb"/>
                         <outlet property="viewForWeb" destination="3gM-SU-kUn" id="s7d-Rr-KgJ"/>
                         <outlet property="webView" destination="f7B-HZ-eev" id="yzX-0K-WIA"/>
                     </connections>

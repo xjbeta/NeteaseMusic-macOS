@@ -99,42 +99,25 @@ document.getElementById('g_iframe').contentDocument.getElementsByClassName('m-su
     }
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
-        print(#function)
-        print(webView.url?.absoluteString ?? "")
-        guard webView == thirdPartyWebView,
-            let url = webView.url,
-            let pars = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems else { return }
-        
-        // Success
-        // https://music.163.com/back/sns?key=rHOxXXXXXX&callbackType=Login&loginType=5&code=200
-        if url.host == "music.163.com", url.path == "/back/sns",
-            pars.contains(where: { $0.name == "callbackType" && $0.value == "Login" }),
-            pars.contains(where: { $0.name == "code" && $0.value == "200" }) {
-            // login success
-            
-            
-            
-        } else {
-            
-        }
+        guard webView == thirdPartyWebView, webView.url?.host == "music.163.com" else { return }
+        webView.isHidden = true
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        print(#function)
-        print(navigationAction.request.url?.absoluteString ?? "")
-        
-        // 163 mail, phone number,
-        // webView(_:decidePolicyFor:decisionHandler:)
-        // Optional(https://music.163.com/discover)
-        // webView(_:decidePolicyFor:decisionHandler:)
-        // Optional(https://music.163.com/#/discover)
-        
         if navigationAction.request.url?.absoluteString == "https://music.163.com/#/discover" {
-            // login success
-            
-            
-            
-            
+            selectTab(.progress)
+            PlayCore.shared.api.isLogin().done(on: .main) {
+                self.resultTextField.stringValue = $0 ? "Login Success." : "Login Failed."
+                self.selectTab(.result)
+                self.doneButton.isEnabled = true
+                if !$0 {
+                    self.shouldTryAgain = true
+                    self.doneButton.stringValue = "Try Again"
+                }
+                }.catch(on: .main) {
+                    print("Check login status error: \($0)")
+                    self.showUnknownError()
+            }
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)
