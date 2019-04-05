@@ -10,16 +10,65 @@
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
+		013EF14422564E1F00E4D7D8 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13D22564E1F00E4D7D8 /* Marshal.framework */; };
+		013EF14522564E1F00E4D7D8 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13E22564E1F00E4D7D8 /* PromiseKit.framework */; };
+		013EF14622564E1F00E4D7D8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13F22564E1F00E4D7D8 /* Alamofire.framework */; };
+		013EF14A22564E2700E4D7D8 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13F22564E1F00E4D7D8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		013EF14B22564E2700E4D7D8 /* DevMateKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF14122564E1F00E4D7D8 /* DevMateKit.framework */; };
+		013EF14C22564E2700E4D7D8 /* DevMateKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF14122564E1F00E4D7D8 /* DevMateKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		013EF14E22564E2700E4D7D8 /* Marshal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13D22564E1F00E4D7D8 /* Marshal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		013EF15022564E2700E4D7D8 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13E22564E1F00E4D7D8 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		013EF15222564E5100E4D7D8 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 013EF13B22564E1F00E4D7D8 /* Alamofire.framework.dSYM */; };
+		013EF15322564E5100E4D7D8 /* Marshal.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 013EF13C22564E1F00E4D7D8 /* Marshal.framework.dSYM */; };
+		013EF15422564E5100E4D7D8 /* PromiseKit.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 013EF14022564E1F00E4D7D8 /* PromiseKit.framework.dSYM */; };
+		013EF1562256500100E4D7D8 /* SubString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF1552256500100E4D7D8 /* SubString.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		013EF13922564DD300E4D7D8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				013EF14E22564E2700E4D7D8 /* Marshal.framework in Embed Frameworks */,
+				013EF14C22564E2700E4D7D8 /* DevMateKit.framework in Embed Frameworks */,
+				013EF14A22564E2700E4D7D8 /* Alamofire.framework in Embed Frameworks */,
+				013EF15022564E2700E4D7D8 /* PromiseKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		013EF15122564E4600E4D7D8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				013EF15222564E5100E4D7D8 /* Alamofire.framework.dSYM in CopyFiles */,
+				013EF15322564E5100E4D7D8 /* Marshal.framework.dSYM in CopyFiles */,
+				013EF15422564E5100E4D7D8 /* PromiseKit.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		013EF13B22564E1F00E4D7D8 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/Mac/Alamofire.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		013EF13C22564E1F00E4D7D8 /* Marshal.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Marshal.framework.dSYM; path = Carthage/Build/Mac/Marshal.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		013EF13D22564E1F00E4D7D8 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/Mac/Marshal.framework; sourceTree = SOURCE_ROOT; };
+		013EF13E22564E1F00E4D7D8 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = SOURCE_ROOT; };
+		013EF13F22564E1F00E4D7D8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		013EF14022564E1F00E4D7D8 /* PromiseKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = PromiseKit.framework.dSYM; path = Carthage/Build/Mac/PromiseKit.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		013EF14122564E1F00E4D7D8 /* DevMateKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DevMateKit.framework; path = Carthage/Build/Mac/DevMateKit.framework; sourceTree = SOURCE_ROOT; };
+		013EF1552256500100E4D7D8 /* SubString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubString.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +83,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013EF14B22564E2700E4D7D8 /* DevMateKit.framework in Frameworks */,
+				013EF14422564E1F00E4D7D8 /* Marshal.framework in Frameworks */,
+				013EF14622564E1F00E4D7D8 /* Alamofire.framework in Frameworks */,
+				013EF14522564E1F00E4D7D8 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +98,7 @@
 			children = (
 				012F2F402250613F00086870 /* PlayCore.swift */,
 				012F2F422250619A00086870 /* NeteaseMusicAPI.swift */,
+				013EF1572256501000E4D7D8 /* Extensions */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -58,11 +112,34 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		013EF13A22564DF300E4D7D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				013EF13F22564E1F00E4D7D8 /* Alamofire.framework */,
+				013EF13B22564E1F00E4D7D8 /* Alamofire.framework.dSYM */,
+				013EF14122564E1F00E4D7D8 /* DevMateKit.framework */,
+				013EF13D22564E1F00E4D7D8 /* Marshal.framework */,
+				013EF13C22564E1F00E4D7D8 /* Marshal.framework.dSYM */,
+				013EF13E22564E1F00E4D7D8 /* PromiseKit.framework */,
+				013EF14022564E1F00E4D7D8 /* PromiseKit.framework.dSYM */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		013EF1572256501000E4D7D8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				013EF1552256500100E4D7D8 /* SubString.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		01957D7F224D01850006FCEC = {
 			isa = PBXGroup;
 			children = (
 				01957D8A224D01850006FCEC /* NeteaseMusic */,
 				01957D89224D01850006FCEC /* Products */,
+				013EF13A22564DF300E4D7D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +175,8 @@
 				01957D84224D01850006FCEC /* Sources */,
 				01957D85224D01850006FCEC /* Frameworks */,
 				01957D86224D01850006FCEC /* Resources */,
+				013EF13922564DD300E4D7D8 /* Embed Frameworks */,
+				013EF15122564E4600E4D7D8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -159,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
+				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
@@ -302,6 +382,10 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = NeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -321,6 +405,10 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = NeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
