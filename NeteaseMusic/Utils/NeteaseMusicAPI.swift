@@ -10,6 +10,7 @@ import Cocoa
 import Alamofire
 import Marshal
 import PromiseKit
+import JavaScriptCore
 
 class NeteaseMusicAPI: NSObject {
     struct User {
@@ -56,6 +57,21 @@ class NeteaseMusicAPI: NSObject {
     
     
     
+    func crypto(_ text: String) -> [String: String] {
+        guard let jsContext = JSContext(),
+            let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),
+            let content = try? String(contentsOfFile: cryptoFilePath) else {
+                return [:]
+        }
+        jsContext.evaluateScript(content)
+        guard let data = jsContext.evaluateScript("p('\(text)')")?.toString().data(using: .utf8),
+            var json = try? JSONDecoder().decode([String: String].self, from: data) else {
+                return [:]
+        }
+        json["params"] = json["encText"]
+        json["encText"] = nil
+        return json
+    }
     
     
 }
