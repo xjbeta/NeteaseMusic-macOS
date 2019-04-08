@@ -13,6 +13,14 @@ import PromiseKit
 import JavaScriptCore
 
 class NeteaseMusicAPI: NSObject {
+    
+    var uid = -1
+    var csrf: String {
+        get {
+            return HTTPCookieStorage.shared.cookies?.filter({ $0.name == "__csrf" }).first?.value ?? ""
+        }
+    }
+    
     struct User {
         var nickname: String
         var userId: Int
@@ -28,7 +36,7 @@ class NeteaseMusicAPI: NSObject {
     
     func userInfo() -> Promise<(User)> {
         return Promise { resolver in
-            Alamofire.request("https://music.163.com").responseString {
+            AF.request("https://music.163.com").responseString {
                 let gUserStr = $0.value?.subString(from: "var GUser={", to: "};").replacingOccurrences(of: "\"", with: "")
                 
                 var user = User(nickname: "", userId: -1, avatarImage: nil)
@@ -39,6 +47,7 @@ class NeteaseMusicAPI: NSObject {
                     switch key {
                     case "userId":
                         user.userId = Int(value) ?? -1
+                        self.uid = user.userId
                     case "nickname":
                         user.nickname = value
                     case "avatarUrl":
@@ -55,7 +64,55 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    struct PlayList: Decodable {
+        let subscribed: Bool
+        let coverImgUrl: URL
+        let playCount: Int
+        let name: String
+        let trackCount: Int
+        let description: String?
+        let tags: [String]
+    }
     
+    func userPlaylist() -> Promise<[PlayList]> {
+        struct P: Encodable {
+            let uid: Int
+            let limit: Int
+            let offset: Int
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case uid, limit, offset, csrfToken = "csrf_token"
+            }
+        }
+        
+        struct Result: Decodable {
+            let playlist: [PlayList]
+            let code: Int
+        }
+        
+        let t = P(uid: uid, limit: 1000, offset: 0, csrfToken: csrf).jsonString()
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/user/playlist?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(t)).responseDecodable { (re: DataResponse<Result>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(result.playlist)
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
     
     func crypto(_ text: String) -> [String: String] {
         guard let jsContext = JSContext(),
@@ -73,5 +130,18 @@ class NeteaseMusicAPI: NSObject {
         return json
     }
     
+    enum APIError: Error {
+        case errorCode(Int)
+    }
     
+}
+
+extension Encodable {
+    func jsonString() -> String {
+        guard let data = try? JSONEncoder().encode(self),
+            let str = String(data: data, encoding: .utf8) else {
+                return ""
+        }
+        return str
+    }
 }
