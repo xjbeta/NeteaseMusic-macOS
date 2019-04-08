@@ -23,6 +23,7 @@
 		013EF15422564E5100E4D7D8 /* PromiseKit.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 013EF14022564E1F00E4D7D8 /* PromiseKit.framework.dSYM */; };
 		013EF1562256500100E4D7D8 /* SubString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF1552256500100E4D7D8 /* SubString.swift */; };
 		013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF158225732BC00E4D7D8 /* SidebarViewController.swift */; };
+		013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */ = {isa = PBXBuildFile; fileRef = 013EF167225B2A1F00E4D7D8 /* Crypto.js */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 		013EF14122564E1F00E4D7D8 /* DevMateKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DevMateKit.framework; path = Carthage/Build/Mac/DevMateKit.framework; sourceTree = SOURCE_ROOT; };
 		013EF1552256500100E4D7D8 /* SubString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubString.swift; sourceTree = "<group>"; };
 		013EF158225732BC00E4D7D8 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
+		013EF167225B2A1F00E4D7D8 /* Crypto.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Crypto.js; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				013EF1552256500100E4D7D8 /* SubString.swift */,
+				013EF167225B2A1F00E4D7D8 /* Crypto.js */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
 				01957D93224D01860006FCEC /* Main.storyboard in Resources */,
+				013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
