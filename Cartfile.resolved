@@ -1,5 +1,4 @@
-github "Alamofire/Alamofire" "4.8.2"
+github "Alamofire/Alamofire" "5.0.0-beta.4"
 github "DevMate/DevMateKit" "v1.9.3"
-github "PromiseKit/PMKAlamofire" "fix-6.5.3"
 github "mxcl/PromiseKit" "6.8.4"
 github "utahiosmac/Marshal" "1.2.7"
