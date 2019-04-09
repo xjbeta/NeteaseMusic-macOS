@@ -679,7 +679,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="75" y="-301"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -812,7 +812,7 @@
                 </windowController>
                 <customObject id="4TP-7U-dPf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="937" y="144"/>
+            <point key="canvasLocation" x="-389" y="-728"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="hjy-zf-tVW">
@@ -962,7 +962,7 @@ DQ
                 </viewController>
                 <customObject id="Pj3-lA-bCl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="187"/>
+            <point key="canvasLocation" x="292" y="-685"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -1019,6 +1019,20 @@ DQ
                                                         <view key="view" id="5IT-G8-uN3">
                                                             <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-xI-l9e">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                                    <connections>
+                                                                        <segue destination="9bB-BL-Yfy" kind="embed" id="Qsn-rP-7ci"/>
+                                                                    </connections>
+                                                                </containerView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Jqh-xI-l9e" firstAttribute="top" secondItem="5IT-G8-uN3" secondAttribute="top" id="4Hb-Ge-mnq"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Jqh-xI-l9e" secondAttribute="bottom" id="R9V-iy-ROn"/>
+                                                                <constraint firstItem="Jqh-xI-l9e" firstAttribute="leading" secondItem="5IT-G8-uN3" secondAttribute="leading" id="Tna-6l-ptZ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Jqh-xI-l9e" secondAttribute="trailing" id="btq-PP-zSV"/>
+                                                            </constraints>
                                                         </view>
                                                     </tabViewItem>
                                                     <tabViewItem label="Item 4" identifier="" id="auH-V1-eBu" userLabel="PlayingMusic">
@@ -1383,6 +1397,19 @@ DQ
                 <customObject id="jiz-P7-7ud" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-645" y="973"/>
+        </scene>
+        <!--Playlist-->
+        <scene sceneID="AKS-fY-jPl">
+            <objects>
+                <viewController title="Playlist" id="9bB-BL-Yfy" customClass="PlaylistViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="YGT-vQ-jjc">
+                        <rect key="frame" x="0.0" y="0.0" width="836" height="543"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="a4a-u4-eZH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="109.5"/>
         </scene>
     </scenes>
     <resources>

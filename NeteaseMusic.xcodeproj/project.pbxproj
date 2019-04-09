@@ -35,6 +35,7 @@
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
 		01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarTableView.swift */; };
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
+		01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +95,7 @@
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		01FF8B73225C64B7002D7906 /* SidebarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableView.swift; sourceTree = "<group>"; };
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				01957D91224D01860006FCEC /* Main.storyboard */,
 				012F2F452250F8DE00086870 /* LoginViewController.swift */,
 				01FF8B76225C6551002D7906 /* MainWindowController.swift */,
+				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
 			);
 			path = View;
@@ -278,6 +281,7 @@
 				01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
+				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
 				0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
 				0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */,
