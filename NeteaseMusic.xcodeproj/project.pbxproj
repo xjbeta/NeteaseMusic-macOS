@@ -24,10 +24,17 @@
 		013EF1562256500100E4D7D8 /* SubString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF1552256500100E4D7D8 /* SubString.swift */; };
 		013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF158225732BC00E4D7D8 /* SidebarViewController.swift */; };
 		013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */ = {isa = PBXBuildFile; fileRef = 013EF167225B2A1F00E4D7D8 /* Crypto.js */; };
+		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
+		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
+		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
+		0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160308B225B88D60064EC88 /* SidebarTableCellView.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
+		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
+		01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarTableView.swift */; };
+		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +80,10 @@
 		013EF1552256500100E4D7D8 /* SubString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubString.swift; sourceTree = "<group>"; };
 		013EF158225732BC00E4D7D8 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		013EF167225B2A1F00E4D7D8 /* Crypto.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Crypto.js; sourceTree = "<group>"; };
+		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
+		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
+		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
+		0160308B225B88D60064EC88 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +91,9 @@
 		01957D92224D01860006FCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
+		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		01FF8B73225C64B7002D7906 /* SidebarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableView.swift; sourceTree = "<group>"; };
+		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +126,8 @@
 			children = (
 				01957D91224D01860006FCEC /* Main.storyboard */,
 				012F2F452250F8DE00086870 /* LoginViewController.swift */,
-				013EF158225732BC00E4D7D8 /* SidebarViewController.swift */,
+				01FF8B76225C6551002D7906 /* MainWindowController.swift */,
+				01FF8B75225C6527002D7906 /* Sidebar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				013EF1552256500100E4D7D8 /* SubString.swift */,
+				01FF8B71225C60F7002D7906 /* Colors.swift */,
+				01603087225B850B0064EC88 /* SafeSubscript.swift */,
 				013EF167225B2A1F00E4D7D8 /* Crypto.js */,
 			);
 			path = Extensions;
@@ -169,6 +186,18 @@
 				01957D95224D01860006FCEC /* NeteaseMusic.entitlements */,
 			);
 			path = NeteaseMusic;
+			sourceTree = "<group>";
+		};
+		01FF8B75225C6527002D7906 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				013EF158225732BC00E4D7D8 /* SidebarViewController.swift */,
+				01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */,
+				0160308B225B88D60064EC88 /* SidebarTableCellView.swift */,
+				01FF8B73225C64B7002D7906 /* SidebarTableView.swift */,
+				01603085225B82C00064EC88 /* Identifiers.swift */,
+			);
+			name = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +274,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
+				01FF8B72225C60F7002D7906 /* Colors.swift in Sources */,
+				01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
+				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
+				0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */,
+				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
+				0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */,
+				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,

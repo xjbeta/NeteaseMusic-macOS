@@ -72,6 +72,7 @@ class NeteaseMusicAPI: NSObject {
         let trackCount: Int
         let description: String?
         let tags: [String]
+        let id: Int
     }
     
     func userPlaylist() -> Promise<[PlayList]> {
