@@ -14,13 +14,17 @@ class SidebarViewController: NSViewController {
         let title: String
         let icon: NSImage?
         let id: Int
-        let isHeader: Bool
+        let type: ItemType
     }
     
-    let defaultItems = [TableViewItem(title: "发现音乐", icon: nil, id: -1, isHeader: false),
-                        TableViewItem(title: "私人FM", icon: nil, id: -1, isHeader: false),
-                        TableViewItem(title: "创建的歌单", icon: nil, id: -1, isHeader: true),
-                        TableViewItem(title: "收藏的歌单", icon: nil, id: -1, isHeader: true)]
+    enum ItemType {
+        case discover, fm, favourite, playlist, header
+    }
+    
+    let defaultItems = [TableViewItem(title: "发现音乐", icon: nil, id: -1, type: .discover),
+                        TableViewItem(title: "私人FM", icon: nil, id: -1, type: .fm),
+                        TableViewItem(title: "创建的歌单", icon: nil, id: -1, type: .header),
+                        TableViewItem(title: "收藏的歌单", icon: nil, id: -1, type: .header)]
     var tableViewItems = [TableViewItem]()
     var tableViewSelectedRow = -1
     
@@ -34,7 +38,7 @@ class SidebarViewController: NSViewController {
                 let created = $0.filter {
                     !$0.subscribed
                     }.map {
-                        TableViewItem(title: $0.name, icon: nil, id: $0.id, isHeader: false)
+                        TableViewItem(title: $0.name, icon: nil, id: $0.id, type: .playlist)
                 }
                 guard let indexOfCreated = self.tableViewItems.enumerated().filter({
                     $0.element.title == "创建的歌单"
@@ -47,7 +51,7 @@ class SidebarViewController: NSViewController {
                 let subscribed = $0.filter {
                     $0.subscribed
                     }.map {
-                        TableViewItem(title: $0.name, icon: nil, id: $0.id, isHeader: false)
+                        TableViewItem(title: $0.name, icon: nil, id: $0.id, type: .playlist)
                 }
                 self.tableViewItems.append(contentsOf: subscribed)
                 self.tableView.reloadData()
@@ -66,7 +70,7 @@ extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let item = tableViewItems[safe: row] else { return nil }
         
-        if item.isHeader {
+        if item.type == .header {
             guard let view = tableView.makeView(withIdentifier: .sidebarHeaderTableCellView, owner: self) as? SidebarHeaderTableCellView else { return nil }
             view.titleButton.title = item.title
             return view
@@ -81,7 +85,7 @@ extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         guard let item = tableViewItems[safe: row] else { return false }
-        return !item.isHeader
+        return item.type != .header
     }
     
     func tableViewSelectionIsChanging(_ notification: Notification) {
