@@ -11,10 +11,10 @@ import Cocoa
 class SidebarViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     struct TableViewItem {
-        let title: String
+        var title: String
         let icon: NSImage?
         let id: Int
-        let type: ItemType
+        var type: ItemType
     }
     
     enum ItemType {
@@ -35,11 +35,17 @@ class SidebarViewController: NSViewController {
         PlayCore.shared.api.isLogin().then { _ in
             PlayCore.shared.api.userPlaylist()
             }.done(on: .main) {
-                let created = $0.filter {
+                var created = $0.filter {
                     !$0.subscribed
                     }.map {
                         TableViewItem(title: $0.name, icon: nil, id: $0.id, type: .playlist)
                 }
+                
+                if let item = created.first, item.title.contains("喜欢的音乐") {
+                    created[0].title = "我喜欢的音乐"
+                    created[0].type = .favourite
+                }
+                
                 guard let indexOfCreated = self.tableViewItems.enumerated().filter({
                     $0.element.title == "创建的歌单"
                 }).first?.offset else {
