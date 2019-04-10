@@ -48,3 +48,34 @@ struct PlayList: Decodable {
         let id: Int
     }
 }
+
+
+
+struct Song: Decodable {
+    let id: Int
+    let url: URL
+    // 320kbp  =>  320,000
+    let br: Int
+    //        {
+    //            "data": [{
+    //            "id": 21311956,
+    //            "url": "http://m701.music.126.net/20190410200850/e986731210da149ee747a367a38c6ed9/jdyyaac/0452/545c/0158/384f8e1a3ac69235d5ff6214e3e849a3.m4a",
+    //            "br": 96000,
+    //            "size": 3744977,
+    //            "md5": "384f8e1a3ac69235d5ff6214e3e849a3",
+    //            "code": 200,
+    //            "expi": 1200,
+    //            "type": "m4a",
+    //            "gain": -7.2279,
+    //            "fee": 8,
+    //            "uf": null,
+    //            "payed": 0,
+    //            "flag": 128,
+    //            "canExtend": false,
+    //            "freeTrialInfo": null,
+    //            "level": "standard",
+    //            "encodeType": "aac"
+    //            }],
+    //            "code": 200
+    //        }
+}
