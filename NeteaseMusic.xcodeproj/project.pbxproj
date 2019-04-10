@@ -39,6 +39,7 @@
 		01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B7A225CD38F002D7906 /* MainViewController.swift */; };
 		01FF8B7F225D7DFE002D7906 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B7E225D7DFE002D7906 /* Playlist.swift */; };
 		01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B80225D8064002D7906 /* DurationTransformer.swift */; };
+		01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,6 +103,7 @@
 		01FF8B7A225CD38F002D7906 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		01FF8B7E225D7DFE002D7906 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		01FF8B80225D8064002D7906 /* DurationTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTransformer.swift; sourceTree = "<group>"; };
+		01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				012F2F422250619A00086870 /* NeteaseMusicAPI.swift */,
 				01FF8B7E225D7DFE002D7906 /* Playlist.swift */,
 				01FF8B80225D8064002D7906 /* DurationTransformer.swift */,
+				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
 				013EF1572256501000E4D7D8 /* Extensions */,
 			);
 			path = Utils;
@@ -294,6 +297,7 @@
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
 				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
 				0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */,
+				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
 				0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,

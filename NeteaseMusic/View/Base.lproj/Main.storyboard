@@ -1531,6 +1531,13 @@ DQ
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="R6g-cv-Vul" name="value" keyPath="objectValue" id="I8c-zM-e0k">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">ArtistsTransformer</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -1538,6 +1545,9 @@ DQ
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="5EX-c6-2XK" name="value" keyPath="arrangedObjects" id="nAX-rd-bbq"/>
+                                                    </connections>
                                                 </tableColumn>
                                                 <tableColumn width="119" minWidth="10" maxWidth="3.4028234663852886e+38" id="p9A-3D-88r">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Album">
