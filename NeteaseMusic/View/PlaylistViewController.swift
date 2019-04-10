@@ -17,9 +17,10 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var playCountTextField: NSTextField!
     @IBOutlet weak var trackCountTextField: NSTextField!
     @IBOutlet weak var descriptionTextField: NSTextField!
+    
     var sidebarItemObserver: NSKeyValueObservation?
     @objc dynamic var tracks = [PlayList.Track]()
-    
+    var playlistId = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,10 @@ class PlaylistViewController: NSViewController {
                 new?.type == .playlist || new?.type == .favourite,
                 let id = new?.id,
                 id > 0 else { return }
-            
+            self.playlistId = id
             PlayCore.shared.api.playlistDetail(id).done(on: .main) {
+                guard self.playlistId == id else { return }
+                
                 self.coverImageView.image = NSImage(contentsOf: $0.coverImgUrl)
                 self.titleTextFiled.stringValue = $0.name
                 self.descriptionTextField.stringValue = $0.description ?? "none"
