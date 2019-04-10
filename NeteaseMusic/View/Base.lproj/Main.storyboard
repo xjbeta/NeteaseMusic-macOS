@@ -1118,10 +1118,10 @@ DQ
             </objects>
             <point key="canvasLocation" x="75" y="1030.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Control Bar View Controller-->
         <scene sceneID="6kd-1Y-NyV">
             <objects>
-                <viewController id="gFA-xN-pwE" sceneMemberID="viewController">
+                <viewController id="gFA-xN-pwE" customClass="ControlBarViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="WHU-m2-fIF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="65"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1133,6 +1133,9 @@ DQ
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="Xsu-Fi-gbd"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBd-Zn-a32">
                                 <rect key="frame" x="42" y="17" width="32" height="32"/>
@@ -1141,6 +1144,9 @@ DQ
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="etU-3D-6Ub"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-0n-X02">
                                 <rect key="frame" x="74" y="17" width="32" height="32"/>
@@ -1149,6 +1155,9 @@ DQ
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="M5W-Gz-6iK"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qm5-kb-Q4b">
                                 <rect key="frame" x="894" y="16" width="32" height="32"/>
@@ -1211,6 +1220,11 @@ DQ
                             <constraint firstItem="vO3-ZQ-Lp9" firstAttribute="leading" secondItem="WHU-m2-fIF" secondAttribute="leading" id="gQd-Eo-XXG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="YyR-0n-X02" id="WSf-Ej-t7i"/>
+                        <outlet property="pauseButton" destination="CBd-Zn-a32" id="iE9-4n-pk9"/>
+                        <outlet property="previousButton" destination="QZ1-1J-208" id="gQv-RA-GHk"/>
+                    </connections>
                 </viewController>
                 <customObject id="cbZ-HT-qOn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1349,7 +1363,7 @@ DQ
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A2e-EX-e5v">
                                                                     <rect key="frame" x="37" y="10" width="174" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Oot-G3-HSw">
-                                                                        <font key="font" metaFont="system" size="12"/>
+                                                                        <font key="font" metaFont="cellTitle"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
