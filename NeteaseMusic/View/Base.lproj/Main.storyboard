@@ -1771,6 +1771,7 @@ DQ
                         <outlet property="playCountTextField" destination="xjP-5i-faH" id="uk7-ox-1lX"/>
                         <outlet property="tableView" destination="5tJ-Al-kew" id="KsE-GI-eN9"/>
                         <outlet property="titleTextFiled" destination="nSj-02-utq" id="smy-qL-0Z5"/>
+                        <outlet property="topViewLayoutConstraint" destination="STm-5J-COb" id="HXT-XO-HuE"/>
                         <outlet property="trackCountTextField" destination="Vjj-Xo-E0O" id="vYZ-mx-ukR"/>
                     </connections>
                 </viewController>

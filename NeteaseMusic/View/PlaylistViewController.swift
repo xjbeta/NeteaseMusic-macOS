@@ -18,6 +18,10 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var trackCountTextField: NSTextField!
     @IBOutlet weak var descriptionTextField: NSTextField!
     
+    @IBOutlet weak var topViewLayoutConstraint: NSLayoutConstraint!
+//    var isUpdateLayout = false
+    
+    
     var sidebarItemObserver: NSKeyValueObservation?
     @objc dynamic var tracks = [PlayList.Track]()
     var playlistId = -1
@@ -48,6 +52,22 @@ class PlaylistViewController: NSViewController {
                 }.catch {
                     print($0)
             }
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: tableView.enclosingScrollView)
+    }
+    
+    @objc func scrollViewDidScroll(_ notification: Notification) {
+        if let scrollView = notification.object as? NSScrollView {
+            let visibleRect = scrollView.contentView.documentVisibleRect
+//            self.topViewLayoutConstraint.constant = visibleRect.origin.y > 100 ? 100 : 200
+//            isUpdateLayout = true
+//            NSAnimationContext.runAnimationGroup({
+//                $0.duration = 0.15
+//                self.topViewLayoutConstraint.animator().constant = visibleRect.origin.y > 100 ? 100 : 200
+//                isUpdateLayout = false
+//            })
+            
         }
     }
     
