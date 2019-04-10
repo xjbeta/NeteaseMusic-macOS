@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class PlayCore: NSObject {
     static let shared = PlayCore()
@@ -16,7 +17,18 @@ class PlayCore: NSObject {
     }
     
     let api = NeteaseMusicAPI()
+    var player = AVPlayer()
     
     @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
+    
+    
+    func playUrl(_ url: URL) {
+        let uStr = url.absoluteString.replacingOccurrences(of: "http://", with: "https://")
+        guard let u = URL(string: uStr) else { return }
+        let avAsset = AVURLAsset(url: u)
+        let playerItem = AVPlayerItem(asset: avAsset)
+        player = AVPlayer(playerItem: playerItem)
+        player.play()
+    }
     
 }
