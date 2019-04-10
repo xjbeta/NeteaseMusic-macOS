@@ -10,15 +10,22 @@ import Cocoa
 
 class SidebarViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
-    struct TableViewItem {
+    class TableViewItem: NSObject {
         var title: String
         let icon: NSImage?
-        let id: Int
-        var type: ItemType
+        var id: Int = 0
+        var type: ItemType = .none
+        
+        init(title: String, icon: NSImage? = nil, id: Int, type: ItemType) {
+            self.title = title
+            self.icon = icon
+            self.id = id
+            self.type = type
+        }
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, header
+        case discover, fm, favourite, playlist, header, none
     }
     
     let defaultItems = [TableViewItem(title: "发现音乐", icon: nil, id: -1, type: .discover),
@@ -105,6 +112,6 @@ extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
         }
         
         tableViewSelectedRow = tableView.selectedRow
-        
+        PlayCore.shared.selectedSidebarItem = tableViewItems[safe: tableView.selectedRow]
     }
 }

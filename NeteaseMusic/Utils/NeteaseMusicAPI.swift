@@ -64,16 +64,9 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    struct PlayList: Decodable {
-        let subscribed: Bool
-        let coverImgUrl: URL
-        let playCount: Int
-        let name: String
-        let trackCount: Int
-        let description: String?
-        let tags: [String]
-        let id: Int
-    }
+
+    
+
     
     func userPlaylist() -> Promise<[PlayList]> {
         struct P: Encodable {
@@ -91,12 +84,52 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
         }
         
-        let t = P(uid: uid, limit: 1000, offset: 0, csrfToken: csrf).jsonString()
+        let p = P(uid: uid, limit: 1000, offset: 0, csrfToken: csrf).jsonString()
         
         return Promise { resolver in
             AF.request("https://music.163.com/weapi/user/playlist?csrf_token=\(csrf)",
                 method: .post,
-                parameters: crypto(t)).responseDecodable { (re: DataResponse<Result>) in
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(result.playlist)
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
+    func playlistDetail(_ id: Int) -> Promise<(PlayList)> {
+        struct P: Encodable {
+            let id: Int
+            let n: Int
+            let s: Int
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case id, n, s, csrfToken = "csrf_token"
+            }
+        }
+        
+        struct Result: Decodable {
+            let playlist: PlayList
+            let code: Int
+        }
+
+        let p = P(id: id, n: 1000, s: 0, csrfToken: csrf).jsonString()
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/v3/playlist/detail?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
                     if let error = re.error {
                         resolver.reject(error)
                         return

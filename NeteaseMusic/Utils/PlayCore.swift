@@ -17,4 +17,6 @@ class PlayCore: NSObject {
     
     let api = NeteaseMusicAPI()
     
+    @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
+    
 }
