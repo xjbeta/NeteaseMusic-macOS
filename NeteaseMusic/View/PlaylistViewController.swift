@@ -31,7 +31,7 @@ class PlaylistViewController: NSViewController {
         
         sidebarItemObserver = PlayCore.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
             guard let new = changes.newValue,
-                new?.type == .playlist,
+                new?.type == .playlist || new?.type == .favourite,
                 let id = new?.id,
                 id > 0 else { return }
             

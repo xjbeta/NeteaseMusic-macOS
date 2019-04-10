@@ -23,11 +23,9 @@ class MainViewController: NSViewController {
                 switch newType {
                 case .discover:
                     break
-                case .favourite:
-                    break
                 case .fm:
                     self.updateTabView(.fm)
-                case .playlist:
+                case .playlist, .favourite:
                     self.updateTabView(.playlist)
                 default:
                     break
