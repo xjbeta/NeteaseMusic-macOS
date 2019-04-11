@@ -1198,6 +1198,9 @@ DQ
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="b7S-kr-3db"/>
+                                </connections>
                             </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m27-6X-RWF">
                                 <rect key="frame" x="792" y="24" width="96" height="19"/>
@@ -1229,6 +1232,7 @@ DQ
                     <connections>
                         <outlet property="durationSlider" destination="bcG-gB-lL4" id="P8f-fR-BeN"/>
                         <outlet property="durationTextField" destination="hld-Yq-BOb" id="qxc-uv-SBg"/>
+                        <outlet property="muteButton" destination="W4s-WY-zng" id="oTt-I5-mWS"/>
                         <outlet property="nextButton" destination="YyR-0n-X02" id="WSf-Ej-t7i"/>
                         <outlet property="pauseButton" destination="CBd-Zn-a32" id="iE9-4n-pk9"/>
                         <outlet property="previousButton" destination="QZ1-1J-208" id="gQv-RA-GHk"/>

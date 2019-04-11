@@ -14,20 +14,24 @@ class ControlBarViewController: NSViewController {
     @IBOutlet weak var previousButton: NSButton!
     @IBOutlet weak var pauseButton: NSButton!
     @IBOutlet weak var nextButton: NSButton!
+    @IBOutlet weak var muteButton: NSButton!
     
     @IBAction func controlAction(_ sender: NSButton) {
+        let player = PlayCore.shared.player
         switch sender {
         case previousButton:
             break
         case pauseButton:
-            guard PlayCore.shared.player.error == nil else { return }
-            if PlayCore.shared.player.rate == 0 {
-                PlayCore.shared.player.play()
+            guard player.error == nil else { return }
+            if player.rate == 0 {
+                player.play()
             } else {
-                PlayCore.shared.player.pause()
+                player.pause()
             }
         case nextButton:
-            addPeriodicTimeObserver()
+            break
+        case muteButton:
+            player.isMuted = !player.isMuted
         default:
             break
         }
