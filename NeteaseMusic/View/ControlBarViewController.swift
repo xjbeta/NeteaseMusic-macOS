@@ -63,7 +63,7 @@ class ControlBarViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        addPeriodicTimeObserver()
         
         volumeSlider.maxValue = 1
         volumeSlider.floatValue = PlayCore.shared.player.volume
