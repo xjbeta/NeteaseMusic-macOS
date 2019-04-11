@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class ControlBarViewController: NSViewController {
 
@@ -26,16 +27,69 @@ class ControlBarViewController: NSViewController {
                 PlayCore.shared.player.pause()
             }
         case nextButton:
+            addPeriodicTimeObserver()
+        default:
+            break
+        }
+    }
+    
+    @IBOutlet weak var durationSlider: NSSlider!
+    @IBOutlet weak var durationTextField: NSTextField!
+    @IBOutlet weak var volumeSlider: NSSlider!
+    
+    @IBAction func sliderAction(_ sender: NSSlider) {
+        switch sender {
+        case durationSlider:
+            PlayCore.shared.player.pause()
+            let time = CMTime(seconds: sender.doubleValue, preferredTimescale: 1000)
+            PlayCore.shared.player.seek(to: time) { re in
+                PlayCore.shared.player.play()
+            }
+        case volumeSlider:
             break
         default:
             break
         }
     }
     
+    var periodicTimeObserverToken: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        
+        
+    }
+    
+    func addPeriodicTimeObserver() {
+        // Notify every half second
+        let timeScale = CMTimeScale(NSEC_PER_SEC)
+        let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
+        periodicTimeObserverToken = PlayCore.shared.player
+            .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
+                guard let duration = PlayCore.shared.player.currentItem?.asset.duration else { return }
+                
+                let periodicSec = Double(CMTimeGetSeconds(time))
+                self?.durationSlider.doubleValue = periodicSec
+                
+                let durationSec = Double(CMTimeGetSeconds(duration))
+                if durationSec != self?.durationSlider.maxValue {
+                    self?.durationSlider.maxValue = durationSec
+                }
+                
+                self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"
+        }
+    }
+    
+    func removePeriodicTimeObserver() {
+        if let timeObserverToken = periodicTimeObserverToken {
+            PlayCore.shared.player.removeTimeObserver(timeObserverToken)
+            self.periodicTimeObserverToken = nil
+        }
+    }
+    
+    deinit {
+        removePeriodicTimeObserver()
     }
     
 }

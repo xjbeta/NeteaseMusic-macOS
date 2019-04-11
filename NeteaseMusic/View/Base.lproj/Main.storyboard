@@ -1184,9 +1184,12 @@ DQ
                                 </buttonCell>
                             </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-gB-lL4">
-                                <rect key="frame" x="144" y="23" width="486" height="19"/>
+                                <rect key="frame" x="144" y="24" width="486" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="t1B-pT-taQ"/>
+                                <connections>
+                                    <action selector="sliderAction:" target="gFA-xN-pwE" id="57Y-Xb-WKw"/>
+                                </connections>
                             </slider>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-WY-zng">
                                 <rect key="frame" x="746" y="17" width="32" height="32"/>
@@ -1205,9 +1208,9 @@ DQ
                                 <rect key="frame" x="0.0" y="62" width="1000" height="5"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hld-Yq-BOb">
-                                <rect key="frame" x="657" y="27" width="74" height="14"/>
+                                <rect key="frame" x="657" y="27" width="77" height="14"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="00:00/ 00:00" id="2hK-Qv-Kj7">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="00:00 / 00:00" id="2hK-Qv-Kj7">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1221,9 +1224,12 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="durationSlider" destination="bcG-gB-lL4" id="P8f-fR-BeN"/>
+                        <outlet property="durationTextField" destination="hld-Yq-BOb" id="qxc-uv-SBg"/>
                         <outlet property="nextButton" destination="YyR-0n-X02" id="WSf-Ej-t7i"/>
                         <outlet property="pauseButton" destination="CBd-Zn-a32" id="iE9-4n-pk9"/>
                         <outlet property="previousButton" destination="QZ1-1J-208" id="gQv-RA-GHk"/>
+                        <outlet property="volumeSlider" destination="m27-6X-RWF" id="PVf-D9-69O"/>
                     </connections>
                 </viewController>
                 <customObject id="cbZ-HT-qOn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

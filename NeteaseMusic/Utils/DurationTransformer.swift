@@ -11,16 +11,20 @@ import Cocoa
 @objc(DurationTransformer)
 class DurationTransformer: ValueTransformer {
     override func transformedValue(_ value: Any?) -> Any? {
-        let defaultStr = "00:00"
-        
-        if let dValue = (value as? Double) {
-            let formatter = DateComponentsFormatter()
-            formatter.unitsStyle = .positional
-            let duration = Int(dValue / 1000)
-            formatter.allowedUnits = [.minute, .second]
-            formatter.zeroFormattingBehavior = .pad
-            return formatter.string(from: TimeInterval(duration)) ?? defaultStr
+        if let v = value as? Double {
+            return (v / 1000).durationFormatter()
         }
-        return defaultStr
+        return "00:00"
+    }
+}
+
+
+extension Double {
+    func durationFormatter() -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: TimeInterval(self)) ?? "00:00"
     }
 }

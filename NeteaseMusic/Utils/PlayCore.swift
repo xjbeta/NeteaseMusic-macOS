@@ -17,7 +17,7 @@ class PlayCore: NSObject {
     }
     
     let api = NeteaseMusicAPI()
-    var player = AVPlayer()
+    let player = AVPlayer()
     
     @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
     
@@ -27,7 +27,7 @@ class PlayCore: NSObject {
         guard let u = URL(string: uStr) else { return }
         let avAsset = AVURLAsset(url: u)
         let playerItem = AVPlayerItem(asset: avAsset)
-        player = AVPlayer(playerItem: playerItem)
+        player.replaceCurrentItem(with: playerItem)
         player.play()
     }
     
