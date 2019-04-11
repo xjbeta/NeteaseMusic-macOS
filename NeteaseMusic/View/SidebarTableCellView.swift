@@ -21,8 +21,9 @@ class SidebarTableCellView: NSTableCellView {
     func updateSelection() {
         highlightColorView.layer?.backgroundColor = isSelected ? NSColor.nColor.cgColor : .clear
 //        text color
-//        textField?.textColor = isSelected ? NSColor.nColor.cgColor : .controlTextColor
+//        textField?.textColor = isSelected ? NSColor.nColor : .controlTextColor
 //        image color
+//        imageView?.image = imageView?.image?.tint(color: isSelected ? NSColor.nColor : .controlTextColor)
         
     }
     
@@ -41,3 +42,19 @@ class SidebarTableCellView: NSTableCellView {
     }
     
 }
+
+//extension NSImage {
+//    func tint(color: NSColor) -> NSImage {
+//        let image = self.copy() as! NSImage
+//        image.lockFocus()
+//        
+//        color.set()
+//        
+//        let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
+//        imageRect.fill(using: .sourceAtop)
+//        
+//        image.unlockFocus()
+//        
+//        return image
+//    }
+//}

@@ -12,13 +12,27 @@ class SidebarViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     class TableViewItem: NSObject {
         var title: String
-        let icon: NSImage?
+        var icon: NSImage? {
+            get {
+                switch type {
+                case .discover:
+                    return NSImage(named: NSImage.Name("sidebar.sp#icn-discover"))
+                case .fm:
+                    return NSImage(named: NSImage.Name("sidebar.sp#icn-fm"))
+                case .favourite:
+                    return NSImage(named: NSImage.Name("sidebar.sp#icn-love"))
+                case .playlist:
+                    return NSImage(named: NSImage.Name("sidebar.sp#icn-song"))
+                default:
+                    return nil
+                }
+            }
+        }
         var id: Int = 0
         var type: ItemType = .none
         
-        init(title: String, icon: NSImage? = nil, id: Int, type: ItemType) {
+        init(title: String, id: Int = -1, type: ItemType) {
             self.title = title
-            self.icon = icon
             self.id = id
             self.type = type
         }
@@ -28,10 +42,10 @@ class SidebarViewController: NSViewController {
         case discover, fm, favourite, playlist, header, none
     }
     
-    let defaultItems = [TableViewItem(title: "发现音乐", icon: nil, id: -1, type: .discover),
-                        TableViewItem(title: "私人FM", icon: nil, id: -1, type: .fm),
-                        TableViewItem(title: "创建的歌单", icon: nil, id: -1, type: .header),
-                        TableViewItem(title: "收藏的歌单", icon: nil, id: -1, type: .header)]
+    let defaultItems = [TableViewItem(title: "发现音乐", type: .discover),
+                        TableViewItem(title: "私人FM", type: .fm),
+                        TableViewItem(title: "创建的歌单", type: .header),
+                        TableViewItem(title: "收藏的歌单", type: .header)]
     var tableViewItems = [TableViewItem]()
     var tableViewSelectedRow = -1
     
@@ -45,7 +59,7 @@ class SidebarViewController: NSViewController {
                 var created = $0.filter {
                     !$0.subscribed
                     }.map {
-                        TableViewItem(title: $0.name, icon: nil, id: $0.id, type: .playlist)
+                        TableViewItem(title: $0.name, id: $0.id, type: .playlist)
                 }
                 
                 if let item = created.first, item.title.contains("喜欢的音乐") {
@@ -64,7 +78,7 @@ class SidebarViewController: NSViewController {
                 let subscribed = $0.filter {
                     $0.subscribed
                     }.map {
-                        TableViewItem(title: $0.name, icon: nil, id: $0.id, type: .playlist)
+                        TableViewItem(title: $0.name, id: $0.id, type: .playlist)
                 }
                 self.tableViewItems.append(contentsOf: subscribed)
                 self.tableView.reloadData()
@@ -90,6 +104,7 @@ extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
         } else {
             guard let view =  tableView.makeView(withIdentifier: .sidebarTableCellView, owner: self) as? SidebarTableCellView else { return nil }
             view.textField?.stringValue = item.title
+            view.imageView?.image = item.icon
             return view
         }
         

@@ -1342,7 +1342,7 @@ DQ
                                                                     </buttonCell>
                                                                 </button>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9J8-pG-HXh">
-                                                                    <rect key="frame" x="20" y="3" width="189" height="15"/>
+                                                                    <rect key="frame" x="18" y="3" width="191" height="15"/>
                                                                     <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" alignment="left" imageScaling="proportionallyDown" inset="2" id="vSp-Sc-Ac0">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="systemLight" size="12"/>
@@ -1356,7 +1356,7 @@ DQ
                                                                 <constraint firstItem="2Xb-fU-c6C" firstAttribute="leading" secondItem="iXb-kH-REX" secondAttribute="leading" constant="3" id="4q1-eo-H9W"/>
                                                                 <constraint firstAttribute="trailing" secondItem="9J8-pG-HXh" secondAttribute="trailing" constant="8" id="4wT-aA-qZ6"/>
                                                                 <constraint firstItem="9J8-pG-HXh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iXb-kH-REX" secondAttribute="top" id="6wz-51-gBG"/>
-                                                                <constraint firstItem="9J8-pG-HXh" firstAttribute="leading" secondItem="2Xb-fU-c6C" secondAttribute="trailing" constant="4" id="dIx-nt-cwR"/>
+                                                                <constraint firstItem="9J8-pG-HXh" firstAttribute="leading" secondItem="2Xb-fU-c6C" secondAttribute="trailing" constant="2" id="dIx-nt-cwR"/>
                                                                 <constraint firstItem="2Xb-fU-c6C" firstAttribute="centerY" secondItem="9J8-pG-HXh" secondAttribute="centerY" id="old-c0-T5j"/>
                                                                 <constraint firstAttribute="bottom" secondItem="9J8-pG-HXh" secondAttribute="bottom" constant="3" id="yX7-cw-xh1"/>
                                                             </constraints>
@@ -1370,11 +1370,15 @@ DQ
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dc5-sc-tpN">
-                                                                    <rect key="frame" x="18" y="11" width="14" height="14"/>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="icp-FE-0s2"/>
+                                                                    <rect key="frame" x="18" y="10" width="16" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="GgH-P4-l3d"/>
+                                                                        <constraint firstAttribute="width" secondItem="dc5-sc-tpN" secondAttribute="height" multiplier="1:1" id="N4Y-Ce-gZE"/>
+                                                                    </constraints>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="icp-FE-0s2"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A2e-EX-e5v">
-                                                                    <rect key="frame" x="37" y="10" width="174" height="16"/>
+                                                                    <rect key="frame" x="39" y="10" width="172" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Oot-G3-HSw">
                                                                         <font key="font" metaFont="cellTitle"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
