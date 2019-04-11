@@ -46,7 +46,7 @@ class ControlBarViewController: NSViewController {
                 PlayCore.shared.player.play()
             }
         case volumeSlider:
-            break
+            PlayCore.shared.player.volume = volumeSlider.floatValue
         default:
             break
         }
@@ -59,6 +59,8 @@ class ControlBarViewController: NSViewController {
         
         
         
+        volumeSlider.maxValue = 1
+        volumeSlider.floatValue = PlayCore.shared.player.volume
     }
     
     func addPeriodicTimeObserver() {

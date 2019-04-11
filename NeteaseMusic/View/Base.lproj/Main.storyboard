@@ -1202,7 +1202,10 @@ DQ
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m27-6X-RWF">
                                 <rect key="frame" x="792" y="24" width="96" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eYP-sU-0kS"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eYP-sU-0kS"/>
+                                <connections>
+                                    <action selector="sliderAction:" target="gFA-xN-pwE" id="VP0-od-68K"/>
+                                </connections>
                             </slider>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="vO3-ZQ-Lp9">
                                 <rect key="frame" x="0.0" y="62" width="1000" height="5"/>
