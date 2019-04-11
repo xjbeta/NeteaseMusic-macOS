@@ -1191,17 +1191,6 @@ DQ
                                     <action selector="sliderAction:" target="gFA-xN-pwE" id="57Y-Xb-WKw"/>
                                 </connections>
                             </slider>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-WY-zng">
-                                <rect key="frame" x="746" y="17" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yHy-wi-5i6">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="b7S-kr-3db"/>
-                                </connections>
-                            </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m27-6X-RWF">
                                 <rect key="frame" x="792" y="24" width="96" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1214,7 +1203,7 @@ DQ
                                 <rect key="frame" x="0.0" y="62" width="1000" height="5"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hld-Yq-BOb">
-                                <rect key="frame" x="657" y="27" width="77" height="14"/>
+                                <rect key="frame" x="643" y="27" width="77" height="14"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="00:00 / 00:00" id="2hK-Qv-Kj7">
                                     <font key="font" metaFont="smallSystem"/>
@@ -1222,6 +1211,17 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-WY-zng">
+                                <rect key="frame" x="720" y="17" width="66" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yHy-wi-5i6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="b7S-kr-3db"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vO3-ZQ-Lp9" secondAttribute="trailing" id="QkA-6P-CDV"/>

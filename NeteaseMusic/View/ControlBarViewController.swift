@@ -32,6 +32,8 @@ class ControlBarViewController: NSViewController {
             break
         case muteButton:
             player.isMuted = !player.isMuted
+            
+            sender.title = player.isMuted ? "Muted" : ""
         default:
             break
         }
