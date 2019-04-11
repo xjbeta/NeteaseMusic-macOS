@@ -32,8 +32,6 @@ class ControlBarViewController: NSViewController {
             break
         case muteButton:
             player.isMuted = !player.isMuted
-            
-            sender.title = player.isMuted ? "Muted" : ""
         default:
             break
         }
@@ -59,6 +57,8 @@ class ControlBarViewController: NSViewController {
     }
     
     var periodicTimeObserverToken: Any?
+    var pauseStautsObserver: NSKeyValueObservation?
+    var muteStautsObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +67,22 @@ class ControlBarViewController: NSViewController {
         
         volumeSlider.maxValue = 1
         volumeSlider.floatValue = PlayCore.shared.player.volume
+        
+        pauseStautsObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
+            switch player.timeControlStatus {
+            case .paused:
+                self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-pause"))
+            case .playing:
+                self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-play"))
+            default:
+                break
+            }
+        }
+        
+        muteStautsObserver = PlayCore.shared.player.observe(\.isMuted, options: [.initial, .new]) { [weak self] (player, changes) in
+            guard let image = player.isMuted ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice")) else { return }
+            self?.muteButton.image = image
+        }
     }
     
     func addPeriodicTimeObserver() {
@@ -98,6 +114,7 @@ class ControlBarViewController: NSViewController {
     
     deinit {
         removePeriodicTimeObserver()
+        pauseStautsObserver?.invalidate()
     }
     
 }
