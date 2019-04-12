@@ -15,6 +15,7 @@ class ControlBarViewController: NSViewController {
     @IBOutlet weak var pauseButton: NSButton!
     @IBOutlet weak var nextButton: NSButton!
     @IBOutlet weak var muteButton: NSButton!
+    @IBOutlet weak var playlistButton: NSButton!
     
     @IBAction func controlAction(_ sender: NSButton) {
         let player = PlayCore.shared.player

@@ -1164,14 +1164,6 @@ DQ
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3k-IM-MWf">
-                                <rect key="frame" x="958" y="16" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4kc-RT-gVQ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-gB-lL4">
                                 <rect key="frame" x="200" y="24" width="373" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1200,6 +1192,17 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-WY-zng">
+                                <rect key="frame" x="748" y="26" width="18" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-voice" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="yHy-wi-5i6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="b7S-kr-3db"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-0n-X02">
                                 <rect key="frame" x="153" y="27" width="14" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1211,15 +1214,15 @@ DQ
                                     <action selector="controlAction:" target="gFA-xN-pwE" id="M5W-Gz-6iK"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-WY-zng">
-                                <rect key="frame" x="748" y="26" width="18" height="15"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3k-IM-MWf">
+                                <rect key="frame" x="960" y="22" width="20" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-voice" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="yHy-wi-5i6">
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-playlist" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="4kc-RT-gVQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="b7S-kr-3db"/>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="jgZ-Hm-GSA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1235,6 +1238,7 @@ DQ
                         <outlet property="muteButton" destination="W4s-WY-zng" id="oTt-I5-mWS"/>
                         <outlet property="nextButton" destination="YyR-0n-X02" id="WSf-Ej-t7i"/>
                         <outlet property="pauseButton" destination="CBd-Zn-a32" id="iE9-4n-pk9"/>
+                        <outlet property="playlistButton" destination="r3k-IM-MWf" id="MO7-yJ-6el"/>
                         <outlet property="previousButton" destination="QZ1-1J-208" id="gQv-RA-GHk"/>
                         <outlet property="volumeSlider" destination="m27-6X-RWF" id="PVf-D9-69O"/>
                     </connections>
@@ -1822,6 +1826,7 @@ DQ
         <image name="NSGoRightTemplate" width="9" height="12"/>
         <image name="btmbar.sp#icn-next" width="25" height="24"/>
         <image name="btmbar.sp#icn-play" width="34" height="34"/>
+        <image name="btmbar.sp#icn-playlist" width="25" height="24"/>
         <image name="btmbar.sp#icn-prev" width="25" height="24"/>
         <image name="btmbar.sp#icn-voice" width="19" height="27"/>
     </resources>
