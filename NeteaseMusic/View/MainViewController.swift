@@ -13,6 +13,7 @@ class MainViewController: NSViewController {
     enum TabItems: Int {
         case playlist, playingMusic, fm, preferences, discover, favourite
     }
+    @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
     
     var sidebarItemObserver: NSKeyValueObservation?
     override func viewDidLoad() {

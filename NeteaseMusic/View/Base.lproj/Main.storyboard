@@ -1067,11 +1067,32 @@ DQ
                                                     </tabViewItem>
                                                 </tabViewItems>
                                             </tabView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="AFB-rE-r0G">
+                                                <rect key="frame" x="822" y="0.0" width="300" height="570"/>
+                                                <subviews>
+                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="MzF-oZ-vIS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="570"/>
+                                                        <connections>
+                                                            <segue destination="IFK-fa-CQU" kind="embed" id="cwy-7j-b5C"/>
+                                                        </connections>
+                                                    </containerView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="MzF-oZ-vIS" secondAttribute="trailing" id="5df-MY-IRq"/>
+                                                    <constraint firstAttribute="width" constant="300" id="TgV-da-PBD"/>
+                                                    <constraint firstItem="MzF-oZ-vIS" firstAttribute="top" secondItem="AFB-rE-r0G" secondAttribute="top" id="Yzg-Ep-1De"/>
+                                                    <constraint firstAttribute="bottom" secondItem="MzF-oZ-vIS" secondAttribute="bottom" id="ZbJ-W4-7lF"/>
+                                                    <constraint firstItem="MzF-oZ-vIS" firstAttribute="leading" secondItem="AFB-rE-r0G" secondAttribute="leading" id="vbv-Kx-00o"/>
+                                                </constraints>
+                                            </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="AWO-pv-Kg5" firstAttribute="leading" secondItem="7Yu-7O-R67" secondAttribute="leading" id="477-Rl-zat"/>
                                             <constraint firstAttribute="bottom" secondItem="AWO-pv-Kg5" secondAttribute="bottom" id="c8g-Ee-FYG"/>
                                             <constraint firstItem="AWO-pv-Kg5" firstAttribute="top" secondItem="7Yu-7O-R67" secondAttribute="top" id="fwR-pM-wEc"/>
+                                            <constraint firstItem="AFB-rE-r0G" firstAttribute="top" secondItem="7Yu-7O-R67" secondAttribute="top" id="itH-vD-Wgb"/>
+                                            <constraint firstAttribute="bottom" secondItem="AFB-rE-r0G" secondAttribute="bottom" id="oah-y1-aX1"/>
+                                            <constraint firstItem="AFB-rE-r0G" firstAttribute="leading" secondItem="AWO-pv-Kg5" secondAttribute="trailing" id="qOU-jo-chL"/>
                                             <constraint firstAttribute="trailing" secondItem="AWO-pv-Kg5" secondAttribute="trailing" id="y0U-lb-TRD"/>
                                         </constraints>
                                     </customView>
@@ -1111,6 +1132,7 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="playlistLayoutConstraint" destination="qOU-jo-chL" id="qJD-fE-gYQ"/>
                         <outlet property="tabView" destination="AWO-pv-Kg5" id="glS-Ji-PzT"/>
                     </connections>
                 </viewController>
@@ -1818,6 +1840,19 @@ DQ
                 </arrayController>
             </objects>
             <point key="canvasLocation" x="1175" y="109.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TGk-lH-yNa">
+            <objects>
+                <viewController id="IFK-fa-CQU" sceneMemberID="viewController">
+                    <view key="view" id="c8i-JK-zJ0">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="600"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="PgT-yg-CWZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="844.5"/>
         </scene>
     </scenes>
     <resources>
