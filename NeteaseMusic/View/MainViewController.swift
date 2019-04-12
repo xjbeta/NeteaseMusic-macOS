@@ -14,8 +14,11 @@ class MainViewController: NSViewController {
         case playlist, playingMusic, fm, preferences, discover, favourite
     }
     @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var playlistView: NSView!
     
     var sidebarItemObserver: NSKeyValueObservation?
+    var playlistNotification: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sidebarItemObserver = PlayCore.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
@@ -33,13 +36,29 @@ class MainViewController: NSViewController {
                 }
             }
         }
+        
+        playlistNotification = NotificationCenter.default.addObserver(forName: .showPlaylist, object: nil, queue: .main) { [weak self] _ in
+            self?.updatePlaylistLayout()
+        }
     }
     
     func updateTabView(_ item: TabItems) {
         tabView.selectTabViewItem(at: item.rawValue)
     }
     
+    func updatePlaylistLayout() {
+        let width = playlistView.frame.width
+        if playlistLayoutConstraint.constant == 0 {
+            playlistLayoutConstraint.animator().constant -= width
+        } else {
+            playlistLayoutConstraint.animator().constant = 0
+        }
+    }
+    
     deinit {
         sidebarItemObserver?.invalidate()
+        if let obs = playlistNotification {
+            NotificationCenter.default.removeObserver(obs)
+        }
     }
 }

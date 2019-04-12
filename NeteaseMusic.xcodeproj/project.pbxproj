@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,8 @@
 		013EF1572256501000E4D7D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				01603085225B82C00064EC88 /* Identifiers.swift */,
+				012F1155226028BA002D5599 /* NotificationName.swift */,
 				013EF1552256500100E4D7D8 /* SubString.swift */,
 				01FF8B71225C60F7002D7906 /* Colors.swift */,
 				01603087225B850B0064EC88 /* SafeSubscript.swift */,
@@ -213,7 +217,6 @@
 				01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */,
 				0160308B225B88D60064EC88 /* SidebarTableCellView.swift */,
 				01FF8B73225C64B7002D7906 /* SidebarTableView.swift */,
-				01603085225B82C00064EC88 /* Identifiers.swift */,
 			);
 			name = Sidebar;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
 				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
 				0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */,
+				012F1156226028BA002D5599 /* NotificationName.swift in Sources */,
 				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
 				0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */,

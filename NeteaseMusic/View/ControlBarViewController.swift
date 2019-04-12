@@ -33,6 +33,8 @@ class ControlBarViewController: NSViewController {
             break
         case muteButton:
             player.isMuted = !player.isMuted
+        case playlistButton:
+            NotificationCenter.default.post(name: .showPlaylist, object: nil)
         default:
             break
         }

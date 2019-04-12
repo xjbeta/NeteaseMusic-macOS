@@ -1133,6 +1133,7 @@ DQ
                     </view>
                     <connections>
                         <outlet property="playlistLayoutConstraint" destination="qOU-jo-chL" id="qJD-fE-gYQ"/>
+                        <outlet property="playlistView" destination="AFB-rE-r0G" id="XYH-0f-ejE"/>
                         <outlet property="tabView" destination="AWO-pv-Kg5" id="glS-Ji-PzT"/>
                     </connections>
                 </viewController>
@@ -1848,6 +1849,17 @@ DQ
                     <view key="view" id="c8i-JK-zJ0">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="withinWindow" material="sheet" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="oaP-pw-6tK">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="600"/>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oaP-pw-6tK" secondAttribute="trailing" id="83Y-Yf-rLs"/>
+                            <constraint firstAttribute="bottom" secondItem="oaP-pw-6tK" secondAttribute="bottom" id="KHZ-Ma-Sn4"/>
+                            <constraint firstItem="oaP-pw-6tK" firstAttribute="top" secondItem="c8i-JK-zJ0" secondAttribute="top" id="Q3y-Oe-VX3"/>
+                            <constraint firstItem="oaP-pw-6tK" firstAttribute="leading" secondItem="c8i-JK-zJ0" secondAttribute="leading" id="xPg-nQ-qY6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="PgT-yg-CWZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
