@@ -2047,11 +2047,23 @@ DQ
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
+                                    <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="cnU-wG-fsW">
+                                        <rect key="frame" x="-2" y="0.0" width="5" height="600"/>
+                                    </box>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="wpM-YN-YlP">
+                                        <rect key="frame" x="0.0" y="498" width="300" height="5"/>
+                                    </box>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="WhM-6I-vyX" firstAttribute="leading" secondItem="oaP-pw-6tK" secondAttribute="leading" id="58q-hm-tKc"/>
+                                    <constraint firstItem="wpM-YN-YlP" firstAttribute="leading" secondItem="oaP-pw-6tK" secondAttribute="leading" id="L8Y-wg-C1d"/>
                                     <constraint firstAttribute="trailing" secondItem="WhM-6I-vyX" secondAttribute="trailing" id="QMk-Fo-fyM"/>
+                                    <constraint firstItem="cnU-wG-fsW" firstAttribute="top" secondItem="oaP-pw-6tK" secondAttribute="top" id="SUe-ER-JP1"/>
                                     <constraint firstAttribute="bottom" secondItem="WhM-6I-vyX" secondAttribute="bottom" id="diY-JN-LHj"/>
+                                    <constraint firstItem="WhM-6I-vyX" firstAttribute="top" secondItem="wpM-YN-YlP" secondAttribute="bottom" id="orq-nn-ycr"/>
+                                    <constraint firstItem="cnU-wG-fsW" firstAttribute="leading" secondItem="oaP-pw-6tK" secondAttribute="leading" id="shQ-Yy-oD4"/>
+                                    <constraint firstAttribute="trailing" secondItem="wpM-YN-YlP" secondAttribute="trailing" id="ucJ-JO-ct9"/>
+                                    <constraint firstAttribute="bottom" secondItem="cnU-wG-fsW" secondAttribute="bottom" id="ujk-xZ-f60"/>
                                 </constraints>
                             </visualEffectView>
                         </subviews>
