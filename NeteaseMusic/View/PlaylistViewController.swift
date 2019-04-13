@@ -23,7 +23,7 @@ class PlaylistViewController: NSViewController {
     
     
     var sidebarItemObserver: NSKeyValueObservation?
-    @objc dynamic var tracks = [PlayList.Track]()
+    @objc dynamic var tracks = [Playlist.Track]()
     var playlistId = -1
     
     override func viewDidLoad() {

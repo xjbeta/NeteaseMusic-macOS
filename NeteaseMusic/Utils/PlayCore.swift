@@ -20,6 +20,7 @@ class PlayCore: NSObject {
     let player = AVPlayer()
     
     @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
+    @objc dynamic var playlist: [Playlist.Track] = []
     
     
     func playUrl(_ url: URL) {

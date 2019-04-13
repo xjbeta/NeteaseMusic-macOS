@@ -11,7 +11,7 @@ import Cocoa
 @objc(ArtistsTransformer)
 class ArtistsTransformer: ValueTransformer {
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let track = value as? PlayList.Track else {
+        guard let track = value as? Playlist.Track else {
             return nil
         }
         return track.ar.map {

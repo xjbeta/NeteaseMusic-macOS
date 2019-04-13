@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PlayList: Decodable {
+struct Playlist: Decodable {
     let subscribed: Bool
     let coverImgUrl: URL
     let playCount: Int

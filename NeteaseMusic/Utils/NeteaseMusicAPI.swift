@@ -68,7 +68,7 @@ class NeteaseMusicAPI: NSObject {
     
 
     
-    func userPlaylist() -> Promise<[PlayList]> {
+    func userPlaylist() -> Promise<[Playlist]> {
         struct P: Encodable {
             let uid: Int
             let limit: Int
@@ -80,7 +80,7 @@ class NeteaseMusicAPI: NSObject {
         }
         
         struct Result: Decodable {
-            let playlist: [PlayList]
+            let playlist: [Playlist]
             let code: Int
         }
         
@@ -108,7 +108,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func playlistDetail(_ id: Int) -> Promise<(PlayList)> {
+    func playlistDetail(_ id: Int) -> Promise<(Playlist)> {
         struct P: Encodable {
             let id: Int
             let n: Int
@@ -120,7 +120,7 @@ class NeteaseMusicAPI: NSObject {
         }
         
         struct Result: Decodable {
-            let playlist: PlayList
+            let playlist: Playlist
             let code: Int
         }
 
