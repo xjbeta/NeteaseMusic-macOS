@@ -73,9 +73,9 @@ class ControlBarViewController: NSViewController {
         
         pauseStautsObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             switch player.timeControlStatus {
-            case .paused:
-                self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-pause"))
             case .playing:
+                self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-pause"))
+            case .paused:
                 self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-play"))
             default:
                 break
