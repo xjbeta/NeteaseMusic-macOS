@@ -149,6 +149,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		0134B63A22649BD300262AB8 /* SidePlaylist */ = {
+			isa = PBXGroup;
+			children = (
+				012F115722603CE8002D5599 /* SidePlaylistViewController.swift */,
+				01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */,
+			);
+			name = SidePlaylist;
+			sourceTree = "<group>";
+		};
 		013EF12B22563C5400E4D7D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,8 +167,7 @@
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
 				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
-				012F115722603CE8002D5599 /* SidePlaylistViewController.swift */,
-				01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */,
+				0134B63A22649BD300262AB8 /* SidePlaylist */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
 			);
 			path = View;
