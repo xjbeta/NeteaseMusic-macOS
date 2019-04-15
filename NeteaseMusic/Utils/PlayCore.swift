@@ -34,7 +34,7 @@ class PlayCore: NSObject {
     
     var playMode: PlayMode = .repeatPlayList
     var shuffleMode: ShuffleMode = .shuffleItems
-    var playedTracks = [Int]()
+    @objc dynamic var playedTracks = [Int]()
     var playedAlbums = [Int]()
     
     func start() {
