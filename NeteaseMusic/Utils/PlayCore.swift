@@ -16,7 +16,7 @@ class PlayCore: NSObject {
 
     }
     
-    enum PlayMode {
+    enum RepeatMode {
         case repeatPlayList, repeatItem, noRepeat
     }
     enum ShuffleMode {
@@ -32,7 +32,7 @@ class PlayCore: NSObject {
     @objc dynamic var currentTrack: Playlist.Track?
     
     
-    var playMode: PlayMode = .repeatPlayList
+    var repeatMode: RepeatMode = .noRepeat
     var shuffleMode: ShuffleMode = .shuffleItems
     @objc dynamic var playedTracks = [Int]()
     var playedAlbums = [Int]()
@@ -62,7 +62,7 @@ class PlayCore: NSObject {
     }
     
     func nextSong() {
-        switch playMode {
+        switch repeatMode {
         case .noRepeat, .repeatPlayList:
             let tracks = effectiveTracks()
             
@@ -77,7 +77,7 @@ class PlayCore: NSObject {
             
             switch shuffleMode {
             case .shuffleItems:
-                if tracks.count == playedTracks.count, playMode == .repeatPlayList {
+                if tracks.count == playedTracks.count, repeatMode == .repeatPlayList {
                     playedTracks.removeAll()
                 }
                 
@@ -89,7 +89,7 @@ class PlayCore: NSObject {
             case .noShuffle:
                 if currentTrack.offset + 1 == tracks.count {
                     // last track
-                    if playMode == .repeatPlayList, let track = tracks.first {
+                    if repeatMode == .repeatPlayList, let track = tracks.first {
                         play(track)
                     }
                 } else {

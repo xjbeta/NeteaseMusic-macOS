@@ -1171,21 +1171,16 @@ DQ
                                     <action selector="controlAction:" target="gFA-xN-pwE" id="etU-3D-6Ub"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qm5-kb-Q4b">
-                                <rect key="frame" x="894" y="16" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7sI-EG-5B8">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jrK-qV-6Og">
-                                <rect key="frame" x="926" y="16" width="32" height="32"/>
+                                <rect key="frame" x="927" y="24" width="24" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ji5-Ft-B4J">
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-loop" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ji5-Ft-B4J">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="04V-lg-6b6"/>
+                                </connections>
                             </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-gB-lL4" customClass="PlayerSlider" customModule="NeteaseMusic" customModuleProvider="target">
                                 <rect key="frame" x="200" y="24" width="373" height="17"/>
@@ -1238,7 +1233,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3k-IM-MWf">
-                                <rect key="frame" x="960" y="22" width="20" height="21"/>
+                                <rect key="frame" x="965" y="26" width="15" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-playlist" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="4kc-RT-gVQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1246,6 +1241,17 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="controlAction:" target="gFA-xN-pwE" id="jgZ-Hm-GSA"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qm5-kb-Q4b">
+                                <rect key="frame" x="880" y="24" width="20" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-shuffle" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="7sI-EG-5B8">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="tfM-7E-osT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1263,6 +1269,8 @@ DQ
                         <outlet property="pauseButton" destination="CBd-Zn-a32" id="iE9-4n-pk9"/>
                         <outlet property="playlistButton" destination="r3k-IM-MWf" id="MO7-yJ-6el"/>
                         <outlet property="previousButton" destination="QZ1-1J-208" id="gQv-RA-GHk"/>
+                        <outlet property="repeatModeButton" destination="jrK-qV-6Og" id="wDB-nM-n8o"/>
+                        <outlet property="shuffleModeButton" destination="qm5-kb-Q4b" id="Vwt-KW-O7r"/>
                         <outlet property="volumeSlider" destination="m27-6X-RWF" id="PVf-D9-69O"/>
                     </connections>
                 </viewController>
@@ -2092,10 +2100,12 @@ DQ
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="btmbar.sp#icn-loop" width="31" height="25"/>
         <image name="btmbar.sp#icn-next" width="25" height="24"/>
         <image name="btmbar.sp#icn-play" width="34" height="34"/>
         <image name="btmbar.sp#icn-playlist" width="25" height="24"/>
         <image name="btmbar.sp#icn-prev" width="25" height="24"/>
+        <image name="btmbar.sp#icn-shuffle" width="29" height="25"/>
         <image name="btmbar.sp#icn-voice" width="19" height="27"/>
     </resources>
 </document>

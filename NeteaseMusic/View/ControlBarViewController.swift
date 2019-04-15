@@ -16,6 +16,8 @@ class ControlBarViewController: NSViewController {
     @IBOutlet weak var nextButton: NSButton!
     @IBOutlet weak var muteButton: NSButton!
     @IBOutlet weak var playlistButton: NSButton!
+    @IBOutlet weak var repeatModeButton: NSButton!
+    @IBOutlet weak var shuffleModeButton: NSButton!
     
     @IBAction func controlAction(_ sender: NSButton) {
         let player = PlayCore.shared.player
@@ -35,6 +37,26 @@ class ControlBarViewController: NSViewController {
             player.isMuted = !player.isMuted
         case playlistButton:
             NotificationCenter.default.post(name: .showPlaylist, object: nil)
+        case repeatModeButton:
+            switch PlayCore.shared.repeatMode {
+            case .noRepeat:
+                PlayCore.shared.repeatMode = .repeatPlayList
+            case .repeatPlayList:
+                PlayCore.shared.repeatMode = .repeatItem
+            case .repeatItem:
+                PlayCore.shared.repeatMode = .noRepeat
+            }
+            initPlayModeButton()
+        case shuffleModeButton:
+            switch PlayCore.shared.shuffleMode {
+            case .noShuffle:
+                PlayCore.shared.shuffleMode = .shuffleItems
+            case .shuffleItems:
+                PlayCore.shared.shuffleMode = .noShuffle
+            case .shuffleAlbums:
+                break
+            }
+            initPlayModeButton()
         default:
             break
         }
@@ -72,6 +94,8 @@ class ControlBarViewController: NSViewController {
         
         volumeSlider.maxValue = 1
         volumeSlider.floatValue = PlayCore.shared.player.volume
+        
+        initPlayModeButton()
         
         pauseStautsObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             switch player.timeControlStatus {
@@ -118,6 +142,30 @@ class ControlBarViewController: NSViewController {
             PlayCore.shared.player.removeTimeObserver(timeObserverToken)
             self.periodicTimeObserverToken = nil
         }
+    }
+    
+    func initPlayModeButton() {
+        var repeatImage: NSImage?
+        switch PlayCore.shared.repeatMode {
+        case .repeatPlayList:
+            repeatImage = NSImage(named: NSImage.Name("btmbar.sp#icn-loop"))
+        case .repeatItem:
+            repeatImage = NSImage(named: NSImage.Name("btmbar.sp#icn-one"))
+        case .noRepeat:
+            break
+        }
+        repeatModeButton.image = repeatImage
+        
+        var shuffleImage: NSImage?
+        switch PlayCore.shared.shuffleMode {
+        case .shuffleItems:
+            shuffleImage = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
+        case .shuffleAlbums:
+            shuffleImage = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
+        case .noShuffle:
+            break
+        }
+        shuffleModeButton.image = shuffleImage
     }
     
     deinit {
