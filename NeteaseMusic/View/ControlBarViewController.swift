@@ -63,6 +63,7 @@ class ControlBarViewController: NSViewController {
     var periodicTimeObserverToken: Any?
     var pauseStautsObserver: NSKeyValueObservation?
     var muteStautsObserver: NSKeyValueObservation?
+    var previousButtonObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +87,10 @@ class ControlBarViewController: NSViewController {
         muteStautsObserver = PlayCore.shared.player.observe(\.isMuted, options: [.initial, .new]) { [weak self] (player, changes) in
             guard let image = player.isMuted ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice")) else { return }
             self?.muteButton.image = image
+        }
+        
+        previousButtonObserver = PlayCore.shared.observe(\.playedTracks, options: [.initial, .new]) { [weak self] (playCore, changes) in
+            self?.previousButton.isEnabled = playCore.playedTracks.count > 0
         }
     }
     
@@ -118,6 +123,8 @@ class ControlBarViewController: NSViewController {
     deinit {
         removePeriodicTimeObserver()
         pauseStautsObserver?.invalidate()
+        previousButtonObserver?.invalidate()
+        muteStautsObserver?.invalidate()
     }
     
 }
