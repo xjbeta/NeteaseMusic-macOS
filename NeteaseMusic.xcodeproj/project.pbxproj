@@ -34,6 +34,7 @@
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
+		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
 		01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarTableView.swift */; };
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
@@ -101,6 +102,7 @@
 		01957D92224D01860006FCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
+		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		01FF8B73225C64B7002D7906 /* SidebarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableView.swift; sourceTree = "<group>"; };
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
 				012F115722603CE8002D5599 /* SidePlaylistViewController.swift */,
+				01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
 			);
 			path = View;
@@ -305,6 +308,7 @@
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
 				01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */,
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
+				01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */,
 				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
 				0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */,
 				012F1156226028BA002D5599 /* NotificationName.swift in Sources */,

@@ -40,7 +40,7 @@ class ControlBarViewController: NSViewController {
         }
     }
     
-    @IBOutlet weak var durationSlider: NSSlider!
+    @IBOutlet weak var durationSlider: PlayerSlider!
     @IBOutlet weak var durationTextField: NSTextField!
     @IBOutlet weak var volumeSlider: NSSlider!
     
@@ -49,7 +49,8 @@ class ControlBarViewController: NSViewController {
         case durationSlider:
             PlayCore.shared.player.pause()
             let time = CMTime(seconds: sender.doubleValue, preferredTimescale: 1000)
-            PlayCore.shared.player.seek(to: time) { re in
+            PlayCore.shared.player.seek(to: time) { [weak self] re in
+                self?.durationSlider.finishValueUpdate()
                 PlayCore.shared.player.play()
             }
         case volumeSlider:
@@ -94,14 +95,13 @@ class ControlBarViewController: NSViewController {
         let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
         periodicTimeObserverToken = PlayCore.shared.player
             .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-                guard let duration = PlayCore.shared.player.currentItem?.asset.duration else { return }
-                
+                guard let duration = PlayCore.shared.player.currentItem?.asset.duration,
+                    let durationSlider = self?.durationSlider else { return }
                 let periodicSec = Double(CMTimeGetSeconds(time))
-                self?.durationSlider.doubleValue = periodicSec
-                
+                durationSlider.updateValue(periodicSec)
                 let durationSec = Double(CMTimeGetSeconds(duration))
-                if durationSec != self?.durationSlider.maxValue {
-                    self?.durationSlider.maxValue = durationSec
+                if durationSec != durationSlider.maxValue {
+                    durationSlider.maxValue = durationSec
                 }
                 
                 self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"
