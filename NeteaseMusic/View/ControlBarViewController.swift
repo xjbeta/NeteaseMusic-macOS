@@ -21,7 +21,7 @@ class ControlBarViewController: NSViewController {
         let player = PlayCore.shared.player
         switch sender {
         case previousButton:
-            break
+            PlayCore.shared.previousSong()
         case pauseButton:
             guard player.error == nil else { return }
             if player.rate == 0 {
@@ -30,7 +30,7 @@ class ControlBarViewController: NSViewController {
                 player.pause()
             }
         case nextButton:
-            break
+            PlayCore.shared.nextSong()
         case muteButton:
             player.isMuted = !player.isMuted
         case playlistButton:

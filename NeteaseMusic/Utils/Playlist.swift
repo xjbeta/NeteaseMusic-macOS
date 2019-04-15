@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 struct Playlist: Decodable {
     let subscribed: Bool
@@ -30,13 +31,15 @@ struct Playlist: Decodable {
         // duration, ms
         @objc let dt: Int
         let ar: [Artist]
+        
+        var song: Song?
     }
     
     @objc(Album)
     class Album: NSObject, Decodable {
         @objc let name: String
         let id: Int
-        let picUrl: URL?
+        @objc let picUrl: URL?
     }
     
     struct Artist: Decodable {
@@ -50,32 +53,20 @@ struct Playlist: Decodable {
 }
 
 
-
-struct Song: Decodable {
+@objc(Song)
+class Song: NSObject, Decodable {
     let id: Int
-    let url: URL
+    let url: URL?
     // 320kbp  =>  320,000
     let br: Int
-    //        {
-    //            "data": [{
-    //            "id": 21311956,
-    //            "url": "http://m701.music.126.net/20190410200850/e986731210da149ee747a367a38c6ed9/jdyyaac/0452/545c/0158/384f8e1a3ac69235d5ff6214e3e849a3.m4a",
-    //            "br": 96000,
-    //            "size": 3744977,
-    //            "md5": "384f8e1a3ac69235d5ff6214e3e849a3",
-    //            "code": 200,
-    //            "expi": 1200,
-    //            "type": "m4a",
-    //            "gain": -7.2279,
-    //            "fee": 8,
-    //            "uf": null,
-    //            "payed": 0,
-    //            "flag": 128,
-    //            "canExtend": false,
-    //            "freeTrialInfo": null,
-    //            "level": "standard",
-    //            "encodeType": "aac"
-    //            }],
-    //            "code": 200
-    //        }
+    
+    lazy var playerItem: AVPlayerItem? = {
+        guard let uStr = url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
+            let url = URL(string: uStr) else {
+                return nil
+        }
+        
+        let avAsset = AVURLAsset(url: url)
+        return AVPlayerItem(asset: avAsset)
+    }()
 }
