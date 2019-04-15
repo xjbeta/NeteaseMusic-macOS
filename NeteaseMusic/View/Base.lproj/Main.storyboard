@@ -1190,7 +1190,7 @@ DQ
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-gB-lL4" customClass="PlayerSlider" customModule="NeteaseMusic" customModuleProvider="target">
                                 <rect key="frame" x="200" y="24" width="373" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="t1B-pT-taQ"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="t1B-pT-taQ"/>
                                 <connections>
                                     <action selector="sliderAction:" target="gFA-xN-pwE" id="57Y-Xb-WKw"/>
                                 </connections>
