@@ -12,6 +12,7 @@
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
+		0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 0134B63822645D5900262AB8 /* UserPlaylist.json */; };
 		013EF14422564E1F00E4D7D8 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13D22564E1F00E4D7D8 /* Marshal.framework */; };
 		013EF14522564E1F00E4D7D8 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13E22564E1F00E4D7D8 /* PromiseKit.framework */; };
 		013EF14622564E1F00E4D7D8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13F22564E1F00E4D7D8 /* Alamofire.framework */; };
@@ -35,6 +36,8 @@
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
+		01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */; };
+		01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */ = {isa = PBXBuildFile; fileRef = 01E0F4A62261661B0043FAB6 /* PlayerUrl.json */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
 		01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarTableView.swift */; };
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
@@ -81,6 +84,7 @@
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0134B63822645D5900262AB8 /* UserPlaylist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserPlaylist.json; sourceTree = "<group>"; };
 		013EF13B22564E1F00E4D7D8 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/Mac/Alamofire.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		013EF13C22564E1F00E4D7D8 /* Marshal.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Marshal.framework.dSYM; path = Carthage/Build/Mac/Marshal.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		013EF13D22564E1F00E4D7D8 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/Mac/Marshal.framework; sourceTree = SOURCE_ROOT; };
@@ -103,6 +107,8 @@
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
+		01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlaylistDetail.json; sourceTree = "<group>"; };
+		01E0F4A62261661B0043FAB6 /* PlayerUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayerUrl.json; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		01FF8B73225C64B7002D7906 /* SidebarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableView.swift; sourceTree = "<group>"; };
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -137,6 +143,7 @@
 				01FF8B7E225D7DFE002D7906 /* Playlist.swift */,
 				01FF8B80225D8064002D7906 /* DurationTransformer.swift */,
 				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
+				01E0F4A82261FA6F0043FAB6 /* JSON */,
 				013EF1572256501000E4D7D8 /* Extensions */,
 			);
 			path = Utils;
@@ -216,6 +223,16 @@
 			path = NeteaseMusic;
 			sourceTree = "<group>";
 		};
+		01E0F4A82261FA6F0043FAB6 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */,
+				0134B63822645D5900262AB8 /* UserPlaylist.json */,
+				01E0F4A62261661B0043FAB6 /* PlayerUrl.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		01FF8B75225C6527002D7906 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +304,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */,
+				01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */,
+				0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */,
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
 				01957D93224D01860006FCEC /* Main.storyboard in Resources */,
 				013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */,
