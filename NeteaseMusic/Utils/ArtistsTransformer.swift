@@ -14,7 +14,14 @@ class ArtistsTransformer: ValueTransformer {
         guard let track = value as? Playlist.Track else {
             return nil
         }
-        return track.ar.map {
+        return track.ar.artistsString()
+    }
+}
+
+
+extension Array where Element: Playlist.Artist {
+    func artistsString() -> String {
+        return self.map {
             $0.name
             }.joined(separator: " / ")
     }

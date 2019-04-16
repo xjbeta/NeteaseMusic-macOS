@@ -42,7 +42,8 @@ struct Playlist: Decodable {
         @objc let picUrl: URL?
     }
     
-    struct Artist: Decodable {
+    @objc(Artist)
+    class Artist: NSObject, Decodable {
         let name: String
         let id: Int
     }
