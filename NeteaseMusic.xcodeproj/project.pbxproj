@@ -13,7 +13,6 @@
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
 		0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 0134B63822645D5900262AB8 /* UserPlaylist.json */; };
-		0134B63C22649C1200262AB8 /* CurrentTrackInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0134B63B22649C1200262AB8 /* CurrentTrackInfoViewController.swift */; };
 		013EF14422564E1F00E4D7D8 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13D22564E1F00E4D7D8 /* Marshal.framework */; };
 		013EF14522564E1F00E4D7D8 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13E22564E1F00E4D7D8 /* PromiseKit.framework */; };
 		013EF14622564E1F00E4D7D8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 013EF13F22564E1F00E4D7D8 /* Alamofire.framework */; };
@@ -86,7 +85,6 @@
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0134B63822645D5900262AB8 /* UserPlaylist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserPlaylist.json; sourceTree = "<group>"; };
-		0134B63B22649C1200262AB8 /* CurrentTrackInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTrackInfoViewController.swift; sourceTree = "<group>"; };
 		013EF13B22564E1F00E4D7D8 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/Mac/Alamofire.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		013EF13C22564E1F00E4D7D8 /* Marshal.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Marshal.framework.dSYM; path = Carthage/Build/Mac/Marshal.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		013EF13D22564E1F00E4D7D8 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/Mac/Marshal.framework; sourceTree = SOURCE_ROOT; };
@@ -169,7 +167,6 @@
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
 				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
-				0134B63B22649C1200262AB8 /* CurrentTrackInfoViewController.swift */,
 				0134B63A22649BD300262AB8 /* SidePlaylist */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
 			);
@@ -349,7 +346,6 @@
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,
 				012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */,
-				0134B63C22649C1200262AB8 /* CurrentTrackInfoViewController.swift in Sources */,
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,

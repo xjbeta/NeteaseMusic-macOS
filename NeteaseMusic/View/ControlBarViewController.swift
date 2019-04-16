@@ -10,6 +10,10 @@ import Cocoa
 import AVFoundation
 
 class ControlBarViewController: NSViewController {
+    
+    @IBOutlet weak var trackPicButton: NSButton!
+    @IBOutlet weak var trackNameTextField: NSTextField!
+    @IBOutlet weak var trackArtistTextField: NSTextField!
 
     @IBOutlet weak var previousButton: NSButton!
     @IBOutlet weak var pauseButton: NSButton!
@@ -86,6 +90,7 @@ class ControlBarViewController: NSViewController {
     var pauseStautsObserver: NSKeyValueObservation?
     var muteStautsObserver: NSKeyValueObservation?
     var previousButtonObserver: NSKeyValueObservation?
+    var currentTrackObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +99,9 @@ class ControlBarViewController: NSViewController {
         
         volumeSlider.maxValue = 1
         volumeSlider.floatValue = PlayCore.shared.player.volume
+        
+        trackPicButton.wantsLayer = true
+        trackPicButton.layer?.cornerRadius = 4
         
         initPlayModeButton()
         
@@ -115,6 +123,20 @@ class ControlBarViewController: NSViewController {
         
         previousButtonObserver = PlayCore.shared.observe(\.playedTracks, options: [.initial, .new]) { [weak self] (playCore, changes) in
             self?.previousButton.isEnabled = playCore.playedTracks.count > 0
+        }
+        
+        currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
+            if let urlStr = playCore.currentTrack?.al.picUrl?.absoluteString,
+                let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")),
+                let image = NSImage(contentsOf: u) {
+                self?.trackPicButton.image = image
+            } else {
+                self?.trackPicButton.image = nil
+            }
+            
+            
+            self?.trackNameTextField.stringValue = playCore.currentTrack?.name ?? ""
+            self?.trackArtistTextField.stringValue = playCore.currentTrack?.ar.artistsString() ?? ""
         }
     }
     
@@ -173,6 +195,7 @@ class ControlBarViewController: NSViewController {
         pauseStautsObserver?.invalidate()
         previousButtonObserver?.invalidate()
         muteStautsObserver?.invalidate()
+        currentTrackObserver?.invalidate()
     }
     
 }
