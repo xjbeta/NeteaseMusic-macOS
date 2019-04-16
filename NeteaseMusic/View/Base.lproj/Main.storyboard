@@ -1328,7 +1328,7 @@ DQ
                                         <rect key="frame" x="78" y="20" width="124" height="17"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="NYQ-Xk-Buw">
-                                            <font key="font" metaFont="system" size="11"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1740,6 +1740,7 @@ DQ
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="playPlaylist:" target="9bB-BL-Yfy" id="gfr-X3-Ppb"/>
                                                 <binding destination="5EX-c6-2XK" name="content" keyPath="arrangedObjects" id="37M-2L-bLp"/>
                                                 <binding destination="5EX-c6-2XK" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="37M-2L-bLp" id="HRX-Ms-mfa"/>
                                             </connections>
@@ -1790,6 +1791,9 @@ DQ
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="13" name=".PingFangSC-Regular"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="playPlaylist:" target="9bB-BL-Yfy" id="LAg-vs-FIH"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XRp-Ll-6yA">
                                         <rect key="frame" x="282" y="108" width="67" height="32"/>
@@ -1875,6 +1879,7 @@ DQ
                     <connections>
                         <outlet property="coverImageView" destination="Uoy-aQ-w2b" id="WTo-8y-115"/>
                         <outlet property="descriptionTextField" destination="AYg-26-g1m" id="hVz-Je-gHc"/>
+                        <outlet property="playAllButton" destination="Xlf-GE-aBc" id="mFi-7S-qAS"/>
                         <outlet property="playCountTextField" destination="xjP-5i-faH" id="uk7-ox-1lX"/>
                         <outlet property="tableView" destination="5tJ-Al-kew" id="KsE-GI-eN9"/>
                         <outlet property="titleTextFiled" destination="nSj-02-utq" id="smy-qL-0Z5"/>

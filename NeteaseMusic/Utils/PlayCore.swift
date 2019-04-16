@@ -37,13 +37,13 @@ class PlayCore: NSObject {
     @objc dynamic var playedTracks = [Int]()
     var playedAlbums = [Int]()
     
-    func start() {
+    func start(_ index: Int = 0) {
         removeObserver()
         playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
             self.nextSong()
         }
         
-        if let track = playlist.first(where: { $0.song?.url != nil }) {
+        if let track = effectiveTracks()[safe: index] {
             play(track)
         }
     }

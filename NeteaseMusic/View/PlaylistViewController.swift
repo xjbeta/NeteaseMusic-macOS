@@ -10,6 +10,7 @@ import Cocoa
 
 class PlaylistViewController: NSViewController {
 
+    @IBOutlet weak var playAllButton: NSButton!
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var titleTextFiled: NSTextField!
@@ -18,9 +19,33 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var trackCountTextField: NSTextField!
     @IBOutlet weak var descriptionTextField: NSTextField!
     
+    @IBAction func playPlaylist(_ sender: Any) {
+        let addTracks = tracks
+        let ids = addTracks.map { $0.id }
+        PlayCore.shared.playlist = addTracks
+        let clickedRow = tableView.clickedRow
+        PlayCore.shared.api.songUrl(ids).done { [weak self] songs in
+            guard PlayCore.shared.playlist == addTracks,
+                songs.count == PlayCore.shared.playlist.count else { return }
+            
+            PlayCore.shared.playlist.enumerated().forEach { obj in
+                PlayCore.shared.playlist[obj.offset].song = songs.first {
+                    $0.id == obj.element.id
+                }
+            }
+            
+            if (sender as? NSButton) == self?.playAllButton {
+                PlayCore.shared.start()
+            } else if (sender as? NSTableView) == self?.tableView {
+                PlayCore.shared.start(clickedRow)
+            }
+            }.catch {
+                print($0)
+        }
+    }
+    
     @IBOutlet weak var topViewLayoutConstraint: NSLayoutConstraint!
 //    var isUpdateLayout = false
-    
     
     var sidebarItemObserver: NSKeyValueObservation?
     @objc dynamic var tracks = [Playlist.Track]()
