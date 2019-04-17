@@ -1,4 +1,4 @@
 github "utahiosmac/Marshal"
-github "Alamofire/Alamofire" "5.0.0-beta.4"
+github "Alamofire/Alamofire" "5.0.0-beta.5"
 github "DevMate/DevMateKit"
 github "mxcl/PromiseKit"
