@@ -22,8 +22,17 @@ class PlaylistViewController: NSViewController {
     @IBAction func playPlaylist(_ sender: Any) {
         let addTracks = tracks
         let ids = addTracks.map { $0.id }
-        PlayCore.shared.playlist = addTracks
         let clickedRow = tableView.clickedRow
+        if PlayCore.shared.playlist.map({ $0.id }) == ids {
+            if (sender as? NSButton) == playAllButton {
+                PlayCore.shared.start()
+            } else if (sender as? NSTableView) == tableView {
+                PlayCore.shared.start(clickedRow)
+            }
+            return
+        }
+        
+        PlayCore.shared.playlist = addTracks
         PlayCore.shared.api.songUrl(ids).done { [weak self] songs in
             guard PlayCore.shared.playlist == addTracks,
                 songs.count == PlayCore.shared.playlist.count else { return }
