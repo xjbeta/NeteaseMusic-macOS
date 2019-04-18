@@ -13,7 +13,7 @@ class PlayCore: NSObject {
     static let shared = PlayCore()
     
     private override init() {
-
+        player.automaticallyWaitsToMinimizeStalling = false
     }
     
     enum RepeatMode {
