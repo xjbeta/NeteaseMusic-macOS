@@ -82,7 +82,11 @@ class PlaylistViewController: NSViewController {
                 self.descriptionTextField.stringValue = $0.description ?? "none"
                 self.playCountTextField.integerValue = $0.playCount
                 self.trackCountTextField.integerValue = $0.trackCount
-                self.tracks = $0.tracks ?? []
+                var tracks = $0.tracks ?? []
+                tracks.enumerated().forEach {
+                    tracks[$0.offset].index = $0.offset
+                }
+                self.tracks = tracks
                 }.catch {
                     print($0)
             }

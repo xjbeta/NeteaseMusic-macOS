@@ -33,6 +33,11 @@ struct Playlist: Decodable {
         let ar: [Artist]
         
         var song: Song?
+        @objc var index = -1
+        
+        enum CodingKeys: String, CodingKey {
+            case name, id, copyright, al, dt, ar, song
+        }
     }
     
     @objc(Album)

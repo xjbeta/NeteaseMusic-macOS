@@ -1566,6 +1566,9 @@ DQ
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="zHn-GR-0B6" name="value" keyPath="objectValue.index" id="lEV-HK-2iw"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -1573,6 +1576,9 @@ DQ
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="5EX-c6-2XK" name="value" keyPath="arrangedObjects" id="5tv-eY-zQG"/>
+                                                    </connections>
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="A4B-Cb-l8c">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
