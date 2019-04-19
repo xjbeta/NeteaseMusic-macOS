@@ -35,6 +35,10 @@ struct Playlist: Decodable {
         var song: Song?
         @objc var index = -1
         
+        @objc lazy var artistsString: String = {
+            return ar.artistsString()
+        }()
+        
         enum CodingKeys: String, CodingKey {
             case name, id, copyright, al, dt, ar, song
         }
