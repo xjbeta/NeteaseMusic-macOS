@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DailyCollectionViewItem" customModule="NeteaseMusic" customModuleProvider="target">
+            <connections>
+                <outlet property="dateTextField" destination="z5e-L0-z9J" id="WPc-k0-B12"/>
+                <outlet property="imageView" destination="vmO-lG-H7D" id="DnE-N4-Lee"/>
+                <outlet property="textField" destination="j4L-xc-yKH" id="LPx-4V-DEN"/>
+                <outlet property="view" destination="c22-O7-iKe" id="NPk-TT-JIY"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="PlaylistCollectionViewItemView" customModule="NeteaseMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="170" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vmO-lG-H7D">
+                    <rect key="frame" x="8" y="44" width="154" height="154"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="154" id="F2S-zn-9N6"/>
+                        <constraint firstAttribute="width" secondItem="vmO-lG-H7D" secondAttribute="height" multiplier="1:1" id="Yn5-lR-s8D"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="calendar_bg" id="dGC-Uq-n1d"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="j4L-xc-yKH">
+                    <rect key="frame" x="6" y="6" width="158" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="xEY-kw-vcz"/>
+                    </constraints>
+                    <textFieldCell key="cell" truncatesLastVisibleLine="YES" alignment="center" id="LzG-Fa-PXW">
+                        <font key="font" metaFont="system" size="12"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z5e-L0-z9J">
+                    <rect key="frame" x="52" y="77" width="66" height="61"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="00" id="3oY-XS-UF8">
+                        <font key="font" metaFont="system" size="51"/>
+                        <color key="textColor" red="0.82745098039215681" green="0.22745098039215686" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqU-rM-kw9">
+                    <rect key="frame" x="28" y="64" width="115" height="115"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="115" id="D5d-7Z-LoU"/>
+                        <constraint firstAttribute="width" secondItem="mqU-rM-kw9" secondAttribute="height" multiplier="1:1" id="jHC-vQ-sQM"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="cover.sp#icn-calendar_box" id="OEV-cz-xJ4"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vmO-lG-H7D" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="6fq-2H-mFr"/>
+                <constraint firstAttribute="trailing" secondItem="vmO-lG-H7D" secondAttribute="trailing" constant="8" id="98N-t3-DrC"/>
+                <constraint firstItem="j4L-xc-yKH" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="OLl-4h-FXp"/>
+                <constraint firstItem="mqU-rM-kw9" firstAttribute="centerX" secondItem="vmO-lG-H7D" secondAttribute="centerX" id="abH-x5-rpa"/>
+                <constraint firstAttribute="bottom" secondItem="j4L-xc-yKH" secondAttribute="bottom" constant="6" id="eek-2P-gmq"/>
+                <constraint firstItem="z5e-L0-z9J" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="fmP-NA-cGh"/>
+                <constraint firstItem="vmO-lG-H7D" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="gOY-bV-0O6"/>
+                <constraint firstItem="z5e-L0-z9J" firstAttribute="centerY" secondItem="mqU-rM-kw9" secondAttribute="centerY" constant="14" id="ifn-nB-QBX"/>
+                <constraint firstAttribute="trailing" secondItem="j4L-xc-yKH" secondAttribute="trailing" constant="8" id="kOo-QG-moP"/>
+                <constraint firstItem="mqU-rM-kw9" firstAttribute="centerY" secondItem="vmO-lG-H7D" secondAttribute="centerY" id="xWA-Qw-lYM"/>
+            </constraints>
+            <point key="canvasLocation" x="-397" y="169"/>
+        </customView>
+        <customObject id="aSg-Ag-OCa" customClass="DailyCollectionViewItem" customModule="NeteaseMusic" customModuleProvider="target"/>
+    </objects>
+    <resources>
+        <image name="calendar_bg" width="500" height="500"/>
+        <image name="cover.sp#icn-calendar_box" width="80" height="79"/>
+    </resources>
+</document>

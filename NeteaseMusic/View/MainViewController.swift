@@ -26,7 +26,7 @@ class MainViewController: NSViewController {
             DispatchQueue.main.async {
                 switch newType {
                 case .discover:
-                    break
+                    self.updateTabView(.discover)
                 case .fm:
                     self.updateTabView(.fm)
                 case .playlist, .favourite:

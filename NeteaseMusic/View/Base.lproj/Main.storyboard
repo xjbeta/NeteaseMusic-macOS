@@ -738,6 +738,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <segue destination="7ud-Bg-8qw" kind="show" id="UT5-F2-WaY"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="9DE81B3F-B9A9-4CFF-AEBB-4D1C3B0D003F" label="Message" paletteLabel="Message" id="VB0-uQ-JO5">
@@ -1045,6 +1048,20 @@ DQ
                                                         <view key="view" id="8fz-mJ-Rur">
                                                             <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Knh-Vh-UCK">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                                    <connections>
+                                                                        <segue destination="HFQ-5Y-PTv" kind="embed" id="Bg7-MX-oDy"/>
+                                                                    </connections>
+                                                                </containerView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Knh-Vh-UCK" firstAttribute="top" secondItem="8fz-mJ-Rur" secondAttribute="top" id="7TT-3e-SSS"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Knh-Vh-UCK" secondAttribute="bottom" id="Abl-XJ-Y1h"/>
+                                                                <constraint firstItem="Knh-Vh-UCK" firstAttribute="leading" secondItem="8fz-mJ-Rur" secondAttribute="leading" id="C44-Z9-wpR"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Knh-Vh-UCK" secondAttribute="trailing" id="SSS-hc-MNG"/>
+                                                            </constraints>
                                                         </view>
                                                     </tabViewItem>
                                                     <tabViewItem label="Item 5" identifier="" id="CFK-R6-c6R" userLabel="favourite">
@@ -1587,7 +1604,7 @@ DQ
                                                 </tableColumn>
                                                 <tableColumn width="330" minWidth="40" maxWidth="1000" id="A4B-Cb-l8c">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
-                                                        <font key="font" metaFont="systemMedium" size="11"/>
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1805,7 +1822,7 @@ DQ
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="播放全部" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7VP-Zg-aQX">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="playPlaylist:" target="9bB-BL-Yfy" id="LAg-vs-FIH"/>
@@ -1816,14 +1833,14 @@ DQ
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="收藏" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L6N-Fc-rgh">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldV-tV-344">
                                         <rect key="frame" x="203" y="83" width="48" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="歌曲数:" id="IPq-KV-Uya">
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1841,7 +1858,7 @@ DQ
                                         <rect key="frame" x="321" y="84" width="48" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="播放数:" id="edK-zn-IUJ">
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1859,7 +1876,7 @@ DQ
                                         <rect key="frame" x="203" y="51" width="35" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="简介:" id="04m-PI-KU2">
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1868,7 +1885,7 @@ DQ
                                         <rect key="frame" x="253" y="51" width="565" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="label" id="peH-Ab-bJr">
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -2155,7 +2172,72 @@ DQ
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="1071" y="844"/>
+            <point key="canvasLocation" x="1860" y="1078"/>
+        </scene>
+        <!--Discover View Controller-->
+        <scene sceneID="UMk-Ul-Gn1">
+            <objects>
+                <viewController id="HFQ-5Y-PTv" customClass="DiscoverViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="PlU-75-nGi">
+                        <rect key="frame" x="0.0" y="0.0" width="836" height="592"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Igz-DM-etr">
+                                <rect key="frame" x="18" y="547" width="81" height="25"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Discover" id="l0m-ib-jUj">
+                                    <font key="font" metaFont="system" size="21"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clz-Sa-K3v">
+                                <rect key="frame" x="20" y="20" width="796" height="497"/>
+                                <clipView key="contentView" copiesOnScroll="NO" id="jc3-ZW-zfP">
+                                    <rect key="frame" x="0.0" y="0.0" width="796" height="497"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" id="OE7-8O-4Wb">
+                                            <rect key="frame" x="0.0" y="0.0" width="796" height="158"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="8" minimumLineSpacing="8" id="rri-c6-Tsd">
+                                                <size key="itemSize" width="170" height="206"/>
+                                                <edgeInsets key="sectionInset" left="20" right="20" top="0.0" bottom="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="HFQ-5Y-PTv" id="jPZ-Hh-2KO"/>
+                                                <outlet property="delegate" destination="HFQ-5Y-PTv" id="nFC-r0-pXy"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ovP-2i-UxS">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7bI-tF-9qz">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="clz-Sa-K3v" secondAttribute="trailing" constant="20" id="7Eh-Te-GHe"/>
+                            <constraint firstItem="Igz-DM-etr" firstAttribute="top" secondItem="PlU-75-nGi" secondAttribute="top" constant="20" id="BeY-Rp-hVn"/>
+                            <constraint firstAttribute="bottom" secondItem="clz-Sa-K3v" secondAttribute="bottom" constant="20" id="G5j-rP-Hwl"/>
+                            <constraint firstItem="clz-Sa-K3v" firstAttribute="leading" secondItem="PlU-75-nGi" secondAttribute="leading" constant="20" id="Izs-VC-cXi"/>
+                            <constraint firstItem="Igz-DM-etr" firstAttribute="leading" secondItem="PlU-75-nGi" secondAttribute="leading" constant="20" id="Qx2-XL-KYD"/>
+                            <constraint firstItem="clz-Sa-K3v" firstAttribute="top" secondItem="Igz-DM-etr" secondAttribute="bottom" constant="30" id="vGr-jJ-Tas"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="OE7-8O-4Wb" id="Rvw-zP-v2M"/>
+                    </connections>
+                </viewController>
+                <customObject id="xEP-Q9-k3c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="757"/>
         </scene>
     </scenes>
     <resources>
