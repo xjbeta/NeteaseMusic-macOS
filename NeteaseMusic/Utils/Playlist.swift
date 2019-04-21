@@ -80,3 +80,31 @@ class Song: NSObject, Decodable {
         return AVPlayerItem(asset: avAsset)
     }()
 }
+
+struct recommendResource: Decodable {
+    let code: Int
+    let recommend: [Playlist]
+    
+    struct Playlist: Decodable {
+        let id: Int
+        let name: String
+        let copywriter: String
+        let picUrl: URL
+        let trackCount: Int
+        let playcount: Int
+    }
+}
+
+struct RecommendSongs: Decodable {
+    let code: Int
+    let recommend: [Track]
+    
+    struct Track: Decodable {
+        let id: Int
+        let name: String
+        let artists: [Playlist.Artist]
+        let album: Playlist.Album
+        let duration: Int
+        var song: Song?
+    }
+}

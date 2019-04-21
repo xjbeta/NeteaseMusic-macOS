@@ -191,6 +191,68 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func recommendResource() -> Promise<[recommendResource.Playlist]> {
+        struct P: Encodable {
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case csrfToken = "csrf_token"
+            }
+        }
+        let p = P(csrfToken: csrf).jsonString()
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/v1/discovery/recommend/resource?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<recommendResource>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(result.recommend)
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
+    func recommendSongs() -> Promise<[RecommendSongs.Track]> {
+        struct P: Encodable {
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case csrfToken = "csrf_token"
+            }
+        }
+        let p = P(csrfToken: csrf).jsonString()
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/v1/discovery/recommend/songs?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<RecommendSongs>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(result.recommend)
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
     func crypto(_ text: String) -> [String: String] {
         guard let jsContext = JSContext(),
             let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),
