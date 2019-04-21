@@ -1217,7 +1217,7 @@ DQ
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ItY-gV-KwC">
-                                <rect key="frame" x="64" y="32" width="115" height="17"/>
+                                <rect key="frame" x="210" y="39" width="147" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="iW7-hW-ECX">
                                     <font key="font" metaFont="system"/>
@@ -1226,7 +1226,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7tP-mU-YZq">
-                                <rect key="frame" x="64" y="12" width="115" height="14"/>
+                                <rect key="frame" x="368" y="41" width="115" height="14"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="1Ms-bY-urB">
                                     <font key="font" metaFont="smallSystem"/>
@@ -1240,30 +1240,8 @@ DQ
                                     <constraint firstAttribute="height" constant="1" id="38v-wg-gqZ"/>
                                 </constraints>
                             </box>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZ1-1J-208">
-                                <rect key="frame" x="216" y="27" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-prev" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="wDk-uB-JN2">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="Xsu-Fi-gbd"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBd-Zn-a32">
-                                <rect key="frame" x="252" y="16" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="AHC-kv-YVf">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="etU-3D-6Ub"/>
-                                </connections>
-                            </button>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-gB-lL4" customClass="PlayerSlider" customModule="NeteaseMusic" customModuleProvider="target">
-                                <rect key="frame" x="359" y="24" width="286" height="17"/>
+                                <rect key="frame" x="210" y="18" width="416" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="t1B-pT-taQ"/>
                                 <connections>
@@ -1279,8 +1257,30 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZ1-1J-208">
+                                <rect key="frame" x="71" y="27" width="14" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-prev" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="wDk-uB-JN2">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="Xsu-Fi-gbd"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBd-Zn-a32">
+                                <rect key="frame" x="107" y="16" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="AHC-kv-YVf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="controlAction:" target="gFA-xN-pwE" id="etU-3D-6Ub"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-0n-X02">
-                                <rect key="frame" x="314" y="27" width="14" height="13"/>
+                                <rect key="frame" x="169" y="27" width="14" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-next" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="N1e-sJ-7uD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
