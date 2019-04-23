@@ -11,13 +11,25 @@ import Cocoa
 class MainViewController: NSViewController {
     @IBOutlet weak var tabView: NSTabView!
     enum TabItems: Int {
-        case playlist, playingMusic, fm, preferences, discover, favourite
+        case playlist, fm, preferences, discover, favourite
     }
     @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var playlistView: NSView!
+    @IBOutlet weak var playingSongView: NSView!
+    @IBOutlet weak var playingSongTopLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var playingSongButtomLayoutConstraint: NSLayoutConstraint!
+    
     
     var sidebarItemObserver: NSKeyValueObservation?
     var playlistNotification: NSObjectProtocol?
+    var playingSongNotification: NSObjectProtocol?
+    
+    var playlistViewStatus: ExtendedViewState = .hidden
+    var playingSongViewStatus: ExtendedViewState = .hidden {
+        didSet {
+            NotificationCenter.default.post(name: .playingSongViewStatus, object: nil, userInfo: ["status": playingSongViewStatus])
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +52,27 @@ class MainViewController: NSViewController {
         playlistNotification = NotificationCenter.default.addObserver(forName: .showPlaylist, object: nil, queue: .main) { [weak self] _ in
             self?.updatePlaylistLayout()
         }
+        
+        playingSongNotification = NotificationCenter.default.addObserver(forName: .showPlayingSong, object: nil, queue: .main) { [weak self] _ in
+
+            guard let _ = PlayCore.shared.currentTrack,
+                self?.playingSongViewStatus != .animation else { return }
+            self?.playingSongViewStatus = .animation
+            let newStatus: ExtendedViewState = self?.playingSongTopLayoutConstraint.priority == .init(999) ? .display : .hidden
+            
+            NSAnimationContext.runAnimationGroup({ [weak self] context in
+                if newStatus == .display {
+                    self?.playingSongTopLayoutConstraint.animator().priority = .defaultLow
+                    self?.playingSongButtomLayoutConstraint.animator().priority = .init(999)
+                } else {
+                    self?.playingSongTopLayoutConstraint.animator().priority = .init(999)
+                    self?.playingSongButtomLayoutConstraint.animator().priority = .defaultLow
+                }
+            }) {
+                self?.playingSongViewStatus = newStatus
+            }
+        }
+        
     }
     
     func updateTabView(_ item: TabItems) {
@@ -47,17 +80,29 @@ class MainViewController: NSViewController {
     }
     
     func updatePlaylistLayout() {
+        guard playlistViewStatus != .animation else { return }
         let width = playlistView.frame.width
-        if playlistLayoutConstraint.constant == 0 {
-            playlistLayoutConstraint.animator().constant -= width
-        } else {
-            playlistLayoutConstraint.animator().constant = 0
+
+        playlistViewStatus = .animation
+        let newStatus: ExtendedViewState = playlistLayoutConstraint.constant == 0 ? .display : .hidden
+        NSAnimationContext.runAnimationGroup({ [weak self] context in
+            if newStatus == .display {
+                self?.playlistLayoutConstraint.animator().constant -= width
+            } else {
+                self?.playlistLayoutConstraint.animator().constant = 0
+            }
+        }) { [weak self] in
+            self?.playlistViewStatus = newStatus
         }
+        
     }
     
     deinit {
         sidebarItemObserver?.invalidate()
         if let obs = playlistNotification {
+            NotificationCenter.default.removeObserver(obs)
+        }
+        if let obs = playingSongNotification {
             NotificationCenter.default.removeObserver(obs)
         }
     }

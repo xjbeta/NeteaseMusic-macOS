@@ -61,6 +61,8 @@ class ControlBarViewController: NSViewController {
                 break
             }
             initPlayModeButton()
+        case trackPicButton:
+            NotificationCenter.default.post(name: .showPlayingSong, object: nil)
         default:
             break
         }
