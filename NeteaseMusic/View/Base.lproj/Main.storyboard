@@ -1101,7 +1101,7 @@ DQ
                                     <real value="250"/>
                                 </holdingPriorities>
                             </splitView>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ">
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ" customClass="PlaySongViewBackgroundView" customModule="NeteaseMusic" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="-585" width="1000" height="585"/>
                                 <connections>
                                     <segue destination="AkV-cS-MKC" kind="embed" id="t7J-Jn-pPY"/>

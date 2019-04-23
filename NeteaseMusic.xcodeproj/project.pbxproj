@@ -20,6 +20,7 @@
 		013143A3226DC43B00B9E26F /* PlayingSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013143A2226DC43A00B9E26F /* PlayingSongViewController.swift */; };
 		013143A5226ECD1A00B9E26F /* ExtendedViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */; };
 		013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013143A8226F5D4200B9E26F /* ViewAnimation.swift */; };
+		013143AB226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */; };
 		0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 0134B63822645D5900262AB8 /* UserPlaylist.json */; };
 		0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137264022697D32004EDCE5 /* IndexTransformer.swift */; };
 		0137264322698D20004EDCE5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137264222698D20004EDCE5 /* DiscoverViewController.swift */; };
@@ -105,6 +106,7 @@
 		013143A2226DC43A00B9E26F /* PlayingSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingSongViewController.swift; sourceTree = "<group>"; };
 		013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedViewState.swift; sourceTree = "<group>"; };
 		013143A8226F5D4200B9E26F /* ViewAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAnimation.swift; sourceTree = "<group>"; };
+		013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySongViewBackgroundView.swift; sourceTree = "<group>"; };
 		0134B63822645D5900262AB8 /* UserPlaylist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserPlaylist.json; sourceTree = "<group>"; };
 		0137264022697D32004EDCE5 /* IndexTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexTransformer.swift; sourceTree = "<group>"; };
 		0137264222698D20004EDCE5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				013143A2226DC43A00B9E26F /* PlayingSongViewController.swift */,
 				013143A0226D65AA00B9E26F /* CDBackgroundView.swift */,
 				013143A8226F5D4200B9E26F /* ViewAnimation.swift */,
+				013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */,
 			);
 			name = PlayingSong;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,
 				012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */,
+				013143AB226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift in Sources */,
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
