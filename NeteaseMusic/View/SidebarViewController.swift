@@ -52,10 +52,14 @@ class SidebarViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewItems = defaultItems
-        
+        tableView.reloadData()
+        updatePlaylists()
+    }
+    
+    func updatePlaylists() {
         PlayCore.shared.api.isLogin().then { _ in
             PlayCore.shared.api.userPlaylist()
-            }.done(on: .main) {
+            }.map {
                 var created = $0.filter {
                     !$0.subscribed
                     }.map {
@@ -81,7 +85,9 @@ class SidebarViewController: NSViewController {
                         TableViewItem(title: $0.name, id: $0.id, type: .playlist)
                 }
                 self.tableViewItems.append(contentsOf: subscribed)
+            }.done(on: .main) {
                 self.tableView.reloadData()
+                self.tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
             }.catch {
                 print($0)
         }
@@ -116,16 +122,23 @@ extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
         return item.type != .header
     }
     
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if tableViewSelectedRow == -1, tableView.selectedRow >= 0 {
+            tableViewSelectionIsChanging(notification)
+        }
+    }
+    
     func tableViewSelectionIsChanging(_ notification: Notification) {
         if tableViewSelectedRow >= 0, tableViewSelectedRow < tableView.numberOfRows,
-            let view = tableView.view(atColumn: tableView.selectedColumn, row: tableViewSelectedRow, makeIfNecessary: false) as? SidebarTableCellView {
+            let view = tableView.view(atColumn: tableView.selectedColumn, row: tableViewSelectedRow, makeIfNecessary: true) as? SidebarTableCellView {
             view.isSelected = false
         }
+        
         if tableView.selectedRow >= 0, tableView.selectedRow < tableView.numberOfRows,
-            let view = tableView.view(atColumn: tableView.selectedColumn, row: tableView.selectedRow, makeIfNecessary: false) as? SidebarTableCellView {
+            let view = tableView.view(atColumn: 0, row: tableView.selectedRow, makeIfNecessary: true) as? SidebarTableCellView {
             view.isSelected = true
         }
-        
+
         tableViewSelectedRow = tableView.selectedRow
         PlayCore.shared.selectedSidebarItem = tableViewItems[safe: tableView.selectedRow]
     }

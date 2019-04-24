@@ -221,10 +221,10 @@
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
 				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
+				01FF8B75225C6527002D7906 /* Sidebar */,
+				0134B63A22649BD300262AB8 /* SidePlaylist */,
 				0131439F226D657700B9E26F /* PlayingSong */,
 				0137264422698FBD004EDCE5 /* Discover */,
-				0134B63A22649BD300262AB8 /* SidePlaylist */,
-				01FF8B75225C6527002D7906 /* Sidebar */,
 			);
 			path = View;
 			sourceTree = "<group>";
