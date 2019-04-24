@@ -33,9 +33,11 @@ class PlayingSongViewController: NSViewController {
             case .playing:
                 self?.cdwarpImageView.resumeAnimation()
                 self?.cdImgImageView.resumeAnimation()
+                self?.updateCDRunImage()
             case .paused:
                 self?.cdwarpImageView.pauseAnimation()
                 self?.cdImgImageView.pauseAnimation()
+                self?.updateCDRunImage()
             default:
                 break
             }
@@ -73,6 +75,40 @@ class PlayingSongViewController: NSViewController {
 
         
         titleTextField.stringValue = track.name
+    }
+    
+    func updateCDRunImage() {
+        cdRunImageView.wantsLayer = true
+        guard let layer = cdRunImageView.layer else { return }
+        var toValue: Double = 0
+        var fromValue: Double = 0
+        let value = Double.pi / 5.3
+        switch PlayCore.shared.player.timeControlStatus {
+        case .playing:
+            fromValue = value
+        case .paused:
+            toValue = value
+        default:
+            layer.removeAllAnimations()
+            return
+        }
+        
+        let frame = cdRunImageView.frame
+        let rotationPoint = CGPoint(x: frame.origin.x + 27,
+                                    y: frame.origin.y + frame.height - 26.5)
+        
+        layer.anchorPoint = CGPoint(x: (rotationPoint.x - frame.minX) / frame.width,
+                                    y: (rotationPoint.y - frame.minY) / frame.height)
+        layer.position = rotationPoint
+        
+        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.fromValue = NSNumber(value: fromValue)
+        rotation.toValue = NSNumber(value: toValue)
+        rotation.duration = 0.5
+        rotation.fillMode = .forwards
+        rotation.isRemovedOnCompletion = false
+        layer.removeAllAnimations()
+        layer.add(rotation, forKey: "rotationAnimation")
     }
     
     deinit {

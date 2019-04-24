@@ -2415,7 +2415,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="THX-Hz-FAk">
-                                        <rect key="frame" x="190" y="334" width="196" height="232"/>
+                                        <rect key="frame" x="221" y="335" width="139" height="232"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="play_needle" id="5DK-G4-vCO"/>
                                     </imageView>
