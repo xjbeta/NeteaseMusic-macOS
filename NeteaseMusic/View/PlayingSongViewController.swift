@@ -104,7 +104,7 @@ class PlayingSongViewController: NSViewController {
         let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.fromValue = NSNumber(value: fromValue)
         rotation.toValue = NSNumber(value: toValue)
-        rotation.duration = 0.5
+        rotation.duration = 0.35
         rotation.fillMode = .forwards
         rotation.isRemovedOnCompletion = false
         layer.removeAllAnimations()
