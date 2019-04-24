@@ -19,6 +19,7 @@ class SidebarTableCellView: NSTableCellView {
     }
     
     func updateSelection() {
+        highlightColorView.wantsLayer = true
         highlightColorView.layer?.backgroundColor = isSelected ? NSColor.nColor.cgColor : .clear
 //        text color
 //        textField?.textColor = isSelected ? NSColor.nColor : .controlTextColor
