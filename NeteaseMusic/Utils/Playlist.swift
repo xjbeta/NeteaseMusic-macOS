@@ -108,3 +108,16 @@ struct RecommendSongs: Decodable {
         var song: Song?
     }
 }
+
+struct Lyric: Decodable {
+    let code: Int
+    let lrc: Lrc?
+    let tlyric: Lrc?
+    let nolyric: Bool?
+    let uncollected: Bool?
+    
+    struct Lrc: Decodable {
+        let version: Int
+        let lyric: String
+    }
+}

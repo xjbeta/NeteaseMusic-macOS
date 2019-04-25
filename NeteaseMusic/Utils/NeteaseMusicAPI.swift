@@ -21,6 +21,13 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    struct DefaultParameters: Encodable {
+        let csrfToken: String
+        enum CodingKeys: String, CodingKey {
+            case csrfToken = "csrf_token"
+        }
+    }
+    
     struct User {
         var nickname: String
         var userId: Int
@@ -192,13 +199,7 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func recommendResource() -> Promise<[recommendResource.Playlist]> {
-        struct P: Encodable {
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case csrfToken = "csrf_token"
-            }
-        }
-        let p = P(csrfToken: csrf).jsonString()
+        let p = DefaultParameters(csrfToken: csrf).jsonString()
         
         return Promise { resolver in
             AF.request("https://music.163.com/weapi/v1/discovery/recommend/resource?csrf_token=\(csrf)",
@@ -223,13 +224,7 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func recommendSongs() -> Promise<[RecommendSongs.Track]> {
-        struct P: Encodable {
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case csrfToken = "csrf_token"
-            }
-        }
-        let p = P(csrfToken: csrf).jsonString()
+        let p = DefaultParameters(csrfToken: csrf).jsonString()
         
         return Promise { resolver in
             AF.request("https://music.163.com/weapi/v1/discovery/recommend/songs?csrf_token=\(csrf)",
@@ -250,6 +245,40 @@ class NeteaseMusicAPI: NSObject {
                         resolver.reject(error)
                     }
             }
+        }
+    }
+    
+    func lyric(_ id: Int) -> Promise<(Lyric)> {
+        struct P: Encodable {
+            let id: Int
+            let lv = -1
+            let tv = -1
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case id, lv, tv, csrfToken = "csrf_token"
+            }
+        }
+        let p = P(id: id, csrfToken: csrf).jsonString()
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/song/lyric?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<Lyric>) in
+                if let error = re.error {
+                    resolver.reject(error)
+                    return
+                }
+                do {
+                    let result = try re.result.get()
+                    if result.code == 200 {
+                        resolver.fulfill(result)
+                    } else {
+                        resolver.reject(APIError.errorCode(result.code))
+                    }
+                } catch let error {
+                    resolver.reject(error)
+                }
+            }   
         }
     }
     
