@@ -1002,17 +1002,17 @@ DQ
                                         <rect key="frame" x="178" y="0.0" width="822" height="585"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="AWO-pv-Kg5">
+                                            <tabView type="noTabsNoBorder" initialItem="2Qr-o0-lnR" translatesAutoresizingMaskIntoConstraints="NO" id="AWO-pv-Kg5">
                                                 <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                 <font key="font" metaFont="system"/>
                                                 <tabViewItems>
-                                                    <tabViewItem label="Item 3" identifier="" id="iQG-4j-4rh" userLabel="PlayList">
+                                                    <tabViewItem label="PlayList" identifier="" id="iQG-4j-4rh" userLabel="PlayList">
                                                         <view key="view" id="5IT-G8-uN3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-xI-l9e">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                                     <connections>
                                                                         <segue destination="9bB-BL-Yfy" kind="embed" id="Qsn-rP-7ci"/>
                                                                     </connections>
@@ -1026,25 +1026,25 @@ DQ
                                                             </constraints>
                                                         </view>
                                                     </tabViewItem>
-                                                    <tabViewItem label="Item 2" identifier="" id="GFu-C8-YIB" userLabel="FM">
+                                                    <tabViewItem label="FM" identifier="" id="GFu-C8-YIB" userLabel="FM">
                                                         <view key="view" id="Ux7-La-kjT">
                                                             <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                     </tabViewItem>
-                                                    <tabViewItem label="View" identifier="" id="Use-Rr-zxh" userLabel="Preferences">
+                                                    <tabViewItem label="Preferences" identifier="" id="Use-Rr-zxh" userLabel="Preferences">
                                                         <view key="view" id="Ydw-QF-hzx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                     </tabViewItem>
-                                                    <tabViewItem label="Item 4" identifier="" id="2Qr-o0-lnR" userLabel="discover">
+                                                    <tabViewItem label="Discover" identifier="" id="2Qr-o0-lnR" userLabel="Discover">
                                                         <view key="view" id="8fz-mJ-Rur">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Knh-Vh-UCK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                                     <connections>
                                                                         <segue destination="HFQ-5Y-PTv" kind="embed" id="Bg7-MX-oDy"/>
                                                                     </connections>
@@ -1058,9 +1058,9 @@ DQ
                                                             </constraints>
                                                         </view>
                                                     </tabViewItem>
-                                                    <tabViewItem label="Item 5" identifier="" id="CFK-R6-c6R" userLabel="favourite">
+                                                    <tabViewItem label="Favourite" identifier="" id="CFK-R6-c6R" userLabel="Favourite">
                                                         <view key="view" id="ghc-Gt-k7F">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="570"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                     </tabViewItem>
