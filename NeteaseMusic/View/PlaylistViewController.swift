@@ -84,7 +84,17 @@ class PlaylistViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: tableView.enclosingScrollView)
     }
     
+    func initPlaylistInfo() {
+        coverImageView.image = nil
+        titleTextFiled.stringValue = ""
+        playCountTextField.stringValue = "0"
+        trackCountTextField.stringValue = "0"
+        descriptionTextField.stringValue = ""
+        tracks.removeAll()
+    }
+    
     func initPlaylist(_ id: Int) {
+        initPlaylistInfo()
         PlayCore.shared.api.playlistDetail(id).done(on: .main) {
             guard self.playlistId == id else { return }
             
@@ -104,7 +114,7 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylistWithRecommandSongs() {
-        playlistId = -1
+        initPlaylistInfo()
         PlayCore.shared.api.recommendSongs().done(on: .main) {
             guard self.playlistId == -1 else { return }
             self.titleTextFiled.stringValue = "每日歌曲推荐"
