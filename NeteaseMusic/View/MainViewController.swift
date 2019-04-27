@@ -41,7 +41,7 @@ class MainViewController: NSViewController {
                     self.updateTabView(.discover)
                 case .fm:
                     self.updateTabView(.fm)
-                case .playlist, .favourite:
+                case .playlist, .favourite, .discoverPlaylist:
                     self.updateTabView(.playlist)
                 default:
                     break

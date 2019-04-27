@@ -1415,7 +1415,7 @@ DQ
                                     <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="35" viewBased="YES" id="xBU-mA-uAW" customClass="SidebarTableView" customModule="NeteaseMusic" customModuleProvider="target">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="35" viewBased="YES" id="xBU-mA-uAW" customClass="SidebarTableView" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>

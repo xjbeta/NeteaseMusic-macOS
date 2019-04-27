@@ -68,31 +68,52 @@ class PlaylistViewController: NSViewController {
         coverImageView.layer?.borderColor = NSColor.tertiaryLabelColor.cgColor
         
         
-        sidebarItemObserver = PlayCore.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
+        sidebarItemObserver = PlayCore.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
             guard let new = changes.newValue,
-                new?.type == .playlist || new?.type == .favourite,
-                let id = new?.id,
-                id > 0 else { return }
-            self.playlistId = id
-            PlayCore.shared.api.playlistDetail(id).done(on: .main) {
-                guard self.playlistId == id else { return }
-                
-                self.coverImageView.image = NSImage(contentsOf: $0.coverImgUrl)
-                self.titleTextFiled.stringValue = $0.name
-                self.descriptionTextField.stringValue = $0.description ?? "none"
-                self.playCountTextField.integerValue = $0.playCount
-                self.trackCountTextField.integerValue = $0.trackCount
-                var tracks = $0.tracks ?? []
-                tracks.enumerated().forEach {
-                    tracks[$0.offset].index = $0.offset
-                }
-                self.tracks = tracks
-                }.catch {
-                    print($0)
+                new?.type == .playlist || new?.type == .favourite || new?.type == .discoverPlaylist,
+                let id = new?.id else { return }
+            self?.playlistId = id
+            
+            if id > 0 {
+                self?.initPlaylist(id)
+            } else if new?.title == "每日歌曲推荐", id == -1 {
+                self?.initPlaylistWithRecommandSongs()
             }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: tableView.enclosingScrollView)
+    }
+    
+    func initPlaylist(_ id: Int) {
+        PlayCore.shared.api.playlistDetail(id).done(on: .main) {
+            guard self.playlistId == id else { return }
+            
+            self.coverImageView.image = NSImage(contentsOf: $0.coverImgUrl)
+            self.titleTextFiled.stringValue = $0.name
+            self.descriptionTextField.stringValue = $0.description ?? "none"
+            self.playCountTextField.integerValue = $0.playCount
+            self.trackCountTextField.integerValue = $0.trackCount
+            var tracks = $0.tracks ?? []
+            tracks.enumerated().forEach {
+                tracks[$0.offset].index = $0.offset
+            }
+            self.tracks = tracks
+            }.catch {
+                print($0)
+        }
+    }
+    
+    func initPlaylistWithRecommandSongs() {
+        playlistId = -1
+        PlayCore.shared.api.recommendSongs().done(on: .main) {
+            guard self.playlistId == -1 else { return }
+            self.titleTextFiled.stringValue = "每日歌曲推荐"
+            self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
+            var tracks = $0
+            
+            }.catch {
+                print($0)
+        }
     }
     
     @objc func scrollViewDidScroll(_ notification: Notification) {

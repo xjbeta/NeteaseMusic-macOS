@@ -39,7 +39,7 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, header, none
+        case discover, fm, favourite, playlist, header, none, discoverPlaylist
     }
     
     let defaultItems = [TableViewItem(title: "发现音乐", type: .discover),

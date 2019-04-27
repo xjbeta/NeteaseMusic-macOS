@@ -91,6 +91,10 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
             let view = collectionView.item(at: item)?.view as? PlaylistCollectionViewItemView {
             view.isSelected = true
             
+            // show playlist
+            guard let rItem = recommendedItems[safe: item] else { return }
+            PlayCore.shared.selectedSidebarItem = .init(title: rItem.title, id: rItem.id, type: .discoverPlaylist)
+            collectionView.deselectAll(nil)
         }
     }
 }
