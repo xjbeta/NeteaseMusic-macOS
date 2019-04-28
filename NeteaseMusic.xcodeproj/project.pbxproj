@@ -13,7 +13,6 @@
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
 		01314398226B497E00B9E26F /* RecommendSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 01314397226B497E00B9E26F /* RecommendSongs.json */; };
-		0131439A226B607C00B9E26F /* PlaylistCollectionViewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01314399226B607C00B9E26F /* PlaylistCollectionViewItemView.swift */; };
 		0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */; };
 		0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */; };
 		013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013143A0226D65AA00B9E26F /* CDBackgroundView.swift */; };
@@ -100,7 +99,6 @@
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		01314397226B497E00B9E26F /* RecommendSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendSongs.json; sourceTree = "<group>"; };
-		01314399226B607C00B9E26F /* PlaylistCollectionViewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewItemView.swift; sourceTree = "<group>"; };
 		0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewItem.swift; sourceTree = "<group>"; };
 		0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyCollectionViewItem.xib; sourceTree = "<group>"; };
 		013143A0226D65AA00B9E26F /* CDBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDBackgroundView.swift; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 			children = (
 				0137264222698D20004EDCE5 /* DiscoverViewController.swift */,
 				01372649226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift */,
-				01314399226B607C00B9E26F /* PlaylistCollectionViewItemView.swift */,
 				0137264B226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib */,
 				0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */,
 				0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */,
@@ -408,7 +405,6 @@
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
 				01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */,
 				013143A5226ECD1A00B9E26F /* ExtendedViewState.swift in Sources */,
-				0131439A226B607C00B9E26F /* PlaylistCollectionViewItemView.swift in Sources */,
 				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
 				0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */,
 				012F1156226028BA002D5599 /* NotificationName.swift in Sources */,

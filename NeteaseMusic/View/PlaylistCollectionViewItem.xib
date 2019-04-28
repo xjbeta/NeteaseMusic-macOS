@@ -8,13 +8,14 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PlaylistCollectionViewItem" customModule="NeteaseMusic" customModuleProvider="target">
             <connections>
                 <outlet property="imageView" destination="Zkb-Iq-nmC" id="NE1-1y-LwS"/>
+                <outlet property="recommendClickImageView" destination="uD1-Ia-EOs" id="keh-db-ZfV"/>
                 <outlet property="textField" destination="ujk-FE-xEb" id="pby-Ga-ROG"/>
                 <outlet property="view" destination="c22-O7-iKe" id="4Hf-Vx-y6C"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="PlaylistCollectionViewItemView" customModule="NeteaseMusic" customModuleProvider="target">
+        <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="170" height="206"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -36,18 +37,31 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="JIP-xd-6Iy"/>
                 </imageView>
+                <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uD1-Ia-EOs">
+                    <rect key="frame" x="126" y="50" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="uD1-Ia-EOs" secondAttribute="height" multiplier="1:1" id="62x-AK-JAS"/>
+                        <constraint firstAttribute="width" constant="30" id="Wj4-tC-2Hz"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="cover.sp#icn-play_rb" id="Ii3-BC-tiq"/>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="ujk-FE-xEb" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="9Py-qJ-vln"/>
+                <constraint firstItem="uD1-Ia-EOs" firstAttribute="top" secondItem="Zkb-Iq-nmC" secondAttribute="bottom" constant="-36" id="AE0-FR-nop"/>
                 <constraint firstAttribute="trailing" secondItem="Zkb-Iq-nmC" secondAttribute="trailing" constant="8" id="Rpg-jO-ROB"/>
                 <constraint firstAttribute="trailing" secondItem="ujk-FE-xEb" secondAttribute="trailing" constant="8" id="SlS-rH-tv6"/>
                 <constraint firstAttribute="bottom" secondItem="ujk-FE-xEb" secondAttribute="bottom" constant="6" id="TAV-gg-4wv"/>
                 <constraint firstItem="ujk-FE-xEb" firstAttribute="top" secondItem="Zkb-Iq-nmC" secondAttribute="bottom" constant="6" id="rEx-Vj-iO0"/>
                 <constraint firstItem="Zkb-Iq-nmC" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="wPf-En-QFn"/>
                 <constraint firstItem="Zkb-Iq-nmC" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="y7f-xJ-JoW"/>
+                <constraint firstItem="uD1-Ia-EOs" firstAttribute="leading" secondItem="Zkb-Iq-nmC" secondAttribute="trailing" constant="-36" id="zrp-Hx-MJp"/>
             </constraints>
             <point key="canvasLocation" x="1" y="155"/>
         </customView>
         <collectionViewItem id="xew-76-CDF" customClass="PlaylistCollectionViewItem" customModule="NeteaseMusic" customModuleProvider="target"/>
     </objects>
+    <resources>
+        <image name="cover.sp#icn-play_rb" width="24" height="24"/>
+    </resources>
 </document>

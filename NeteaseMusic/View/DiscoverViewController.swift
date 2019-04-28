@@ -78,23 +78,11 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
         }
     }
     
-    func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
-        if let item = indexPaths.first?.item {
-            if let view = collectionView.item(at: item)?.view as? PlaylistCollectionViewItemView {
-                view.isSelected = false
-            }
-        }
-    }
-    
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        if let item = indexPaths.first?.item,
-            let view = collectionView.item(at: item)?.view as? PlaylistCollectionViewItemView {
-            view.isSelected = true
-            
-            // show playlist
-            guard let rItem = recommendedItems[safe: item] else { return }
-            PlayCore.shared.selectedSidebarItem = .init(title: rItem.title, id: rItem.id, type: .discoverPlaylist)
-            collectionView.deselectAll(nil)
-        }
+        // show playlist
+        guard let item = indexPaths.first?.item,
+            let rItem = recommendedItems[safe: item] else { return }
+        PlayCore.shared.selectedSidebarItem = .init(title: rItem.title, id: rItem.id, type: .discoverPlaylist)
+        collectionView.deselectAll(nil)
     }
 }
