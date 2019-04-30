@@ -11,7 +11,7 @@ import Cocoa
 class SidePlaylistViewController: NSViewController {
 
     @IBOutlet var playlistArrayController: NSArrayController!
-    @objc dynamic var playlist = [Playlist.Track]()
+    @objc dynamic var playlist = [Track]()
     
     var ttt: NSKeyValueObservation?
     override func viewDidLoad() {

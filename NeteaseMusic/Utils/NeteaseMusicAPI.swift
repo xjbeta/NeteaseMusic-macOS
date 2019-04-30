@@ -223,7 +223,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func recommendSongs() -> Promise<[RecommendSongs.Track]> {
+    func recommendSongs() -> Promise<[Track]> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         
         return Promise { resolver in

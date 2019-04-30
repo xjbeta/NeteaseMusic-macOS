@@ -57,7 +57,7 @@ class PlaylistViewController: NSViewController {
 //    var isUpdateLayout = false
     
     var sidebarItemObserver: NSKeyValueObservation?
-    @objc dynamic var tracks = [Playlist.Track]()
+    @objc dynamic var tracks = [Track]()
     var playlistId = -1
     
     override func viewDidLoad() {
@@ -120,7 +120,10 @@ class PlaylistViewController: NSViewController {
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
             var tracks = $0
-            
+            tracks.enumerated().forEach {
+                tracks[$0.offset].index = $0.offset
+            }
+            self.tracks = tracks
             }.catch {
                 print($0)
         }

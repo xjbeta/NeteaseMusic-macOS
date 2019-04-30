@@ -61,7 +61,7 @@ class PlayingSongViewController: NSViewController {
     func initView() {
         guard let track = PlayCore.shared.currentTrack else { return }
         
-        if let urlStr = track.al.picUrl?.absoluteString,
+        if let urlStr = track.album.picUrl?.absoluteString,
             let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")),
             let image = NSImage(contentsOf: u) {
             cdImgImageView.wantsLayer = true

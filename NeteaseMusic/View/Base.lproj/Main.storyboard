@@ -1708,7 +1708,7 @@ DQ
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="al.name"/>
+                                                    <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="album.name"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="hws-tO-brW">
@@ -1724,7 +1724,7 @@ DQ
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="hws-tO-brW" name="value" keyPath="objectValue.al.name" id="8wT-do-4G4"/>
+                                                                        <binding destination="hws-tO-brW" name="value" keyPath="objectValue.album.name" id="eRE-Rr-Doa"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -1748,7 +1748,7 @@ DQ
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
-                                                    <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="dt"/>
+                                                    <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="duration"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="l7y-QN-r1N">
@@ -1764,7 +1764,7 @@ DQ
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="l7y-QN-r1N" name="value" keyPath="objectValue.dt" id="s9q-IO-Ufd">
+                                                                        <binding destination="l7y-QN-r1N" name="value" keyPath="objectValue.duration" id="QdS-KP-25G">
                                                                             <dictionary key="options">
                                                                                 <string key="NSValueTransformerName">DurationTransformer</string>
                                                                             </dictionary>
@@ -2092,7 +2092,7 @@ DQ
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="zv6-Xj-7s9" name="value" keyPath="objectValue.dt" id="XjW-Zi-XVY">
+                                                                                <binding destination="zv6-Xj-7s9" name="value" keyPath="objectValue.duration" id="HPW-Xe-TNr">
                                                                                     <dictionary key="options">
                                                                                         <string key="NSValueTransformerName">DurationTransformer</string>
                                                                                     </dictionary>

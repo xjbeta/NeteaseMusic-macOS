@@ -35,10 +35,10 @@ class DiscoverViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        when(fulfilled: PlayCore.shared.api.recommendSongs(), PlayCore.shared.api.recommendResource()).done { [weak self] res in
+        PlayCore.shared.api.recommendResource().done { [weak self] res in
             self?.recommendedItems.removeAll()
             self?.recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .daily))
-            res.1.forEach {
+            res.forEach {
                 self?.recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, image: NSImage(contentsOf: $0.picUrl)))
             }
             self?.collectionView.reloadData()

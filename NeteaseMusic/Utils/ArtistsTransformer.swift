@@ -11,15 +11,15 @@ import Cocoa
 @objc(ArtistsTransformer)
 class ArtistsTransformer: ValueTransformer {
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let track = value as? Playlist.Track else {
+        guard let track = value as? Track else {
             return nil
         }
-        return track.ar.artistsString()
+        return track.artists.artistsString()
     }
 }
 
 
-extension Array where Element: Playlist.Artist {
+extension Array where Element: Track.Artist {
     func artistsString() -> String {
         return self.map {
             $0.name

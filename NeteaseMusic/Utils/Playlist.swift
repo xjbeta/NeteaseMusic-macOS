@@ -9,40 +9,23 @@
 import Foundation
 import AVFoundation
 
-struct Playlist: Decodable {
-    let subscribed: Bool
-    let coverImgUrl: URL
-    let playCount: Int
-    let name: String
-    let trackCount: Int
-    let description: String?
-    let tags: [String]
+@objc(Track)
+class Track: NSObject, Decodable {
+    @objc let name: String
     let id: Int
-    let tracks: [Track]?
-    let trackIds: [trackId]?
+    @objc let artists: [Artist]
+    @objc let album: Album
+    @objc let duration: Int
+    var song: Song?
     
-    @objc(Track)
-    class Track: NSObject, Decodable {
-        @objc let name: String
-        let id: Int
-        // 2: No copyright, 1: copyright , 0: ?
-        let copyright: Int
-        @objc let al: Album
-        // duration, ms
-        @objc let dt: Int
-        let ar: [Artist]
-        
-        var song: Song?
-        @objc var index = -1
-        
-        @objc lazy var artistsString: String = {
-            return ar.artistsString()
-        }()
-        
-        enum CodingKeys: String, CodingKey {
-            case name, id, copyright, al, dt, ar, song
-        }
-    }
+    // 2: No copyright, 1: copyright , 0: ?
+    let copyright: Int
+    
+    @objc var index = -1
+    
+    @objc lazy var artistsString: String = {
+        return artists.artistsString()
+    }()
     
     @objc(Album)
     class Album: NSObject, Decodable {
@@ -56,6 +39,39 @@ struct Playlist: Decodable {
         let name: String
         let id: Int
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case name, id, copyright, artists, album, duration
+    }
+    
+    enum SortCodingKeys: String, CodingKey {
+        case artists = "ar", album = "al", duration = "dt"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let sortContainer = try decoder.container(keyedBy: SortCodingKeys.self)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.copyright = try container.decode(Int.self, forKey: .copyright)
+        
+        self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists) ?? sortContainer.decode([Artist].self, forKey: .artists)
+        self.album = try container.decodeIfPresent(Album.self, forKey: .album) ?? sortContainer.decode(Album.self, forKey: .album)
+        self.duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? sortContainer.decode(Int.self, forKey: .duration)
+    }
+}
+
+struct Playlist: Decodable {
+    let subscribed: Bool
+    let coverImgUrl: URL
+    let playCount: Int
+    let name: String
+    let trackCount: Int
+    let description: String?
+    let tags: [String]
+    let id: Int
+    let tracks: [Track]?
+    let trackIds: [trackId]?
     
     struct trackId: Decodable {
         let id: Int
@@ -98,15 +114,6 @@ struct recommendResource: Decodable {
 struct RecommendSongs: Decodable {
     let code: Int
     let recommend: [Track]
-    
-    struct Track: Decodable {
-        let id: Int
-        let name: String
-        let artists: [Playlist.Artist]
-        let album: Playlist.Album
-        let duration: Int
-        var song: Song?
-    }
 }
 
 struct Lyric: Decodable {

@@ -28,8 +28,8 @@ class PlayCore: NSObject {
     
     @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
     var playerShouldNextObserver: NSObjectProtocol?
-    @objc dynamic var playlist: [Playlist.Track] = []
-    @objc dynamic var currentTrack: Playlist.Track?
+    @objc dynamic var playlist: [Track] = []
+    @objc dynamic var currentTrack: Track?
     
     
     var repeatMode: RepeatMode = .noRepeat
@@ -48,7 +48,7 @@ class PlayCore: NSObject {
         }
     }
     
-    func play(_ track: Playlist.Track) {
+    func play(_ track: Track) {
         guard let item = track.song?.playerItem else { return }
         
         currentTrack = track
@@ -120,7 +120,7 @@ class PlayCore: NSObject {
         }
     }
     
-    func effectiveTracks() -> [Playlist.Track] {
+    func effectiveTracks() -> [Track] {
         return playlist.filter {
             $0.song?.playerItem != nil
         }
@@ -131,7 +131,7 @@ class PlayCore: NSObject {
     }
 }
 
-extension Array where Element: Playlist.Track {
+extension Array where Element: Track {
     func randomItem() -> Element? {
         guard self.count > 0 else { return nil }
         let randomIndex = Int.random(in: 0..<self.count)
