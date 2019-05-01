@@ -1162,153 +1162,234 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="65"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qm5-kb-Q4b">
-                                <rect key="frame" x="899" y="24" width="20" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-shuffle" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="7sI-EG-5B8">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="tfM-7E-osT"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jrK-qV-6Og">
-                                <rect key="frame" x="927" y="24" width="24" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-loop" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ji5-Ft-B4J">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="04V-lg-6b6"/>
-                                </connections>
-                            </button>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m27-6X-RWF">
-                                <rect key="frame" x="789" y="22" width="96" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eYP-sU-0kS"/>
-                                <connections>
-                                    <action selector="sliderAction:" target="gFA-xN-pwE" id="VP0-od-68K"/>
-                                </connections>
-                            </slider>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-WY-zng">
-                                <rect key="frame" x="765" y="25" width="18" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-voice" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="yHy-wi-5i6">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="b7S-kr-3db"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3k-IM-MWf">
-                                <rect key="frame" x="965" y="26" width="15" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-playlist" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="4kc-RT-gVQ">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="jgZ-Hm-GSA"/>
-                                </connections>
-                            </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="BEj-xm-6NX">
-                                <rect key="frame" x="8" y="8" width="48" height="48"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cid-W7-7ar">
+                                <rect key="frame" x="8" y="8" width="984" height="50"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="BEj-xm-6NX">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BEj-xm-6NX" secondAttribute="height" multiplier="1:1" id="Ee1-wT-5cF"/>
+                                            <constraint firstAttribute="height" constant="50" id="rKL-hM-WDR"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="PsG-Eb-P4x">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="l4i-c6-PVS"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QZ1-1J-208">
+                                        <rect key="frame" x="66" y="18" width="14" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QZ1-1J-208" secondAttribute="height" multiplier="14:13" id="iCH-8e-kBU"/>
+                                            <constraint firstAttribute="width" constant="14" id="y4G-nm-eqh"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-prev" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="wDk-uB-JN2">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="Xsu-Fi-gbd"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CBd-Zn-a32">
+                                        <rect key="frame" x="96" y="9" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="CBd-Zn-a32" secondAttribute="height" multiplier="1:1" id="ST2-ln-slF"/>
+                                            <constraint firstAttribute="width" constant="32" id="SaZ-CT-beB"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="AHC-kv-YVf">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="etU-3D-6Ub"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-0n-X02">
+                                        <rect key="frame" x="144" y="18" width="14" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="YyR-0n-X02" secondAttribute="height" multiplier="14:13" id="is9-5M-9pw"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-next" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="N1e-sJ-7uD">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="M5W-Gz-6iK"/>
+                                        </connections>
+                                    </button>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QiJ-tY-Qj5">
+                                        <rect key="frame" x="174" y="5" width="451" height="40"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSy-uT-DuA">
+                                                <rect key="frame" x="0.0" y="23" width="76" height="17"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ItY-gV-KwC">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37" height="17"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="iW7-hW-ECX">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7tP-mU-YZq">
+                                                        <rect key="frame" x="45" y="1" width="33" height="14"/>
+                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="1Ms-bY-urB">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <edgeInsets key="edgeInsets" left="2" right="0.0" top="0.0" bottom="0.0"/>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-gB-lL4" customClass="PlayerSlider" customModule="NeteaseMusic" customModuleProvider="target">
+                                                <rect key="frame" x="-2" y="2" width="416" height="19"/>
+                                                <sliderCell key="cell" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="t1B-pT-taQ"/>
+                                                <connections>
+                                                    <action selector="sliderAction:" target="gFA-xN-pwE" id="57Y-Xb-WKw"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <edgeInsets key="edgeInsets" left="0.0" right="0.0" top="0.0" bottom="4"/>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hld-Yq-BOb">
+                                        <rect key="frame" x="639" y="17" width="83" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="00:00 / 00:00" id="2hK-Qv-Kj7">
+                                            <font key="font" metaFont="system" size="12"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W4s-WY-zng">
+                                        <rect key="frame" x="736" y="17" width="18" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="18" id="3je-dS-yAQ"/>
+                                            <constraint firstAttribute="width" secondItem="W4s-WY-zng" secondAttribute="height" multiplier="18:15" id="LPY-Sc-oBk"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-voice" imagePosition="leading" alignment="center" imageScaling="proportionallyDown" inset="2" id="yHy-wi-5i6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="b7S-kr-3db"/>
+                                        </connections>
+                                    </button>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m27-6X-RWF">
+                                        <rect key="frame" x="768" y="15" width="104" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="3C0-JA-bLk"/>
+                                        </constraints>
+                                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="eYP-sU-0kS"/>
+                                        <connections>
+                                            <action selector="sliderAction:" target="gFA-xN-pwE" id="VP0-od-68K"/>
+                                        </connections>
+                                    </slider>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qm5-kb-Q4b">
+                                        <rect key="frame" x="886" y="17" width="22" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="qm5-kb-Q4b" secondAttribute="height" multiplier="22:14" id="LcZ-MR-yRE"/>
+                                            <constraint firstAttribute="width" constant="22" id="O7L-P9-RQW"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-shuffle" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="7sI-EG-5B8">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="tfM-7E-osT"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrK-qV-6Og">
+                                        <rect key="frame" x="924" y="17" width="22" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="gYB-rU-nri"/>
+                                            <constraint firstAttribute="width" secondItem="jrK-qV-6Og" secondAttribute="height" multiplier="22:14" id="jV8-Yl-j2o"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-loop" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ji5-Ft-B4J">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="04V-lg-6b6"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r3k-IM-MWf">
+                                        <rect key="frame" x="962" y="17" width="22" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="r3k-IM-MWf" secondAttribute="height" multiplier="22:14" id="81X-ty-wgL"/>
+                                            <constraint firstAttribute="width" constant="22" id="h78-03-Hh9"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-playlist" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="4kc-RT-gVQ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="controlAction:" target="gFA-xN-pwE" id="jgZ-Hm-GSA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="BEj-xm-6NX" secondAttribute="height" multiplier="1:1" id="Ee1-wT-5cF"/>
+                                    <constraint firstItem="QZ1-1J-208" firstAttribute="width" secondItem="YyR-0n-X02" secondAttribute="width" id="Dgw-nk-MOX"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="PsG-Eb-P4x">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="l4i-c6-PVS"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ItY-gV-KwC">
-                                <rect key="frame" x="210" y="39" width="147" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="iW7-hW-ECX">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7tP-mU-YZq">
-                                <rect key="frame" x="368" y="41" width="115" height="14"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="1Ms-bY-urB">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-wm-kBo">
                                 <rect key="frame" x="0.0" y="62" width="1000" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="38v-wg-gqZ"/>
                                 </constraints>
                             </box>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcG-gB-lL4" customClass="PlayerSlider" customModule="NeteaseMusic" customModuleProvider="target">
-                                <rect key="frame" x="210" y="18" width="416" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="t1B-pT-taQ"/>
-                                <connections>
-                                    <action selector="sliderAction:" target="gFA-xN-pwE" id="57Y-Xb-WKw"/>
-                                </connections>
-                            </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hld-Yq-BOb">
-                                <rect key="frame" x="649" y="25" width="77" height="14"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="00:00 / 00:00" id="2hK-Qv-Kj7">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZ1-1J-208">
-                                <rect key="frame" x="71" y="27" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-prev" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="wDk-uB-JN2">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="Xsu-Fi-gbd"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBd-Zn-a32">
-                                <rect key="frame" x="107" y="16" width="32" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-play" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="AHC-kv-YVf">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="etU-3D-6Ub"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-0n-X02">
-                                <rect key="frame" x="169" y="27" width="14" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="btmbar.sp#icn-next" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="N1e-sJ-7uD">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="controlAction:" target="gFA-xN-pwE" id="M5W-Gz-6iK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Cid-W7-7ar" secondAttribute="trailing" constant="8" id="8o9-C1-iUY"/>
                             <constraint firstItem="qCH-wm-kBo" firstAttribute="leading" secondItem="WHU-m2-fIF" secondAttribute="leading" id="JfY-Fr-M2g"/>
-                            <constraint firstItem="BEj-xm-6NX" firstAttribute="top" secondItem="WHU-m2-fIF" secondAttribute="top" constant="9" id="KC6-hm-Fh5"/>
                             <constraint firstAttribute="trailing" secondItem="qCH-wm-kBo" secondAttribute="trailing" id="M6x-jI-qdD"/>
-                            <constraint firstAttribute="bottom" secondItem="BEj-xm-6NX" secondAttribute="bottom" constant="8" id="NMV-us-OGE"/>
-                            <constraint firstItem="BEj-xm-6NX" firstAttribute="leading" secondItem="WHU-m2-fIF" secondAttribute="leading" constant="8" id="iJL-Za-0lT"/>
+                            <constraint firstItem="Cid-W7-7ar" firstAttribute="centerY" secondItem="WHU-m2-fIF" secondAttribute="centerY" id="hQY-9Y-s86"/>
                             <constraint firstItem="qCH-wm-kBo" firstAttribute="top" secondItem="WHU-m2-fIF" secondAttribute="top" id="o8G-PE-LDE"/>
+                            <constraint firstItem="Cid-W7-7ar" firstAttribute="leading" secondItem="WHU-m2-fIF" secondAttribute="leading" constant="8" id="yrf-7O-Llt"/>
                         </constraints>
                     </view>
                     <connections>
