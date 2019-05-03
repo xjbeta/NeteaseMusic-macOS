@@ -282,6 +282,39 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func searchSuggest(_ keywords: String) -> Promise<(SearchSuggest.Result)> {
+        struct P: Encodable {
+            let s: String
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case s, csrfToken = "csrf_token"
+            }
+        }
+        
+        let p = P(s: keywords, csrfToken: csrf).jsonString()
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/search/suggest/web?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<SearchSuggest>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(result.result)
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
     func crypto(_ text: String) -> [String: String] {
         guard let jsContext = JSContext(),
             let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),

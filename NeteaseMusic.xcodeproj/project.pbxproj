@@ -45,6 +45,7 @@
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
 		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
 		0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160308B225B88D60064EC88 /* SidebarTableCellView.swift */; };
+		017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */ = {isa = PBXBuildFile; fileRef = 017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
@@ -127,6 +128,7 @@
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
 		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
 		0160308B225B88D60064EC88 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
+		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				0137264D226AF191004EDCE5 /* RecommendResource.json */,
 				01314397226B497E00B9E26F /* RecommendSongs.json */,
 				013143AC22706F1200B9E26F /* Lyric.json */,
+				017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */,
 				0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */,
 				01314398226B497E00B9E26F /* RecommendSongs.json in Resources */,
+				017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */,
 				0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */,
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
 				0137264C226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib in Resources */,

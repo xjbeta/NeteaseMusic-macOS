@@ -128,3 +128,48 @@ struct Lyric: Decodable {
         let lyric: String
     }
 }
+
+struct SearchSuggest: Decodable {
+    let code: Int
+    let result: Result
+    
+    struct Result: Decodable {
+        let songs: [Song]?
+        let albums: [Album]?
+        let mvs: [MV]?
+        let artists: [Artist]?
+        let playlists: [Playlist]?
+        let order: [String]?
+    }
+    
+    struct Song: Decodable {
+        let name: String
+        let id: Int
+        let album: Album
+        let artists: [Artist]
+    }
+    
+    struct Album: Decodable {
+        let name: String
+        let id: Int
+        let artist: Artist
+    }
+    
+    struct MV: Decodable {
+        let name: String
+        let id: Int
+        let cover: URL
+    }
+    
+    struct Artist: Decodable {
+        let name: String
+        let id: Int
+        let img1v1Url: URL
+    }
+    
+    struct Playlist: Decodable {
+        let name: String
+        let id: Int
+        let coverImgUrl: URL
+    }
+}
