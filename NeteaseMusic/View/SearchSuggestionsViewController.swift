@@ -88,6 +88,10 @@ extension SearchSuggestionsViewController: NSTableViewDelegate, NSTableViewDataS
         return item.type == .groupItem ? 21 : 30
     }
     
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        return tableView.makeView(withIdentifier: .init("SearchSuggestTableCellView"), owner: nil)
+    }
+    
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard let item = suggestItems[safe: row] else { return nil }
         return ["name": item.name,
