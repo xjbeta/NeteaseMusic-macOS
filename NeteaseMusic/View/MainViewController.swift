@@ -11,7 +11,7 @@ import Cocoa
 class MainViewController: NSViewController {
     @IBOutlet weak var tabView: NSTabView!
     enum TabItems: Int {
-        case playlist, fm, preferences, discover, favourite
+        case playlist, fm, preferences, discover, favourite, search
     }
     @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var playlistView: NSView!
