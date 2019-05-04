@@ -46,6 +46,7 @@
 		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
 		0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160308B225B88D60064EC88 /* SidebarTableCellView.swift */; };
 		017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */ = {isa = PBXBuildFile; fileRef = 017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */; };
+		017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
@@ -129,6 +130,7 @@
 		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
 		0160308B225B88D60064EC88 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
+		017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
 				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
+				01467E65227D27210037B49D /* SearchSuggest */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
 				0134B63A22649BD300262AB8 /* SidePlaylist */,
 				0131439F226D657700B9E26F /* PlayingSong */,
@@ -255,6 +258,14 @@
 				013EF167225B2A1F00E4D7D8 /* Crypto.js */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		01467E65227D27210037B49D /* SearchSuggest */ = {
+			isa = PBXGroup;
+			children = (
+				017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */,
+			);
+			name = SearchSuggest;
 			sourceTree = "<group>";
 		};
 		01957D7F224D01850006FCEC = {
@@ -395,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
 				01FF8B7F225D7DFE002D7906 /* Playlist.swift in Sources */,
 				013143A3226DC43B00B9E26F /* PlayingSongViewController.swift in Sources */,
