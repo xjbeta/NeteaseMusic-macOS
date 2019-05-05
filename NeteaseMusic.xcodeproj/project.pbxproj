@@ -41,6 +41,8 @@
 		013EF1562256500100E4D7D8 /* SubString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF1552256500100E4D7D8 /* SubString.swift */; };
 		013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF158225732BC00E4D7D8 /* SidebarViewController.swift */; };
 		013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */ = {isa = PBXBuildFile; fileRef = 013EF167225B2A1F00E4D7D8 /* Crypto.js */; };
+		01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */; };
+		01467E88227EB3EA0037B49D /* PlaylistViewsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
 		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
@@ -125,6 +127,8 @@
 		013EF1552256500100E4D7D8 /* SubString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubString.swift; sourceTree = "<group>"; };
 		013EF158225732BC00E4D7D8 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		013EF167225B2A1F00E4D7D8 /* Crypto.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Crypto.js; sourceTree = "<group>"; };
+		01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTextFieldCell.swift; sourceTree = "<group>"; };
+		01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewsFormatter.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
 		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
 				0137264022697D32004EDCE5 /* IndexTransformer.swift */,
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
+				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
 				013EF1572256501000E4D7D8 /* Extensions */,
 			);
@@ -222,7 +227,7 @@
 				012F2F452250F8DE00086870 /* LoginViewController.swift */,
 				01FF8B76225C6551002D7906 /* MainWindowController.swift */,
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
-				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
+				01467E86227EA8500037B49D /* Playlist */,
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
 				01467E65227D27210037B49D /* SearchSuggest */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
@@ -266,6 +271,15 @@
 				017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */,
 			);
 			name = SearchSuggest;
+			sourceTree = "<group>";
+		};
+		01467E86227EA8500037B49D /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
+				01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */,
+			);
+			name = Playlist;
 			sourceTree = "<group>";
 		};
 		01957D7F224D01850006FCEC = {
@@ -409,6 +423,7 @@
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
 				01FF8B7F225D7DFE002D7906 /* Playlist.swift in Sources */,
+				01467E88227EB3EA0037B49D /* PlaylistViewsFormatter.swift in Sources */,
 				013143A3226DC43B00B9E26F /* PlayingSongViewController.swift in Sources */,
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
@@ -435,6 +450,7 @@
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
+				01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */,
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,
 				0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */,
 				013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */,

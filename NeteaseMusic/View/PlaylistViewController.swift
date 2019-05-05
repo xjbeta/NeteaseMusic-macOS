@@ -14,6 +14,7 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var titleTextFiled: NSTextField!
+    @IBOutlet weak var playlistStrTextField: NSTextField!
     
     @IBOutlet weak var playCountTextField: NSTextField!
     @IBOutlet weak var trackCountTextField: NSTextField!
@@ -68,6 +69,14 @@ class PlaylistViewController: NSViewController {
         coverImageView.layer?.borderColor = NSColor.tertiaryLabelColor.cgColor
         
         
+        playlistStrTextField.stringValue = "歌单"
+        playlistStrTextField.textColor = .init(red: 0.83, green: 0.23, blue: 0.19, alpha: 1)
+        playlistStrTextField.wantsLayer = true
+        playlistStrTextField.layer?.borderWidth = 1
+        playlistStrTextField.layer?.cornerRadius = 3.5
+        playlistStrTextField.layer?.borderColor = .init(red: 0.83, green: 0.23, blue: 0.19, alpha: 1)
+        
+            
         sidebarItemObserver = PlayCore.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
             guard let new = changes.newValue,
                 new?.type == .playlist || new?.type == .favourite || new?.type == .discoverPlaylist,
@@ -87,7 +96,7 @@ class PlaylistViewController: NSViewController {
     func initPlaylistInfo() {
         coverImageView.image = nil
         titleTextFiled.stringValue = ""
-        playCountTextField.stringValue = "0"
+        playCountTextField.integerValue = 0
         trackCountTextField.stringValue = "0"
         descriptionTextField.stringValue = ""
         tracks.removeAll()
