@@ -2108,7 +2108,7 @@ DQ
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="owl-n1-bbZ">
-                                        <rect key="frame" x="215" y="87" width="85" height="17"/>
+                                        <rect key="frame" x="215" y="87" width="61" height="17"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ldV-tV-344">
                                                 <rect key="frame" x="-2" y="0.0" width="48" height="17"/>
@@ -2119,8 +2119,8 @@ DQ
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vjj-Xo-E0O">
-                                                <rect key="frame" x="50" y="0.0" width="37" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="GfG-i1-Jd6">
+                                                <rect key="frame" x="50" y="0.0" width="13" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="0" id="GfG-i1-Jd6">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2137,7 +2137,7 @@ DQ
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="69P-HO-EP7">
-                                        <rect key="frame" x="215" y="62" width="81" height="17"/>
+                                        <rect key="frame" x="215" y="62" width="120" height="17"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="df1-U3-v80">
                                                 <rect key="frame" x="-2" y="0.0" width="48" height="17"/>
@@ -2147,10 +2147,10 @@ DQ
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AYg-26-g1m">
-                                                <rect key="frame" x="50" y="0.0" width="33" height="17"/>
-                                                <textFieldCell key="cell" truncatesLastVisibleLine="YES" title="label" id="peH-Ab-bJr">
-                                                    <font key="font" usesAppearanceFont="YES"/>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="vGJ-Kg-FUK">
+                                                <rect key="frame" x="50" y="0.0" width="72" height="17"/>
+                                                <textFieldCell key="cell" truncatesLastVisibleLine="YES" title="description" id="aDo-Gi-GWd">
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -2166,7 +2166,7 @@ DQ
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCO-sO-wQf">
-                                        <rect key="frame" x="320" y="87" width="102" height="17"/>
+                                        <rect key="frame" x="296" y="87" width="102" height="17"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zBm-sO-2D6">
                                                 <rect key="frame" x="-2" y="0.0" width="48" height="17"/>
@@ -2231,7 +2231,7 @@ DQ
                     </view>
                     <connections>
                         <outlet property="coverImageView" destination="Uoy-aQ-w2b" id="WTo-8y-115"/>
-                        <outlet property="descriptionTextField" destination="AYg-26-g1m" id="hVz-Je-gHc"/>
+                        <outlet property="descriptionTextField" destination="vGJ-Kg-FUK" id="Gnh-IE-Lqc"/>
                         <outlet property="playAllButton" destination="Xlf-GE-aBc" id="mFi-7S-qAS"/>
                         <outlet property="playCountTextField" destination="xjP-5i-faH" id="uk7-ox-1lX"/>
                         <outlet property="playlistStrTextField" destination="wKA-BN-rBe" id="KGD-qq-Mst"/>

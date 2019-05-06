@@ -124,8 +124,9 @@ class PlaylistViewController: NSViewController {
         coverImageView.image = nil
         titleTextFiled.stringValue = ""
         playCountTextField.integerValue = 0
-        trackCountTextField.stringValue = "0"
+        trackCountTextField.integerValue = 0
         descriptionTextField.stringValue = ""
+        descriptionTextField.toolTip = ""
         tracks.removeAll()
     }
     
@@ -136,7 +137,9 @@ class PlaylistViewController: NSViewController {
             
             self.coverImageView.image = NSImage(contentsOf: $0.coverImgUrl)
             self.titleTextFiled.stringValue = $0.name
-            self.descriptionTextField.stringValue = $0.description ?? "none"
+            let descriptionStr = $0.description ?? "none"
+            self.descriptionTextField.stringValue = descriptionStr
+            self.descriptionTextField.toolTip = descriptionStr
             self.playCountTextField.integerValue = $0.playCount
             self.trackCountTextField.integerValue = $0.trackCount
             var tracks = $0.tracks ?? []
