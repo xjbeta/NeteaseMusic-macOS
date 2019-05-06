@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import PromiseKit
 
 class PlaylistViewController: NSViewController {
 
@@ -49,6 +50,32 @@ class PlaylistViewController: NSViewController {
             } else if (sender as? NSTableView) == self?.tableView {
                 PlayCore.shared.start(clickedRow)
             }
+            }.catch {
+                print($0)
+        }
+    }
+    
+    @IBAction func subscribe(_ sender: NSButton) {
+        guard playlistId > 0 else { return }
+        let id = playlistId
+        sender.isEnabled = false
+        PlayCore.shared.api.userPlaylist().then { playlists -> Promise<()> in
+            let subscribedIds = playlists.filter {
+                $0.subscribed
+                }.map {
+                    $0.id
+            }
+            
+            if subscribedIds.contains(id) {
+                return PlayCore.shared.api.playlistSubscribe(id, unSubscribe: true)
+            } else {
+                return PlayCore.shared.api.playlistSubscribe(id)
+            }
+            }.ensure(on: .main) {
+                let todo = "Update sidebar"
+                sender.isEnabled = true
+            }.done {
+                print("playlist subscribe / unsubscribe success")
             }.catch {
                 print($0)
         }
