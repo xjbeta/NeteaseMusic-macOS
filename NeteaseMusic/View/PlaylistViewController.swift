@@ -187,13 +187,3 @@ class PlaylistViewController: NSViewController {
     }
 }
 
-extension PlaylistViewController: NSTableViewDelegate, NSTableViewDataSource {
-    
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        
-        return 10
-    }
-    
-    
-    
-}
