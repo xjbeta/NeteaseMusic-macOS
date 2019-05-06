@@ -31,21 +31,24 @@ class DiscoverViewController: NSViewController {
     }
     
     var recommendedItems = [RecommendItem]()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        PlayCore.shared.api.recommendResource().done { [weak self] res in
+        initRecommend()
+    }
+    
+    func initRecommend() {
+        PlayCore.shared.api.recommendResource().map(on: .global()) { [weak self] res in
             self?.recommendedItems.removeAll()
             self?.recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .daily))
             res.forEach {
                 self?.recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, image: NSImage(contentsOf: $0.picUrl)))
             }
-            self?.collectionView.reloadData()
+            }.done(on: .main) { [weak self] in
+                self?.collectionView.reloadData()
             }.catch {
                 print($0)
         }
-        
     }
     
 }
