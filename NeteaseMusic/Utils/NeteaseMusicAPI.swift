@@ -34,6 +34,10 @@ class NeteaseMusicAPI: NSObject {
         var avatarImage: NSImage?
     }
     
+    struct CodeResult: Decodable {
+        let code: Int
+    }
+    
     func isLogin() -> Promise<(Bool)> {
         return userInfo().map {
             $0.userId != -1
@@ -305,6 +309,39 @@ class NeteaseMusicAPI: NSObject {
                         let result = try re.result.get()
                         if result.code == 200 {
                             resolver.fulfill(result.result)
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
+    func playlistSubscribe(_ id: Int, unSubscribe: Bool = false) -> Promise<()> {
+        struct P: Encodable {
+            let id: Int
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case id, csrfToken = "csrf_token"
+            }
+        }
+        let p = P(id: id, csrfToken: csrf).jsonString()
+        let apiStr = unSubscribe ? "unsubscribe" : "subscribe"
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/playlist/\(apiStr)?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<CodeResult>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(())
                         } else {
                             resolver.reject(APIError.errorCode(result.code))
                         }
