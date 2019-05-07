@@ -43,6 +43,7 @@
 		013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */ = {isa = PBXBuildFile; fileRef = 013EF167225B2A1F00E4D7D8 /* Crypto.js */; };
 		01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */; };
 		01467E88227EB3EA0037B49D /* PlaylistViewsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */; };
+		01467E8A2281AAD00037B49D /* Lyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E892281AAD00037B49D /* Lyric.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
 		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
@@ -129,6 +130,7 @@
 		013EF167225B2A1F00E4D7D8 /* Crypto.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Crypto.js; sourceTree = "<group>"; };
 		01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTextFieldCell.swift; sourceTree = "<group>"; };
 		01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewsFormatter.swift; sourceTree = "<group>"; };
+		01467E892281AAD00037B49D /* Lyric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyric.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
 		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				013143A0226D65AA00B9E26F /* CDBackgroundView.swift */,
 				013143A8226F5D4200B9E26F /* ViewAnimation.swift */,
 				013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */,
+				01467E892281AAD00037B49D /* Lyric.swift */,
 			);
 			name = PlayingSong;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
+				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
 				01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */,
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,

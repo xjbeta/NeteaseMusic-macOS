@@ -116,7 +116,7 @@ struct RecommendSongs: Decodable {
     let recommend: [Track]
 }
 
-struct Lyric: Decodable {
+struct LyricResult: Decodable {
     let code: Int
     let lrc: Lrc?
     let tlyric: Lrc?

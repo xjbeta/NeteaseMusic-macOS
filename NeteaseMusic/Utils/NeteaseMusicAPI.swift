@@ -252,7 +252,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func lyric(_ id: Int) -> Promise<(Lyric)> {
+    func lyric(_ id: Int) -> Promise<(LyricResult)> {
         struct P: Encodable {
             let id: Int
             let lv = -1
@@ -267,7 +267,7 @@ class NeteaseMusicAPI: NSObject {
         return Promise { resolver in
             AF.request("https://music.163.com/weapi/song/lyric?csrf_token=\(csrf)",
                 method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<Lyric>) in
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<LyricResult>) in
                 if let error = re.error {
                     resolver.reject(error)
                     return
