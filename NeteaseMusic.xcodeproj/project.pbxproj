@@ -44,6 +44,7 @@
 		01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */; };
 		01467E88227EB3EA0037B49D /* PlaylistViewsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */; };
 		01467E8A2281AAD00037B49D /* Lyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E892281AAD00037B49D /* Lyric.swift */; };
+		01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
 		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
@@ -131,6 +132,7 @@
 		01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTextFieldCell.swift; sourceTree = "<group>"; };
 		01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewsFormatter.swift; sourceTree = "<group>"; };
 		01467E892281AAD00037B49D /* Lyric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyric.swift; sourceTree = "<group>"; };
+		01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricOffsetTransformer.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
 		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				01FF8B80225D8064002D7906 /* DurationTransformer.swift */,
 				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
 				0137264022697D32004EDCE5 /* IndexTransformer.swift */,
+				01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */,
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
@@ -451,6 +454,7 @@
 				013143AB226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift in Sources */,
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
+				01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
 				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,

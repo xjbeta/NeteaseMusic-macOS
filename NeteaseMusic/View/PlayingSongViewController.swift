@@ -20,6 +20,26 @@ class PlayingSongViewController: NSViewController {
     
     @IBOutlet weak var lyricTableView: NSTableView!
     @IBOutlet weak var lyricScrollView: NSScrollView!
+    @IBOutlet weak var offsetTextField: NSTextField!
+    @IBOutlet weak var offsetUpButton: NSButton!
+    @IBOutlet weak var offsetDownButton: NSButton!
+    @IBAction func offset(_ sender: NSButton) {
+        // 0.1s  0.5s
+        let v = NSEvent.modifierFlags.contains(.option) ? 100 : 500
+
+        switch sender {
+        case offsetUpButton:
+            lyricOffset -= v
+        case offsetDownButton:
+            lyricOffset += v
+        default:
+            break
+        }
+        
+        let time = PlayCore.shared.player.currentTime()
+        updateLyricTableViewSelection(time)
+    }
+    
     struct Lyricline {
         enum LyricType {
             case first, second
@@ -31,6 +51,9 @@ class PlayingSongViewController: NSViewController {
     }
     var lyriclines = [Lyricline]()
     var currentLyricId = -1
+    
+    // lyricOffset ms
+    @objc dynamic var lyricOffset = 0
     
     var currentTrackObserver: NSKeyValueObservation?
     var playerStatueObserver: NSKeyValueObservation?
@@ -173,12 +196,7 @@ class PlayingSongViewController: NSViewController {
         let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
         periodicTimeObserverToken = PlayCore.shared.player
             .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-                let periodicMS = Int(CMTimeGetSeconds(time) * 1000)
-                
-                if let line = self?.lyriclines.filter({ $0.time.totalMS < periodicMS }).last,
-                    let offsets = self?.lyriclines.enumerated().filter({ $0.element.time == line.time }).map({ $0.offset }) {
-                    self?.updateLyricTableView(offsets)
-                }
+                self?.updateLyricTableViewSelection(time)
         }
     }
     
@@ -189,7 +207,15 @@ class PlayingSongViewController: NSViewController {
         }
     }
     
-    func updateLyricTableView(_ offsets: [Int]) {
+    func updateLyricTableViewSelection(_ time: CMTime) {
+        var periodicMS = Int(CMTimeGetSeconds(time) * 1000)
+        periodicMS += lyricOffset
+        
+        guard let line = lyriclines.filter({ $0.time.totalMS < periodicMS }).last else {
+            return
+        }
+        let offsets = lyriclines.enumerated().filter({ $0.element.time == line.time }).map({ $0.offset })
+        
         let indexSet = IndexSet(offsets)
         guard lyricTableView.selectedRowIndexes != indexSet else { return }
         lyricTableView.deselectAll(nil)

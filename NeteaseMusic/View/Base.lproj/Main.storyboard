@@ -2750,30 +2750,66 @@ DQ
                                             <constraint firstAttribute="height" constant="513" id="n2g-BZ-ZuQ"/>
                                         </constraints>
                                     </customView>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfK-du-e7N">
-                                        <rect key="frame" x="782" y="353" width="46" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DmA-SA-dHd">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ljz-SQ-hxO">
-                                        <rect key="frame" x="782" y="320" width="46" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8cn-rf-LVY">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kgd-jg-s8a">
-                                        <rect key="frame" x="782" y="218" width="46" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KWR-bg-BgU">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
+                                    <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ht8-GS-reD">
+                                        <rect key="frame" x="788" y="320" width="100" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DfK-du-e7N">
+                                                <rect key="frame" x="33" y="43" width="35" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="23" id="nMM-3x-UYK"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="icon.sp#icn-lrc_speed" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DmA-SA-dHd">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="offset:" target="AkV-cS-MKC" id="cGT-QB-tid"/>
+                                                </connections>
+                                            </button>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cEh-3o-er8">
+                                                <rect key="frame" x="-2" y="27" width="104" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="i0N-62-IHb"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="+1s" id="aTb-mA-qPE">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="AkV-cS-MKC" name="value" keyPath="self.lyricOffset" id="AYU-nA-H8u">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">LyricOffsetTransformer</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ljz-SQ-hxO">
+                                                <rect key="frame" x="33" y="-7" width="35" height="32"/>
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="icon.sp#icn-lrc_speed_down" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8cn-rf-LVY">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="offset:" target="AkV-cS-MKC" id="W2n-ZI-ctw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="DfK-du-e7N" firstAttribute="width" secondItem="Ljz-SQ-hxO" secondAttribute="width" id="Kv1-XK-JIS"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="p5e-hN-naP" firstAttribute="leading" secondItem="ajT-33-rj6" secondAttribute="trailing" constant="9" id="QvU-3a-lBS"/>
@@ -2796,6 +2832,9 @@ DQ
                         <outlet property="cdwarpImageView" destination="MEA-DY-6Go" id="GmE-h2-hrd"/>
                         <outlet property="lyricScrollView" destination="I6d-CC-p3a" id="VJa-ug-jdC"/>
                         <outlet property="lyricTableView" destination="mf8-j2-leZ" id="SSN-LK-EaA"/>
+                        <outlet property="offsetDownButton" destination="Ljz-SQ-hxO" id="Sve-wC-zhV"/>
+                        <outlet property="offsetTextField" destination="cEh-3o-er8" id="93L-hn-aNE"/>
+                        <outlet property="offsetUpButton" destination="DfK-du-e7N" id="AxL-zP-xsi"/>
                         <outlet property="secondTitleTextField" destination="imI-0i-7IH" id="3zE-Dm-wFD"/>
                         <outlet property="titleTextField" destination="1yc-Kc-gJg" id="rnW-t9-hmh"/>
                         <outlet property="visualEffectView" destination="Q9a-SV-p8g" id="Msx-R5-HhX"/>
@@ -2817,6 +2856,8 @@ DQ
         <image name="btmbar.sp#icn-prev" width="25" height="24"/>
         <image name="btmbar.sp#icn-shuffle" width="29" height="25"/>
         <image name="btmbar.sp#icn-voice" width="19" height="27"/>
+        <image name="icon.sp#icn-lrc_speed" width="11" height="10"/>
+        <image name="icon.sp#icn-lrc_speed_down" width="11" height="10"/>
         <image name="play_disc" width="620" height="620"/>
         <image name="play_needle" width="278" height="464"/>
     </resources>
