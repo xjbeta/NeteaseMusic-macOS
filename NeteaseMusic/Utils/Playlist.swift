@@ -125,7 +125,7 @@ struct LyricResult: Decodable {
     
     struct Lrc: Decodable {
         let version: Int
-        let lyric: String
+        let lyric: String?
     }
 }
 
