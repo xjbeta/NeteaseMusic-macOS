@@ -13,6 +13,7 @@ class ControlBarViewController: NSViewController {
     
     @IBOutlet weak var trackPicButton: NSButton!
     @IBOutlet weak var trackNameTextField: NSTextField!
+    @IBOutlet weak var trackSecondNameTextField: NSTextField!
     @IBOutlet weak var trackArtistTextField: NSTextField!
 
     @IBOutlet weak var previousButton: NSButton!
@@ -136,8 +137,13 @@ class ControlBarViewController: NSViewController {
                 self?.trackPicButton.image = nil
             }
             
-            
             self?.trackNameTextField.stringValue = playCore.currentTrack?.name ?? ""
+            if let name = playCore.currentTrack?.secondName {
+                self?.trackSecondNameTextField.isHidden = name == ""
+                self?.trackSecondNameTextField.stringValue = name
+            } else {
+                self?.trackSecondNameTextField.stringValue = ""
+            }
             self?.trackArtistTextField.stringValue = playCore.currentTrack?.artists.artistsString() ?? ""
         }
     }

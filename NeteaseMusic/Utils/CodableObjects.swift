@@ -12,6 +12,7 @@ import AVFoundation
 @objc(Track)
 class Track: NSObject, Decodable {
     @objc let name: String
+    @objc let secondName: String
     let id: Int
     @objc let artists: [Artist]
     @objc let album: Album
@@ -51,7 +52,14 @@ class Track: NSObject, Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let sortContainer = try decoder.container(keyedBy: SortCodingKeys.self)
-        self.name = try container.decode(String.self, forKey: .name)
+        let fullName = try container.decode(String.self, forKey: .name)
+        if fullName.contains("("), fullName.last == ")" {
+            name = fullName.subString(to: "(")
+            secondName = "(" + fullName.subString(from: "(", to: ")") + ")"
+        } else {
+            name = fullName
+            secondName = ""
+        }
         self.id = try container.decode(Int.self, forKey: .id)
         self.copyright = try container.decode(Int.self, forKey: .copyright)
         

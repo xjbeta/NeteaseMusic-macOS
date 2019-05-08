@@ -29,4 +29,13 @@ extension String {
         }
         return ""
     }
+    
+    func subString(to endString: String) -> String {
+        var str = self
+        if let endIndex = self.range(of: endString)?.lowerBound {
+            str.removeSubrange(endIndex ..< str.endIndex)
+            return str
+        }
+        return ""
+    }
 }
