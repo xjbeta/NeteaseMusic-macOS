@@ -198,9 +198,10 @@ class PlayingSongViewController: NSViewController {
         guard let i = offsets.first else { return }
         
         let frame = lyricTableView.frameOfCell(atColumn: 0, row: i)
-        
         let y = frame.midY - lyricScrollView.frame.height / 2
+        lyricScrollView.verticalScroller?.isEnabled = false
         lyricTableView.scroll(.init(x: 0, y: y))
+        lyricScrollView.verticalScroller?.isEnabled = true
     }
     
     deinit {
