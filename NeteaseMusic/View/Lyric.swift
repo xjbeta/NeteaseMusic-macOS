@@ -35,6 +35,7 @@ class Lyric: NSObject {
                 guard kv.count == 2 else { return }
                 if let str = kv.first,
                     let tag = LyricTag(rawValue: str) {
+                    assert(tag != .offset, "Should set defalut offset for lrc with  \(kv.last ?? "")")
                     tags[tag] = kv.last
                 }
             }
