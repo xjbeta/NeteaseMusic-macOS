@@ -1,5 +1,5 @@
 //
-//  Playlist.swift
+//  CodableObjects.swift
 //  NeteaseMusic
 //
 //  Created by xjbeta on 2019/4/10.

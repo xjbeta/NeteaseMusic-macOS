@@ -63,7 +63,7 @@
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
 		01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */; };
 		01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B7A225CD38F002D7906 /* MainViewController.swift */; };
-		01FF8B7F225D7DFE002D7906 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B7E225D7DFE002D7906 /* Playlist.swift */; };
+		01FF8B7F225D7DFE002D7906 /* CodableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B7E225D7DFE002D7906 /* CodableObjects.swift */; };
 		01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B80225D8064002D7906 /* DurationTransformer.swift */; };
 		01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */; };
 		01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */; };
@@ -154,7 +154,7 @@
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		01FF8B7A225CD38F002D7906 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		01FF8B7E225D7DFE002D7906 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		01FF8B7E225D7DFE002D7906 /* CodableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableObjects.swift; sourceTree = "<group>"; };
 		01FF8B80225D8064002D7906 /* DurationTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTransformer.swift; sourceTree = "<group>"; };
 		01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsTransformer.swift; sourceTree = "<group>"; };
 		01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarViewController.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 			children = (
 				012F2F402250613F00086870 /* PlayCore.swift */,
 				012F2F422250619A00086870 /* NeteaseMusicAPI.swift */,
-				01FF8B7E225D7DFE002D7906 /* Playlist.swift */,
+				01FF8B7E225D7DFE002D7906 /* CodableObjects.swift */,
 				01FF8B80225D8064002D7906 /* DurationTransformer.swift */,
 				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
 				0137264022697D32004EDCE5 /* IndexTransformer.swift */,
@@ -428,7 +428,7 @@
 			files = (
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
-				01FF8B7F225D7DFE002D7906 /* Playlist.swift in Sources */,
+				01FF8B7F225D7DFE002D7906 /* CodableObjects.swift in Sources */,
 				01467E88227EB3EA0037B49D /* PlaylistViewsFormatter.swift in Sources */,
 				013143A3226DC43B00B9E26F /* PlayingSongViewController.swift in Sources */,
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
