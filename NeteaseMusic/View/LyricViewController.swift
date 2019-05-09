@@ -1,0 +1,138 @@
+//
+//  LyricViewController.swift
+//  NeteaseMusic
+//
+//  Created by xjbeta on 2019/5/9.
+//  Copyright © 2019 xjbeta. All rights reserved.
+//
+
+import Cocoa
+import AVFoundation
+
+class LyricViewController: NSViewController {
+    @IBOutlet weak var scrollView: NSScrollView!
+    @IBOutlet weak var tableView: NSTableView!
+    
+    struct Lyricline {
+        enum LyricType {
+            case first, second
+        }
+        
+        let string: String
+        var time: LyricTime
+        let type: LyricType
+    }
+    var lyriclines = [Lyricline]()
+    var currentLyricId = -1 {
+        willSet {
+            guard newValue != currentLyricId else { return }
+            
+            if newValue == -1 {
+                // reset views
+                lyriclines.removeAll()
+                tableView.reloadData()
+            } else {
+                getLyric(for: newValue)
+            }
+        }
+    }
+    
+    // lyricOffset ms
+    @objc dynamic var lyricOffset = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.refusesFirstResponder = true
+    }
+    
+    func updateLyric(_ time: CMTime) {
+        var periodicMS = Int(CMTimeGetSeconds(time) * 1000)
+        periodicMS += lyricOffset
+        
+        guard let line = lyriclines.filter({ $0.time.totalMS < periodicMS }).last else {
+            return
+        }
+        let offsets = lyriclines.enumerated().filter({ $0.element.time == line.time }).map({ $0.offset })
+        
+        let indexSet = IndexSet(offsets)
+        guard tableView.selectedRowIndexes != indexSet else { return }
+        tableView.deselectAll(nil)
+        tableView.selectRowIndexes(indexSet, byExtendingSelection: true)
+        
+        guard let i = offsets.first else { return }
+        
+        let frame = tableView.frameOfCell(atColumn: 0, row: i)
+        let y = frame.midY - scrollView.frame.height / 2
+        scrollView.verticalScroller?.isEnabled = false
+        tableView.scroll(.init(x: 0, y: y))
+        scrollView.verticalScroller?.isEnabled = true
+    }
+    
+    func getLyric(for id: Int) {
+        PlayCore.shared.api.lyric(id).map {
+            guard self.currentLyricId == PlayCore.shared.currentTrack?.id else { return }
+            self.initLyric(lyric: $0)
+            }.done(on: .main) {
+                self.tableView.reloadData()
+            }.catch {
+                print($0)
+        }
+    }
+    
+    func initLyric(lyric: LyricResult) {
+        lyriclines.removeAll()
+        if let nolyric = lyric.nolyric, nolyric {
+            print("nolyric")
+        } else if let uncollected = lyric.uncollected, uncollected {
+            print("uncollected")
+        } else if let lyricStr = lyric.lrc?.lyric {
+            lyriclines.append(contentsOf: Lyric(lyricStr).lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .first) }))
+            lyriclines.append(contentsOf: Lyric(lyric.tlyric?.lyric ?? "").lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .second) }))
+        }
+        
+        lyriclines.sort {
+            return $0.type == .first && $1.type == .second
+        }
+        
+        lyriclines.sort {
+            return $0.time.totalMS < $1.time.totalMS
+        }
+    }
+}
+
+
+extension LyricViewController: NSTableViewDelegate, NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return lyriclines.count
+    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        var rowHeight = tableView.rowHeight
+        let fixedHeight: CGFloat = 12
+        
+        if let line = lyriclines[safe: row],
+            let nextLine = lyriclines[safe: row + 1] {
+            if line.type == .second {
+                rowHeight += fixedHeight
+            } else if line.type == nextLine.type, line.type == .first {
+                rowHeight += fixedHeight
+            }
+        }
+        return rowHeight
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        guard let type = lyriclines[safe: row]?.type else { return nil }
+        switch type {
+        case .first:
+            return tableView.makeView(withIdentifier: .init("LyricTableCellView"), owner: nil)
+        case .second:
+            return tableView.makeView(withIdentifier: .init("LyricSecondTableCellView"), owner: nil)
+        }
+    }
+    
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        return lyriclines[safe: row]?.string
+    }
+}

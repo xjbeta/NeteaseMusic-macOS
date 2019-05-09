@@ -45,6 +45,8 @@
 		01467E88227EB3EA0037B49D /* PlaylistViewsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */; };
 		01467E8A2281AAD00037B49D /* Lyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E892281AAD00037B49D /* Lyric.swift */; };
 		01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */; };
+		01467E922283F2C30037B49D /* Lyric.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01467E912283F2C30037B49D /* Lyric.storyboard */; };
+		01467E942283F3180037B49D /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E932283F3180037B49D /* LyricViewController.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
 		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
@@ -133,6 +135,8 @@
 		01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewsFormatter.swift; sourceTree = "<group>"; };
 		01467E892281AAD00037B49D /* Lyric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyric.swift; sourceTree = "<group>"; };
 		01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricOffsetTransformer.swift; sourceTree = "<group>"; };
+		01467E912283F2C30037B49D /* Lyric.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lyric.storyboard; sourceTree = "<group>"; };
+		01467E932283F3180037B49D /* LyricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricViewController.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
 		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 				013143A8226F5D4200B9E26F /* ViewAnimation.swift */,
 				013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */,
 				01467E892281AAD00037B49D /* Lyric.swift */,
+				01467E912283F2C30037B49D /* Lyric.storyboard */,
+				01467E932283F3180037B49D /* LyricViewController.swift */,
 			);
 			name = PlayingSong;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0137264E226AF191004EDCE5 /* RecommendResource.json in Resources */,
+				01467E922283F2C30037B49D /* Lyric.storyboard in Resources */,
 				013143AD22706F1200B9E26F /* Lyric.json in Resources */,
 				01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */,
 				01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */,
@@ -426,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
 				01FF8B7F225D7DFE002D7906 /* CodableObjects.swift in Sources */,

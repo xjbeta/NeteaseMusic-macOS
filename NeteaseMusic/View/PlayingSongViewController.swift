@@ -18,8 +18,7 @@ class PlayingSongViewController: NSViewController {
     @IBOutlet weak var titleTextField: NSTextField!
     @IBOutlet weak var secondTitleTextField: NSTextField!
     
-    @IBOutlet weak var lyricTableView: NSTableView!
-    @IBOutlet weak var lyricScrollView: NSScrollView!
+    @IBOutlet weak var lyricContainerView: NSView!
     @IBOutlet weak var offsetTextField: NSTextField!
     @IBOutlet weak var offsetUpButton: NSButton!
     @IBOutlet weak var offsetDownButton: NSButton!
@@ -37,23 +36,15 @@ class PlayingSongViewController: NSViewController {
         }
         
         let time = PlayCore.shared.player.currentTime()
-        updateLyricTableViewSelection(time)
+        lyricViewController()?.updateLyric(time)
     }
-    
-    struct Lyricline {
-        enum LyricType {
-            case first, second
-        }
-        
-        let string: String
-        var time: LyricTime
-        let type: LyricType
-    }
-    var lyriclines = [Lyricline]()
-    var currentLyricId = -1
     
     // lyricOffset ms
-    @objc dynamic var lyricOffset = 0
+    @objc dynamic var lyricOffset = 0 {
+        didSet {
+            lyricViewController()?.lyricOffset = lyricOffset
+        }
+    }
     
     var currentTrackObserver: NSKeyValueObservation?
     var playerStatueObserver: NSKeyValueObservation?
@@ -97,14 +88,12 @@ class PlayingSongViewController: NSViewController {
         }
         
         addPeriodicTimeObserver()
-        lyricTableView.refusesFirstResponder = true
     }
     
     func initView() {
         guard let track = PlayCore.shared.currentTrack else {
-            lyriclines.removeAll()
-            lyricTableView.reloadData()
             cdImgImageView.image = nil
+            lyricViewController()?.currentLyricId = -1
             return
         }
         
@@ -122,39 +111,9 @@ class PlayingSongViewController: NSViewController {
 
         titleTextField.stringValue = track.name
         
-        guard currentLyricId != track.id else { return }
-        currentLyricId = track.id
-        lyriclines.removeAll()
-        lyricTableView.reloadData()
-        PlayCore.shared.api.lyric(track.id).map {
-            guard self.currentLyricId == PlayCore.shared.currentTrack?.id else { return }
-            self.initLyric(lyric: $0)
-            }.done(on: .main) {
-                self.lyricTableView.reloadData()
-            }.catch {
-                print($0)
-        }
+        lyricViewController()?.currentLyricId = track.id
     }
     
-    func initLyric(lyric: LyricResult) {
-        lyriclines.removeAll()
-        if let nolyric = lyric.nolyric, nolyric {
-            print("nolyric")
-        } else if let uncollected = lyric.uncollected, uncollected {
-            print("uncollected")
-        } else if let lyricStr = lyric.lrc?.lyric {
-            lyriclines.append(contentsOf: Lyric(lyricStr).lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .first) }))
-            lyriclines.append(contentsOf: Lyric(lyric.tlyric?.lyric ?? "").lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .second) }))
-        }
-        
-        lyriclines.sort {
-            return $0.type == .first && $1.type == .second
-        }
-        
-        lyriclines.sort {
-            return $0.time.totalMS < $1.time.totalMS
-        }
-    }
     
     func updateCDRunImage() {
         cdRunImageView.wantsLayer = true
@@ -196,8 +155,15 @@ class PlayingSongViewController: NSViewController {
         let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
         periodicTimeObserverToken = PlayCore.shared.player
             .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-                self?.updateLyricTableViewSelection(time)
+                self?.lyricViewController()?.updateLyric(time)
         }
+    }
+    
+    func lyricViewController() -> LyricViewController? {
+        let lyricVC = children.compactMap {
+            $0 as? LyricViewController
+        }.first
+        return lyricVC
     }
     
     func removePeriodicTimeObserver() {
@@ -207,29 +173,6 @@ class PlayingSongViewController: NSViewController {
         }
     }
     
-    func updateLyricTableViewSelection(_ time: CMTime) {
-        var periodicMS = Int(CMTimeGetSeconds(time) * 1000)
-        periodicMS += lyricOffset
-        
-        guard let line = lyriclines.filter({ $0.time.totalMS < periodicMS }).last else {
-            return
-        }
-        let offsets = lyriclines.enumerated().filter({ $0.element.time == line.time }).map({ $0.offset })
-        
-        let indexSet = IndexSet(offsets)
-        guard lyricTableView.selectedRowIndexes != indexSet else { return }
-        lyricTableView.deselectAll(nil)
-        lyricTableView.selectRowIndexes(indexSet, byExtendingSelection: true)
-        
-        guard let i = offsets.first else { return }
-        
-        let frame = lyricTableView.frameOfCell(atColumn: 0, row: i)
-        let y = frame.midY - lyricScrollView.frame.height / 2
-        lyricScrollView.verticalScroller?.isEnabled = false
-        lyricTableView.scroll(.init(x: 0, y: y))
-        lyricScrollView.verticalScroller?.isEnabled = true
-    }
-    
     deinit {
         currentTrackObserver?.invalidate()
         playerStatueObserver?.invalidate()
@@ -237,41 +180,5 @@ class PlayingSongViewController: NSViewController {
         if let obs = viewStatusObserver {
             NotificationCenter.default.removeObserver(obs)
         }
-    }
-}
-
-extension PlayingSongViewController: NSTableViewDelegate, NSTableViewDataSource {
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return lyriclines.count
-    }
-    
-    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var rowHeight = tableView.rowHeight
-        let fixedHeight: CGFloat = 12
-        
-        if let line = lyriclines[safe: row],
-            let nextLine = lyriclines[safe: row + 1] {
-            if line.type == .second {
-                rowHeight += fixedHeight
-            } else if line.type == nextLine.type, line.type == .first {
-                rowHeight += fixedHeight
-            }
-        }
-        return rowHeight
-    }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
-        guard let type = lyriclines[safe: row]?.type else { return nil }
-        switch type {
-        case .first:
-            return tableView.makeView(withIdentifier: .init("LyricTableCellView"), owner: nil)
-        case .second:
-            return tableView.makeView(withIdentifier: .init("LyricSecondTableCellView"), owner: nil)
-        }
-    }
-    
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return lyriclines[safe: row]?.string
     }
 }
