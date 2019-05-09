@@ -1034,6 +1034,20 @@ DQ
                                                         <view key="view" id="Ux7-La-kjT">
                                                             <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="tOV-hm-8fP">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                    <connections>
+                                                                        <segue destination="euk-KB-UDW" kind="embed" id="UHE-qd-TGk"/>
+                                                                    </connections>
+                                                                </containerView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="tOV-hm-8fP" firstAttribute="leading" secondItem="Ux7-La-kjT" secondAttribute="leading" id="Wsj-ge-9GF"/>
+                                                                <constraint firstAttribute="bottom" secondItem="tOV-hm-8fP" secondAttribute="bottom" id="quQ-mw-gBw"/>
+                                                                <constraint firstItem="tOV-hm-8fP" firstAttribute="top" secondItem="Ux7-La-kjT" secondAttribute="top" id="rhF-rD-LLn"/>
+                                                                <constraint firstAttribute="trailing" secondItem="tOV-hm-8fP" secondAttribute="trailing" id="zfQ-Z6-T2z"/>
+                                                            </constraints>
                                                         </view>
                                                     </tabViewItem>
                                                     <tabViewItem label="Preferences" identifier="" id="Use-Rr-zxh" userLabel="Preferences">
@@ -2882,6 +2896,19 @@ DQ
                 <customObject id="OUp-WO-3BU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1175" y="1409"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="y0Q-es-B6l">
+            <objects>
+                <viewController id="euk-KB-UDW" sceneMemberID="viewController">
+                    <view key="view" id="7Yc-Vr-1wc">
+                        <rect key="frame" x="0.0" y="0.0" width="836" height="539"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Jkb-gN-dlY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="2068"/>
         </scene>
     </scenes>
     <resources>
