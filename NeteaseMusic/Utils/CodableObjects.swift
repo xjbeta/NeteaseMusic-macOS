@@ -105,7 +105,7 @@ class Song: NSObject, Decodable {
     }()
 }
 
-struct recommendResource: Decodable {
+struct RecommendResource: Decodable {
     let code: Int
     let recommend: [Playlist]
     

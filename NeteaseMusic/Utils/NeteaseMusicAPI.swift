@@ -202,13 +202,13 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func recommendResource() -> Promise<[recommendResource.Playlist]> {
+    func recommendResource() -> Promise<[RecommendResource.Playlist]> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         
         return Promise { resolver in
             AF.request("https://music.163.com/weapi/v1/discovery/recommend/resource?csrf_token=\(csrf)",
                 method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<recommendResource>) in
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<RecommendResource>) in
                     if let error = re.error {
                         resolver.reject(error)
                         return
@@ -342,6 +342,36 @@ class NeteaseMusicAPI: NSObject {
                         let result = try re.result.get()
                         if result.code == 200 {
                             resolver.fulfill(())
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
+    func radioGet() -> Promise<[Track]> {
+        let p = DefaultParameters(csrfToken: csrf).jsonString()
+        
+        struct Result: Decodable {
+            let data: [Track]
+            let code: Int
+        }
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/v1/radio/get?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(result.data)
                         } else {
                             resolver.reject(APIError.errorCode(result.code))
                         }
