@@ -382,6 +382,45 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func radioSkip(_ id: Int, _ time: Int = 0) -> Promise<()> {
+        struct P: Encodable {
+            let alg = "itembased" //"alg_fm_rt_view_comment"
+            let songId: Int
+            let time: Int
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case alg, songId, time, csrfToken = "csrf_token"
+            }
+        }
+        
+        let p = P(songId: id, time: time, csrfToken: csrf).jsonString()
+        
+        struct Result: Decodable {
+            let code: Int
+        }
+        
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/v1/radio/skip?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(())
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
     func crypto(_ text: String) -> [String: String] {
         guard let jsContext = JSContext(),
             let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),
