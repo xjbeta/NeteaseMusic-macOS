@@ -49,7 +49,6 @@ class PlayingSongViewController: NSViewController {
     var currentTrackObserver: NSKeyValueObservation?
     var playerStatueObserver: NSKeyValueObservation?
     var viewStatusObserver: NSObjectProtocol?
-    var periodicTimeObserverToken: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +86,7 @@ class PlayingSongViewController: NSViewController {
             }
         }
         
-        addPeriodicTimeObserver()
+        lyricViewController()?.addPeriodicTimeObserver(PlayCore.shared.player)
     }
     
     func initView() {
@@ -149,16 +148,6 @@ class PlayingSongViewController: NSViewController {
         layer.add(rotation, forKey: "rotationAnimation")
     }
     
-    func addPeriodicTimeObserver() {
-        // Notify every half second
-        let timeScale = CMTimeScale(NSEC_PER_SEC)
-        let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
-        periodicTimeObserverToken = PlayCore.shared.player
-            .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-                self?.lyricViewController()?.updateLyric(time)
-        }
-    }
-    
     func lyricViewController() -> LyricViewController? {
         let lyricVC = children.compactMap {
             $0 as? LyricViewController
@@ -166,17 +155,10 @@ class PlayingSongViewController: NSViewController {
         return lyricVC
     }
     
-    func removePeriodicTimeObserver() {
-        if let timeObserverToken = periodicTimeObserverToken {
-            PlayCore.shared.player.removeTimeObserver(timeObserverToken)
-            self.periodicTimeObserverToken = nil
-        }
-    }
-    
     deinit {
         currentTrackObserver?.invalidate()
         playerStatueObserver?.invalidate()
-        removePeriodicTimeObserver()
+        lyricViewController()?.removePeriodicTimeObserver(PlayCore.shared.player)
         if let obs = viewStatusObserver {
             NotificationCenter.default.removeObserver(obs)
         }

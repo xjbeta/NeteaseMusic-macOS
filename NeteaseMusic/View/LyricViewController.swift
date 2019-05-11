@@ -40,6 +40,8 @@ class LyricViewController: NSViewController {
     // lyricOffset ms
     @objc dynamic var lyricOffset = 0
     
+    var periodicTimeObserverToken: Any?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.refusesFirstResponder = true
@@ -98,6 +100,25 @@ class LyricViewController: NSViewController {
             return $0.time.totalMS < $1.time.totalMS
         }
     }
+    
+    func addPeriodicTimeObserver(_ player: AVPlayer) {
+        // Notify every half second
+        let timeScale = CMTimeScale(NSEC_PER_SEC)
+        let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
+        periodicTimeObserverToken = player
+            .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
+                self?.updateLyric(time)
+        }
+    }
+    
+    func removePeriodicTimeObserver(_ player: AVPlayer) {
+        if let timeObserverToken = periodicTimeObserverToken {
+            player.removeTimeObserver(timeObserverToken)
+            self.periodicTimeObserverToken = nil
+        }
+    }
+    
+    
 }
 
 
