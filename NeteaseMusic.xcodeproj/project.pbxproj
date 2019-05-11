@@ -207,6 +207,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		012FEA63228686CD00698969 /* Lyric */ = {
+			isa = PBXGroup;
+			children = (
+				01467E892281AAD00037B49D /* Lyric.swift */,
+				01467E912283F2C30037B49D /* Lyric.storyboard */,
+				01467E932283F3180037B49D /* LyricViewController.swift */,
+			);
+			name = Lyric;
+			sourceTree = "<group>";
+		};
 		0131439F226D657700B9E26F /* PlayingSong */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,9 +224,6 @@
 				013143A0226D65AA00B9E26F /* CDBackgroundView.swift */,
 				013143A8226F5D4200B9E26F /* ViewAnimation.swift */,
 				013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */,
-				01467E892281AAD00037B49D /* Lyric.swift */,
-				01467E912283F2C30037B49D /* Lyric.storyboard */,
-				01467E932283F3180037B49D /* LyricViewController.swift */,
 			);
 			name = PlayingSong;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 				0131439F226D657700B9E26F /* PlayingSong */,
 				0137264422698FBD004EDCE5 /* Discover */,
 				01467E9522846AEC0037B49D /* FM */,
+				012FEA63228686CD00698969 /* Lyric */,
 			);
 			path = View;
 			sourceTree = "<group>";
