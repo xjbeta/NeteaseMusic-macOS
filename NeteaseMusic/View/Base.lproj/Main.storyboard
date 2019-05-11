@@ -2096,7 +2096,7 @@ DQ
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="rSa-fq-H0b">
                                 <rect key="frame" x="0.0" y="343" width="836" height="200"/>
                                 <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uoy-aQ-w2b">
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uoy-aQ-w2b" customClass="CoverImageView" customModule="NeteaseMusic" customModuleProvider="target">
                                         <rect key="frame" x="15" y="15" width="170" height="170"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Uoy-aQ-w2b" secondAttribute="height" multiplier="1:1" id="K8C-aR-0pF"/>

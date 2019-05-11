@@ -12,6 +12,8 @@
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
+		012FEA602286843D00698969 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA5F2286843D00698969 /* CoverImageView.swift */; };
+		012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* CoverImageButton.swift */; };
 		01314398226B497E00B9E26F /* RecommendSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 01314397226B497E00B9E26F /* RecommendSongs.json */; };
 		0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */; };
 		0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */; };
@@ -109,6 +111,8 @@
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		012FEA5F2286843D00698969 /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
+		012FEA61228684ED00698969 /* CoverImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageButton.swift; sourceTree = "<group>"; };
 		01314397226B497E00B9E26F /* RecommendSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendSongs.json; sourceTree = "<group>"; };
 		0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewItem.swift; sourceTree = "<group>"; };
 		0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 			children = (
 				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */,
+				012FEA5F2286843D00698969 /* CoverImageView.swift */,
 			);
 			name = Playlist;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			children = (
 				01467E9622846B050037B49D /* FM.storyboard */,
 				01467E9822846B920037B49D /* FMViewController.swift */,
+				012FEA61228684ED00698969 /* CoverImageButton.swift */,
 			);
 			name = FM;
 			sourceTree = "<group>";
@@ -460,10 +466,12 @@
 				013143A3226DC43B00B9E26F /* PlayingSongViewController.swift in Sources */,
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
+				012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */,
 				01FF8B72225C60F7002D7906 /* Colors.swift in Sources */,
 				01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
 				0137264A226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift in Sources */,
+				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
 				013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */,
 				01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */,
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,

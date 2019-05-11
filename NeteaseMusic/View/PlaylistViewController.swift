@@ -90,11 +90,7 @@ class PlaylistViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        coverImageView.wantsLayer = true
-        coverImageView.layer?.cornerRadius = 6
-        coverImageView.layer?.borderWidth = 0.5
-        coverImageView.layer?.borderColor = NSColor.tertiaryLabelColor.cgColor
-        
+
         
         playlistStrTextField.stringValue = "歌单"
         playlistStrTextField.textColor = .init(red: 0.83, green: 0.23, blue: 0.19, alpha: 1)

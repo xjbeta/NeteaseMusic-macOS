@@ -20,24 +20,13 @@
                                     <segue destination="STk-wE-vdF" kind="embed" id="bXo-gj-SLr"/>
                                 </connections>
                             </containerView>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="9KC-UX-vy4">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="9KC-UX-vy4" customClass="CoverImageButton" customModule="NeteaseMusic" customModuleProvider="target">
                                 <rect key="frame" x="42" y="221" width="230" height="230"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9KC-UX-vy4" secondAttribute="height" multiplier="1:1" id="4ty-kQ-3bs"/>
                                     <constraint firstAttribute="width" constant="230" id="Ppz-ca-lQY"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play_disc" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="BqE-UU-8Yd">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Tmb-ok-7Uh">
-                                <rect key="frame" x="82" y="201" width="270" height="270"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="aAs-dX-zZI"/>
-                                    <constraint firstAttribute="width" secondItem="Tmb-ok-7Uh" secondAttribute="height" multiplier="1:1" id="nbT-8K-WPf"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play_disc" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Hqi-4X-Q00">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="BqE-UU-8Yd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -69,14 +58,27 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LC5-dC-668" customClass="CoverImageView" customModule="NeteaseMusic" customModuleProvider="target">
+                                <rect key="frame" x="82" y="201" width="270" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="HWZ-oo-5Hf"/>
+                                    <constraint firstAttribute="width" secondItem="LC5-dC-668" secondAttribute="height" multiplier="1:1" id="uXE-nP-YJf"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0LO-BT-Mzu"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="9KC-UX-vy4" firstAttribute="leading" secondItem="rF1-MY-g98" secondAttribute="leading" constant="42" id="GYL-Cc-wSa"/>
                             <constraint firstItem="9KC-UX-vy4" firstAttribute="top" secondItem="rF1-MY-g98" secondAttribute="top" constant="120" id="Pp7-8K-OJb"/>
-                            <constraint firstItem="Tmb-ok-7Uh" firstAttribute="centerY" secondItem="9KC-UX-vy4" secondAttribute="centerY" id="UWk-2O-Jx5"/>
-                            <constraint firstItem="Tmb-ok-7Uh" firstAttribute="leading" secondItem="9KC-UX-vy4" secondAttribute="trailing" constant="-190" id="zQ4-Ax-o6O"/>
+                            <constraint firstItem="LC5-dC-668" firstAttribute="centerY" secondItem="9KC-UX-vy4" secondAttribute="centerY" id="WYe-aE-3S1"/>
+                            <constraint firstItem="LC5-dC-668" firstAttribute="leading" secondItem="9KC-UX-vy4" secondAttribute="trailing" constant="-190" id="yyG-L6-FsP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="coverImageView" destination="LC5-dC-668" id="gbq-ja-zPJ"/>
+                        <outlet property="nameTextField" destination="dyd-cS-fva" id="aSM-4t-pxL"/>
+                        <outlet property="prevImageButton" destination="9KC-UX-vy4" id="KVL-u8-SkA"/>
+                    </connections>
                 </viewController>
                 <customObject id="xvP-58-zBn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,7 +93,4 @@
             <point key="canvasLocation" x="811" y="247"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="play_disc" width="620" height="620"/>
-    </resources>
 </document>
