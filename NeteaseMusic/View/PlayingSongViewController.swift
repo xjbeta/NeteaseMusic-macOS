@@ -96,9 +96,7 @@ class PlayingSongViewController: NSViewController {
             return
         }
         
-        if let urlStr = track.album.picUrl?.absoluteString,
-            let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")),
-            let image = NSImage(contentsOf: u) {
+        if let image = track.albumCover {
             cdImgImageView.wantsLayer = true
             cdImgImageView.layer?.cornerRadius = cdImgImageView.frame.width / 2
             cdImgImageView.image = image

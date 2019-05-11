@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import AppKit
 
 @objc(Track)
 class Track: NSObject, Decodable {
@@ -26,6 +27,14 @@ class Track: NSObject, Decodable {
     
     @objc lazy var artistsString: String = {
         return artists.artistsString()
+    }()
+    
+    lazy var albumCover: NSImage? = {
+        guard let urlStr = album.picUrl?.absoluteString,
+            let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")) else {
+            return nil
+        }
+        return NSImage(contentsOf: u)
     }()
     
     @objc(Album)

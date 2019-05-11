@@ -129,13 +129,7 @@ class ControlBarViewController: NSViewController {
         }
         
         currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
-            if let urlStr = playCore.currentTrack?.album.picUrl?.absoluteString,
-                let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")),
-                let image = NSImage(contentsOf: u) {
-                self?.trackPicButton.image = image
-            } else {
-                self?.trackPicButton.image = nil
-            }
+            self?.trackPicButton.image = playCore.currentTrack?.albumCover
             
             self?.trackNameTextField.stringValue = playCore.currentTrack?.name ?? ""
             if let name = playCore.currentTrack?.secondName {
