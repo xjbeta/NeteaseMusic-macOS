@@ -102,6 +102,7 @@ class ControlBarViewController: NSViewController {
     var muteStautsObserver: NSKeyValueObservation?
     var previousButtonObserver: NSKeyValueObservation?
     var currentTrackObserver: NSKeyValueObservation?
+    var currentFMTrackObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,16 +138,13 @@ class ControlBarViewController: NSViewController {
         }
         
         currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
-            self?.trackPicButton.image = playCore.currentTrack?.albumCover
-            
-            self?.trackNameTextField.stringValue = playCore.currentTrack?.name ?? ""
-            if let name = playCore.currentTrack?.secondName {
-                self?.trackSecondNameTextField.isHidden = name == ""
-                self?.trackSecondNameTextField.stringValue = name
-            } else {
-                self?.trackSecondNameTextField.stringValue = ""
-            }
-            self?.trackArtistTextField.stringValue = playCore.currentTrack?.artists.artistsString() ?? ""
+            guard !playCore.fmMode, let track = playCore.currentTrack else { return }
+            self?.initViews(track)
+        }
+        
+        currentFMTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
+            guard playCore.fmMode, let track = playCore.currentFMTrack else { return }
+            self?.initViews(track)
         }
     }
     
@@ -167,6 +165,15 @@ class ControlBarViewController: NSViewController {
                 
                 self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"
         }
+    }
+    
+    func initViews(_ track: Track) {
+        trackPicButton.image = track.albumCover
+        trackNameTextField.stringValue = track.name
+        let name = track.secondName
+        trackSecondNameTextField.isHidden = name == ""
+        trackSecondNameTextField.stringValue = name
+        trackArtistTextField.stringValue = track.artists.artistsString()
     }
     
     func removePeriodicTimeObserver() {
@@ -206,6 +213,7 @@ class ControlBarViewController: NSViewController {
         previousButtonObserver?.invalidate()
         muteStautsObserver?.invalidate()
         currentTrackObserver?.invalidate()
+        currentFMTrackObserver?.invalidate()
     }
     
 }
