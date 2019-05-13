@@ -12,6 +12,7 @@ import AVFoundation
 class LyricViewController: NSViewController {
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var textField: NSTextField!
     
     struct Lyricline {
         enum LyricType {
@@ -45,6 +46,7 @@ class LyricViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textField.isHidden = true
         tableView.refusesFirstResponder = true
     }
     
@@ -85,9 +87,11 @@ class LyricViewController: NSViewController {
     func initLyric(lyric: LyricResult) {
         lyriclines.removeAll()
         if let nolyric = lyric.nolyric, nolyric {
-            print("nolyric")
+            textField.isHidden = false
+            textField.stringValue = "no lyric"
         } else if let uncollected = lyric.uncollected, uncollected {
-            print("uncollected")
+            textField.isHidden = false
+            textField.stringValue = "uncollected"
         } else if let lyricStr = lyric.lrc?.lyric {
             lyriclines.append(contentsOf: Lyric(lyricStr).lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .first) }))
             lyriclines.append(contentsOf: Lyric(lyric.tlyric?.lyric ?? "").lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .second) }))

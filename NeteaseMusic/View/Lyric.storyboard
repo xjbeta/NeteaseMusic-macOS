@@ -100,17 +100,28 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LrU-ED-e1w">
+                                <rect key="frame" x="198" y="240" width="4" height="21"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="yzY-nT-P6b">
+                                    <font key="font" metaFont="system" size="17"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="eyK-vy-riF" firstAttribute="leading" secondItem="lw8-he-16K" secondAttribute="leading" id="GG6-Bn-ZCf"/>
                             <constraint firstAttribute="trailing" secondItem="eyK-vy-riF" secondAttribute="trailing" id="HrW-uu-knK"/>
+                            <constraint firstItem="LrU-ED-e1w" firstAttribute="centerY" secondItem="lw8-he-16K" secondAttribute="centerY" id="LL0-Al-qom"/>
                             <constraint firstAttribute="bottom" secondItem="eyK-vy-riF" secondAttribute="bottom" id="OC9-5w-dvD"/>
+                            <constraint firstItem="LrU-ED-e1w" firstAttribute="centerX" secondItem="lw8-he-16K" secondAttribute="centerX" id="SaM-DL-1Fy"/>
                             <constraint firstItem="eyK-vy-riF" firstAttribute="top" secondItem="lw8-he-16K" secondAttribute="top" id="ben-V4-jfx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="eyK-vy-riF" id="tMr-GD-EoE"/>
                         <outlet property="tableView" destination="UEO-Rd-B04" id="E4z-70-RcM"/>
+                        <outlet property="textField" destination="LrU-ED-e1w" id="IdE-By-pmk"/>
                     </connections>
                 </viewController>
                 <customObject id="tzJ-hA-wT8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
