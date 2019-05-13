@@ -48,15 +48,20 @@ class PlayCore: NSObject {
     @objc dynamic var fmPlaylist: [Track] = []
     @objc dynamic var currentFMTrack: Track?
     
-    func start(_ index: Int = 0) {
-        fmMode = false
+    func start(_ index: Int = 0, enterFMMode: Bool = false) {
+        fmMode = enterFMMode
         removeObserver()
         playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
             self.nextSong()
         }
-        
-        if let track = effectiveTracks()[safe: index] {
-            play(track)
+        if fmMode {
+            if let track = currentFMTrack {
+                play(track)
+            }
+        } else {
+            if let track = effectiveTracks()[safe: index] {
+                play(track)
+            }
         }
     }
     

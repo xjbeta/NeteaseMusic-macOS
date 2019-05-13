@@ -31,9 +31,7 @@ class FMViewController: NSViewController {
                     player.pause()
                 }
             } else {
-                PlayCore.shared.fmMode = true
-                guard let currentTrack = PlayCore.shared.currentFMTrack else { return }
-                PlayCore.shared.play(currentTrack)
+                PlayCore.shared.start(enterFMMode: true)
             }
         case prevImageButton:
             PlayCore.shared.previousSong()
