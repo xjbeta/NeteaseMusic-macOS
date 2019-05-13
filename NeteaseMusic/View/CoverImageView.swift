@@ -16,4 +16,8 @@ class CoverImageView: NSImageView {
         layer?.borderWidth = 0.5
         layer?.borderColor = NSColor.tertiaryLabelColor.cgColor
     }
+    
+    override func mouseDown(with event: NSEvent) {
+        
+    }
 }

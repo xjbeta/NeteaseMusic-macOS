@@ -9,8 +9,8 @@
 import Cocoa
 
 class CoverImageButton: NSButton {
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
+    override func viewDidUnhide() {
+        super.viewDidUnhide()
         wantsLayer = true
         layer?.cornerRadius = 6
         layer?.borderWidth = 0.5
