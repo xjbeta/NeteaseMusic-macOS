@@ -26,6 +26,7 @@ class LyricViewController: NSViewController {
     var currentLyricId = -1 {
         willSet {
             guard newValue != currentLyricId else { return }
+            tableView.scrollToBeginningOfDocument(nil)
             
             if newValue == -1 {
                 // reset views
