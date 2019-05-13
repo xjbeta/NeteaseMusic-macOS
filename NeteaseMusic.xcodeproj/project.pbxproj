@@ -15,6 +15,7 @@
 		012FEA602286843D00698969 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA5F2286843D00698969 /* CoverImageView.swift */; };
 		012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* CoverImageButton.swift */; };
 		012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA662289B80F00698969 /* Sidebar.storyboard */; };
+		012FEA6A2289B8D200698969 /* ControlBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA692289B8D200698969 /* ControlBar.storyboard */; };
 		01314398226B497E00B9E26F /* RecommendSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 01314397226B497E00B9E26F /* RecommendSongs.json */; };
 		0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */; };
 		0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */; };
@@ -115,6 +116,7 @@
 		012FEA5F2286843D00698969 /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		012FEA61228684ED00698969 /* CoverImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageButton.swift; sourceTree = "<group>"; };
 		012FEA662289B80F00698969 /* Sidebar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sidebar.storyboard; sourceTree = "<group>"; };
+		012FEA692289B8D200698969 /* ControlBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ControlBar.storyboard; sourceTree = "<group>"; };
 		01314397226B497E00B9E26F /* RecommendSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendSongs.json; sourceTree = "<group>"; };
 		0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewItem.swift; sourceTree = "<group>"; };
 		0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -219,6 +221,15 @@
 			name = Lyric;
 			sourceTree = "<group>";
 		};
+		012FEA682289B8BB00698969 /* ControlBar */ = {
+			isa = PBXGroup;
+			children = (
+				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
+				012FEA692289B8D200698969 /* ControlBar.storyboard */,
+			);
+			path = ControlBar;
+			sourceTree = "<group>";
+		};
 		0131439F226D657700B9E26F /* PlayingSong */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,7 +270,7 @@
 				01FF8B76225C6551002D7906 /* MainWindowController.swift */,
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
 				01467E86227EA8500037B49D /* Playlist */,
-				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
+				012FEA682289B8BB00698969 /* ControlBar */,
 				01467E65227D27210037B49D /* SearchSuggest */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
 				0134B63A22649BD300262AB8 /* SidePlaylist */,
@@ -455,6 +466,7 @@
 				0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */,
 				01314398226B497E00B9E26F /* RecommendSongs.json in Resources */,
 				017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */,
+				012FEA6A2289B8D200698969 /* ControlBar.storyboard in Resources */,
 				0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */,
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
 				0137264C226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib in Resources */,
