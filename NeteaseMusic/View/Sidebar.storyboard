@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmA-py-oK2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sidebar View Controller-->
+        <scene sceneID="RPc-8d-N9E">
+            <objects>
+                <viewController showSeguePresentationStyle="single" id="SmA-py-oK2" customClass="SidebarViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="z3A-mc-CSB">
+                        <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="35" horizontalPageScroll="10" verticalLineScroll="35" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcs-LT-L0W">
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
+                                <clipView key="contentView" drawsBackground="NO" id="gau-sz-GhA">
+                                    <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="35" viewBased="YES" id="6pt-Dj-o61" customClass="SidebarTableView" customModule="NeteaseMusic" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="217" minWidth="40" maxWidth="1000" id="5cQ-UC-A16">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" refusesFirstResponder="YES" title="Text Cell" id="PFA-l8-rwg">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="SidebarHeaderTableCellView" id="EuJ-vj-mvn" customClass="SidebarHeaderTableCellView" customModule="NeteaseMusic" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="217" height="35"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qR1-bb-hJd">
+                                                                    <rect key="frame" x="3" y="4" width="13" height="13"/>
+                                                                    <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4rY-TV-qU0">
+                                                                        <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                </button>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-xs-dBx">
+                                                                    <rect key="frame" x="18" y="3" width="191" height="15"/>
+                                                                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" alignment="left" imageScaling="proportionallyDown" inset="2" id="LPO-0e-Xmq">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="systemLight" size="12"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="performClick:" target="qR1-bb-hJd" id="KDY-qp-oKh"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="qR1-bb-hJd" firstAttribute="centerY" secondItem="bTX-xs-dBx" secondAttribute="centerY" id="8n7-UF-TJB"/>
+                                                                <constraint firstAttribute="trailing" secondItem="bTX-xs-dBx" secondAttribute="trailing" constant="8" id="8rV-b3-5XB"/>
+                                                                <constraint firstItem="bTX-xs-dBx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EuJ-vj-mvn" secondAttribute="top" id="V2A-Rp-kzA"/>
+                                                                <constraint firstAttribute="bottom" secondItem="bTX-xs-dBx" secondAttribute="bottom" constant="3" id="aHK-hS-auY"/>
+                                                                <constraint firstItem="qR1-bb-hJd" firstAttribute="leading" secondItem="EuJ-vj-mvn" secondAttribute="leading" constant="3" id="cH1-2E-z6X"/>
+                                                                <constraint firstItem="bTX-xs-dBx" firstAttribute="leading" secondItem="qR1-bb-hJd" secondAttribute="trailing" constant="2" id="hib-X7-dzK"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="disclosureButton" destination="qR1-bb-hJd" id="em3-EF-gYL"/>
+                                                                <outlet property="titleButton" destination="bTX-xs-dBx" id="xFE-kt-aZk"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="SidebarTableCellView" id="EvD-jt-a8m" customClass="SidebarTableCellView" customModule="NeteaseMusic" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="35" width="217" height="35"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dTY-P9-ruC">
+                                                                    <rect key="frame" x="18" y="10" width="16" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="dTY-P9-ruC" secondAttribute="height" multiplier="1:1" id="hXT-oz-wLT"/>
+                                                                        <constraint firstAttribute="width" constant="16" id="qjn-Gt-rzl"/>
+                                                                    </constraints>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="gRW-Cg-gAN"/>
+                                                                </imageView>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sce-lE-KRL">
+                                                                    <rect key="frame" x="39" y="10" width="172" height="16"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Yks-Wh-V37">
+                                                                        <font key="font" metaFont="cellTitle"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Qeo-el-Mgq">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="3" height="35"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="3" id="SJP-9J-gbN"/>
+                                                                    </constraints>
+                                                                </customView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Qeo-el-Mgq" firstAttribute="top" secondItem="EvD-jt-a8m" secondAttribute="top" id="93A-7M-TFd"/>
+                                                                <constraint firstAttribute="trailing" secondItem="sce-lE-KRL" secondAttribute="trailing" constant="8" id="AeG-Sr-ZI4"/>
+                                                                <constraint firstItem="Qeo-el-Mgq" firstAttribute="leading" secondItem="EvD-jt-a8m" secondAttribute="leading" id="U2w-Gb-CQT"/>
+                                                                <constraint firstItem="sce-lE-KRL" firstAttribute="centerY" secondItem="EvD-jt-a8m" secondAttribute="centerY" id="b8z-M0-FaO"/>
+                                                                <constraint firstItem="sce-lE-KRL" firstAttribute="leading" secondItem="dTY-P9-ruC" secondAttribute="trailing" constant="7" id="bOU-Hi-92l"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Qeo-el-Mgq" secondAttribute="bottom" id="eGC-bo-okC"/>
+                                                                <constraint firstItem="dTY-P9-ruC" firstAttribute="leading" secondItem="EvD-jt-a8m" secondAttribute="leading" constant="18" id="n1G-Zf-ADj"/>
+                                                                <constraint firstItem="dTY-P9-ruC" firstAttribute="centerY" secondItem="EvD-jt-a8m" secondAttribute="centerY" id="nHd-ZZ-FiW"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="highlightColorView" destination="Qeo-el-Mgq" id="Wxz-lm-0m1"/>
+                                                                <outlet property="imageView" destination="dTY-P9-ruC" id="K4H-XQ-Gbi"/>
+                                                                <outlet property="textField" destination="sce-lE-KRL" id="bmm-lb-exW"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="SmA-py-oK2" id="aZk-yG-BAb"/>
+                                                <outlet property="delegate" destination="SmA-py-oK2" id="nJA-NR-j7l"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                    <nil key="backgroundColor"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="HP5-sn-3fA">
+                                    <rect key="frame" x="1" y="496" width="135" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MFi-Yc-OYN">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xcs-LT-L0W" firstAttribute="leading" secondItem="z3A-mc-CSB" secondAttribute="leading" id="6x2-NA-SDf"/>
+                            <constraint firstItem="xcs-LT-L0W" firstAttribute="top" secondItem="z3A-mc-CSB" secondAttribute="top" id="9xP-zt-pb0"/>
+                            <constraint firstAttribute="bottom" secondItem="xcs-LT-L0W" secondAttribute="bottom" id="GR0-hq-7xZ"/>
+                            <constraint firstAttribute="trailing" secondItem="xcs-LT-L0W" secondAttribute="trailing" id="zp1-0E-Cew"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="6pt-Dj-o61" id="Q7v-Vg-IaA"/>
+                    </connections>
+                </viewController>
+                <customObject id="Yil-Cm-SPe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-643" y="989"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+    </resources>
+</document>

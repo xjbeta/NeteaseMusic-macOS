@@ -14,6 +14,7 @@
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
 		012FEA602286843D00698969 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA5F2286843D00698969 /* CoverImageView.swift */; };
 		012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* CoverImageButton.swift */; };
+		012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA662289B80F00698969 /* Sidebar.storyboard */; };
 		01314398226B497E00B9E26F /* RecommendSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 01314397226B497E00B9E26F /* RecommendSongs.json */; };
 		0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */; };
 		0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */; };
@@ -113,6 +114,7 @@
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		012FEA5F2286843D00698969 /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		012FEA61228684ED00698969 /* CoverImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageButton.swift; sourceTree = "<group>"; };
+		012FEA662289B80F00698969 /* Sidebar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sidebar.storyboard; sourceTree = "<group>"; };
 		01314397226B497E00B9E26F /* RecommendSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendSongs.json; sourceTree = "<group>"; };
 		0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewItem.swift; sourceTree = "<group>"; };
 		0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */,
 				0160308B225B88D60064EC88 /* SidebarTableCellView.swift */,
 				01FF8B73225C64B7002D7906 /* SidebarTableView.swift */,
+				012FEA662289B80F00698969 /* Sidebar.storyboard */,
 			);
 			name = Sidebar;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				0137264E226AF191004EDCE5 /* RecommendResource.json in Resources */,
 				01467E922283F2C30037B49D /* Lyric.storyboard in Resources */,
 				013143AD22706F1200B9E26F /* Lyric.json in Resources */,
+				012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */,
 				01467E9722846B050037B49D /* FM.storyboard in Resources */,
 				01467E9D2284713A0037B49D /* RadioGet.json in Resources */,
 				01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */,
