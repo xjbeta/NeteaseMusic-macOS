@@ -49,6 +49,7 @@ class PlayingSongViewController: NSViewController {
     var currentTrackObserver: NSKeyValueObservation?
     var playerStatueObserver: NSKeyValueObservation?
     var viewStatusObserver: NSObjectProtocol?
+    var fmModeObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,15 @@ class PlayingSongViewController: NSViewController {
             }
         }
         
-        lyricViewController()?.addPeriodicTimeObserver(PlayCore.shared.player)
+        fmModeObserver = PlayCore.shared.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playcore, _) in
+            guard let vc = self?.lyricViewController() else { return }
+            if !playcore.fmMode {
+                vc.addPeriodicTimeObserver(playcore.player)
+            } else {
+                vc.removePeriodicTimeObserver(playcore.player)
+            }
+        }
+        
     }
     
     func initView() {
@@ -156,6 +165,7 @@ class PlayingSongViewController: NSViewController {
     deinit {
         currentTrackObserver?.invalidate()
         playerStatueObserver?.invalidate()
+        fmModeObserver?.invalidate()
         lyricViewController()?.removePeriodicTimeObserver(PlayCore.shared.player)
         if let obs = viewStatusObserver {
             NotificationCenter.default.removeObserver(obs)
