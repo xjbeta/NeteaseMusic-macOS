@@ -19,6 +19,7 @@
 		012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA6B2289B96600698969 /* PlaylistView.storyboard */; };
 		012FEA6E2289B9D700698969 /* DiscoverView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA6D2289B9D700698969 /* DiscoverView.storyboard */; };
 		012FEA702289BA3F00698969 /* SidePlaylistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA6F2289BA3F00698969 /* SidePlaylistView.storyboard */; };
+		012FEA722289BAB300698969 /* PlayingSongView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA712289BAB300698969 /* PlayingSongView.storyboard */; };
 		01314398226B497E00B9E26F /* RecommendSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 01314397226B497E00B9E26F /* RecommendSongs.json */; };
 		0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */; };
 		0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */; };
@@ -123,6 +124,7 @@
 		012FEA6B2289B96600698969 /* PlaylistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaylistView.storyboard; sourceTree = "<group>"; };
 		012FEA6D2289B9D700698969 /* DiscoverView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverView.storyboard; sourceTree = "<group>"; };
 		012FEA6F2289BA3F00698969 /* SidePlaylistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SidePlaylistView.storyboard; sourceTree = "<group>"; };
+		012FEA712289BAB300698969 /* PlayingSongView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayingSongView.storyboard; sourceTree = "<group>"; };
 		01314397226B497E00B9E26F /* RecommendSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendSongs.json; sourceTree = "<group>"; };
 		0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewItem.swift; sourceTree = "<group>"; };
 		0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				013143A0226D65AA00B9E26F /* CDBackgroundView.swift */,
 				013143A8226F5D4200B9E26F /* ViewAnimation.swift */,
 				013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */,
+				012FEA712289BAB300698969 /* PlayingSongView.storyboard */,
 			);
 			name = PlayingSong;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */,
 				01467E9722846B050037B49D /* FM.storyboard in Resources */,
 				01467E9D2284713A0037B49D /* RadioGet.json in Resources */,
+				012FEA722289BAB300698969 /* PlayingSongView.storyboard in Resources */,
 				01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */,
 				01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */,
 				012FEA702289BA3F00698969 /* SidePlaylistView.storyboard in Resources */,

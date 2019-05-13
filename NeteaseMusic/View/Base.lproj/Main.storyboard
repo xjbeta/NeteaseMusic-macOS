@@ -1128,7 +1128,7 @@ DQ
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ" customClass="PlaySongViewBackgroundView" customModule="NeteaseMusic" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="-585" width="1000" height="585"/>
                                 <connections>
-                                    <segue destination="AkV-cS-MKC" kind="embed" id="t7J-Jn-pPY"/>
+                                    <segue destination="4w4-6c-N5y" kind="embed" id="7hD-fW-INt"/>
                                 </connections>
                             </containerView>
                             <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-uP-FaE">
@@ -1184,7 +1184,7 @@ DQ
                 <controllerPlaceholder storyboardName="ControlBar" id="u9C-ge-q0T" sceneMemberID="viewController"/>
                 <customObject id="97P-ZL-BO9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1554"/>
+            <point key="canvasLocation" x="767" y="1152"/>
         </scene>
         <!--FM-->
         <scene sceneID="CLh-uX-oMm">
@@ -1192,7 +1192,7 @@ DQ
                 <controllerPlaceholder storyboardName="FM" id="Wq4-hO-qaB" sceneMemberID="viewController"/>
                 <customObject id="CPL-xe-CPu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="219" y="1554"/>
+            <point key="canvasLocation" x="744" y="1229"/>
         </scene>
         <!--Search Suggestions View Controller-->
         <scene sceneID="nwQ-VJ-ekC">
@@ -1337,7 +1337,7 @@ DQ
                 <controllerPlaceholder storyboardName="Sidebar" id="DJj-ZS-YFg" sceneMemberID="viewController"/>
                 <customObject id="SQk-qu-gIb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-79" y="1554"/>
+            <point key="canvasLocation" x="758" y="1082"/>
         </scene>
         <!--Lyric-->
         <scene sceneID="gEb-xR-U33">
@@ -1371,215 +1371,17 @@ DQ
             </objects>
             <point key="canvasLocation" x="785" y="942"/>
         </scene>
-        <!--Playing Song View Controller-->
-        <scene sceneID="eii-6W-bBH">
+        <!--PlayingSongView-->
+        <scene sceneID="uSP-cT-XWb">
             <objects>
-                <viewController id="AkV-cS-MKC" customClass="PlayingSongViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="HG9-Yy-A23">
-                        <rect key="frame" x="0.0" y="0.0" width="836" height="540"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="withinWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Q9a-SV-p8g">
-                                <rect key="frame" x="0.0" y="0.0" width="836" height="540"/>
-                                <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="p5e-hN-naP">
-                                        <rect key="frame" x="429" y="412" width="341" height="126"/>
-                                        <subviews>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDj-20-heR">
-                                                <rect key="frame" x="252" y="20" width="69" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="Qn1-ya-Aai">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                            </button>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="imI-0i-7IH">
-                                                <rect key="frame" x="18" y="58" width="305" height="17"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="fLz-bx-2ka">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eoh-n3-2m8">
-                                                <rect key="frame" x="189" y="22" width="42" height="14"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Artist:" id="1uy-gd-0if">
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                    <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1yc-Kc-gJg">
-                                                <rect key="frame" x="18" y="83" width="305" height="23"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="qPr-YK-skD">
-                                                    <font key="font" metaFont="system" size="19"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STM-of-uE7">
-                                                <rect key="frame" x="18" y="22" width="47" height="14"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Album:" id="gTr-gb-iHo">
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                    <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NdX-KY-yic">
-                                                <rect key="frame" x="75" y="20" width="69" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="bevel" title="Button" bezelStyle="regularSquare" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="CKD-8h-To4">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="smallSystem"/>
-                                                </buttonCell>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="126" id="KWY-jT-M4M"/>
-                                            <constraint firstAttribute="width" constant="341" id="zIC-Ce-tUl"/>
-                                        </constraints>
-                                    </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ajT-33-rj6">
-                                        <rect key="frame" x="20" y="74" width="400" height="513"/>
-                                        <subviews>
-                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lDd-We-xPe" customClass="CDBackgroundView" customModule="NeteaseMusic" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="20" width="330" height="330"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEA-DY-6Go">
-                                                        <rect key="frame" x="10" y="10" width="310" height="310"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="play_disc" id="2H2-Yd-fix"/>
-                                                    </imageView>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0g3-AB-CXJ">
-                                                        <rect key="frame" x="62" y="62" width="206" height="206"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="6pQ-Gi-aq9"/>
-                                                    </imageView>
-                                                </subviews>
-                                            </customView>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="THX-Hz-FAk">
-                                                <rect key="frame" x="161" y="261" width="139" height="232"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="play_needle" id="5DK-G4-vCO"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="fa3-c8-x29"/>
-                                            <constraint firstAttribute="height" constant="513" id="n2g-BZ-ZuQ"/>
-                                        </constraints>
-                                    </customView>
-                                    <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ht8-GS-reD">
-                                        <rect key="frame" x="788" y="320" width="100" height="71"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DfK-du-e7N">
-                                                <rect key="frame" x="33" y="43" width="35" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="23" id="nMM-3x-UYK"/>
-                                                </constraints>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="icon.sp#icn-lrc_speed" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DmA-SA-dHd">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="offset:" target="AkV-cS-MKC" id="cGT-QB-tid"/>
-                                                </connections>
-                                            </button>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cEh-3o-er8">
-                                                <rect key="frame" x="-2" y="27" width="104" height="17"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="i0N-62-IHb"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="+1s" id="aTb-mA-qPE">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                                <connections>
-                                                    <binding destination="AkV-cS-MKC" name="value" keyPath="self.lyricOffset" id="AYU-nA-H8u">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">LyricOffsetTransformer</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
-                                            </textField>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ljz-SQ-hxO">
-                                                <rect key="frame" x="33" y="-7" width="35" height="32"/>
-                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="icon.sp#icn-lrc_speed_down" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8cn-rf-LVY">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="offset:" target="AkV-cS-MKC" id="W2n-ZI-ctw"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="DfK-du-e7N" firstAttribute="width" secondItem="Ljz-SQ-hxO" secondAttribute="width" id="Kv1-XK-JIS"/>
-                                        </constraints>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SwM-Hm-NLw">
-                                        <rect key="frame" x="429" y="74" width="341" height="317"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <connections>
-                                            <segue destination="EcZ-2V-yjC" kind="embed" id="mJG-lJ-Act"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="p5e-hN-naP" firstAttribute="leading" secondItem="ajT-33-rj6" secondAttribute="trailing" constant="9" id="QvU-3a-lBS"/>
-                                    <constraint firstItem="ajT-33-rj6" firstAttribute="top" secondItem="Q9a-SV-p8g" secondAttribute="top" constant="-47" id="RO2-n5-efv"/>
-                                    <constraint firstItem="ajT-33-rj6" firstAttribute="leading" secondItem="Q9a-SV-p8g" secondAttribute="leading" constant="20" id="SVe-AH-Wfu"/>
-                                    <constraint firstItem="p5e-hN-naP" firstAttribute="top" secondItem="Q9a-SV-p8g" secondAttribute="top" constant="2" id="j7o-eu-zlQ"/>
-                                </constraints>
-                            </visualEffectView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="Q9a-SV-p8g" firstAttribute="top" secondItem="HG9-Yy-A23" secondAttribute="top" id="1Mm-hw-u2p"/>
-                            <constraint firstAttribute="bottom" secondItem="Q9a-SV-p8g" secondAttribute="bottom" id="Yla-wC-8l1"/>
-                            <constraint firstAttribute="trailing" secondItem="Q9a-SV-p8g" secondAttribute="trailing" id="Yv4-OV-Mrd"/>
-                            <constraint firstItem="Q9a-SV-p8g" firstAttribute="leading" secondItem="HG9-Yy-A23" secondAttribute="leading" id="pik-af-sYe"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="cdImgImageView" destination="0g3-AB-CXJ" id="SvJ-OK-kDo"/>
-                        <outlet property="cdRunImageView" destination="THX-Hz-FAk" id="QBc-4Q-JpN"/>
-                        <outlet property="cdwarpImageView" destination="MEA-DY-6Go" id="GmE-h2-hrd"/>
-                        <outlet property="lyricContainerView" destination="SwM-Hm-NLw" id="emw-ea-frr"/>
-                        <outlet property="offsetDownButton" destination="Ljz-SQ-hxO" id="Sve-wC-zhV"/>
-                        <outlet property="offsetTextField" destination="cEh-3o-er8" id="93L-hn-aNE"/>
-                        <outlet property="offsetUpButton" destination="DfK-du-e7N" id="AxL-zP-xsi"/>
-                        <outlet property="secondTitleTextField" destination="imI-0i-7IH" id="3zE-Dm-wFD"/>
-                        <outlet property="titleTextField" destination="1yc-Kc-gJg" id="rnW-t9-hmh"/>
-                        <outlet property="visualEffectView" destination="Q9a-SV-p8g" id="Msx-R5-HhX"/>
-                    </connections>
-                </viewController>
-                <customObject id="OUp-WO-3BU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardName="PlayingSongView" id="4w4-6c-N5y" sceneMemberID="viewController"/>
+                <customObject id="TR9-UZ-aqO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175" y="1409"/>
+            <point key="canvasLocation" x="787" y="1013"/>
         </scene>
     </scenes>
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="icon.sp#icn-lrc_speed" width="11" height="10"/>
-        <image name="icon.sp#icn-lrc_speed_down" width="11" height="10"/>
-        <image name="play_disc" width="620" height="620"/>
-        <image name="play_needle" width="278" height="464"/>
     </resources>
 </document>
