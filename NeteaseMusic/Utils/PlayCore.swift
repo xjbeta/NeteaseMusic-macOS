@@ -37,6 +37,17 @@ class PlayCore: NSObject {
     @objc dynamic var playedTracks = [Int]()
     var playedAlbums = [Int]()
     
+    var fmMode = false {
+        didSet {
+            if fmMode {
+                // hide prevSong, repeatMode, shuffleMode, playlist
+                
+            }
+        }
+    }
+    @objc dynamic var fmPlaylist: [Track] = []
+    @objc dynamic var currentFMTrack: Track?
+    
     func start(_ index: Int = 0) {
         removeObserver()
         playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
@@ -62,6 +73,14 @@ class PlayCore: NSObject {
     }
     
     func nextSong() {
+        guard !fmMode else {
+            guard let currentTrack = currentFMTrack,
+                let index = fmPlaylist.firstIndex(of: currentTrack),
+                let nextTrack = fmPlaylist[safe: index + 1] else { return }
+            play(nextTrack)
+            return
+        }
+        
         switch repeatMode {
         case .noRepeat, .repeatPlayList:
             let tracks = effectiveTracks()
@@ -106,10 +125,17 @@ class PlayCore: NSObject {
     }
     
     func previousSong() {
-        guard playedTracks.count > 0 else { return }
-        if let id = playedTracks.last, let track = effectiveTracks().first(where: { $0.id == id }) {
-            playedTracks.removeLast()
-            play(track)
+        if fmMode {
+            guard let currentTrack = currentFMTrack,
+                let index = fmPlaylist.firstIndex(of: currentTrack),
+                let prevTrack = fmPlaylist[safe: index - 1] else { return }
+            play(prevTrack)
+        } else {
+            guard playedTracks.count > 0 else { return }
+            if let id = playedTracks.last, let track = effectiveTracks().first(where: { $0.id == id }) {
+                playedTracks.removeLast()
+                play(track)
+            }
         }
     }
     
