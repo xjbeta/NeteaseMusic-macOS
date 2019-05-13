@@ -85,8 +85,10 @@ class FMViewController: NSViewController {
         fmModeObserver = PlayCore.shared.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playcore, _) in
             guard let vc = self?.lyricViewController() else { return }
             if playcore.fmMode {
+                self?.updateCoverButtonStatus(playcore.player.timeControlStatus)
                 vc.addPeriodicTimeObserver(playcore.player)
             } else {
+                self?.updateCoverButtonStatus(.paused)
                 vc.removePeriodicTimeObserver(playcore.player)
             }
         }
