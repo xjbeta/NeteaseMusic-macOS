@@ -72,7 +72,7 @@ class LyricViewController: NSViewController {
     
     func getLyric(for id: Int) {
         PlayCore.shared.api.lyric(id).map {
-            guard self.currentLyricId == PlayCore.shared.currentTrack?.id else { return }
+            guard self.currentLyricId == id else { return }
             self.initLyric(lyric: $0)
             }.done(on: .main) {
                 self.tableView.reloadData()
