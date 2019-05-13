@@ -49,6 +49,7 @@ class PlayCore: NSObject {
     @objc dynamic var currentFMTrack: Track?
     
     func start(_ index: Int = 0) {
+        fmMode = false
         removeObserver()
         playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
             self.nextSong()
