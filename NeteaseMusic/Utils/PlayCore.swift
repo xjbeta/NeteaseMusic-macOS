@@ -66,8 +66,8 @@ class PlayCore: NSObject {
                     play(track, time: fmSavedTime.time)
                 } else {
                     play(track)
-                    fmSavedTime = (id: -1, time: CMTime())
                 }
+                fmSavedTime = (id: -1, time: CMTime())
             }
         } else {
             if let track = effectiveTracks()[safe: index] {
