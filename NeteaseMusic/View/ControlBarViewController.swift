@@ -38,6 +38,14 @@ class ControlBarViewController: NSViewController {
             }
         case nextButton:
             PlayCore.shared.nextSong()
+            if PlayCore.shared.fmMode, let id = PlayCore.shared.currentTrack?.id {
+                let seconds = Int(player.currentTime().seconds)
+                PlayCore.shared.api.radioSkip(id, seconds).done {
+                    print("Song skipped, id: \(id) seconds: \(seconds)")
+                    }.catch {
+                        print($0)
+                }
+            }
         case muteButton:
             player.isMuted = !player.isMuted
         case playlistButton:
