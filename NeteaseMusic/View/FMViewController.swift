@@ -16,9 +16,6 @@ class FMViewController: NSViewController {
     @IBOutlet weak var playButton: NSButton!
     
     @IBOutlet weak var nameTextField: NSTextField!
-    var currentTrackObserver: NSKeyValueObservation?
-    var playerStatueObserver: NSKeyValueObservation?
-    var playListObserver: NSKeyValueObservation?
     @IBAction func buttonAction(_ sender: NSButton) {
         let player = PlayCore.shared.player
         switch sender {
@@ -40,6 +37,11 @@ class FMViewController: NSViewController {
         }
     }
     
+    var currentTrackObserver: NSKeyValueObservation?
+    var playerStatueObserver: NSKeyValueObservation?
+    var playListObserver: NSKeyValueObservation?
+    var fmModeObserver: NSKeyValueObservation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePlayButton(true)
@@ -58,7 +60,6 @@ class FMViewController: NSViewController {
                 tracksCount > 0 {
                 // fmPlayList inited
                 playcore.currentFMTrack = changes.newValue?.first
-                self?.lyricViewController()?.addPeriodicTimeObserver(playcore.player)
                 self?.initView()
             }
         }
@@ -79,6 +80,15 @@ class FMViewController: NSViewController {
         playerStatueObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             guard PlayCore.shared.fmMode else { return }
             self?.updateCoverButtonStatus(player.timeControlStatus)
+        }
+        
+        fmModeObserver = PlayCore.shared.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playcore, _) in
+            guard let vc = self?.lyricViewController() else { return }
+            if playcore.fmMode {
+                vc.addPeriodicTimeObserver(playcore.player)
+            } else {
+                vc.removePeriodicTimeObserver(playcore.player)
+            }
         }
         
         PlayCore.shared.fmPlaylist.removeAll()
@@ -161,5 +171,6 @@ class FMViewController: NSViewController {
         currentTrackObserver?.invalidate()
         playerStatueObserver?.invalidate()
         playListObserver?.invalidate()
+        fmModeObserver?.invalidate()
     }
 }

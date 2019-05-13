@@ -37,7 +37,7 @@ class PlayCore: NSObject {
     @objc dynamic var playedTracks = [Int]()
     var playedAlbums = [Int]()
     
-    var fmMode = false {
+    @objc dynamic var fmMode = false {
         didSet {
             if fmMode {
                 // hide prevSong, repeatMode, shuffleMode, playlist
