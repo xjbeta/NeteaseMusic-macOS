@@ -62,7 +62,11 @@ class PlayCore: NSObject {
     func play(_ track: Track) {
         guard let item = track.song?.playerItem else { return }
         
-        currentTrack = track
+        if fmMode {
+            currentFMTrack = track
+        } else {
+            currentTrack = track
+        }
         
         player.pause()
         player.replaceCurrentItem(with: item)
