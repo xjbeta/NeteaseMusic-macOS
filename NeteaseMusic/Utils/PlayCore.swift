@@ -81,6 +81,13 @@ class PlayCore: NSObject {
             guard let currentTrack = currentFMTrack,
                 let index = fmPlaylist.firstIndex(of: currentTrack),
                 let nextTrack = fmPlaylist[safe: index + 1] else { return }
+            let id = currentTrack.id
+            let seconds = Int(player.currentTime().seconds)
+            api.radioSkip(id, seconds).done {
+                print("Song skipped, id: \(id) seconds: \(seconds)")
+                }.catch {
+                    print($0)
+            }
             play(nextTrack)
             return
         }
