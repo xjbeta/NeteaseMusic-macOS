@@ -26,13 +26,24 @@
                                     <constraint firstAttribute="width" secondItem="9KC-UX-vy4" secondAttribute="height" multiplier="1:1" id="4ty-kQ-3bs"/>
                                     <constraint firstAttribute="width" constant="230" id="Ppz-ca-lQY"/>
                                 </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="BqE-UU-8Yd">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="BqE-UU-8Yd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="buttonAction:" target="G6x-Kr-Kbk" id="XJO-YN-0i2"/>
+                                </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LC5-dC-668" customClass="CoverImageView" customModule="NeteaseMusic" customModuleProvider="target">
+                                <rect key="frame" x="82" y="201" width="270" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="HWZ-oo-5Hf"/>
+                                    <constraint firstAttribute="width" secondItem="LC5-dC-668" secondAttribute="height" multiplier="1:1" id="uXE-nP-YJf"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0LO-BT-Mzu"/>
+                            </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyd-cS-fva">
-                                <rect key="frame" x="452" y="518" width="57" height="27"/>
+                                <rect key="frame" x="452" y="518" width="344" height="27"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="VNc-eN-YQf">
                                     <font key="font" metaFont="system" size="22"/>
@@ -58,14 +69,17 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LC5-dC-668" customClass="CoverImageView" customModule="NeteaseMusic" customModuleProvider="target">
-                                <rect key="frame" x="82" y="201" width="270" height="270"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="HWZ-oo-5Hf"/>
-                                    <constraint firstAttribute="width" secondItem="LC5-dC-668" secondAttribute="height" multiplier="1:1" id="uXE-nP-YJf"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0LO-BT-Mzu"/>
-                            </imageView>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uax-7j-HB7">
+                                <rect key="frame" x="282" y="216" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q6F-bg-lDm">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="buttonAction:" target="G6x-Kr-Kbk" id="Uz2-Ze-6CW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="9KC-UX-vy4" firstAttribute="leading" secondItem="rF1-MY-g98" secondAttribute="leading" constant="42" id="GYL-Cc-wSa"/>
@@ -77,6 +91,7 @@
                     <connections>
                         <outlet property="coverImageView" destination="LC5-dC-668" id="gbq-ja-zPJ"/>
                         <outlet property="nameTextField" destination="dyd-cS-fva" id="aSM-4t-pxL"/>
+                        <outlet property="playButton" destination="Uax-7j-HB7" id="bYx-wJ-ELf"/>
                         <outlet property="prevImageButton" destination="9KC-UX-vy4" id="KVL-u8-SkA"/>
                     </connections>
                 </viewController>
