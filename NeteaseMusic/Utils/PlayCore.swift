@@ -47,16 +47,27 @@ class PlayCore: NSObject {
     }
     @objc dynamic var fmPlaylist: [Track] = []
     @objc dynamic var currentFMTrack: Track?
+    private var fmSavedTime = (id: -1, time: CMTime())
     
     func start(_ index: Int = 0, enterFMMode: Bool = false) {
+        if fmMode, !enterFMMode {
+            fmSavedTime = (currentFMTrack?.id ?? -1, player.currentTime())
+        }
+        
         fmMode = enterFMMode
+        
         removeObserver()
         playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
             self.nextSong()
         }
         if fmMode {
             if let track = currentFMTrack {
-                play(track)
+                if fmSavedTime.id == track.id {
+                    play(track, time: fmSavedTime.time)
+                } else {
+                    play(track)
+                    fmSavedTime = (id: -1, time: CMTime())
+                }
             }
         } else {
             if let track = effectiveTracks()[safe: index] {
@@ -65,7 +76,7 @@ class PlayCore: NSObject {
         }
     }
     
-    func play(_ track: Track) {
+    func play(_ track: Track, time: CMTime = CMTime(value: 0, timescale: 1000)) {
         guard let item = track.song?.playerItem else { return }
         
         if fmMode {
@@ -76,7 +87,7 @@ class PlayCore: NSObject {
         
         player.pause()
         player.replaceCurrentItem(with: item)
-        player.seek(to: CMTime(value: 0, timescale: 1000)) {_ in
+        player.seek(to: time) {_ in
             self.player.play()
         }
         
