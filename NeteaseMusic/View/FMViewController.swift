@@ -60,6 +60,7 @@ class FMViewController: NSViewController {
                 tracksCount > 0 {
                 // fmPlayList inited
                 playcore.currentFMTrack = changes.newValue?.first
+                self?.lyricViewController()?.addPeriodicTimeObserver(playcore.player)
                 self?.initView()
             }
         }
@@ -67,6 +68,7 @@ class FMViewController: NSViewController {
         currentTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] playcore, _ in
             guard playcore.fmMode else { return }
             print("currentFMTrack changed")
+            self?.lyricViewController()?.currentLyricId = playcore.currentFMTrack?.id ?? -1
             self?.initView()
             
             if let track = playcore.currentFMTrack,
@@ -80,8 +82,6 @@ class FMViewController: NSViewController {
             guard PlayCore.shared.fmMode else { return }
             self?.updateCoverButtonStatus(player.timeControlStatus)
         }
-        
-        lyricViewController()?.addPeriodicTimeObserver(PlayCore.shared.player)
         
         PlayCore.shared.fmPlaylist.removeAll()
         loadFMTracks()
