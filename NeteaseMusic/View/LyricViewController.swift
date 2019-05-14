@@ -69,8 +69,12 @@ class LyricViewController: NSViewController {
         let frame = tableView.frameOfCell(atColumn: 0, row: i)
         let y = frame.midY - scrollView.frame.height / 2
         scrollView.verticalScroller?.isEnabled = false
-        tableView.scroll(.init(x: 0, y: y))
-        scrollView.verticalScroller?.isEnabled = true
+        NSAnimationContext.runAnimationGroup({ [weak self] (context) in
+            context.allowsImplicitAnimation = true
+            self?.tableView.animator().scroll(.init(x: 0, y: y))
+        }) { [weak self] in
+            self?.scrollView.verticalScroller?.isEnabled = true
+        }
     }
     
     func getLyric(for id: Int) {
