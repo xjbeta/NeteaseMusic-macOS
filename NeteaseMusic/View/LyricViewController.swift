@@ -57,7 +57,10 @@ class LyricViewController: NSViewController {
         guard let line = lyriclines.filter({ $0.time.totalMS < periodicMS }).last else {
             return
         }
-        let offsets = lyriclines.enumerated().filter({ $0.element.time == line.time }).map({ $0.offset })
+        let lins = lyriclines.enumerated().filter({ $0.element.time == line.time }).filter({ !$0.element.string.isEmpty })
+        guard lins.count > 0 else { return }
+        
+        let offsets = lins.map({ $0.offset })
         
         let indexSet = IndexSet(offsets)
         guard tableView.selectedRowIndexes != indexSet else { return }
