@@ -43,6 +43,7 @@ class SongInfoViewController: NSViewController {
         
         artistStackView.arrangedSubviews.forEach {
             artistStackView.removeArrangedSubview($0)
+            $0.removeFromSuperview()
         }
 
         buttons.enumerated().forEach {
