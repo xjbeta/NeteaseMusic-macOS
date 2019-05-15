@@ -421,6 +421,35 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func album(_ id: Int) -> Promise<[Track]> {
+        struct Result: Decodable {
+            let songs: [Track]
+            let code: Int
+        }
+        
+        let p = DefaultParameters(csrfToken: csrf).jsonString()
+        return Promise { resolver in
+            AF.request("https://music.163.com/weapi/v1/album/\(id)?csrf_token=\(csrf)",
+                method: .post,
+                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
+                    if let error = re.error {
+                        resolver.reject(error)
+                        return
+                    }
+                    do {
+                        let result = try re.result.get()
+                        if result.code == 200 {
+                            resolver.fulfill(result.songs)
+                        } else {
+                            resolver.reject(APIError.errorCode(result.code))
+                        }
+                    } catch let error {
+                        resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
     func crypto(_ text: String) -> [String: String] {
         guard let jsContext = JSContext(),
             let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),

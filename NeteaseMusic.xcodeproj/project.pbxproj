@@ -66,6 +66,7 @@
 		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
 		0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160308B225B88D60064EC88 /* SidebarTableCellView.swift */; };
 		01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B99228C0D1400D11190 /* LyricScroller.swift */; };
+		01677B9D228C133D00D11190 /* Album.json in Resources */ = {isa = PBXBuildFile; fileRef = 01677B9C228C133D00D11190 /* Album.json */; };
 		017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */ = {isa = PBXBuildFile; fileRef = 017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */; };
 		017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
@@ -172,6 +173,7 @@
 		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
 		0160308B225B88D60064EC88 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		01677B99228C0D1400D11190 /* LyricScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricScroller.swift; sourceTree = "<group>"; };
+		01677B9C228C133D00D11190 /* Album.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Album.json; sourceTree = "<group>"; };
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -422,6 +424,7 @@
 				013143AC22706F1200B9E26F /* Lyric.json */,
 				017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */,
 				01467E9C2284713A0037B49D /* RadioGet.json */,
+				01677B9C228C133D00D11190 /* Album.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */,
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
 				012FEA6E2289B9D700698969 /* DiscoverView.storyboard in Resources */,
+				01677B9D228C133D00D11190 /* Album.json in Resources */,
 				012FEA752289BC5300698969 /* LoginWindow.storyboard in Resources */,
 				0137264C226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib in Resources */,
 				01957D93224D01860006FCEC /* Main.storyboard in Resources */,

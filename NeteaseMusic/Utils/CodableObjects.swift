@@ -21,7 +21,9 @@ class Track: NSObject, Decodable {
     var song: Song?
     
     // 2: No copyright, 1: copyright , 0: ?
-    let copyright: Int
+    let copyright: Int?
+    
+    let pop: Int?
     
     @objc var index = -1
     
@@ -51,7 +53,7 @@ class Track: NSObject, Decodable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case name, id, copyright, artists, album, duration
+        case name, id, copyright, pop, artists, album, duration
     }
     
     enum SortCodingKeys: String, CodingKey {
@@ -70,7 +72,9 @@ class Track: NSObject, Decodable {
             secondName = ""
         }
         self.id = try container.decode(Int.self, forKey: .id)
-        self.copyright = try container.decode(Int.self, forKey: .copyright)
+        
+        self.copyright = try container.decodeIfPresent(Int.self, forKey: .copyright)
+        self.pop = try container.decodeIfPresent(Int.self, forKey: .pop)
         
         self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists) ?? sortContainer.decode([Artist].self, forKey: .artists)
         self.album = try container.decodeIfPresent(Album.self, forKey: .album) ?? sortContainer.decode(Album.self, forKey: .album)
