@@ -21,6 +21,8 @@
 		012FEA702289BA3F00698969 /* SidePlaylistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA6F2289BA3F00698969 /* SidePlaylistView.storyboard */; };
 		012FEA722289BAB300698969 /* PlayingSongView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA712289BAB300698969 /* PlayingSongView.storyboard */; };
 		012FEA752289BC5300698969 /* LoginWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA742289BC5300698969 /* LoginWindow.storyboard */; };
+		012FEA78228A5F6000698969 /* SongInfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA77228A5F6000698969 /* SongInfoView.storyboard */; };
+		012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA79228A5F7100698969 /* SongInfoViewController.swift */; };
 		01314398226B497E00B9E26F /* RecommendSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 01314397226B497E00B9E26F /* RecommendSongs.json */; };
 		0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */; };
 		0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */; };
@@ -72,6 +74,7 @@
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = 01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */; };
 		01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */ = {isa = PBXBuildFile; fileRef = 01E0F4A62261661B0043FAB6 /* PlayerUrl.json */; };
+		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
 		01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarTableView.swift */; };
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
@@ -127,6 +130,8 @@
 		012FEA6F2289BA3F00698969 /* SidePlaylistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SidePlaylistView.storyboard; sourceTree = "<group>"; };
 		012FEA712289BAB300698969 /* PlayingSongView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayingSongView.storyboard; sourceTree = "<group>"; };
 		012FEA742289BC5300698969 /* LoginWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginWindow.storyboard; sourceTree = "<group>"; };
+		012FEA77228A5F6000698969 /* SongInfoView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongInfoView.storyboard; sourceTree = "<group>"; };
+		012FEA79228A5F7100698969 /* SongInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		01314397226B497E00B9E26F /* RecommendSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendSongs.json; sourceTree = "<group>"; };
 		0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewItem.swift; sourceTree = "<group>"; };
 		0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -177,6 +182,7 @@
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlaylistDetail.json; sourceTree = "<group>"; };
 		01E0F4A62261661B0043FAB6 /* PlayerUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayerUrl.json; sourceTree = "<group>"; };
+		01E7C9D3228BB697004D80AD /* IdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdButton.swift; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		01FF8B73225C64B7002D7906 /* SidebarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableView.swift; sourceTree = "<group>"; };
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -249,6 +255,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		012FEA76228A5F4400698969 /* SongInfo */ = {
+			isa = PBXGroup;
+			children = (
+				012FEA77228A5F6000698969 /* SongInfoView.storyboard */,
+				012FEA79228A5F7100698969 /* SongInfoViewController.swift */,
+				01E7C9D3228BB697004D80AD /* IdButton.swift */,
+			);
+			name = SongInfo;
+			sourceTree = "<group>";
+		};
 		0131439F226D657700B9E26F /* PlayingSong */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +316,7 @@
 				0137264422698FBD004EDCE5 /* Discover */,
 				01467E9522846AEC0037B49D /* FM */,
 				012FEA63228686CD00698969 /* Lyric */,
+				012FEA76228A5F4400698969 /* SongInfo */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -484,6 +501,7 @@
 				012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */,
 				01467E9722846B050037B49D /* FM.storyboard in Resources */,
 				01467E9D2284713A0037B49D /* RadioGet.json in Resources */,
+				012FEA78228A5F6000698969 /* SongInfoView.storyboard in Resources */,
 				012FEA722289BAB300698969 /* PlayingSongView.storyboard in Resources */,
 				01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */,
 				01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */,
@@ -511,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
+				012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */,
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
 				01FF8B7F225D7DFE002D7906 /* CodableObjects.swift in Sources */,
@@ -547,6 +566,7 @@
 				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
 				01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */,
+				01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */,
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,
 				0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */,
 				013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */,
