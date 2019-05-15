@@ -93,6 +93,7 @@ class LyricViewController: NSViewController {
     
     func initLyric(lyric: LyricResult) {
         lyriclines.removeAll()
+        textField.isHidden = true
         if let nolyric = lyric.nolyric, nolyric {
             textField.isHidden = false
             textField.stringValue = "no lyric"
