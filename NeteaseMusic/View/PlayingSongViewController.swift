@@ -15,9 +15,6 @@ class PlayingSongViewController: NSViewController {
     @IBOutlet weak var cdwarpImageView: NSImageView!
     @IBOutlet weak var cdImgImageView: NSImageView!
     
-    @IBOutlet weak var titleTextField: NSTextField!
-    @IBOutlet weak var secondTitleTextField: NSTextField!
-    
     @IBOutlet weak var lyricContainerView: NSView!
     @IBOutlet weak var offsetTextField: NSTextField!
     @IBOutlet weak var offsetUpButton: NSButton!
@@ -115,7 +112,7 @@ class PlayingSongViewController: NSViewController {
             cdImgImageView.image = nil
         }
 
-        titleTextField.stringValue = track.name
+        songInfoViewController()?.initInfos(track)
         
         lyricViewController()?.currentLyricId = track.id
     }
@@ -161,6 +158,14 @@ class PlayingSongViewController: NSViewController {
         }.first
         return lyricVC
     }
+    
+    func songInfoViewController() -> SongInfoViewController? {
+        let songInfoVC = children.compactMap {
+            $0 as? SongInfoViewController
+            }.first
+        return songInfoVC
+    }
+    
     
     deinit {
         currentTrackObserver?.invalidate()
