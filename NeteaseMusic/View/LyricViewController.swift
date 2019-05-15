@@ -71,12 +71,9 @@ class LyricViewController: NSViewController {
         
         let frame = tableView.frameOfCell(atColumn: 0, row: i)
         let y = frame.midY - scrollView.frame.height / 2
-        scrollView.verticalScroller?.isEnabled = false
-        NSAnimationContext.runAnimationGroup({ [weak self] (context) in
+        NSAnimationContext.runAnimationGroup { [weak self] (context) in
             context.allowsImplicitAnimation = true
             self?.tableView.animator().scroll(.init(x: 0, y: y))
-        }) { [weak self] in
-            self?.scrollView.verticalScroller?.isEnabled = true
         }
     }
     
