@@ -15,7 +15,6 @@ class FMViewController: NSViewController {
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var playButton: NSButton!
     
-    @IBOutlet weak var nameTextField: NSTextField!
     @IBAction func buttonAction(_ sender: NSButton) {
         let player = PlayCore.shared.player
         switch sender {
@@ -124,8 +123,8 @@ class FMViewController: NSViewController {
             lyricViewController()?.currentLyricId = -1
             return
         }
-        nameTextField.stringValue = track.name
         
+        songInfoViewController()?.initInfos(track)
         
         guard let index = playlist.firstIndex(of: track) else { return }
 
@@ -166,6 +165,13 @@ class FMViewController: NSViewController {
             $0 as? LyricViewController
             }.first
         return lyricVC
+    }
+    
+    func songInfoViewController() -> SongInfoViewController? {
+        let songInfoVC = children.compactMap {
+            $0 as? SongInfoViewController
+            }.first
+        return songInfoVC
     }
     
     deinit {
