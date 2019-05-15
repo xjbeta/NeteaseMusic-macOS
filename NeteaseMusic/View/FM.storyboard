@@ -65,14 +65,17 @@
                                     <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBx-k6-lve">
                                         <rect key="frame" x="390" y="3" width="400" height="450"/>
                                         <subviews>
-                                            <containerView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rPC-9D-SFF">
-                                                <rect key="frame" x="0.0" y="380" width="400" height="70"/>
+                                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rPC-9D-SFF">
+                                                <rect key="frame" x="0.0" y="404" width="400" height="46"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="10" id="O5e-XQ-OtA"/>
+                                                </constraints>
                                                 <connections>
                                                     <segue destination="7mq-vH-uXY" kind="embed" id="oAO-0Z-svh"/>
                                                 </connections>
                                             </containerView>
-                                            <containerView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rOf-Ff-lT3">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="355"/>
+                                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rOf-Ff-lT3">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="379"/>
                                                 <connections>
                                                     <segue destination="STk-wE-vdF" kind="embed" id="bXo-gj-SLr"/>
                                                 </connections>
