@@ -54,25 +54,28 @@ class MainViewController: NSViewController {
         }
         
         playingSongNotification = NotificationCenter.default.addObserver(forName: .showPlayingSong, object: nil, queue: .main) { [weak self] _ in
-
-            guard let _ = PlayCore.shared.currentTrack,
-                self?.playingSongViewStatus != .animation else { return }
-            self?.playingSongViewStatus = .animation
-            let newStatus: ExtendedViewState = self?.playingSongTopLayoutConstraint.priority == .init(999) ? .display : .hidden
-            
-            NSAnimationContext.runAnimationGroup({ [weak self] context in
-                if newStatus == .display {
-                    self?.playingSongTopLayoutConstraint.animator().priority = .defaultLow
-                    self?.playingSongButtomLayoutConstraint.animator().priority = .init(999)
-                } else {
-                    self?.playingSongTopLayoutConstraint.animator().priority = .init(999)
-                    self?.playingSongButtomLayoutConstraint.animator().priority = .defaultLow
+            if PlayCore.shared.fmMode,
+                let _ = PlayCore.shared.currentFMTrack {
+                ViewControllerManager.shared.selectSidebarItem(.fm)
+            } else if !PlayCore.shared.fmMode,
+                let _ = PlayCore.shared.currentTrack,
+                self?.playingSongViewStatus != .animation {
+                self?.playingSongViewStatus = .animation
+                let newStatus: ExtendedViewState = self?.playingSongTopLayoutConstraint.priority == .init(999) ? .display : .hidden
+                
+                NSAnimationContext.runAnimationGroup({ [weak self] context in
+                    if newStatus == .display {
+                        self?.playingSongTopLayoutConstraint.animator().priority = .defaultLow
+                        self?.playingSongButtomLayoutConstraint.animator().priority = .init(999)
+                    } else {
+                        self?.playingSongTopLayoutConstraint.animator().priority = .init(999)
+                        self?.playingSongButtomLayoutConstraint.animator().priority = .defaultLow
+                    }
+                }) {
+                    self?.playingSongViewStatus = newStatus
                 }
-            }) {
-                self?.playingSongViewStatus = newStatus
             }
         }
-        
     }
     
     func updateTabView(_ item: TabItems) {

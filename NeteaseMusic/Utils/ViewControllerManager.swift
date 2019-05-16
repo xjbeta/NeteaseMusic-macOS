@@ -16,4 +16,9 @@ class ViewControllerManager: NSObject {
     
     @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
     
+    
+    func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
+                           _ id: Int = -1) {
+        NotificationCenter.default.post(name: .selectSidebarItem, object: nil, userInfo: ["itemType": itemType, "id": id])
+    }
 }

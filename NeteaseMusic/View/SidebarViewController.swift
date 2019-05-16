@@ -49,11 +49,30 @@ class SidebarViewController: NSViewController {
     var tableViewItems = [TableViewItem]()
     var tableViewSelectedRow = -1
     
+    let tableviewNotification = Notification(name: NSTableView.selectionDidChangeNotification, object: nil, userInfo: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewItems = defaultItems
         tableView.reloadData()
         updatePlaylists()
+        
+        NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
+            guard let dic = $0.userInfo as? [String: Any],
+                let itemType = dic["itemType"] as? ItemType,
+                let id = dic["id"] as? Int else { return }
+            
+            switch itemType {
+            case .fm:
+                if let index = self?.tableViewItems.firstIndex(where: { $0.type == itemType }), let notification = self?.tableviewNotification {
+                    self?.tableView.deselectAll(self)
+                    self?.tableView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
+                    self?.tableViewSelectionIsChanging(notification)
+                }
+            default:
+                break
+            }
+        }
     }
     
     func updatePlaylists() {
@@ -88,6 +107,7 @@ class SidebarViewController: NSViewController {
             }.done(on: .main) {
                 self.tableView.reloadData()
                 self.tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+                self.tableViewSelectionIsChanging(self.tableviewNotification)
             }.catch {
                 print($0)
         }
@@ -122,11 +142,6 @@ extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
         return item.type != .header
     }
     
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        if tableViewSelectedRow == -1, tableView.selectedRow >= 0 {
-            tableViewSelectionIsChanging(notification)
-        }
-    }
     
     func tableViewSelectionIsChanging(_ notification: Notification) {
         if tableViewSelectedRow >= 0, tableViewSelectedRow < tableView.numberOfRows,
