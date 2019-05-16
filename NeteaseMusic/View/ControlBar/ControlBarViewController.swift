@@ -31,10 +31,27 @@ class ControlBarViewController: NSViewController {
             PlayCore.shared.previousSong()
         case pauseButton:
             guard player.error == nil else { return }
-            if player.rate == 0 {
-                player.play()
-            } else {
-                player.pause()
+            func continuePlayOrPause() {
+                if player.rate == 0 {
+                    player.play()
+                } else {
+                    player.pause()
+                }
+            }
+            if PlayCore.shared.fmMode, PlayCore.shared.currentFMTrack != nil {
+                continuePlayOrPause()
+            } else if !PlayCore.shared.fmMode, PlayCore.shared.currentTrack != nil {
+                continuePlayOrPause()
+            } else if let item = ViewControllerManager.shared.selectedSidebarItem?.type {
+                switch item {
+                case .fm:
+                    PlayCore.shared.start(enterFMMode: true)
+                case .playlist:
+                    let todo = "play playlist."
+                    break
+                default:
+                    break
+                }
             }
         case nextButton:
             PlayCore.shared.nextSong()
