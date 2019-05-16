@@ -69,27 +69,28 @@ class PlayCore: NSObject {
                 fmSavedTime = (id: -1, time: CMTime())
             }
         } else {
-            if let track = effectiveTracks()[safe: index] {
+            if let track = playlist[safe: index] {
                 play(track)
             }
         }
     }
     
     func play(_ track: Track, time: CMTime = CMTime(value: 0, timescale: 1000)) {
-        guard let item = track.song?.playerItem else { return }
-        
-        if fmMode {
-            currentFMTrack = track
-        } else {
-            currentTrack = track
+        track.playerItemm().done {
+            if self.fmMode {
+                self.currentFMTrack = track
+            } else {
+                self.currentTrack = track
+            }
+            
+            self.player.pause()
+            self.player.replaceCurrentItem(with: $0)
+            self.player.seek(to: time) {_ in
+                self.player.play()
+            }
+            }.catch {
+                print($0)
         }
-        
-        player.pause()
-        player.replaceCurrentItem(with: item)
-        player.seek(to: time) {_ in
-            self.player.play()
-        }
-        
     }
     
     func nextSong() {
@@ -103,37 +104,34 @@ class PlayCore: NSObject {
         
         switch repeatMode {
         case .noRepeat, .repeatPlayList:
-            let tracks = effectiveTracks()
-            
-            guard let currentTrack = tracks.enumerated().first(where: { $0.element.song?.playerItem == player.currentItem }) else {
-                print(tracks)
+            guard let currentTrack = playlist.enumerated().first(where: { $0.element.id == currentTrack?.id }) else {
+                print(playlist)
                 print(player.currentItem)
                 let t = "some thing wrong when break."
                 break
             }
-            
             playedTracks.append(currentTrack.element.id)
             
             switch shuffleMode {
             case .shuffleItems:
-                if tracks.count == playedTracks.count, repeatMode == .repeatPlayList {
+                if playlist.count == playedTracks.count, repeatMode == .repeatPlayList {
                     playedTracks.removeAll()
                 }
                 
-                if let track = tracks.filter({ !playedTracks.contains($0.id) }).randomItem() {
+                if let track = playlist.filter({ !playedTracks.contains($0.id) }).randomItem() {
                     play(track)
                 }
             case .shuffleAlbums:
                 break
             case .noShuffle:
-                if currentTrack.offset + 1 == tracks.count {
+                if currentTrack.offset + 1 == playlist.count {
                     // last track
-                    if repeatMode == .repeatPlayList, let track = tracks.first {
+                    if repeatMode == .repeatPlayList, let track = playlist.first {
                         play(track)
                     }
                 } else {
                     // next track
-                    if let track = tracks[safe: currentTrack.offset + 1] {
+                    if let track = playlist[safe: currentTrack.offset + 1] {
                         play(track)
                     }
                 }
@@ -152,7 +150,7 @@ class PlayCore: NSObject {
             play(prevTrack)
         } else {
             guard playedTracks.count > 0 else { return }
-            if let id = playedTracks.last, let track = effectiveTracks().first(where: { $0.id == id }) {
+            if let id = playedTracks.last, let track = playlist.first(where: { $0.id == id }) {
                 playedTracks.removeLast()
                 play(track)
             }
@@ -163,12 +161,6 @@ class PlayCore: NSObject {
         if let obs = playerShouldNextObserver {
             NotificationCenter.default.removeObserver(obs)
             playerShouldNextObserver = nil
-        }
-    }
-    
-    func effectiveTracks() -> [Track] {
-        return playlist.filter {
-            $0.song?.playerItem != nil
         }
     }
     

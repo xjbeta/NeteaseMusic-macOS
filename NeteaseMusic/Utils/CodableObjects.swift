@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import AppKit
+import PromiseKit
 
 @objc(Track)
 class Track: NSObject, Decodable {
@@ -38,6 +39,24 @@ class Track: NSObject, Decodable {
         }
         return NSImage(contentsOf: u)
     }()
+    
+    func playerItemm() -> Promise<AVPlayerItem?> {
+        return Promise { resolver in
+            PlayCore.shared.api.songUrl([id]).get {
+                self.song = $0.first
+                }.done {
+                    guard let uStr = $0.first?.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
+                        let url = URL(string: uStr) else {
+                            resolver.fulfill(nil)
+                            return
+                    }
+                    let avAsset = AVURLAsset(url: url)
+                    resolver.fulfill(AVPlayerItem(asset: avAsset))
+                }.catch {
+                    resolver.reject($0)
+            }
+        }
+    }
     
     @objc(Album)
     class Album: NSObject, Decodable {
@@ -106,16 +125,6 @@ class Song: NSObject, Decodable {
     let url: URL?
     // 320kbp  =>  320,000
     let br: Int
-    
-    lazy var playerItem: AVPlayerItem? = {
-        guard let uStr = url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
-            let url = URL(string: uStr) else {
-                return nil
-        }
-        
-        let avAsset = AVURLAsset(url: url)
-        return AVPlayerItem(asset: avAsset)
-    }()
 }
 
 struct RecommendResource: Decodable {

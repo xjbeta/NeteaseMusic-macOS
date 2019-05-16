@@ -97,19 +97,8 @@ class FMViewController: NSViewController {
     }
     
     func loadFMTracks() {
-        var newTracks = [Track]()
-        PlayCore.shared.api.radioGet().get {
-            newTracks = $0
-            }.then {
-                PlayCore.shared.api.songUrl($0.map({ $0.id }))
-            }.done { songs in
-                guard songs.count == newTracks.count else { return }
-                newTracks.enumerated().forEach { obj in
-                    newTracks[obj.offset].song = songs.first {
-                        $0.id == obj.element.id
-                    }
-                }
-                PlayCore.shared.fmPlaylist.append(contentsOf: newTracks)
+        PlayCore.shared.api.radioGet().done {
+            PlayCore.shared.fmPlaylist.append(contentsOf: $0)
             }.catch {
                 print($0)
         }
