@@ -68,6 +68,9 @@
 		01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B99228C0D1400D11190 /* LyricScroller.swift */; };
 		01677B9D228C133D00D11190 /* Album.json in Resources */ = {isa = PBXBuildFile; fileRef = 01677B9C228C133D00D11190 /* Album.json */; };
 		01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B9E228CF3D200D11190 /* ViewControllerManager.swift */; };
+		01677BA2228D353100D11190 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01677BA0228D353100D11190 /* Cache.framework */; };
+		01677BA5228D353900D11190 /* Cache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01677BA0228D353100D11190 /* Cache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01677BA6228D354700D11190 /* Cache.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01677BA1228D353100D11190 /* Cache.framework.dSYM */; };
 		017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */ = {isa = PBXBuildFile; fileRef = 017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */; };
 		017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
@@ -96,6 +99,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				01677BA5228D353900D11190 /* Cache.framework in Embed Frameworks */,
 				013EF14E22564E2700E4D7D8 /* Marshal.framework in Embed Frameworks */,
 				013EF14C22564E2700E4D7D8 /* DevMateKit.framework in Embed Frameworks */,
 				013EF14A22564E2700E4D7D8 /* Alamofire.framework in Embed Frameworks */,
@@ -110,6 +114,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				01677BA6228D354700D11190 /* Cache.framework.dSYM in CopyFiles */,
 				013EF15222564E5100E4D7D8 /* Alamofire.framework.dSYM in CopyFiles */,
 				013EF15322564E5100E4D7D8 /* Marshal.framework.dSYM in CopyFiles */,
 				013EF15422564E5100E4D7D8 /* PromiseKit.framework.dSYM in CopyFiles */,
@@ -176,6 +181,8 @@
 		01677B99228C0D1400D11190 /* LyricScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricScroller.swift; sourceTree = "<group>"; };
 		01677B9C228C133D00D11190 /* Album.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Album.json; sourceTree = "<group>"; };
 		01677B9E228CF3D200D11190 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
+		01677BA0228D353100D11190 /* Cache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cache.framework; path = Carthage/Build/Mac/Cache.framework; sourceTree = SOURCE_ROOT; };
+		01677BA1228D353100D11190 /* Cache.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Cache.framework.dSYM; path = Carthage/Build/Mac/Cache.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01677BA2228D353100D11190 /* Cache.framework in Frameworks */,
 				013EF14B22564E2700E4D7D8 /* DevMateKit.framework in Frameworks */,
 				013EF14422564E1F00E4D7D8 /* Marshal.framework in Frameworks */,
 				013EF14622564E1F00E4D7D8 /* Alamofire.framework in Frameworks */,
@@ -334,6 +342,8 @@
 			children = (
 				013EF13F22564E1F00E4D7D8 /* Alamofire.framework */,
 				013EF13B22564E1F00E4D7D8 /* Alamofire.framework.dSYM */,
+				01677BA0228D353100D11190 /* Cache.framework */,
+				01677BA1228D353100D11190 /* Cache.framework.dSYM */,
 				013EF14122564E1F00E4D7D8 /* DevMateKit.framework */,
 				013EF13D22564E1F00E4D7D8 /* Marshal.framework */,
 				013EF13C22564E1F00E4D7D8 /* Marshal.framework.dSYM */,
