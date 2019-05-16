@@ -26,7 +26,6 @@ class PlayCore: NSObject {
     let api = NeteaseMusicAPI()
     let player = AVPlayer()
     
-    @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
     var playerShouldNextObserver: NSObjectProtocol?
     @objc dynamic var playlist: [Track] = []
     @objc dynamic var currentTrack: Track?

@@ -100,7 +100,7 @@ class PlaylistViewController: NSViewController {
         playlistStrTextField.layer?.borderColor = .init(red: 0.83, green: 0.23, blue: 0.19, alpha: 1)
         
             
-        sidebarItemObserver = PlayCore.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
+        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
             guard let new = changes.newValue,
                 new?.type == .playlist || new?.type == .favourite || new?.type == .discoverPlaylist,
                 let id = new?.id else { return }

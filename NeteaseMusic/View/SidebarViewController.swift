@@ -140,6 +140,6 @@ extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
         }
 
         tableViewSelectedRow = tableView.selectedRow
-        PlayCore.shared.selectedSidebarItem = tableViewItems[safe: tableView.selectedRow]
+        ViewControllerManager.shared.selectedSidebarItem = tableViewItems[safe: tableView.selectedRow]
     }
 }
