@@ -17,7 +17,7 @@ class SongInfoViewController: NSViewController {
     @IBAction @objc func buttonAction(_ sender: IdButton) {
         let todo = "Open Album / Artist view."
         if sender == albumButton {
-            print("Album ID: \(sender.id)")
+            ViewControllerManager.shared.selectSidebarItem(.album, sender.id)
         } else {
             print("Artist ID: \(sender.id)")
         }

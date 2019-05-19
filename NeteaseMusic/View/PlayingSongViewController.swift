@@ -102,7 +102,7 @@ class PlayingSongViewController: NSViewController {
             return
         }
         
-        if let image = track.albumCover {
+        if let image = track.album.cover {
             cdImgImageView.wantsLayer = true
             cdImgImageView.layer?.cornerRadius = cdImgImageView.frame.width / 2
             cdImgImageView.image = image

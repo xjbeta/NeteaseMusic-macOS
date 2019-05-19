@@ -185,7 +185,7 @@ class ControlBarViewController: NSViewController {
     }
     
     func initViews(_ track: Track) {
-        trackPicButton.image = track.albumCover
+        trackPicButton.image = track.album.cover
         trackNameTextField.stringValue = track.name
         let name = track.secondName
         trackSecondNameTextField.isHidden = name == ""

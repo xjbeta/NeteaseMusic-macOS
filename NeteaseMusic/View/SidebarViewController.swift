@@ -39,7 +39,7 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, header, none, discoverPlaylist
+        case discover, fm, favourite, playlist, header, none, discoverPlaylist, album
     }
     
     let defaultItems = [TableViewItem(title: "发现音乐", type: .discover),
@@ -60,15 +60,20 @@ class SidebarViewController: NSViewController {
         NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
             guard let dic = $0.userInfo as? [String: Any],
                 let itemType = dic["itemType"] as? ItemType,
-                let id = dic["id"] as? Int else { return }
+                let id = dic["id"] as? Int,
+                let notification = self?.tableviewNotification else { return }
             
             switch itemType {
             case .fm:
-                if let index = self?.tableViewItems.firstIndex(where: { $0.type == itemType }), let notification = self?.tableviewNotification {
+                if let index = self?.tableViewItems.firstIndex(where: { $0.type == itemType }) {
                     self?.tableView.deselectAll(self)
                     self?.tableView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
                     self?.tableViewSelectionIsChanging(notification)
                 }
+            case .album:
+                self?.tableView.deselectAll(self)
+                self?.tableViewSelectionIsChanging(notification)
+                ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: .album)
             default:
                 break
             }

@@ -24,20 +24,12 @@ class Track: NSObject, Decodable {
     // 2: No copyright, 1: copyright , 0: ?
     let copyright: Int?
     
-    let pop: Int?
+    @objc let pop: Int
     
     @objc var index = -1
     
     @objc lazy var artistsString: String = {
         return artists.artistsString()
-    }()
-    
-    lazy var albumCover: NSImage? = {
-        guard let urlStr = album.picUrl?.absoluteString,
-            let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")) else {
-            return nil
-        }
-        return NSImage(contentsOf: u)
     }()
     
     func playerItemm() -> Promise<AVPlayerItem?> {
@@ -63,6 +55,19 @@ class Track: NSObject, Decodable {
         @objc let name: String
         let id: Int
         @objc let picUrl: URL?
+        let des: String?
+        
+        lazy var cover: NSImage? = {
+            guard let urlStr = picUrl?.absoluteString,
+                let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")) else {
+                    return nil
+            }
+            return NSImage(contentsOf: u)
+        }()
+        
+        enum CodingKeys: String, CodingKey {
+            case name, id, picUrl, des = "description"
+        }
     }
     
     @objc(Artist)
@@ -93,7 +98,7 @@ class Track: NSObject, Decodable {
         self.id = try container.decode(Int.self, forKey: .id)
         
         self.copyright = try container.decodeIfPresent(Int.self, forKey: .copyright)
-        self.pop = try container.decodeIfPresent(Int.self, forKey: .pop)
+        self.pop = try container.decodeIfPresent(Int.self, forKey: .pop) ?? 0
         
         self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists) ?? sortContainer.decode([Artist].self, forKey: .artists)
         self.album = try container.decodeIfPresent(Album.self, forKey: .album) ?? sortContainer.decode(Album.self, forKey: .album)
@@ -202,4 +207,11 @@ struct SearchSuggest: Decodable {
         let id: Int
         let coverImgUrl: URL
     }
+}
+
+
+struct AlbumResult: Decodable {
+    let songs: [Track]
+    let code: Int
+    let album: Track.Album
 }

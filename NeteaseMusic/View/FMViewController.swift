@@ -117,12 +117,12 @@ class FMViewController: NSViewController {
         
         guard let index = playlist.firstIndex(of: track) else { return }
 
-        coverImageView.image = track.albumCover
+        coverImageView.image = track.album.cover
         lyricViewController()?.currentLyricId = track.id
         
         if let track = playlist[safe: index - 1] {
             prevImageButton.isHidden = false
-            prevImageButton.image = track.albumCover
+            prevImageButton.image = track.album.cover
         }
         
         if index > 1 {

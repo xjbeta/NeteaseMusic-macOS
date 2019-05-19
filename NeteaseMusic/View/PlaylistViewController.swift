@@ -16,6 +16,7 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var titleTextFiled: NSTextField!
     @IBOutlet weak var playlistStrTextField: NSTextField!
+    @IBOutlet weak var albumCoverImageView: NSImageView!
     
     @IBOutlet weak var playCountTextField: NSTextField!
     @IBOutlet weak var trackCountTextField: NSTextField!
@@ -68,11 +69,10 @@ class PlaylistViewController: NSViewController {
     @objc dynamic var tracks = [Track]()
     var playlistId = -1
     
+    var albumMode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        playlistStrTextField.stringValue = "歌单"
         playlistStrTextField.textColor = .init(red: 0.83, green: 0.23, blue: 0.19, alpha: 1)
         playlistStrTextField.wantsLayer = true
         playlistStrTextField.layer?.borderWidth = 1
@@ -82,11 +82,15 @@ class PlaylistViewController: NSViewController {
             
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
             guard let new = changes.newValue,
-                new?.type == .playlist || new?.type == .favourite || new?.type == .discoverPlaylist,
+                new?.type == .playlist || new?.type == .favourite || new?.type == .discoverPlaylist || new?.type == .album,
                 let id = new?.id else { return }
             self?.playlistId = id
+            self?.albumMode = new?.type == .album
+            self?.updateTableViewMode()
             
-            if id > 0 {
+            if new?.type == .album {
+                self?.initPlaylistWithAlbum(id)
+            } else if id > 0 {
                 self?.initPlaylist(id)
             } else if new?.title == "每日歌曲推荐", id == -1 {
                 self?.initPlaylistWithRecommandSongs()
@@ -97,12 +101,14 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylistInfo() {
+//        tableView.tableColumns.first(where: { $0.title })
         coverImageView.image = nil
         titleTextFiled.stringValue = ""
         playCountTextField.integerValue = 0
         trackCountTextField.integerValue = 0
         descriptionTextField.stringValue = ""
         descriptionTextField.toolTip = ""
+        albumCoverImageView.isHidden = !albumMode
         tracks.removeAll()
     }
     
@@ -110,7 +116,7 @@ class PlaylistViewController: NSViewController {
         initPlaylistInfo()
         PlayCore.shared.api.playlistDetail(id).done(on: .main) {
             guard self.playlistId == id else { return }
-            
+            self.playlistStrTextField.stringValue = "Playlist"
             self.coverImageView.image = NSImage(contentsOf: $0.coverImgUrl)
             self.titleTextFiled.stringValue = $0.name
             let descriptionStr = $0.description ?? "none"
@@ -132,6 +138,7 @@ class PlaylistViewController: NSViewController {
         initPlaylistInfo()
         PlayCore.shared.api.recommendSongs().done(on: .main) {
             guard self.playlistId == -1 else { return }
+            self.playlistStrTextField.stringValue = ""
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
             var tracks = $0
@@ -142,6 +149,36 @@ class PlaylistViewController: NSViewController {
             }.catch {
                 print($0)
         }
+    }
+    
+    func initPlaylistWithAlbum(_ id: Int) {
+        initPlaylistInfo()
+        PlayCore.shared.api.album(id).done(on: .main) {
+            self.playlistStrTextField.stringValue = "Album"
+            self.titleTextFiled.stringValue = $0.album.name
+            self.descriptionTextField.stringValue = $0.album.des ?? ""
+            
+            self.coverImageView.image = $0.album.cover
+            
+            var tracks = $0.songs
+            tracks.enumerated().forEach {
+                tracks[$0.offset].index = $0.offset
+            }
+            self.tracks = tracks
+            }.catch {
+                print($0)
+        }
+    }
+    
+    
+    func updateTableViewMode() {
+        tableView.tableColumns.filter {
+            $0.identifier.rawValue == "PlaylistAlbum"
+            }.first?.isHidden = albumMode
+
+        tableView.tableColumns.filter {
+            $0.identifier.rawValue == "PlaylistPop"
+            }.first?.isHidden = !albumMode
     }
     
     @objc func scrollViewDidScroll(_ notification: Notification) {
