@@ -57,6 +57,7 @@ class Track: NSObject, Decodable {
         @objc let picUrl: URL?
         let des: String?
         let publishTime: Int?
+        let artists: [Artist]?
         
         lazy var cover: NSImage? = {
             guard let urlStr = picUrl?.absoluteString,
@@ -67,7 +68,7 @@ class Track: NSObject, Decodable {
         }()
         
         enum CodingKeys: String, CodingKey {
-            case name, id, picUrl, des = "description", publishTime
+            case name, id, picUrl, des = "description", publishTime, artists
         }
     }
     

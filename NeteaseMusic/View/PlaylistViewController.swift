@@ -160,11 +160,18 @@ class PlaylistViewController: NSViewController {
     func initPlaylistWithAlbum(_ id: Int) {
         initPlaylistInfo()
         PlayCore.shared.api.album(id).done(on: .main) {
+            self.coverImageView.image = $0.album.cover
             self.playlistStrTextField.stringValue = "Album"
             self.titleTextFiled.stringValue = $0.album.name
             self.descriptionTextField.stringValue = $0.album.des ?? "none"
+            self.artistTextField.stringValue = $0.album.artists?.artistsString() ?? ""
             
-            self.coverImageView.image = $0.album.cover
+            if let time = $0.album.publishTime {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                let timeStr = formatter.string(from: .init(timeIntervalSince1970: .init(time / 1000)))
+                self.timeTextField.stringValue = timeStr
+            }
             
             var tracks = $0.songs
             tracks.enumerated().forEach {
