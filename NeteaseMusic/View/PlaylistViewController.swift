@@ -21,6 +21,12 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var playCountTextField: NSTextField!
     @IBOutlet weak var trackCountTextField: NSTextField!
     @IBOutlet weak var descriptionTextField: NSTextField!
+    @IBOutlet weak var artistTextField: NSTextField!
+    @IBOutlet weak var timeTextField: NSTextField!
+    
+    @IBOutlet weak var countAndViewsStackView: NSStackView!
+    @IBOutlet weak var artistStackView: NSStackView!
+    @IBOutlet weak var timeStackView: NSStackView!
     
     @IBAction func playPlaylist(_ sender: Any) {
         let ids = tracks.map { $0.id }
@@ -86,7 +92,7 @@ class PlaylistViewController: NSViewController {
                 let id = new?.id else { return }
             self?.playlistId = id
             self?.albumMode = new?.type == .album
-            self?.updateTableViewMode()
+            self?.updateViewMode()
             
             if new?.type == .album {
                 self?.initPlaylistWithAlbum(id)
@@ -156,7 +162,7 @@ class PlaylistViewController: NSViewController {
         PlayCore.shared.api.album(id).done(on: .main) {
             self.playlistStrTextField.stringValue = "Album"
             self.titleTextFiled.stringValue = $0.album.name
-            self.descriptionTextField.stringValue = $0.album.des ?? ""
+            self.descriptionTextField.stringValue = $0.album.des ?? "none"
             
             self.coverImageView.image = $0.album.cover
             
@@ -171,7 +177,7 @@ class PlaylistViewController: NSViewController {
     }
     
     
-    func updateTableViewMode() {
+    func updateViewMode() {
         tableView.tableColumns.filter {
             $0.identifier.rawValue == "PlaylistAlbum"
             }.first?.isHidden = albumMode
@@ -179,6 +185,10 @@ class PlaylistViewController: NSViewController {
         tableView.tableColumns.filter {
             $0.identifier.rawValue == "PlaylistPop"
             }.first?.isHidden = !albumMode
+        
+        countAndViewsStackView.isHidden = albumMode
+        artistStackView.isHidden = !albumMode
+        timeStackView.isHidden = !albumMode
     }
     
     @objc func scrollViewDidScroll(_ notification: Notification) {
