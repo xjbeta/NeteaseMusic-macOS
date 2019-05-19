@@ -71,7 +71,6 @@
 		01677BA2228D353100D11190 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01677BA0228D353100D11190 /* Cache.framework */; };
 		01677BA5228D353900D11190 /* Cache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01677BA0228D353100D11190 /* Cache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01677BA6228D354700D11190 /* Cache.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01677BA1228D353100D11190 /* Cache.framework.dSYM */; };
-		01677BAB228DA9E800D11190 /* AlbumView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01677BAA228DA9E800D11190 /* AlbumView.storyboard */; };
 		017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */ = {isa = PBXBuildFile; fileRef = 017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */; };
 		017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
@@ -184,7 +183,6 @@
 		01677B9E228CF3D200D11190 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
 		01677BA0228D353100D11190 /* Cache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cache.framework; path = Carthage/Build/Mac/Cache.framework; sourceTree = SOURCE_ROOT; };
 		01677BA1228D353100D11190 /* Cache.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Cache.framework.dSYM; path = Carthage/Build/Mac/Cache.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		01677BAA228DA9E800D11190 /* AlbumView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumView.storyboard; sourceTree = "<group>"; };
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,7 +333,6 @@
 				01467E9522846AEC0037B49D /* FM */,
 				012FEA63228686CD00698969 /* Lyric */,
 				012FEA76228A5F4400698969 /* SongInfo */,
-				01677BA9228DA9CE00D11190 /* AlbumView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -396,14 +393,6 @@
 				012FEA61228684ED00698969 /* CoverImageButton.swift */,
 			);
 			name = FM;
-			sourceTree = "<group>";
-		};
-		01677BA9228DA9CE00D11190 /* AlbumView */ = {
-			isa = PBXGroup;
-			children = (
-				01677BAA228DA9E800D11190 /* AlbumView.storyboard */,
-			);
-			name = AlbumView;
 			sourceTree = "<group>";
 		};
 		01957D7F224D01850006FCEC = {
@@ -549,7 +538,6 @@
 				0137264C226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib in Resources */,
 				01957D93224D01860006FCEC /* Main.storyboard in Resources */,
 				013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */,
-				01677BAB228DA9E800D11190 /* AlbumView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
