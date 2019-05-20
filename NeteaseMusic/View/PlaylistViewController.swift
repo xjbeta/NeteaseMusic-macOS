@@ -92,6 +92,7 @@ class PlaylistViewController: NSViewController {
                 let id = new?.id else { return }
             self?.playlistId = id
             self?.albumMode = new?.type == .album
+            self?.tracks.removeAll()
             self?.updateViewMode()
             
             if new?.type == .album {
