@@ -185,13 +185,8 @@ class PlaylistViewController: NSViewController {
     
     
     func updateViewMode() {
-        tableView.tableColumns.filter {
-            $0.identifier.rawValue == "PlaylistAlbum"
-            }.first?.isHidden = albumMode
-
-        tableView.tableColumns.filter {
-            $0.identifier.rawValue == "PlaylistPop"
-            }.first?.isHidden = !albumMode
+        tableView.tableColumn(withIdentifier: .init("PlaylistAlbum"))?.isHidden = albumMode
+        tableView.tableColumn(withIdentifier: .init("PlaylistPop"))?.isHidden = !albumMode
         
         countAndViewsStackView.isHidden = albumMode
         artistStackView.isHidden = !albumMode
