@@ -916,6 +916,26 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                     </tabViewItem>
+                                                    <tabViewItem label="Item 6" identifier="" id="bsz-vJ-zpk" userLabel="Artist">
+                                                        <view key="view" id="lrv-nL-hjT">
+                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="i8M-Hf-SQH">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                    <connections>
+                                                                        <segue destination="cq6-3d-Khw" kind="embed" id="aH9-nb-7sy"/>
+                                                                    </connections>
+                                                                </containerView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="i8M-Hf-SQH" secondAttribute="bottom" id="GaI-H9-zCJ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="i8M-Hf-SQH" secondAttribute="trailing" id="X0U-uQ-otF"/>
+                                                                <constraint firstItem="i8M-Hf-SQH" firstAttribute="leading" secondItem="lrv-nL-hjT" secondAttribute="leading" id="xQE-21-jd8"/>
+                                                                <constraint firstItem="i8M-Hf-SQH" firstAttribute="top" secondItem="lrv-nL-hjT" secondAttribute="top" id="xuP-pR-5nY"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </tabViewItem>
                                                 </tabViewItems>
                                             </tabView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="AFB-rE-r0G">
@@ -1021,6 +1041,14 @@
                 <customObject id="CPL-xe-CPu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="744" y="1229"/>
+        </scene>
+        <!--ArtistView-->
+        <scene sceneID="Eg6-Je-f3G">
+            <objects>
+                <controllerPlaceholder storyboardName="ArtistView" id="cq6-3d-Khw" sceneMemberID="viewController"/>
+                <customObject id="TjD-39-oWa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="1299"/>
         </scene>
         <!--Search Suggestions View Controller-->
         <scene sceneID="nwQ-VJ-ekC">
