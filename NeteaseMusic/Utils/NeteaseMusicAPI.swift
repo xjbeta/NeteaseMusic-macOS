@@ -118,7 +118,7 @@ class NeteaseMusicAPI: NSObject {
 
         let p = P(id: id, n: 1000, s: 0, csrfToken: csrf).jsonString()
         
-        return request("https://music.163.com/weapi/v3/playlist/detail?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/v3/playlist/detail",
             p,
             Result.self).map {
                 $0.playlist
@@ -145,7 +145,7 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
         }
         
-        return request("https://music.163.com/weapi/song/enhance/player/url?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/song/enhance/player/url",
             p,
             Result.self).map {
                 $0.data
@@ -154,7 +154,8 @@ class NeteaseMusicAPI: NSObject {
     
     func recommendResource() -> Promise<[RecommendResource.Playlist]> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
-        return request("https://music.163.com/weapi/v1/discovery/recommend/resource?csrf_token=\(csrf)",
+        
+        return request("https://music.163.com/weapi/v1/discovery/recommend/resource",
             p,
             RecommendResource.self).map {
                 $0.recommend
@@ -164,7 +165,7 @@ class NeteaseMusicAPI: NSObject {
     func recommendSongs() -> Promise<[Track]> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         
-        return request("https://music.163.com/weapi/v1/discovery/recommend/songs?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/v1/discovery/recommend/songs",
             p,
             RecommendSongs.self).map {
                 $0.recommend
@@ -183,7 +184,7 @@ class NeteaseMusicAPI: NSObject {
         }
         let p = P(id: id, csrfToken: csrf).jsonString()
         
-        return request("https://music.163.com/weapi/song/lyric?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/song/lyric",
             p,
             LyricResult.self)
     }
@@ -199,7 +200,7 @@ class NeteaseMusicAPI: NSObject {
         
         let p = P(s: keywords, csrfToken: csrf).jsonString()
         
-        return request("https://music.163.com/weapi/search/suggest/web?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/search/suggest/web",
             p,
             SearchSuggest.self).map {
                 $0.result
@@ -217,7 +218,7 @@ class NeteaseMusicAPI: NSObject {
         let p = P(id: id, csrfToken: csrf).jsonString()
         let apiStr = unSubscribe ? "unsubscribe" : "subscribe"
         
-        return request("https://music.163.com/weapi/playlist/\(apiStr)?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/playlist/\(apiStr)",
             p,
             CodeResult.self).map {
                 if $0.code == 200 {
@@ -236,7 +237,7 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
         }
         
-        return request("https://music.163.com/weapi/v1/radio/get?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/v1/radio/get",
             p,
             Result.self).map {
                 $0.data
@@ -260,7 +261,7 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
         }
         
-        return request("https://music.163.com/weapi/v1/radio/skip?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/v1/radio/skip",
             p,
             Result.self).map {
                 if $0.code == 200 {
@@ -274,7 +275,7 @@ class NeteaseMusicAPI: NSObject {
     func album(_ id: Int) -> Promise<AlbumResult> {
         
         let p = DefaultParameters(csrfToken: csrf).jsonString()
-        return request("https://music.163.com/weapi/v1/album/\(id)?csrf_token=\(csrf)",
+        return request("https://music.163.com/weapi/v1/album/\(id)",
             p,
             AlbumResult.self)
     }
