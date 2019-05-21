@@ -11,6 +11,11 @@ import AVFoundation
 import AppKit
 import PromiseKit
 
+struct ServerError: Decodable {
+    let code: Int
+    let msg: String?
+}
+
 @objc(Track)
 class Track: NSObject, Decodable {
     @objc let name: String
