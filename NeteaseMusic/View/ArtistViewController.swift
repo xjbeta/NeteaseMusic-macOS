@@ -10,12 +10,21 @@ import Cocoa
 
 class ArtistViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
+    var sidebarItemObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
+            guard let new = changes.newValue,
+                new?.type == .artist,
+                let id = new?.id else { return }
+            print("Artist ID: \(id)")
+        }
     }
     
+    deinit {
+        sidebarItemObserver?.invalidate()
+    }
 }
 
 
