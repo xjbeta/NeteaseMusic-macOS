@@ -76,6 +76,10 @@ class Track: NSObject, Decodable {
     class Artist: NSObject, Decodable {
         let name: String
         let id: Int
+        let picUrl: URL?  // 640 x 520
+        let musicSize: Int?
+        let albumSize: Int?
+        let alias: [String]?
     }
     
     enum CodingKeys: String, CodingKey {
@@ -216,4 +220,10 @@ struct AlbumResult: Decodable {
     let songs: [Track]
     let code: Int
     let album: Track.Album
+}
+
+struct ArtistAlbumsResult: Decodable {
+    let code: Int
+    let artist: Track.Artist
+    let hotAlbums: [Track.Album]
 }
