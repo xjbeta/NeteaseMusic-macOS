@@ -75,10 +75,6 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-
-    
-
-    
     func userPlaylist() -> Promise<[Playlist]> {
         struct P: Encodable {
             let uid: Int
@@ -97,25 +93,10 @@ class NeteaseMusicAPI: NSObject {
         
         let p = P(uid: uid, limit: 1000, offset: 0, csrfToken: csrf).jsonString()
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/user/playlist?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result.playlist)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/user/playlist?csrf_token=\(csrf)",
+            p,
+            Result.self).map {
+                $0.playlist
         }
     }
     
@@ -137,25 +118,10 @@ class NeteaseMusicAPI: NSObject {
 
         let p = P(id: id, n: 1000, s: 0, csrfToken: csrf).jsonString()
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/v3/playlist/detail?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result.playlist)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/v3/playlist/detail?csrf_token=\(csrf)",
+            p,
+            Result.self).map {
+                $0.playlist
         }
     }
     
@@ -178,77 +144,30 @@ class NeteaseMusicAPI: NSObject {
             let data: [Song]
             let code: Int
         }
-        //        https://music.163.com/weapi/song/enhance/player/url/v1?csrf_token=
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/song/enhance/player/url?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result.data)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/song/enhance/player/url?csrf_token=\(csrf)",
+            p,
+            Result.self).map {
+                $0.data
         }
     }
     
     func recommendResource() -> Promise<[RecommendResource.Playlist]> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
-        
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/v1/discovery/recommend/resource?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<RecommendResource>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result.recommend)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/v1/discovery/recommend/resource?csrf_token=\(csrf)",
+            p,
+            RecommendResource.self).map {
+                $0.recommend
         }
     }
     
     func recommendSongs() -> Promise<[Track]> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/v1/discovery/recommend/songs?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<RecommendSongs>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result.recommend)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/v1/discovery/recommend/songs?csrf_token=\(csrf)",
+            p,
+            RecommendSongs.self).map {
+                $0.recommend
         }
     }
     
@@ -264,26 +183,9 @@ class NeteaseMusicAPI: NSObject {
         }
         let p = P(id: id, csrfToken: csrf).jsonString()
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/song/lyric?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<LyricResult>) in
-                if let error = re.error {
-                    resolver.reject(error)
-                    return
-                }
-                do {
-                    let result = try re.result.get()
-                    if result.code == 200 {
-                        resolver.fulfill(result)
-                    } else {
-                        resolver.reject(APIError.errorCode(result.code))
-                    }
-                } catch let error {
-                    resolver.reject(error)
-                }
-            }   
-        }
+        return request("https://music.163.com/weapi/song/lyric?csrf_token=\(csrf)",
+            p,
+            LyricResult.self)
     }
     
     func searchSuggest(_ keywords: String) -> Promise<(SearchSuggest.Result)> {
@@ -297,25 +199,10 @@ class NeteaseMusicAPI: NSObject {
         
         let p = P(s: keywords, csrfToken: csrf).jsonString()
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/search/suggest/web?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<SearchSuggest>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result.result)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/search/suggest/web?csrf_token=\(csrf)",
+            p,
+            SearchSuggest.self).map {
+                $0.result
         }
     }
     
@@ -330,25 +217,14 @@ class NeteaseMusicAPI: NSObject {
         let p = P(id: id, csrfToken: csrf).jsonString()
         let apiStr = unSubscribe ? "unsubscribe" : "subscribe"
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/playlist/\(apiStr)?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<CodeResult>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(())
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/playlist/\(apiStr)?csrf_token=\(csrf)",
+            p,
+            CodeResult.self).map {
+                if $0.code == 200 {
+                    return ()
+                } else {
+                    throw RequestError.errorCode(($0.code, ""))
+                }
         }
     }
     
@@ -360,25 +236,10 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
         }
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/v1/radio/get?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result.data)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/v1/radio/get?csrf_token=\(csrf)",
+            p,
+            Result.self).map {
+                $0.data
         }
     }
     
@@ -399,54 +260,25 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
         }
         
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/v1/radio/skip?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<Result>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(())
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
+        return request("https://music.163.com/weapi/v1/radio/skip?csrf_token=\(csrf)",
+            p,
+            Result.self).map {
+                if $0.code == 200 {
+                    return ()
+                } else {
+                    throw RequestError.errorCode(($0.code, ""))
+                }
         }
     }
     
     func album(_ id: Int) -> Promise<AlbumResult> {
         
         let p = DefaultParameters(csrfToken: csrf).jsonString()
-        return Promise { resolver in
-            AF.request("https://music.163.com/weapi/v1/album/\(id)?csrf_token=\(csrf)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<AlbumResult>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
-                        }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
-            }
-        }
+        return request("https://music.163.com/weapi/v1/album/\(id)?csrf_token=\(csrf)",
+            p,
+            AlbumResult.self)
     }
-    
-    
+
     func artistAlbums(_ id: Int) -> Promise<ArtistAlbumsResult> {
         struct P: Encodable {
             let limit: Int = 1000
@@ -460,29 +292,47 @@ class NeteaseMusicAPI: NSObject {
         
         let p = P(csrfToken: csrf).jsonString()
         
+        return request("https://music.163.com/weapi/artist/albums/\(id)",
+            p,
+            ArtistAlbumsResult.self)
+    }
+    
+    private func request<T: Decodable>(_ url: String, _ parameters: String, _ resultType: T.Type) -> Promise<T> {
         return Promise { resolver in
-            AF.request("https://music.163.com/weapi/artist/albums/\(id)",
-                method: .post,
-                parameters: crypto(p)).responseDecodable { (re: DataResponse<ArtistAlbumsResult>) in
-                    if let error = re.error {
-                        resolver.reject(error)
-                        return
-                    }
-                    do {
-                        let result = try re.result.get()
-                        if result.code == 200 {
-                            resolver.fulfill(result)
-                        } else {
-                            resolver.reject(APIError.errorCode(result.code))
+            AF.request(url, method: .post,
+                       parameters: crypto(parameters)).response { re in
+                        if let error = re.error {
+                            resolver.reject(RequestError.error(error))
+                            return
                         }
-                    } catch let error {
-                        resolver.reject(error)
-                    }
+                        guard let data = re.data else {
+                            resolver.reject(RequestError.noData)
+                            return
+                        }
+                        
+                        do {
+                            let re = try JSONDecoder().decode(resultType.self, from: data)
+                            resolver.fulfill(re)
+                        } catch let error {
+                            if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
+                                resolver.reject(RequestError.errorCode((re.code, re.msg ?? "")))
+                            } else {
+                                resolver.reject(RequestError.error(error))
+                            }
+                        }
             }
         }
     }
     
-    func crypto(_ text: String) -> [String: String] {
+    enum RequestError: Error {
+        case error(Error)
+        case noData
+        case errorCode((Int, String))
+        case unknown
+    }
+    
+    
+    private func crypto(_ text: String) -> [String: String] {
         guard let jsContext = JSContext(),
             let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),
             let content = try? String(contentsOfFile: cryptoFilePath) else {
