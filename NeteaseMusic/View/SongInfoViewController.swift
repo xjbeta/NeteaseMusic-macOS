@@ -15,11 +15,10 @@ class SongInfoViewController: NSViewController {
     @IBOutlet weak var artistStackView: NSStackView!
     @IBOutlet weak var artistScrollView: NSScrollView!
     @IBAction @objc func buttonAction(_ sender: IdButton) {
-        let todo = "Open Album / Artist view."
         if sender == albumButton {
             ViewControllerManager.shared.selectSidebarItem(.album, sender.id)
         } else {
-            print("Artist ID: \(sender.id)")
+            ViewControllerManager.shared.selectSidebarItem(.artist, sender.id)
         }
     }
     

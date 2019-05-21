@@ -19,6 +19,7 @@ class ViewControllerManager: NSObject {
     
     func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
                            _ id: Int = -1) {
+        print(#function, "\(itemType)", "ID: \(id)")
         NotificationCenter.default.post(name: .selectSidebarItem, object: nil, userInfo: ["itemType": itemType, "id": id])
     }
 }

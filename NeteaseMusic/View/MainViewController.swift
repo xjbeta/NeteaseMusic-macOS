@@ -11,7 +11,7 @@ import Cocoa
 class MainViewController: NSViewController {
     @IBOutlet weak var tabView: NSTabView!
     enum TabItems: Int {
-        case playlist, fm, preferences, discover, favourite, search
+        case playlist, fm, preferences, discover, favourite, search, artist
     }
     @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var playlistView: NSView!
@@ -41,8 +41,10 @@ class MainViewController: NSViewController {
                     self.updateTabView(.discover)
                 case .fm:
                     self.updateTabView(.fm)
-                case .playlist, .favourite, .discoverPlaylist:
+                case .playlist, .favourite, .discoverPlaylist, .album:
                     self.updateTabView(.playlist)
+                case .artist:
+                    self.updateTabView(.artist)
                 default:
                     break
                 }
