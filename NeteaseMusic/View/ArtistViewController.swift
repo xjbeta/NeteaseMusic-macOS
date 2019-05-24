@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import PromiseKit
 
 class ArtistViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
