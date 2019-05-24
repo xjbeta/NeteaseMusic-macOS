@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
 		012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */; };
+		012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */; };
 		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F115722603CE8002D5599 /* SidePlaylistViewController.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
@@ -131,6 +132,7 @@
 /* Begin PBXFileReference section */
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
 		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
+		012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStringTransformer.swift; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */,
 				012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */,
 				012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */,
+				012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */,
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
@@ -590,6 +593,7 @@
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
 				0137264A226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift in Sources */,
 				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
+				012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */,
 				013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */,
 				01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */,
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
