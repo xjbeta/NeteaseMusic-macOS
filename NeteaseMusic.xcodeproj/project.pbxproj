@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
+		012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */; };
 		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F115722603CE8002D5599 /* SidePlaylistViewController.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
@@ -34,6 +36,7 @@
 		013143AD22706F1200B9E26F /* Lyric.json in Resources */ = {isa = PBXBuildFile; fileRef = 013143AC22706F1200B9E26F /* Lyric.json */; };
 		0132E1C12292689300484D7E /* ArtistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0132E1C02292689300484D7E /* ArtistView.storyboard */; };
 		0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0132E1E02293D14F00484D7E /* ArtistViewController.swift */; };
+		0132E1E32293E0AE00484D7E /* ArtistAlbums.json in Resources */ = {isa = PBXBuildFile; fileRef = 0132E1E22293E0AE00484D7E /* ArtistAlbums.json */; };
 		0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 0134B63822645D5900262AB8 /* UserPlaylist.json */; };
 		0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137264022697D32004EDCE5 /* IndexTransformer.swift */; };
 		0137264322698D20004EDCE5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137264222698D20004EDCE5 /* DiscoverViewController.swift */; };
@@ -126,6 +129,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
+		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 		013143AC22706F1200B9E26F /* Lyric.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Lyric.json; sourceTree = "<group>"; };
 		0132E1C02292689300484D7E /* ArtistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistView.storyboard; sourceTree = "<group>"; };
 		0132E1E02293D14F00484D7E /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
+		0132E1E22293E0AE00484D7E /* ArtistAlbums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ArtistAlbums.json; sourceTree = "<group>"; };
 		0134B63822645D5900262AB8 /* UserPlaylist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserPlaylist.json; sourceTree = "<group>"; };
 		0137264022697D32004EDCE5 /* IndexTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexTransformer.swift; sourceTree = "<group>"; };
 		0137264222698D20004EDCE5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +244,8 @@
 				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
 				0137264022697D32004EDCE5 /* IndexTransformer.swift */,
 				01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */,
+				012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */,
+				012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */,
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
@@ -452,6 +460,7 @@
 				017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */,
 				01467E9C2284713A0037B49D /* RadioGet.json */,
 				01677B9C228C133D00D11190 /* Album.json */,
+				0132E1E22293E0AE00484D7E /* ArtistAlbums.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -544,6 +553,7 @@
 				01314398226B497E00B9E26F /* RecommendSongs.json in Resources */,
 				017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */,
 				012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */,
+				0132E1E32293E0AE00484D7E /* ArtistAlbums.json in Resources */,
 				012FEA6A2289B8D200698969 /* ControlBar.storyboard in Resources */,
 				0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */,
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
@@ -563,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */,
 				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
 				012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */,
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
@@ -591,6 +602,7 @@
 				01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */,
 				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
+				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
 				0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,

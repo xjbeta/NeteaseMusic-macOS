@@ -166,13 +166,7 @@ class PlaylistViewController: NSViewController {
             self.titleTextFiled.stringValue = $0.album.name
             self.descriptionTextField.stringValue = $0.album.des ?? "none"
             self.artistTextField.stringValue = $0.album.artists?.artistsString() ?? ""
-            
-            if let time = $0.album.publishTime {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                let timeStr = formatter.string(from: .init(timeIntervalSince1970: .init(time / 1000)))
-                self.timeTextField.stringValue = timeStr
-            }
+            self.timeTextField.stringValue = $0.album.formattedTime()
             
             var tracks = $0.songs
             tracks.enumerated().forEach {

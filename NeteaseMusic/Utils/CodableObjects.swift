@@ -59,21 +59,40 @@ class Track: NSObject, Decodable {
     class Album: NSObject, Decodable {
         @objc let name: String
         let id: Int
-        @objc let picUrl: URL?
+        let picUrl: URL?
         let des: String?
-        let publishTime: Int?
+        @objc let publishTime: Int
         let artists: [Artist]?
+        @objc let size: Int
         
-        lazy var cover: NSImage? = {
-            guard let urlStr = picUrl?.absoluteString,
-                let u = URL(string: urlStr.replacingOccurrences(of: "http://", with: "https://")) else {
-                    return nil
-            }
+        @objc lazy var cover: NSImage? = {
+            guard let u = picUrl else { return nil }
             return NSImage(contentsOf: u)
         }()
         
+        func formattedTime() -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter.string(from: .init(timeIntervalSince1970: .init(publishTime / 1000)))
+        }
+        
         enum CodingKeys: String, CodingKey {
-            case name, id, picUrl, des = "description", publishTime, artists
+            case name, id, picUrl, des = "description", publishTime, artists, size
+        }
+        
+        required init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.name = try container.decode(String.self, forKey: .name)
+            self.id = try container.decode(Int.self, forKey: .id)
+            var urlStr = try container.decode(String.self, forKey: .picUrl)
+            if urlStr.starts(with: "http://") {
+                urlStr = urlStr.replacingOccurrences(of: "http://", with: "https://")
+            }
+            self.picUrl = URL(string: urlStr)
+            self.des = try container.decodeIfPresent(String.self, forKey: .des)
+            self.publishTime = try container.decodeIfPresent(Int.self, forKey: .publishTime) ?? 0
+            self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists)
+            self.size = try container.decodeIfPresent(Int.self, forKey: .size) ?? 0
         }
     }
     
@@ -85,6 +104,11 @@ class Track: NSObject, Decodable {
         let musicSize: Int?
         let albumSize: Int?
         let alias: [String]?
+        
+        @objc lazy var cover: NSImage? = {
+            guard let u = picUrl else { return nil }
+            return NSImage(contentsOf: u)
+        }()
     }
     
     enum CodingKeys: String, CodingKey {
