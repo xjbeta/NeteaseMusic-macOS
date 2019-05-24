@@ -32,6 +32,7 @@ class ArtistViewController: NSViewController {
     func initArtistView(_ id: Int) {
         self.id = id
         PlayCore.shared.api.artistAlbums(id).done {
+            guard id == self.id else { return }
             self.albums = $0.hotAlbums
             self.artist = $0.artist
             self.tableView.reloadData()
