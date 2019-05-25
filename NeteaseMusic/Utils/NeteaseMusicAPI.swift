@@ -279,7 +279,14 @@ class NeteaseMusicAPI: NSObject {
             p,
             AlbumResult.self)
     }
-
+    
+    func artist(_ id: Int) -> Promise<ArtistResult> {
+        let p = DefaultParameters(csrfToken: csrf).jsonString()
+        return request("https://music.163.com/weapi/artist/\(id)",
+            p,
+            ArtistResult.self)
+    }
+    
     func artistAlbums(_ id: Int) -> Promise<ArtistAlbumsResult> {
         struct P: Encodable {
             let limit: Int = 1000

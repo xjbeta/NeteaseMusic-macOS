@@ -256,3 +256,10 @@ struct ArtistAlbumsResult: Decodable {
     let artist: Track.Artist
     let hotAlbums: [Track.Album]
 }
+
+
+struct ArtistResult: Decodable {
+    let code: Int
+    let artist: Track.Artist
+    let hotSongs: [Track]
+}
