@@ -10,6 +10,7 @@
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
 		012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */; };
 		012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */; };
+		012772DD22997DEF00C55537 /* Artist.json in Resources */ = {isa = PBXBuildFile; fileRef = 012772DC22997DEF00C55537 /* Artist.json */; };
 		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F115722603CE8002D5599 /* SidePlaylistViewController.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
@@ -133,6 +134,7 @@
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
 		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
 		012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStringTransformer.swift; sourceTree = "<group>"; };
+		012772DC22997DEF00C55537 /* Artist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Artist.json; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				01467E9C2284713A0037B49D /* RadioGet.json */,
 				01677B9C228C133D00D11190 /* Album.json */,
 				0132E1E22293E0AE00484D7E /* ArtistAlbums.json */,
+				012772DC22997DEF00C55537 /* Artist.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */,
 				0132E1C12292689300484D7E /* ArtistView.storyboard in Resources */,
 				012FEA702289BA3F00698969 /* SidePlaylistView.storyboard in Resources */,
+				012772DD22997DEF00C55537 /* Artist.json in Resources */,
 				0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */,
 				01314398226B497E00B9E26F /* RecommendSongs.json in Resources */,
 				017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */,
