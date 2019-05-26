@@ -132,6 +132,10 @@ class ControlBarViewController: NSViewController {
         trackPicButton.wantsLayer = true
         trackPicButton.layer?.cornerRadius = 4
         
+        trackNameTextField.stringValue = ""
+        trackSecondNameTextField.stringValue = ""
+        trackArtistTextField.stringValue = ""
+        
         initPlayModeButton()
         
         pauseStautsObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
