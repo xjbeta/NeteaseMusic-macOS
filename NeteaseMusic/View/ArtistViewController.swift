@@ -11,10 +11,26 @@ import Cocoa
 class ArtistViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     var sidebarItemObserver: NSKeyValueObservation?
-    var id = -1
     
-    @objc dynamic var albums = [Track.Album]()
-    @objc dynamic var artist: Track.Artist?
+    struct Item {
+        let artist: Track.Artist?
+        let album: Track.Album?
+        let type: ItemType
+        enum ItemType {
+            case artist, hotSongs, album
+        }
+        
+        init(type: ItemType = .album,
+             artist: Track.Artist? = nil,
+             album: Track.Album? = nil) {
+            self.type = type
+            self.artist = artist
+            self.album = album
+        }
+    }
+    
+    var id = -1
+    var items = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +48,12 @@ class ArtistViewController: NSViewController {
         self.id = id
         PlayCore.shared.api.artistAlbums(id).done {
             guard id == self.id else { return }
-            self.albums = $0.hotAlbums
-            self.artist = $0.artist
+            
+            self.items.removeAll()
+            self.items.append(Item(type: .artist, artist: $0.artist))
+            self.items.append(Item(type: .hotSongs))
+            self.items.append(contentsOf: $0.hotAlbums.map({Item(album: $0)}))
+            
             self.tableView.reloadData()
             }.catch {
                 print($0)
@@ -52,7 +72,7 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return albums.count + 1
+        return items.count
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -68,17 +88,30 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        
-        if row == 0 {
-            guard let artist = artist,
+        guard let item = items[safe: row] else { return nil }
+        switch item.type {
+        case .artist:
+            guard let artist = item.artist,
                 let image = NSImage(named: .init("user_150")) else { return nil }
             return ["name": artist.name,
                     "alias": artist.alias?.joined(separator: "; ") ?? "",
                     "albumSize": artist.albumSize ?? 0,
                     "musicSize": artist.musicSize ?? 0,
                     "image": artist.cover ?? image]
-        } else {
-            return albums[safe: row - 1]
+        case .hotSongs:
+            guard let image = NSImage(named: .init("calendar_bg")) else { return nil }
+            return ["image": image,
+                    "name": "hot songs",
+                    "size": 50,
+                    "publishTime": "none"]
+            
+        case .album:
+            guard let album = item.album,
+                let image = NSImage(named: .init("calendar_bg")) else { return nil }
+            return ["image": album.cover ?? image,
+                    "name": album.name,
+                    "size": album.size,
+                    "publishTime": album.publishTime]
         }
     }
 }

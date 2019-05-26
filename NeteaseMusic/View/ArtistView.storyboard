@@ -54,7 +54,7 @@
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="KIa-3z-lHA"/>
                                                                             <connections>
-                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.cover" id="RLk-Zz-01Z"/>
+                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.image" id="JvX-3b-nzL"/>
                                                                             </connections>
                                                                         </imageView>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-rO-njT">
@@ -88,7 +88,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.name" id="nz1-6V-pIT"/>
+                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.name" id="Bmt-Gr-dlU"/>
                                                                             </connections>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rdE-oA-jfm">
@@ -102,7 +102,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.size" id="Gb9-sU-I3B">
+                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.size" id="Qos-Kg-Nfp">
                                                                                     <dictionary key="options">
                                                                                         <string key="NSValueTransformerName">AlbumSizeTransformer</string>
                                                                                     </dictionary>
@@ -120,7 +120,7 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.publishTime" id="LL3-6s-IQM">
+                                                                                <binding destination="mcV-ih-tNz" name="value" keyPath="objectValue.publishTime" id="K0A-YR-YNz">
                                                                                     <dictionary key="options">
                                                                                         <string key="NSValueTransformerName">PubilshTimeTransformer</string>
                                                                                     </dictionary>
@@ -187,12 +187,12 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
+                                                                                <binding destination="16l-ml-c0G" name="value" keyPath="objectValue.alias" id="6nj-BI-mA2"/>
                                                                                 <binding destination="16l-ml-c0G" name="hidden" keyPath="objectValue.alias" id="YUO-LS-kb3">
                                                                                     <dictionary key="options">
                                                                                         <string key="NSValueTransformerName">EmptyStringTransformer</string>
                                                                                     </dictionary>
                                                                                 </binding>
-                                                                                <binding destination="16l-ml-c0G" name="value" keyPath="objectValue.alias" id="6nj-BI-mA2"/>
                                                                             </connections>
                                                                         </textField>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KrG-Bz-5ts">
