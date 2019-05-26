@@ -16,9 +16,9 @@ class ArtistViewController: NSViewController {
         guard let item = items[safe: tableView.selectedRow] else { return }
         tableView.deselectAll(nil)
         switch item.type {
-        case .hotSongs:
+        case .topSongs:
             guard let id = item.artist?.id else { return }
-            ViewControllerManager.shared.selectSidebarItem(.hotSongs, id)
+            ViewControllerManager.shared.selectSidebarItem(.topSongs, id)
         case .album:
             guard let id = item.album?.id else { return }
             ViewControllerManager.shared.selectSidebarItem(.album, id)
@@ -32,7 +32,7 @@ class ArtistViewController: NSViewController {
         let album: Track.Album?
         let type: ItemType
         enum ItemType {
-            case artist, hotSongs, album
+            case artist, topSongs, album
         }
         
         init(type: ItemType = .album,
@@ -66,7 +66,7 @@ class ArtistViewController: NSViewController {
             
             self.items.removeAll()
             self.items.append(Item(type: .artist, artist: $0.artist))
-            self.items.append(Item(type: .hotSongs, artist: $0.artist))
+            self.items.append(Item(type: .topSongs, artist: $0.artist))
             self.items.append(contentsOf: $0.hotAlbums.map({Item(album: $0)}))
             
             self.tableView.reloadData()
@@ -113,10 +113,10 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
                     "albumSize": artist.albumSize ?? 0,
                     "musicSize": artist.musicSize ?? 0,
                     "image": artist.cover ?? image]
-        case .hotSongs:
+        case .topSongs:
             guard let image = NSImage(named: .init("cover_top50")) else { return nil }
             return ["image": image,
-                    "name": "hot songs",
+                    "name": "top songs",
                     "size": 50,
                     "publishTime": "none"]
         case .album:

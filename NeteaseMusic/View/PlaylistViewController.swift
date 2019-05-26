@@ -93,7 +93,7 @@ class PlaylistViewController: NSViewController {
                 let newValue = newV else { return }
             let id = newValue.id
             switch newValue.type {
-            case .playlist, .favourite, .discoverPlaylist, .album, .hotSongs:
+            case .playlist, .favourite, .discoverPlaylist, .album, .topSongs:
                 if self?.playlistId == newValue.id,
                     self?.playlistType == newValue.type {
                     return
@@ -107,8 +107,8 @@ class PlaylistViewController: NSViewController {
             switch newValue.type {
             case .album:
                 self?.initPlaylistWithAlbum(id)
-            case .hotSongs:
-                self?.initPlaylistWithHotSongs(id)
+            case .topSongs:
+                self?.initPlaylistWithTopSongs(id)
             case .playlist:
                 self?.initPlaylist(id)
             case .discoverPlaylist:
@@ -123,7 +123,7 @@ class PlaylistViewController: NSViewController {
     
     func initPlaylistInfo() {
         let albumMode = playlistType == .album
-        let hotSongsMode = playlistType == .hotSongs
+        let topSongsMode = playlistType == .topSongs
         let discoverPlaylistMode = playlistType == .discoverPlaylist
         tracks.removeAll()
         
@@ -138,11 +138,11 @@ class PlaylistViewController: NSViewController {
         tableView.tableColumn(withIdentifier: .init("PlaylistAlbum"))?.isHidden = albumMode
         tableView.tableColumn(withIdentifier: .init("PlaylistPop"))?.isHidden = !albumMode
         
-        countAndViewsStackView.isHidden = albumMode || hotSongsMode || discoverPlaylistMode
+        countAndViewsStackView.isHidden = albumMode || topSongsMode || discoverPlaylistMode
         artistStackView.isHidden = !albumMode
         timeStackView.isHidden = !albumMode
-        subscribeButton.isHidden = hotSongsMode
-        descriptionStackView.isHidden = hotSongsMode
+        subscribeButton.isHidden = topSongsMode
+        descriptionStackView.isHidden = topSongsMode
     }
     
     func initPlaylist(_ id: Int) {
@@ -204,7 +204,7 @@ class PlaylistViewController: NSViewController {
         }
     }
     
-    func initPlaylistWithHotSongs(_ id: Int) {
+    func initPlaylistWithTopSongs(_ id: Int) {
         initPlaylistInfo()
         PlayCore.shared.api.artist(id).done(on: .main) {
             self.coverImageView.image = $0.artist.cover
