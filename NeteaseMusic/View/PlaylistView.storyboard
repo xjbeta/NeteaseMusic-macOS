@@ -352,10 +352,10 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eES-Pg-CQ3">
-                                        <rect key="frame" x="235" y="26" width="567" height="154"/>
+                                        <rect key="frame" x="235" y="17" width="567" height="163"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDm-EW-Lfp">
-                                                <rect key="frame" x="0.0" y="129" width="124" height="25"/>
+                                                <rect key="frame" x="0.0" y="138" width="124" height="25"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H0E-gF-bdJ">
                                                         <rect key="frame" x="-2" y="0.0" width="51" height="21"/>
@@ -386,11 +386,11 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMj-IR-qPf">
-                                                <rect key="frame" x="0.0" y="100" width="186" height="21"/>
+                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMj-IR-qPf">
+                                                <rect key="frame" x="0.0" y="100" width="186" height="30"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2d0-ZZ-SO7">
-                                                        <rect key="frame" x="-6" y="-7" width="101" height="32"/>
+                                                        <rect key="frame" x="-6" y="-2" width="101" height="32"/>
                                                         <buttonCell key="cell" type="push" title="Play All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rHk-uK-zGx">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" usesAppearanceFont="YES"/>
@@ -400,7 +400,7 @@
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-QW-naB">
-                                                        <rect key="frame" x="91" y="-7" width="101" height="32"/>
+                                                        <rect key="frame" x="91" y="-2" width="101" height="32"/>
                                                         <buttonCell key="cell" type="push" title="Subscribe" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1ya-xl-UCE">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" usesAppearanceFont="YES"/>
@@ -412,6 +412,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="2d0-ZZ-SO7" firstAttribute="width" secondItem="xfw-QW-naB" secondAttribute="width" id="0XL-aA-xpO"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ypi-3w-sdG"/>
                                                 </constraints>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
