@@ -124,6 +124,7 @@ class PlaylistViewController: NSViewController {
     func initPlaylistInfo() {
         let albumMode = playlistType == .album
         let hotSongsMode = playlistType == .hotSongs
+        let discoverPlaylistMode = playlistType == .discoverPlaylist
         tracks.removeAll()
         
         coverImageView.image = nil
@@ -137,7 +138,7 @@ class PlaylistViewController: NSViewController {
         tableView.tableColumn(withIdentifier: .init("PlaylistAlbum"))?.isHidden = albumMode
         tableView.tableColumn(withIdentifier: .init("PlaylistPop"))?.isHidden = !albumMode
         
-        countAndViewsStackView.isHidden = albumMode || hotSongsMode
+        countAndViewsStackView.isHidden = albumMode || hotSongsMode || discoverPlaylistMode
         artistStackView.isHidden = !albumMode
         timeStackView.isHidden = !albumMode
         subscribeButton.isHidden = hotSongsMode
