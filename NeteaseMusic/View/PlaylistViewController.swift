@@ -109,9 +109,9 @@ class PlaylistViewController: NSViewController {
                 self?.initPlaylistWithAlbum(id)
             case .hotSongs:
                 self?.initPlaylistWithHotSongs(id)
-            case .playlist where id != -1, .discoverPlaylist:
+            case .playlist:
                 self?.initPlaylist(id)
-            case .playlist where id == -1:
+            case .discoverPlaylist:
                 self?.initPlaylistWithRecommandSongs()
             default:
                 break
