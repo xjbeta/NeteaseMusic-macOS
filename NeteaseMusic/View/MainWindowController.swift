@@ -33,7 +33,7 @@ class MainWindowController: NSWindowController {
                                        behavior: .transient)
     }
     
-    let searchSuggestionsVC = NSStoryboard(name: .init("Main"), bundle: nil).instantiateController(withIdentifier: .init("SearchSuggestionsViewController")) as! SearchSuggestionsViewController
+    let searchSuggestionsVC = NSStoryboard(name: .init("SearchSuggestionsView"), bundle: nil).instantiateController(withIdentifier: .init("SearchSuggestionsViewController")) as! SearchSuggestionsViewController
     
     override func windowDidLoad() {
         super.windowDidLoad()

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="PFU-Ya-xgq">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Suggestions View Controller-->
+        <scene sceneID="U5c-nk-h4Q">
+            <objects>
+                <viewController storyboardIdentifier="SearchSuggestionsViewController" showSeguePresentationStyle="single" id="PFU-Ya-xgq" customClass="SearchSuggestionsViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="sJm-P0-AFd">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="520"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-4X-1Q0">
+                                <rect key="frame" x="0.0" y="0.0" width="370" height="520"/>
+                                <clipView key="contentView" drawsBackground="NO" id="nbP-fQ-Y2R">
+                                    <rect key="frame" x="1" y="1" width="368" height="518"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="cae-jQ-lMj">
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="518"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="365" minWidth="40" maxWidth="1000" id="0by-jP-xqs">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="uO1-3u-AxG">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="SearchSuggestTableCellView" id="XI5-Y3-2EP">
+                                                            <rect key="frame" x="1" y="1" width="365" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VOJ-Op-NZa">
+                                                                    <rect key="frame" x="4" y="6" width="83" height="18"/>
+                                                                    <subviews>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-yn-AVp">
+                                                                            <rect key="frame" x="-2" y="0.0" width="40" height="18"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="name" id="dfj-Uk-0L9">
+                                                                                <font key="font" metaFont="system" size="14"/>
+                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="XI5-Y3-2EP" name="value" keyPath="objectValue.name" id="4Q7-cf-l3T"/>
+                                                                            </connections>
+                                                                        </textField>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-Ws-MLn">
+                                                                            <rect key="frame" x="38" y="1" width="11" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="8lH-LD-eee">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="XI5-Y3-2EP" name="hidden" keyPath="objectValue.withSecondLabel" id="0f6-gX-fck">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                            </connections>
+                                                                        </textField>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="39z-fd-YdO">
+                                                                            <rect key="frame" x="49" y="1" width="36" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="artist" id="Vjx-YM-a47">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="XI5-Y3-2EP" name="value" keyPath="objectValue.secondName" id="Bdo-sA-MUn"/>
+                                                                                <binding destination="XI5-Y3-2EP" name="hidden" keyPath="objectValue.withSecondLabel" id="726-Ms-F5a">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                            </connections>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <visibilityPriorities>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                    </visibilityPriorities>
+                                                                    <customSpacing>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                    </customSpacing>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="VOJ-Op-NZa" firstAttribute="leading" secondItem="XI5-Y3-2EP" secondAttribute="leading" constant="4" id="2Va-ar-uGf"/>
+                                                                <constraint firstItem="VOJ-Op-NZa" firstAttribute="centerY" secondItem="XI5-Y3-2EP" secondAttribute="centerY" id="epD-vk-jWn"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VOJ-Op-NZa" secondAttribute="trailing" constant="4" id="tvW-Uk-9mj"/>
+                                                            </constraints>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="PFU-Ya-xgq" id="T4F-L6-LXt"/>
+                                                <outlet property="delegate" destination="PFU-Ya-xgq" id="VbA-Xk-IYs"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="DBz-Em-d0Y">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="udg-RP-fY3">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fpJ-4X-1Q0" secondAttribute="trailing" id="9I6-2m-8rH"/>
+                            <constraint firstItem="fpJ-4X-1Q0" firstAttribute="top" secondItem="sJm-P0-AFd" secondAttribute="top" id="RKD-Xk-nlj"/>
+                            <constraint firstItem="fpJ-4X-1Q0" firstAttribute="leading" secondItem="sJm-P0-AFd" secondAttribute="leading" id="axc-7O-0qH"/>
+                            <constraint firstAttribute="bottom" secondItem="fpJ-4X-1Q0" secondAttribute="bottom" id="gNp-sh-4HJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="cae-jQ-lMj" id="WKv-zA-4zO"/>
+                    </connections>
+                </viewController>
+                <customObject id="5to-xE-T9n" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1100" y="989"/>
+        </scene>
+    </scenes>
+</document>
