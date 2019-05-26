@@ -12,6 +12,7 @@ import PromiseKit
 class PlaylistViewController: NSViewController {
 
     @IBOutlet weak var playAllButton: NSButton!
+    @IBOutlet weak var subscribeButton: NSButton!
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var titleTextFiled: NSTextField!
@@ -24,6 +25,7 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var artistTextField: NSTextField!
     @IBOutlet weak var timeTextField: NSTextField!
     
+    @IBOutlet weak var descriptionStackView: NSStackView!
     @IBOutlet weak var countAndViewsStackView: NSStackView!
     @IBOutlet weak var artistStackView: NSStackView!
     @IBOutlet weak var timeStackView: NSStackView!
@@ -73,9 +75,9 @@ class PlaylistViewController: NSViewController {
     
     var sidebarItemObserver: NSKeyValueObservation?
     @objc dynamic var tracks = [Track]()
-    var playlistId = -1
     
-    var albumMode = false
+    var playlistId = -1
+    var playlistType: SidebarViewController.ItemType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,20 +89,32 @@ class PlaylistViewController: NSViewController {
         
             
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
-            guard let new = changes.newValue,
-                new?.type == .playlist || new?.type == .favourite || new?.type == .discoverPlaylist || new?.type == .album,
-                let id = new?.id else { return }
-            self?.playlistId = id
-            self?.albumMode = new?.type == .album
-            self?.tracks.removeAll()
-            self?.updateViewMode()
+            guard let newV = changes.newValue,
+                let newValue = newV else { return }
+            let id = newValue.id
+            switch newValue.type {
+            case .playlist, .favourite, .discoverPlaylist, .album, .hotSongs:
+                if self?.playlistId == newValue.id,
+                    self?.playlistType == newValue.type {
+                    return
+                }
+                self?.playlistId = id
+                self?.playlistType = newValue.type
+            default:
+                return
+            }
             
-            if new?.type == .album {
+            switch newValue.type {
+            case .album:
                 self?.initPlaylistWithAlbum(id)
-            } else if id > 0 {
+            case .hotSongs:
+                self?.initPlaylistWithHotSongs(id)
+            case .playlist where id != -1, .discoverPlaylist:
                 self?.initPlaylist(id)
-            } else if new?.title == "每日歌曲推荐", id == -1 {
+            case .playlist where id == -1:
                 self?.initPlaylistWithRecommandSongs()
+            default:
+                break
             }
         }
         
@@ -108,7 +122,10 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylistInfo() {
-//        tableView.tableColumns.first(where: { $0.title })
+        let albumMode = playlistType == .album
+        let hotSongsMode = playlistType == .hotSongs
+        tracks.removeAll()
+        
         coverImageView.image = nil
         titleTextFiled.stringValue = ""
         playCountTextField.integerValue = 0
@@ -116,7 +133,15 @@ class PlaylistViewController: NSViewController {
         descriptionTextField.stringValue = ""
         descriptionTextField.toolTip = ""
         albumCoverImageView.isHidden = !albumMode
-        tracks.removeAll()
+        
+        tableView.tableColumn(withIdentifier: .init("PlaylistAlbum"))?.isHidden = albumMode
+        tableView.tableColumn(withIdentifier: .init("PlaylistPop"))?.isHidden = !albumMode
+        
+        countAndViewsStackView.isHidden = albumMode || hotSongsMode
+        artistStackView.isHidden = !albumMode
+        timeStackView.isHidden = !albumMode
+        subscribeButton.isHidden = hotSongsMode
+        descriptionStackView.isHidden = hotSongsMode
     }
     
     func initPlaylist(_ id: Int) {
@@ -178,14 +203,20 @@ class PlaylistViewController: NSViewController {
         }
     }
     
-    
-    func updateViewMode() {
-        tableView.tableColumn(withIdentifier: .init("PlaylistAlbum"))?.isHidden = albumMode
-        tableView.tableColumn(withIdentifier: .init("PlaylistPop"))?.isHidden = !albumMode
-        
-        countAndViewsStackView.isHidden = albumMode
-        artistStackView.isHidden = !albumMode
-        timeStackView.isHidden = !albumMode
+    func initPlaylistWithHotSongs(_ id: Int) {
+        initPlaylistInfo()
+        PlayCore.shared.api.artist(id).done(on: .main) {
+            self.coverImageView.image = $0.artist.cover
+            self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
+            
+            var tracks = $0.hotSongs
+            tracks.enumerated().forEach {
+                tracks[$0.offset].index = $0.offset
+            }
+            self.tracks = tracks
+            }.catch {
+                print($0)
+        }
     }
     
     @objc func scrollViewDidScroll(_ notification: Notification) {

@@ -12,6 +12,20 @@ class ArtistViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     var sidebarItemObserver: NSKeyValueObservation?
     
+    @IBAction func tableViewClick(_ sender: Any) {
+        guard let item = items[safe: tableView.selectedRow] else { return }
+        switch item.type {
+        case .hotSongs:
+            guard let id = item.artist?.id else { return }
+            ViewControllerManager.shared.selectSidebarItem(.hotSongs, id)
+        case .album:
+            guard let id = item.album?.id else { return }
+            ViewControllerManager.shared.selectSidebarItem(.album, id)
+        default:
+            break
+        }
+    }
+    
     struct Item {
         let artist: Track.Artist?
         let album: Track.Album?
@@ -51,7 +65,7 @@ class ArtistViewController: NSViewController {
             
             self.items.removeAll()
             self.items.append(Item(type: .artist, artist: $0.artist))
-            self.items.append(Item(type: .hotSongs))
+            self.items.append(Item(type: .hotSongs, artist: $0.artist))
             self.items.append(contentsOf: $0.hotAlbums.map({Item(album: $0)}))
             
             self.tableView.reloadData()

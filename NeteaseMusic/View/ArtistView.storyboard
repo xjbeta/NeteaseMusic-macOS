@@ -296,6 +296,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action selector="tableViewClick:" target="duO-1w-ADn" id="Byw-k5-J9J"/>
                                                 <outlet property="dataSource" destination="duO-1w-ADn" id="LWP-9N-xhV"/>
                                                 <outlet property="delegate" destination="duO-1w-ADn" id="2jB-ww-a61"/>
                                             </connections>

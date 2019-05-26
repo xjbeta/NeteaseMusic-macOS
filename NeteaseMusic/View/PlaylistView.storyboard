@@ -153,7 +153,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="lns-4B-CGm">
-                                                            <rect key="frame" x="320.5" y="1" width="150" height="42"/>
+                                                            <rect key="frame" x="321" y="1" width="150" height="42"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGM-jE-qpg">
@@ -197,7 +197,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="rn1-kT-Y2t">
-                                                            <rect key="frame" x="473.5" y="1" width="163" height="42"/>
+                                                            <rect key="frame" x="474" y="1" width="163" height="42"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAZ-HD-MXN">
@@ -237,7 +237,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="A33-5Q-yEV">
-                                                            <rect key="frame" x="639.5" y="1" width="80" height="17"/>
+                                                            <rect key="frame" x="640" y="1" width="80" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Lfy-c3-AXJ">
@@ -266,7 +266,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="wae-iO-oWc">
-                                                            <rect key="frame" x="722.5" y="1" width="98" height="42"/>
+                                                            <rect key="frame" x="723" y="1" width="98" height="42"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JbO-IR-YV2">
@@ -622,10 +622,12 @@
                         <outlet property="artistTextField" destination="dfT-ha-j7E" id="0yu-le-lIv"/>
                         <outlet property="countAndViewsStackView" destination="R8B-gw-Jw9" id="wcz-fA-0kT"/>
                         <outlet property="coverImageView" destination="o6X-zr-lKP" id="aWD-dX-5FJ"/>
+                        <outlet property="descriptionStackView" destination="XPC-lw-bZ5" id="Cpa-cQ-i8o"/>
                         <outlet property="descriptionTextField" destination="bI7-3H-ohy" id="jOM-8e-iLR"/>
                         <outlet property="playAllButton" destination="2d0-ZZ-SO7" id="4TX-5T-i0X"/>
                         <outlet property="playCountTextField" destination="PWZ-Vv-gqv" id="MGU-JI-Cp7"/>
                         <outlet property="playlistStrTextField" destination="H0E-gF-bdJ" id="Q89-s2-156"/>
+                        <outlet property="subscribeButton" destination="xfw-QW-naB" id="cLm-aI-DSL"/>
                         <outlet property="tableView" destination="5f5-ne-QVu" id="q1K-GD-jL9"/>
                         <outlet property="timeStackView" destination="Dvt-CZ-mrk" id="adQ-1w-gmc"/>
                         <outlet property="timeTextField" destination="nXT-jg-0WT" id="pGm-eQ-fDk"/>
