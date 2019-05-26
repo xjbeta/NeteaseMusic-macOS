@@ -14,6 +14,7 @@ class ArtistViewController: NSViewController {
     
     @IBAction func tableViewClick(_ sender: Any) {
         guard let item = items[safe: tableView.selectedRow] else { return }
+        tableView.deselectAll(nil)
         switch item.type {
         case .hotSongs:
             guard let id = item.artist?.id else { return }
@@ -113,12 +114,11 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
                     "musicSize": artist.musicSize ?? 0,
                     "image": artist.cover ?? image]
         case .hotSongs:
-            guard let image = NSImage(named: .init("calendar_bg")) else { return nil }
+            guard let image = NSImage(named: .init("cover_top50")) else { return nil }
             return ["image": image,
                     "name": "hot songs",
                     "size": 50,
                     "publishTime": "none"]
-            
         case .album:
             guard let album = item.album,
                 let image = NSImage(named: .init("calendar_bg")) else { return nil }
