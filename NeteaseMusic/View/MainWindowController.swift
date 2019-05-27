@@ -13,27 +13,31 @@ class MainWindowController: NSWindowController {
     @IBOutlet weak var searchField: NSSearchField!
     
     @IBAction func search(_ sender: NSSearchField) {
-        if sender.stringValue.isEmpty {
-            searchSuggestionsVC.dismiss(nil)
+        let str = sender.stringValue
+        if str.isEmpty {
+            popover.close()
             return
         }
-        let str = sender.stringValue
-        PlayCore.shared.api.searchSuggest(str).done {
-            guard str == self.searchField.stringValue else { return }
-            self.searchSuggestionsVC.suggestResult = $0
+        
+        PlayCore.shared.api.searchSuggest(str).done { [weak self] in
+            guard str == self?.searchField.stringValue else { return }
+            self?.searchSuggestionsVC.suggestResult = $0
+            self?.searchSuggestionsVC.initViewHeight(self?.popover)
             }.catch {
                 print($0)
         }
         
-        guard !searchSuggestionsVC.displayed else { return }
-        contentViewController?.present(searchSuggestionsVC,
-                                       asPopoverRelativeTo: sender.frame,
-                                       of: sender,
-                                       preferredEdge: .minY,
-                                       behavior: .transient)
+        guard !popover.isShown else { return }
+        popover.show(relativeTo: sender.frame, of: sender, preferredEdge: .minY)
     }
     
     let searchSuggestionsVC = NSStoryboard(name: .init("SearchSuggestionsView"), bundle: nil).instantiateController(withIdentifier: .init("SearchSuggestionsViewController")) as! SearchSuggestionsViewController
+    
+    lazy var popover: NSPopover = {
+        let p = NSPopover()
+        p.contentViewController = searchSuggestionsVC
+        return p
+    }()
     
     override func windowDidLoad() {
         super.windowDidLoad()

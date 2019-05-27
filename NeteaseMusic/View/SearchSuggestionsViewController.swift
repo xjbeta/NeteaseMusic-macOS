@@ -12,7 +12,6 @@ class SearchSuggestionsViewController: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
 
-    
     enum SuggestItemType {
         case song, album, artist, playlist, mv, groupItem
     }
@@ -35,8 +34,6 @@ class SearchSuggestionsViewController: NSViewController {
             self.image = image
         }
     }
-    
-    var displayed = false
     
     var suggestItems = [SuggestItem]()
     
@@ -64,17 +61,16 @@ class SearchSuggestionsViewController: NSViewController {
         }
     }
     
+    func initViewHeight(_ popover: NSPopover?) {
+        var size = view.frame.size
+        let height = tableView.intrinsicContentSize.height
+        size.height = height > 800 ? 800 : height
+        popover?.contentSize = size
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.refusesFirstResponder = true
-    }
-    
-    override func viewDidAppear() {
-        displayed = true
-    }
-    
-    override func viewDidDisappear() {
-        displayed = false
     }
 }
 
