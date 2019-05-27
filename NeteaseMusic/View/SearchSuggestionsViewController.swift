@@ -11,7 +11,32 @@ import Cocoa
 class SearchSuggestionsViewController: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
-
+    @IBAction func clickAction(_ sender: NSTableView) {
+        let row = sender.selectedRow
+        guard let item = suggestItems[safe: row] else { return }
+        
+        switch item.type {
+        case .groupItem:
+            print(item)
+        case .song:
+            print("Should start playing \(item)")
+            break
+        case .album:
+            ViewControllerManager.shared.selectSidebarItem(.album, item.id)
+        case .artist:
+            ViewControllerManager.shared.selectSidebarItem(.artist, item.id)
+        case .playlist:
+            ViewControllerManager.shared.selectSidebarItem(.playlist, item.id)
+        default:
+            break
+        }
+        
+        
+        
+        print(item)
+        
+    }
+    
     enum SuggestItemType {
         case song, album, artist, playlist, mv, groupItem
     }

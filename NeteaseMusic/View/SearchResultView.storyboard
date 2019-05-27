@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="b2J-FF-xR5">
+            <objects>
+                <viewController id="Mzy-mQ-Wpc" sceneMemberID="viewController">
+                    <view key="view" id="oPU-Ha-k43">
+                        <rect key="frame" x="0.0" y="0.0" width="899" height="608"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <tabView fixedFrame="YES" initialItem="tsS-7l-HNA" translatesAutoresizingMaskIntoConstraints="NO" id="0rd-x2-Yek">
+                                <rect key="frame" x="13" y="2" width="873" height="592"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="Songs" identifier="" id="tsS-7l-HNA">
+                                        <view key="view" id="3hv-fg-HTe">
+                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Artists" identifier="" id="FEx-o3-y8C">
+                                        <view key="view" ambiguous="YES" id="3Um-hP-VS1">
+                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Albums" identifier="" id="890-wl-wH2">
+                                        <view key="view" id="ISc-Tm-fnV">
+                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Playlists" identifier="" id="gDH-s7-IDU">
+                                        <view key="view" id="jmk-pb-UAU">
+                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="44R-aO-9v0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393.5" y="-66"/>
+        </scene>
+    </scenes>
+</document>

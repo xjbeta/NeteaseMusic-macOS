@@ -111,6 +111,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action selector="clickAction:" target="PFU-Ya-xgq" id="HaP-QE-XFV"/>
                                                 <outlet property="dataSource" destination="PFU-Ya-xgq" id="T4F-L6-LXt"/>
                                                 <outlet property="delegate" destination="PFU-Ya-xgq" id="VbA-Xk-IYs"/>
                                             </connections>

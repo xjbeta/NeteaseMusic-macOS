@@ -914,6 +914,20 @@
                                                         <view key="view" id="XeL-Tp-kNn">
                                                             <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-T0-GFZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                    <connections>
+                                                                        <segue destination="Xdt-fC-huh" kind="embed" id="twu-7o-Uft"/>
+                                                                    </connections>
+                                                                </containerView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Fwy-T0-GFZ" firstAttribute="top" secondItem="XeL-Tp-kNn" secondAttribute="top" id="22u-iT-LPx"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Fwy-T0-GFZ" secondAttribute="bottom" id="5cg-1V-FI0"/>
+                                                                <constraint firstItem="Fwy-T0-GFZ" firstAttribute="leading" secondItem="XeL-Tp-kNn" secondAttribute="leading" id="HXK-vB-R3i"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Fwy-T0-GFZ" secondAttribute="trailing" id="IjE-TB-xkN"/>
+                                                            </constraints>
                                                         </view>
                                                     </tabViewItem>
                                                     <tabViewItem label="Item 6" identifier="" id="bsz-vJ-zpk" userLabel="Artist">
@@ -1049,6 +1063,14 @@
                 <customObject id="TjD-39-oWa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="766" y="1299"/>
+        </scene>
+        <!--SearchResultView-->
+        <scene sceneID="HUU-Bv-WmE">
+            <objects>
+                <controllerPlaceholder storyboardName="SearchResultView" id="Xdt-fC-huh" sceneMemberID="viewController"/>
+                <customObject id="rTX-MW-I6c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="789" y="1365"/>
         </scene>
         <!--Sidebar-->
         <scene sceneID="dp9-gY-ytn">

@@ -45,6 +45,8 @@ class MainViewController: NSViewController {
                     self.updateTabView(.playlist)
                 case .artist:
                     self.updateTabView(.artist)
+                case .searchResults:
+                    self.updateTabView(.search)
                 default:
                     break
                 }
