@@ -70,7 +70,7 @@ class SidebarViewController: NSViewController {
                     self?.tableView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
                     self?.tableViewSelectionIsChanging(notification)
                 }
-            case .album, .artist, .topSongs, .searchResults:
+            case .album, .artist, .topSongs, .searchResults, .playlist:
                 self?.tableView.deselectAll(self)
                 self?.tableViewSelectionIsChanging(notification)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
