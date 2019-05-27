@@ -112,7 +112,11 @@ class PlaylistViewController: NSViewController {
             case .playlist:
                 self?.initPlaylist(id)
             case .discoverPlaylist:
-                self?.initPlaylistWithRecommandSongs()
+                if id == -1, newValue.title == "每日歌曲推荐" {
+                    self?.initPlaylistWithRecommandSongs()
+                } else {
+                    self?.initPlaylist(id)
+                }
             default:
                 break
             }
