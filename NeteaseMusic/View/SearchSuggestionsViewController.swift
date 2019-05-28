@@ -30,11 +30,7 @@ class SearchSuggestionsViewController: NSViewController {
         default:
             break
         }
-        
-        
-        
-        print(item)
-        
+        dismissPopover?()
     }
     
     enum SuggestItemType {
@@ -86,16 +82,18 @@ class SearchSuggestionsViewController: NSViewController {
         }
     }
     
+    var dismissPopover: (() -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.refusesFirstResponder = true
+    }
+    
     func initViewHeight(_ popover: NSPopover?) {
         var size = view.frame.size
         let height = tableView.intrinsicContentSize.height
         size.height = height > 800 ? 800 : height
         popover?.contentSize = size
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.refusesFirstResponder = true
     }
 }
 

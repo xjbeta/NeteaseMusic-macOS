@@ -35,6 +35,9 @@ class MainWindowController: NSWindowController {
     
     lazy var popover: NSPopover = {
         let p = NSPopover()
+        searchSuggestionsVC.dismissPopover = {
+            p.close()
+        }
         p.contentViewController = searchSuggestionsVC
         return p
     }()
