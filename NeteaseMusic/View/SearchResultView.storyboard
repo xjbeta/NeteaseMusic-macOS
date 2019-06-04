@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search Result View Controller-->
         <scene sceneID="b2J-FF-xR5">
             <objects>
-                <viewController id="Mzy-mQ-Wpc" sceneMemberID="viewController">
+                <viewController id="Mzy-mQ-Wpc" customClass="SearchResultViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="oPU-Ha-k43">
                         <rect key="frame" x="0.0" y="0.0" width="899" height="608"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,14 +24,14 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="Artists" identifier="" id="FEx-o3-y8C">
-                                        <view key="view" ambiguous="YES" id="3Um-hP-VS1">
+                                    <tabViewItem label="Albums" identifier="" id="FEx-o3-y8C">
+                                        <view key="view" id="3Um-hP-VS1">
                                             <rect key="frame" x="10" y="33" width="853" height="546"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="Albums" identifier="" id="890-wl-wH2">
-                                        <view key="view" id="ISc-Tm-fnV">
+                                    <tabViewItem label="Artists" identifier="" id="890-wl-wH2">
+                                        <view key="view" ambiguous="YES" id="ISc-Tm-fnV">
                                             <rect key="frame" x="10" y="33" width="853" height="546"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
@@ -46,6 +46,9 @@
                             </tabView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="tabView" destination="0rd-x2-Yek" id="Rdd-Sx-Im9"/>
+                    </connections>
                 </viewController>
                 <customObject id="44R-aO-9v0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

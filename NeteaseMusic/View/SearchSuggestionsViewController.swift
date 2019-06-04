@@ -17,7 +17,7 @@ class SearchSuggestionsViewController: NSViewController {
         
         switch item.type {
         case .groupItem:
-            print(item)
+            ViewControllerManager.shared.selectSidebarItem(.searchResults, item.id)
         case .song:
             print("Should start playing \(item)")
             break
@@ -37,22 +37,32 @@ class SearchSuggestionsViewController: NSViewController {
         case song, album, artist, playlist, mv, groupItem
     }
     
+    enum GroupType: Int {
+        case none, songs, albums, artists, playlists
+    }
+    
     struct SuggestItem {
         let id: Int
         let name: String
         let secondName: String?
         let image: NSImage?
         let type: SuggestItemType
+        let groupType: GroupType
         var withSecondLabel : Bool {
             return type == .song || type == .album
         }
         
-        init(id: Int = -1, name: String, secondName: String? = nil, type: SuggestItemType = .groupItem, image: NSImage? = nil) {
-            self.id = id
+        init(id: Int = -1, name: String, secondName: String? = nil, type: SuggestItemType = .groupItem, image: NSImage? = nil, groupType: GroupType = .none) {
             self.name = name
             self.secondName = secondName
             self.type = type
             self.image = image
+            self.groupType = groupType
+            if groupType != .none {
+                self.id = groupType.rawValue
+            } else {
+                self.id = id
+            }
         }
     }
     
@@ -63,19 +73,19 @@ class SearchSuggestionsViewController: NSViewController {
             guard let re = suggestResult else { return }
             suggestItems.removeAll()
             if let songs = re.songs {
-                suggestItems.append(.init(name: "Songs"))
+                suggestItems.append(.init(name: "Songs", groupType: .songs))
                 suggestItems.append(contentsOf: songs.map ({ SuggestItem(id: $0.id, name: $0.name, secondName: $0.artists.map({ $0.name }).joined(separator: " "), type: .song) }))
             }
             if let albums = re.albums {
-                suggestItems.append(.init(name: "Albums"))
+                suggestItems.append(.init(name: "Albums", groupType: .albums))
                 suggestItems.append(contentsOf: albums.map ({ SuggestItem(id: $0.id, name: $0.name, secondName: $0.artist.name, type: .album) }))
             }
             if let artists = re.artists {
-                suggestItems.append(.init(name: "Artists"))
+                suggestItems.append(.init(name: "Artists", groupType: .artists))
                 suggestItems.append(contentsOf: artists.map ({ SuggestItem(id: $0.id, name: $0.name, type: .artist) }))
             }
             if let playlists = re.playlists {
-                suggestItems.append(.init(name: "Playlists"))
+                suggestItems.append(.init(name: "Playlists", groupType: .playlists))
                 suggestItems.append(contentsOf: playlists.map ({ SuggestItem(id: $0.id, name: $0.name, type: .playlist) }))
             }
             tableView.reloadData()

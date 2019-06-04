@@ -13,6 +13,7 @@
 		012772DD22997DEF00C55537 /* Artist.json in Resources */ = {isa = PBXBuildFile; fileRef = 012772DC22997DEF00C55537 /* Artist.json */; };
 		012772DF229AA1A500C55537 /* SearchSuggestionsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */; };
 		012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012772E0229B9E4400C55537 /* SearchResultView.storyboard */; };
+		012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772E2229E1D9A00C55537 /* SearchResultViewController.swift */; };
 		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F115722603CE8002D5599 /* SidePlaylistViewController.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
@@ -139,6 +140,7 @@
 		012772DC22997DEF00C55537 /* Artist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Artist.json; sourceTree = "<group>"; };
 		012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchSuggestionsView.storyboard; sourceTree = "<group>"; };
 		012772E0229B9E4400C55537 /* SearchResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultView.storyboard; sourceTree = "<group>"; };
+		012772E2229E1D9A00C55537 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 			children = (
 				017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */,
 				012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */,
+				012772E2229E1D9A00C55537 /* SearchResultViewController.swift */,
 				012772E0229B9E4400C55537 /* SearchResultView.storyboard */,
 			);
 			name = SearchSuggest;
@@ -620,6 +623,7 @@
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
 				0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */,
+				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,
 				012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */,

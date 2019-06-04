@@ -16,6 +16,7 @@ class ViewControllerManager: NSObject {
     
     @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
     
+    var searchFieldString = ""
     
     func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
                            _ id: Int = -1) {

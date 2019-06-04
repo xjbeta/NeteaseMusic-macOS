@@ -14,6 +14,7 @@ class MainWindowController: NSWindowController {
     
     @IBAction func search(_ sender: NSSearchField) {
         let str = sender.stringValue
+        ViewControllerManager.shared.searchFieldString = str
         if str.isEmpty {
             popover.close()
             return
