@@ -207,6 +207,43 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func search(_ keywords: String,
+                type: SearchSuggestionsViewController.GroupType) -> Promise<SearchResult.Result> {
+        struct P: Encodable {
+            let s: String
+            // 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频
+            let type: Int
+            let limit: Int = 30
+            let offset: Int = 0
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case s, type, limit, offset, csrfToken = "csrf_token"
+            }
+        }
+        
+        var typeInt = 0
+        switch type {
+        case .songs:
+            typeInt = 1
+        case .albums:
+            typeInt = 10
+        case .artists:
+            typeInt = 100
+        case .playlists:
+            typeInt = 1000
+        default:
+            typeInt = 0
+        }
+        
+        let p = P(s: keywords, type: typeInt, csrfToken: csrf).jsonString()
+        
+        
+        return request("https://music.163.com/weapi/search/get",
+                       p, SearchResult.self).map {
+                        $0.result
+        }
+    }
+    
     func playlistSubscribe(_ id: Int, unSubscribe: Bool = false) -> Promise<()> {
         struct P: Encodable {
             let id: Int

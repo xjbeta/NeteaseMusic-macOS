@@ -14,6 +14,10 @@
 		012772DF229AA1A500C55537 /* SearchSuggestionsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */; };
 		012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012772E0229B9E4400C55537 /* SearchResultView.storyboard */; };
 		012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772E2229E1D9A00C55537 /* SearchResultViewController.swift */; };
+		012772E722A7536200C55537 /* SearchSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 012772E622A7536200C55537 /* SearchSongs.json */; };
+		012772E922A753C500C55537 /* SearchAlbums.json in Resources */ = {isa = PBXBuildFile; fileRef = 012772E822A753C500C55537 /* SearchAlbums.json */; };
+		012772EB22A753F200C55537 /* SearchArtists.json in Resources */ = {isa = PBXBuildFile; fileRef = 012772EA22A753F200C55537 /* SearchArtists.json */; };
+		012772ED22A7542A00C55537 /* SearchPlaylists.json in Resources */ = {isa = PBXBuildFile; fileRef = 012772EC22A7542A00C55537 /* SearchPlaylists.json */; };
 		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F115722603CE8002D5599 /* SidePlaylistViewController.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
@@ -141,6 +145,10 @@
 		012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchSuggestionsView.storyboard; sourceTree = "<group>"; };
 		012772E0229B9E4400C55537 /* SearchResultView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultView.storyboard; sourceTree = "<group>"; };
 		012772E2229E1D9A00C55537 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		012772E622A7536200C55537 /* SearchSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSongs.json; sourceTree = "<group>"; };
+		012772E822A753C500C55537 /* SearchAlbums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchAlbums.json; sourceTree = "<group>"; };
+		012772EA22A753F200C55537 /* SearchArtists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchArtists.json; sourceTree = "<group>"; };
+		012772EC22A7542A00C55537 /* SearchPlaylists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchPlaylists.json; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -476,6 +484,10 @@
 				01677B9C228C133D00D11190 /* Album.json */,
 				0132E1E22293E0AE00484D7E /* ArtistAlbums.json */,
 				012772DC22997DEF00C55537 /* Artist.json */,
+				012772E622A7536200C55537 /* SearchSongs.json */,
+				012772E822A753C500C55537 /* SearchAlbums.json */,
+				012772EA22A753F200C55537 /* SearchArtists.json */,
+				012772EC22A7542A00C55537 /* SearchPlaylists.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -560,22 +572,26 @@
 				012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */,
 				01467E9722846B050037B49D /* FM.storyboard in Resources */,
 				01467E9D2284713A0037B49D /* RadioGet.json in Resources */,
+				012772E922A753C500C55537 /* SearchAlbums.json in Resources */,
 				012FEA78228A5F6000698969 /* SongInfoView.storyboard in Resources */,
 				012FEA722289BAB300698969 /* PlayingSongView.storyboard in Resources */,
 				01E0F4A72261661B0043FAB6 /* PlayerUrl.json in Resources */,
 				01E0F4A5226165DD0043FAB6 /* PlaylistDetail.json in Resources */,
 				0132E1C12292689300484D7E /* ArtistView.storyboard in Resources */,
 				012FEA702289BA3F00698969 /* SidePlaylistView.storyboard in Resources */,
+				012772E722A7536200C55537 /* SearchSongs.json in Resources */,
 				012772DD22997DEF00C55537 /* Artist.json in Resources */,
 				0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */,
 				01314398226B497E00B9E26F /* RecommendSongs.json in Resources */,
 				017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */,
+				012772ED22A7542A00C55537 /* SearchPlaylists.json in Resources */,
 				012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */,
 				0132E1E32293E0AE00484D7E /* ArtistAlbums.json in Resources */,
 				012FEA6A2289B8D200698969 /* ControlBar.storyboard in Resources */,
 				0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */,
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
 				012FEA6E2289B9D700698969 /* DiscoverView.storyboard in Resources */,
+				012772EB22A753F200C55537 /* SearchArtists.json in Resources */,
 				01677B9D228C133D00D11190 /* Album.json in Resources */,
 				012FEA752289BC5300698969 /* LoginWindow.storyboard in Resources */,
 				0137264C226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib in Resources */,

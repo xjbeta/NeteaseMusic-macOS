@@ -84,11 +84,15 @@ class Track: NSObject, Decodable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.name = try container.decode(String.self, forKey: .name)
             self.id = try container.decode(Int.self, forKey: .id)
-            var urlStr = try container.decode(String.self, forKey: .picUrl)
-            if urlStr.starts(with: "http://") {
-                urlStr = urlStr.replacingOccurrences(of: "http://", with: "https://")
+            if var urlStr = try container.decodeIfPresent(String.self, forKey: .picUrl) {
+                if urlStr.starts(with: "http://") {
+                    urlStr = urlStr.replacingOccurrences(of: "http://", with: "https://")
+                }
+                self.picUrl = URL(string: urlStr)
+            } else {
+                self.picUrl = nil
             }
-            self.picUrl = URL(string: urlStr)
+            
             self.des = try container.decodeIfPresent(String.self, forKey: .des)
             self.publishTime = try container.decodeIfPresent(Int.self, forKey: .publishTime) ?? 0
             self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists)
@@ -148,7 +152,7 @@ struct Playlist: Decodable {
     let name: String
     let trackCount: Int
     let description: String?
-    let tags: [String]
+    let tags: [String]?
     let id: Int
     let tracks: [Track]?
     let trackIds: [trackId]?
@@ -262,4 +266,38 @@ struct ArtistResult: Decodable {
     let code: Int
     let artist: Track.Artist
     let hotSongs: [Track]
+}
+
+struct SearchResult: Decodable {
+    let code: Int
+    let result: Result
+    
+    class Result: NSObject, Decodable {
+        let songs: [Track]
+        let albums: [Track.Album]
+        let artists: [Track.Artist]
+        let playlists: [Playlist]
+        
+        let songCount: Int
+        let albumCount: Int
+        let artistCount: Int
+        let playlistCount: Int
+        
+        enum CodingKeys: String, CodingKey {
+            case songs, songCount, albums, albumCount, artists, artistCount, playlists, playlistCount
+        }
+        
+        required init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            songs = try container.decodeIfPresent([Track].self, forKey: .songs) ?? []
+            albums = try container.decodeIfPresent([Track.Album].self, forKey: .albums) ?? []
+            artists = try container.decodeIfPresent([Track.Artist].self, forKey: .artists) ?? []
+            playlists = try container.decodeIfPresent([Playlist].self, forKey: .playlists) ?? []
+            
+            songCount = try container.decodeIfPresent(Int.self, forKey: .songCount) ?? 0
+            albumCount = try container.decodeIfPresent(Int.self, forKey: .albumCount) ?? 0
+            artistCount = try container.decodeIfPresent(Int.self, forKey: .artistCount) ?? 0
+            playlistCount = try container.decodeIfPresent(Int.self, forKey: .playlistCount) ?? 0
+        }
+    }
 }
