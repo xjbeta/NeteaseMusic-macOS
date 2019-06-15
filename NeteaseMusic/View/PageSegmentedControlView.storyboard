@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="JtO-Dh-XNL">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Page Segmented Control View Controller-->
+        <scene sceneID="Rz2-W1-ldp">
+            <objects>
+                <viewController id="JtO-Dh-XNL" customClass="PageSegmentedControlViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="HOY-jX-DP7">
+                        <rect key="frame" x="0.0" y="0.0" width="215" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nXs-rs-A7P">
+                                <rect key="frame" x="0.0" y="-1" width="215" height="23"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="CEg-bV-Rf5">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment image="icon.sp#icn-page_pre" width="34"/>
+                                        <segment label="1" width="34" selected="YES" tag="1"/>
+                                        <segment label="2" width="34"/>
+                                        <segment label="..." width="34"/>
+                                        <segment label="99" width="35"/>
+                                        <segment image="icon.sp#icn-page_next" width="33"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="clicked:" target="JtO-Dh-XNL" id="1yk-AA-y77"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="nXs-rs-A7P" firstAttribute="leading" secondItem="HOY-jX-DP7" secondAttribute="leading" id="V9X-wN-NGu"/>
+                            <constraint firstAttribute="trailing" secondItem="nXs-rs-A7P" secondAttribute="trailing" id="aJT-3u-LVI"/>
+                            <constraint firstItem="nXs-rs-A7P" firstAttribute="top" secondItem="HOY-jX-DP7" secondAttribute="top" id="aXg-tV-txn"/>
+                            <constraint firstAttribute="bottom" secondItem="nXs-rs-A7P" secondAttribute="bottom" id="jUa-EY-uoT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="nXs-rs-A7P" id="SKt-HZ-srV"/>
+                    </connections>
+                </viewController>
+                <customObject id="xNw-6t-T6N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-46.5" y="57"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon.sp#icn-page_next" width="8" height="12"/>
+        <image name="icon.sp#icn-page_pre" width="8" height="12"/>
+    </resources>
+</document>
