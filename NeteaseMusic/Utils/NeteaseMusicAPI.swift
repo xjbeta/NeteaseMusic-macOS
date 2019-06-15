@@ -209,7 +209,7 @@ class NeteaseMusicAPI: NSObject {
     
     func search(_ keywords: String,
                 limit: Int,
-                offset: Int,
+                page: Int,
                 type: SearchSuggestionsViewController.GroupType) -> Promise<SearchResult.Result> {
         struct P: Encodable {
             let s: String
@@ -237,7 +237,7 @@ class NeteaseMusicAPI: NSObject {
             typeInt = 0
         }
         
-        let p = P(s: keywords, type: typeInt, limit: limit, offset:offset, csrfToken: csrf).jsonString()
+        let p = P(s: keywords, type: typeInt, limit: limit, offset: page * limit, csrfToken: csrf).jsonString()
         
         
         return request("https://music.163.com/weapi/search/get",
