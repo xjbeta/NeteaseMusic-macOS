@@ -66,6 +66,9 @@
 		013EF1562256500100E4D7D8 /* SubString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF1552256500100E4D7D8 /* SubString.swift */; };
 		013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EF158225732BC00E4D7D8 /* SidebarViewController.swift */; };
 		013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */ = {isa = PBXBuildFile; fileRef = 013EF167225B2A1F00E4D7D8 /* Crypto.js */; };
+		014327B022AA079200651064 /* UnresponsiveScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014327AF22AA079200651064 /* UnresponsiveScrollView.swift */; };
+		014327B222AB728D00651064 /* PageSegmentedControlView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014327B122AB728D00651064 /* PageSegmentedControlView.storyboard */; };
+		014327B422AB729F00651064 /* PageSegmentedControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014327B322AB729F00651064 /* PageSegmentedControlViewController.swift */; };
 		01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */; };
 		01467E88227EB3EA0037B49D /* PlaylistViewsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */; };
 		01467E8A2281AAD00037B49D /* Lyric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E892281AAD00037B49D /* Lyric.swift */; };
@@ -193,6 +196,9 @@
 		013EF1552256500100E4D7D8 /* SubString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubString.swift; sourceTree = "<group>"; };
 		013EF158225732BC00E4D7D8 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		013EF167225B2A1F00E4D7D8 /* Crypto.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Crypto.js; sourceTree = "<group>"; };
+		014327AF22AA079200651064 /* UnresponsiveScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnresponsiveScrollView.swift; sourceTree = "<group>"; };
+		014327B122AB728D00651064 /* PageSegmentedControlView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PageSegmentedControlView.storyboard; sourceTree = "<group>"; };
+		014327B322AB729F00651064 /* PageSegmentedControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSegmentedControlViewController.swift; sourceTree = "<group>"; };
 		01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTextFieldCell.swift; sourceTree = "<group>"; };
 		01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewsFormatter.swift; sourceTree = "<group>"; };
 		01467E892281AAD00037B49D /* Lyric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lyric.swift; sourceTree = "<group>"; };
@@ -414,6 +420,9 @@
 				012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */,
 				012772E2229E1D9A00C55537 /* SearchResultViewController.swift */,
 				012772E0229B9E4400C55537 /* SearchResultView.storyboard */,
+				014327AF22AA079200651064 /* UnresponsiveScrollView.swift */,
+				014327B322AB729F00651064 /* PageSegmentedControlViewController.swift */,
+				014327B122AB728D00651064 /* PageSegmentedControlView.storyboard */,
 			);
 			name = SearchSuggest;
 			sourceTree = "<group>";
@@ -584,6 +593,7 @@
 				0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */,
 				01314398226B497E00B9E26F /* RecommendSongs.json in Resources */,
 				017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */,
+				014327B222AB728D00651064 /* PageSegmentedControlView.storyboard in Resources */,
 				012772ED22A7542A00C55537 /* SearchPlaylists.json in Resources */,
 				012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */,
 				0132E1E32293E0AE00484D7E /* ArtistAlbums.json in Resources */,
@@ -645,6 +655,7 @@
 				012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */,
 				013143AB226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift in Sources */,
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
+				014327B022AA079200651064 /* UnresponsiveScrollView.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
@@ -655,6 +666,7 @@
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,
 				0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */,
 				0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */,
+				014327B422AB729F00651064 /* PageSegmentedControlViewController.swift in Sources */,
 				013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */,
 				0137264322698D20004EDCE5 /* DiscoverViewController.swift in Sources */,
 			);
