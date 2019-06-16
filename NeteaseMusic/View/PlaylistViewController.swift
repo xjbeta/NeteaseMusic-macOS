@@ -161,11 +161,7 @@ class PlaylistViewController: NSViewController {
             self.descriptionTextField.toolTip = descriptionStr
             self.playCountTextField.integerValue = $0.playCount
             self.trackCountTextField.integerValue = $0.trackCount
-            var tracks = $0.tracks ?? []
-            tracks.enumerated().forEach {
-                tracks[$0.offset].index = $0.offset
-            }
-            self.tracks = tracks
+            self.tracks = $0.tracks?.initIndexes() ?? []
             }.catch {
                 print($0)
         }
@@ -178,11 +174,7 @@ class PlaylistViewController: NSViewController {
             self.playlistStrTextField.stringValue = ""
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
-            var tracks = $0
-            tracks.enumerated().forEach {
-                tracks[$0.offset].index = $0.offset
-            }
-            self.tracks = tracks
+            self.tracks = $0.initIndexes()
             }.catch {
                 print($0)
         }
@@ -197,12 +189,7 @@ class PlaylistViewController: NSViewController {
             self.descriptionTextField.stringValue = $0.album.des ?? "none"
             self.artistTextField.stringValue = $0.album.artists?.artistsString() ?? ""
             self.timeTextField.stringValue = $0.album.formattedTime()
-            
-            var tracks = $0.songs
-            tracks.enumerated().forEach {
-                tracks[$0.offset].index = $0.offset
-            }
-            self.tracks = tracks
+            self.tracks = $0.songs.initIndexes()
             }.catch {
                 print($0)
         }
@@ -213,12 +200,7 @@ class PlaylistViewController: NSViewController {
         PlayCore.shared.api.artist(id).done(on: .main) {
             self.coverImageView.image = $0.artist.cover
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
-            
-            var tracks = $0.hotSongs
-            tracks.enumerated().forEach {
-                tracks[$0.offset].index = $0.offset
-            }
-            self.tracks = tracks
+            self.tracks = $0.hotSongs.initIndexes()
             }.catch {
                 print($0)
         }

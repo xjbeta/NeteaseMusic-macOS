@@ -146,7 +146,7 @@ class Track: NSObject, Decodable {
 }
 
 extension Array where Element: Track {
-    func initIndexs() -> [Track] {
+    func initIndexes() -> [Track] {
         var tracks = self
         tracks.enumerated().forEach {
             tracks[$0.offset].index = $0.offset

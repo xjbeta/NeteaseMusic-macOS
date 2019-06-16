@@ -68,7 +68,7 @@ class SearchResultViewController: NSViewController {
                     return
             }
             
-            songsResultVC.songs = $0.songs.initIndexs()
+            songsResultVC.songs = $0.songs.initIndexes()
             let pageCount = Int(ceil(Double($0.songCount) / Double(limit)))
             self.pageData = (pageCount, offset)
             pageSegmentedControlVC.reloadData()
