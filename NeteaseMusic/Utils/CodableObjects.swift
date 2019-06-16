@@ -145,6 +145,16 @@ class Track: NSObject, Decodable {
     }
 }
 
+extension Array where Element: Track {
+    func initIndexs() -> [Track] {
+        var tracks = self
+        tracks.enumerated().forEach {
+            tracks[$0.offset].index = $0.offset
+        }
+        return tracks
+    }
+}
+
 struct Playlist: Decodable {
     let subscribed: Bool
     let coverImgUrl: URL

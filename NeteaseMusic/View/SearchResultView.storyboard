@@ -10,49 +10,113 @@
             <objects>
                 <viewController id="Mzy-mQ-Wpc" customClass="SearchResultViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="oPU-Ha-k43">
-                        <rect key="frame" x="0.0" y="0.0" width="899" height="608"/>
+                        <rect key="frame" x="0.0" y="0.0" width="914" height="625"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tabView fixedFrame="YES" initialItem="tsS-7l-HNA" translatesAutoresizingMaskIntoConstraints="NO" id="0rd-x2-Yek">
-                                <rect key="frame" x="13" y="2" width="873" height="592"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <font key="font" metaFont="system"/>
-                                <tabViewItems>
-                                    <tabViewItem label="Songs" identifier="" id="tsS-7l-HNA">
-                                        <view key="view" id="3hv-fg-HTe">
-                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                    </tabViewItem>
-                                    <tabViewItem label="Albums" identifier="" id="FEx-o3-y8C">
-                                        <view key="view" id="3Um-hP-VS1">
-                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                    </tabViewItem>
-                                    <tabViewItem label="Artists" identifier="" id="890-wl-wH2">
-                                        <view key="view" ambiguous="YES" id="ISc-Tm-fnV">
-                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                    </tabViewItem>
-                                    <tabViewItem label="Playlists" identifier="" id="gDH-s7-IDU">
-                                        <view key="view" id="jmk-pb-UAU">
-                                            <rect key="frame" x="10" y="33" width="853" height="546"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                    </tabViewItem>
-                                </tabViewItems>
-                            </tabView>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0qF-ht-nbs">
+                                <rect key="frame" x="303" y="582" width="308" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="Jor-iG-60G">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Songs"/>
+                                        <segment label="Albums" selected="YES" tag="1"/>
+                                        <segment label="Artists"/>
+                                        <segment label="Playlists"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="selectNewType:" target="Mzy-mQ-Wpc" id="QVW-52-eR3"/>
+                                </connections>
+                            </segmentedControl>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lds-M8-xhC">
+                                <rect key="frame" x="20" y="20" width="874" height="544"/>
+                                <clipView key="contentView" id="QxU-h6-8hT">
+                                    <rect key="frame" x="1" y="1" width="872" height="542"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1f-Mt-5QA">
+                                            <rect key="frame" x="0.0" y="20" width="872" height="522"/>
+                                            <subviews>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="us3-k2-TLt">
+                                                    <rect key="frame" x="8" y="62" width="857" height="460"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="460" id="a2y-eH-1yq"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <segue destination="P33-N2-CaS" kind="embed" id="mXf-Uy-8DL"/>
+                                                    </connections>
+                                                </containerView>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="2XI-uT-bjs">
+                                                    <rect key="frame" x="51" y="20" width="770" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="i6T-h1-84H"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <segue destination="OVZ-qw-fbQ" kind="embed" id="koZ-og-Aas"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <edgeInsets key="edgeInsets" left="0.0" right="0.0" top="0.0" bottom="20"/>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="I1f-Mt-5QA" firstAttribute="leading" secondItem="QxU-h6-8hT" secondAttribute="leading" id="3j3-Sw-kf0"/>
+                                        <constraint firstAttribute="trailing" secondItem="I1f-Mt-5QA" secondAttribute="trailing" id="PbG-Yb-dHp"/>
+                                        <constraint firstItem="I1f-Mt-5QA" firstAttribute="top" secondItem="QxU-h6-8hT" secondAttribute="top" id="Pli-UC-OX4"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="VwH-QR-CL6">
+                                    <rect key="frame" x="1" y="527" width="872" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="wET-z0-33z">
+                                    <rect key="frame" x="857" y="1" width="16" height="542"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Lds-M8-xhC" firstAttribute="leading" secondItem="oPU-Ha-k43" secondAttribute="leading" constant="20" id="0gW-n4-duS"/>
+                            <constraint firstItem="0qF-ht-nbs" firstAttribute="top" secondItem="oPU-Ha-k43" secondAttribute="top" constant="20" id="2yk-MK-WqH"/>
+                            <constraint firstItem="0qF-ht-nbs" firstAttribute="centerX" secondItem="oPU-Ha-k43" secondAttribute="centerX" id="D0y-SU-JkS"/>
+                            <constraint firstAttribute="trailing" secondItem="Lds-M8-xhC" secondAttribute="trailing" constant="20" id="PnG-Ix-ju3"/>
+                            <constraint firstItem="Lds-M8-xhC" firstAttribute="top" secondItem="0qF-ht-nbs" secondAttribute="bottom" constant="20" id="WEO-Vs-iSt"/>
+                            <constraint firstAttribute="bottom" secondItem="Lds-M8-xhC" secondAttribute="bottom" constant="20" id="t1f-wY-RKy"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="tabView" destination="0rd-x2-Yek" id="Rdd-Sx-Im9"/>
+                        <outlet property="scrollView" destination="Lds-M8-xhC" id="Qwl-2l-w30"/>
+                        <outlet property="segmentedControl" destination="0qF-ht-nbs" id="4L7-wv-1pV"/>
+                        <outlet property="tableHeightLayoutConstraint" destination="a2y-eH-1yq" id="CGb-rx-vHy"/>
                     </connections>
                 </viewController>
                 <customObject id="44R-aO-9v0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="393.5" y="-66"/>
+            <point key="canvasLocation" x="393" y="-66.5"/>
+        </scene>
+        <!--SearchResultContentsView-->
+        <scene sceneID="Sd6-WA-kub">
+            <objects>
+                <controllerPlaceholder storyboardName="SearchResultContentsView" id="P33-N2-CaS" sceneMemberID="viewController"/>
+                <customObject id="f2G-uq-XIi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="-129"/>
+        </scene>
+        <!--PageSegmentedControlView-->
+        <scene sceneID="7rY-sB-lFl">
+            <objects>
+                <controllerPlaceholder storyboardName="PageSegmentedControlView" id="OVZ-qw-fbQ" sceneMemberID="viewController"/>
+                <customObject id="M10-OS-nqT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075" y="-70"/>
         </scene>
     </scenes>
 </document>
