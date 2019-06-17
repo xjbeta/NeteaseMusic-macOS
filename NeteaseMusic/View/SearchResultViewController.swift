@@ -52,7 +52,7 @@ class SearchResultViewController: NSViewController {
     
     func initSongsContent(_ offset: Int = 0) {
         guard let pageSegmentedControlVC = pageSegmentedControlViewController(),
-            let songsResultVC = songsResultViewController() else {
+            let resultVC = resultViewController() else {
                 return
         }
         
@@ -60,11 +60,11 @@ class SearchResultViewController: NSViewController {
         let keywords = ViewControllerManager.shared.searchFieldString
         let limit = 100
         
-        songsResultVC.songs.removeAll()
+        resultVC.songs.removeAll()
         PlayCore.shared.api.search(keywords, limit: limit, page: offset, type: .songs).done {
             print("Update songs result with \(keywords), page \(offset), limit \(limit).")
             guard let pageSegmentedControlVC = self.pageSegmentedControlViewController(),
-                let songsResultVC = self.songsResultViewController() else {
+                let songsResultVC = self.resultViewController() else {
                     return
             }
             
@@ -91,7 +91,7 @@ class SearchResultViewController: NSViewController {
         return vc
     }
     
-    func songsResultViewController() -> SearchResultContentsViewController? {
+    func resultViewController() -> SearchResultContentsViewController? {
         let vc = children.compactMap {
             $0 as? SearchResultContentsViewController
             }.first
