@@ -143,11 +143,14 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
             guard let artist = artists[safe: row],
                 let cover = NSImage(named: .init("user_150")) else { return nil }
             
-            print(artist.alias)
+            var secondName = ""
+            if let name = artist.alias?.first {
+                secondName = "(\(name))"
+            }
             
             return ["image": artist.cover ?? cover,
                     "name": artist.name,
-                    "secondName": artist.alias?.first ?? ""]
+                    "secondName": secondName]
         default:
             return nil
         }
