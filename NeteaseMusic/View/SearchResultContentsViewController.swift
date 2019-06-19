@@ -17,6 +17,7 @@ class SearchResultContentsViewController: NSViewController {
     var songs = [Track]()
     var albums = [Track.Album]()
     var artists = [Track.Artist]()
+    var playlists = [Playlist]()
     
     var headerView: NSTableHeaderView? = nil
     var tableViewColumnWidths = [(width: CGFloat, minWidth: CGFloat, maxWidth: CGFloat)]()
@@ -50,6 +51,8 @@ class SearchResultContentsViewController: NSViewController {
         dataType = type
         songs.removeAll()
         albums.removeAll()
+        artists.removeAll()
+        playlists.removeAll()
         
         switch type {
         case .songs:
@@ -66,7 +69,7 @@ class SearchResultContentsViewController: NSViewController {
                     $0.element.width = widths.width
                 }
             }
-        case .albums, .artists:
+        case .albums, .artists, .playlists:
             tableView.headerView = nil
             tableView.tableColumns.enumerated().forEach {
                 $0.element.isHidden = $0.offset != 0
@@ -91,6 +94,8 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
             return albums.count
         case .artists:
             return artists.count
+        case .playlists:
+            return playlists.count
         default:
             return 0
         }
@@ -100,7 +105,7 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
         switch dataType {
         case .songs:
             return 17
-        case .albums, .artists:
+        case .albums, .artists, .playlists:
             return 80
         default:
             return 0
@@ -117,6 +122,8 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
             return tableView.makeView(withIdentifier: .init("SearchAlbumInfoTableCellView"), owner: self)
         case .artists:
             return tableView.makeView(withIdentifier: .init("SearchArtistInfoTableCellView"), owner: self)
+        case .playlists:
+            return tableView.makeView(withIdentifier: .init("SearchPlaylistInfoTableCellView"), owner: self)
         default:
             return nil
         }
@@ -151,6 +158,16 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
             return ["image": artist.cover ?? cover,
                     "name": artist.name,
                     "secondName": secondName]
+        case .playlists:
+            guard let playlist = playlists[safe: row],
+                let cover = NSImage(named: .init("calendar_bg")) else { return nil }
+            
+            let name = playlist.creator?.nickname ?? "unknown"
+            
+            return ["image": NSImage(contentsOf: playlist.coverImgUrl) ?? cover,
+                    "name": playlist.name,
+                    "songCount": playlist.trackCount,
+                    "creatorName": "         by \(name)"]
         default:
             return nil
         }

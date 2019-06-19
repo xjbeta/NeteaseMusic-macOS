@@ -213,6 +213,88 @@
                                                                 <constraint firstItem="SKn-z3-uzJ" firstAttribute="leading" secondItem="fdB-rG-9xY" secondAttribute="leading" constant="10" id="oP6-zL-eCb"/>
                                                             </constraints>
                                                         </tableCellView>
+                                                        <tableCellView identifier="SearchPlaylistInfoTableCellView" id="bHh-xL-erF">
+                                                            <rect key="frame" x="1" y="209" width="553" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PjF-hJ-zz5">
+                                                                    <rect key="frame" x="10" y="10" width="523" height="60"/>
+                                                                    <subviews>
+                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MWq-kj-Mg0">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="60" id="WU8-0n-OJg"/>
+                                                                                <constraint firstAttribute="width" secondItem="MWq-kj-Mg0" secondAttribute="height" multiplier="1:1" id="zxu-Ra-PG2"/>
+                                                                            </constraints>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="TlB-iR-8uV"/>
+                                                                            <connections>
+                                                                                <binding destination="bHh-xL-erF" name="value" keyPath="objectValue.image" id="4jQ-kM-4w8"/>
+                                                                            </connections>
+                                                                        </imageView>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1TF-4g-O7L">
+                                                                            <rect key="frame" x="70" y="21" width="131" height="19"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="name" id="rRJ-P8-MXA">
+                                                                                <font key="font" metaFont="system" size="15"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="bHh-xL-erF" name="value" keyPath="objectValue.name" id="EFw-N6-aNp"/>
+                                                                            </connections>
+                                                                        </textField>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FVZ-ds-vTe">
+                                                                            <rect key="frame" x="209" y="22" width="104" height="17"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="100" id="qIY-v6-qd7"/>
+                                                                            </constraints>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="0 songs" id="qIG-FU-BEE">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="bHh-xL-erF" name="value" keyPath="objectValue.songCount" id="cK7-bL-mpf">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSValueTransformerName">AlbumSizeTransformer</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                            </connections>
+                                                                        </textField>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TVM-xe-yRG" userLabel="by xxx">
+                                                                            <rect key="frame" x="321" y="22" width="204" height="17"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="200" id="eZ2-HV-fWv"/>
+                                                                            </constraints>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="by xxx" id="YGm-3X-aU6">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                            <connections>
+                                                                                <binding destination="bHh-xL-erF" name="value" keyPath="objectValue.creatorName" id="Hqm-At-Lg9"/>
+                                                                            </connections>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <visibilityPriorities>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                    </visibilityPriorities>
+                                                                    <customSpacing>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                    </customSpacing>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="PjF-hJ-zz5" secondAttribute="trailing" constant="20" id="E61-aN-7FT"/>
+                                                                <constraint firstItem="PjF-hJ-zz5" firstAttribute="centerY" secondItem="bHh-xL-erF" secondAttribute="centerY" id="GBv-BE-hSd"/>
+                                                                <constraint firstItem="PjF-hJ-zz5" firstAttribute="leading" secondItem="bHh-xL-erF" secondAttribute="leading" constant="10" id="rLV-lO-3vY"/>
+                                                            </constraints>
+                                                        </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                                 <tableColumn width="385" minWidth="40" maxWidth="100000" id="1xB-qu-5rc">

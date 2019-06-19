@@ -77,6 +77,9 @@ class SearchResultViewController: NSViewController {
             case .artists:
                 resultVC.artists = $0.artists
                 pageCount = Int(ceil(Double($0.artistCount) / Double(limit)))
+            case .playlists:
+                resultVC.playlists = $0.playlists
+                pageCount = Int(ceil(Double($0.playlistCount) / Double(limit)))
             default:
                 break
             }

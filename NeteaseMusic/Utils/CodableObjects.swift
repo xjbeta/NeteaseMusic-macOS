@@ -165,10 +165,16 @@ struct Playlist: Decodable {
     let tags: [String]?
     let id: Int
     let tracks: [Track]?
-    let trackIds: [trackId]?
+    let trackIds: [TrackId]?
+    let creator: Creator?
     
-    struct trackId: Decodable {
+    struct TrackId: Decodable {
         let id: Int
+    }
+    
+    struct Creator: Decodable {
+        let nickname: String
+        let userId: Int
     }
 }
 
