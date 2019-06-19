@@ -15,8 +15,7 @@ class SearchResultViewController: NSViewController {
     
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBAction func selectNewType(_ sender: NSSegmentedControl) {
-        
-        
+        ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: sender.selectedSegment + 1, type: .searchResults)
     }
     
     var sidebarItemObserver: NSKeyValueObservation?
@@ -31,54 +30,61 @@ class SearchResultViewController: NSViewController {
             let id = newValue.id
             guard newValue.type == .searchResults,
                 let type = SearchSuggestionsViewController.GroupType(rawValue: id) else { return }
-            self?.initTabView(type)
+            self?.initContentView(type)
         }
     }
     
-    func initTabView(_ type: SearchSuggestionsViewController.GroupType) {
+    func initContentView(_ type: SearchSuggestionsViewController.GroupType) {
         let index = type.rawValue - 1
         guard index >= 0 else { return }
         segmentedControl.setSelected(true, forSegment: index)
         
         resultType = type
-        switch type {
-        case .songs:
-            initSongsContent()
-        default:
-            break
-        }
-        
+        initResults()
     }
     
-    func initSongsContent(_ offset: Int = 0) {
+    func initResults(_ offset: Int = 0) {
         guard let pageSegmentedControlVC = pageSegmentedControlViewController(),
             let resultVC = resultViewController() else {
                 return
         }
-        
+        let type = resultType
+        resultVC.resetData(type)
         pageSegmentedControlVC.delegate = self
         let keywords = ViewControllerManager.shared.searchFieldString
-        let limit = 100
+        let limit = resultType == .songs ? 100 : 20
+        pageData.current = offset
         
-        resultVC.songs.removeAll()
-        PlayCore.shared.api.search(keywords, limit: limit, page: offset, type: .songs).done {
-            print("Update songs result with \(keywords), page \(offset), limit \(limit).")
-            guard let pageSegmentedControlVC = self.pageSegmentedControlViewController(),
-                let songsResultVC = self.resultViewController() else {
-                    return
+        PlayCore.shared.api.search(keywords, limit: limit, page: offset, type: resultType).done {
+            guard type == self.resultType,
+                offset == self.pageData.current else { return }
+            
+            print("Update search result with \(keywords), page \(offset), limit \(limit).")
+            
+            var pageCount = 0
+            
+            switch type {
+            case .songs:
+                var tracks = $0.songs
+                tracks.enumerated().forEach {
+                    tracks[$0.offset].index = $0.offset + (offset * limit)
+                }
+                resultVC.songs = tracks
+                pageCount = Int(ceil(Double($0.songCount) / Double(limit)))
+            case .albums:
+                resultVC.albums = $0.albums
+                pageCount = Int(ceil(Double($0.albumCount) / Double(limit)))
+            case .artists:
+                resultVC.artists = $0.artists
+                pageCount = Int(ceil(Double($0.artistCount) / Double(limit)))
+            default:
+                break
             }
             
-            var tracks = $0.songs
-            tracks.enumerated().forEach {
-                tracks[$0.offset].index = $0.offset + (offset * limit)
-            }
-            
-            songsResultVC.songs = tracks
-            let pageCount = Int(ceil(Double($0.songCount) / Double(limit)))
             self.pageData = (pageCount, offset)
             pageSegmentedControlVC.reloadData()
-            songsResultVC.reloadTableView()
-            self.initLayoutConstraint(songsResultVC.tableView)
+            resultVC.reloadTableView()
+            self.initLayoutConstraint(resultVC.tableView)
             }.catch {
                 print($0)
         }
@@ -99,9 +105,8 @@ class SearchResultViewController: NSViewController {
     }
     
     func initLayoutConstraint(_ tableView: NSTableView) {
-        guard let headerView = tableView.headerView else { return }
-        let height = tableView.intrinsicContentSize.height + headerView.frame.height + tableView.intercellSpacing.height
-
+        let headerViewHeight = tableView.headerView?.frame.height ?? 0
+        let height = tableView.intrinsicContentSize.height + tableView.intercellSpacing.height + headerViewHeight
         tableHeightLayoutConstraint.constant = height
     }
     
@@ -121,6 +126,6 @@ extension SearchResultViewController: PageSegmentedControlDelegate {
     }
     
     func clickedPage(_ number: Int) {
-        initSongsContent(number)
+        initResults(number)
     }
 }
