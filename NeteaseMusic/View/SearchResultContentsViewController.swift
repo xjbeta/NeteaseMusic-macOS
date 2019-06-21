@@ -48,14 +48,12 @@ class SearchResultContentsViewController: NSViewController {
             }
         }
         
-        dataType = type
-        songs.removeAll()
-        albums.removeAll()
-        artists.removeAll()
-        playlists.removeAll()
-        
         switch type {
         case .songs:
+            if dataType == .songs {
+                break
+            }
+            
             tableView.headerView = headerView
             tableViewColumns.forEach {
                 tableView.addTableColumn($0)
@@ -70,6 +68,10 @@ class SearchResultContentsViewController: NSViewController {
                 }
             }
         case .albums, .artists, .playlists:
+            if dataType != .songs {
+                break
+            }
+            
             tableView.headerView = nil
             tableView.tableColumns.enumerated().forEach {
                 $0.element.isHidden = $0.offset != 0
@@ -80,6 +82,13 @@ class SearchResultContentsViewController: NSViewController {
             break
             
         }
+        
+        songs.removeAll()
+        albums.removeAll()
+        artists.removeAll()
+        playlists.removeAll()
+        
+        dataType = type
         tableView.reloadData()
     }
 }
