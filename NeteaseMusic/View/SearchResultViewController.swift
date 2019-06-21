@@ -15,6 +15,9 @@ class SearchResultViewController: NSViewController {
     
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBAction func selectNewType(_ sender: NSSegmentedControl) {
+        guard let type = SearchSuggestionsViewController.GroupType(rawValue: sender.selectedSegment + 1),
+            type != resultType else { return }
+        
         ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: sender.selectedSegment + 1, type: .searchResults)
     }
     
