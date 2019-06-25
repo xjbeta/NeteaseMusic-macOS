@@ -95,35 +95,39 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if row == 0 {
-            return tableView.makeView(withIdentifier: .init("ArtistInfoTableCellView"), owner: nil)
-        } else {
-            return tableView.makeView(withIdentifier: .init("AlbumInfoTableCellView"), owner: nil)
+        guard let item = items[safe: row] else { return nil }
+        var view: NSTableCellView? = nil
+        switch item.type {
+        case .artist:
+            view = tableView.makeView(withIdentifier: .init("ArtistInfoTableCellView"), owner: nil) as? NSTableCellView
+            view?.imageView?.setImage(item.artist?.picUrl?.absoluteString ?? "", true)
+        case .topSongs:
+            view = tableView.makeView(withIdentifier: .init("AlbumInfoTableCellView"), owner: nil) as? NSTableCellView
+            view?.imageView?.image = NSImage(named: .init("cover_top50"))
+        case .album:
+            view = tableView.makeView(withIdentifier: .init("AlbumInfoTableCellView"), owner: nil) as? NSTableCellView
+            view?.imageView?.setImage(item.album?.picUrl?.absoluteString ?? "", true)
         }
+        
+        return view
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard let item = items[safe: row] else { return nil }
         switch item.type {
         case .artist:
-            guard let artist = item.artist,
-                let image = NSImage(named: .init("user_150")) else { return nil }
+            guard let artist = item.artist else { return nil }
             return ["name": artist.name,
                     "alias": artist.alias?.joined(separator: "; ") ?? "",
                     "albumSize": artist.albumSize ?? 0,
-                    "musicSize": artist.musicSize ?? 0,
-                    "image": artist.cover ?? image]
+                    "musicSize": artist.musicSize ?? 0]
         case .topSongs:
-            guard let image = NSImage(named: .init("cover_top50")) else { return nil }
-            return ["image": image,
-                    "name": "top songs",
+            return ["name": "top songs",
                     "size": 50,
                     "publishTime": "none"]
         case .album:
-            guard let album = item.album,
-                let image = NSImage(named: .init("calendar_bg")) else { return nil }
-            return ["image": album.cover ?? image,
-                    "name": album.name,
+            guard let album = item.album else { return nil }
+            return ["name": album.name,
                     "size": album.size,
                     "publishTime": album.publishTime]
         }
