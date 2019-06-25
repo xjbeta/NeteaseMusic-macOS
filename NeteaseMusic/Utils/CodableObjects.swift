@@ -65,11 +65,6 @@ class Track: NSObject, Decodable {
         let artists: [Artist]?
         @objc let size: Int
         
-        @objc lazy var cover: NSImage? = {
-            guard let u = picUrl else { return nil }
-            return NSImage(contentsOf: u)
-        }()
-        
         func formattedTime() -> String {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
@@ -108,11 +103,6 @@ class Track: NSObject, Decodable {
         let musicSize: Int?
         let albumSize: Int?
         let alias: [String]?
-        
-        @objc lazy var cover: NSImage? = {
-            guard let u = picUrl else { return nil }
-            return NSImage(contentsOf: u)
-        }()
     }
     
     enum CodingKeys: String, CodingKey {

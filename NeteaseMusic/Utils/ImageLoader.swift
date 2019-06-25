@@ -56,3 +56,28 @@ extension NSImageView {
         }
     }
 }
+
+extension NSButton {
+    public func setImage(_ url: String, _ autoSize: Bool = false) {
+        self.image = nil
+        guard url != "" else {
+            return
+        }
+
+        var u = url
+        
+        if autoSize {
+            let width = Int(frame.width * 2)
+            u += "?param=\(width)y\(width)"
+        }
+        
+        if let image = try? ImageLoader.storage.object(forKey: u) {
+            self.image = image
+        } else {
+            ImageLoader.request(u) { image in
+                try? ImageLoader.storage.setObject(image, forKey: u)
+                self.image = image
+            }
+        }
+    }
+}

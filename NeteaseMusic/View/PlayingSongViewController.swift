@@ -102,10 +102,10 @@ class PlayingSongViewController: NSViewController {
             return
         }
         
-        if let image = track.album.cover {
+        if let u = track.album.picUrl {
             cdImgImageView.wantsLayer = true
             cdImgImageView.layer?.cornerRadius = cdImgImageView.frame.width / 2
-            cdImgImageView.image = image
+            cdImgImageView.setImage(u.absoluteString, true)
             cdwarpImageView.rotate()
             cdImgImageView.rotate()
         } else {

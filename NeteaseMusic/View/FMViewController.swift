@@ -122,7 +122,7 @@ class FMViewController: NSViewController {
         
         if let track = playlist[safe: index - 1] {
             prevImageButton.isHidden = false
-            prevImageButton.image = track.album.cover
+            prevImageButton.setImage(track.album.picUrl?.absoluteString ?? "", true)
         }
         
         if index > 1 {
