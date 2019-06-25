@@ -13,7 +13,8 @@ import Alamofire
 class ImageLoader: NSObject {
     static var storage: DiskStorage<Image> {
         get {
-            let diskConfig = DiskConfig(name: "ImageLoader",
+            
+            let diskConfig = DiskConfig(name: Bundle.main.bundleIdentifier! + ".imageCache",
                                         expiry: .seconds(3600 * 24 * 7),  // a week
                 maxSize: 100*1000000)
             
