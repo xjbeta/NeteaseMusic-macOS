@@ -122,20 +122,25 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-
+        var view: NSTableCellView? = nil
         switch dataType {
         case .songs:
             guard let identifier = tableColumn?.identifier else { return nil }
-            return tableView.makeView(withIdentifier: identifier, owner: self)
+            view = tableView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
         case .albums:
-            return tableView.makeView(withIdentifier: .init("SearchAlbumInfoTableCellView"), owner: self)
+            view = tableView.makeView(withIdentifier: .init("SearchAlbumInfoTableCellView"), owner: self) as? NSTableCellView
+            view?.imageView?.setImage(albums[safe: row]?.picUrl?.absoluteString ?? "", true)
         case .artists:
-            return tableView.makeView(withIdentifier: .init("SearchArtistInfoTableCellView"), owner: self)
+            view = tableView.makeView(withIdentifier: .init("SearchArtistInfoTableCellView"), owner: self) as? NSTableCellView
+            view?.imageView?.setImage(artists[safe: row]?.picUrl?.absoluteString ?? "", true)
         case .playlists:
-            return tableView.makeView(withIdentifier: .init("SearchPlaylistInfoTableCellView"), owner: self)
+            view = tableView.makeView(withIdentifier: .init("SearchPlaylistInfoTableCellView"), owner: self) as? NSTableCellView
+            view?.imageView?.setImage(playlists[safe: row]?.coverImgUrl.absoluteString ?? "", true)
         default:
             return nil
         }
+        
+        return view
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
@@ -149,32 +154,25 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
                     "album": song.album.name,
                     "time": song.duration]
         case .albums:
-            guard let album = albums[safe: row],
-                let cover = NSImage(named: .init("calendar_bg")) else { return nil }
+            guard let album = albums[safe: row] else { return nil }
             
-            return ["image": album.cover ?? cover,
-                    "name": album.name,
+            return ["name": album.name,
                     "artist": album.artists?.artistsString() ?? ""]
         case .artists:
-            guard let artist = artists[safe: row],
-                let cover = NSImage(named: .init("user_150")) else { return nil }
+            guard let artist = artists[safe: row] else { return nil }
             
             var secondName = ""
             if let name = artist.alias?.first {
                 secondName = "(\(name))"
             }
             
-            return ["image": artist.cover ?? cover,
-                    "name": artist.name,
+            return ["name": artist.name,
                     "secondName": secondName]
         case .playlists:
-            guard let playlist = playlists[safe: row],
-                let cover = NSImage(named: .init("calendar_bg")) else { return nil }
+            guard let playlist = playlists[safe: row] else { return nil }
             
             let name = playlist.creator?.nickname ?? "unknown"
-            
-            return ["image": NSImage(contentsOf: playlist.coverImgUrl) ?? cover,
-                    "name": playlist.name,
+            return ["name": playlist.name,
                     "songCount": playlist.trackCount,
                     "creatorName": "         by \(name)"]
         default:
