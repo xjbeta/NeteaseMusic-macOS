@@ -24,9 +24,9 @@ class ImageLoader: NSObject {
     }
     
     static func request(_ url: String, complete: @escaping ((NSImage) -> ())) {
-        AF.download(url).responseData {
-            guard let u = $0.fileURL,
-                let image = NSImage(contentsOf: u) else { return }
+        AF.request(url).responseData {
+            guard let d = $0.data,
+                let image = NSImage(data: d) else { return }
             complete(image)
         }
     }
