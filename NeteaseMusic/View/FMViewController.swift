@@ -117,7 +117,7 @@ class FMViewController: NSViewController {
         
         guard let index = playlist.firstIndex(of: track) else { return }
 
-        coverImageView.image = track.album.cover
+        coverImageView.setImage(track.album.picUrl?.absoluteString ?? "", true)
         lyricViewController()?.currentLyricId = track.id
         
         if let track = playlist[safe: index - 1] {

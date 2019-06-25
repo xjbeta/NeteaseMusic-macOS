@@ -18,15 +18,15 @@ class DiscoverViewController: NSViewController {
     
     class RecommendItem: NSObject {
         var title: String
-        var image: NSImage?
+        var imageUrl: URL?
         var id: Int = 0
         var type: RecommendPlaylist
         
-        init(title: String, id: Int = -1, image: NSImage? = nil, type: RecommendPlaylist = .normal) {
+        init(title: String, id: Int = -1, type: RecommendPlaylist = .normal, imageU: URL? = nil) {
             self.title = title
             self.id = id
             self.type = type
-            self.image = image
+            self.imageUrl = imageU
         }   
     }
     
@@ -42,7 +42,7 @@ class DiscoverViewController: NSViewController {
             self?.recommendedItems.removeAll()
             self?.recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .daily))
             res.forEach {
-                self?.recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, image: NSImage(contentsOf: $0.picUrl)))
+                self?.recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, imageU: $0.picUrl))
             }
             }.done(on: .main) { [weak self] in
                 self?.collectionView.reloadData()
@@ -74,9 +74,7 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
                 let rItem = recommendedItems[safe: indexPath.item] else {
                     return item
             }
-            selectVideoItem.imageView?.image = rItem.image
-            selectVideoItem.textField?.stringValue = rItem.title
-            
+            selectVideoItem.initItem(rItem)
             return item
         }
     }

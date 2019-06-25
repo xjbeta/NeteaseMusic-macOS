@@ -17,6 +17,8 @@ class PlaylistCollectionViewItem: NSCollectionViewItem {
         }
     }
     
+    var playlistId = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView?.wantsLayer = true
@@ -28,6 +30,16 @@ class PlaylistCollectionViewItem: NSCollectionViewItem {
                                          options: [.mouseEnteredAndExited, .activeInActiveApp, .mouseMoved],
                                          owner: self,
                                          userInfo: nil))
+    }
+    
+    func initItem(_ item: DiscoverViewController.RecommendItem) {
+        imageView?.image = nil
+        textField?.stringValue = item.title
+        let width = Int((imageView?.frame.width ?? 0) * 2)
+        let id = item.id
+        playlistId = id
+        guard var uStr = item.imageUrl?.absoluteString else { return }
+        imageView?.setImage(uStr, true)
     }
     
     override func mouseEntered(with event: NSEvent) {
