@@ -43,7 +43,7 @@ extension NSImageView {
         var u = url
         
         if autoSize {
-            let width = Int(frame.width * 2)
+            let width = Int(frame.width * (NSScreen.main?.backingScaleFactor ?? 1))
             u += "?param=\(width)y\(width)"
         }
         
@@ -68,7 +68,7 @@ extension NSButton {
         var u = url
         
         if autoSize {
-            let width = Int(frame.width * 2)
+            let width = Int(frame.width * (NSScreen.main?.backingScaleFactor ?? 1))
             u += "?param=\(width)y\(width)"
         }
         
