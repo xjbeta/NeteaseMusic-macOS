@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Song Buttons View Controller-->
+        <scene sceneID="925-n2-nFE">
+            <objects>
+                <viewController id="fWa-K8-Ifq" customClass="SongButtonsViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="kLl-bR-EiS">
+                        <rect key="frame" x="0.0" y="0.0" width="206" height="41"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="14" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cn2-dC-Hgq">
+                                <rect key="frame" x="0.0" y="0.0" width="206" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="TOR-mh-aew">
+                                        <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="lEU-2F-Cfh"/>
+                                            <constraint firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="height" multiplier="1:1" id="nsX-io-Tch"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon.sp#icn-mv_love" imagePosition="only" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="32I-T2-s1e">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="buttonsAction:" target="fWa-K8-Ifq" id="ie7-cx-zIT"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="DfE-Kp-XmY">
+                                        <rect key="frame" x="55" y="0.0" width="41" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DfE-Kp-XmY" secondAttribute="height" multiplier="1:1" id="Plb-LV-c7g"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon.sp#icn-mv_fav" imagePosition="only" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="waE-2W-uIv">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="buttonsAction:" target="fWa-K8-Ifq" id="gJR-z4-yQs"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Sd8-dW-QcA">
+                                        <rect key="frame" x="110" y="0.0" width="41" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Sd8-dW-QcA" secondAttribute="height" multiplier="1:1" id="HnM-27-UKn"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon.sp#icn-fm_delete" imagePosition="only" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="7cL-Si-k7b">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="buttonsAction:" target="fWa-K8-Ifq" id="MHg-jj-oRd"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="rJI-wi-O3H">
+                                        <rect key="frame" x="165" y="0.0" width="41" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" multiplier="1:1" id="G81-eN-UVN"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon.sp#icn-timeline_link" imagePosition="only" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="P7C-k5-oyy">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="buttonsAction:" target="fWa-K8-Ifq" id="pT3-C1-Jjm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Sd8-dW-QcA" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="5ZD-Ic-mZd"/>
+                                    <constraint firstItem="rJI-wi-O3H" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="Erg-ye-rC9"/>
+                                    <constraint firstItem="DfE-Kp-XmY" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="ntL-1Y-dEk"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="deleteButton" destination="Sd8-dW-QcA" id="XIM-tk-C75"/>
+                        <outlet property="favouriteButton" destination="DfE-Kp-XmY" id="5no-nx-88h"/>
+                        <outlet property="linkButton" destination="rJI-wi-O3H" id="iUX-GJ-ejc"/>
+                        <outlet property="loveButton" destination="TOR-mh-aew" id="MiZ-OO-Txk"/>
+                    </connections>
+                </viewController>
+                <customObject id="pAC-TV-Rrn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6" y="185.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon.sp#icn-fm_delete" width="20" height="22"/>
+        <image name="icon.sp#icn-mv_fav" width="25" height="24"/>
+        <image name="icon.sp#icn-mv_love" width="24" height="21"/>
+        <image name="icon.sp#icn-timeline_link" width="15" height="15"/>
+    </resources>
+</document>
