@@ -397,7 +397,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func playlistTracks(_ add: Bool, _ trackIds: [Int], to playlistId: Int) -> Promise<()> {
+    func playlistTracks(add: Bool, _ trackIds: [Int], to playlistId: Int) -> Promise<()> {
         struct P: Encodable {
             let op: String  // del,add
             let pid: Int
