@@ -344,7 +344,7 @@ class NeteaseMusicAPI: NSObject {
             ArtistAlbumsResult.self)
     }
     
-    func live(_ id: Int, _ like: Bool = true, _ time: Int = 25) -> Promise<()> {
+    func like(_ id: Int, _ like: Bool = true, _ time: Int = 25) -> Promise<()> {
         struct P: Encodable {
             let trackId: Int
             let like: String
@@ -397,6 +397,30 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func playlistTracks(_ add: Bool, _ trackIds: [Int], to playlistId: Int) -> Promise<()> {
+        struct P: Encodable {
+            let op: String  // del,add
+            let pid: Int
+            let trackIds: String
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case op, pid, trackIds, csrfToken = "csrf_token"
+            }
+        }
+        
+        let p = P(op: add ? "add" : "del", pid: playlistId, trackIds: "\(trackIds)", csrfToken: csrf).jsonString()
+        
+        return request("https://music.163.com/weapi/playlist/manipulate/tracks",
+            p,
+            CodeResult.self).map {
+                if $0.code == 200 {
+                    return ()
+                } else {
+                    throw RequestError.errorCode(($0.code, ""))
+                }
+        }
+    }
+
     private func request<T: Decodable>(_ url: String, _ parameters: String, _ resultType: T.Type) -> Promise<T> {
         return Promise { resolver in
             AF.request(url, method: .post,
