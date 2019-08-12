@@ -11,6 +11,12 @@ import Cocoa
 class SongButtonsPopUpViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     
+    @IBAction func selected(_ sender: NSTableView) {
+        guard let id = playlists[safe: tableView.selectedRow]?.id else { return }
+        dismiss(self)
+        complete?(id)
+    }
+    
     var playlists = [Playlist]()
     var complete: ((Int) -> Void)?
     
@@ -40,6 +46,6 @@ extension SongButtonsPopUpViewController: NSTableViewDelegate, NSTableViewDataSo
         guard let item = playlists[safe: row] else { return nil }
         
         return ["name": item.name,
-                "songCount": "\(item.playCount) songs"]
+                "songCount": "\(item.trackCount) songs"]
     }
 }
