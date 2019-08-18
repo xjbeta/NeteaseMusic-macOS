@@ -22,7 +22,7 @@
                                             <constraint firstAttribute="height" constant="38" id="lEU-2F-Cfh"/>
                                             <constraint firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="height" multiplier="1:1" id="nsX-io-Tch"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-mv_love" imagePosition="only" borderStyle="border" inset="2" id="32I-T2-s1e">
+                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_love" imagePosition="only" borderStyle="border" inset="2" id="32I-T2-s1e">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
@@ -35,7 +35,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="DfE-Kp-XmY" secondAttribute="height" multiplier="1:1" id="Plb-LV-c7g"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-mv_fav" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="waE-2W-uIv">
+                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_fav" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="waE-2W-uIv">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
@@ -62,12 +62,12 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" multiplier="1:1" id="G81-eN-UVN"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-mv_share" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="P7C-k5-oyy">
+                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_more" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="P7C-k5-oyy">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystemBold"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="buttonsAction:" target="fWa-K8-Ifq" id="pT3-C1-Jjm"/>
+                                            <action selector="buttonsAction:" target="fWa-K8-Ifq" id="sGT-H4-TcY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -98,11 +98,29 @@
                     <connections>
                         <outlet property="deleteButton" destination="Sd8-dW-QcA" id="XIM-tk-C75"/>
                         <outlet property="favouriteButton" destination="DfE-Kp-XmY" id="5no-nx-88h"/>
-                        <outlet property="likeButton" destination="TOR-mh-aew" id="v1l-mT-puD"/>
-                        <outlet property="linkButton" destination="rJI-wi-O3H" id="iUX-GJ-ejc"/>
+                        <outlet property="loveButton" destination="TOR-mh-aew" id="v1l-mT-puD"/>
+                        <outlet property="moreButton" destination="rJI-wi-O3H" id="I5z-JG-r7H"/>
+                        <outlet property="moreMenu" destination="Cy6-UT-pFS" id="ALI-JK-Q2p"/>
                     </connections>
                 </viewController>
                 <customObject id="pAC-TV-Rrn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="Cy6-UT-pFS">
+                    <items>
+                        <menuItem title="Copy Link" id="xFa-yp-I5Q">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="copyLink:" target="fWa-K8-Ifq" id="If3-s3-8Pp"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="JOC-1y-q1R"/>
+                        <menuItem title="Trash" id="ubt-fd-NXS">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="trash:" target="fWa-K8-Ifq" id="W3l-o7-jeh"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="15" y="185.5"/>
         </scene>
@@ -240,9 +258,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon.sp#icn-fm_delete" width="20" height="22"/>
-        <image name="icon.sp#icn-mv_fav" width="25" height="24"/>
-        <image name="icon.sp#icn-mv_love" width="24" height="21"/>
-        <image name="icon.sp#icn-mv_share" width="20" height="24"/>
+        <image name="icon.sp#icn-fm_delete" width="18" height="19"/>
+        <image name="icon.sp#icn-fm_fav" width="18" height="18"/>
+        <image name="icon.sp#icn-fm_love" width="19" height="17"/>
+        <image name="icon.sp#icn-fm_more" width="16" height="3"/>
     </resources>
 </document>
