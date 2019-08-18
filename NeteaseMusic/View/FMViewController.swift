@@ -66,7 +66,6 @@ class FMViewController: NSViewController {
         currentTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] playcore, _ in
             guard playcore.fmMode else { return }
             print("currentFMTrack changed")
-            self?.lyricViewController()?.currentLyricId = playcore.currentFMTrack?.id ?? -1
             self?.initView()
             
             if let track = playcore.currentFMTrack,
@@ -110,6 +109,7 @@ class FMViewController: NSViewController {
         let playlist = PlayCore.shared.fmPlaylist
         guard let track = PlayCore.shared.currentFMTrack else {
             lyricViewController()?.currentLyricId = -1
+            songButtonsViewController()?.trackId = -1
             return
         }
         
@@ -119,6 +119,7 @@ class FMViewController: NSViewController {
 
         coverImageView.setImage(track.album.picUrl?.absoluteString ?? "", true)
         lyricViewController()?.currentLyricId = track.id
+        songButtonsViewController()?.trackId = track.id
         
         if let track = playlist[safe: index - 1] {
             prevImageButton.isHidden = false
@@ -161,6 +162,13 @@ class FMViewController: NSViewController {
             $0 as? SongInfoViewController
             }.first
         return songInfoVC
+    }
+    
+    func songButtonsViewController() -> SongButtonsViewController? {
+        let vc = children.compactMap {
+            $0 as? SongButtonsViewController
+            }.first
+        return vc
     }
     
     deinit {

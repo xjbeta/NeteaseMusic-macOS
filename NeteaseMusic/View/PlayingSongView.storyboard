@@ -105,7 +105,7 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Zaz-Cd-tTv"/>
                                                         </constraints>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="+1s" id="Nck-Fa-S0Y">
-                                                            <font key="font" metaFont="system" size="11"/>
+                                                            <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -154,6 +154,13 @@
                                             <constraint firstItem="FZz-KW-1vj" firstAttribute="top" secondItem="nPL-KW-HBo" secondAttribute="top" id="s7j-hv-EyK"/>
                                         </constraints>
                                     </customView>
+                                    <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fxq-aK-gfy">
+                                        <rect key="frame" x="40" y="40" width="371" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <connections>
+                                            <segue destination="MCI-Zq-SAr" kind="embed" id="k74-c3-BPz"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="aPm-xO-W1x" firstAttribute="top" secondItem="fED-HS-s1V" secondAttribute="top" constant="-67" id="ThG-oT-OrG"/>
@@ -197,7 +204,15 @@
                 <controllerPlaceholder storyboardName="Lyric" id="8xg-xg-wNy" sceneMemberID="viewController"/>
                 <customObject id="UJw-0S-8NV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1927" y="1508"/>
+            <point key="canvasLocation" x="1890" y="1462"/>
+        </scene>
+        <!--SongButtons-->
+        <scene sceneID="BMW-UB-8Mr">
+            <objects>
+                <controllerPlaceholder storyboardName="SongButtons" id="MCI-Zq-SAr" sceneMemberID="viewController"/>
+                <customObject id="yOe-G9-K1j" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1915" y="1516"/>
         </scene>
     </scenes>
     <resources>

@@ -99,6 +99,7 @@ class PlayingSongViewController: NSViewController {
         guard let track = PlayCore.shared.currentTrack else {
             cdImgImageView.image = nil
             lyricViewController()?.currentLyricId = -1
+            songButtonsViewController()?.trackId = -1
             return
         }
         
@@ -113,7 +114,7 @@ class PlayingSongViewController: NSViewController {
         }
 
         songInfoViewController()?.initInfos(track)
-        
+        songButtonsViewController()?.trackId = track.id
         lyricViewController()?.currentLyricId = track.id
     }
     
@@ -166,6 +167,12 @@ class PlayingSongViewController: NSViewController {
         return songInfoVC
     }
     
+    func songButtonsViewController() -> SongButtonsViewController? {
+        let vc = children.compactMap {
+            $0 as? SongButtonsViewController
+            }.first
+        return vc
+    }
     
     deinit {
         currentTrackObserver?.invalidate()

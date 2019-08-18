@@ -66,7 +66,7 @@
                                         <rect key="frame" x="390" y="3" width="400" height="450"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rPC-9D-SFF">
-                                                <rect key="frame" x="0.0" y="404" width="400" height="46"/>
+                                                <rect key="frame" x="0.0" y="400" width="400" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="250" constant="10" id="O5e-XQ-OtA"/>
                                                 </constraints>
@@ -75,7 +75,7 @@
                                                 </connections>
                                             </containerView>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rOf-Ff-lT3">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="379"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="375"/>
                                                 <connections>
                                                     <segue destination="STk-wE-vdF" kind="embed" id="bXo-gj-SLr"/>
                                                 </connections>
@@ -96,6 +96,13 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qww-me-ocA">
+                                        <rect key="frame" x="20" y="20" width="350" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <connections>
+                                            <segue destination="a5D-LU-cmc" kind="embed" id="gRu-I6-Df4"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="vBh-I9-HLC" firstAttribute="top" secondItem="8Vc-iN-v5f" secondAttribute="top" constant="55" id="Pqh-iv-cna"/>
@@ -137,6 +144,14 @@
                 <customObject id="1y9-XY-Hlm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="910" y="269"/>
+        </scene>
+        <!--SongButtons-->
+        <scene sceneID="Zt1-ED-PVj">
+            <objects>
+                <controllerPlaceholder storyboardName="SongButtons" id="a5D-LU-cmc" sceneMemberID="viewController"/>
+                <customObject id="eaA-7s-bGz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="325"/>
         </scene>
     </scenes>
 </document>
