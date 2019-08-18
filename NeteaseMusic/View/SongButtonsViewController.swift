@@ -59,6 +59,7 @@ class SongButtonsViewController: NSViewController {
     var trackId = -1
     var loved: Bool {
         get {
+            let t = "Playing song?"
             return PlayCore.shared.fmPlaylist.filter {
                 $0.id == trackId
                 }.first?.loved ?? false
