@@ -37,6 +37,8 @@ class Track: NSObject, Decodable {
         return artists.artistsString()
     }()
     
+    var loved = false
+    
     func playerItemm() -> Promise<AVPlayerItem?> {
         return Promise { resolver in
             PlayCore.shared.api.songUrl([id]).get {
