@@ -44,6 +44,7 @@
 		013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013143A8226F5D4200B9E26F /* ViewAnimation.swift */; };
 		013143AB226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */; };
 		013143AD22706F1200B9E26F /* Lyric.json in Resources */ = {isa = PBXBuildFile; fileRef = 013143AC22706F1200B9E26F /* Lyric.json */; };
+		01321B0322FE74EA002A568C /* SongButtonsPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01321B0122FE74EA002A568C /* SongButtonsPopUpViewController.swift */; };
 		0132E1C12292689300484D7E /* ArtistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0132E1C02292689300484D7E /* ArtistView.storyboard */; };
 		0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0132E1E02293D14F00484D7E /* ArtistViewController.swift */; };
 		0132E1E32293E0AE00484D7E /* ArtistAlbums.json in Resources */ = {isa = PBXBuildFile; fileRef = 0132E1E22293E0AE00484D7E /* ArtistAlbums.json */; };
@@ -184,6 +185,7 @@
 		013143A8226F5D4200B9E26F /* ViewAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAnimation.swift; sourceTree = "<group>"; };
 		013143AA226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySongViewBackgroundView.swift; sourceTree = "<group>"; };
 		013143AC22706F1200B9E26F /* Lyric.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Lyric.json; sourceTree = "<group>"; };
+		01321B0122FE74EA002A568C /* SongButtonsPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongButtonsPopUpViewController.swift; sourceTree = "<group>"; };
 		0132E1C02292689300484D7E /* ArtistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistView.storyboard; sourceTree = "<group>"; };
 		0132E1E02293D14F00484D7E /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
 		0132E1E22293E0AE00484D7E /* ArtistAlbums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ArtistAlbums.json; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 			children = (
 				0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */,
 				0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */,
+				01321B0122FE74EA002A568C /* SongButtonsPopUpViewController.swift */,
 			);
 			name = SongActionButtons;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
 				0137264A226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift in Sources */,
+				01321B0322FE74EA002A568C /* SongButtonsPopUpViewController.swift in Sources */,
 				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
 				0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */,
 				012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */,
