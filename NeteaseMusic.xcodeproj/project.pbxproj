@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011904902309065A00738904 /* FMTrashGet.json in Resources */ = {isa = PBXBuildFile; fileRef = 0119048F2309065A00738904 /* FMTrashGet.json */; };
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
 		012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */; };
 		012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */; };
@@ -146,6 +147,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0119048F2309065A00738904 /* FMTrashGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FMTrashGet.json; sourceTree = "<group>"; };
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
 		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
 		012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStringTransformer.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				012772E822A753C500C55537 /* SearchAlbums.json */,
 				012772EA22A753F200C55537 /* SearchArtists.json */,
 				012772EC22A7542A00C55537 /* SearchPlaylists.json */,
+				0119048F2309065A00738904 /* FMTrashGet.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				01314398226B497E00B9E26F /* RecommendSongs.json in Resources */,
 				017AB6ED227AB19E00A2EF36 /* SearchSuggest.json in Resources */,
 				014327B222AB728D00651064 /* PageSegmentedControlView.storyboard in Resources */,
+				011904902309065A00738904 /* FMTrashGet.json in Resources */,
 				012772ED22A7542A00C55537 /* SearchPlaylists.json in Resources */,
 				012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */,
 				0132E1E32293E0AE00484D7E /* ArtistAlbums.json in Resources */,

@@ -397,6 +397,38 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func fmTrashList() -> Promise<([Track])> {
+        struct Result: Decodable {
+            let code: Int
+            let data: [Track]
+        }
+
+//https://music.163.com/api/v3/radio/trash/get?pagesize=100&from=1&to=1&offset=0&total=true&limit=100&currsize=26&addTime=1491740318242
+        return Promise { resolver in
+            AF.request("https://music.163.com/api/v3/radio/trash/get?pagesize=1000&from=1&to=1&offset=0&total=true&limit=1000", method: .get).response { re in
+                if let error = re.error {
+                    resolver.reject(RequestError.error(error))
+                    return
+                }
+                guard let data = re.data else {
+                    resolver.reject(RequestError.noData)
+                    return
+                }
+                
+                do {
+                    let re = try JSONDecoder().decode(Result.self, from: data)
+                    resolver.fulfill(re.data)
+                } catch let error {
+                    if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
+                        resolver.reject(RequestError.errorCode((re.code, re.msg ?? "")))
+                    } else {
+                        resolver.reject(RequestError.error(error))
+                    }
+                }
+            }
+        }
+    }
+    
     func playlistTracks(add: Bool, _ trackIds: [Int], to playlistId: Int) -> Promise<()> {
         struct P: Encodable {
             let op: String  // del,add
