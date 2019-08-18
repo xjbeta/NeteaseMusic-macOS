@@ -93,7 +93,7 @@ class PlaylistViewController: NSViewController {
                 let newValue = newV else { return }
             let id = newValue.id
             switch newValue.type {
-            case .playlist, .favourite, .discoverPlaylist, .album, .topSongs:
+            case .playlist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
                 if self?.playlistId == newValue.id,
                     self?.playlistType == newValue.type {
                     return
@@ -117,6 +117,8 @@ class PlaylistViewController: NSViewController {
                 } else {
                     self?.initPlaylist(id)
                 }
+            case .fmTrash:
+                self?.initFMTrashList()
             default:
                 break
             }
@@ -201,6 +203,17 @@ class PlaylistViewController: NSViewController {
             self.coverImageView.setImage($0.artist.picUrl?.absoluteString ?? "", true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
             self.tracks = $0.hotSongs.initIndexes()
+            }.catch {
+                print($0)
+        }
+    }
+    
+    func initFMTrashList() {
+        initPlaylistInfo()
+        PlayCore.shared.api.fmTrashList().done(on: .main) {
+            let t = "simple mode?"
+            self.titleTextFiled.stringValue = "Trash."
+            self.tracks = $0.initIndexes()
             }.catch {
                 print($0)
         }

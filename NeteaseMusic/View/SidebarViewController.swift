@@ -39,7 +39,7 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, header, none, discoverPlaylist, album, artist, topSongs, searchResults
+        case discover, fm, favourite, playlist, header, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash
     }
     
     let defaultItems = [TableViewItem(title: "发现音乐", type: .discover),
@@ -70,7 +70,7 @@ class SidebarViewController: NSViewController {
                     self?.tableView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
                     self?.tableViewSelectionIsChanging(notification)
                 }
-            case .album, .artist, .topSongs, .searchResults, .playlist:
+            case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash:
                 self?.tableView.deselectAll(self)
                 self?.tableViewSelectionIsChanging(notification)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
