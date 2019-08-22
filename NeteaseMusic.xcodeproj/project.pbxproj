@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		011904902309065A00738904 /* FMTrashGet.json in Resources */ = {isa = PBXBuildFile; fileRef = 0119048F2309065A00738904 /* FMTrashGet.json */; };
+		01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01190492230E651B00738904 /* NewPlaylist.storyboard */; };
+		01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01190494230E653300738904 /* NewPlaylistViewController.swift */; };
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
 		012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */; };
 		012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */; };
@@ -149,6 +151,8 @@
 
 /* Begin PBXFileReference section */
 		0119048F2309065A00738904 /* FMTrashGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FMTrashGet.json; sourceTree = "<group>"; };
+		01190492230E651B00738904 /* NewPlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlaylist.storyboard; sourceTree = "<group>"; };
+		01190494230E653300738904 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewController.swift; sourceTree = "<group>"; };
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
 		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
 		012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStringTransformer.swift; sourceTree = "<group>"; };
@@ -271,6 +275,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01190491230E64D700738904 /* NewPlaylist */ = {
+			isa = PBXGroup;
+			children = (
+				01190492230E651B00738904 /* NewPlaylist.storyboard */,
+				01190494230E653300738904 /* NewPlaylistViewController.swift */,
+			);
+			name = NewPlaylist;
+			sourceTree = "<group>";
+		};
 		012F2F44225061AB00086870 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +409,7 @@
 				012FEA76228A5F4400698969 /* SongInfo */,
 				0132E1BF2292684C00484D7E /* ArtistView */,
 				0153934C22E1BA6800CD10F9 /* SongActionButtons */,
+				01190491230E64D700738904 /* NewPlaylist */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -639,6 +653,7 @@
 				0137264C226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib in Resources */,
 				01957D93224D01860006FCEC /* Main.storyboard in Resources */,
 				013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */,
+				01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +707,7 @@
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				014327B022AA079200651064 /* UnresponsiveScrollView.swift in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
+				01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */,
 				01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
 				014327AD22A95A9300651064 /* SearchResultContentsViewController.swift in Sources */,
