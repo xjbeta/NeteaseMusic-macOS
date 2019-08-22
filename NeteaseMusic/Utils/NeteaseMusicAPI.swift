@@ -36,6 +36,7 @@ class NeteaseMusicAPI: NSObject {
     
     struct CodeResult: Decodable {
         let code: Int
+        let msg: String?
     }
     
     func isLogin() -> Promise<(Bool)> {
@@ -263,7 +264,7 @@ class NeteaseMusicAPI: NSObject {
                 if $0.code == 200 {
                     return ()
                 } else {
-                    throw RequestError.errorCode(($0.code, ""))
+                    throw RequestError.errorCode(($0.code, $0.msg ?? ""))
                 }
         }
     }
@@ -448,8 +449,31 @@ class NeteaseMusicAPI: NSObject {
                 if $0.code == 200 {
                     return ()
                 } else {
-                    throw RequestError.errorCode(($0.code, ""))
+                    throw RequestError.errorCode(($0.code, $0.msg ?? ""))
                 }
+        }
+    }
+    
+    func playlistCreate(_ name: String, privacy: Bool = false) -> Promise<()> {
+        struct P: Encodable {
+            let name: String
+            let privacy: Int  // privacy 10
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case name, privacy, csrfToken = "csrf_token"
+            }
+        }
+
+        let p = P(name: name, privacy: privacy ? 10 : 0, csrfToken: csrf).jsonString()
+        
+        return request("https://music.163.com/weapi/playlist/create",
+                       p,
+                       CodeResult.self).map {
+                        if $0.code == 200 {
+                            return ()
+                        } else {
+                            throw RequestError.errorCode(($0.code, $0.msg ?? ""))
+                        }
         }
     }
 
