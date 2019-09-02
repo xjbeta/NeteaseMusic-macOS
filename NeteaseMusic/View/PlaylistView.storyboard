@@ -666,9 +666,6 @@
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="0K7-Wv-CSs"/>
-                        <menuItem title="Like" id="kRp-4D-VDc">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
                         <menuItem title="Add to Playlist" id="nYB-ii-1ZP">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Add to Playlist" id="82f-j4-Mc3">
