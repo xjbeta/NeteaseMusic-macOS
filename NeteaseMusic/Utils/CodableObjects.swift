@@ -14,6 +14,7 @@ import PromiseKit
 struct ServerError: Decodable {
     let code: Int
     let msg: String?
+    let message: String?
 }
 
 @objc(Track)

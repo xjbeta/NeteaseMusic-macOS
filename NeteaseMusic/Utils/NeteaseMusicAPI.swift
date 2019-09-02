@@ -421,7 +421,7 @@ class NeteaseMusicAPI: NSObject {
                     resolver.fulfill(re.data)
                 } catch let error {
                     if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
-                        resolver.reject(RequestError.errorCode((re.code, re.msg ?? "")))
+                        resolver.reject(RequestError.errorCode((re.code, re.msg ?? re.message ?? "")))
                     } else {
                         resolver.reject(RequestError.error(error))
                     }
@@ -477,6 +477,31 @@ class NeteaseMusicAPI: NSObject {
         }
     }
 
+    func discoveryRecommendDislike(_ id: Int) -> Promise<(Track)> {
+        struct P: Encodable {
+            let resId: String
+            let resType: Int
+            let sceneType: Int
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case resId, resType, sceneType, csrfToken = "csrf_token"
+            }
+        }
+        
+        let p = P(resId: "\(id)", resType: 4, sceneType: 1, csrfToken: csrf).jsonString()
+        
+        struct Result: Decodable {
+            let code: Int
+            let data: Track
+        }
+        
+//        暂无更多推荐"
+        return request("https://music.163.com/weapi/v2/discovery/recommend/dislike",
+                       p,
+                       Result.self).map { $0.data }
+    }
+    
+    
     private func request<T: Decodable>(_ url: String, _ parameters: String, _ resultType: T.Type) -> Promise<T> {
         return Promise { resolver in
             AF.request(url, method: .post,
@@ -495,7 +520,7 @@ class NeteaseMusicAPI: NSObject {
                             resolver.fulfill(re)
                         } catch let error {
                             if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
-                                resolver.reject(RequestError.errorCode((re.code, re.msg ?? "")))
+                                resolver.reject(RequestError.errorCode((re.code, re.msg ?? re.message ?? "")))
                             } else {
                                 resolver.reject(RequestError.error(error))
                             }
