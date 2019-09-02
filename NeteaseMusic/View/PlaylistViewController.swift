@@ -109,7 +109,7 @@ class PlaylistViewController: NSViewController {
                 self?.initPlaylistWithAlbum(id)
             case .topSongs:
                 self?.initPlaylistWithTopSongs(id)
-            case .playlist:
+            case .playlist, .favourite:
                 self?.initPlaylist(id)
             case .discoverPlaylist:
                 if id == -1, newValue.title == "每日歌曲推荐" {
