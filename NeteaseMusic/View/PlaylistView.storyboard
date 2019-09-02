@@ -19,7 +19,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="822" height="385"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="42" rowSizeStyle="automatic" headerView="UKn-xB-BSH" viewBased="YES" id="5f5-ne-QVu">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="42" rowSizeStyle="automatic" headerView="UKn-xB-BSH" viewBased="YES" id="5f5-ne-QVu">
                                             <rect key="frame" x="0.0" y="0.0" width="823" height="360"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -301,6 +301,7 @@
                                                 <binding destination="5BF-BA-2Vl" name="content" keyPath="arrangedObjects" id="Zaz-e8-kw6"/>
                                                 <binding destination="5BF-BA-2Vl" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Zaz-e8-kw6" id="EAN-J5-aJ5"/>
                                                 <binding destination="5BF-BA-2Vl" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="EAN-J5-aJ5" id="lM9-F5-dvP"/>
+                                                <outlet property="menu" destination="AKZ-cM-erC" id="0b8-Kl-0OJ"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -618,16 +619,23 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToPlaylistMenu" destination="82f-j4-Mc3" id="0OX-nx-ZKv"/>
                         <outlet property="albumCoverImageView" destination="usa-ut-h49" id="LvC-40-yJ0"/>
                         <outlet property="artistStackView" destination="0Zx-j4-URg" id="bhV-zn-feD"/>
                         <outlet property="artistTextField" destination="dfT-ha-j7E" id="0yu-le-lIv"/>
+                        <outlet property="copyLinkMenuItem" destination="9LI-3M-ktN" id="miv-7H-Jp1"/>
                         <outlet property="countAndViewsStackView" destination="R8B-gw-Jw9" id="wcz-fA-0kT"/>
                         <outlet property="coverImageView" destination="o6X-zr-lKP" id="aWD-dX-5FJ"/>
                         <outlet property="descriptionStackView" destination="XPC-lw-bZ5" id="Cpa-cQ-i8o"/>
                         <outlet property="descriptionTextField" destination="bI7-3H-ohy" id="jOM-8e-iLR"/>
+                        <outlet property="newPlaylistMenuItem" destination="SYc-b6-5vw" id="tD3-bq-kCX"/>
                         <outlet property="playAllButton" destination="2d0-ZZ-SO7" id="4TX-5T-i0X"/>
                         <outlet property="playCountTextField" destination="PWZ-Vv-gqv" id="MGU-JI-Cp7"/>
+                        <outlet property="playMenuItem" destination="xjW-34-Fgb" id="6O6-Oy-G4q"/>
+                        <outlet property="playNextMenuItem" destination="B3Y-cb-RdJ" id="izU-cb-0fg"/>
+                        <outlet property="playlistMenu" destination="AKZ-cM-erC" id="IcC-oO-CQ1"/>
                         <outlet property="playlistStrTextField" destination="H0E-gF-bdJ" id="Q89-s2-156"/>
+                        <outlet property="removeFromPlaylistMenuItem" destination="2zC-xJ-HiN" id="VMi-KV-ogY"/>
                         <outlet property="subscribeButton" destination="xfw-QW-naB" id="cLm-aI-DSL"/>
                         <outlet property="tableView" destination="5f5-ne-QVu" id="q1K-GD-jL9"/>
                         <outlet property="timeStackView" destination="Dvt-CZ-mrk" id="adQ-1w-gmc"/>
@@ -643,8 +651,58 @@
                         <binding destination="rJU-yY-OIR" name="contentArray" keyPath="self.tracks" id="xsb-Rk-SVB"/>
                     </connections>
                 </arrayController>
+                <menu id="AKZ-cM-erC">
+                    <items>
+                        <menuItem title="Play" id="xjW-34-Fgb">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="GTl-aj-Swe"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Play Next" id="B3Y-cb-RdJ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="sJm-6y-tZk"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="0K7-Wv-CSs"/>
+                        <menuItem title="Like" id="kRp-4D-VDc">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="Add to Playlist" id="nYB-ii-1ZP">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Add to Playlist" id="82f-j4-Mc3">
+                                <items>
+                                    <menuItem title="New Playlist" id="SYc-b6-5vw">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="menuItemAction:" target="rJU-yY-OIR" id="Z4d-4y-PYq"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem isSeparatorItem="YES" id="YB3-Mp-Tds"/>
+                                </items>
+                            </menu>
+                        </menuItem>
+                        <menuItem title="Copy Link" id="9LI-3M-ktN">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="MKw-rM-gEb"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="flu-gy-MuQ"/>
+                        <menuItem title="Remove from Playlist" id="2zC-xJ-HiN">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="0u1-JA-N2b"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="rJU-yY-OIR" id="Ye8-Tn-JYL"/>
+                    </connections>
+                </menu>
             </objects>
-            <point key="canvasLocation" x="1175" y="109.5"/>
+            <point key="canvasLocation" x="1203" y="90"/>
         </scene>
     </scenes>
     <resources>
