@@ -501,6 +501,33 @@ class NeteaseMusicAPI: NSObject {
                        Result.self).map { $0.data }
     }
     
+    func playlistDelete(_ id: Int) -> Promise<()> {
+        struct P: Encodable {
+            let pid: Int
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case pid, csrfToken = "csrf_token"
+            }
+        }
+        
+        let p = P(pid: id, csrfToken: csrf).jsonString()
+        
+        struct Result: Decodable {
+            let code: Int
+            let id: Int
+        }
+        
+        return request("https://music.163.com/weapi/playlist/delete",
+                       p,
+                       Result.self).map {
+                        if $0.code == 200, $0.id == id {
+                            return ()
+                       } else {
+                            throw RequestError.errorCode(($0.code, ""))
+                        }
+        }
+    }
+    
     
     private func request<T: Decodable>(_ url: String, _ parameters: String, _ resultType: T.Type) -> Promise<T> {
         return Promise { resolver in
