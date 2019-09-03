@@ -9,10 +9,10 @@
 import Cocoa
 
 class SidebarViewController: NSViewController {
-    @IBOutlet weak var tableView: NSTableView!
-    class TableViewItem: NSObject {
-        var title: String
-        var icon: NSImage? {
+    @IBOutlet weak var outlineView: NSOutlineView!
+    @objc class SidebarItem: NSObject {
+        @objc dynamic var title: String
+        @objc var icon: NSImage? {
             get {
                 switch type {
                 case .discover:
@@ -31,10 +31,20 @@ class SidebarViewController: NSViewController {
         var id: Int = 0
         var type: ItemType = .none
         
+        @objc var isLeaf: Bool
+        @objc var childrenCount = 0
+        @objc dynamic var childrenItems = [SidebarItem]() {
+            didSet {
+                isLeaf = childrenItems.isEmpty
+                childrenCount = childrenItems.count
+            }
+        }
+        
         init(title: String, id: Int = -1, type: ItemType) {
             self.title = title
             self.id = id
             self.type = type
+            isLeaf = type != .header
         }
     }
     
@@ -42,37 +52,35 @@ class SidebarViewController: NSViewController {
         case discover, fm, favourite, playlist, header, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash
     }
     
-    let defaultItems = [TableViewItem(title: "发现音乐", type: .discover),
-                        TableViewItem(title: "私人FM", type: .fm),
-                        TableViewItem(title: "创建的歌单", type: .header),
-                        TableViewItem(title: "收藏的歌单", type: .header)]
-    var tableViewItems = [TableViewItem]()
-    var tableViewSelectedRow = -1
+    let defaultItems = [SidebarItem(title: "发现音乐", type: .discover),
+                        SidebarItem(title: "私人FM", type: .fm),
+                        SidebarItem(title: "创建的歌单", type: .header),
+                        SidebarItem(title: "收藏的歌单", type: .header)]
+    @objc dynamic var sidebarItems = [SidebarItem]()
     
-    let tableviewNotification = Notification(name: NSTableView.selectionDidChangeNotification, object: nil, userInfo: nil)
+    let outlineViewNotification = Notification(name: NSOutlineView.selectionDidChangeNotification, object: nil, userInfo: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewItems = defaultItems
-        tableView.reloadData()
+        sidebarItems = defaultItems
         updatePlaylists()
         
         NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
             guard let dic = $0.userInfo as? [String: Any],
                 let itemType = dic["itemType"] as? ItemType,
                 let id = dic["id"] as? Int,
-                let notification = self?.tableviewNotification else { return }
+                let notification = self?.outlineViewNotification else { return }
             
             switch itemType {
             case .fm:
-                if let index = self?.tableViewItems.firstIndex(where: { $0.type == itemType }) {
-                    self?.tableView.deselectAll(self)
-                    self?.tableView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
-                    self?.tableViewSelectionIsChanging(notification)
+                if let index = self?.sidebarItems.firstIndex(where: { $0.type == itemType }) {
+                    self?.outlineView.deselectAll(self)
+                    self?.outlineView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
+                    self?.outlineViewSelectionIsChanging(notification)
                 }
             case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash:
-                self?.tableView.deselectAll(self)
-                self?.tableViewSelectionIsChanging(notification)
+                self?.outlineView.deselectAll(self)
+                self?.outlineViewSelectionIsChanging(notification)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
             default:
                 break
@@ -83,11 +91,11 @@ class SidebarViewController: NSViewController {
     func updatePlaylists() {
         PlayCore.shared.api.isLogin().then { _ in
             PlayCore.shared.api.userPlaylist()
-            }.map {
+            }.done(on: .main) {
                 var created = $0.filter {
                     !$0.subscribed
                     }.map {
-                        TableViewItem(title: $0.name, id: $0.id, type: .playlist)
+                        SidebarItem(title: $0.name, id: $0.id, type: .playlist)
                 }
                 
                 if let item = created.first, item.title.contains("喜欢的音乐") {
@@ -95,24 +103,21 @@ class SidebarViewController: NSViewController {
                     created[0].type = .favourite
                 }
                 
-                guard let indexOfCreated = self.tableViewItems.enumerated().filter({
-                    $0.element.title == "创建的歌单"
-                }).first?.offset else {
-                    return
-                }
-                
-                self.tableViewItems.insert(contentsOf: created, at: indexOfCreated + 1)
+                self.sidebarItems.filter({
+                    $0.title == "创建的歌单"
+                }).first?.childrenItems = created
                 
                 let subscribed = $0.filter {
                     $0.subscribed
                     }.map {
-                        TableViewItem(title: $0.name, id: $0.id, type: .playlist)
+                        SidebarItem(title: $0.name, id: $0.id, type: .playlist)
                 }
-                self.tableViewItems.append(contentsOf: subscribed)
-            }.done(on: .main) {
-                self.tableView.reloadData()
-                self.tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-                self.tableViewSelectionIsChanging(self.tableviewNotification)
+                
+                self.sidebarItems.filter({
+                    $0.title == "收藏的歌单"
+                }).first?.childrenItems = subscribed
+                
+                self.outlineView.expandItem(nil, expandChildren: true)
             }.catch {
                 print($0)
         }
@@ -120,46 +125,51 @@ class SidebarViewController: NSViewController {
     
 }
 
-extension SidebarViewController: NSTableViewDelegate, NSTableViewDataSource {
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return tableViewItems.count
-    }
+extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource {
     
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let item = tableViewItems[safe: row] else { return nil }
-        
-        if item.type == .header {
-            guard let view = tableView.makeView(withIdentifier: .sidebarHeaderTableCellView, owner: self) as? SidebarHeaderTableCellView else { return nil }
-            view.titleButton.title = item.title
-            return view
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return nil
+        }
+        if node.type == .header {
+            if let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("SidebarHeaderCell"), owner: self) as? NSTableCellView {
+                view.textField?.stringValue = node.title
+                
+                return view
+            }
         } else {
-            guard let view =  tableView.makeView(withIdentifier: .sidebarTableCellView, owner: self) as? SidebarTableCellView else { return nil }
-            view.textField?.stringValue = item.title
-            view.imageView?.image = item.icon
-            return view
+            if let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("SidebarDataCell"), owner: self) as? NSTableCellView {
+                view.textField?.stringValue = node.title
+                view.imageView?.image = node.icon
+                return view
+            }
         }
-        
-    }
-
-    
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        guard let item = tableViewItems[safe: row] else { return false }
-        return item.type != .header
+        return nil
     }
     
+    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+        guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return 0
+        }
+        if node.type == .header {
+            return 17
+        } else {
+            return 21
+        }
+    }
     
-    func tableViewSelectionIsChanging(_ notification: Notification) {
-        if tableViewSelectedRow >= 0, tableViewSelectedRow < tableView.numberOfRows,
-            let view = tableView.view(atColumn: tableView.selectedColumn, row: tableViewSelectedRow, makeIfNecessary: true) as? SidebarTableCellView {
-            view.isSelected = false
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return false
+        }
+        return node.type != .header
+    }
+    
+    func outlineViewSelectionIsChanging(_ notification: Notification) {
+        guard let item = (outlineView.item(atRow: outlineView.selectedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return
         }
         
-        if tableView.selectedRow >= 0, tableView.selectedRow < tableView.numberOfRows,
-            let view = tableView.view(atColumn: 0, row: tableView.selectedRow, makeIfNecessary: true) as? SidebarTableCellView {
-            view.isSelected = true
-        }
-
-        tableViewSelectedRow = tableView.selectedRow
-        ViewControllerManager.shared.selectedSidebarItem = tableViewItems[safe: tableView.selectedRow]
+        ViewControllerManager.shared.selectedSidebarItem = item
     }
 }

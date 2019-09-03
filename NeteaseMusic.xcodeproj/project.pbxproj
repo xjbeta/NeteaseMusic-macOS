@@ -89,8 +89,6 @@
 		0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
-		0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */; };
-		0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0160308B225B88D60064EC88 /* SidebarTableCellView.swift */; };
 		01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B99228C0D1400D11190 /* LyricScroller.swift */; };
 		01677B9D228C133D00D11190 /* Album.json in Resources */ = {isa = PBXBuildFile; fileRef = 01677B9C228C133D00D11190 /* Album.json */; };
 		01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B9E228CF3D200D11190 /* ViewControllerManager.swift */; };
@@ -109,7 +107,7 @@
 		01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E40FE822C1DF4600864118 /* ImageLoader.swift */; };
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
-		01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarTableView.swift */; };
+		01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */; };
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
 		01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */; };
 		01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B7A225CD38F002D7906 /* MainViewController.swift */; };
@@ -229,8 +227,6 @@
 		0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongButtonsViewController.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
-		01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarHeaderTableCellView.swift; sourceTree = "<group>"; };
-		0160308B225B88D60064EC88 /* SidebarTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableCellView.swift; sourceTree = "<group>"; };
 		01677B99228C0D1400D11190 /* LyricScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricScroller.swift; sourceTree = "<group>"; };
 		01677B9C228C133D00D11190 /* Album.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Album.json; sourceTree = "<group>"; };
 		01677B9E228CF3D200D11190 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
@@ -251,7 +247,7 @@
 		01E40FE822C1DF4600864118 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		01E7C9D3228BB697004D80AD /* IdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdButton.swift; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		01FF8B73225C64B7002D7906 /* SidebarTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarTableView.swift; sourceTree = "<group>"; };
+		01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutlineView.swift; sourceTree = "<group>"; };
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		01FF8B7A225CD38F002D7906 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -551,9 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				013EF158225732BC00E4D7D8 /* SidebarViewController.swift */,
-				01603089225B88710064EC88 /* SidebarHeaderTableCellView.swift */,
-				0160308B225B88D60064EC88 /* SidebarTableCellView.swift */,
-				01FF8B73225C64B7002D7906 /* SidebarTableView.swift */,
+				01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */,
 				012FEA662289B80F00698969 /* Sidebar.storyboard */,
 			);
 			name = Sidebar;
@@ -681,7 +675,7 @@
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
 				012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */,
 				01FF8B72225C60F7002D7906 /* Colors.swift in Sources */,
-				01FF8B74225C64B7002D7906 /* SidebarTableView.swift in Sources */,
+				01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
 				0137264A226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift in Sources */,
 				01321B0322FE74EA002A568C /* SongButtonsPopUpViewController.swift in Sources */,
@@ -695,13 +689,11 @@
 				013143A5226ECD1A00B9E26F /* ExtendedViewState.swift in Sources */,
 				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
 				01467E9922846B920037B49D /* FMViewController.swift in Sources */,
-				0160308C225B88D60064EC88 /* SidebarTableCellView.swift in Sources */,
 				012F1156226028BA002D5599 /* NotificationName.swift in Sources */,
 				01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */,
 				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
-				0160308A225B88710064EC88 /* SidebarHeaderTableCellView.swift in Sources */,
 				01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */,
 				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,

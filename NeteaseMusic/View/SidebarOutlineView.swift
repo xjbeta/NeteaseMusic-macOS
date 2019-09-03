@@ -1,5 +1,5 @@
 //
-//  SidebarTableView.swift
+//  SidebarOutlineView.swift
 //  NeteaseMusic
 //
 //  Created by xjbeta on 2019/4/9.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SidebarTableView: NSTableView {
+class SidebarOutlineView: NSOutlineView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

@@ -14,7 +14,7 @@ class ViewControllerManager: NSObject {
     private override init() {
     }
     
-    @objc dynamic var selectedSidebarItem: SidebarViewController.TableViewItem? = nil
+    @objc dynamic var selectedSidebarItem: SidebarViewController.SidebarItem? = nil
     
     var searchFieldString = ""
     

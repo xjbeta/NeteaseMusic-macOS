@@ -13,142 +13,137 @@
                         <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="35" horizontalPageScroll="10" verticalLineScroll="35" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcs-LT-L0W">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR7-ab-Tuc">
                                 <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
-                                <clipView key="contentView" drawsBackground="NO" id="gau-sz-GhA">
+                                <clipView key="contentView" drawsBackground="NO" id="0ik-Y0-pfX">
                                     <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="35" viewBased="YES" id="6pt-Dj-o61" customClass="SidebarTableView" customModule="NeteaseMusic" customModuleProvider="target">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="zze-Z8-F54" id="M0C-JA-8qr" customClass="SidebarOutlineView" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="220" height="520"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="12"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="217" minWidth="40" maxWidth="1000" id="5cQ-UC-A16">
+                                                <tableColumn width="217" minWidth="16" maxWidth="1000" id="zze-Z8-F54">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" refusesFirstResponder="YES" title="Text Cell" id="PFA-l8-rwg">
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="BJu-pQ-kEC">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="SidebarHeaderTableCellView" id="EuJ-vj-mvn" customClass="SidebarHeaderTableCellView" customModule="NeteaseMusic" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="217" height="35"/>
+                                                        <tableCellView identifier="SidebarHeaderCell" id="NEz-ZH-3NS">
+                                                            <rect key="frame" x="1" y="6" width="217" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qR1-bb-hJd">
-                                                                    <rect key="frame" x="3" y="4" width="13" height="13"/>
-                                                                    <buttonCell key="cell" type="disclosureTriangle" bezelStyle="disclosure" imagePosition="only" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4rY-TV-qU0">
-                                                                        <behavior key="behavior" pushIn="YES" changeBackground="YES" changeGray="YES" lightByContents="YES"/>
-                                                                        <font key="font" metaFont="system"/>
-                                                                    </buttonCell>
-                                                                </button>
-                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-xs-dBx">
-                                                                    <rect key="frame" x="18" y="3" width="191" height="15"/>
-                                                                    <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" alignment="left" imageScaling="proportionallyDown" inset="2" id="LPO-0e-Xmq">
-                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                        <font key="font" metaFont="systemLight" size="12"/>
-                                                                    </buttonCell>
-                                                                    <connections>
-                                                                        <action selector="performClick:" target="qR1-bb-hJd" id="KDY-qp-oKh"/>
-                                                                    </connections>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="qR1-bb-hJd" firstAttribute="centerY" secondItem="bTX-xs-dBx" secondAttribute="centerY" id="8n7-UF-TJB"/>
-                                                                <constraint firstAttribute="trailing" secondItem="bTX-xs-dBx" secondAttribute="trailing" constant="8" id="8rV-b3-5XB"/>
-                                                                <constraint firstItem="bTX-xs-dBx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EuJ-vj-mvn" secondAttribute="top" id="V2A-Rp-kzA"/>
-                                                                <constraint firstAttribute="bottom" secondItem="bTX-xs-dBx" secondAttribute="bottom" constant="3" id="aHK-hS-auY"/>
-                                                                <constraint firstItem="qR1-bb-hJd" firstAttribute="leading" secondItem="EuJ-vj-mvn" secondAttribute="leading" constant="3" id="cH1-2E-z6X"/>
-                                                                <constraint firstItem="bTX-xs-dBx" firstAttribute="leading" secondItem="qR1-bb-hJd" secondAttribute="trailing" constant="2" id="hib-X7-dzK"/>
-                                                            </constraints>
-                                                            <connections>
-                                                                <outlet property="disclosureButton" destination="qR1-bb-hJd" id="em3-EF-gYL"/>
-                                                                <outlet property="titleButton" destination="bTX-xs-dBx" id="xFE-kt-aZk"/>
-                                                            </connections>
-                                                        </tableCellView>
-                                                        <tableCellView identifier="SidebarTableCellView" id="EvD-jt-a8m" customClass="SidebarTableCellView" customModule="NeteaseMusic" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="35" width="217" height="35"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dTY-P9-ruC">
-                                                                    <rect key="frame" x="18" y="10" width="16" height="16"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="dTY-P9-ruC" secondAttribute="height" multiplier="1:1" id="hXT-oz-wLT"/>
-                                                                        <constraint firstAttribute="width" constant="16" id="qjn-Gt-rzl"/>
-                                                                    </constraints>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="gRW-Cg-gAN"/>
-                                                                </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sce-lE-KRL">
-                                                                    <rect key="frame" x="39" y="10" width="172" height="16"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Yks-Wh-V37">
-                                                                        <font key="font" metaFont="cellTitle"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zkO-XQ-qAq">
+                                                                    <rect key="frame" x="0.0" y="1" width="217" height="16"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="OAe-AY-64l">
+                                                                        <font key="font" metaFont="systemSemibold" size="12"/>
+                                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="NEz-ZH-3NS" name="value" keyPath="objectValue.title" id="NRV-22-gWx"/>
+                                                                    </connections>
                                                                 </textField>
-                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Qeo-el-Mgq">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="3" height="35"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="3" id="SJP-9J-gbN"/>
-                                                                    </constraints>
-                                                                </customView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="Qeo-el-Mgq" firstAttribute="top" secondItem="EvD-jt-a8m" secondAttribute="top" id="93A-7M-TFd"/>
-                                                                <constraint firstAttribute="trailing" secondItem="sce-lE-KRL" secondAttribute="trailing" constant="8" id="AeG-Sr-ZI4"/>
-                                                                <constraint firstItem="Qeo-el-Mgq" firstAttribute="leading" secondItem="EvD-jt-a8m" secondAttribute="leading" id="U2w-Gb-CQT"/>
-                                                                <constraint firstItem="sce-lE-KRL" firstAttribute="centerY" secondItem="EvD-jt-a8m" secondAttribute="centerY" id="b8z-M0-FaO"/>
-                                                                <constraint firstItem="sce-lE-KRL" firstAttribute="leading" secondItem="dTY-P9-ruC" secondAttribute="trailing" constant="7" id="bOU-Hi-92l"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Qeo-el-Mgq" secondAttribute="bottom" id="eGC-bo-okC"/>
-                                                                <constraint firstItem="dTY-P9-ruC" firstAttribute="leading" secondItem="EvD-jt-a8m" secondAttribute="leading" constant="18" id="n1G-Zf-ADj"/>
-                                                                <constraint firstItem="dTY-P9-ruC" firstAttribute="centerY" secondItem="EvD-jt-a8m" secondAttribute="centerY" id="nHd-ZZ-FiW"/>
+                                                                <constraint firstItem="zkO-XQ-qAq" firstAttribute="leading" secondItem="NEz-ZH-3NS" secondAttribute="leading" constant="2" id="fiB-U0-I0b"/>
+                                                                <constraint firstAttribute="trailing" secondItem="zkO-XQ-qAq" secondAttribute="trailing" constant="2" id="nNq-JN-hYb"/>
+                                                                <constraint firstItem="zkO-XQ-qAq" firstAttribute="centerY" secondItem="NEz-ZH-3NS" secondAttribute="centerY" id="wqO-6J-yhv"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="highlightColorView" destination="Qeo-el-Mgq" id="Wxz-lm-0m1"/>
-                                                                <outlet property="imageView" destination="dTY-P9-ruC" id="K4H-XQ-Gbi"/>
-                                                                <outlet property="textField" destination="sce-lE-KRL" id="bmm-lb-exW"/>
+                                                                <outlet property="textField" destination="zkO-XQ-qAq" id="N4V-6k-txt"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="SidebarDataCell" id="Hcm-a1-mgv">
+                                                            <rect key="frame" x="1" y="35" width="217" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <imageView translatesAutoresizingMaskIntoConstraints="NO" id="HS7-Vp-Pg9">
+                                                                    <rect key="frame" x="1" y="1" width="16" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="F2p-k6-cQb"/>
+                                                                        <constraint firstAttribute="width" secondItem="HS7-Vp-Pg9" secondAttribute="height" multiplier="1:1" id="OOS-cd-UyO"/>
+                                                                    </constraints>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSActionTemplate" id="z1R-P2-kd9"/>
+                                                                    <connections>
+                                                                        <binding destination="Hcm-a1-mgv" name="value" keyPath="objectValue.icon" id="5gO-Rr-e7O"/>
+                                                                    </connections>
+                                                                </imageView>
+                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="apS-b2-TlA">
+                                                                    <rect key="frame" x="23" y="0.0" width="96" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="zS7-5J-vIN">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="Hcm-a1-mgv" name="value" keyPath="objectValue.title" id="83b-z4-ezs"/>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="HS7-Vp-Pg9" firstAttribute="centerY" secondItem="Hcm-a1-mgv" secondAttribute="centerY" id="8wF-52-ufG"/>
+                                                                <constraint firstItem="apS-b2-TlA" firstAttribute="centerY" secondItem="Hcm-a1-mgv" secondAttribute="centerY" id="d21-16-dmg"/>
+                                                                <constraint firstItem="apS-b2-TlA" firstAttribute="leading" secondItem="HS7-Vp-Pg9" secondAttribute="trailing" constant="8" id="e88-tv-k5x"/>
+                                                                <constraint firstItem="HS7-Vp-Pg9" firstAttribute="leading" secondItem="Hcm-a1-mgv" secondAttribute="leading" constant="1" id="qBu-p9-axw"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="apS-b2-TlA" secondAttribute="trailing" constant="2" id="yVd-VD-ByP"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="imageView" destination="HS7-Vp-Pg9" id="mgy-eC-csf"/>
+                                                                <outlet property="textField" destination="apS-b2-TlA" id="ECI-SL-LTJ"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="HiJ-Kl-Xtg" name="value" keyPath="arrangedObjects" id="Pv7-vP-C86"/>
+                                                    </connections>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="SmA-py-oK2" id="aZk-yG-BAb"/>
-                                                <outlet property="delegate" destination="SmA-py-oK2" id="nJA-NR-j7l"/>
+                                                <outlet property="dataSource" destination="SmA-py-oK2" id="CkT-hm-NCj"/>
+                                                <outlet property="delegate" destination="SmA-py-oK2" id="4xi-n7-I85"/>
                                             </connections>
-                                        </tableView>
+                                        </outlineView>
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="HP5-sn-3fA">
-                                    <rect key="frame" x="1" y="496" width="135" height="16"/>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="PEv-xg-Ley">
+                                    <rect key="frame" x="1" y="119" width="238" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MFi-Yc-OYN">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="3fz-6k-z4q">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="xcs-LT-L0W" firstAttribute="leading" secondItem="z3A-mc-CSB" secondAttribute="leading" id="6x2-NA-SDf"/>
-                            <constraint firstItem="xcs-LT-L0W" firstAttribute="top" secondItem="z3A-mc-CSB" secondAttribute="top" id="9xP-zt-pb0"/>
-                            <constraint firstAttribute="bottom" secondItem="xcs-LT-L0W" secondAttribute="bottom" id="GR0-hq-7xZ"/>
-                            <constraint firstAttribute="trailing" secondItem="xcs-LT-L0W" secondAttribute="trailing" id="zp1-0E-Cew"/>
+                            <constraint firstAttribute="bottom" secondItem="vR7-ab-Tuc" secondAttribute="bottom" id="AIY-D9-WZL"/>
+                            <constraint firstItem="vR7-ab-Tuc" firstAttribute="leading" secondItem="z3A-mc-CSB" secondAttribute="leading" id="AzI-EY-4Sz"/>
+                            <constraint firstAttribute="trailing" secondItem="vR7-ab-Tuc" secondAttribute="trailing" id="Lzh-f4-FT4"/>
+                            <constraint firstItem="vR7-ab-Tuc" firstAttribute="top" secondItem="z3A-mc-CSB" secondAttribute="top" id="iFI-ux-S3d"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="6pt-Dj-o61" id="Q7v-Vg-IaA"/>
+                        <outlet property="outlineView" destination="M0C-JA-8qr" id="AWc-vf-Rtd"/>
                     </connections>
                 </viewController>
                 <customObject id="Yil-Cm-SPe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <treeController objectClassName="SidebarItem" editable="NO" automaticallyPreparesContent="YES" childrenKeyPath="childrenItems" leafKeyPath="isLeaf" id="HiJ-Kl-Xtg">
+                    <connections>
+                        <binding destination="SmA-py-oK2" name="contentArray" keyPath="self.sidebarItems" id="cUx-k9-eBz"/>
+                    </connections>
+                </treeController>
             </objects>
             <point key="canvasLocation" x="-643" y="989"/>
         </scene>
