@@ -100,7 +100,7 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
         switch item.type {
         case .artist:
             view = tableView.makeView(withIdentifier: .init("ArtistInfoTableCellView"), owner: nil) as? NSTableCellView
-            view?.imageView?.setImage(item.artist?.picUrl?.absoluteString ?? "", true)
+            view?.imageView?.setImage(item.artist?.picUrl ?? "", true)
         case .topSongs:
             view = tableView.makeView(withIdentifier: .init("AlbumInfoTableCellView"), owner: nil) as? NSTableCellView
             view?.imageView?.image = NSImage(named: .init("cover_top50"))

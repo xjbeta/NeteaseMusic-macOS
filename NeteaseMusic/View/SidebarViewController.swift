@@ -80,7 +80,6 @@ class SidebarViewController: NSViewController {
                 }
             case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash:
                 self?.outlineView.deselectAll(self)
-                self?.outlineViewSelectionIsChanging(notification)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
             default:
                 break

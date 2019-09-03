@@ -102,7 +102,7 @@ class Track: NSObject, Decodable {
     class Artist: NSObject, Decodable {
         let name: String
         let id: Int
-        let picUrl: URL?  // 640 x 520
+        let picUrl: String?  // 640 x 520
         let musicSize: Int?
         let albumSize: Int?
         let alias: [String]?

@@ -192,10 +192,10 @@ class PlaylistViewController: NSViewController {
             let id = newValue.id
             switch newValue.type {
             case .playlist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
-                if self?.playlistId == newValue.id,
-                    self?.playlistType == newValue.type {
-                    return
-                }
+//                if self?.playlistId == newValue.id,
+//                    self?.playlistType == newValue.type {
+//                    return
+//                }
                 self?.playlistId = id
                 self?.playlistType = newValue.type
             default:
@@ -298,7 +298,7 @@ class PlaylistViewController: NSViewController {
     func initPlaylistWithTopSongs(_ id: Int) {
         initPlaylistInfo()
         PlayCore.shared.api.artist(id).done(on: .main) {
-            self.coverImageView.setImage($0.artist.picUrl?.absoluteString ?? "", true)
+            self.coverImageView.setImage($0.artist.picUrl ?? "", true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
             self.tracks = $0.hotSongs.initIndexes()
             }.catch {
