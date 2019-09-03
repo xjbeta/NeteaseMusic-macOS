@@ -112,6 +112,7 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="SmA-py-oK2" id="CkT-hm-NCj"/>
                                                 <outlet property="delegate" destination="SmA-py-oK2" id="4xi-n7-I85"/>
+                                                <outlet property="menu" destination="KWu-4K-mSF" id="nw3-tD-dCw"/>
                                             </connections>
                                         </outlineView>
                                     </subviews>
@@ -135,7 +136,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="copyLinkMenuItem" destination="PDh-9U-7UR" id="FXA-GG-H1J"/>
+                        <outlet property="deletePlaylistMenuItem" destination="yzd-Jb-Sde" id="dd0-ek-ACR"/>
                         <outlet property="outlineView" destination="M0C-JA-8qr" id="AWc-vf-Rtd"/>
+                        <outlet property="outlineViewMenu" destination="KWu-4K-mSF" id="aAv-jR-DrZ"/>
+                        <outlet property="playMenuItem" destination="i45-Mp-E0g" id="VJb-YT-oPs"/>
+                        <outlet property="playNextMenuItem" destination="vOJ-OM-OWJ" id="nZi-Vr-db7"/>
                     </connections>
                 </viewController>
                 <customObject id="Yil-Cm-SPe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -144,6 +150,39 @@
                         <binding destination="SmA-py-oK2" name="contentArray" keyPath="self.sidebarItems" id="cUx-k9-eBz"/>
                     </connections>
                 </treeController>
+                <menu id="KWu-4K-mSF">
+                    <items>
+                        <menuItem title="Play" id="i45-Mp-E0g">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuAction:" target="SmA-py-oK2" id="2co-IL-1qq"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Play Next" id="vOJ-OM-OWJ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuAction:" target="SmA-py-oK2" id="GX2-K7-gMB"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="G1x-aj-RUB"/>
+                        <menuItem title="Copy Link" id="PDh-9U-7UR">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuAction:" target="SmA-py-oK2" id="hsp-gR-xNq"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="8kz-Za-pgs"/>
+                        <menuItem title="Delete Playlist" id="yzd-Jb-Sde">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuAction:" target="SmA-py-oK2" id="usV-ee-Cnv"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="SmA-py-oK2" id="8cY-H3-E1k"/>
+                    </connections>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-643" y="989"/>
         </scene>

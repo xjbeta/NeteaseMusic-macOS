@@ -7,9 +7,66 @@
 //
 
 import Cocoa
+import PromiseKit
 
 class SidebarViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
+    @IBOutlet var outlineViewMenu: NSMenu!
+    @IBOutlet weak var playMenuItem: NSMenuItem!
+    @IBOutlet weak var playNextMenuItem: NSMenuItem!
+    @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
+    @IBOutlet weak var deletePlaylistMenuItem: NSMenuItem!
+    
+    @IBAction func menuAction(_ sender: NSMenuItem) {
+        guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return
+        }
+        
+        switch sender {
+        case playMenuItem:
+            break
+        case playNextMenuItem:
+            break
+        case copyLinkMenuItem:
+            let str = "https://music.163.com/playlist?id=\(item.id)"
+            ViewControllerManager.shared.copyToPasteboard(str)
+        case deletePlaylistMenuItem:
+            guard let w = view.window else { return }
+            let alert = NSAlert()
+            alert.messageText = "Delete Playlist."
+            alert.informativeText = "\(item.title) will be deleted."
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "Delete")
+            alert.addButton(withTitle: "Cancel")
+            alert.beginSheetModal(for: w) { [weak self] in
+                if $0 == .alertFirstButtonReturn,
+                    let parentItem = self?.sidebarItems.filter ({
+                    $0.childrenItems.contains(item)
+                }).first {
+                    var re: Promise<()>
+                    switch parentItem.type {
+                    case .createdPlaylists:
+                        re = PlayCore.shared.api.playlistDelete(item.id)
+                    case .subscribedPlaylists:
+                        re = PlayCore.shared.api.playlistSubscribe(item.id, unSubscribe: true)
+                    default:
+                        return
+                    }
+                    re.done {
+                        parentItem.childrenItems.removeAll {
+                            $0.id == item.id
+                        }
+                        print("Delete / Unsubscribe playlist \(item.id) done.")
+                        }.catch {
+                            print("Delete / Unsubscribe playlist \(item.id) error \($0).")
+                    }
+                }
+            }
+        default:
+            break
+        }
+    }
+    
     @objc class SidebarItem: NSObject {
         @objc dynamic var title: String
         @objc var icon: NSImage? {
@@ -40,22 +97,36 @@ class SidebarViewController: NSViewController {
             }
         }
         
-        init(title: String, id: Int = -1, type: ItemType) {
-            self.title = title
-            self.id = id
+        init(title: String = "", id: Int = -1, type: ItemType) {
             self.type = type
-            isLeaf = type != .header
+            isLeaf = true
+            switch type {
+            case .discover:
+                self.title = "发现音乐"
+            case .fm:
+                self.title = "私人FM"
+            case .createdPlaylists:
+                self.title = "创建的歌单"
+                isLeaf = false
+            case .subscribedPlaylists:
+                self.title = "收藏的歌单"
+                isLeaf = false
+            default:
+                self.title = title
+            }
+            
+            self.id = id
         }
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, header, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash
+        case discover, fm, favourite, playlist, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, subscribedPlaylists
     }
     
-    let defaultItems = [SidebarItem(title: "发现音乐", type: .discover),
-                        SidebarItem(title: "私人FM", type: .fm),
-                        SidebarItem(title: "创建的歌单", type: .header),
-                        SidebarItem(title: "收藏的歌单", type: .header)]
+    let defaultItems = [SidebarItem(type: .discover),
+                        SidebarItem(type: .fm),
+                        SidebarItem(type: .createdPlaylists),
+                        SidebarItem(type: .subscribedPlaylists)]
     @objc dynamic var sidebarItems = [SidebarItem]()
     
     let outlineViewNotification = Notification(name: NSOutlineView.selectionDidChangeNotification, object: nil, userInfo: nil)
@@ -130,7 +201,7 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
             return nil
         }
-        if node.type == .header {
+        if !node.isLeaf {
             if let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("SidebarHeaderCell"), owner: self) as? NSTableCellView {
                 view.textField?.stringValue = node.title
                 
@@ -150,10 +221,10 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
             return 0
         }
-        if node.type == .header {
-            return 17
-        } else {
+        if node.isLeaf {
             return 21
+        } else {
+            return 17
         }
     }
     
@@ -161,7 +232,7 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
             return false
         }
-        return node.type != .header
+        return node.isLeaf
     }
     
     func outlineViewSelectionIsChanging(_ notification: Notification) {
@@ -170,5 +241,38 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         }
         
         ViewControllerManager.shared.selectedSidebarItem = item
+    }
+}
+
+extension SidebarViewController: NSMenuItemValidation, NSMenuDelegate {
+    
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem,
+            let type = sidebarItems.filter({ $0.childrenItems.contains(item) }).first?.type else {
+            return
+        }
+        
+        switch type {
+        case .createdPlaylists:
+            deletePlaylistMenuItem.title = "Delete Playlist"
+        case .subscribedPlaylists:
+            deletePlaylistMenuItem.title = "Unsubscribe Playlist"
+        default:
+            break
+        }
+    }
+    
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return false
+        }
+        
+        switch item.type {
+        case .playlist, .favourite:
+            return true
+        default:
+            break
+        }
+        return false
     }
 }
