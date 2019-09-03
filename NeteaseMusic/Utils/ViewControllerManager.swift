@@ -23,6 +23,13 @@ class ViewControllerManager: NSObject {
         print(#function, "\(itemType)", "ID: \(id)")
         NotificationCenter.default.post(name: .selectSidebarItem, object: nil, userInfo: ["itemType": itemType, "id": id])
     }
+    
+    func copyToPasteboard(_ str: String) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.writeObjects([str as NSString])
+    }
+    
 }
 
 extension NSTableView {

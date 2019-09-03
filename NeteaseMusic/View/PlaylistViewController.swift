@@ -55,9 +55,7 @@ class PlaylistViewController: NSViewController {
                 return
             }
             let str = "https://music.163.com/song?id=\(trackId)"
-            let pasteboard = NSPasteboard.general
-            pasteboard.clearContents()
-            pasteboard.writeObjects([str as NSString])
+            ViewControllerManager.shared.copyToPasteboard(str)
         case removeFromPlaylistMenuItem:
             let selectedTracks = tracks.enumerated().filter {
                 selectedIndexs.contains($0.offset)
