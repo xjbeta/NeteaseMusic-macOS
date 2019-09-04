@@ -208,7 +208,7 @@ class PlaylistViewController: NSViewController {
             case .playlist, .favourite:
                 self?.initPlaylist(id)
             case .discoverPlaylist:
-                if id == -1, newValue.title == "每日歌曲推荐" {
+                if id == -114514 {
                     self?.initPlaylistWithRecommandSongs()
                 } else {
                     self?.initPlaylist(id)
@@ -268,7 +268,7 @@ class PlaylistViewController: NSViewController {
     func initPlaylistWithRecommandSongs() {
         initPlaylistInfo()
         PlayCore.shared.api.recommendSongs().done(on: .main) {
-            guard self.playlistId == -1 else { return }
+            guard self.playlistId == -114514 else { return }
             self.playlistStrTextField.stringValue = ""
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"

@@ -141,7 +141,6 @@ class SidebarViewController: NSViewController {
                 let itemType = dic["itemType"] as? ItemType,
                 let id = dic["id"] as? Int,
                 let notification = self?.outlineViewNotification else { return }
-            
             switch itemType {
             case .fm:
                 if let index = self?.sidebarItems.firstIndex(where: { $0.type == itemType }) {
@@ -149,7 +148,7 @@ class SidebarViewController: NSViewController {
                     self?.outlineView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
                     self?.outlineViewSelectionIsChanging(notification)
                 }
-            case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash:
+            case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash, .discoverPlaylist:
                 self?.outlineView.deselectAll(self)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
             default:

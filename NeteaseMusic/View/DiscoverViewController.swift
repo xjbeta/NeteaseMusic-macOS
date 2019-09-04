@@ -83,7 +83,11 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
         // show playlist
         guard let item = indexPaths.first?.item,
             let rItem = recommendedItems[safe: item] else { return }
-        ViewControllerManager.shared.selectedSidebarItem = .init(title: rItem.title, id: rItem.id, type: .discoverPlaylist)
+        if item == 0 {
+            rItem.id = -114514
+        }
+        
+        ViewControllerManager.shared.selectSidebarItem(.discoverPlaylist, rItem.id)
         collectionView.deselectAll(nil)
     }
 }
