@@ -34,7 +34,7 @@
 		012FEA6E2289B9D700698969 /* DiscoverView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA6D2289B9D700698969 /* DiscoverView.storyboard */; };
 		012FEA702289BA3F00698969 /* SidePlaylistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA6F2289BA3F00698969 /* SidePlaylistView.storyboard */; };
 		012FEA722289BAB300698969 /* PlayingSongView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA712289BAB300698969 /* PlayingSongView.storyboard */; };
-		012FEA752289BC5300698969 /* LoginWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA742289BC5300698969 /* LoginWindow.storyboard */; };
+		012FEA752289BC5300698969 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA742289BC5300698969 /* LoginView.storyboard */; };
 		012FEA78228A5F6000698969 /* SongInfoView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA77228A5F6000698969 /* SongInfoView.storyboard */; };
 		012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA79228A5F7100698969 /* SongInfoViewController.swift */; };
 		01314398226B497E00B9E26F /* RecommendSongs.json in Resources */ = {isa = PBXBuildFile; fileRef = 01314397226B497E00B9E26F /* RecommendSongs.json */; };
@@ -177,7 +177,7 @@
 		012FEA6D2289B9D700698969 /* DiscoverView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverView.storyboard; sourceTree = "<group>"; };
 		012FEA6F2289BA3F00698969 /* SidePlaylistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SidePlaylistView.storyboard; sourceTree = "<group>"; };
 		012FEA712289BAB300698969 /* PlayingSongView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayingSongView.storyboard; sourceTree = "<group>"; };
-		012FEA742289BC5300698969 /* LoginWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginWindow.storyboard; sourceTree = "<group>"; };
+		012FEA742289BC5300698969 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
 		012FEA77228A5F6000698969 /* SongInfoView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongInfoView.storyboard; sourceTree = "<group>"; };
 		012FEA79228A5F7100698969 /* SongInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoViewController.swift; sourceTree = "<group>"; };
 		01314397226B497E00B9E26F /* RecommendSongs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecommendSongs.json; sourceTree = "<group>"; };
@@ -332,7 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				012F2F452250F8DE00086870 /* LoginViewController.swift */,
-				012FEA742289BC5300698969 /* LoginWindow.storyboard */,
+				012FEA742289BC5300698969 /* LoginView.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -650,7 +650,7 @@
 				012772EB22A753F200C55537 /* SearchArtists.json in Resources */,
 				01677B9D228C133D00D11190 /* Album.json in Resources */,
 				0153934E22E1BA9600CD10F9 /* SongButtons.storyboard in Resources */,
-				012FEA752289BC5300698969 /* LoginWindow.storyboard in Resources */,
+				012FEA752289BC5300698969 /* LoginView.storyboard in Resources */,
 				0137264C226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib in Resources */,
 				01957D93224D01860006FCEC /* Main.storyboard in Resources */,
 				013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */,

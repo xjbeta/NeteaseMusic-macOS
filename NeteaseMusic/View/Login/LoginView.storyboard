@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="JkV-zC-STu">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="5fk-7F-ndf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <plugIn identifier="com.apple.WebKit2IBPlugin" version="14490.70"/>
@@ -9,55 +9,29 @@
         <!--Login View Controller-->
         <scene sceneID="heL-fc-67f">
             <objects>
-                <viewController id="5fk-7F-ndf" customClass="LoginViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="5fk-7F-ndf" customClass="LoginViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="aDx-MT-LO0">
                         <rect key="frame" x="0.0" y="0.0" width="594" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8fp-U3-4dT">
-                                <rect key="frame" x="14" y="13" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zaf-CK-STK">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="cancel:" target="5fk-7F-ndf" id="gyJ-ys-CBv"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Yx-yE-Vz9">
-                                <rect key="frame" x="498" y="13" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d4p-GJ-ubs">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="done:" target="5fk-7F-ndf" id="lMc-3T-rJe"/>
-                                </connections>
-                            </button>
                             <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="iZY-fi-8ju">
-                                <rect key="frame" x="20" y="61" width="554" height="399"/>
+                                <rect key="frame" x="20" y="20" width="554" height="440"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Tab" identifier="1" id="ewc-fC-ECH" userLabel="WebView">
                                         <view key="view" id="s4s-Dp-PLB">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="440"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRf-54-Z4D">
-                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="440"/>
                                                     <wkWebViewConfiguration key="configuration">
                                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                                         <wkPreferences key="preferences"/>
                                                     </wkWebViewConfiguration>
                                                 </wkWebView>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="oKt-Y0-sg6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="440"/>
                                                 </customView>
                                             </subviews>
                                             <constraints>
@@ -74,11 +48,11 @@ DQ
                                     </tabViewItem>
                                     <tabViewItem label="View" identifier="2" id="ZXc-LT-ZFy" userLabel="Progress">
                                         <view key="view" id="Wt4-uR-3Id">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="440"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="26" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeE-pN-rPE">
-                                                    <rect key="frame" x="247" y="162" width="60" height="75"/>
+                                                    <rect key="frame" x="247" y="183" width="60" height="75"/>
                                                     <subviews>
                                                         <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ZAn-Me-Ku1">
                                                             <rect key="frame" x="14" y="43" width="32" height="32"/>
@@ -108,23 +82,49 @@ DQ
                                             </constraints>
                                         </view>
                                     </tabViewItem>
-                                    <tabViewItem label="Item 2" identifier="" id="JOF-i9-JwW" userLabel="Result">
+                                    <tabViewItem label="Item 2" identifier="" id="JOF-i9-JwW" userLabel="TryAgain">
                                         <view key="view" id="niE-ia-3Qj">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="399"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="440"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LxS-D9-uoc">
-                                                    <rect key="frame" x="273" y="191" width="8" height="17"/>
-                                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="4Uq-uO-oFl">
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
+                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ls-PG-KNf">
+                                                    <rect key="frame" x="235" y="195" width="85" height="50"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LxS-D9-uoc">
+                                                            <rect key="frame" x="38" y="33" width="8" height="17"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="4Uq-uO-oFl">
+                                                                <font key="font" usesAppearanceFont="YES"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RfU-JD-fZM">
+                                                            <rect key="frame" x="-6" y="-7" width="97" height="32"/>
+                                                            <buttonCell key="cell" type="push" title="Try Again" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LLW-Na-Qna">
+                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="tryAgain:" target="5fk-7F-ndf" id="5yB-Zi-jue"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LxS-D9-uoc" firstAttribute="centerX" secondItem="niE-ia-3Qj" secondAttribute="centerX" id="5xm-Dc-cCK"/>
-                                                <constraint firstItem="LxS-D9-uoc" firstAttribute="centerY" secondItem="niE-ia-3Qj" secondAttribute="centerY" id="7DA-bB-a1u"/>
+                                                <constraint firstItem="4Ls-PG-KNf" firstAttribute="centerX" secondItem="niE-ia-3Qj" secondAttribute="centerX" id="Eiw-HL-7cB"/>
+                                                <constraint firstItem="4Ls-PG-KNf" firstAttribute="centerY" secondItem="niE-ia-3Qj" secondAttribute="centerY" id="cam-Em-Ye4"/>
                                             </constraints>
                                         </view>
                                     </tabViewItem>
@@ -132,22 +132,17 @@ DQ
                             </tabView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="8fp-U3-4dT" secondAttribute="bottom" constant="20" id="10P-rM-6xv"/>
-                            <constraint firstItem="8fp-U3-4dT" firstAttribute="width" secondItem="7Yx-yE-Vz9" secondAttribute="width" id="1Cm-Be-j3V"/>
-                            <constraint firstItem="8fp-U3-4dT" firstAttribute="leading" secondItem="aDx-MT-LO0" secondAttribute="leading" constant="20" id="2vZ-oq-zAE"/>
                             <constraint firstAttribute="trailing" secondItem="iZY-fi-8ju" secondAttribute="trailing" constant="20" id="37t-wr-HAc"/>
                             <constraint firstItem="iZY-fi-8ju" firstAttribute="top" secondItem="aDx-MT-LO0" secondAttribute="top" constant="20" id="PBJ-QJ-WhY"/>
-                            <constraint firstItem="8fp-U3-4dT" firstAttribute="top" secondItem="iZY-fi-8ju" secondAttribute="bottom" constant="20" id="TLd-BE-xFL"/>
                             <constraint firstItem="iZY-fi-8ju" firstAttribute="leading" secondItem="aDx-MT-LO0" secondAttribute="leading" constant="20" id="TWR-ch-zFH"/>
-                            <constraint firstAttribute="bottom" secondItem="7Yx-yE-Vz9" secondAttribute="bottom" constant="20" id="Tii-nu-boj"/>
-                            <constraint firstAttribute="trailing" secondItem="7Yx-yE-Vz9" secondAttribute="trailing" constant="20" id="gyM-rD-rdX"/>
+                            <constraint firstAttribute="bottom" secondItem="iZY-fi-8ju" secondAttribute="bottom" constant="20" id="m8P-oT-t9m"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="doneButton" destination="7Yx-yE-Vz9" id="M6h-ZD-aQC"/>
                         <outlet property="progressIndicator" destination="ZAn-Me-Ku1" id="j1V-Wl-Se4"/>
                         <outlet property="resultTextField" destination="LxS-D9-uoc" id="1Vc-TX-EQq"/>
                         <outlet property="tabView" destination="iZY-fi-8ju" id="aGY-v5-LTw"/>
+                        <outlet property="tryAgainButton" destination="RfU-JD-fZM" id="t2b-lG-p3B"/>
                         <outlet property="viewForWeb" destination="oKt-Y0-sg6" id="33B-Zt-rcb"/>
                         <outlet property="webView" destination="NRf-54-Z4D" id="GQN-BF-UMR"/>
                     </connections>
@@ -155,27 +150,6 @@ DQ
                 <customObject id="Q5E-VW-ceD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="292" y="-685"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="BB2-mq-0iF">
-            <objects>
-                <windowController showSeguePresentationStyle="single" id="JkV-zC-STu" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="t73-c5-45p">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <connections>
-                            <outlet property="delegate" destination="JkV-zC-STu" id="eWv-1k-d9H"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="5fk-7F-ndf" kind="relationship" relationship="window.shadowedContentViewController" id="MT0-km-Iq7"/>
-                    </connections>
-                </windowController>
-                <customObject id="eLl-MJ-lcu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-356" y="-685"/>
         </scene>
     </scenes>
 </document>

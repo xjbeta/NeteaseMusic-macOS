@@ -10,17 +10,9 @@ import Cocoa
 import WebKit
 
 class LoginViewController: NSViewController {
-    @IBAction func cancel(_ sender: NSButton) {
-        view.window?.close()
-    }
-    
-    @IBOutlet weak var doneButton: NSButton!
-    @IBAction func done(_ sender: NSButton) {
-        if shouldTryAgain {
-            initViews()
-        } else {
-            view.window?.close()
-        }
+    @IBOutlet weak var tryAgainButton: NSButton!
+    @IBAction func tryAgain(_ sender: Any) {
+        initViews()
     }
     
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
@@ -43,8 +35,7 @@ class LoginViewController: NSViewController {
     }
     
     func initViews() {
-        doneButton.stringValue = "Done"
-        doneButton.isEnabled = false
+        tryAgainButton.isEnabled = false
         thirdPartyWebView = nil
         thirdPartyWebView?.isHidden = true
         progressIndicator.startAnimation(nil)
@@ -79,8 +70,7 @@ class LoginViewController: NSViewController {
         selectTab(.result)
         resultTextField.stringValue = "Unkown error."
         shouldTryAgain = true
-        doneButton.stringValue = "Try Again"
-        doneButton.isEnabled = true
+        tryAgainButton.isEnabled = true
     }
     
 }
@@ -139,16 +129,27 @@ document.getElementById('g_iframe').contentDocument.getElementsByClassName('m-su
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if navigationAction.request.url?.absoluteString == "https://music.163.com/#/discover" {
+        
+        guard let urlStr = navigationAction.request.url?.absoluteString else {
+            decisionHandler(.cancel)
+            return
+        }
+        
+        if urlStr.starts(with: "https://music.163.com/back") {
+            selectTab(.progress)
+        } else if urlStr == "https://music.163.com/discover" {
             selectTab(.progress)
             PlayCore.shared.api.isLogin().done(on: .main) {
-                self.resultTextField.stringValue = $0 ? "Login Success." : "Login Failed."
-                self.selectTab(.result)
-                self.doneButton.isEnabled = true
-                if !$0 {
-                    self.shouldTryAgain = true
-                    self.doneButton.stringValue = "Try Again"
+                if $0 {
+                    // Login Success.
+                    let vc = self.view.window?.contentViewController as? MainViewController
+                    vc?.updateMainTabView(.main)
+                } else {
+                    self.resultTextField.stringValue = "Login Failed."
+                    self.selectTab(.result)
+                    self.tryAgainButton.isEnabled = true
                 }
+
                 }.catch(on: .main) {
                     print("Check login status error: \($0)")
                     self.showUnknownError()
