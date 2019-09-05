@@ -32,6 +32,8 @@ class MainWindowController: NSWindowController {
         popover.show(relativeTo: sender.frame, of: sender, preferredEdge: .minY)
     }
     
+    @IBOutlet weak var userButton: NSButton!
+    
     let searchSuggestionsVC = NSStoryboard(name: .init("SearchSuggestionsView"), bundle: nil).instantiateController(withIdentifier: .init("SearchSuggestionsViewController")) as! SearchSuggestionsViewController
     
     lazy var popover: NSPopover = {
@@ -47,6 +49,19 @@ class MainWindowController: NSWindowController {
         super.windowDidLoad()
     
         window?.isMovableByWindowBackground = true
+        initUserButton()
     }
-
+    
+    func initUserButton() {
+        userButton.isHidden = true
+        PlayCore.shared.api.userInfo().done(on: .main) {
+            self.userButton.title = $0.nickname
+            ImageLoader.image($0.avatarImage!, true, 32) {
+                self.userButton.image = $0.roundCorners(withRadius: $0.size.width / 8)
+                self.userButton.isHidden = false
+            }
+            }.catch {
+                print($0)
+        }
+    }
 }

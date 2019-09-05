@@ -31,7 +31,7 @@ class NeteaseMusicAPI: NSObject {
     struct User {
         var nickname: String
         var userId: Int
-        var avatarImage: NSImage?
+        var avatarImage: String?
     }
     
     struct CodeResult: Decodable {
@@ -64,9 +64,7 @@ class NeteaseMusicAPI: NSObject {
                         user.nickname = value
                     case "avatarUrl":
                         let s = value.replacingOccurrences(of: "http://", with: "https://")
-                        if let u = URL(string: s) {
-                            user.avatarImage = NSImage(contentsOf: u)
-                        }
+                        user.avatarImage = s
                     default:
                         break
                     }

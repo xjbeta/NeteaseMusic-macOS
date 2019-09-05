@@ -716,46 +716,20 @@
                                         </connections>
                                     </searchField>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="BD3B68EC-4F2D-4DBB-8BAF-5865F07AAC08" label="Preferences" paletteLabel="Preferences" id="pO6-5o-Lnv">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="32" height="32"/>
-                                    <size key="maxSize" width="32" height="32"/>
-                                    <button key="view" verticalHuggingPriority="750" id="77l-MB-86H">
-                                        <rect key="frame" x="19" y="14" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="te1-D7-Ohm">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="A1BB4F77-5FF3-40C8-986C-E68F0086C9CC" label="User" paletteLabel="User" id="WxI-Mm-mz4">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="32" height="32"/>
-                                    <size key="maxSize" width="32" height="32"/>
+                                    <size key="minSize" width="36" height="24"/>
+                                    <size key="maxSize" width="128" height="32"/>
                                     <button key="view" verticalHuggingPriority="750" id="98G-Rs-4Tz">
-                                        <rect key="frame" x="0.0" y="14" width="32" height="32"/>
+                                        <rect key="frame" x="0.0" y="14" width="92" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dGb-IC-hED">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="leading" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="dGb-IC-hED">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <segue destination="aXf-RW-tMD" kind="show" id="EcS-1y-gch"/>
                                         </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="9DE81B3F-B9A9-4CFF-AEBB-4D1C3B0D003F" label="Message" paletteLabel="Message" id="VB0-uQ-JO5">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="32" height="32"/>
-                                    <size key="maxSize" width="32" height="32"/>
-                                    <button key="view" verticalHuggingPriority="750" id="PIE-kp-Xr8">
-                                        <rect key="frame" x="11" y="14" width="32" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CZU-Za-vnP">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pEi-7T-vZV"/>
@@ -780,8 +754,6 @@
                                 <toolbarItem reference="k07-zQ-tS7"/>
                                 <toolbarItem reference="Erc-xV-ncc"/>
                                 <toolbarItem reference="D6Q-iU-GTo"/>
-                                <toolbarItem reference="VB0-uQ-JO5"/>
-                                <toolbarItem reference="pO6-5o-Lnv"/>
                                 <toolbarItem reference="pEi-7T-vZV"/>
                                 <toolbarItem reference="WxI-Mm-mz4"/>
                             </defaultToolbarItems>
@@ -792,6 +764,7 @@
                     </window>
                     <connections>
                         <outlet property="searchField" destination="BNl-c2-Rdd" id="JR8-N3-qWj"/>
+                        <outlet property="userButton" destination="98G-Rs-4Tz" id="G9D-tV-Zu5"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>

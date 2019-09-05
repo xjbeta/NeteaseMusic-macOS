@@ -31,6 +31,27 @@ class ImageLoader: NSObject {
             complete(image)
         }
     }
+    
+    static func image(_ url: String,
+                      _ autoSize: Bool = false,
+                      _ width: CGFloat = 0,
+                      complete: @escaping ((NSImage) -> ())) {
+        var u = url
+        
+        if autoSize {
+            let w = Int(width * (NSScreen.main?.backingScaleFactor ?? 1))
+            u += "?param=\(w)y\(w)"
+        }
+        
+        if let image = try? ImageLoader.storage.object(forKey: u) {
+            complete(image)
+        } else {
+            ImageLoader.request(u) { image in
+                try? ImageLoader.storage.setObject(image, forKey: u)
+                complete(image)
+            }
+        }
+    }
 }
 
 
@@ -40,20 +61,8 @@ extension NSImageView {
         guard url != "" else {
             return
         }
-        var u = url
-        
-        if autoSize {
-            let width = Int(frame.width * (NSScreen.main?.backingScaleFactor ?? 1))
-            u += "?param=\(width)y\(width)"
-        }
-        
-        if let image = try? ImageLoader.storage.object(forKey: u) {
-            self.image = image
-        } else {
-            ImageLoader.request(u) { image in
-                try? ImageLoader.storage.setObject(image, forKey: u)
-                self.image = image
-            }
+        ImageLoader.image(url, autoSize, frame.width) {
+            self.image = $0
         }
     }
 }
@@ -64,21 +73,8 @@ extension NSButton {
         guard url != "" else {
             return
         }
-
-        var u = url
-        
-        if autoSize {
-            let width = Int(frame.width * (NSScreen.main?.backingScaleFactor ?? 1))
-            u += "?param=\(width)y\(width)"
-        }
-        
-        if let image = try? ImageLoader.storage.object(forKey: u) {
-            self.image = image
-        } else {
-            ImageLoader.request(u) { image in
-                try? ImageLoader.storage.setObject(image, forKey: u)
-                self.image = image
-            }
+        ImageLoader.image(url, autoSize, frame.width) {
+            self.image = $0
         }
     }
 }
