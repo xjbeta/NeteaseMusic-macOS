@@ -51,6 +51,7 @@
 		0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0132E1E02293D14F00484D7E /* ArtistViewController.swift */; };
 		0132E1E32293E0AE00484D7E /* ArtistAlbums.json in Resources */ = {isa = PBXBuildFile; fileRef = 0132E1E22293E0AE00484D7E /* ArtistAlbums.json */; };
 		0133AC58231CE67C00090D5E /* DiscoveryRecommendDislike.json in Resources */ = {isa = PBXBuildFile; fileRef = 0133AC57231CE67C00090D5E /* DiscoveryRecommendDislike.json */; };
+		0133AC722320CDE800090D5E /* NSImage+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0133AC712320CDE800090D5E /* NSImage+RoundedCorners.swift */; };
 		0134B63922645D5900262AB8 /* UserPlaylist.json in Resources */ = {isa = PBXBuildFile; fileRef = 0134B63822645D5900262AB8 /* UserPlaylist.json */; };
 		0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137264022697D32004EDCE5 /* IndexTransformer.swift */; };
 		0137264322698D20004EDCE5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137264222698D20004EDCE5 /* DiscoverViewController.swift */; };
@@ -193,6 +194,7 @@
 		0132E1E02293D14F00484D7E /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
 		0132E1E22293E0AE00484D7E /* ArtistAlbums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ArtistAlbums.json; sourceTree = "<group>"; };
 		0133AC57231CE67C00090D5E /* DiscoveryRecommendDislike.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DiscoveryRecommendDislike.json; sourceTree = "<group>"; };
+		0133AC712320CDE800090D5E /* NSImage+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+RoundedCorners.swift"; sourceTree = "<group>"; };
 		0134B63822645D5900262AB8 /* UserPlaylist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserPlaylist.json; sourceTree = "<group>"; };
 		0137264022697D32004EDCE5 /* IndexTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexTransformer.swift; sourceTree = "<group>"; };
 		0137264222698D20004EDCE5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E40FE822C1DF4600864118 /* ImageLoader.swift */,
+				0133AC712320CDE800090D5E /* NSImage+RoundedCorners.swift */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
 				013EF1572256501000E4D7D8 /* Extensions */,
 			);
@@ -713,6 +716,7 @@
 				01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */,
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,
 				0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */,
+				0133AC722320CDE800090D5E /* NSImage+RoundedCorners.swift in Sources */,
 				0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */,
 				014327B422AB729F00651064 /* PageSegmentedControlViewController.swift in Sources */,
 				013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */,
