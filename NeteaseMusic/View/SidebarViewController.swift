@@ -130,13 +130,14 @@ class SidebarViewController: NSViewController {
     @objc dynamic var sidebarItems = [SidebarItem]()
     
     let outlineViewNotification = Notification(name: NSOutlineView.selectionDidChangeNotification, object: nil, userInfo: nil)
+    var selectSidebarItemObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sidebarItems = defaultItems
         updatePlaylists()
         
-        NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
+        selectSidebarItemObserver = NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
             guard let dic = $0.userInfo as? [String: Any],
                 let itemType = dic["itemType"] as? ItemType,
                 let id = dic["id"] as? Int,
@@ -192,6 +193,11 @@ class SidebarViewController: NSViewController {
         }
     }
     
+    deinit {
+        if let obs = selectSidebarItemObserver {
+            NotificationCenter.default.removeObserver(obs)
+        }
+    }
 }
 
 extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource {
