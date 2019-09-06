@@ -11,6 +11,7 @@ import Cocoa
 class MainViewController: NSViewController {
     @IBOutlet weak var mainTabView: NSTabView!
     @IBOutlet weak var contentTabView: NSTabView!
+    @IBOutlet weak var playingSongTabView: NSTabView!
     enum ContentTabItems: Int {
         case playlist, fm, preferences, discover, favourite, search, artist
     }
@@ -18,12 +19,13 @@ class MainViewController: NSViewController {
         case main, login
     }
     
+    enum playingSongTabItems: Int {
+        case main, playingSong
+    }
+    
     @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var playlistView: NSView!
     @IBOutlet weak var playingSongView: NSView!
-    @IBOutlet weak var playingSongTopLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var playingSongButtomLayoutConstraint: NSLayoutConstraint!
-    
     
     var sidebarItemObserver: NSKeyValueObservation?
     var playlistNotification: NSObjectProtocol?
@@ -68,21 +70,12 @@ class MainViewController: NSViewController {
                 ViewControllerManager.shared.selectSidebarItem(.fm)
             } else if !PlayCore.shared.fmMode,
                 let _ = PlayCore.shared.currentTrack,
-                self?.playingSongViewStatus != .animation {
-                self?.playingSongViewStatus = .animation
-                let newStatus: ExtendedViewState = self?.playingSongTopLayoutConstraint.priority == .init(999) ? .display : .hidden
+                let tabView = self?.playingSongTabView,
+                let selectedItem = tabView.selectedTabViewItem {
                 
-                NSAnimationContext.runAnimationGroup({ [weak self] context in
-                    if newStatus == .display {
-                        self?.playingSongTopLayoutConstraint.animator().priority = .defaultLow
-                        self?.playingSongButtomLayoutConstraint.animator().priority = .init(999)
-                    } else {
-                        self?.playingSongTopLayoutConstraint.animator().priority = .init(999)
-                        self?.playingSongButtomLayoutConstraint.animator().priority = .defaultLow
-                    }
-                }) {
-                    self?.playingSongViewStatus = newStatus
-                }
+                let index = tabView.indexOfTabViewItem(selectedItem)
+                let newItem: playingSongTabItems = index == 0 ? .playingSong : .main
+                self?.updatePlayingSongTabView(newItem)
             }
         }
     }
@@ -93,6 +86,10 @@ class MainViewController: NSViewController {
     
     func updateContentTabView(_ item: ContentTabItems) {
         contentTabView.selectTabViewItem(at: item.rawValue)
+    }
+    
+    func updatePlayingSongTabView(_ item: playingSongTabItems) {
+        playingSongTabView.selectTabViewItem(at: item.rawValue)
     }
     
     func updatePlaylistLayout() {
