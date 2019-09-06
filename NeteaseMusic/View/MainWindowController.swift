@@ -34,6 +34,8 @@ class MainWindowController: NSWindowController {
     
     @IBOutlet weak var userButton: NSButton!
     
+    var updateLoginStatusObserver: NSObjectProtocol?
+    
     let searchSuggestionsVC = NSStoryboard(name: .init("SearchSuggestionsView"), bundle: nil).instantiateController(withIdentifier: .init("SearchSuggestionsViewController")) as! SearchSuggestionsViewController
     
     lazy var popover: NSPopover = {
@@ -49,13 +51,26 @@ class MainWindowController: NSWindowController {
         super.windowDidLoad()
         window?.isMovableByWindowBackground = true
         userButton.isHidden = true
+        
+        updateLoginStatusObserver = NotificationCenter.default.addObserver(forName: .updateLoginStatus, object: nil, queue: .main) { _ in
+            guard let vc = self.contentViewController as? MainViewController else { return }
+            vc.updateMainTabView(.main)
+            self.initUserButton()
+            self.initSidebarItems()
+        }
+
         PlayCore.shared.api.isLogin().done {
             guard let vc = self.contentViewController as? MainViewController else { return }
             if $0 {
                 vc.updateMainTabView(.main)
                 self.initUserButton()
+                self.initSidebarItems()
             } else  {
                 vc.updateMainTabView(.login)
+                // login initViews
+                vc.children.compactMap {
+                    $0 as? LoginViewController
+                    }.first?.initViews()
             }
             }.catch {
                 print($0)
@@ -73,6 +88,19 @@ class MainWindowController: NSWindowController {
             }
             }.catch {
                 print($0)
+        }
+    }
+    
+    func initSidebarItems() {
+        guard let vc = self.contentViewController as? MainViewController else { return }
+        vc.children.compactMap {
+            $0 as? SidebarViewController
+            }.first?.updatePlaylists()
+    }
+    
+    deinit {
+        if let o = updateLoginStatusObserver {
+            NotificationCenter.default.removeObserver(o)
         }
     }
 }

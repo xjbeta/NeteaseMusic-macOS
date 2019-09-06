@@ -31,7 +31,6 @@ class LoginViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        clearCookies()
-        initViews()
     }
     
     func initViews() {
@@ -137,13 +136,13 @@ document.getElementById('g_iframe').contentDocument.getElementsByClassName('m-su
         
         if urlStr.starts(with: "https://music.163.com/back") {
             selectTab(.progress)
+            decisionHandler(.allow)
         } else if urlStr == "https://music.163.com/discover" {
             selectTab(.progress)
             PlayCore.shared.api.isLogin().done(on: .main) {
                 if $0 {
                     // Login Success.
-                    let vc = self.view.window?.contentViewController as? MainViewController
-                    vc?.updateMainTabView(.main)
+                    NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
                 } else {
                     self.resultTextField.stringValue = "Login Failed."
                     self.selectTab(.result)

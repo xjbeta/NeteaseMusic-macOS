@@ -135,7 +135,6 @@ class SidebarViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sidebarItems = defaultItems
-        updatePlaylists()
         
         selectSidebarItemObserver = NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
             guard let dic = $0.userInfo as? [String: Any],
@@ -159,35 +158,33 @@ class SidebarViewController: NSViewController {
     }
     
     func updatePlaylists() {
-        PlayCore.shared.api.isLogin().then { _ in
-            PlayCore.shared.api.userPlaylist()
-            }.done(on: .main) {
-                var created = $0.filter {
-                    !$0.subscribed
-                    }.map {
-                        SidebarItem(title: $0.name, id: $0.id, type: .playlist)
-                }
-                
-                if let item = created.first, item.title.contains("喜欢的音乐") {
-                    created[0].title = "我喜欢的音乐"
-                    created[0].type = .favourite
-                }
-                
-                self.sidebarItems.filter({
-                    $0.title == "创建的歌单"
-                }).first?.childrenItems = created
-                
-                let subscribed = $0.filter {
-                    $0.subscribed
-                    }.map {
-                        SidebarItem(title: $0.name, id: $0.id, type: .playlist)
-                }
-                
-                self.sidebarItems.filter({
-                    $0.title == "收藏的歌单"
-                }).first?.childrenItems = subscribed
-                
-                self.outlineView.expandItem(nil, expandChildren: true)
+        PlayCore.shared.api.userPlaylist().done(on: .main) {
+            var created = $0.filter {
+                !$0.subscribed
+                }.map {
+                    SidebarItem(title: $0.name, id: $0.id, type: .playlist)
+            }
+            
+            if let item = created.first, item.title.contains("喜欢的音乐") {
+                created[0].title = "我喜欢的音乐"
+                created[0].type = .favourite
+            }
+            
+            self.sidebarItems.filter({
+                $0.title == "创建的歌单"
+            }).first?.childrenItems = created
+            
+            let subscribed = $0.filter {
+                $0.subscribed
+                }.map {
+                    SidebarItem(title: $0.name, id: $0.id, type: .playlist)
+            }
+            
+            self.sidebarItems.filter({
+                $0.title == "收藏的歌单"
+            }).first?.childrenItems = subscribed
+            
+            self.outlineView.expandItem(nil, expandChildren: true)
             }.catch {
                 print($0)
         }
