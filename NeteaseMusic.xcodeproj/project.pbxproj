@@ -291,17 +291,10 @@
 				012F2F422250619A00086870 /* NeteaseMusicAPI.swift */,
 				01677B9E228CF3D200D11190 /* ViewControllerManager.swift */,
 				01FF8B7E225D7DFE002D7906 /* CodableObjects.swift */,
-				01FF8B80225D8064002D7906 /* DurationTransformer.swift */,
-				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
-				0137264022697D32004EDCE5 /* IndexTransformer.swift */,
-				01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */,
-				012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */,
-				012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */,
-				012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */,
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E40FE822C1DF4600864118 /* ImageLoader.swift */,
-				0133AC712320CDE800090D5E /* NSImage+RoundedCorners.swift */,
+				0133AC732321FEB800090D5E /* Transformers */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
 				013EF1572256501000E4D7D8 /* Extensions */,
 			);
@@ -366,6 +359,20 @@
 				0132E1E02293D14F00484D7E /* ArtistViewController.swift */,
 			);
 			name = ArtistView;
+			sourceTree = "<group>";
+		};
+		0133AC732321FEB800090D5E /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				01FF8B80225D8064002D7906 /* DurationTransformer.swift */,
+				01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */,
+				0137264022697D32004EDCE5 /* IndexTransformer.swift */,
+				01467E8B22830A780037B49D /* LyricOffsetTransformer.swift */,
+				012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */,
+				012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */,
+				012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */,
+			);
+			path = Transformers;
 			sourceTree = "<group>";
 		};
 		0134B63A22649BD300262AB8 /* SidePlaylist */ = {
@@ -434,6 +441,7 @@
 		013EF1572256501000E4D7D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0133AC712320CDE800090D5E /* NSImage+RoundedCorners.swift */,
 				01603085225B82C00064EC88 /* Identifiers.swift */,
 				012F1155226028BA002D5599 /* NotificationName.swift */,
 				013EF1552256500100E4D7D8 /* SubString.swift */,
