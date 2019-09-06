@@ -9,10 +9,15 @@
 import Cocoa
 
 class MainViewController: NSViewController {
-    @IBOutlet weak var tabView: NSTabView!
-    enum TabItems: Int {
+    @IBOutlet weak var mainTabView: NSTabView!
+    @IBOutlet weak var contentTabView: NSTabView!
+    enum ContentTabItems: Int {
         case playlist, fm, preferences, discover, favourite, search, artist
     }
+    enum MainTabItems: Int {
+        case main, login
+    }
+    
     @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var playlistView: NSView!
     @IBOutlet weak var playingSongView: NSView!
@@ -38,15 +43,15 @@ class MainViewController: NSViewController {
             DispatchQueue.main.async {
                 switch newType {
                 case .discover:
-                    self.updateTabView(.discover)
+                    self.updateContentTabView(.discover)
                 case .fm:
-                    self.updateTabView(.fm)
+                    self.updateContentTabView(.fm)
                 case .playlist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
-                    self.updateTabView(.playlist)
+                    self.updateContentTabView(.playlist)
                 case .artist:
-                    self.updateTabView(.artist)
+                    self.updateContentTabView(.artist)
                 case .searchResults:
-                    self.updateTabView(.search)
+                    self.updateContentTabView(.search)
                 default:
                     break
                 }
@@ -82,8 +87,12 @@ class MainViewController: NSViewController {
         }
     }
     
-    func updateTabView(_ item: TabItems) {
-        tabView.selectTabViewItem(at: item.rawValue)
+    func updateMainTabView(_ item: MainTabItems) {
+        mainTabView.selectTabViewItem(at: item.rawValue)
+    }
+    
+    func updateContentTabView(_ item: ContentTabItems) {
+        contentTabView.selectTabViewItem(at: item.rawValue)
     }
     
     func updatePlaylistLayout() {

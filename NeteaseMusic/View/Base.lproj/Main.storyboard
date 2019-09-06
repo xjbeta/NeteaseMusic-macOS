@@ -727,9 +727,6 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
-                                        <connections>
-                                            <segue destination="aXf-RW-tMD" kind="show" id="EcS-1y-gch"/>
-                                        </connections>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pEi-7T-vZV"/>
@@ -780,233 +777,265 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQx-Sy-S4l">
-                                <rect key="frame" x="0.0" y="65" width="1000" height="585"/>
-                                <subviews>
-                                    <customView id="Mrb-qI-bUM">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="585"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fso-nb-eos">
-                                                <rect key="frame" x="0.0" y="0.0" width="177" height="585"/>
-                                                <connections>
-                                                    <segue destination="DJj-ZS-YFg" kind="embed" id="uPG-g7-4En"/>
-                                                </connections>
-                                            </containerView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Fso-nb-eos" secondAttribute="trailing" id="Adc-rX-W43"/>
-                                            <constraint firstItem="Fso-nb-eos" firstAttribute="top" secondItem="Mrb-qI-bUM" secondAttribute="top" id="J1q-z6-d8M"/>
-                                            <constraint firstAttribute="bottom" secondItem="Fso-nb-eos" secondAttribute="bottom" id="LuW-MX-VLD"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="Tor-uo-kis"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="X4g-Am-4nS"/>
-                                            <constraint firstItem="Fso-nb-eos" firstAttribute="leading" secondItem="Mrb-qI-bUM" secondAttribute="leading" id="gm9-ye-dqq"/>
-                                        </constraints>
-                                    </customView>
-                                    <customView id="7Yu-7O-R67">
-                                        <rect key="frame" x="178" y="0.0" width="822" height="585"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <subviews>
-                                            <tabView type="noTabsNoBorder" initialItem="2Qr-o0-lnR" translatesAutoresizingMaskIntoConstraints="NO" id="AWO-pv-Kg5">
-                                                <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                <font key="font" metaFont="system"/>
-                                                <tabViewItems>
-                                                    <tabViewItem label="PlayList" identifier="" id="iQG-4j-4rh" userLabel="PlayList">
-                                                        <view key="view" id="5IT-G8-uN3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="Po7-mc-yBA">
+                                <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="Tab" identifier="1" id="UGa-xs-8fI" userLabel="Main">
+                                        <view key="view" id="c7C-3x-bjo">
+                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQx-Sy-S4l">
+                                                    <rect key="frame" x="0.0" y="65" width="1000" height="585"/>
+                                                    <subviews>
+                                                        <customView id="Mrb-qI-bUM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="585"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-xI-l9e">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fso-nb-eos">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="585"/>
                                                                     <connections>
-                                                                        <segue destination="1Hm-qT-83q" kind="embed" id="YiH-S5-rVD"/>
+                                                                        <segue destination="DJj-ZS-YFg" kind="embed" id="uPG-g7-4En"/>
                                                                     </connections>
                                                                 </containerView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="Jqh-xI-l9e" firstAttribute="top" secondItem="5IT-G8-uN3" secondAttribute="top" id="4Hb-Ge-mnq"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Jqh-xI-l9e" secondAttribute="bottom" id="R9V-iy-ROn"/>
-                                                                <constraint firstItem="Jqh-xI-l9e" firstAttribute="leading" secondItem="5IT-G8-uN3" secondAttribute="leading" id="Tna-6l-ptZ"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Jqh-xI-l9e" secondAttribute="trailing" id="btq-PP-zSV"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Fso-nb-eos" secondAttribute="trailing" id="Adc-rX-W43"/>
+                                                                <constraint firstItem="Fso-nb-eos" firstAttribute="top" secondItem="Mrb-qI-bUM" secondAttribute="top" id="J1q-z6-d8M"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Fso-nb-eos" secondAttribute="bottom" id="LuW-MX-VLD"/>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="Tor-uo-kis"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="X4g-Am-4nS"/>
+                                                                <constraint firstItem="Fso-nb-eos" firstAttribute="leading" secondItem="Mrb-qI-bUM" secondAttribute="leading" id="gm9-ye-dqq"/>
                                                             </constraints>
-                                                        </view>
-                                                    </tabViewItem>
-                                                    <tabViewItem label="FM" identifier="" id="GFu-C8-YIB" userLabel="FM">
-                                                        <view key="view" id="Ux7-La-kjT">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </customView>
+                                                        <customView id="7Yu-7O-R67">
+                                                            <rect key="frame" x="176" y="0.0" width="824" height="585"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="tOV-hm-8fP">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                                    <connections>
-                                                                        <segue destination="Wq4-hO-qaB" kind="embed" id="Jnd-te-GBF"/>
-                                                                    </connections>
-                                                                </containerView>
+                                                                <tabView type="noTabsNoBorder" initialItem="2Qr-o0-lnR" translatesAutoresizingMaskIntoConstraints="NO" id="AWO-pv-Kg5">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="824" height="585"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <tabViewItems>
+                                                                        <tabViewItem label="PlayList" identifier="" id="iQG-4j-4rh" userLabel="PlayList">
+                                                                            <view key="view" id="5IT-G8-uN3">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="824" height="585"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-xI-l9e">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="824" height="585"/>
+                                                                                        <connections>
+                                                                                            <segue destination="1Hm-qT-83q" kind="embed" id="YiH-S5-rVD"/>
+                                                                                        </connections>
+                                                                                    </containerView>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="Jqh-xI-l9e" firstAttribute="top" secondItem="5IT-G8-uN3" secondAttribute="top" id="4Hb-Ge-mnq"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="Jqh-xI-l9e" secondAttribute="bottom" id="R9V-iy-ROn"/>
+                                                                                    <constraint firstItem="Jqh-xI-l9e" firstAttribute="leading" secondItem="5IT-G8-uN3" secondAttribute="leading" id="Tna-6l-ptZ"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="Jqh-xI-l9e" secondAttribute="trailing" id="btq-PP-zSV"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                        </tabViewItem>
+                                                                        <tabViewItem label="FM" identifier="" id="GFu-C8-YIB" userLabel="FM">
+                                                                            <view key="view" id="Ux7-La-kjT">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="tOV-hm-8fP">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                        <connections>
+                                                                                            <segue destination="Wq4-hO-qaB" kind="embed" id="Jnd-te-GBF"/>
+                                                                                        </connections>
+                                                                                    </containerView>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="tOV-hm-8fP" firstAttribute="leading" secondItem="Ux7-La-kjT" secondAttribute="leading" id="Wsj-ge-9GF"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="tOV-hm-8fP" secondAttribute="bottom" id="quQ-mw-gBw"/>
+                                                                                    <constraint firstItem="tOV-hm-8fP" firstAttribute="top" secondItem="Ux7-La-kjT" secondAttribute="top" id="rhF-rD-LLn"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="tOV-hm-8fP" secondAttribute="trailing" id="zfQ-Z6-T2z"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                        </tabViewItem>
+                                                                        <tabViewItem label="Preferences" identifier="" id="Use-Rr-zxh" userLabel="Preferences">
+                                                                            <view key="view" id="Ydw-QF-hzx">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                            </view>
+                                                                        </tabViewItem>
+                                                                        <tabViewItem label="Discover" identifier="" id="2Qr-o0-lnR" userLabel="Discover">
+                                                                            <view key="view" id="8fz-mJ-Rur">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Knh-Vh-UCK">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                        <connections>
+                                                                                            <segue destination="zL7-cd-vEy" kind="embed" id="Q9s-pc-0rW"/>
+                                                                                        </connections>
+                                                                                    </containerView>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="Knh-Vh-UCK" firstAttribute="top" secondItem="8fz-mJ-Rur" secondAttribute="top" id="7TT-3e-SSS"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="Knh-Vh-UCK" secondAttribute="bottom" id="Abl-XJ-Y1h"/>
+                                                                                    <constraint firstItem="Knh-Vh-UCK" firstAttribute="leading" secondItem="8fz-mJ-Rur" secondAttribute="leading" id="C44-Z9-wpR"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="Knh-Vh-UCK" secondAttribute="trailing" id="SSS-hc-MNG"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                        </tabViewItem>
+                                                                        <tabViewItem label="Favourite" identifier="" id="CFK-R6-c6R" userLabel="Favourite">
+                                                                            <view key="view" id="ghc-Gt-k7F">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                            </view>
+                                                                        </tabViewItem>
+                                                                        <tabViewItem label="Item 5" identifier="" id="1yf-sk-vGB" userLabel="Search">
+                                                                            <view key="view" id="XeL-Tp-kNn">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-T0-GFZ">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                        <connections>
+                                                                                            <segue destination="Xdt-fC-huh" kind="embed" id="twu-7o-Uft"/>
+                                                                                        </connections>
+                                                                                    </containerView>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="Fwy-T0-GFZ" firstAttribute="top" secondItem="XeL-Tp-kNn" secondAttribute="top" id="22u-iT-LPx"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="Fwy-T0-GFZ" secondAttribute="bottom" id="5cg-1V-FI0"/>
+                                                                                    <constraint firstItem="Fwy-T0-GFZ" firstAttribute="leading" secondItem="XeL-Tp-kNn" secondAttribute="leading" id="HXK-vB-R3i"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="Fwy-T0-GFZ" secondAttribute="trailing" id="IjE-TB-xkN"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                        </tabViewItem>
+                                                                        <tabViewItem label="Item 6" identifier="" id="bsz-vJ-zpk" userLabel="Artist">
+                                                                            <view key="view" id="lrv-nL-hjT">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <subviews>
+                                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="i8M-Hf-SQH">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                        <connections>
+                                                                                            <segue destination="cq6-3d-Khw" kind="embed" id="aH9-nb-7sy"/>
+                                                                                        </connections>
+                                                                                    </containerView>
+                                                                                </subviews>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="bottom" secondItem="i8M-Hf-SQH" secondAttribute="bottom" id="GaI-H9-zCJ"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="i8M-Hf-SQH" secondAttribute="trailing" id="X0U-uQ-otF"/>
+                                                                                    <constraint firstItem="i8M-Hf-SQH" firstAttribute="leading" secondItem="lrv-nL-hjT" secondAttribute="leading" id="xQE-21-jd8"/>
+                                                                                    <constraint firstItem="i8M-Hf-SQH" firstAttribute="top" secondItem="lrv-nL-hjT" secondAttribute="top" id="xuP-pR-5nY"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                        </tabViewItem>
+                                                                    </tabViewItems>
+                                                                </tabView>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="AFB-rE-r0G">
+                                                                    <rect key="frame" x="824" y="0.0" width="300" height="585"/>
+                                                                    <subviews>
+                                                                        <containerView translatesAutoresizingMaskIntoConstraints="NO" id="MzF-oZ-vIS">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="585"/>
+                                                                            <connections>
+                                                                                <segue destination="pbH-2h-v2I" kind="embed" id="yOd-U3-jOK"/>
+                                                                            </connections>
+                                                                        </containerView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="MzF-oZ-vIS" secondAttribute="trailing" id="5df-MY-IRq"/>
+                                                                        <constraint firstAttribute="width" constant="300" id="TgV-da-PBD"/>
+                                                                        <constraint firstItem="MzF-oZ-vIS" firstAttribute="top" secondItem="AFB-rE-r0G" secondAttribute="top" id="Yzg-Ep-1De"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="MzF-oZ-vIS" secondAttribute="bottom" id="ZbJ-W4-7lF"/>
+                                                                        <constraint firstItem="MzF-oZ-vIS" firstAttribute="leading" secondItem="AFB-rE-r0G" secondAttribute="leading" id="vbv-Kx-00o"/>
+                                                                    </constraints>
+                                                                </customView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="tOV-hm-8fP" firstAttribute="leading" secondItem="Ux7-La-kjT" secondAttribute="leading" id="Wsj-ge-9GF"/>
-                                                                <constraint firstAttribute="bottom" secondItem="tOV-hm-8fP" secondAttribute="bottom" id="quQ-mw-gBw"/>
-                                                                <constraint firstItem="tOV-hm-8fP" firstAttribute="top" secondItem="Ux7-La-kjT" secondAttribute="top" id="rhF-rD-LLn"/>
-                                                                <constraint firstAttribute="trailing" secondItem="tOV-hm-8fP" secondAttribute="trailing" id="zfQ-Z6-T2z"/>
+                                                                <constraint firstItem="AWO-pv-Kg5" firstAttribute="leading" secondItem="7Yu-7O-R67" secondAttribute="leading" id="477-Rl-zat"/>
+                                                                <constraint firstAttribute="bottom" secondItem="AWO-pv-Kg5" secondAttribute="bottom" id="c8g-Ee-FYG"/>
+                                                                <constraint firstItem="AWO-pv-Kg5" firstAttribute="top" secondItem="7Yu-7O-R67" secondAttribute="top" id="fwR-pM-wEc"/>
+                                                                <constraint firstItem="AFB-rE-r0G" firstAttribute="top" secondItem="7Yu-7O-R67" secondAttribute="top" id="itH-vD-Wgb"/>
+                                                                <constraint firstAttribute="bottom" secondItem="AFB-rE-r0G" secondAttribute="bottom" id="oah-y1-aX1"/>
+                                                                <constraint firstItem="AFB-rE-r0G" firstAttribute="leading" secondItem="AWO-pv-Kg5" secondAttribute="trailing" id="qOU-jo-chL"/>
+                                                                <constraint firstAttribute="trailing" secondItem="AWO-pv-Kg5" secondAttribute="trailing" id="y0U-lb-TRD"/>
                                                             </constraints>
-                                                        </view>
-                                                    </tabViewItem>
-                                                    <tabViewItem label="Preferences" identifier="" id="Use-Rr-zxh" userLabel="Preferences">
-                                                        <view key="view" id="Ydw-QF-hzx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        </view>
-                                                    </tabViewItem>
-                                                    <tabViewItem label="Discover" identifier="" id="2Qr-o0-lnR" userLabel="Discover">
-                                                        <view key="view" id="8fz-mJ-Rur">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Knh-Vh-UCK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                                    <connections>
-                                                                        <segue destination="zL7-cd-vEy" kind="embed" id="Q9s-pc-0rW"/>
-                                                                    </connections>
-                                                                </containerView>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="Knh-Vh-UCK" firstAttribute="top" secondItem="8fz-mJ-Rur" secondAttribute="top" id="7TT-3e-SSS"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Knh-Vh-UCK" secondAttribute="bottom" id="Abl-XJ-Y1h"/>
-                                                                <constraint firstItem="Knh-Vh-UCK" firstAttribute="leading" secondItem="8fz-mJ-Rur" secondAttribute="leading" id="C44-Z9-wpR"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Knh-Vh-UCK" secondAttribute="trailing" id="SSS-hc-MNG"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </tabViewItem>
-                                                    <tabViewItem label="Favourite" identifier="" id="CFK-R6-c6R" userLabel="Favourite">
-                                                        <view key="view" id="ghc-Gt-k7F">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        </view>
-                                                    </tabViewItem>
-                                                    <tabViewItem label="Item 5" identifier="" id="1yf-sk-vGB" userLabel="Search">
-                                                        <view key="view" id="XeL-Tp-kNn">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-T0-GFZ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                                    <connections>
-                                                                        <segue destination="Xdt-fC-huh" kind="embed" id="twu-7o-Uft"/>
-                                                                    </connections>
-                                                                </containerView>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="Fwy-T0-GFZ" firstAttribute="top" secondItem="XeL-Tp-kNn" secondAttribute="top" id="22u-iT-LPx"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Fwy-T0-GFZ" secondAttribute="bottom" id="5cg-1V-FI0"/>
-                                                                <constraint firstItem="Fwy-T0-GFZ" firstAttribute="leading" secondItem="XeL-Tp-kNn" secondAttribute="leading" id="HXK-vB-R3i"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Fwy-T0-GFZ" secondAttribute="trailing" id="IjE-TB-xkN"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </tabViewItem>
-                                                    <tabViewItem label="Item 6" identifier="" id="bsz-vJ-zpk" userLabel="Artist">
-                                                        <view key="view" id="lrv-nL-hjT">
-                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="i8M-Hf-SQH">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
-                                                                    <connections>
-                                                                        <segue destination="cq6-3d-Khw" kind="embed" id="aH9-nb-7sy"/>
-                                                                    </connections>
-                                                                </containerView>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="i8M-Hf-SQH" secondAttribute="bottom" id="GaI-H9-zCJ"/>
-                                                                <constraint firstAttribute="trailing" secondItem="i8M-Hf-SQH" secondAttribute="trailing" id="X0U-uQ-otF"/>
-                                                                <constraint firstItem="i8M-Hf-SQH" firstAttribute="leading" secondItem="lrv-nL-hjT" secondAttribute="leading" id="xQE-21-jd8"/>
-                                                                <constraint firstItem="i8M-Hf-SQH" firstAttribute="top" secondItem="lrv-nL-hjT" secondAttribute="top" id="xuP-pR-5nY"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </tabViewItem>
-                                                </tabViewItems>
-                                            </tabView>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="AFB-rE-r0G">
-                                                <rect key="frame" x="822" y="0.0" width="300" height="585"/>
-                                                <subviews>
-                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="MzF-oZ-vIS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="585"/>
-                                                        <connections>
-                                                            <segue destination="pbH-2h-v2I" kind="embed" id="yOd-U3-jOK"/>
-                                                        </connections>
-                                                    </containerView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="MzF-oZ-vIS" secondAttribute="trailing" id="5df-MY-IRq"/>
-                                                    <constraint firstAttribute="width" constant="300" id="TgV-da-PBD"/>
-                                                    <constraint firstItem="MzF-oZ-vIS" firstAttribute="top" secondItem="AFB-rE-r0G" secondAttribute="top" id="Yzg-Ep-1De"/>
-                                                    <constraint firstAttribute="bottom" secondItem="MzF-oZ-vIS" secondAttribute="bottom" id="ZbJ-W4-7lF"/>
-                                                    <constraint firstItem="MzF-oZ-vIS" firstAttribute="leading" secondItem="AFB-rE-r0G" secondAttribute="leading" id="vbv-Kx-00o"/>
-                                                </constraints>
-                                            </customView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="AWO-pv-Kg5" firstAttribute="leading" secondItem="7Yu-7O-R67" secondAttribute="leading" id="477-Rl-zat"/>
-                                            <constraint firstAttribute="bottom" secondItem="AWO-pv-Kg5" secondAttribute="bottom" id="c8g-Ee-FYG"/>
-                                            <constraint firstItem="AWO-pv-Kg5" firstAttribute="top" secondItem="7Yu-7O-R67" secondAttribute="top" id="fwR-pM-wEc"/>
-                                            <constraint firstItem="AFB-rE-r0G" firstAttribute="top" secondItem="7Yu-7O-R67" secondAttribute="top" id="itH-vD-Wgb"/>
-                                            <constraint firstAttribute="bottom" secondItem="AFB-rE-r0G" secondAttribute="bottom" id="oah-y1-aX1"/>
-                                            <constraint firstItem="AFB-rE-r0G" firstAttribute="leading" secondItem="AWO-pv-Kg5" secondAttribute="trailing" id="qOU-jo-chL"/>
-                                            <constraint firstAttribute="trailing" secondItem="AWO-pv-Kg5" secondAttribute="trailing" id="y0U-lb-TRD"/>
-                                        </constraints>
-                                    </customView>
-                                </subviews>
-                                <holdingPriorities>
-                                    <real value="250"/>
-                                    <real value="250"/>
-                                </holdingPriorities>
-                            </splitView>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ" customClass="PlaySongViewBackgroundView" customModule="NeteaseMusic" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-585" width="1000" height="585"/>
-                                <connections>
-                                    <segue destination="4w4-6c-N5y" kind="embed" id="7hD-fW-INt"/>
-                                </connections>
-                            </containerView>
-                            <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-uP-FaE">
-                                <rect key="frame" x="0.0" y="0.0" width="1000" height="65"/>
-                                <subviews>
-                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="TwN-LA-77b" userLabel="ControllerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="65"/>
-                                        <connections>
-                                            <segue destination="u9C-ge-q0T" kind="embed" id="Tw7-H8-24G"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="TwN-LA-77b" firstAttribute="top" secondItem="e5p-uP-FaE" secondAttribute="top" id="NRc-gH-1G1"/>
-                                    <constraint firstAttribute="trailing" secondItem="TwN-LA-77b" secondAttribute="trailing" id="Y2J-qh-czS"/>
-                                    <constraint firstItem="TwN-LA-77b" firstAttribute="leading" secondItem="e5p-uP-FaE" secondAttribute="leading" id="Y5f-td-ulF"/>
-                                    <constraint firstAttribute="bottom" secondItem="TwN-LA-77b" secondAttribute="bottom" id="vm0-eS-O0K"/>
-                                    <constraint firstAttribute="height" constant="65" id="wPa-QQ-5S9"/>
-                                </constraints>
-                            </visualEffectView>
+                                                        </customView>
+                                                    </subviews>
+                                                    <holdingPriorities>
+                                                        <real value="250"/>
+                                                        <real value="250"/>
+                                                    </holdingPriorities>
+                                                </splitView>
+                                                <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-uP-FaE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="65"/>
+                                                    <subviews>
+                                                        <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwN-LA-77b" userLabel="ControllerView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="65"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <connections>
+                                                                <segue destination="u9C-ge-q0T" kind="embed" id="Tw7-H8-24G"/>
+                                                            </connections>
+                                                        </containerView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="65" id="wPa-QQ-5S9"/>
+                                                    </constraints>
+                                                </visualEffectView>
+                                                <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ" customClass="PlaySongViewBackgroundView" customModule="NeteaseMusic" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="325" width="1000" height="0.0"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <connections>
+                                                        <segue destination="4w4-6c-N5y" kind="embed" id="7hD-fW-INt"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="e5p-uP-FaE" secondAttribute="bottom" id="1PP-xW-RGh"/>
+                                                <constraint firstItem="e5p-uP-FaE" firstAttribute="leading" secondItem="c7C-3x-bjo" secondAttribute="leading" id="4AQ-rf-lHO"/>
+                                                <constraint firstAttribute="trailing" secondItem="kQx-Sy-S4l" secondAttribute="trailing" id="6rN-14-NWV"/>
+                                                <constraint firstAttribute="trailing" secondItem="e5p-uP-FaE" secondAttribute="trailing" id="FDE-45-CKi"/>
+                                                <constraint firstItem="e5p-uP-FaE" firstAttribute="top" secondItem="kQx-Sy-S4l" secondAttribute="bottom" id="VJg-1E-Xvz"/>
+                                                <constraint firstItem="kQx-Sy-S4l" firstAttribute="top" secondItem="c7C-3x-bjo" secondAttribute="top" id="W9f-DU-MZl"/>
+                                                <constraint firstItem="kQx-Sy-S4l" firstAttribute="leading" secondItem="c7C-3x-bjo" secondAttribute="leading" id="gbC-dW-FeW"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="Item 2" identifier="" id="Npp-TP-pM4" userLabel="Login">
+                                        <view key="view" id="Fl7-7t-2Zf">
+                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="cQP-2G-ejY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
+                                                    <connections>
+                                                        <segue destination="aXf-RW-tMD" kind="embed" id="lPm-O4-bhR"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cQP-2G-ejY" firstAttribute="top" secondItem="Fl7-7t-2Zf" secondAttribute="top" id="Lkc-sI-aMc"/>
+                                                <constraint firstAttribute="trailing" secondItem="cQP-2G-ejY" secondAttribute="trailing" id="hEb-pJ-j3i"/>
+                                                <constraint firstItem="cQP-2G-ejY" firstAttribute="leading" secondItem="Fl7-7t-2Zf" secondAttribute="leading" id="mIb-sS-3u9"/>
+                                                <constraint firstAttribute="bottom" secondItem="cQP-2G-ejY" secondAttribute="bottom" id="qxe-nS-H63"/>
+                                            </constraints>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                            </tabView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="e5p-uP-FaE" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="1Nv-4z-RP6"/>
-                            <constraint firstAttribute="bottom" secondItem="e5p-uP-FaE" secondAttribute="bottom" id="6BZ-K5-c8i"/>
-                            <constraint firstAttribute="trailing" secondItem="eNf-lb-9SZ" secondAttribute="trailing" id="AaB-N3-B9e"/>
-                            <constraint firstItem="e5p-uP-FaE" firstAttribute="top" secondItem="kQx-Sy-S4l" secondAttribute="bottom" id="E3H-3n-Zi3"/>
-                            <constraint firstItem="eNf-lb-9SZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="PsP-mx-lxP"/>
-                            <constraint firstItem="kQx-Sy-S4l" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="jbc-oU-tvO"/>
-                            <constraint firstItem="eNf-lb-9SZ" firstAttribute="height" secondItem="kQx-Sy-S4l" secondAttribute="height" id="nmH-F3-57I"/>
-                            <constraint firstAttribute="trailing" secondItem="kQx-Sy-S4l" secondAttribute="trailing" id="npQ-OM-5BZ"/>
-                            <constraint firstAttribute="trailing" secondItem="e5p-uP-FaE" secondAttribute="trailing" id="o9y-JW-bCa"/>
-                            <constraint firstItem="TwN-LA-77b" firstAttribute="top" secondItem="eNf-lb-9SZ" secondAttribute="bottom" priority="250" id="qBu-El-mZo"/>
-                            <constraint firstItem="kQx-Sy-S4l" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="y4F-P9-HUp"/>
-                            <constraint firstItem="eNf-lb-9SZ" firstAttribute="top" secondItem="e5p-uP-FaE" secondAttribute="bottom" priority="999" id="yec-GZ-3nk"/>
+                            <constraint firstAttribute="trailing" secondItem="Po7-mc-yBA" secondAttribute="trailing" id="7EB-lu-3L3"/>
+                            <constraint firstItem="Po7-mc-yBA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Avv-0N-oeD"/>
+                            <constraint firstAttribute="bottom" secondItem="Po7-mc-yBA" secondAttribute="bottom" id="H75-22-hqR"/>
+                            <constraint firstItem="Po7-mc-yBA" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="tlU-N1-Cak"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="playingSongButtomLayoutConstraint" destination="qBu-El-mZo" id="VDC-q1-yDb"/>
-                        <outlet property="playingSongTopLayoutConstraint" destination="yec-GZ-3nk" id="ETD-HV-tYy"/>
+                        <outlet property="contentTabView" destination="AWO-pv-Kg5" id="glS-Ji-PzT"/>
+                        <outlet property="mainTabView" destination="Po7-mc-yBA" id="0Hx-XE-5kD"/>
                         <outlet property="playingSongView" destination="eNf-lb-9SZ" id="uo8-Ay-5FC"/>
                         <outlet property="playlistLayoutConstraint" destination="qOU-jo-chL" id="qJD-fE-gYQ"/>
                         <outlet property="playlistView" destination="AFB-rE-r0G" id="XYH-0f-ejE"/>
-                        <outlet property="tabView" destination="AWO-pv-Kg5" id="glS-Ji-PzT"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1061,13 +1090,13 @@
             </objects>
             <point key="canvasLocation" x="1741" y="1531"/>
         </scene>
-        <!--LoginWindow-->
+        <!--LoginView-->
         <scene sceneID="g2M-3h-rcr">
             <objects>
-                <controllerPlaceholder storyboardName="LoginWindow" id="aXf-RW-tMD" sceneMemberID="viewController"/>
+                <controllerPlaceholder storyboardName="LoginView" id="aXf-RW-tMD" sceneMemberID="viewController"/>
                 <customObject id="Dux-8a-NGg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741" y="234"/>
+            <point key="canvasLocation" x="765" y="733"/>
         </scene>
         <!--PlaylistView-->
         <scene sceneID="t7u-rF-Ltk">

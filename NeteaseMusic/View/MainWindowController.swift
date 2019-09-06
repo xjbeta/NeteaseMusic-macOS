@@ -47,16 +47,27 @@ class MainWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-    
         window?.isMovableByWindowBackground = true
-        initUserButton()
+        userButton.isHidden = true
+        PlayCore.shared.api.isLogin().done {
+            guard let vc = self.contentViewController as? MainViewController else { return }
+            if $0 {
+                vc.updateMainTabView(.main)
+                self.initUserButton()
+            } else  {
+                vc.updateMainTabView(.login)
+            }
+            }.catch {
+                print($0)
+        }
     }
     
     func initUserButton() {
         userButton.isHidden = true
         PlayCore.shared.api.userInfo().done(on: .main) {
             self.userButton.title = $0.nickname
-            ImageLoader.image($0.avatarImage!, true, 32) {
+            guard let u = $0.avatarImage else { return }
+            ImageLoader.image(u, true, 32) {
                 self.userButton.image = $0.roundCorners(withRadius: $0.size.width / 8)
                 self.userButton.isHidden = false
             }
