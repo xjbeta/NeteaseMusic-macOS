@@ -70,12 +70,11 @@ class MainViewController: NSViewController {
                 ViewControllerManager.shared.selectSidebarItem(.fm)
             } else if !PlayCore.shared.fmMode,
                 let _ = PlayCore.shared.currentTrack,
-                let tabView = self?.playingSongTabView,
-                let selectedItem = tabView.selectedTabViewItem {
+                let playingSongViewStatus = self?.playingSongViewStatus {
                 
-                let index = tabView.indexOfTabViewItem(selectedItem)
-                let newItem: playingSongTabItems = index == 0 ? .playingSong : .main
+                let newItem: playingSongTabItems = playingSongViewStatus == .hidden ? .playingSong : .main
                 self?.updatePlayingSongTabView(newItem)
+                self?.playingSongViewStatus = newItem == .playingSong ? .display : .hidden
             }
         }
     }

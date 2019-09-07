@@ -8,6 +8,7 @@
 
 import Cocoa
 import AVFoundation
+import PromiseKit
 
 class PlayingSongViewController: NSViewController {
     @IBOutlet weak var visualEffectView: NSVisualEffectView!
@@ -47,6 +48,8 @@ class PlayingSongViewController: NSViewController {
     var playerStatueObserver: NSKeyValueObservation?
     var viewStatusObserver: NSObjectProtocol?
     var fmModeObserver: NSKeyValueObservation?
+    var viewFrameObserver: NSKeyValueObservation?
+    var viewStatus: ExtendedViewState = .unkonwn
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +58,10 @@ class PlayingSongViewController: NSViewController {
         }
         
         playerStatueObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
-           
+            guard let status = self?.viewStatus, status == .display else {
+                return
+            }
+            
             switch player.timeControlStatus {
             case .playing:
                 self?.cdwarpImageView.resumeAnimation()
@@ -73,11 +79,19 @@ class PlayingSongViewController: NSViewController {
         viewStatusObserver = NotificationCenter.default.addObserver(forName: .playingSongViewStatus, object: nil, queue: .main) { [weak self] in
             guard let dic = $0.userInfo as? [String: ExtendedViewState],
                 let status = dic["status"] else {
+                    self?.viewStatus = .unkonwn
                     return
             }
+            self?.viewStatus = status
+            
             switch status {
             case .display:
                 self?.initView()
+                after(seconds: 0.1).done {
+                    // Fix rotation problem after display
+                    self?.cdwarpImageView.setAnchorPoint(anchorPoint: .init(x: 0.5, y: 0.5))
+                    self?.cdImgImageView.setAnchorPoint(anchorPoint: .init(x: 0.5, y: 0.5))
+                }
             default:
                 self?.cdwarpImageView.layer?.removeAllAnimations()
                 self?.cdImgImageView.layer?.removeAllAnimations()
@@ -93,6 +107,12 @@ class PlayingSongViewController: NSViewController {
             }
         }
         
+        viewFrameObserver = view.observe(\.frame, options: [.initial, .new]) { [weak self] (_, changes) in
+            guard let status = self?.viewStatus, status == .display else { return }
+            
+            self?.cdwarpImageView.setAnchorPoint(anchorPoint: .init(x: 0.5, y: 0.5))
+            self?.cdImgImageView.setAnchorPoint(anchorPoint: .init(x: 0.5, y: 0.5))
+        }
     }
     
     func initView() {
@@ -107,6 +127,7 @@ class PlayingSongViewController: NSViewController {
             cdImgImageView.wantsLayer = true
             cdImgImageView.layer?.cornerRadius = cdImgImageView.frame.width / 2
             cdImgImageView.setImage(u.absoluteString, true)
+            cdwarpImageView.wantsLayer = true
             cdwarpImageView.rotate()
             cdImgImageView.rotate()
         } else {
@@ -178,6 +199,7 @@ class PlayingSongViewController: NSViewController {
         currentTrackObserver?.invalidate()
         playerStatueObserver?.invalidate()
         fmModeObserver?.invalidate()
+        viewFrameObserver?.invalidate()
         lyricViewController()?.removePeriodicTimeObserver(PlayCore.shared.player)
         if let obs = viewStatusObserver {
             NotificationCenter.default.removeObserver(obs)
