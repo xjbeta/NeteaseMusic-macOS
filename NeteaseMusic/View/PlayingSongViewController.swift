@@ -58,10 +58,6 @@ class PlayingSongViewController: NSViewController {
         }
         
         playerStatueObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
-            guard let status = self?.viewStatus, status == .display else {
-                return
-            }
-            
             switch player.timeControlStatus {
             case .playing:
                 self?.cdwarpImageView.resumeAnimation()
