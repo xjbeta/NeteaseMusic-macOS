@@ -111,6 +111,14 @@ class MainWindowController: NSWindowController {
         vc.children.compactMap {
             $0 as? SidebarViewController
             }.first?.updatePlaylists()
+        
+        vc.children.compactMap {
+            $0 as? DiscoverViewController
+            }.first?.initRecommend()
+        
+        vc.children.compactMap {
+            $0 as? FMViewController
+            }.first?.loadFMTracks()
     }
     
     deinit {

@@ -92,7 +92,7 @@ class FMViewController: NSViewController {
         }
         
         PlayCore.shared.fmPlaylist.removeAll()
-        loadFMTracks()
+        
     }
     
     func loadFMTracks() {

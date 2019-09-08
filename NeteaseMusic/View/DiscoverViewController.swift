@@ -34,7 +34,7 @@ class DiscoverViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initRecommend()
+        
     }
     
     func initRecommend() {
