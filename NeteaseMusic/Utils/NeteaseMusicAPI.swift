@@ -526,7 +526,18 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    
+    func logout() -> Promise<()> {
+        let p = DefaultParameters(csrfToken: csrf).jsonString()
+        return request("https://music.163.com/weapi/logout",
+                       p,
+                       CodeResult.self).map {
+                        if $0.code == 200 {
+                            return ()
+                        } else {
+                            throw RequestError.errorCode(($0.code, $0.msg ?? ""))
+                        }
+        }
+    }
     
     
     private func request<T: Decodable>(_ url: String, _ parameters: String, _ resultType: T.Type, debug: Bool = false) -> Promise<T> {
