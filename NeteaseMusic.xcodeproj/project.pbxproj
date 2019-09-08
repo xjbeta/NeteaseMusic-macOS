@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116E1B623248E4F00606C6C /* LogoutViewController.swift */; };
+		0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0116E1B823248E5A00606C6C /* LogoutView.storyboard */; };
 		011904902309065A00738904 /* FMTrashGet.json in Resources */ = {isa = PBXBuildFile; fileRef = 0119048F2309065A00738904 /* FMTrashGet.json */; };
 		01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01190492230E651B00738904 /* NewPlaylist.storyboard */; };
 		01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01190494230E653300738904 /* NewPlaylistViewController.swift */; };
@@ -150,6 +152,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0116E1B623248E4F00606C6C /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		0116E1B823248E5A00606C6C /* LogoutView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogoutView.storyboard; sourceTree = "<group>"; };
 		0119048F2309065A00738904 /* FMTrashGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FMTrashGet.json; sourceTree = "<group>"; };
 		01190492230E651B00738904 /* NewPlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlaylist.storyboard; sourceTree = "<group>"; };
 		01190494230E653300738904 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +330,8 @@
 			children = (
 				012F2F452250F8DE00086870 /* LoginViewController.swift */,
 				012FEA742289BC5300698969 /* LoginView.storyboard */,
+				0116E1B623248E4F00606C6C /* LogoutViewController.swift */,
+				0116E1B823248E5A00606C6C /* LogoutView.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -625,6 +631,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0137264E226AF191004EDCE5 /* RecommendResource.json in Resources */,
+				0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */,
 				012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */,
 				01467E922283F2C30037B49D /* Lyric.storyboard in Resources */,
 				012772DF229AA1A500C55537 /* SearchSuggestionsView.storyboard in Resources */,
@@ -707,6 +714,7 @@
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
 				01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */,
 				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
+				0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,
 				012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */,

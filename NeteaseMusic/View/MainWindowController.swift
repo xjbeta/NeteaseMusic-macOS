@@ -52,28 +52,43 @@ class MainWindowController: NSWindowController {
         window?.isMovableByWindowBackground = true
         userButton.isHidden = true
         
-        updateLoginStatusObserver = NotificationCenter.default.addObserver(forName: .updateLoginStatus, object: nil, queue: .main) { _ in
-            guard let vc = self.contentViewController as? MainViewController else { return }
-            vc.updateMainTabView(.main)
-            self.initUserButton()
-            self.initSidebarItems()
-        }
-
-        PlayCore.shared.api.isLogin().done {
-            guard let vc = self.contentViewController as? MainViewController else { return }
-            if $0 {
-                vc.updateMainTabView(.main)
-                self.initUserButton()
-                self.initSidebarItems()
-            } else  {
-                vc.updateMainTabView(.login)
-                // login initViews
-                vc.children.compactMap {
-                    $0 as? LoginViewController
-                    }.first?.initViews()
+        updateLoginStatusObserver = NotificationCenter.default.addObserver(forName: .updateLoginStatus, object: nil, queue: .main) {
+            guard let kv = $0.userInfo as? [String: Any],
+                let logout = kv["logout"] as? Bool else {
+                self.initLoginStatus(true)
+                return
             }
+            
+            if logout {
+                self.initLoginStatus(false)
+            } else {
+                self.checkLoginStatus()
+            }
+        }
+        checkLoginStatus()
+    }
+    
+    func checkLoginStatus() {
+        PlayCore.shared.api.isLogin().done(on: .main) {
+            self.initLoginStatus($0)
             }.catch {
                 print($0)
+        }
+    }
+    
+    func initLoginStatus(_ isLogin: Bool) {
+        guard let vc = contentViewController as? MainViewController else { return }
+        if isLogin {
+            vc.updateMainTabView(.main)
+            initUserButton()
+            initSidebarItems()
+        } else  {
+            vc.updateMainTabView(.login)
+            // login initViews
+            vc.children.compactMap {
+                $0 as? LoginViewController
+                }.first?.initViews()
+            userButton.isHidden = true
         }
     }
     
@@ -82,7 +97,7 @@ class MainWindowController: NSWindowController {
         PlayCore.shared.api.userInfo().done(on: .main) {
             self.userButton.title = $0.nickname
             guard let u = $0.avatarImage else { return }
-            ImageLoader.image(u, true, 32) {
+            ImageLoader.image(u, true, 13) {
                 self.userButton.image = $0.roundCorners(withRadius: $0.size.width / 8)
                 self.userButton.isHidden = false
             }

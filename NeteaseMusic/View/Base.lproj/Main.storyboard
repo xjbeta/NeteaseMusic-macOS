@@ -718,15 +718,18 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="A1BB4F77-5FF3-40C8-986C-E68F0086C9CC" label="User" paletteLabel="User" id="WxI-Mm-mz4">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="36" height="24"/>
+                                    <size key="minSize" width="36" height="22"/>
                                     <size key="maxSize" width="128" height="32"/>
                                     <button key="view" verticalHuggingPriority="750" id="98G-Rs-4Tz">
                                         <rect key="frame" x="0.0" y="14" width="92" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="leading" alignment="center" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="dGb-IC-hED">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="leading" alignment="center" lineBreakMode="truncatingTail" inset="2" id="dGb-IC-hED">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <segue destination="KKz-IG-YQx" kind="popover" popoverAnchorView="98G-Rs-4Tz" popoverBehavior="t" preferredEdge="maxY" id="rNu-HC-GzZ"/>
+                                        </connections>
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="pEi-7T-vZV"/>
@@ -1123,6 +1126,14 @@
                 <customObject id="FMg-gd-Zgf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1741" y="1531"/>
+        </scene>
+        <!--LogoutView-->
+        <scene sceneID="Kf9-pl-aBK">
+            <objects>
+                <controllerPlaceholder storyboardName="LogoutView" id="KKz-IG-YQx" sceneMemberID="viewController"/>
+                <customObject id="EIc-oE-crc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="233"/>
         </scene>
         <!--LoginView-->
         <scene sceneID="g2M-3h-rcr">
