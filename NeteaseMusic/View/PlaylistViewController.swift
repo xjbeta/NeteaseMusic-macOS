@@ -134,6 +134,8 @@ class PlaylistViewController: NSViewController {
         guard playlistId > 0 else { return }
         let id = playlistId
         sender.isEnabled = false
+        var unsubscribe = false
+        
         PlayCore.shared.api.userPlaylist().then { playlists -> Promise<()> in
             let subscribedIds = playlists.filter {
                 $0.subscribed
@@ -141,15 +143,17 @@ class PlaylistViewController: NSViewController {
                     $0.id
             }
             
-            if subscribedIds.contains(id) {
-                return PlayCore.shared.api.playlistSubscribe(id, unSubscribe: true)
-            } else {
-                return PlayCore.shared.api.playlistSubscribe(id)
-            }
+            unsubscribe = subscribedIds.contains(id)
+            
+            return PlayCore.shared.api.playlistSubscribe(id, unSubscribe: unsubscribe)
             }.ensure(on: .main) {
-                let todo = "Update sidebar"
                 sender.isEnabled = true
             }.done {
+                sender.title = unsubscribe ? "Subscribe" : "Unsubscribe"
+                guard let vc = self.view.window?.windowController?.contentViewController as? MainViewController else { return }
+                vc.children.compactMap {
+                    $0 as? SidebarViewController
+                    }.first?.updatePlaylists()
                 print("playlist subscribe / unsubscribe success")
             }.catch {
                 print($0)
