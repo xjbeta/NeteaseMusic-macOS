@@ -16,19 +16,15 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var titleTextFiled: NSTextField!
-    @IBOutlet weak var playlistStrTextField: NSTextField!
-    @IBOutlet weak var albumCoverImageView: NSImageView!
     
     @IBOutlet weak var playCountTextField: NSTextField!
     @IBOutlet weak var trackCountTextField: NSTextField!
     @IBOutlet weak var descriptionTextField: NSTextField!
     @IBOutlet weak var artistTextField: NSTextField!
-    @IBOutlet weak var timeTextField: NSTextField!
     
     @IBOutlet weak var descriptionStackView: NSStackView!
     @IBOutlet weak var countAndViewsStackView: NSStackView!
     @IBOutlet weak var artistStackView: NSStackView!
-    @IBOutlet weak var timeStackView: NSStackView!
     
 // MARK: - Playlist Menu
     @IBOutlet var playlistMenu: NSMenu!
@@ -177,13 +173,13 @@ class PlaylistViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playlistStrTextField.textColor = .init(red: 0.83, green: 0.23, blue: 0.19, alpha: 1)
-        playlistStrTextField.wantsLayer = true
-        playlistStrTextField.layer?.borderWidth = 1
-        playlistStrTextField.layer?.cornerRadius = 3.5
-        playlistStrTextField.layer?.borderColor = .init(red: 0.83, green: 0.23, blue: 0.19, alpha: 1)
         
-            
+        coverImageView.wantsLayer = true
+        coverImageView.layer?.cornerRadius = 3
+        coverImageView.layer?.borderWidth = 0.5
+        coverImageView.layer?.borderColor = NSColor.tertiaryLabelColor.cgColor
+        
+        
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
             guard let newV = changes.newValue,
                 let newValue = newV else { return }
@@ -235,14 +231,12 @@ class PlaylistViewController: NSViewController {
         trackCountTextField.integerValue = 0
         descriptionTextField.stringValue = ""
         descriptionTextField.toolTip = ""
-        albumCoverImageView.isHidden = !albumMode
         
         tableView.tableColumn(withIdentifier: .init("PlaylistAlbum"))?.isHidden = albumMode
         tableView.tableColumn(withIdentifier: .init("PlaylistPop"))?.isHidden = !albumMode
         
         countAndViewsStackView.isHidden = albumMode || topSongsMode || discoverPlaylistMode
         artistStackView.isHidden = !albumMode
-        timeStackView.isHidden = !albumMode
         subscribeButton.isHidden = topSongsMode
         descriptionStackView.isHidden = topSongsMode
     }
@@ -251,7 +245,6 @@ class PlaylistViewController: NSViewController {
         initPlaylistInfo()
         PlayCore.shared.api.playlistDetail(id).done(on: .main) {
             guard self.playlistId == id else { return }
-            self.playlistStrTextField.stringValue = "Playlist"
             self.coverImageView.setImage($0.coverImgUrl.absoluteString, true)
             self.titleTextFiled.stringValue = $0.name
             let descriptionStr = $0.description ?? "none"
@@ -269,7 +262,6 @@ class PlaylistViewController: NSViewController {
         initPlaylistInfo()
         PlayCore.shared.api.recommendSongs().done(on: .main) {
             guard self.playlistId == -114514 else { return }
-            self.playlistStrTextField.stringValue = ""
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
             self.tracks = $0.initIndexes()
@@ -282,11 +274,9 @@ class PlaylistViewController: NSViewController {
         initPlaylistInfo()
         PlayCore.shared.api.album(id).done(on: .main) {
             self.coverImageView.setImage($0.album.picUrl?.absoluteString ?? "", true)
-            self.playlistStrTextField.stringValue = "Album"
             self.titleTextFiled.stringValue = $0.album.name
             self.descriptionTextField.stringValue = $0.album.des ?? "none"
             self.artistTextField.stringValue = $0.album.artists?.artistsString() ?? ""
-            self.timeTextField.stringValue = $0.album.formattedTime()
             self.tracks = $0.songs.initIndexes()
             }.catch {
                 print($0)

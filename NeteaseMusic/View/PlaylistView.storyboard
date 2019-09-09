@@ -14,13 +14,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView identifier="PlaylistPop" borderType="none" autohidesScrollers="YES" horizontalLineScroll="44" horizontalPageScroll="10" verticalLineScroll="44" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="8Oy-Wa-0Bc">
-                                <rect key="frame" x="0.0" y="0.0" width="822" height="385"/>
+                                <rect key="frame" x="0.0" y="0.0" width="822" height="465"/>
                                 <clipView key="contentView" id="1g2-Nu-J7m">
-                                    <rect key="frame" x="0.0" y="0.0" width="822" height="385"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="822" height="465"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="42" rowSizeStyle="automatic" headerView="UKn-xB-BSH" viewBased="YES" id="5f5-ne-QVu">
-                                            <rect key="frame" x="0.0" y="0.0" width="823" height="360"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="823" height="440"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -320,112 +320,28 @@
                                 </tableHeaderView>
                             </scrollView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ud1-DB-hxL">
-                                <rect key="frame" x="0.0" y="385" width="822" height="200"/>
+                                <rect key="frame" x="0.0" y="465" width="822" height="120"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HFs-3w-fcg">
-                                        <rect key="frame" x="15" y="15" width="200" height="170"/>
-                                        <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o6X-zr-lKP" customClass="CoverImageView" customModule="NeteaseMusic" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="o6X-zr-lKP" secondAttribute="height" multiplier="1:1" id="lJb-LC-gJA"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="bQC-dU-dhD"/>
-                                            </imageView>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="usa-ut-h49">
-                                                <rect key="frame" x="170" y="0.0" width="30" height="170"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="usa-ut-h49" secondAttribute="height" multiplier="35:200" id="mIx-as-IgN"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="cover_detail_alb" id="rZW-WA-Gdk"/>
-                                            </imageView>
-                                        </subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o6X-zr-lKP">
+                                        <rect key="frame" x="15" y="15" width="90" height="90"/>
                                         <constraints>
-                                            <constraint firstItem="usa-ut-h49" firstAttribute="height" secondItem="o6X-zr-lKP" secondAttribute="height" id="Na4-6F-OP1"/>
+                                            <constraint firstAttribute="width" secondItem="o6X-zr-lKP" secondAttribute="height" multiplier="1:1" id="lJb-LC-gJA"/>
                                         </constraints>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eES-Pg-CQ3">
-                                        <rect key="frame" x="235" y="17" width="567" height="163"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="bQC-dU-dhD"/>
+                                    </imageView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-Nf-G1i">
+                                        <rect key="frame" x="125" y="10" width="165" height="100"/>
                                         <subviews>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sDm-EW-Lfp">
-                                                <rect key="frame" x="0.0" y="138" width="124" height="25"/>
-                                                <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H0E-gF-bdJ">
-                                                        <rect key="frame" x="-2" y="0.0" width="51" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="21" id="Acf-US-wDn"/>
-                                                        </constraints>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="Playlist" id="YuE-rE-vMZ" customClass="PlaylistTextFieldCell" customModule="NeteaseMusic" customModuleProvider="target">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="plA-di-ceU">
-                                                        <rect key="frame" x="57" y="0.0" width="69" height="25"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="_Name" usesSingleLineMode="YES" id="YPE-Pf-XZo">
-                                                            <font key="font" metaFont="systemMedium" size="21"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
-                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMj-IR-qPf">
-                                                <rect key="frame" x="0.0" y="100" width="186" height="30"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2d0-ZZ-SO7">
-                                                        <rect key="frame" x="-6" y="-2" width="101" height="32"/>
-                                                        <buttonCell key="cell" type="push" title="Play All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rHk-uK-zGx">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" usesAppearanceFont="YES"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="playPlaylist:" target="rJU-yY-OIR" id="Upw-mc-B31"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-QW-naB">
-                                                        <rect key="frame" x="91" y="-2" width="101" height="32"/>
-                                                        <buttonCell key="cell" type="push" title="Subscribe" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1ya-xl-UCE">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" usesAppearanceFont="YES"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="subscribe:" target="rJU-yY-OIR" id="kig-Hd-gnS"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="2d0-ZZ-SO7" firstAttribute="width" secondItem="xfw-QW-naB" secondAttribute="width" id="0XL-aA-xpO"/>
-                                                    <constraint firstAttribute="height" constant="30" id="ypi-3w-sdG"/>
-                                                </constraints>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="plA-di-ceU">
+                                                <rect key="frame" x="-2" y="75" width="69" height="25"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="_Name" usesSingleLineMode="YES" id="YPE-Pf-XZo">
+                                                    <font key="font" metaFont="systemMedium" size="21"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R8B-gw-Jw9">
-                                                <rect key="frame" x="0.0" y="75" width="165" height="17"/>
+                                                <rect key="frame" x="0.0" y="50" width="165" height="17"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdM-zM-AGs">
                                                         <rect key="frame" x="-2" y="0.0" width="13" height="17"/>
@@ -491,7 +407,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XPC-lw-bZ5">
-                                                <rect key="frame" x="0.0" y="50" width="156" height="17"/>
+                                                <rect key="frame" x="0.0" y="25" width="156" height="17"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="URZ-Nc-l6x">
                                                         <rect key="frame" x="-2" y="0.0" width="78" height="17"/>
@@ -503,6 +419,9 @@
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="bI7-3H-ohy">
                                                         <rect key="frame" x="80" y="0.0" width="78" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="kta-HS-xXI"/>
+                                                        </constraints>
                                                         <textFieldCell key="cell" truncatesLastVisibleLine="YES" title="_description" id="Qx7-c8-2pN">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -520,7 +439,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Zx-j4-URg">
-                                                <rect key="frame" x="0.0" y="25" width="82" height="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="82" height="17"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-pN-xdY">
                                                         <rect key="frame" x="-2" y="0.0" width="41" height="17"/>
@@ -548,39 +467,8 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dvt-CZ-mrk">
-                                                <rect key="frame" x="0.0" y="0.0" width="122" height="17"/>
-                                                <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5M5-73-q9b">
-                                                        <rect key="frame" x="-2" y="0.0" width="38" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Time:" id="kbn-Lm-E7p">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nXT-jg-0WT">
-                                                        <rect key="frame" x="40" y="0.0" width="84" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="_9102-04-30" id="sIy-xi-irx">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
                                         </subviews>
                                         <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -591,20 +479,56 @@
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMj-IR-qPf">
+                                        <rect key="frame" x="616" y="10" width="186" height="30"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2d0-ZZ-SO7">
+                                                <rect key="frame" x="-6" y="-2" width="101" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Play All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rHk-uK-zGx">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="playPlaylist:" target="rJU-yY-OIR" id="Upw-mc-B31"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-QW-naB">
+                                                <rect key="frame" x="91" y="-2" width="101" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Subscribe" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1ya-xl-UCE">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="subscribe:" target="rJU-yY-OIR" id="kig-Hd-gnS"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2d0-ZZ-SO7" firstAttribute="width" secondItem="xfw-QW-naB" secondAttribute="width" id="0XL-aA-xpO"/>
+                                            <constraint firstAttribute="height" constant="30" id="ypi-3w-sdG"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="eES-Pg-CQ3" firstAttribute="leading" secondItem="HFs-3w-fcg" secondAttribute="trailing" constant="20" id="2IN-He-Uer"/>
-                                    <constraint firstItem="HFs-3w-fcg" firstAttribute="leading" secondItem="ud1-DB-hxL" secondAttribute="leading" constant="15" id="CBK-GF-urZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="eES-Pg-CQ3" secondAttribute="trailing" constant="20" id="QPG-YN-AkA"/>
-                                    <constraint firstAttribute="bottom" secondItem="HFs-3w-fcg" secondAttribute="bottom" constant="15" id="R9v-Gx-0BH"/>
-                                    <constraint firstItem="HFs-3w-fcg" firstAttribute="top" secondItem="ud1-DB-hxL" secondAttribute="top" constant="15" id="gwY-5s-gfi"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eES-Pg-CQ3" secondAttribute="bottom" constant="15" id="hAy-75-eK2"/>
-                                    <constraint firstItem="eES-Pg-CQ3" firstAttribute="top" secondItem="ud1-DB-hxL" secondAttribute="top" constant="20" id="nkL-1f-tXc"/>
-                                    <constraint firstAttribute="height" constant="200" id="qKJ-o4-z2d"/>
+                                    <constraint firstItem="2d0-ZZ-SO7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HBQ-Nf-G1i" secondAttribute="trailing" constant="20" id="2Mb-3G-9Lp"/>
+                                    <constraint firstItem="HBQ-Nf-G1i" firstAttribute="centerY" secondItem="ud1-DB-hxL" secondAttribute="centerY" id="3NK-NN-EQe"/>
+                                    <constraint firstItem="HBQ-Nf-G1i" firstAttribute="leading" secondItem="o6X-zr-lKP" secondAttribute="trailing" constant="20" id="IT7-1d-CAs"/>
+                                    <constraint firstAttribute="bottom" secondItem="NMj-IR-qPf" secondAttribute="bottom" constant="10" id="LIu-Ic-TRt"/>
+                                    <constraint firstItem="o6X-zr-lKP" firstAttribute="leading" secondItem="ud1-DB-hxL" secondAttribute="leading" constant="15" id="UEs-Yo-DWF"/>
+                                    <constraint firstItem="o6X-zr-lKP" firstAttribute="top" secondItem="ud1-DB-hxL" secondAttribute="top" constant="15" id="VWa-NA-mfC"/>
+                                    <constraint firstAttribute="bottom" secondItem="o6X-zr-lKP" secondAttribute="bottom" constant="15" id="aCy-vb-uEe"/>
+                                    <constraint firstAttribute="trailing" secondItem="NMj-IR-qPf" secondAttribute="trailing" constant="20" id="psw-wO-VHx"/>
+                                    <constraint firstAttribute="height" constant="120" id="qKJ-o4-z2d"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -620,7 +544,6 @@
                     </view>
                     <connections>
                         <outlet property="addToPlaylistMenu" destination="82f-j4-Mc3" id="0OX-nx-ZKv"/>
-                        <outlet property="albumCoverImageView" destination="usa-ut-h49" id="LvC-40-yJ0"/>
                         <outlet property="artistStackView" destination="0Zx-j4-URg" id="bhV-zn-feD"/>
                         <outlet property="artistTextField" destination="dfT-ha-j7E" id="0yu-le-lIv"/>
                         <outlet property="copyLinkMenuItem" destination="9LI-3M-ktN" id="miv-7H-Jp1"/>
@@ -634,12 +557,9 @@
                         <outlet property="playMenuItem" destination="xjW-34-Fgb" id="6O6-Oy-G4q"/>
                         <outlet property="playNextMenuItem" destination="B3Y-cb-RdJ" id="izU-cb-0fg"/>
                         <outlet property="playlistMenu" destination="AKZ-cM-erC" id="IcC-oO-CQ1"/>
-                        <outlet property="playlistStrTextField" destination="H0E-gF-bdJ" id="Q89-s2-156"/>
                         <outlet property="removeFromPlaylistMenuItem" destination="2zC-xJ-HiN" id="VMi-KV-ogY"/>
                         <outlet property="subscribeButton" destination="xfw-QW-naB" id="cLm-aI-DSL"/>
                         <outlet property="tableView" destination="5f5-ne-QVu" id="q1K-GD-jL9"/>
-                        <outlet property="timeStackView" destination="Dvt-CZ-mrk" id="adQ-1w-gmc"/>
-                        <outlet property="timeTextField" destination="nXT-jg-0WT" id="pGm-eQ-fDk"/>
                         <outlet property="titleTextFiled" destination="plA-di-ceU" id="Kcj-eY-XEU"/>
                         <outlet property="topViewLayoutConstraint" destination="qKJ-o4-z2d" id="bT9-4K-hOZ"/>
                         <outlet property="trackCountTextField" destination="hdM-zM-AGs" id="T4u-yp-Xhy"/>
@@ -702,7 +622,4 @@
             <point key="canvasLocation" x="1203" y="90"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="cover_detail_alb" width="35" height="200"/>
-    </resources>
 </document>
