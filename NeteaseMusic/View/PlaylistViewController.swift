@@ -276,6 +276,7 @@ class PlaylistViewController: NSViewController {
             self.coverImageView.setImage($0.album.picUrl?.absoluteString ?? "", true)
             self.titleTextFiled.stringValue = $0.album.name
             self.descriptionTextField.stringValue = $0.album.des ?? "none"
+            self.descriptionTextField.toolTip = $0.album.des
             self.artistTextField.stringValue = $0.album.artists?.artistsString() ?? ""
             self.tracks = $0.songs.initIndexes()
             }.catch {
