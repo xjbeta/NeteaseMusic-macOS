@@ -1,5 +1,5 @@
 github "utahiosmac/Marshal"
-github "Alamofire/Alamofire" "5.0.0-rc.1"
+github "Alamofire/Alamofire" "5.0.0-rc.2"
 github "DevMate/DevMateKit"
 github "mxcl/PromiseKit"
 github "hyperoslo/Cache"

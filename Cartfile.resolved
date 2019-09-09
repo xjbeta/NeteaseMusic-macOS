@@ -1,4 +1,4 @@
-github "Alamofire/Alamofire" "5.0.0-rc.1"
+github "Alamofire/Alamofire" "5.0.0-rc.2"
 github "DevMate/DevMateKit" "v1.9.3"
 github "hyperoslo/Cache" "5.2.0"
 github "mxcl/PromiseKit" "6.11.0"
