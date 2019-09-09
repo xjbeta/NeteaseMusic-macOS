@@ -18,6 +18,8 @@ class ViewControllerManager: NSObject {
     
     var searchFieldString = ""
     
+    var userId = -233
+    
     func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
                            _ id: Int = -1) {
         print(#function, "\(itemType)", "ID: \(id)")

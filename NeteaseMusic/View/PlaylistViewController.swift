@@ -237,7 +237,7 @@ class PlaylistViewController: NSViewController {
         
         countAndViewsStackView.isHidden = albumMode || topSongsMode || discoverPlaylistMode
         artistStackView.isHidden = !albumMode
-        subscribeButton.isHidden = topSongsMode
+        subscribeButton.isHidden = topSongsMode || discoverPlaylistMode || playlistType == .favourite
         descriptionStackView.isHidden = topSongsMode
     }
     
@@ -246,13 +246,16 @@ class PlaylistViewController: NSViewController {
         PlayCore.shared.api.playlistDetail(id).done(on: .main) {
             guard self.playlistId == id else { return }
             self.coverImageView.setImage($0.coverImgUrl.absoluteString, true)
-            self.titleTextFiled.stringValue = $0.name
+            self.titleTextFiled.stringValue = self.playlistType == .favourite ? "我喜欢的音乐" : $0.name
             let descriptionStr = $0.description ?? "none"
             self.descriptionTextField.stringValue = descriptionStr
             self.descriptionTextField.toolTip = descriptionStr
             self.playCountTextField.integerValue = $0.playCount
             self.trackCountTextField.integerValue = $0.trackCount
             self.tracks = $0.tracks?.initIndexes() ?? []
+            
+            self.subscribeButton.isEnabled = $0.creator?.userId != ViewControllerManager.shared.userId
+            self.subscribeButton.title = $0.subscribed ? "Unsubscribe" : "Subscribe"
             }.catch {
                 print($0)
         }

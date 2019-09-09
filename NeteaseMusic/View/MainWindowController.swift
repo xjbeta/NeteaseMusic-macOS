@@ -95,6 +95,7 @@ class MainWindowController: NSWindowController {
     func initUserButton() {
         userButton.isHidden = true
         PlayCore.shared.api.userInfo().done(on: .main) {
+            ViewControllerManager.shared.userId = $0.userId
             self.userButton.title = $0.nickname
             guard let u = $0.avatarImage else { return }
             ImageLoader.image(u, true, 13) {
