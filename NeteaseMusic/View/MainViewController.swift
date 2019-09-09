@@ -96,12 +96,12 @@ class MainViewController: NSViewController {
         let width = playlistView.frame.width
 
         playlistViewStatus = .animation
-        let newStatus: ExtendedViewState = playlistLayoutConstraint.constant == 0 ? .display : .hidden
+        let newStatus: ExtendedViewState = playlistLayoutConstraint.constant == -350 ? .display : .hidden
         NSAnimationContext.runAnimationGroup({ [weak self] context in
             if newStatus == .display {
-                self?.playlistLayoutConstraint.animator().constant -= width
+                self?.playlistLayoutConstraint.animator().constant += width
             } else {
-                self?.playlistLayoutConstraint.animator().constant = 0
+                self?.playlistLayoutConstraint.animator().constant = -350
             }
         }) { [weak self] in
             self?.playlistViewStatus = newStatus
