@@ -13,11 +13,11 @@ class SidePlaylistViewController: NSViewController {
     @IBOutlet var playlistArrayController: NSArrayController!
     @objc dynamic var playlist = [Track]()
     
-    var ttt: NSKeyValueObservation?
+    var playlistObserver: NSKeyValueObservation?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        ttt = PlayCore.shared.observe(\.playlist, options: [.initial, .new]) { [weak self] core, _ in
+        playlistObserver = PlayCore.shared.observe(\.playlist, options: [.initial, .new]) { [weak self] core, _ in
             self?.playlist = core.playlist
         }
         
@@ -25,6 +25,6 @@ class SidePlaylistViewController: NSViewController {
     
     
     deinit {
-        ttt?.invalidate()
+        playlistObserver?.invalidate()
     }
 }
