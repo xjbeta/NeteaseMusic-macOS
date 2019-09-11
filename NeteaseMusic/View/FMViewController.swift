@@ -204,6 +204,8 @@ class FMViewController: NSViewController {
             updatePlayButton(false)
         case .waitingToPlayAtSpecifiedRate:
             break
+        @unknown default:
+            break
         }
     }
     
