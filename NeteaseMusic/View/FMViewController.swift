@@ -163,13 +163,13 @@ class FMViewController: NSViewController {
         
         guard let index = playlist.firstIndex(of: track) else { return }
 
-        coverImageView.setImage(track.album.picUrl?.absoluteString ?? "", true)
+        coverImageView.setImage(track.album.picUrl?.absoluteString ?? "", true, markWidth)
         lyricViewController()?.currentLyricId = track.id
         songButtonsViewController()?.trackId = track.id
         
         if let track = playlist[safe: index - 1] {
             prevImageButton.isHidden = false
-            prevImageButton.setImage(track.album.picUrl?.absoluteString ?? "", true)
+            prevImageButton.setImage(track.album.picUrl?.absoluteString ?? "", true, markWidth)
         } else {
             prevImageButton.isHidden = true
         }

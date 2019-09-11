@@ -14,10 +14,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="8Vc-iN-v5f">
-                                <rect key="frame" x="25" y="82" width="790" height="473"/>
+                                <rect key="frame" x="13" y="82" width="815" height="473"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="vBh-I9-HLC">
-                                        <rect key="frame" x="0.0" y="108" width="350" height="310"/>
+                                        <rect key="frame" x="0.0" y="108" width="390" height="310"/>
                                         <subviews>
                                             <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3PF-CU-RqY" customClass="CoverImageView" customModule="NeteaseMusic" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="60" width="190" height="190"/>
@@ -75,7 +75,7 @@
                                             <constraint firstAttribute="height" constant="310" id="Cwf-8q-Dnb"/>
                                             <constraint firstItem="3PF-CU-RqY" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="TBX-ce-3al"/>
                                             <constraint firstItem="Kzz-FQ-tFE" firstAttribute="width" secondItem="Kzz-FQ-tFE" secondAttribute="height" multiplier="1:1" id="Tbp-qb-aq0"/>
-                                            <constraint firstAttribute="width" constant="350" id="XF5-qq-WAV"/>
+                                            <constraint firstAttribute="width" constant="390" id="XF5-qq-WAV"/>
                                             <constraint firstItem="Kzz-FQ-tFE" firstAttribute="centerY" secondItem="LC5-dC-668" secondAttribute="centerY" id="Xy9-cH-4ez"/>
                                             <constraint firstItem="9KC-UX-vy4" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="apr-BM-ls7"/>
                                             <constraint firstItem="LC5-dC-668" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="80" id="dit-wj-i4A"/>
@@ -84,7 +84,7 @@
                                         </constraints>
                                     </customView>
                                     <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBx-k6-lve">
-                                        <rect key="frame" x="370" y="3" width="400" height="450"/>
+                                        <rect key="frame" x="395" y="3" width="400" height="450"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rPC-9D-SFF">
                                                 <rect key="frame" x="0.0" y="400" width="400" height="50"/>
@@ -131,7 +131,7 @@
                                     <constraint firstAttribute="height" constant="473" id="jA3-cu-QB2"/>
                                     <constraint firstItem="DBx-k6-lve" firstAttribute="top" secondItem="8Vc-iN-v5f" secondAttribute="top" constant="20" id="t5S-nq-4EL"/>
                                     <constraint firstItem="vBh-I9-HLC" firstAttribute="leading" secondItem="8Vc-iN-v5f" secondAttribute="leading" id="wZd-pz-Evh"/>
-                                    <constraint firstItem="DBx-k6-lve" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="trailing" constant="20" id="wau-kj-GBH"/>
+                                    <constraint firstItem="DBx-k6-lve" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="trailing" constant="5" id="wau-kj-GBH"/>
                                 </constraints>
                             </customView>
                         </subviews>
