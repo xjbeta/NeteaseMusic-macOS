@@ -10,9 +10,21 @@ import Cocoa
 import AVFoundation
 
 class FMViewController: NSViewController {
-
+    @IBOutlet weak var ppImageView: NSImageView!
+    @IBOutlet weak var ppImageSizeLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ppImageLeadingLayoutConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var prevImageButton: NSButton!
+    @IBOutlet weak var prevButtonSizeLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var prevButtonLeadingLayoutConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var coverImageView: NSImageView!
+    @IBOutlet weak var coverImageSizeLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var coverImageLeadingLayoutConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var nextImageView: CoverImageView!
+    @IBOutlet weak var nextImageLeadingLayoutConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var playButton: NSButton!
     
     @IBAction func buttonAction(_ sender: NSButton) {
@@ -41,36 +53,68 @@ class FMViewController: NSViewController {
     var playListObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
     
+    var imageViewsFrames = [NSRect]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updatePlayButton(true)
         
-//        playButton.wantsLayer = true
-//        playButton.layer?.cornerRadius = playButton.frame.width / 2
-//        playButton.layer?.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.35)
-        
-        
+        imageViewsFrames.append(nextImageView.frame)
+        imageViewsFrames.append(coverImageView.frame)
+        imageViewsFrames.append(prevImageButton.frame)
+        imageViewsFrames.append(ppImageView.frame)
         
         playListObserver = PlayCore.shared.observe(\.fmPlaylist, options: [.old, .new]) { [weak self] playcore, changes in
-            print(changes)
-            
             if changes.oldValue?.count == 0,
                 let tracksCount = changes.newValue?.count,
                 tracksCount > 0 {
                 // fmPlayList inited
                 playcore.currentFMTrack = changes.newValue?.first
                 self?.initView()
+                self?.playListObserver?.invalidate()
             }
         }
         
-        currentTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] playcore, _ in
+        currentTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new, .old]) { [weak self] playcore, changes in
             guard playcore.fmMode else { return }
-            print("currentFMTrack changed")
-            self?.initView()
+            print("currentFMTrack changed \(changes).")
+            if let oldTrack = changes.oldValue,
+                let newTrack = changes.newValue,
+                let old = oldTrack,
+                let new = newTrack {
+                
+                var oldI = -1
+                var newI = -1
+                playcore.fmPlaylist.enumerated().forEach {
+                    if $0.element == old {
+                        oldI = $0.offset
+                    } else if $0.element == new {
+                        newI = $0.offset
+                    }
+                }
+                guard oldI != -1, newI != -1 else { return }
+                
+                print(oldI, newI)
+                
+                DispatchQueue.main.async {
+                    if newI > oldI {
+                        self?.nextTrackAnimation {
+                            self?.initView()
+                        }
+                    } else if newI < oldI {
+                        self?.prevTrackAnimation {
+                            self?.initView()
+                        }
+                    } else {
+                        self?.initView()
+                    }
+                }
+            }
             
+            // Load more fm tracks
             if let track = playcore.currentFMTrack,
                 let index = playcore.fmPlaylist.firstIndex(of: track),
-                (playcore.fmPlaylist.count - index) <= 2 {
+                (playcore.fmPlaylist.count - index) <= 3 {
                 self?.loadFMTracks()
             }
         }
@@ -107,6 +151,8 @@ class FMViewController: NSViewController {
         prevImageButton.image = nil
         prevImageButton.isHidden = true
         let playlist = PlayCore.shared.fmPlaylist
+        let markWidth = coverImageView.frame.width
+        
         guard let track = PlayCore.shared.currentFMTrack else {
             lyricViewController()?.currentLyricId = -1
             songButtonsViewController()?.trackId = -1
@@ -124,10 +170,25 @@ class FMViewController: NSViewController {
         if let track = playlist[safe: index - 1] {
             prevImageButton.isHidden = false
             prevImageButton.setImage(track.album.picUrl?.absoluteString ?? "", true)
+        } else {
+            prevImageButton.isHidden = true
+        }
+        
+        if let track = playlist[safe: index + 1] {
+            nextImageView.isHidden = false
+            nextImageView.setImage(track.album.picUrl?.absoluteString ?? "", true, markWidth)
+        } else {
+            nextImageView.isHidden = true
+        }
+        
+        if let track = playlist[safe: index - 2] {
+            ppImageView.setImage(track.album.picUrl?.absoluteString ?? "", true, markWidth)
+        } else {
+            ppImageView.image = nil
         }
         
         if index > 1 {
-            PlayCore.shared.fmPlaylist.removeSubrange(0..<(index - 1))
+            PlayCore.shared.fmPlaylist.removeSubrange(0..<(index - 2))
         }
     }
     
@@ -170,6 +231,74 @@ class FMViewController: NSViewController {
             }.first
         return vc
     }
+    
+    func nextTrackAnimation(_ completionHandler: (() -> Void)? = nil) {
+        nextImageView.alphaValue = 0
+        nextImageView.isHidden = false
+        let frames = imageViewsFrames
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.25
+            nextImageView.animator().alphaValue = 1
+            nextImageLeadingLayoutConstraint.animator().constant = frames[1].origin.x
+            
+            coverImageSizeLayoutConstraint.animator().constant = frames[2].width
+            coverImageLeadingLayoutConstraint.animator().constant = frames[2].origin.x
+            
+            prevImageButton.animator().alphaValue = 0
+            prevButtonSizeLayoutConstraint.animator().constant = frames[3].width
+            prevButtonLeadingLayoutConstraint.animator().constant = frames[3].origin.x
+        }) {
+            self.resetLayoutConstraints()
+            completionHandler?()
+        }
+    }
+    
+    func prevTrackAnimation(_ completionHandler: (() -> Void)? = nil) {
+        ppImageView.alphaValue = 0
+        ppImageView.isHidden = false
+        let frames = imageViewsFrames
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.25
+            if ppImageView.image != nil {
+                ppImageView.animator().alphaValue = 1
+                ppImageLeadingLayoutConstraint.animator().constant = frames[2].origin.x
+                ppImageSizeLayoutConstraint.animator().constant = frames[2].width
+            }
+            
+            prevButtonSizeLayoutConstraint.animator().constant = frames[1].width
+            prevButtonLeadingLayoutConstraint.animator().constant = frames[1].origin.x
+            
+            
+            coverImageSizeLayoutConstraint.animator().constant = frames[0].width
+            coverImageLeadingLayoutConstraint.animator().constant = frames[0].origin.x
+            
+        }) {
+            self.resetLayoutConstraints()
+            completionHandler?()
+        }
+    }
+    
+    func resetLayoutConstraints() {
+        let frames = imageViewsFrames
+        guard frames.count == 4 else { return }
+        
+        nextImageView.alphaValue = 0
+        nextImageView.isHidden = true
+        nextImageLeadingLayoutConstraint.constant = frames[0].origin.x
+        
+        coverImageSizeLayoutConstraint.constant = frames[1].width
+        coverImageLeadingLayoutConstraint.constant = frames[1].origin.x
+        
+        prevImageButton.alphaValue = 1
+        prevButtonSizeLayoutConstraint.constant = frames[2].width
+        prevButtonLeadingLayoutConstraint.constant = frames[2].origin.x
+        
+        ppImageView.alphaValue = 0
+        ppImageView.isHidden = true
+        ppImageSizeLayoutConstraint.constant = frames[3].width
+        ppImageLeadingLayoutConstraint.constant = frames[3].origin.x
+    }
+    
     
     deinit {
         lyricViewController()?.removePeriodicTimeObserver(PlayCore.shared.player)
