@@ -28,6 +28,8 @@ class PlayCore: NSObject {
     
     var playerShouldNextObserver: NSObjectProtocol?
     @objc dynamic var playlist: [Track] = []
+    @objc dynamic var historys: [Track] = []
+    
     @objc dynamic var currentTrack: Track?
     
     
@@ -87,6 +89,12 @@ class PlayCore: NSObject {
             self.player.replaceCurrentItem(with: $0)
             self.player.seek(to: time) {_ in
                 self.player.play()
+            }
+            
+            self.historys.append(track)
+            
+            if self.historys.count > 100 {
+                self.historys.removeFirst()
             }
             }.catch {
                 print($0)

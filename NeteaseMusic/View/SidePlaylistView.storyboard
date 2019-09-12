@@ -10,29 +10,17 @@
             <objects>
                 <viewController showSeguePresentationStyle="single" id="ko4-2V-U9h" customClass="SidePlaylistViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Yib-HV-fE6">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="603"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="withinWindow" material="sheet" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="q2z-BC-8l5">
-                                <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="603"/>
                                 <subviews>
-                                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y7u-6M-h7G">
-                                        <rect key="frame" x="80" y="557" width="140" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="rmR-DJ-mDj">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CyO-dY-QZc">
+                                        <rect key="frame" x="19" y="521" width="54" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="0 Songs" id="7hs-8p-LIA">
                                             <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment label="playlist"/>
-                                                <segment label="history" selected="YES" tag="1"/>
-                                            </segments>
-                                        </segmentedCell>
-                                    </segmentedControl>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CyO-dY-QZc">
-                                        <rect key="frame" x="12" y="521" width="37" height="17"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="7hs-8p-LIA">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
@@ -227,9 +215,6 @@
                                             </subviews>
                                             <nil key="backgroundColor"/>
                                         </clipView>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" id="ssW-Qr-cgr"/>
-                                        </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QX3-w9-Ihc">
                                             <rect key="frame" x="0.0" y="484" width="350" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -239,39 +224,54 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNf-z9-qcQ">
-                                        <rect key="frame" x="221" y="512" width="65" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jUM-Dg-aVd">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9r-kq-nxh">
-                                        <rect key="frame" x="151" y="512" width="70" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="89j-Kg-QxI">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
                                     <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="DHx-KV-fsB">
-                                        <rect key="frame" x="-2" y="0.0" width="5" height="600"/>
+                                        <rect key="frame" x="-2" y="0.0" width="5" height="603"/>
                                     </box>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="wcl-jB-RyN">
                                         <rect key="frame" x="0.0" y="498" width="350" height="5"/>
                                     </box>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yNf-z9-qcQ">
+                                        <rect key="frame" x="257" y="514" width="79" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Empty" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jUM-Dg-aVd">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="empty:" target="ko4-2V-U9h" id="Ale-0R-9R3"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y7u-6M-h7G">
+                                        <rect key="frame" x="98" y="560" width="154" height="24"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="rmR-DJ-mDj">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Playlist" selected="YES"/>
+                                                <segment label="Historys" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="segmentedControlAction:" target="ko4-2V-U9h" id="0RL-l6-yMn"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="y7u-6M-h7G" firstAttribute="centerX" secondItem="q2z-BC-8l5" secondAttribute="centerX" id="0k8-c0-oKh"/>
+                                    <constraint firstItem="y7u-6M-h7G" firstAttribute="top" secondItem="q2z-BC-8l5" secondAttribute="top" constant="20" id="1xy-CG-UWS"/>
+                                    <constraint firstItem="wcl-jB-RyN" firstAttribute="top" secondItem="yNf-z9-qcQ" secondAttribute="bottom" constant="20" id="3XZ-Ye-bKp"/>
                                     <constraint firstItem="wcl-jB-RyN" firstAttribute="leading" secondItem="q2z-BC-8l5" secondAttribute="leading" id="7O6-vu-FWy"/>
+                                    <constraint firstItem="wcl-jB-RyN" firstAttribute="top" secondItem="CyO-dY-QZc" secondAttribute="bottom" constant="20" id="7eA-Wk-OZA"/>
                                     <constraint firstItem="DHx-KV-fsB" firstAttribute="top" secondItem="q2z-BC-8l5" secondAttribute="top" id="Bqh-cv-vcu"/>
                                     <constraint firstItem="YPU-xg-Wgj" firstAttribute="top" secondItem="wcl-jB-RyN" secondAttribute="bottom" id="D6e-jd-nXy"/>
+                                    <constraint firstAttribute="trailing" secondItem="yNf-z9-qcQ" secondAttribute="trailing" constant="20" id="Hn3-GJ-lTw"/>
                                     <constraint firstAttribute="bottom" secondItem="YPU-xg-Wgj" secondAttribute="bottom" id="Orw-Z9-Ke6"/>
                                     <constraint firstAttribute="trailing" secondItem="YPU-xg-Wgj" secondAttribute="trailing" id="cUg-uG-GVm"/>
                                     <constraint firstAttribute="bottom" secondItem="DHx-KV-fsB" secondAttribute="bottom" id="dRU-PB-BWc"/>
+                                    <constraint firstItem="CyO-dY-QZc" firstAttribute="leading" secondItem="DHx-KV-fsB" secondAttribute="trailing" constant="20" id="eyq-9e-BBO"/>
                                     <constraint firstItem="YPU-xg-Wgj" firstAttribute="leading" secondItem="q2z-BC-8l5" secondAttribute="leading" id="nF0-2G-ZSp"/>
+                                    <constraint firstItem="yNf-z9-qcQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CyO-dY-QZc" secondAttribute="trailing" constant="20" id="uN9-AK-tYG"/>
                                     <constraint firstAttribute="trailing" secondItem="wcl-jB-RyN" secondAttribute="trailing" id="ur3-VG-wJd"/>
                                     <constraint firstItem="DHx-KV-fsB" firstAttribute="leading" secondItem="q2z-BC-8l5" secondAttribute="leading" id="w8F-KM-NgA"/>
+                                    <constraint firstItem="yNf-z9-qcQ" firstAttribute="top" secondItem="y7u-6M-h7G" secondAttribute="bottom" constant="20" id="xZT-JD-79r"/>
                                 </constraints>
                             </visualEffectView>
                         </subviews>
@@ -284,6 +284,8 @@
                     </view>
                     <connections>
                         <outlet property="playlistArrayController" destination="9Zw-Wf-cSx" id="Xw4-pu-kd9"/>
+                        <outlet property="segmentedControl" destination="y7u-6M-h7G" id="QER-4M-Usa"/>
+                        <outlet property="songsCountTextField" destination="CyO-dY-QZc" id="3S8-tD-wgX"/>
                     </connections>
                 </viewController>
                 <customObject id="10u-NI-jqr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
