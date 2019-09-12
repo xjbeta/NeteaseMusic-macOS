@@ -103,6 +103,10 @@ class ControlBarViewController: NSViewController {
         case durationSlider:
             let time = CMTime(seconds: sender.doubleValue, preferredTimescale: 1000)
             PlayCore.shared.player.seek(to: time) { _ in }
+            if let eventType = NSApp.currentEvent?.type,
+                eventType == .leftMouseUp {
+                durationSlider.ignoreValueUpdate = false
+            }
         case volumeSlider:
             PlayCore.shared.player.volume = volumeSlider.floatValue
         default:
