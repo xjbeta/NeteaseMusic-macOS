@@ -75,27 +75,27 @@
                                         <rect key="frame" x="174" y="5" width="482" height="40"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-m6-yOr">
-                                                <rect key="frame" x="0.0" y="23" width="170" height="17"/>
+                                                <rect key="frame" x="0.0" y="23" width="482" height="17"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-A5-XYy">
                                                         <rect key="frame" x="0.0" y="0.0" width="38" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="name" id="irl-co-WMt">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" title="name" id="irl-co-WMt">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-nr-1oj">
-                                                        <rect key="frame" x="46" y="0.0" width="86" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="second name" id="NWZ-9c-nZ5">
+                                                    <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-nr-1oj">
+                                                        <rect key="frame" x="46" y="0.0" width="398" height="17"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" title="second name" id="NWZ-9c-nZ5">
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sCJ-Br-zry">
-                                                        <rect key="frame" x="140" y="0.0" width="32" height="14"/>
-                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="artist" id="LRw-Nn-oan">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="sCJ-Br-zry">
+                                                        <rect key="frame" x="452" y="0.0" width="32" height="14"/>
+                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="artist" id="LRw-Nn-oan">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
