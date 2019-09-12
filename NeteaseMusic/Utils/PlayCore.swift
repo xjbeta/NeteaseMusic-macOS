@@ -91,6 +91,9 @@ class PlayCore: NSObject {
                 self.player.play()
             }
             
+            self.historys.removeAll {
+                $0.id == track.id
+            }
             self.historys.append(track)
             
             if self.historys.count > 100 {
