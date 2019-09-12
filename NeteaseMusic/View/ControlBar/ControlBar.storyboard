@@ -72,7 +72,7 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1fC-1S-KoY">
-                                        <rect key="frame" x="174" y="5" width="488" height="40"/>
+                                        <rect key="frame" x="174" y="5" width="482" height="40"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-m6-yOr">
                                                 <rect key="frame" x="0.0" y="23" width="170" height="17"/>
@@ -116,7 +116,7 @@
                                             </stackView>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A2T-p0-9lL" customClass="PlayerSlider" customModule="NeteaseMusic" customModuleProvider="target">
                                                 <rect key="frame" x="-2" y="2" width="416" height="19"/>
-                                                <sliderCell key="cell" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="ok2-SO-IRc"/>
+                                                <sliderCell key="cell" continuous="YES" refusesFirstResponder="YES" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="ok2-SO-IRc"/>
                                                 <connections>
                                                     <action selector="sliderAction:" target="OYD-vG-24V" id="FhO-kb-kcH"/>
                                                 </connections>
@@ -133,8 +133,11 @@
                                         </customSpacing>
                                     </stackView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aPz-hr-ogc">
-                                        <rect key="frame" x="676" y="17" width="83" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="00:00 / 00:00" id="FMr-b5-g93">
+                                        <rect key="frame" x="670" y="17" width="89" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="JTV-2f-4Pe"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="00:00 / 00:00" id="FMr-b5-g93">
                                             <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

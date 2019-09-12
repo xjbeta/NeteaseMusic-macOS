@@ -29,8 +29,8 @@ class PlayerSlider: NSSlider {
         super.mouseDown(with: event)
     }
     
-    func finishValueUpdate() {
+    override func mouseUp(with event: NSEvent) {
         ignoreValueUpdate = false
+        super.mouseUp(with: event)
     }
-    
 }

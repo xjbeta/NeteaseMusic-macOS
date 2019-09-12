@@ -291,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
+				01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */,
 				012FEA692289B8D200698969 /* ControlBar.storyboard */,
 			);
 			path = ControlBar;
@@ -356,7 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				012F115722603CE8002D5599 /* SidePlaylistViewController.swift */,
-				01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */,
 				012FEA6F2289BA3F00698969 /* SidePlaylistView.storyboard */,
 			);
 			name = SidePlaylist;

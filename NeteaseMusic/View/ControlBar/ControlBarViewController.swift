@@ -101,12 +101,8 @@ class ControlBarViewController: NSViewController {
     @IBAction func sliderAction(_ sender: NSSlider) {
         switch sender {
         case durationSlider:
-            PlayCore.shared.player.pause()
             let time = CMTime(seconds: sender.doubleValue, preferredTimescale: 1000)
-            PlayCore.shared.player.seek(to: time) { [weak self] re in
-                self?.durationSlider.finishValueUpdate()
-                PlayCore.shared.player.play()
-            }
+            PlayCore.shared.player.seek(to: time) { _ in }
         case volumeSlider:
             PlayCore.shared.player.volume = volumeSlider.floatValue
         default:
