@@ -205,27 +205,29 @@ class ControlBarViewController: NSViewController {
     }
     
     func initPlayModeButton() {
-        var repeatImage: NSImage?
         switch PlayCore.shared.repeatMode {
         case .repeatPlayList:
-            repeatImage = NSImage(named: NSImage.Name("btmbar.sp#icn-loop"))
+            repeatModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-loop"))
+            repeatModeButton.isTransparent = false
         case .repeatItem:
-            repeatImage = NSImage(named: NSImage.Name("btmbar.sp#icn-one"))
+            repeatModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-one"))
+            repeatModeButton.isTransparent = false
         case .noRepeat:
-            break
+            repeatModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-loop"))
+            repeatModeButton.isTransparent = true
         }
-        repeatModeButton.image = repeatImage
         
-        var shuffleImage: NSImage?
         switch PlayCore.shared.shuffleMode {
         case .shuffleItems:
-            shuffleImage = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
+            shuffleModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
+            shuffleModeButton.isTransparent = false
         case .shuffleAlbums:
-            shuffleImage = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
+            shuffleModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
+            shuffleModeButton.isTransparent = false
         case .noShuffle:
-            break
+            shuffleModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
+            shuffleModeButton.isTransparent = true
         }
-        shuffleModeButton.image = shuffleImage
     }
     
     deinit {
