@@ -10,6 +10,7 @@ import Cocoa
 
 class SearchResultContentsViewController: NSViewController {
     
+    @IBOutlet weak var songsTableView: NSTableView!
     @IBOutlet weak var tableView: NSTableView!
     
     var dataType: SearchSuggestionsViewController.GroupType = .none
@@ -19,77 +20,30 @@ class SearchResultContentsViewController: NSViewController {
     var artists = [Track.Artist]()
     var playlists = [Playlist]()
     
-    var headerView: NSTableHeaderView? = nil
-    var tableViewColumnWidths = [(width: CGFloat, minWidth: CGFloat, maxWidth: CGFloat)]()
-    var tableViewColumns = [NSTableColumn]()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerView = tableView.headerView
     }
     
     func reloadTableView() {
-        tableView.reloadData()
+        if dataType == .songs {
+            songsTableView.reloadData()
+        } else {
+            tableView.reloadData()
+        }
     }
     
     func resetData(_ type: SearchSuggestionsViewController.GroupType) {
-        if dataType == .songs, type != .songs {
-            tableViewColumnWidths.removeAll()
-            tableViewColumnWidths = tableView.tableColumns.map {
-                ($0.width, $0.minWidth, $0.maxWidth)
-            }
-            tableViewColumns = tableView.tableColumns
-            tableViewColumns.removeFirst()
-            tableView.tableColumns.enumerated().forEach {
-                if $0.offset != 0 {
-                    tableView.removeTableColumn($0.element)
-                }
-            }
-        }
-        
-        switch type {
-        case .songs:
-            if dataType == .songs {
-                break
-            }
-            
-            tableView.headerView = headerView
-            tableViewColumns.forEach {
-                tableView.addTableColumn($0)
-            }
-            
-            tableView.tableColumns.enumerated().forEach {
-                $0.element.isHidden = false
-                if let widths = tableViewColumnWidths[safe: $0.offset] {
-                    $0.element.minWidth = widths.minWidth
-                    $0.element.maxWidth = widths.maxWidth
-                    $0.element.width = widths.width
-                }
-            }
-        case .albums, .artists, .playlists:
-            if dataType != .songs {
-                break
-            }
-            
-            tableView.headerView = nil
-            tableView.tableColumns.enumerated().forEach {
-                $0.element.isHidden = $0.offset != 0
-            }
-            tableView.tableColumns.first?.maxWidth = 99999999
-            tableView.tableColumns.first?.width = tableView.frame.width
-        default:
-            break
-            
-        }
-        
         songs.removeAll()
         albums.removeAll()
         artists.removeAll()
         playlists.removeAll()
         
         dataType = type
+        songsTableView.reloadData()
         tableView.reloadData()
+        
+        songsTableView.enclosingScrollView?.isHidden = type != .songs
+        tableView.enclosingScrollView?.isHidden = type == .songs
     }
 }
 
@@ -113,7 +67,7 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         switch dataType {
         case .songs:
-            return 17
+            return 25
         case .albums, .artists, .playlists:
             return 80
         default:

@@ -90,7 +90,13 @@ class SearchResultViewController: NSViewController {
             self.pageData = (pageCount, offset)
             pageSegmentedControlVC.reloadData()
             resultVC.reloadTableView()
-            self.initLayoutConstraint(resultVC.tableView)
+            
+            if type == .songs {
+                self.initLayoutConstraint(resultVC.songsTableView)
+            } else {
+                self.initLayoutConstraint(resultVC.tableView)
+            }
+            
             }.catch {
                 print($0)
         }
