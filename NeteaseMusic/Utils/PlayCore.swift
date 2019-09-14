@@ -175,6 +175,21 @@ class PlayCore: NSObject {
         }
     }
     
+    func playNow(_ tracks: [Track]) {
+        print(tracks)
+        
+        
+        if let currentTrack = currentTrack,
+            let i = playlist.enumerated().filter({ $0.element == currentTrack }).first?.offset {
+            playlist.insert(contentsOf: tracks, at: i + 1)
+        } else {
+            playlist.append(contentsOf: tracks)
+        }
+        if let t = tracks.first {
+            play(t)
+        }
+    }
+    
     deinit {
         removeObserver()
     }

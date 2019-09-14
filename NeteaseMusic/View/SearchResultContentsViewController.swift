@@ -20,6 +20,31 @@ class SearchResultContentsViewController: NSViewController {
     var artists = [Track.Artist]()
     var playlists = [Playlist]()
     
+    @IBAction func tableViewAction(_ sender: NSTableView) {
+        let row = sender.selectedRow
+        let vcManaget = ViewControllerManager.shared
+        switch dataType {
+        case .albums:
+            guard let id = albums[safe: row]?.id else { return }
+            vcManaget.selectSidebarItem(.album, id)
+        case .artists:
+            guard let id = artists[safe: row]?.id else { return }
+            vcManaget.selectSidebarItem(.artist, id)
+        case .playlists:
+            guard let id = playlists[safe: row]?.id else { return }
+            vcManaget.selectSidebarItem(.playlist, id)
+        default:
+            break
+        }
+    }
+    
+    @IBAction func songsTableViewDoubleAction(_ sender: NSTableView) {
+        guard dataType == .songs else { return }
+        let row = sender.clickedRow
+        guard let t = songs[safe: row] else { return }
+        PlayCore.shared.playNow([t])
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

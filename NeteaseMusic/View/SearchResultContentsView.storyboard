@@ -236,6 +236,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="songsTableViewDoubleAction:" target="3Wr-D9-fWP" id="3sn-WK-Jua"/>
                                                 <outlet property="dataSource" destination="3Wr-D9-fWP" id="cg0-rf-FCu"/>
                                                 <outlet property="delegate" destination="3Wr-D9-fWP" id="Tck-2N-JrU"/>
                                             </connections>
@@ -335,7 +336,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="200" id="Rzn-st-ghk"/>
                                                                             </constraints>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="artist" id="o1d-Bb-b4d">
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="artist" id="o1d-Bb-b4d">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -372,7 +373,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SKn-z3-uzJ">
-                                                                    <rect key="frame" x="10" y="10" width="322" height="60"/>
+                                                                    <rect key="frame" x="10" y="10" width="202" height="60"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FbV-D3-TqS">
                                                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -394,11 +395,8 @@
                                                                             </connections>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ebv-jv-kKb">
-                                                                            <rect key="frame" x="120" y="22" width="204" height="17"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="200" id="0SV-VE-F2E"/>
-                                                                            </constraints>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="secondName" id="Hcm-ph-Osp">
+                                                                            <rect key="frame" x="120" y="22" width="84" height="17"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="secondName" id="Hcm-ph-Osp">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -478,7 +476,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="200" id="eZ2-HV-fWv"/>
                                                                             </constraints>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="by xxx" id="YGm-3X-aU6">
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="by xxx" id="YGm-3X-aU6">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -515,6 +513,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action selector="tableViewAction:" target="3Wr-D9-fWP" id="AJl-sf-vE1"/>
                                                 <outlet property="dataSource" destination="3Wr-D9-fWP" id="vTN-Vp-V9J"/>
                                                 <outlet property="delegate" destination="3Wr-D9-fWP" id="xxJ-j7-Wed"/>
                                             </connections>
