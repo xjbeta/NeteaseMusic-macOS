@@ -577,10 +577,11 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    private func request<T: Decodable>(_ url: String, _ parameters: String, _ resultType: T.Type, debug: Bool = false) -> Promise<T> {
+    private func request<T: Decodable>(_ url: String, _ parameters: String, headers: HTTPHeaders? = nil, _ resultType: T.Type, debug: Bool = false) -> Promise<T> {
         return Promise { resolver in
             AF.request(url, method: .post,
-                       parameters: crypto(parameters)).response { re in
+                       parameters: crypto(parameters),
+                       headers: headers).response { re in
                         if debug, let d = re.data, let str = String(data: d, encoding: .utf8) {
                             print(str)
                         }
