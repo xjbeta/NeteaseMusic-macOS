@@ -20,6 +20,17 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    lazy var cryptoJSContext: JSContext? = {
+        guard let jsContext = JSContext(),
+            let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),
+            let content = try? String(contentsOfFile: cryptoFilePath) else {
+                return nil
+        }
+        jsContext.evaluateScript(content)
+        return jsContext
+    }()
+    
+    
     struct DefaultParameters: Encodable {
         let csrfToken: String
         enum CodingKeys: String, CodingKey {
@@ -578,20 +589,18 @@ class NeteaseMusicAPI: NSObject {
     }
     
     
-    private func crypto(_ text: String) -> [String: String] {
-        guard let jsContext = JSContext(),
-            let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),
-            let content = try? String(contentsOfFile: cryptoFilePath) else {
-                return [:]
+    private func crypto(_ text: String, _ useJSCore: Bool = false) -> [String: String] {
+        if useJSCore {
+            guard let data = cryptoJSContext?.evaluateScript("p('\(text)')")?.toString().data(using: .utf8),
+                var json = try? JSONDecoder().decode([String: String].self, from: data) else {
+                    return [:]
+            }
+            json["params"] = json["encText"]
+            json["encText"] = nil
+            return json
+        } else {
+            return Crypto.paramsEncrypt(text)
         }
-        jsContext.evaluateScript(content)
-        guard let data = jsContext.evaluateScript("p('\(text)')")?.toString().data(using: .utf8),
-            var json = try? JSONDecoder().decode([String: String].self, from: data) else {
-                return [:]
-        }
-        json["params"] = json["encText"]
-        json["encText"] = nil
-        return json
     }
     
     enum APIError: Error {
