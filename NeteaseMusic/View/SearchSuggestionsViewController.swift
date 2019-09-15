@@ -19,8 +19,12 @@ class SearchSuggestionsViewController: NSViewController {
         case .groupItem:
             ViewControllerManager.shared.selectSidebarItem(.searchResults, item.id)
         case .song:
-            print("Should start playing \(item)")
-            break
+            let playCore = PlayCore.shared
+            playCore.api.songDetail(item.id).done {
+                playCore.playNow([$0])
+                }.catch {
+                   print("Song Detail error \($0)")
+            }
         case .album:
             ViewControllerManager.shared.selectSidebarItem(.album, item.id)
         case .artist:
