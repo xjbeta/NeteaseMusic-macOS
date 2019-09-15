@@ -11,6 +11,10 @@
 		0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0116E1B823248E5A00606C6C /* LogoutView.storyboard */; };
 		01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01190492230E651B00738904 /* NewPlaylist.storyboard */; };
 		01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01190494230E653300738904 /* NewPlaylistViewController.swift */; };
+		012165CA232E07F300D74344 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012165C9232E07F300D74344 /* Crypto.swift */; };
+		012165CD232E12AC00D74344 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012165CB232E12AC00D74344 /* CryptoSwift.framework */; };
+		012165D0232E12B300D74344 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 012165CB232E12AC00D74344 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		012165D1232E12BE00D74344 /* CryptoSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 012165CC232E12AC00D74344 /* CryptoSwift.framework.dSYM */; };
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
 		012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */; };
 		012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */; };
@@ -108,6 +112,7 @@
 				01677BA5228D353900D11190 /* Cache.framework in Embed Frameworks */,
 				013EF14A22564E2700E4D7D8 /* Alamofire.framework in Embed Frameworks */,
 				013EF15022564E2700E4D7D8 /* PromiseKit.framework in Embed Frameworks */,
+				012165D0232E12B300D74344 /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +123,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				012165D1232E12BE00D74344 /* CryptoSwift.framework.dSYM in CopyFiles */,
 				01677BA6228D354700D11190 /* Cache.framework.dSYM in CopyFiles */,
 				013EF15222564E5100E4D7D8 /* Alamofire.framework.dSYM in CopyFiles */,
 				013EF15422564E5100E4D7D8 /* PromiseKit.framework.dSYM in CopyFiles */,
@@ -132,6 +138,9 @@
 		0119048F2309065A00738904 /* FMTrashGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FMTrashGet.json; sourceTree = "<group>"; };
 		01190492230E651B00738904 /* NewPlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlaylist.storyboard; sourceTree = "<group>"; };
 		01190494230E653300738904 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewController.swift; sourceTree = "<group>"; };
+		012165C9232E07F300D74344 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		012165CB232E12AC00D74344 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/Mac/CryptoSwift.framework; sourceTree = SOURCE_ROOT; };
+		012165CC232E12AC00D74344 /* CryptoSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoSwift.framework.dSYM; path = Carthage/Build/Mac/CryptoSwift.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
 		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
 		012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStringTransformer.swift; sourceTree = "<group>"; };
@@ -244,6 +253,7 @@
 				01677BA2228D353100D11190 /* Cache.framework in Frameworks */,
 				013EF14622564E1F00E4D7D8 /* Alamofire.framework in Frameworks */,
 				013EF14522564E1F00E4D7D8 /* PromiseKit.framework in Frameworks */,
+				012165CD232E12AC00D74344 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +279,7 @@
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E40FE822C1DF4600864118 /* ImageLoader.swift */,
+				012165C9232E07F300D74344 /* Crypto.swift */,
 				0133AC732321FEB800090D5E /* Transformers */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
 				013EF1572256501000E4D7D8 /* Extensions */,
@@ -406,6 +417,8 @@
 				013EF13B22564E1F00E4D7D8 /* Alamofire.framework.dSYM */,
 				01677BA0228D353100D11190 /* Cache.framework */,
 				01677BA1228D353100D11190 /* Cache.framework.dSYM */,
+				012165CB232E12AC00D74344 /* CryptoSwift.framework */,
+				012165CC232E12AC00D74344 /* CryptoSwift.framework.dSYM */,
 				013EF13E22564E1F00E4D7D8 /* PromiseKit.framework */,
 				013EF14022564E1F00E4D7D8 /* PromiseKit.framework.dSYM */,
 			);
@@ -654,6 +667,7 @@
 				012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */,
 				013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */,
 				01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */,
+				012165CA232E07F300D74344 /* Crypto.swift in Sources */,
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
 				01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */,
 				013143A5226ECD1A00B9E26F /* ExtendedViewState.swift in Sources */,
