@@ -13,6 +13,34 @@ import JavaScriptCore
 
 class NeteaseMusicAPI: NSObject {
     
+    lazy var pcOSSession: Session = {
+        let session = Session(configuration: .ephemeral)
+        let cookie = HTTPCookie(properties: [.domain : "music.163.com",
+                                             .name: "os",
+                                             .value: "pc",
+                                             .path: "/"])!
+        
+        URLSessionConfiguration.default.httpCookieStorage?.cookies?.forEach {
+            session.sessionConfiguration.httpCookieStorage?.setCookie($0)
+        }
+        session.sessionConfiguration.httpCookieStorage?.setCookie(cookie)
+        session.sessionConfiguration.headers = HTTPHeaders.default
+        session.sessionConfiguration.headers.update(name: "user-agent", value: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15")
+        return session
+    }()
+    
+    lazy var defaultSession: Session = {
+        let session = Session(configuration: .default)
+        session.sessionConfiguration.httpCookieStorage?.cookies?.filter {
+            $0.name == "os" && $0.value == "pc"
+            }.forEach {
+                session.sessionConfiguration.httpCookieStorage?.deleteCookie($0)
+        }
+        session.sessionConfiguration.headers = HTTPHeaders.default
+        session.sessionConfiguration.headers.update(name: "user-agent", value: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15")
+        return session
+    }()
+    
     var uid = -1
     var csrf: String {
         get {
@@ -476,7 +504,7 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/playlist/create",
                        p,
-                       CodeResult.self).map {
+                       CodeResult.self, pcOS: true).map {
                         if $0.code == 200 {
                             return ()
                         } else {
@@ -566,6 +594,7 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
         }
         
+        // Can't get album picUrl if cookies contains pc=os.
         return request("https://music.163.com/weapi/v3/song/detail",
                    p,
                    Result.self).map {
@@ -577,9 +606,10 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    private func request<T: Decodable>(_ url: String, _ parameters: String, headers: HTTPHeaders? = nil, _ resultType: T.Type, debug: Bool = false) -> Promise<T> {
+    private func request<T: Decodable>(_ url: String, _ parameters: String, headers: HTTPHeaders? = nil, _ resultType: T.Type, pcOS: Bool = false, debug: Bool = false) -> Promise<T> {
         return Promise { resolver in
-            AF.request(url, method: .post,
+            let session = pcOS ? pcOSSession : defaultSession
+            session.request(url, method: .post,
                        parameters: crypto(parameters),
                        headers: headers).response { re in
                         if debug, let d = re.data, let str = String(data: d, encoding: .utf8) {
