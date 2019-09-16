@@ -109,9 +109,7 @@ class MainWindowController: NSWindowController {
     
     func initSidebarItems() {
         guard let vc = self.contentViewController as? MainViewController else { return }
-        vc.children.compactMap {
-            $0 as? SidebarViewController
-            }.first?.updatePlaylists()
+        initSidebarPlaylists()
         
         vc.children.compactMap {
             $0 as? DiscoverViewController
@@ -120,6 +118,13 @@ class MainWindowController: NSWindowController {
         vc.children.compactMap {
             $0 as? FMViewController
             }.first?.loadFMTracks()
+    }
+    
+    func initSidebarPlaylists() {
+        guard let vc = self.contentViewController as? MainViewController else { return }
+        vc.children.compactMap {
+            $0 as? SidebarViewController
+            }.first?.updatePlaylists()
     }
     
     deinit {

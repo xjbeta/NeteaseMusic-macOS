@@ -91,10 +91,8 @@ class PlaylistViewController: NSViewController {
                 }
             }
         case newPlaylistMenuItem:
-            guard let newPlaylistWC = newPlaylistWindowController,
-                let sheetWindow = newPlaylistWC.window else { return }
-            (newPlaylistWC.contentViewController as? NewPlaylistViewController)?.textField.stringValue = ""
-            view.window?.beginSheet(sheetWindow, completionHandler: nil)
+            guard let newPlaylistVC = newPlaylistViewController else { return }
+            self.presentAsSheet(newPlaylistVC)
         default:
             let playlistId = sender.tag
             guard playlistId > 0 else { return }
@@ -169,10 +167,13 @@ class PlaylistViewController: NSViewController {
     var playlistId = -1
     var playlistType: SidebarViewController.ItemType = .none
     
-    lazy var newPlaylistWindowController: NSWindowController? = {
+    lazy var newPlaylistViewController: NewPlaylistViewController? = {
         let sb = NSStoryboard(name: "NewPlaylist", bundle: nil)
-        let wc = sb.instantiateController(withIdentifier: "NewPlaylistWindowController") as? NSWindowController
-        return wc
+        let vc = sb.instantiateController(withIdentifier: "NewPlaylistViewController") as? NewPlaylistViewController
+        vc?.updateSidebarItems = { [weak self] in
+            (self?.view.window?.windowController as? MainWindowController)?.initSidebarItems()
+        }
+        return vc
     }()
     
     override func viewDidLoad() {
@@ -355,6 +356,8 @@ extension PlaylistViewController: NSMenuItemValidation, NSMenuDelegate {
             default:
                 return false
             }
+        case newPlaylistMenuItem:
+            return true
         default:
             return false
         }
