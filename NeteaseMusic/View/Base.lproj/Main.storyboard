@@ -988,24 +988,6 @@
                                                         </tabViewItem>
                                                     </tabViewItems>
                                                 </tabView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="AFB-rE-r0G">
-                                                    <rect key="frame" x="1000" y="65" width="350" height="585"/>
-                                                    <subviews>
-                                                        <containerView translatesAutoresizingMaskIntoConstraints="NO" id="MzF-oZ-vIS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="585"/>
-                                                            <connections>
-                                                                <segue destination="pbH-2h-v2I" kind="embed" id="yOd-U3-jOK"/>
-                                                            </connections>
-                                                        </containerView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="MzF-oZ-vIS" secondAttribute="trailing" id="5df-MY-IRq"/>
-                                                        <constraint firstAttribute="width" constant="350" id="TgV-da-PBD"/>
-                                                        <constraint firstItem="MzF-oZ-vIS" firstAttribute="top" secondItem="AFB-rE-r0G" secondAttribute="top" id="Yzg-Ep-1De"/>
-                                                        <constraint firstAttribute="bottom" secondItem="MzF-oZ-vIS" secondAttribute="bottom" id="ZbJ-W4-7lF"/>
-                                                        <constraint firstItem="MzF-oZ-vIS" firstAttribute="leading" secondItem="AFB-rE-r0G" secondAttribute="leading" id="qgx-m8-IIc"/>
-                                                    </constraints>
-                                                </customView>
                                                 <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="e5p-uP-FaE">
                                                     <rect key="frame" x="0.0" y="0.0" width="1000" height="65"/>
                                                     <subviews>
@@ -1025,14 +1007,11 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="e5p-uP-FaE" secondAttribute="bottom" id="1PP-xW-RGh"/>
                                                 <constraint firstItem="e5p-uP-FaE" firstAttribute="leading" secondItem="c7C-3x-bjo" secondAttribute="leading" id="4AQ-rf-lHO"/>
-                                                <constraint firstItem="e5p-uP-FaE" firstAttribute="top" secondItem="AFB-rE-r0G" secondAttribute="bottom" id="5WL-Q3-y9a"/>
                                                 <constraint firstAttribute="trailing" secondItem="e5p-uP-FaE" secondAttribute="trailing" id="FDE-45-CKi"/>
                                                 <constraint firstAttribute="trailing" secondItem="h1J-AM-GWX" secondAttribute="trailing" id="I38-Pg-wD4"/>
-                                                <constraint firstAttribute="trailing" secondItem="AFB-rE-r0G" secondAttribute="trailing" constant="-350" id="Rwg-aD-X3R"/>
                                                 <constraint firstItem="e5p-uP-FaE" firstAttribute="top" secondItem="h1J-AM-GWX" secondAttribute="bottom" id="Zcl-s6-m9g"/>
                                                 <constraint firstItem="h1J-AM-GWX" firstAttribute="leading" secondItem="c7C-3x-bjo" secondAttribute="leading" id="d5e-j0-mjd"/>
                                                 <constraint firstItem="h1J-AM-GWX" firstAttribute="top" secondItem="c7C-3x-bjo" secondAttribute="top" id="iQC-T1-ej9"/>
-                                                <constraint firstItem="AFB-rE-r0G" firstAttribute="top" secondItem="c7C-3x-bjo" secondAttribute="top" id="ycy-da-1r6"/>
                                             </constraints>
                                         </view>
                                     </tabViewItem>
@@ -1071,8 +1050,6 @@
                         <outlet property="mainTabView" destination="Po7-mc-yBA" id="0Hx-XE-5kD"/>
                         <outlet property="playingSongTabView" destination="h1J-AM-GWX" id="hZ0-bG-RI6"/>
                         <outlet property="playingSongView" destination="eNf-lb-9SZ" id="uo8-Ay-5FC"/>
-                        <outlet property="playlistLayoutConstraint" destination="Rwg-aD-X3R" id="kJ8-Su-irt"/>
-                        <outlet property="playlistView" destination="AFB-rE-r0G" id="XYH-0f-ejE"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1085,7 +1062,7 @@
                 <controllerPlaceholder storyboardName="ControlBar" id="u9C-ge-q0T" sceneMemberID="viewController"/>
                 <customObject id="97P-ZL-BO9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="1152"/>
+            <point key="canvasLocation" x="767" y="1063"/>
         </scene>
         <!--FM-->
         <scene sceneID="CLh-uX-oMm">
@@ -1093,7 +1070,7 @@
                 <controllerPlaceholder storyboardName="FM" id="Wq4-hO-qaB" sceneMemberID="viewController"/>
                 <customObject id="CPL-xe-CPu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744" y="1229"/>
+            <point key="canvasLocation" x="744" y="1140"/>
         </scene>
         <!--ArtistView-->
         <scene sceneID="Eg6-Je-f3G">
@@ -1101,7 +1078,7 @@
                 <controllerPlaceholder storyboardName="ArtistView" id="cq6-3d-Khw" sceneMemberID="viewController"/>
                 <customObject id="TjD-39-oWa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="1299"/>
+            <point key="canvasLocation" x="766" y="1210"/>
         </scene>
         <!--SearchResultView-->
         <scene sceneID="HUU-Bv-WmE">
@@ -1109,7 +1086,7 @@
                 <controllerPlaceholder storyboardName="SearchResultView" id="Xdt-fC-huh" sceneMemberID="viewController"/>
                 <customObject id="rTX-MW-I6c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="789" y="1365"/>
+            <point key="canvasLocation" x="789" y="1276"/>
         </scene>
         <!--Sidebar-->
         <scene sceneID="dp9-gY-ytn">
@@ -1117,7 +1094,7 @@
                 <controllerPlaceholder storyboardName="Sidebar" id="DJj-ZS-YFg" sceneMemberID="viewController"/>
                 <customObject id="SQk-qu-gIb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="1082"/>
+            <point key="canvasLocation" x="758" y="993"/>
         </scene>
         <!--Lyric-->
         <scene sceneID="gEb-xR-U33">
@@ -1157,15 +1134,7 @@
                 <controllerPlaceholder storyboardName="DiscoverView" id="zL7-cd-vEy" sceneMemberID="viewController"/>
                 <customObject id="d94-Ke-JsM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="869"/>
-        </scene>
-        <!--SidePlaylistView-->
-        <scene sceneID="DkG-2z-3Og">
-            <objects>
-                <controllerPlaceholder storyboardName="SidePlaylistView" id="pbH-2h-v2I" sceneMemberID="viewController"/>
-                <customObject id="lov-HT-1ki" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="785" y="942"/>
+            <point key="canvasLocation" x="775" y="858"/>
         </scene>
         <!--PlayingSongView-->
         <scene sceneID="uSP-cT-XWb">
@@ -1173,7 +1142,7 @@
                 <controllerPlaceholder storyboardName="PlayingSongView" id="4w4-6c-N5y" sceneMemberID="viewController"/>
                 <customObject id="TR9-UZ-aqO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="1013"/>
+            <point key="canvasLocation" x="787" y="924"/>
         </scene>
     </scenes>
     <resources>

@@ -202,7 +202,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="controlAction:" target="OYD-vG-24V" id="vES-X0-U4p"/>
+                                            <segue destination="Jtb-Nv-N2Z" kind="popover" popoverAnchorView="rs6-6p-TzI" popoverBehavior="t" preferredEdge="maxY" id="IKB-cf-0tk"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -273,6 +273,14 @@
                 <customObject id="Eze-3v-gxd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="1596.5"/>
+        </scene>
+        <!--SidePlaylistView-->
+        <scene sceneID="Gl4-nu-EuC">
+            <objects>
+                <controllerPlaceholder storyboardName="SidePlaylistView" id="Jtb-Nv-N2Z" sceneMemberID="viewController"/>
+                <customObject id="xip-Jk-con" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="778" y="1596"/>
         </scene>
     </scenes>
     <resources>

@@ -23,15 +23,11 @@ class MainViewController: NSViewController {
         case main, playingSong
     }
     
-    @IBOutlet weak var playlistLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var playlistView: NSView!
     @IBOutlet weak var playingSongView: NSView!
     
     var sidebarItemObserver: NSKeyValueObservation?
     var playlistNotification: NSObjectProtocol?
     var playingSongNotification: NSObjectProtocol?
-    
-    var playlistViewStatus: ExtendedViewState = .hidden
     var playingSongViewStatus: ExtendedViewState = .hidden {
         didSet {
             NotificationCenter.default.post(name: .playingSongViewStatus, object: nil, userInfo: ["status": playingSongViewStatus])
@@ -60,10 +56,6 @@ class MainViewController: NSViewController {
             }
         }
         
-        playlistNotification = NotificationCenter.default.addObserver(forName: .showPlaylist, object: nil, queue: .main) { [weak self] _ in
-            self?.updatePlaylistLayout()
-        }
-        
         playingSongNotification = NotificationCenter.default.addObserver(forName: .showPlayingSong, object: nil, queue: .main) { [weak self] _ in
             if PlayCore.shared.fmMode,
                 let _ = PlayCore.shared.currentFMTrack {
@@ -89,24 +81,6 @@ class MainViewController: NSViewController {
     
     func updatePlayingSongTabView(_ item: playingSongTabItems) {
         playingSongTabView.selectTabViewItem(at: item.rawValue)
-    }
-    
-    func updatePlaylistLayout() {
-        guard playlistViewStatus != .animation else { return }
-        let width = playlistView.frame.width
-
-        playlistViewStatus = .animation
-        let newStatus: ExtendedViewState = playlistLayoutConstraint.constant == -350 ? .display : .hidden
-        NSAnimationContext.runAnimationGroup({ [weak self] context in
-            if newStatus == .display {
-                self?.playlistLayoutConstraint.animator().constant += width
-            } else {
-                self?.playlistLayoutConstraint.animator().constant = -350
-            }
-        }) { [weak self] in
-            self?.playlistViewStatus = newStatus
-        }
-        
     }
     
     deinit {

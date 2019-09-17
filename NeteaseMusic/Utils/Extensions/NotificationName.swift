@@ -10,7 +10,6 @@ import Cocoa
 import Foundation
 
 extension Notification.Name {
-    static let showPlaylist = Notification.Name("com.xjbeta.NeteaseMusic.ShowPlaylist")
     static let showPlayingSong = Notification.Name("com.xjbeta.NeteaseMusic.ShowPlayingSong")
     static let playingSongViewStatus = Notification.Name("com.xjbeta.NeteaseMusic.PlayingSongViewStatus")
     static let selectSidebarItem = Notification.Name("com.xjbeta.NeteaseMusic.SelectSidebarItem")

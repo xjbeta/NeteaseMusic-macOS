@@ -65,8 +65,6 @@ class ControlBarViewController: NSViewController {
             }
         case muteButton:
             player.isMuted = !player.isMuted
-        case playlistButton:
-            NotificationCenter.default.post(name: .showPlaylist, object: nil)
         case repeatModeButton:
             switch PlayCore.shared.repeatMode {
             case .noRepeat:
