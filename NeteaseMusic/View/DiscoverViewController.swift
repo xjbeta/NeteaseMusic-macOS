@@ -10,8 +10,47 @@ import Cocoa
 import PromiseKit
 
 class DiscoverViewController: NSViewController {
-
-    @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet var collectionViewMenu: NSMenu!
+    @IBOutlet weak var playMenuItem: NSMenuItem!
+    @IBOutlet weak var playNextMenuItem: NSMenuItem!
+    @IBOutlet weak var subscribeMenuItem: NSMenuItem!
+    @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
+    @IBOutlet weak var notInterestedMenuItem: NSMenuItem!
+    
+    @IBAction func menuItemAction(_ sender: NSMenuItem) {
+        guard let index = collectionView.clickedIndex,
+            let item = recommendedItems[safe: index] else { return }
+        let playCore = PlayCore.shared
+        
+        switch sender {
+        case playMenuItem:
+            break
+        case playNextMenuItem:
+            break
+        case subscribeMenuItem:
+            playCore.api.playlistSubscribe(item.id).done {
+                print("Subscribe playlist \(item.id) success.")
+                }.catch {
+                    print("Subscribe playlist \(item.id) error \($0).")
+            }
+        case copyLinkMenuItem:
+            let str = "https://music.163.com/playlist?id=\(item.id)"
+            ViewControllerManager.shared.copyToPasteboard(str)
+        case notInterestedMenuItem:
+            playCore.api.discoveryRecommendDislike(item.id, isPlaylist: true, alg: item.alg).done {
+                print("Dislike playlist \(item.id) success.")
+                guard let playlists = $0.1 else { return }
+                self.initRecommendedItems(playlists)
+                self.collectionView.reloadData()
+                }.catch {
+                   print("Dislike playlist \(item.id) error \($0).")
+            }
+        default:
+            break
+        }
+    }
+    
+    @IBOutlet weak var collectionView: DailyCollectionView!
     enum RecommendPlaylist {
         case daily, normal
     }
@@ -20,12 +59,14 @@ class DiscoverViewController: NSViewController {
         var title: String
         var imageUrl: URL?
         var id: Int = 0
+        var alg: String
         var type: RecommendPlaylist
         
-        init(title: String, id: Int = -1, type: RecommendPlaylist = .normal, imageU: URL? = nil) {
+        init(title: String, id: Int = -1, alg: String = "", type: RecommendPlaylist = .normal, imageU: URL? = nil) {
             self.title = title
             self.id = id
             self.type = type
+            self.alg = alg
             self.imageUrl = imageU
         }   
     }
@@ -39,15 +80,19 @@ class DiscoverViewController: NSViewController {
     
     func initRecommend() {
         PlayCore.shared.api.recommendResource().map(on: .global()) { [weak self] res in
-            self?.recommendedItems.removeAll()
-            self?.recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .daily))
-            res.forEach {
-                self?.recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, imageU: $0.picUrl))
-            }
+            self?.initRecommendedItems(res)
             }.done(on: .main) { [weak self] in
                 self?.collectionView.reloadData()
             }.catch {
                 print($0)
+        }
+    }
+    
+    func initRecommendedItems(_ playlists: [RecommendResource.Playlist]) {
+        recommendedItems.removeAll()
+        recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .daily))
+        playlists.forEach {
+            recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, alg: $0.alg, imageU: $0.picUrl))
         }
     }
     
@@ -89,5 +134,31 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
         
         ViewControllerManager.shared.selectSidebarItem(.discoverPlaylist, rItem.id)
         collectionView.deselectAll(nil)
+    }
+}
+
+extension DiscoverViewController: NSMenuItemValidation {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let index = collectionView.clickedIndex,
+            let item = recommendedItems[safe: index] else { return false }
+        if index == 0 {
+            return false
+        } else {
+            switch menuItem {
+            case playMenuItem:
+                break
+            case playNextMenuItem:
+                break
+            case copyLinkMenuItem:
+                return true
+            case subscribeMenuItem:
+                return true
+            case notInterestedMenuItem:
+                return true
+            default:
+                break
+            }
+        }
+        return false
     }
 }

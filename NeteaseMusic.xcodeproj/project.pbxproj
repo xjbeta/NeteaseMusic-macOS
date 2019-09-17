@@ -21,6 +21,7 @@
 		012772DF229AA1A500C55537 /* SearchSuggestionsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */; };
 		012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012772E0229B9E4400C55537 /* SearchResultView.storyboard */; };
 		012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772E2229E1D9A00C55537 /* SearchResultViewController.swift */; };
+		012AE96B2330883900E0CB6C /* DailyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AE96A2330883900E0CB6C /* DailyCollectionView.swift */; };
 		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F115722603CE8002D5599 /* SidePlaylistViewController.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
@@ -152,6 +153,7 @@
 		012772E822A753C500C55537 /* SearchAlbums.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchAlbums.json; sourceTree = "<group>"; };
 		012772EA22A753F200C55537 /* SearchArtists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchArtists.json; sourceTree = "<group>"; };
 		012772EC22A7542A00C55537 /* SearchPlaylists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchPlaylists.json; sourceTree = "<group>"; };
+		012AE96A2330883900E0CB6C /* DailyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionView.swift; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				0137264222698D20004EDCE5 /* DiscoverViewController.swift */,
 				01372649226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift */,
 				0137264B226ADA53004EDCE5 /* PlaylistCollectionViewItem.xib */,
+				012AE96A2330883900E0CB6C /* DailyCollectionView.swift */,
 				0131439B226C239B00B9E26F /* DailyCollectionViewItem.swift */,
 				0131439D226C23AC00B9E26F /* DailyCollectionViewItem.xib */,
 				012FEA6D2289B9D700698969 /* DiscoverView.storyboard */,
@@ -700,6 +703,7 @@
 				0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */,
 				0133AC722320CDE800090D5E /* NSImage+RoundedCorners.swift in Sources */,
 				0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */,
+				012AE96B2330883900E0CB6C /* DailyCollectionView.swift in Sources */,
 				014327B422AB729F00651064 /* PageSegmentedControlViewController.swift in Sources */,
 				013EF159225732BC00E4D7D8 /* SidebarViewController.swift in Sources */,
 				0137264322698D20004EDCE5 /* DiscoverViewController.swift in Sources */,
