@@ -65,7 +65,7 @@ class PlaylistViewController: NSViewController {
             case .discoverPlaylist:
                 guard let track = selectedTracks.first else { return }
                 PlayCore.shared.api.discoveryRecommendDislike(track.element.id).done {
-                    let newTrack = $0
+                    guard let newTrack = $0.0 else { return }
                     newTrack.index = track.element.index
                     self.tracks[track.offset] = newTrack
                     print("Remove \(ids) from discoverPlaylist done.")

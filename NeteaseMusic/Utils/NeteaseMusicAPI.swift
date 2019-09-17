@@ -513,28 +513,51 @@ class NeteaseMusicAPI: NSObject {
         }
     }
 
-    func discoveryRecommendDislike(_ id: Int) -> Promise<(Track)> {
+    func discoveryRecommendDislike(_ id: Int, isPlaylist: Bool = false, alg: String = "") -> Promise<((Track?, [RecommendResource.Playlist]?))> {
         struct P: Encodable {
-            let resId: String
-            let resType: Int
-            let sceneType: Int
+            let resId: Int
+            let resType: Int  // daily 4  playlist 1
+            let sceneType: Int?  // daily 1  playlist nil
+            let alg: String?  // daily nil
             let csrfToken: String
             enum CodingKeys: String, CodingKey {
-                case resId, resType, sceneType, csrfToken = "csrf_token"
+                case resId, resType, sceneType, alg, csrfToken = "csrf_token"
+            }
+        }
+
+        let p = P(resId: id,
+                  resType: isPlaylist ? 1 : 4,
+                  sceneType: isPlaylist ? nil : 1,
+                  alg: isPlaylist ? alg : nil,
+                  csrfToken: csrf).jsonString()
+
+        class Result: Decodable {
+            let code: Int
+            let track: Track?
+            let playlists: [RecommendResource.Playlist]?
+            
+            enum CodingKeys: String, CodingKey {
+                case code, data
+            }
+            
+            required init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: CodingKeys.self)
+                self.code = try container.decode(Int.self, forKey: .code)
+                self.track = try? container.decodeIfPresent(Track.self, forKey: .data)
+                self.playlists = try? container.decodeIfPresent([RecommendResource.Playlist].self, forKey: .data)
             }
         }
         
-        let p = P(resId: "\(id)", resType: 4, sceneType: 1, csrfToken: csrf).jsonString()
-        
-        struct Result: Decodable {
-            let code: Int
-            let data: Track
-        }
-        
-//        暂无更多推荐"
+//        code == 432, msg == "今日暂无更多推荐"
         return request("https://music.163.com/weapi/v2/discovery/recommend/dislike",
                        p,
-                       Result.self).map { $0.data }
+                       Result.self).map {
+                        if $0.code == 200 {
+                            return (($0.track, $0.playlists))
+                        } else {
+                            throw RequestError.errorCode(($0.code, ""))
+                        }
+        }
     }
     
     func playlistDelete(_ id: Int) -> Promise<()> {

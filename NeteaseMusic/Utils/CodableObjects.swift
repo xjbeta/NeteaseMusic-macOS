@@ -191,6 +191,7 @@ struct RecommendResource: Decodable {
         let picUrl: URL
         let trackCount: Int
         let playcount: Int
+        let alg: String
     }
 }
 
