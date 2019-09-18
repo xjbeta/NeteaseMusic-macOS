@@ -39,8 +39,19 @@ class DiscoverViewController: NSViewController {
         case notInterestedMenuItem:
             playCore.api.discoveryRecommendDislike(item.id, isPlaylist: true, alg: item.alg).done {
                 print("Dislike playlist \(item.id) success.")
-                guard let playlists = $0.1 else { return }
-                self.initRecommendedItems(playlists)
+                guard let playlist = $0.1 else { return }
+                
+                if self.recommendedItems.contains(where: {
+                    $0.id == playlist.id
+                }) {
+                    //        code == 432, msg == "今日暂无更多推荐"
+                    
+                    
+                    return
+                }
+                
+                
+                self.recommendedItems[index] = .init(title: playlist.name, id: playlist.id, alg: playlist.alg, imageU: playlist.picUrl)
                 self.collectionView.reloadData()
                 }.catch {
                    print("Dislike playlist \(item.id) error \($0).")

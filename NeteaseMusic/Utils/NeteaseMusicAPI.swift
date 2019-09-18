@@ -513,7 +513,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
 
-    func discoveryRecommendDislike(_ id: Int, isPlaylist: Bool = false, alg: String = "") -> Promise<((Track?, [RecommendResource.Playlist]?))> {
+    func discoveryRecommendDislike(_ id: Int, isPlaylist: Bool = false, alg: String = "") -> Promise<((Track?, RecommendResource.Playlist?))> {
         struct P: Encodable {
             let resId: Int
             let resType: Int  // daily 4  playlist 1
@@ -534,7 +534,7 @@ class NeteaseMusicAPI: NSObject {
         class Result: Decodable {
             let code: Int
             let track: Track?
-            let playlists: [RecommendResource.Playlist]?
+            let playlist: RecommendResource.Playlist?
             
             enum CodingKeys: String, CodingKey {
                 case code, data
@@ -544,7 +544,7 @@ class NeteaseMusicAPI: NSObject {
                 let container = try decoder.container(keyedBy: CodingKeys.self)
                 self.code = try container.decode(Int.self, forKey: .code)
                 self.track = try? container.decodeIfPresent(Track.self, forKey: .data)
-                self.playlists = try? container.decodeIfPresent([RecommendResource.Playlist].self, forKey: .data)
+                self.playlist = try? container.decodeIfPresent(RecommendResource.Playlist.self, forKey: .data)
             }
         }
         
@@ -553,7 +553,7 @@ class NeteaseMusicAPI: NSObject {
                        p,
                        Result.self).map {
                         if $0.code == 200 {
-                            return (($0.track, $0.playlists))
+                            return (($0.track, $0.playlist))
                         } else {
                             throw RequestError.errorCode(($0.code, ""))
                         }
