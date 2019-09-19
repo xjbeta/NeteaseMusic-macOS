@@ -26,6 +26,7 @@ class ControlBarViewController: NSViewController {
     
     @IBAction func controlAction(_ sender: NSButton) {
         let player = PlayCore.shared.player
+        let preferences = Preferences.shared
         switch sender {
         case previousButton:
             PlayCore.shared.previousSong()
@@ -66,24 +67,24 @@ class ControlBarViewController: NSViewController {
         case muteButton:
             let mute = !player.isMuted
             player.isMuted = mute
-            Preferences.shared.mute = mute
+            preferences.mute = mute
             muteButton.image = mute ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice"))
         case repeatModeButton:
-            switch PlayCore.shared.repeatMode {
+            switch preferences.repeatMode {
             case .noRepeat:
-                PlayCore.shared.repeatMode = .repeatPlayList
+                preferences.repeatMode = .repeatPlayList
             case .repeatPlayList:
-                PlayCore.shared.repeatMode = .repeatItem
+                preferences.repeatMode = .repeatItem
             case .repeatItem:
-                PlayCore.shared.repeatMode = .noRepeat
+                preferences.repeatMode = .noRepeat
             }
             initPlayModeButton()
         case shuffleModeButton:
-            switch PlayCore.shared.shuffleMode {
+            switch preferences.shuffleMode {
             case .noShuffle:
-                PlayCore.shared.shuffleMode = .shuffleItems
+                preferences.shuffleMode = .shuffleItems
             case .shuffleItems:
-                PlayCore.shared.shuffleMode = .noShuffle
+                preferences.shuffleMode = .noShuffle
             case .shuffleAlbums:
                 break
             }
@@ -206,7 +207,8 @@ class ControlBarViewController: NSViewController {
     }
     
     func initPlayModeButton() {
-        switch PlayCore.shared.repeatMode {
+        let preferences = Preferences.shared
+        switch preferences.repeatMode {
         case .repeatPlayList:
             repeatModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-loop"))
             repeatModeButton.isTransparent = false
@@ -218,7 +220,7 @@ class ControlBarViewController: NSViewController {
             repeatModeButton.isTransparent = true
         }
         
-        switch PlayCore.shared.shuffleMode {
+        switch preferences.shuffleMode {
         case .shuffleItems:
             shuffleModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
             shuffleModeButton.isTransparent = false

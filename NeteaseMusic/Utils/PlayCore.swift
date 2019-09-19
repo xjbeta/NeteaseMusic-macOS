@@ -16,12 +16,7 @@ class PlayCore: NSObject {
         player.automaticallyWaitsToMinimizeStalling = false
     }
     
-    enum RepeatMode {
-        case repeatPlayList, repeatItem, noRepeat
-    }
-    enum ShuffleMode {
-        case noShuffle, shuffleItems, shuffleAlbums
-    }
+
     
     let api = NeteaseMusicAPI()
     let player = AVPlayer()
@@ -33,8 +28,7 @@ class PlayCore: NSObject {
     @objc dynamic var currentTrack: Track?
     
     
-    var repeatMode: RepeatMode = .noRepeat
-    var shuffleMode: ShuffleMode = .shuffleItems
+
     @objc dynamic var playedTracks = [Int]()
     var playedAlbums = [Int]()
     
@@ -112,6 +106,9 @@ class PlayCore: NSObject {
             play(nextTrack)
             return
         }
+        
+        let repeatMode = Preferences.shared.repeatMode
+        let shuffleMode = Preferences.shared.shuffleMode
         
         switch repeatMode {
         case .noRepeat, .repeatPlayList:
