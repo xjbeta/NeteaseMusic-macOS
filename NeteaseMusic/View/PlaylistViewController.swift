@@ -46,12 +46,12 @@ class PlaylistViewController: NSViewController {
         case playNextMenuItem:
             break
         case copyLinkMenuItem:
-            guard selectedIndexs.count == 1,
-                let trackId = tracks[safe: tableView.selectedRow]?.id else {
-                return
+            if let t = tracks.enumerated().filter ({
+                selectedIndexs.contains($0.offset)
+            }).first?.element {
+                let str = "https://music.163.com/song?id=\(t.id)"
+                ViewControllerManager.shared.copyToPasteboard(str)
             }
-            let str = "https://music.163.com/song?id=\(trackId)"
-            ViewControllerManager.shared.copyToPasteboard(str)
         case removeFromPlaylistMenuItem:
             let selectedTracks = tracks.enumerated().filter {
                 selectedIndexs.contains($0.offset)
