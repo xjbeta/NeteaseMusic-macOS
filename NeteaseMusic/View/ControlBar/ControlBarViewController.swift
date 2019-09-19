@@ -64,7 +64,10 @@ class ControlBarViewController: NSViewController {
                 }
             }
         case muteButton:
-            player.isMuted = !player.isMuted
+            let mute = !player.isMuted
+            player.isMuted = mute
+            Preferences.shared.mute = mute
+            muteButton.image = mute ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice"))
         case repeatModeButton:
             switch PlayCore.shared.repeatMode {
             case .noRepeat:
@@ -106,7 +109,9 @@ class ControlBarViewController: NSViewController {
                 durationSlider.ignoreValueUpdate = false
             }
         case volumeSlider:
-            PlayCore.shared.player.volume = volumeSlider.floatValue
+            let v = volumeSlider.floatValue
+            PlayCore.shared.player.volume = v
+            Preferences.shared.volume = v
         default:
             break
         }
@@ -114,18 +119,21 @@ class ControlBarViewController: NSViewController {
     
     var periodicTimeObserverToken: Any?
     var pauseStautsObserver: NSKeyValueObservation?
-    var muteStautsObserver: NSKeyValueObservation?
     var previousButtonObserver: NSKeyValueObservation?
     var currentTrackObserver: NSKeyValueObservation?
     var currentFMTrackObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addPeriodicTimeObserver()
         
-        volumeSlider.maxValue = 1
-        volumeSlider.floatValue = PlayCore.shared.player.volume
+        let volume = Preferences.shared.volume
+        volumeSlider.floatValue = volume
+        PlayCore.shared.player.volume = volume
+        
+        let mute = Preferences.shared.mute
+        muteButton.image = mute ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice"))
+        PlayCore.shared.player.isMuted = mute
         
         trackPicButton.wantsLayer = true
         trackPicButton.layer?.cornerRadius = 4
@@ -145,11 +153,6 @@ class ControlBarViewController: NSViewController {
             default:
                 break
             }
-        }
-        
-        muteStautsObserver = PlayCore.shared.player.observe(\.isMuted, options: [.initial, .new]) { [weak self] (player, changes) in
-            guard let image = player.isMuted ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice")) else { return }
-            self?.muteButton.image = image
         }
         
         previousButtonObserver = PlayCore.shared.observe(\.playedTracks, options: [.initial, .new]) { [weak self] (playCore, changes) in
@@ -232,7 +235,7 @@ class ControlBarViewController: NSViewController {
         removePeriodicTimeObserver()
         pauseStautsObserver?.invalidate()
         previousButtonObserver?.invalidate()
-        muteStautsObserver?.invalidate()
+//        muteStautsObserver?.invalidate()
         currentTrackObserver?.invalidate()
         currentFMTrackObserver?.invalidate()
     }

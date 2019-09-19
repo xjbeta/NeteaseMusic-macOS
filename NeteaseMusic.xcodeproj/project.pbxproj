@@ -27,6 +27,7 @@
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
+		012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FB7D923337FCD007F7247 /* Preferences.swift */; };
 		012FEA602286843D00698969 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA5F2286843D00698969 /* CoverImageView.swift */; };
 		012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* CoverImageButton.swift */; };
 		012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA662289B80F00698969 /* Sidebar.storyboard */; };
@@ -159,6 +160,7 @@
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		012FB7D923337FCD007F7247 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		012FEA5F2286843D00698969 /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		012FEA61228684ED00698969 /* CoverImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageButton.swift; sourceTree = "<group>"; };
 		012FEA662289B80F00698969 /* Sidebar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sidebar.storyboard; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E40FE822C1DF4600864118 /* ImageLoader.swift */,
 				012165C9232E07F300D74344 /* Crypto.swift */,
+				012FB7D923337FCD007F7247 /* Preferences.swift */,
 				0133AC732321FEB800090D5E /* Transformers */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
 				013EF1572256501000E4D7D8 /* Extensions */,
@@ -650,6 +653,7 @@
 			files = (
 				012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */,
 				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
+				012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */,
 				012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */,
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
