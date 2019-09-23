@@ -7,22 +7,11 @@
 //
 
 import Cocoa
-import Cache
 import Alamofire
+import AlamofireImage
 
 class ImageLoader: NSObject {
-    static var storage: DiskStorage<Image> {
-        get {
-            
-            let diskConfig = DiskConfig(name: Bundle.main.bundleIdentifier! + ".imageCache",
-                                        expiry: .seconds(3600 * 24 * 7),  // a week
-                maxSize: 100*1000000)
-            
-            let storage = try! DiskStorage<Image>(config: diskConfig,
-                                                  transformer: TransformerFactory.forImage())
-            return storage
-        }
-    }
+    static let imageCache = AutoPurgingImageCache(memoryCapacity: 200_000_000)
     
     static func request(_ url: String, complete: @escaping ((NSImage) -> ())) {
         AF.request(url).responseData {
@@ -43,11 +32,11 @@ class ImageLoader: NSObject {
             u += "?param=\(w)y\(w)"
         }
         
-        if let image = try? ImageLoader.storage.object(forKey: u) {
+        if let image = imageCache.image(withIdentifier: u) {
             complete(image)
         } else {
             ImageLoader.request(u) { image in
-                try? ImageLoader.storage.setObject(image, forKey: u)
+                imageCache.add(image, withIdentifier: u)
                 complete(image)
             }
         }
