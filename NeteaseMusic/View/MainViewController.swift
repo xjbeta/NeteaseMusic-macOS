@@ -50,6 +50,8 @@ class MainViewController: NSViewController {
                     self.updateContentTabView(.artist)
                 case .searchResults:
                     self.updateContentTabView(.search)
+                case .preferences:
+                    self.updateContentTabView(.preferences)
                 default:
                     break
                 }

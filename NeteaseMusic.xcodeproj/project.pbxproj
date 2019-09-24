@@ -18,6 +18,7 @@
 		011D41922338CB28001A6F40 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011D418F2338CB20001A6F40 /* Sparkle.framework */; };
 		011D41932338CB28001A6F40 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 011D418F2338CB20001A6F40 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		011D41942338CB34001A6F40 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 011D418E2338CB20001A6F40 /* Sparkle.framework.dSYM */; };
+		011D4198233907EC001A6F40 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D4197233907EC001A6F40 /* MainMenu.swift */; };
 		012165CA232E07F300D74344 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012165C9232E07F300D74344 /* Crypto.swift */; };
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
 		012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */; };
@@ -131,6 +132,7 @@
 		01190494230E653300738904 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewController.swift; sourceTree = "<group>"; };
 		011D418E2338CB20001A6F40 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		011D418F2338CB20001A6F40 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = SOURCE_ROOT; };
+		011D4197233907EC001A6F40 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		012165C9232E07F300D74344 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
 		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				01957D91224D01860006FCEC /* Main.storyboard */,
 				01FF8B76225C6551002D7906 /* MainWindowController.swift */,
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
+				011D4197233907EC001A6F40 /* MainMenu.swift */,
 				012FEA732289BC3000698969 /* Login */,
 				01467E86227EA8500037B49D /* Playlist */,
 				012FEA682289B8BB00698969 /* ControlBar */,
@@ -676,6 +679,7 @@
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
 				01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */,
+				011D4198233907EC001A6F40 /* MainMenu.swift in Sources */,
 				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
 				0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,

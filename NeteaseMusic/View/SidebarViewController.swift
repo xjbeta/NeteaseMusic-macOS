@@ -120,7 +120,7 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, subscribedPlaylists
+        case discover, fm, favourite, playlist, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, subscribedPlaylists, preferences
     }
     
     let defaultItems = [SidebarItem(type: .discover),
@@ -148,7 +148,7 @@ class SidebarViewController: NSViewController {
                     self?.outlineView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
                     self?.outlineViewSelectionIsChanging(notification)
                 }
-            case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash, .discoverPlaylist:
+            case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash, .discoverPlaylist, .preferences:
                 self?.outlineView.deselectAll(self)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
             default:

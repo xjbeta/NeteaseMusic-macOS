@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <action selector="preferences:" target="5W0-kA-yYe" id="cR3-xx-Ehh"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -676,6 +681,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NeteaseMusic" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="5W0-kA-yYe" customClass="MainMenu" customModule="NeteaseMusic" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="-301"/>
@@ -851,11 +857,11 @@
                                                                                             </tabViewItem>
                                                                                             <tabViewItem label="FM" identifier="" id="GFu-C8-YIB" userLabel="FM">
                                                                                                 <view key="view" id="Ux7-La-kjT">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="585"/>
                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                     <subviews>
                                                                                                         <containerView translatesAutoresizingMaskIntoConstraints="NO" id="tOV-hm-8fP">
-                                                                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="585"/>
                                                                                                             <connections>
                                                                                                                 <segue destination="Wq4-hO-qaB" kind="embed" id="Jnd-te-GBF"/>
                                                                                                             </connections>
@@ -871,17 +877,31 @@
                                                                                             </tabViewItem>
                                                                                             <tabViewItem label="Preferences" identifier="" id="Use-Rr-zxh" userLabel="Preferences">
                                                                                                 <view key="view" id="Ydw-QF-hzx">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                                    <subviews>
+                                                                                                        <containerView translatesAutoresizingMaskIntoConstraints="NO" id="VBw-3J-dRZ">
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                            <connections>
+                                                                                                                <segue destination="bqu-Rc-Ecb" kind="embed" id="ibQ-R1-7ch"/>
+                                                                                                            </connections>
+                                                                                                        </containerView>
+                                                                                                    </subviews>
+                                                                                                    <constraints>
+                                                                                                        <constraint firstAttribute="trailing" secondItem="VBw-3J-dRZ" secondAttribute="trailing" id="9mS-4L-pZ5"/>
+                                                                                                        <constraint firstItem="VBw-3J-dRZ" firstAttribute="leading" secondItem="Ydw-QF-hzx" secondAttribute="leading" id="BQL-NK-Tdc"/>
+                                                                                                        <constraint firstAttribute="bottom" secondItem="VBw-3J-dRZ" secondAttribute="bottom" id="w7J-AB-ahI"/>
+                                                                                                        <constraint firstItem="VBw-3J-dRZ" firstAttribute="top" secondItem="Ydw-QF-hzx" secondAttribute="top" id="x4p-Ud-seV"/>
+                                                                                                    </constraints>
                                                                                                 </view>
                                                                                             </tabViewItem>
                                                                                             <tabViewItem label="Discover" identifier="" id="2Qr-o0-lnR" userLabel="Discover">
                                                                                                 <view key="view" id="8fz-mJ-Rur">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                     <subviews>
                                                                                                         <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Knh-Vh-UCK">
-                                                                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                             <connections>
                                                                                                                 <segue destination="zL7-cd-vEy" kind="embed" id="Q9s-pc-0rW"/>
                                                                                                             </connections>
@@ -897,17 +917,17 @@
                                                                                             </tabViewItem>
                                                                                             <tabViewItem label="Favourite" identifier="" id="CFK-R6-c6R" userLabel="Favourite">
                                                                                                 <view key="view" id="ghc-Gt-k7F">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                 </view>
                                                                                             </tabViewItem>
                                                                                             <tabViewItem label="Item 5" identifier="" id="1yf-sk-vGB" userLabel="Search">
                                                                                                 <view key="view" id="XeL-Tp-kNn">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                     <subviews>
                                                                                                         <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-T0-GFZ">
-                                                                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                             <connections>
                                                                                                                 <segue destination="Xdt-fC-huh" kind="embed" id="twu-7o-Uft"/>
                                                                                                             </connections>
@@ -923,11 +943,11 @@
                                                                                             </tabViewItem>
                                                                                             <tabViewItem label="Item 6" identifier="" id="bsz-vJ-zpk" userLabel="Artist">
                                                                                                 <view key="view" id="lrv-nL-hjT">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                     <subviews>
                                                                                                         <containerView translatesAutoresizingMaskIntoConstraints="NO" id="i8M-Hf-SQH">
-                                                                                                            <rect key="frame" x="0.0" y="0.0" width="822" height="585"/>
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
                                                                                                             <connections>
                                                                                                                 <segue destination="cq6-3d-Khw" kind="embed" id="aH9-nb-7sy"/>
                                                                                                             </connections>
@@ -1062,7 +1082,7 @@
                 <controllerPlaceholder storyboardName="ControlBar" id="u9C-ge-q0T" sceneMemberID="viewController"/>
                 <customObject id="97P-ZL-BO9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="1063"/>
+            <point key="canvasLocation" x="788" y="1286"/>
         </scene>
         <!--FM-->
         <scene sceneID="CLh-uX-oMm">
@@ -1070,7 +1090,15 @@
                 <controllerPlaceholder storyboardName="FM" id="Wq4-hO-qaB" sceneMemberID="viewController"/>
                 <customObject id="CPL-xe-CPu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744" y="1140"/>
+            <point key="canvasLocation" x="765" y="866"/>
+        </scene>
+        <!--Preferences-->
+        <scene sceneID="yjN-vJ-4EJ">
+            <objects>
+                <controllerPlaceholder storyboardName="Preferences" id="bqu-Rc-Ecb" sceneMemberID="viewController"/>
+                <customObject id="Ml2-EA-CbT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792" y="1233"/>
         </scene>
         <!--ArtistView-->
         <scene sceneID="Eg6-Je-f3G">
@@ -1078,7 +1106,7 @@
                 <controllerPlaceholder storyboardName="ArtistView" id="cq6-3d-Khw" sceneMemberID="viewController"/>
                 <customObject id="TjD-39-oWa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="1210"/>
+            <point key="canvasLocation" x="787" y="822"/>
         </scene>
         <!--SearchResultView-->
         <scene sceneID="HUU-Bv-WmE">
@@ -1086,7 +1114,7 @@
                 <controllerPlaceholder storyboardName="SearchResultView" id="Xdt-fC-huh" sceneMemberID="viewController"/>
                 <customObject id="rTX-MW-I6c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="789" y="1276"/>
+            <point key="canvasLocation" x="810" y="1080"/>
         </scene>
         <!--Sidebar-->
         <scene sceneID="dp9-gY-ytn">
@@ -1094,7 +1122,7 @@
                 <controllerPlaceholder storyboardName="Sidebar" id="DJj-ZS-YFg" sceneMemberID="viewController"/>
                 <customObject id="SQk-qu-gIb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="993"/>
+            <point key="canvasLocation" x="779" y="1183"/>
         </scene>
         <!--Lyric-->
         <scene sceneID="gEb-xR-U33">
@@ -1118,7 +1146,7 @@
                 <controllerPlaceholder storyboardName="LoginView" id="aXf-RW-tMD" sceneMemberID="viewController"/>
                 <customObject id="Dux-8a-NGg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765" y="733"/>
+            <point key="canvasLocation" x="786" y="969"/>
         </scene>
         <!--PlaylistView-->
         <scene sceneID="t7u-rF-Ltk">
@@ -1126,7 +1154,7 @@
                 <controllerPlaceholder storyboardName="PlaylistView" id="1Hm-qT-83q" sceneMemberID="viewController"/>
                 <customObject id="Yrb-Of-rHM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="771" y="792"/>
+            <point key="canvasLocation" x="792" y="1021"/>
         </scene>
         <!--DiscoverView-->
         <scene sceneID="doz-1j-1Xn">
@@ -1134,7 +1162,7 @@
                 <controllerPlaceholder storyboardName="DiscoverView" id="zL7-cd-vEy" sceneMemberID="viewController"/>
                 <customObject id="d94-Ke-JsM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="858"/>
+            <point key="canvasLocation" x="796" y="915"/>
         </scene>
         <!--PlayingSongView-->
         <scene sceneID="uSP-cT-XWb">
@@ -1142,7 +1170,7 @@
                 <controllerPlaceholder storyboardName="PlayingSongView" id="4w4-6c-N5y" sceneMemberID="viewController"/>
                 <customObject id="TR9-UZ-aqO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="924"/>
+            <point key="canvasLocation" x="808" y="1134"/>
         </scene>
     </scenes>
     <resources>
