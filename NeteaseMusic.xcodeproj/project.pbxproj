@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,6 @@
 		0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0116E1B823248E5A00606C6C /* LogoutView.storyboard */; };
 		01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01190492230E651B00738904 /* NewPlaylist.storyboard */; };
 		01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01190494230E653300738904 /* NewPlaylistViewController.swift */; };
-		011D41842338C876001A6F40 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 011D41832338C876001A6F40 /* Alamofire */; };
-		011D41872338C8D4001A6F40 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 011D41862338C8D4001A6F40 /* PromiseKit */; };
-		011D418A2338C982001A6F40 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 011D41892338C982001A6F40 /* CryptoSwift */; };
-		011D418D2338CA0A001A6F40 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 011D418C2338CA0A001A6F40 /* AlamofireImage */; };
-		011D41922338CB28001A6F40 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011D418F2338CB20001A6F40 /* Sparkle.framework */; };
-		011D41932338CB28001A6F40 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 011D418F2338CB20001A6F40 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		011D41942338CB34001A6F40 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 011D418E2338CB20001A6F40 /* Sparkle.framework.dSYM */; };
 		011D4198233907EC001A6F40 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D4197233907EC001A6F40 /* MainMenu.swift */; };
 		012165CA232E07F300D74344 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012165C9232E07F300D74344 /* Crypto.swift */; };
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
@@ -87,6 +80,21 @@
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
+		01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; };
+		01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFB233DB3E100A87467 /* Alamofire.framework */; };
+		01DE5F07233DB3E100A87467 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFD233DB3E100A87467 /* Cache.framework */; };
+		01DE5F08233DB3E100A87467 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFE233DB3E100A87467 /* PromiseKit.framework */; };
+		01DE5F0D233DB3ED00A87467 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5F01233DB3E100A87467 /* Sparkle.framework */; };
+		01DE5F0E233DB3ED00A87467 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5F01233DB3E100A87467 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01DE5F0F233DB3FC00A87467 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFB233DB3E100A87467 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01DE5F10233DB3FC00A87467 /* Cache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFD233DB3E100A87467 /* Cache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01DE5F11233DB3FC00A87467 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01DE5F12233DB3FC00A87467 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFE233DB3E100A87467 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01DE5F13233DB41800A87467 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5EFC233DB3E100A87467 /* Alamofire.framework.dSYM */; };
+		01DE5F14233DB41800A87467 /* Cache.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */; };
+		01DE5F15233DB41800A87467 /* CryptoSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5F00233DB3E100A87467 /* CryptoSwift.framework.dSYM */; };
+		01DE5F16233DB41800A87467 /* PromiseKit.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5EFF233DB3E100A87467 /* PromiseKit.framework.dSYM */; };
+		01DE5F17233DB41800A87467 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */; };
 		01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E40FE822C1DF4600864118 /* ImageLoader.swift */; };
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
@@ -107,7 +115,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				011D41932338CB28001A6F40 /* Sparkle.framework in Embed Frameworks */,
+				01DE5F0F233DB3FC00A87467 /* Alamofire.framework in Embed Frameworks */,
+				01DE5F10233DB3FC00A87467 /* Cache.framework in Embed Frameworks */,
+				01DE5F11233DB3FC00A87467 /* CryptoSwift.framework in Embed Frameworks */,
+				01DE5F12233DB3FC00A87467 /* PromiseKit.framework in Embed Frameworks */,
+				01DE5F0E233DB3ED00A87467 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +130,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				011D41942338CB34001A6F40 /* Sparkle.framework.dSYM in CopyFiles */,
+				01DE5F13233DB41800A87467 /* Alamofire.framework.dSYM in CopyFiles */,
+				01DE5F14233DB41800A87467 /* Cache.framework.dSYM in CopyFiles */,
+				01DE5F15233DB41800A87467 /* CryptoSwift.framework.dSYM in CopyFiles */,
+				01DE5F16233DB41800A87467 /* PromiseKit.framework.dSYM in CopyFiles */,
+				01DE5F17233DB41800A87467 /* Sparkle.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +146,6 @@
 		0119048F2309065A00738904 /* FMTrashGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FMTrashGet.json; sourceTree = "<group>"; };
 		01190492230E651B00738904 /* NewPlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlaylist.storyboard; sourceTree = "<group>"; };
 		01190494230E653300738904 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewController.swift; sourceTree = "<group>"; };
-		011D418E2338CB20001A6F40 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		011D418F2338CB20001A6F40 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		011D4197233907EC001A6F40 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		012165C9232E07F300D74344 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
@@ -218,6 +232,16 @@
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
+		01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/Mac/CryptoSwift.framework; sourceTree = SOURCE_ROOT; };
+		01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Cache.framework.dSYM; path = Carthage/Build/Mac/Cache.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		01DE5EFB233DB3E100A87467 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		01DE5EFC233DB3E100A87467 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/Mac/Alamofire.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		01DE5EFD233DB3E100A87467 /* Cache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cache.framework; path = Carthage/Build/Mac/Cache.framework; sourceTree = SOURCE_ROOT; };
+		01DE5EFE233DB3E100A87467 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = SOURCE_ROOT; };
+		01DE5EFF233DB3E100A87467 /* PromiseKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = PromiseKit.framework.dSYM; path = Carthage/Build/Mac/PromiseKit.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		01DE5F00233DB3E100A87467 /* CryptoSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoSwift.framework.dSYM; path = Carthage/Build/Mac/CryptoSwift.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		01DE5F01233DB3E100A87467 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = SOURCE_ROOT; };
+		01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		01E07ACC232724A700C95319 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlaylistDetail.json; sourceTree = "<group>"; };
 		01E0F4A62261661B0043FAB6 /* PlayerUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayerUrl.json; sourceTree = "<group>"; };
@@ -239,11 +263,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				011D41842338C876001A6F40 /* Alamofire in Frameworks */,
-				011D418D2338CA0A001A6F40 /* AlamofireImage in Frameworks */,
-				011D41922338CB28001A6F40 /* Sparkle.framework in Frameworks */,
-				011D41872338C8D4001A6F40 /* PromiseKit in Frameworks */,
-				011D418A2338C982001A6F40 /* CryptoSwift in Frameworks */,
+				01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */,
+				01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */,
+				01DE5F0D233DB3ED00A87467 /* Sparkle.framework in Frameworks */,
+				01DE5F07233DB3E100A87467 /* Cache.framework in Frameworks */,
+				01DE5F08233DB3E100A87467 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,8 +430,16 @@
 		013EF13A22564DF300E4D7D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				011D418F2338CB20001A6F40 /* Sparkle.framework */,
-				011D418E2338CB20001A6F40 /* Sparkle.framework.dSYM */,
+				01DE5EFB233DB3E100A87467 /* Alamofire.framework */,
+				01DE5EFC233DB3E100A87467 /* Alamofire.framework.dSYM */,
+				01DE5EFD233DB3E100A87467 /* Cache.framework */,
+				01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */,
+				01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */,
+				01DE5F00233DB3E100A87467 /* CryptoSwift.framework.dSYM */,
+				01DE5EFE233DB3E100A87467 /* PromiseKit.framework */,
+				01DE5EFF233DB3E100A87467 /* PromiseKit.framework.dSYM */,
+				01DE5F01233DB3E100A87467 /* Sparkle.framework */,
+				01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -558,10 +590,6 @@
 			);
 			name = NeteaseMusic;
 			packageProductDependencies = (
-				011D41832338C876001A6F40 /* Alamofire */,
-				011D41862338C8D4001A6F40 /* PromiseKit */,
-				011D41892338C982001A6F40 /* CryptoSwift */,
-				011D418C2338CA0A001A6F40 /* AlamofireImage */,
 			);
 			productName = NeteaseMusic;
 			productReference = 01957D88224D01850006FCEC /* NeteaseMusic.app */;
@@ -592,10 +620,6 @@
 			);
 			mainGroup = 01957D7F224D01850006FCEC;
 			packageReferences = (
-				011D41822338C876001A6F40 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				011D41852338C8D4001A6F40 /* XCRemoteSwiftPackageReference "PromiseKit" */,
-				011D41882338C982001A6F40 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
-				011D418B2338CA0A001A6F40 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 01957D89224D01850006FCEC /* Products */;
 			projectDirPath = "";
@@ -905,64 +929,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		011D41822338C876001A6F40 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = "5.0.0-rc.2";
-			};
-		};
-		011D41852338C8D4001A6F40 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mxcl/PromiseKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.11.0;
-			};
-		};
-		011D41882338C982001A6F40 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		011D418B2338CA0A001A6F40 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = "4.0.0-beta.5";
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		011D41832338C876001A6F40 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 011D41822338C876001A6F40 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		011D41862338C8D4001A6F40 /* PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 011D41852338C8D4001A6F40 /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
-		};
-		011D41892338C982001A6F40 /* CryptoSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 011D41882338C982001A6F40 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
-			productName = CryptoSwift;
-		};
-		011D418C2338CA0A001A6F40 /* AlamofireImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 011D418B2338CA0A001A6F40 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
-			productName = AlamofireImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01957D80224D01850006FCEC /* Project object */;
 }
