@@ -3,3 +3,4 @@ github "xjbeta/Cache"
 github "Alamofire/Alamofire" ~> 5.0.0-rc.2
 github "mxcl/PromiseKit"
 github "krzyzanowskim/CryptoSwift"
+github "soffes/HotKey"

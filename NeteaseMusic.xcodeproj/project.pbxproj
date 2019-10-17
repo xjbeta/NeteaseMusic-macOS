@@ -79,6 +79,9 @@
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
+		01B3015C234E1DAB00BBC6E9 /* HotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; };
+		01B3015D234E1DAB00BBC6E9 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		01B3015E234E1DB300BBC6E9 /* HotKey.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; };
 		01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFB233DB3E100A87467 /* Alamofire.framework */; };
@@ -115,6 +118,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				01B3015D234E1DAB00BBC6E9 /* HotKey.framework in Embed Frameworks */,
 				01DE5F0F233DB3FC00A87467 /* Alamofire.framework in Embed Frameworks */,
 				01DE5F10233DB3FC00A87467 /* Cache.framework in Embed Frameworks */,
 				01DE5F11233DB3FC00A87467 /* CryptoSwift.framework in Embed Frameworks */,
@@ -130,6 +134,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				01B3015E234E1DB300BBC6E9 /* HotKey.framework.dSYM in CopyFiles */,
 				01DE5F13233DB41800A87467 /* Alamofire.framework.dSYM in CopyFiles */,
 				01DE5F14233DB41800A87467 /* Cache.framework.dSYM in CopyFiles */,
 				01DE5F15233DB41800A87467 /* CryptoSwift.framework.dSYM in CopyFiles */,
@@ -231,6 +236,8 @@
 		01957D92224D01860006FCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
+		01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = HotKey.framework.dSYM; path = Carthage/Build/Mac/HotKey.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		01B30159234E1DA500BBC6E9 /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = SOURCE_ROOT; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/Mac/CryptoSwift.framework; sourceTree = SOURCE_ROOT; };
 		01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Cache.framework.dSYM; path = Carthage/Build/Mac/Cache.framework.dSYM; sourceTree = SOURCE_ROOT; };
@@ -263,6 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B3015C234E1DAB00BBC6E9 /* HotKey.framework in Frameworks */,
 				01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */,
 				01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */,
 				01DE5F0D233DB3ED00A87467 /* Sparkle.framework in Frameworks */,
@@ -436,6 +444,8 @@
 				01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */,
 				01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */,
 				01DE5F00233DB3E100A87467 /* CryptoSwift.framework.dSYM */,
+				01B30159234E1DA500BBC6E9 /* HotKey.framework */,
+				01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */,
 				01DE5EFE233DB3E100A87467 /* PromiseKit.framework */,
 				01DE5EFF233DB3E100A87467 /* PromiseKit.framework.dSYM */,
 				01DE5F01233DB3E100A87467 /* Sparkle.framework */,
