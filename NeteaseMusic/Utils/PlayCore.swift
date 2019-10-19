@@ -187,6 +187,51 @@ class PlayCore: NSObject {
         }
     }
     
+    func continuePlayOrPause() {
+        guard player.error == nil else { return }
+        func playOrPause() {
+            if player.rate == 0 {
+                player.play()
+            } else {
+                player.pause()
+            }
+        }
+        if PlayCore.shared.fmMode, PlayCore.shared.currentFMTrack != nil {
+            playOrPause()
+        } else if !PlayCore.shared.fmMode, PlayCore.shared.currentTrack != nil {
+            playOrPause()
+        } else if let item = ViewControllerManager.shared.selectedSidebarItem?.type {
+            switch item {
+            case .fm:
+                PlayCore.shared.start(enterFMMode: true)
+            case .playlist:
+                let todo = "play playlist."
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func increaseVolume() {
+        var v = player.volume
+        guard v < 1 else {
+            return
+        }
+        v += 0.1
+        player.volume = v >= 1 ? 1 : v
+    }
+    
+    func decreaseVolume() {
+        var v = player.volume
+        guard v >= 0 else {
+            player.volume = 0
+            return
+        }
+        v -= 0.1
+        player.volume = v < 0 ? 0 : v
+    }
+    
     deinit {
         removeObserver()
     }
