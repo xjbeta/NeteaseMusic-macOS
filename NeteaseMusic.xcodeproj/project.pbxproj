@@ -11,6 +11,7 @@
 		0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0116E1B823248E5A00606C6C /* LogoutView.storyboard */; };
 		01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01190492230E651B00738904 /* NewPlaylist.storyboard */; };
 		01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01190494230E653300738904 /* NewPlaylistViewController.swift */; };
+		011D41962338F898001A6F40 /* KeyEquivalentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D41952338F898001A6F40 /* KeyEquivalentTextField.swift */; };
 		011D4198233907EC001A6F40 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D4197233907EC001A6F40 /* MainMenu.swift */; };
 		012165CA232E07F300D74344 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012165C9232E07F300D74344 /* Crypto.swift */; };
 		012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */; };
@@ -26,6 +27,8 @@
 		012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F422250619A00086870 /* NeteaseMusicAPI.swift */; };
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
 		012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FB7D923337FCD007F7247 /* Preferences.swift */; };
+		012FB7DD233389E1007F7247 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FB7DC233389E1007F7247 /* Preferences.storyboard */; };
+		012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FB7DE23338A00007F7247 /* PreferencesViewController.swift */; };
 		012FEA602286843D00698969 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA5F2286843D00698969 /* CoverImageView.swift */; };
 		012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* CoverImageButton.swift */; };
 		012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA662289B80F00698969 /* Sidebar.storyboard */; };
@@ -151,6 +154,7 @@
 		0119048F2309065A00738904 /* FMTrashGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FMTrashGet.json; sourceTree = "<group>"; };
 		01190492230E651B00738904 /* NewPlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlaylist.storyboard; sourceTree = "<group>"; };
 		01190494230E653300738904 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewController.swift; sourceTree = "<group>"; };
+		011D41952338F898001A6F40 /* KeyEquivalentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEquivalentTextField.swift; sourceTree = "<group>"; };
 		011D4197233907EC001A6F40 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		012165C9232E07F300D74344 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		012F2F422250619A00086870 /* NeteaseMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteaseMusicAPI.swift; sourceTree = "<group>"; };
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		012FB7D923337FCD007F7247 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		012FB7DC233389E1007F7247 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		012FB7DE23338A00007F7247 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		012FEA5F2286843D00698969 /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		012FEA61228684ED00698969 /* CoverImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageButton.swift; sourceTree = "<group>"; };
 		012FEA662289B80F00698969 /* Sidebar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sidebar.storyboard; sourceTree = "<group>"; };
@@ -310,6 +316,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		012FB7DB233389C1007F7247 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				012FB7DC233389E1007F7247 /* Preferences.storyboard */,
+				012FB7DE23338A00007F7247 /* PreferencesViewController.swift */,
+				011D41952338F898001A6F40 /* KeyEquivalentTextField.swift */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 		012FEA63228686CD00698969 /* Lyric */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +447,7 @@
 				0132E1BF2292684C00484D7E /* ArtistView */,
 				0153934C22E1BA6800CD10F9 /* SongActionButtons */,
 				01190491230E64D700738904 /* NewPlaylist */,
+				012FB7DB233389C1007F7247 /* Preferences */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -612,7 +629,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = xjbeta;
 				TargetAttributes = {
 					01957D87224D01850006FCEC = {
@@ -660,6 +677,7 @@
 				012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */,
 				012FEA6A2289B8D200698969 /* ControlBar.storyboard in Resources */,
 				0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */,
+				012FB7DD233389E1007F7247 /* Preferences.storyboard in Resources */,
 				01957D90224D01860006FCEC /* Assets.xcassets in Resources */,
 				012FEA6E2289B9D700698969 /* DiscoverView.storyboard in Resources */,
 				0153934E22E1BA9600CD10F9 /* SongButtons.storyboard in Resources */,
@@ -681,6 +699,7 @@
 				012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */,
 				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
 				012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */,
+				011D41962338F898001A6F40 /* KeyEquivalentTextField.swift in Sources */,
 				012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */,
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
@@ -697,6 +716,7 @@
 				0137264A226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift in Sources */,
 				01321B0322FE74EA002A568C /* SongButtonsPopUpViewController.swift in Sources */,
 				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
+				012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */,
 				0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */,
 				012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */,
 				013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */,
@@ -875,6 +895,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -898,6 +919,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";

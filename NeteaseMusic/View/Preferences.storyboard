@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="a3R-Kb-fM0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="a3R-Kb-fM0">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -83,29 +83,23 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="4oL-l7-QeX" column="thA-9c-oac" id="0n3-Vq-RAN">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iow-B0-hl3" customClass="TestTextField" customModule="NeteaseMusic" customModuleProvider="target">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iow-B0-hl3" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="231" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Space" drawsBackground="YES" id="iuq-wh-SlF">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="iuq-wh-SlF">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
-                                            <connections>
-                                                <outlet property="delegate" destination="a3R-Kb-fM0" id="dbV-hQ-b21"/>
-                                            </connections>
                                         </textField>
                                     </gridCell>
                                     <gridCell row="4oL-l7-QeX" column="aJO-F0-1Bz" id="dbG-vV-Xi0">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zWE-It-6cc" customClass="TestTextField" customModule="NeteaseMusic" customModuleProvider="target">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zWE-It-6cc" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="231" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="SgV-bc-CLr">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
-                                            <connections>
-                                                <outlet property="delegate" destination="a3R-Kb-fM0" id="tfA-ek-DYq"/>
-                                            </connections>
                                         </textField>
                                     </gridCell>
                                     <gridCell row="wC7-M9-JbQ" column="HeO-1a-HJb" id="94I-mm-AIb">
@@ -119,7 +113,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="wC7-M9-JbQ" column="thA-9c-oac" id="tO1-W6-8TK">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="He6-A8-wTa">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="He6-A8-wTa" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="198" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="UaL-Xh-T4V">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -129,7 +123,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="wC7-M9-JbQ" column="aJO-F0-1Bz" id="fn4-Z2-uBr">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rmk-o1-4yM">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rmk-o1-4yM" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="198" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="LPK-Jf-r5W">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -149,7 +143,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="f1G-7y-VYM" column="thA-9c-oac" id="4sL-BU-pf7">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-Iu-qun">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-Iu-qun" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="165" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="RFp-Pf-hvR">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -159,7 +153,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="f1G-7y-VYM" column="aJO-F0-1Bz" id="1bt-sj-DlL">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SC6-I9-MJv">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SC6-I9-MJv" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="165" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Vek-Lc-lau">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -179,7 +173,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="cXo-6p-ky5" column="thA-9c-oac" id="BYC-K4-Rtg">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kOO-vq-PHk">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kOO-vq-PHk" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="132" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="6jd-Zt-1aH">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -189,7 +183,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="cXo-6p-ky5" column="aJO-F0-1Bz" id="sgA-5Q-KBb">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ena-Ns-qcW">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ena-Ns-qcW" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="132" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="q2g-Yp-d8G">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -209,7 +203,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="GsR-ry-9GL" column="thA-9c-oac" id="j9l-8h-dWF">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U91-Ty-oth">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U91-Ty-oth" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="99" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="DGR-DT-0Gd">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -219,7 +213,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="GsR-ry-9GL" column="aJO-F0-1Bz" id="CFJ-iv-NeE">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kWE-nc-CGf">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kWE-nc-CGf" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="99" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="fLO-eM-jPo">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -239,7 +233,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="Ljg-rh-RFu" column="thA-9c-oac" id="Obv-Yz-u33">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-Jj-dPO">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-Jj-dPO" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="66" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="8ph-sL-Mvg">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -249,7 +243,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="Ljg-rh-RFu" column="aJO-F0-1Bz" id="vYl-Ie-kPM">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9YR-8y-Pn0">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9YR-8y-Pn0" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="66" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="5BV-ir-nCw">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -269,9 +263,9 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="FtO-z9-F8e" column="thA-9c-oac" id="jYy-nB-PW8">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sdB-8Z-kiW">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sdB-8Z-kiW" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="33" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="FvW-YW-qh7">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌘R" drawsBackground="YES" id="FvW-YW-qh7">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -279,9 +273,9 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="FtO-z9-F8e" column="aJO-F0-1Bz" id="ORD-hY-oYA">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V1h-oC-0uq">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V1h-oC-0uq" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="33" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="q7A-L7-VeM">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌥⌘R" drawsBackground="YES" id="q7A-L7-VeM">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -299,9 +293,9 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="C9V-Ly-6lp" column="thA-9c-oac" id="MzC-Gg-QSZ">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vbQ-sL-COW">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vbQ-sL-COW" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="138" y="0.0" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="dgj-vc-oaC">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌃⌘M" drawsBackground="YES" id="dgj-vc-oaC">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -309,7 +303,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="C9V-Ly-6lp" column="aJO-F0-1Bz" id="Gag-BK-7gc">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lt1-70-Tjt">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lt1-70-Tjt" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
                                             <rect key="frame" x="328" y="0.0" width="160" height="21"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="apc-v1-4Bd">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -403,8 +397,19 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="test1TextField" destination="iow-B0-hl3" id="FLM-43-geM"/>
-                        <outlet property="test2TextField" destination="zWE-It-6cc" id="iFM-2E-qnl"/>
+                        <outlet property="gridView" destination="Wf0-Hw-cqX" id="kjj-A2-DiR"/>
+                        <outlet property="likeGlobalTextField" destination="9YR-8y-Pn0" id="veK-ao-O4J"/>
+                        <outlet property="likeTextField" destination="Bjs-Jj-dPO" id="Vpj-H0-l3B"/>
+                        <outlet property="nextGlobalTextField" destination="SC6-I9-MJv" id="sQf-sO-bPQ"/>
+                        <outlet property="nextTextField" destination="2FY-Iu-qun" id="QeV-8A-bB2"/>
+                        <outlet property="playGlobalTextField" destination="zWE-It-6cc" id="8ou-hW-q7E"/>
+                        <outlet property="playTextField" destination="iow-B0-hl3" id="he6-8i-zT6"/>
+                        <outlet property="preGlobalTextField" destination="rmk-o1-4yM" id="tuU-bv-AGq"/>
+                        <outlet property="preTextField" destination="He6-A8-wTa" id="qkb-D1-6Bk"/>
+                        <outlet property="volumeDownGlobalTextField" destination="kWE-nc-CGf" id="Rmx-pM-bYx"/>
+                        <outlet property="volumeDownTextField" destination="U91-Ty-oth" id="BIU-21-fqV"/>
+                        <outlet property="volumeUpGlobalTextField" destination="Ena-Ns-qcW" id="31a-mb-HJM"/>
+                        <outlet property="volumeUpTextField" destination="kOO-vq-PHk" id="ZAC-GM-d3Q"/>
                     </connections>
                 </viewController>
                 <customObject id="KxJ-vN-sPP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
