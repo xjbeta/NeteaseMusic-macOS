@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -636,6 +636,82 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Controls" id="S0J-qh-3fl">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Controls" id="m4U-Pb-eKO">
+                                    <items>
+                                        <menuItem title="Play" alternate="YES" keyEquivalent=" " id="PqT-SJ-aiv">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="play:" target="5W0-kA-yYe" id="Tqc-rf-bxc"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Next" id="WJw-nh-39y">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="next:" target="5W0-kA-yYe" id="i43-aA-qHq"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Previous" id="g36-bx-hvH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="previous:" target="5W0-kA-yYe" id="wQz-zj-DME"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="JtN-j4-gKB"/>
+                                        <menuItem title="Increase Volume" id="ETR-H2-hTX">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="increaseVolume:" target="5W0-kA-yYe" id="KR6-Yf-mbt"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Decrease Volume" id="Xg2-cm-2Nm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="decreaseVolume:" target="5W0-kA-yYe" id="Jdh-g2-bee"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="rRL-uS-hRx"/>
+                                        <menuItem title="Shuffle" id="DTA-dl-gGc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Shuffle" id="QcR-Gl-5Oa">
+                                                <items>
+                                                    <menuItem title="On" state="on" id="J9J-L0-2Xq">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Off" id="HyE-if-TN4">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem isSeparatorItem="YES" id="rqB-WE-3Yu"/>
+                                                    <menuItem title="Songs" state="on" enabled="NO" id="rgb-Og-FXf">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Albums" enabled="NO" id="YtD-Pk-41y">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem title="Repeat" id="Csx-Ee-zMz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Repeat" id="HUq-Aa-sxP">
+                                                <items>
+                                                    <menuItem title="Item" id="kfT-ul-ljo">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="49e-4P-g7b"/>
+                                        <menuItem title="Like" id="9dg-VB-3Cz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="like:" target="5W0-kA-yYe" id="gPi-y3-vuw"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
@@ -679,9 +755,22 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NeteaseMusic" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NeteaseMusic" customModuleProvider="target">
+                    <connections>
+                        <outlet property="mainMenu" destination="5W0-kA-yYe" id="tkR-8r-ibX"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-                <customObject id="5W0-kA-yYe" customClass="MainMenu" customModule="NeteaseMusic" customModuleProvider="target"/>
+                <customObject id="5W0-kA-yYe" customClass="MainMenu" customModule="NeteaseMusic" customModuleProvider="target">
+                    <connections>
+                        <outlet property="decreaseVolumeMenuItem" destination="Xg2-cm-2Nm" id="hvd-wO-sS6"/>
+                        <outlet property="increaseVolumeMenuItem" destination="ETR-H2-hTX" id="AZ4-Ck-vEA"/>
+                        <outlet property="likeMenuItem" destination="9dg-VB-3Cz" id="3j4-Hl-WWk"/>
+                        <outlet property="nextMenuItem" destination="WJw-nh-39y" id="bdZ-CR-hdG"/>
+                        <outlet property="playMenuItem" destination="PqT-SJ-aiv" id="dHh-OM-1S0"/>
+                        <outlet property="previousMenuItem" destination="g36-bx-hvH" id="IaO-Qs-rfq"/>
+                    </connections>
+                </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="-301"/>

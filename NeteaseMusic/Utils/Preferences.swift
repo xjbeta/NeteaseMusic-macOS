@@ -155,3 +155,29 @@ enum PreferenceKeys: String {
     case shuffleMode
     case hotKeys
 }
+
+enum PreferencesKeyEquivalents: String {
+    case play
+    case playGlobal
+        
+    case pre
+    case preGlobal
+        
+    case next
+    case nextGlobal
+        
+    case volumeUp
+    case volumeUpGlobal
+        
+    case volumeDown
+    case volumeDownGlobal
+        
+    case like
+    case likeGlobal
+    
+    case lyric
+    case lyricGlobal
+    
+    case mini
+    case miniGlobal
+}
