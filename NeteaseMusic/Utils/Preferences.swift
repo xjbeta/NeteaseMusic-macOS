@@ -19,36 +19,36 @@ class Preferences: NSObject {
         
         defaultPreferencesHotKeys =
             // Space
-            [.play: ["keyCode": "49"],
-             // ⌥⌘Space
-                .playGlobal: ["flags": commandOptionStr, "keyCode": "49"],
-                // ⌘←
-                .pre: ["flags": commandStr, "keyCode": "123"],
-                // ⌥⌘←
-                .preGlobal: ["flags": commandOptionStr, "keyCode": "123"],
-                // ⌘→
-                .next: ["flags": commandStr, "keyCode": "124"],
-                // ⌥⌘→
-                .nextGlobal: ["flags": commandOptionStr, "keyCode": "124"],
-                // ⌘↑
-                .volumeUp: ["flags": commandStr, "keyCode": "126"],
-                // ⌥⌘↑
-                .volumeUpGlobal: ["flags": commandOptionStr, "keyCode": "126"],
-                // ⌘↓
-                .volumeDown: ["flags": commandStr, "keyCode": "125"],
-                // ⌥⌘↓
-                .volumeDownGlobal: ["flags": commandOptionStr, "keyCode": "125"],
-                // ⌘L
-                .like: ["flags": commandStr, "keyCode": "37"],
-                // ⌥⌘L
-                .likeGlobal: ["flags": commandOptionStr, "keyCode": "37"],
-                // ⌘R
-                .lyric: ["flags": commandStr, "keyCode": "15"],
-                // ⌥⌘R
-                .lyricGlobal: ["flags": commandOptionStr, "keyCode": "15"],
-                // ⌃⌘M
-                .mini: ["flags": commandControlStr, "keyCode": "46"],
-                .miniGlobal: ["flags": "", "keyCode": ""]]
+            [.play: .init(flags: nil, keyCode: "49"),
+            // ⌥⌘Space
+               .playGlobal: .init(flags: commandOptionStr, keyCode: "49"),
+               // ⌘←
+               .pre: .init(flags: commandStr, keyCode: "123"),
+               // ⌥⌘←
+               .preGlobal: .init(flags: commandOptionStr, keyCode: "123"),
+               // ⌘→
+               .next: .init(flags: commandStr, keyCode: "124"),
+               // ⌥⌘→
+               .nextGlobal: .init(flags: commandOptionStr, keyCode: "124"),
+               // ⌘↑
+               .volumeUp: .init(flags: commandStr, keyCode: "126"),
+               // ⌥⌘↑
+               .volumeUpGlobal: .init(flags: commandOptionStr, keyCode: "126"),
+               // ⌘↓
+               .volumeDown: .init(flags: commandStr, keyCode: "125"),
+               // ⌥⌘↓
+               .volumeDownGlobal: .init(flags: commandOptionStr, keyCode: "125"),
+               // ⌘L
+               .like: .init(flags: commandStr, keyCode: "37"),
+               // ⌥⌘L
+               .likeGlobal: .init(flags: commandOptionStr, keyCode: "37"),
+               // ⌘R
+               .lyric: .init(flags: commandStr, keyCode: "15"),
+               // ⌥⌘R
+               .lyricGlobal: .init(flags: commandOptionStr, keyCode: "15"),
+               // ⌃⌘M
+               .mini: .init(flags: commandControlStr, keyCode: "46"),
+               .miniGlobal: .init(flags: "", keyCode: "")]
         
     }
     let prefs = UserDefaults.standard
@@ -61,15 +61,15 @@ class Preferences: NSObject {
         case noShuffle, shuffleItems, shuffleAlbums
     }
     
-    var defaultPreferencesHotKeys: [PreferencesKeyEquivalents: [String: String]]
+    var defaultPreferencesHotKeys: [PreferencesKeyEquivalents: PreferencesKeyEvent]
     
-    var hotKeys: [PreferencesKeyEquivalents : [String : String]] {
+    var hotKeys: [PreferencesKeyEquivalents: PreferencesKeyEvent] {
         get {
             if let hotKeys = defaults(.hotKeys) as? [String: [String: String]] {
-                var dic: [PreferencesKeyEquivalents : [String : String]] = [:]
+                var dic = [PreferencesKeyEquivalents: PreferencesKeyEvent]()
                 hotKeys.forEach {
                     if let key = PreferencesKeyEquivalents(rawValue: $0.key) {
-                        dic[key] = $0.value
+                        dic[key] = .init(flags: $0.value["flags"], keyCode: "keyCode")
                     }
                 }
                 return dic
@@ -81,7 +81,10 @@ class Preferences: NSObject {
         set {
             var dic: [String : [String : String]] = [:]
             newValue.forEach {
-                dic[$0.key.rawValue] = $0.value
+                var d = [String : String]()
+                d["flags"] = $0.value.flags
+                d["keyCode"] = $0.value.keyCode
+                dic[$0.key.rawValue] = d
             }
             defaultsSet(dic, forKey: .hotKeys)
         }
@@ -154,6 +157,11 @@ enum PreferenceKeys: String {
     case repeatMode
     case shuffleMode
     case hotKeys
+}
+
+struct PreferencesKeyEvent {
+    var flags: String?
+    var keyCode: String?
 }
 
 enum PreferencesKeyEquivalents: String {

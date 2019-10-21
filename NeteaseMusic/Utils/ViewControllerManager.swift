@@ -42,7 +42,7 @@ class ViewControllerManager: NSObject {
         hotKeys.removeAll()
         
         Preferences.shared.hotKeys.forEach {
-            guard let keyCode = $0.value["keyCode"] else {
+            guard let keyCode = $0.value.keyCode else {
                 return
             }
             guard let kCode = UInt32(keyCode), let key = Key(carbonKeyCode: kCode) else {
@@ -51,7 +51,7 @@ class ViewControllerManager: NSObject {
             }
             
             if $0.key.rawValue.contains("Global") {
-                guard let flags = $0.value["flags"], let fValue = UInt(flags) else { return }
+                guard let flags = $0.value.flags, let fValue = UInt(flags) else { return }
                 let hotKey = HotKey(key: key, modifiers: .init(rawValue: fValue))
                 let k = $0.key
                 hotKey.keyDownHandler = {
@@ -102,7 +102,7 @@ class ViewControllerManager: NSObject {
                 
                 // " " -> Space
                 item.keyEquivalent = keyCode == "49" ? " " : key.description
-                if let flags = $0.value["flags"], let fValue = UInt(flags) {
+                if let flags = $0.value.flags, let fValue = UInt(flags) {
                     item.keyEquivalentModifierMask = .init(rawValue: fValue)
                 } else {
                     item.keyEquivalentModifierMask = .init(rawValue: 0)
