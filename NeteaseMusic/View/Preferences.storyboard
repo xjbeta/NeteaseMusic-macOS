@@ -321,6 +321,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="resetKeyEquicalent:" target="a3R-Kb-fM0" id="W6K-u5-Ibd"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-td-bGv">
                                 <rect key="frame" x="102" y="172" width="115" height="18"/>

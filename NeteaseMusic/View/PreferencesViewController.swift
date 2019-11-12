@@ -28,6 +28,12 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var likeTextField: KeyEquivalentTextField!
     @IBOutlet weak var likeGlobalTextField: KeyEquivalentTextField!
     
+    @IBAction func resetKeyEquicalent(_ sender: NSButton) {
+        UserDefaults.standard.removeObject(forKey: PreferenceKeys.hotKeys.rawValue)
+        ViewControllerManager.shared.initAllHotKeys()
+        initKeyEquivalentTextFields()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gridView.subviews.compactMap {
