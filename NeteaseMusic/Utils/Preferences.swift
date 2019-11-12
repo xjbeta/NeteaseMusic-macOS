@@ -69,7 +69,7 @@ class Preferences: NSObject {
                 var dic = [PreferencesKeyEquivalents: PreferencesKeyEvent]()
                 hotKeys.forEach {
                     if let key = PreferencesKeyEquivalents(rawValue: $0.key) {
-                        dic[key] = .init(flags: $0.value["flags"], keyCode: "keyCode")
+                        dic[key] = .init(flags: $0.value["flags"], keyCode: $0.value["keyCode"])
                     }
                 }
                 return dic
@@ -188,4 +188,8 @@ enum PreferencesKeyEquivalents: String {
     
     case mini
     case miniGlobal
+    
+    func isGlobal() -> Bool {
+        return self.rawValue.contains("Global")
+    }
 }

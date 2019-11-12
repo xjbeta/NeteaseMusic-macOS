@@ -21,7 +21,7 @@ class ViewControllerManager: NSObject {
     
     var userId = -233
     
-    var hotKeys = [HotKey]()
+    var hotKeys = [PreferencesKeyEquivalents: HotKey]()
     
     func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
                            _ id: Int = -1) {
@@ -35,79 +35,131 @@ class ViewControllerManager: NSObject {
         pasteboard.writeObjects([str as NSString])
     }
     
-    func initHotKeys() {
+    func initAllHotKeys() {
+        invalidateAllHotKeys()
+        Preferences.shared.hotKeys.forEach {
+            initHotKey(pKey: $0.key)
+        }
+    }
+    
+    func invalidateAllHotKeys() {
+        guard let mainMenu = (NSApp.delegate as? AppDelegate)?.mainMenu else { return }
         hotKeys.forEach {
-            $0.keyDownHandler = nil
+            $0.value.keyDownHandler = nil
         }
         hotKeys.removeAll()
         
-        Preferences.shared.hotKeys.forEach {
-            guard let keyCode = $0.value.keyCode else {
-                return
-            }
-            guard let kCode = UInt32(keyCode), let key = Key(carbonKeyCode: kCode) else {
-                print($0.key)
-                return
-            }
+        var items = [NSMenuItem]()
+        items.append(mainMenu.playMenuItem)
+        items.append(mainMenu.nextMenuItem)
+        items.append(mainMenu.previousMenuItem)
+        items.append(mainMenu.increaseVolumeMenuItem)
+        items.append(mainMenu.decreaseVolumeMenuItem)
+        items.append(mainMenu.likeMenuItem)
+        items.forEach {
+            $0.keyEquivalent = ""
+            $0.keyEquivalentModifierMask = .init(rawValue: 0)
+        }
+    }
+    
+    func initHotKey(pKey: PreferencesKeyEquivalents) {
+        guard let keyEvent = Preferences.shared.hotKeys[pKey],
+            let keyCode = keyEvent.keyCode else {
+            return
+        }
+        guard let kCode = UInt32(keyCode), let key = Key(carbonKeyCode: kCode) else {
+            print(pKey)
+            return
+        }
+        
+        if pKey.isGlobal() {
+            guard let flags = keyEvent.flags, let fValue = UInt(flags) else { return }
+            let hotKey = HotKey(key: key, modifiers: .init(rawValue: fValue))
+            let k = pKey
             
-            if $0.key.rawValue.contains("Global") {
-                guard let flags = $0.value.flags, let fValue = UInt(flags) else { return }
-                let hotKey = HotKey(key: key, modifiers: .init(rawValue: fValue))
-                let k = $0.key
-                hotKey.keyDownHandler = {
-                    let playCore = PlayCore.shared
-                    switch k {
-                    case .playGlobal:
-                        playCore.continuePlayOrPause()
-                    case .volumeUpGlobal:
-                        playCore.increaseVolume()
-                    case .volumeDownGlobal:
-                        playCore.decreaseVolume()
-                    case .nextGlobal:
-                        playCore.nextSong()
-                    case .preGlobal:
-                        playCore.previousSong()
-                    case .likeGlobal:
-                        break
-                    case .miniGlobal:
-                        break
-                    case .lyricGlobal:
-                        break
-                    default:
-                        break
-                    }
-                }
-                hotKeys.append(hotKey)
-            } else {
-                guard let mainMenu = (NSApp.delegate as? AppDelegate)?.mainMenu else { return }
-                
-                var menuItem: NSMenuItem?
-                switch $0.key {
-                case .play:
-                    menuItem = mainMenu.playMenuItem
-                case .next:
-                    menuItem = mainMenu.nextMenuItem
-                case .pre:
-                    menuItem = mainMenu.previousMenuItem
-                case .volumeUp:
-                    menuItem = mainMenu.increaseVolumeMenuItem
-                case .volumeDown:
-                    menuItem = mainMenu.decreaseVolumeMenuItem
-                case .like:
-                    menuItem = mainMenu.likeMenuItem
+            hotKey.keyDownHandler = {
+                let playCore = PlayCore.shared
+                switch k {
+                case .playGlobal:
+                    playCore.continuePlayOrPause()
+                case .volumeUpGlobal:
+                    playCore.increaseVolume()
+                case .volumeDownGlobal:
+                    playCore.decreaseVolume()
+                case .nextGlobal:
+                    playCore.nextSong()
+                case .preGlobal:
+                    playCore.previousSong()
+                case .likeGlobal:
+                    break
+                case .miniGlobal:
+                    break
+                case .lyricGlobal:
+                    break
                 default:
                     break
                 }
-                guard let item = menuItem else { return }
-                
-                // " " -> Space
-                item.keyEquivalent = keyCode == "49" ? " " : key.description
-                if let flags = $0.value.flags, let fValue = UInt(flags) {
-                    item.keyEquivalentModifierMask = .init(rawValue: fValue)
-                } else {
-                    item.keyEquivalentModifierMask = .init(rawValue: 0)
-                }
             }
+            hotKeys[pKey] = hotKey
+        } else {
+            guard let mainMenu = (NSApp.delegate as? AppDelegate)?.mainMenu else { return }
+            
+            var menuItem: NSMenuItem?
+            switch pKey {
+            case .play:
+                menuItem = mainMenu.playMenuItem
+            case .next:
+                menuItem = mainMenu.nextMenuItem
+            case .pre:
+                menuItem = mainMenu.previousMenuItem
+            case .volumeUp:
+                menuItem = mainMenu.increaseVolumeMenuItem
+            case .volumeDown:
+                menuItem = mainMenu.decreaseVolumeMenuItem
+            case .like:
+                menuItem = mainMenu.likeMenuItem
+            default:
+                break
+            }
+            guard let item = menuItem else { return }
+            
+            // " " -> Space
+            item.keyEquivalent = keyCode == "49" ? " " : key.description
+            if let flags = keyEvent.flags, let fValue = UInt(flags) {
+                item.keyEquivalentModifierMask = .init(rawValue: fValue)
+            } else {
+                item.keyEquivalentModifierMask = .init(rawValue: 0)
+            }
+        }
+    }
+    
+    func invalidateHotKey(pKey: PreferencesKeyEquivalents) {
+        if pKey.isGlobal() {
+            hotKeys[pKey]?.keyDownHandler = nil
+            hotKeys[pKey] = nil
+        } else {
+            guard let mainMenu = (NSApp.delegate as? AppDelegate)?.mainMenu else { return }
+
+            var menuItem: NSMenuItem?
+            switch pKey {
+            case .play:
+                menuItem = mainMenu.playMenuItem
+            case .next:
+                menuItem = mainMenu.nextMenuItem
+            case .pre:
+                menuItem = mainMenu.previousMenuItem
+            case .volumeUp:
+                menuItem = mainMenu.increaseVolumeMenuItem
+            case .volumeDown:
+                menuItem = mainMenu.decreaseVolumeMenuItem
+            case .like:
+                menuItem = mainMenu.likeMenuItem
+            default:
+                break
+            }
+            guard let item = menuItem else { return }
+            item.keyEquivalent = ""
+            item.keyEquivalentModifierMask = .init(rawValue: 0)
         }
     }
 }
