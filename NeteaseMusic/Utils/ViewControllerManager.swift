@@ -122,9 +122,8 @@ class ViewControllerManager: NSObject {
                 break
             }
             guard let item = menuItem else { return }
-            
             // " " -> Space
-            item.keyEquivalent = keyCode == "49" ? " " : key.description
+            item.keyEquivalent = keyCode == "49" ? " " : key.description.lowercased()
             if let flags = keyEvent.flags, let fValue = UInt(flags) {
                 item.keyEquivalentModifierMask = .init(rawValue: fValue)
             } else {
