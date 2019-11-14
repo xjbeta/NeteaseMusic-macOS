@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import HotKey
 
 class PreferencesViewController: NSViewController {
     @IBOutlet weak var gridView: NSGridView!
@@ -34,26 +35,136 @@ class PreferencesViewController: NSViewController {
         initKeyEquivalentTextFields()
     }
     
+    var sidebarItemObserver: NSKeyValueObservation?
+    var firstResponderObserver: NSKeyValueObservation?
+    let waitTimer = WaitTimer(timeOut: .milliseconds(100)) {
+        DispatchQueue.main.async {
+            let fr = NSApp.windows.first {
+                $0.windowController is MainWindowController
+            }?.firstResponder
+            let vcManager = ViewControllerManager.shared
+            if let tv = fr as? NSTextView,
+                let keTV = tv.superview?.superview as? KeyEquivalentTextField {
+                if !vcManager.hotKeysEnabled {
+                    print("invalidateAllHotKeys")
+                    vcManager.invalidateAllHotKeys()
+                }
+            } else {
+                if vcManager.hotKeysEnabled {
+                    print("initAllHotKeys")
+                    vcManager.initAllHotKeys()
+                }
+            }
+        }
+    }
+    
+    var textFieldsDic = [KeyEquivalentTextField: PreferencesKeyEquivalents]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        textFieldsDic = [playTextField: .play,
+                         playGlobalTextField: .playGlobal,
+                
+                         preTextField: .pre,
+                         preGlobalTextField: .preGlobal,
+                                
+                         nextTextField: .next,
+                         nextGlobalTextField: .nextGlobal,
+                                
+                         volumeUpTextField: .volumeUp,
+                         volumeUpGlobalTextField: .volumeUpGlobal,
+                                
+                         volumeDownTextField: .volumeDown,
+                         volumeDownGlobalTextField: .volumeDownGlobal,
+                                
+                         likeTextField: .like,
+                         likeGlobalTextField: .likeGlobal,
+                            
+//            : .lyric,
+//            : .lyricGlobal,
+//
+//            : .mini,
+//            : .miniGlobal,
+        ]
+        
+        initKeyEquivalentTextFields()
+        
+        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { _, changes in
+            guard let v = changes.newValue, let vv = v, vv.type == .preferences else {
+                self.firstResponderObserver?.invalidate()
+                self.waitTimer.run()
+                return
+            }
+            
+            self.firstResponderObserver = NSApp.windows.first {
+                $0.windowController is MainWindowController
+                }?.observe(\.firstResponder, options: [.initial, .old, .new]) { window, changes in
+                    guard let n = changes.newValue, let o = changes.oldValue else {
+                        return
+                    }
+                    
+                    self.waitTimer.run()
+                    
+                    if let nn = n as? NSTextView,
+                        let new = nn.superview?.superview as? KeyEquivalentTextField {
+                        new.isFirstResponder = true
+                    }
+                    
+                    if let oo = o as? NSTextView,
+                        let old = oo.superview?.superview as? KeyEquivalentTextField {
+                        old.isFirstResponder = false
+                    }
+            }
+        }
+    }
+    
+    func initKeyEquivalentTextFields() {
         gridView.subviews.compactMap {
             $0 as? KeyEquivalentTextField
         }.forEach {
             $0.placeholderString = "Empty"
             $0.keyEquivalentDelegate = self
             $0.delegate = self
+            guard let key = textFieldsDic[$0] else {
+                print("Can't find key in textFieldsDic.")
+                return
+            }
+            $0.isGlobal = key.isGlobal()
+            $0.keyEquivalent = Preferences.shared.hotKeys[key]
+            $0.initStringValue()
         }
     }
     
-    
+    deinit {
+        sidebarItemObserver?.invalidate()
+    }
 }
 
 extension PreferencesViewController: NSTextFieldDelegate, KeyEquivalentTextFieldDelegate {
-    func keyEquivalentDidChanged(_ keyEquivalent: NSEvent) {
-        print(keyEquivalent.modifierFlags)
-        print(keyEquivalent.keyCode)
+    func keyEquivalentChangeFailed(_ reason: KeyEquivalentChangeFailureReason, _ textField: KeyEquivalentTextField) {
+        print(#function, reason)
+    }
+    
+    func keyEquivalentDidChanged(_ keyEquivalent: PreferencesKeyEvent, _ textField: KeyEquivalentTextField) {
+        guard let key = textFieldsDic[textField] else { return }
         
+        var hotKeys = Preferences.shared.hotKeys
+        if let k = hotKeys.first(where: {
+            $0.value.flags == keyEquivalent.flags
+                && $0.value.keyCode == keyEquivalent.keyCode
+        })?.key {
+            hotKeys[k] = PreferencesKeyEvent.init(flags: nil, keyCode: nil)
+            let tf = textFieldsDic.first {
+                $0.value == k
+                }?.key
+
+            tf?.placeholderString = "Empty"
+            tf?.stringValue = ""
+        }
         
-        
+        hotKeys[key] = keyEquivalent
+        print("New keyEquivalent setted, \(key)  \(keyEquivalent)")
+        Preferences.shared.hotKeys = hotKeys
+        textField.initStringValue()
     }
 }
