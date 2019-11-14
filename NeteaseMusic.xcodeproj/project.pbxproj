@@ -11,6 +11,7 @@
 		0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0116E1B823248E5A00606C6C /* LogoutView.storyboard */; };
 		01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01190492230E651B00738904 /* NewPlaylist.storyboard */; };
 		01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01190494230E653300738904 /* NewPlaylistViewController.swift */; };
+		011AC733237A87DA00722A48 /* WaitTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC732237A87D900722A48 /* WaitTimer.swift */; };
 		011D41962338F898001A6F40 /* KeyEquivalentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D41952338F898001A6F40 /* KeyEquivalentTextField.swift */; };
 		011D4198233907EC001A6F40 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D4197233907EC001A6F40 /* MainMenu.swift */; };
 		012165CA232E07F300D74344 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012165C9232E07F300D74344 /* Crypto.swift */; };
@@ -154,6 +155,7 @@
 		0119048F2309065A00738904 /* FMTrashGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FMTrashGet.json; sourceTree = "<group>"; };
 		01190492230E651B00738904 /* NewPlaylist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlaylist.storyboard; sourceTree = "<group>"; };
 		01190494230E653300738904 /* NewPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaylistViewController.swift; sourceTree = "<group>"; };
+		011AC732237A87D900722A48 /* WaitTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitTimer.swift; sourceTree = "<group>"; };
 		011D41952338F898001A6F40 /* KeyEquivalentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEquivalentTextField.swift; sourceTree = "<group>"; };
 		011D4197233907EC001A6F40 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		012165C9232E07F300D74344 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				01E40FE822C1DF4600864118 /* ImageLoader.swift */,
 				012165C9232E07F300D74344 /* Crypto.swift */,
 				012FB7D923337FCD007F7247 /* Preferences.swift */,
+				011AC732237A87D900722A48 /* WaitTimer.swift */,
 				0133AC732321FEB800090D5E /* Transformers */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
 				013EF1572256501000E4D7D8 /* Extensions */,
@@ -696,6 +699,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				011AC733237A87DA00722A48 /* WaitTimer.swift in Sources */,
 				012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */,
 				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
 				012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */,
