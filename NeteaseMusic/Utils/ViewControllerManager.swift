@@ -23,6 +23,8 @@ class ViewControllerManager: NSObject {
     
     var hotKeys = [PreferencesKeyEquivalents: HotKey]()
     
+    var hotKeysEnabled = false
+    
     func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
                            _ id: Int = -1) {
         print(#function, "\(itemType)", "ID: \(id)")
@@ -40,6 +42,7 @@ class ViewControllerManager: NSObject {
         Preferences.shared.hotKeys.forEach {
             initHotKey(pKey: $0.key)
         }
+        hotKeysEnabled = false
     }
     
     func invalidateAllHotKeys() {
@@ -60,6 +63,7 @@ class ViewControllerManager: NSObject {
             $0.keyEquivalent = ""
             $0.keyEquivalentModifierMask = .init(rawValue: 0)
         }
+        hotKeysEnabled = true
     }
     
     func initHotKey(pKey: PreferencesKeyEquivalents) {
