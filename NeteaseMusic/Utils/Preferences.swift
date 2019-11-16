@@ -135,8 +135,23 @@ class Preferences: NSObject {
         }
     }
     
+    var enableGlobalHotKeys: Bool {
+        get {
+            return defaults(.enableGlobalHotKeys) as? Bool ?? false
+        }
+        set {
+            defaultsSet(newValue, forKey: .enableGlobalHotKeys)
+        }
+    }
     
-    
+    var useSystemMediaControl: Bool {
+        get {
+            return defaults(.enableSystemMediaKeys) as? Bool ?? false
+        }
+        set {
+            defaultsSet(newValue, forKey: .enableSystemMediaKeys)
+        }
+    }
     
 }
 
@@ -157,6 +172,8 @@ enum PreferenceKeys: String {
     case repeatMode
     case shuffleMode
     case hotKeys
+    case enableGlobalHotKeys
+    case enableSystemMediaKeys
 }
 
 struct PreferencesKeyEvent {

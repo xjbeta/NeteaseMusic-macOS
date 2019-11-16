@@ -40,6 +40,9 @@ class ViewControllerManager: NSObject {
     func initAllHotKeys() {
         invalidateAllHotKeys()
         Preferences.shared.hotKeys.forEach {
+            if $0.key.isGlobal() {
+                guard Preferences.shared.enableGlobalHotKeys else { return }
+            }
             initHotKey(pKey: $0.key)
         }
         hotKeysEnabled = false
@@ -64,6 +67,21 @@ class ViewControllerManager: NSObject {
             $0.keyEquivalentModifierMask = .init(rawValue: 0)
         }
         hotKeysEnabled = true
+    }
+    
+    func updateGlobalHotKeysState() {
+        if Preferences.shared.enableGlobalHotKeys {
+            Preferences.shared.hotKeys.filter {
+                $0.key.isGlobal()
+            }.forEach {
+                initHotKey(pKey: $0.key)
+            }
+        } else {
+            hotKeys.forEach {
+                $0.value.keyDownHandler = nil
+            }
+            hotKeys.removeAll()
+        }
     }
     
     func initHotKey(pKey: PreferencesKeyEquivalents) {

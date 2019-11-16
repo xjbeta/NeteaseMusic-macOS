@@ -29,12 +29,33 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var likeTextField: KeyEquivalentTextField!
     @IBOutlet weak var likeGlobalTextField: KeyEquivalentTextField!
     
-    @IBAction func resetKeyEquicalent(_ sender: NSButton) {
-        UserDefaults.standard.removeObject(forKey: PreferenceKeys.hotKeys.rawValue)
-        ViewControllerManager.shared.initAllHotKeys()
-        initKeyEquivalentTextFields()
-    }
     
+    
+    @IBOutlet weak var resetKeyEquicalentButton: NSButton!
+    @IBOutlet weak var enableGlobalButton: NSButton!
+    @IBOutlet weak var enableSystemMediaButton: NSButton!
+    
+    @IBAction func buttonAction(_ sender: NSButton) {
+        let pref = Preferences.shared
+        let vcManager = ViewControllerManager.shared
+        switch sender {
+        case resetKeyEquicalentButton:
+            UserDefaults.standard.removeObject(forKey: PreferenceKeys.hotKeys.rawValue)
+            ViewControllerManager.shared.initAllHotKeys()
+            initKeyEquivalentTextFields()
+        case enableGlobalButton:
+            pref.enableGlobalHotKeys = sender.state == .on
+            initGlobalButtonState()
+            vcManager.updateGlobalHotKeysState()
+        case enableSystemMediaButton:
+            pref.useSystemMediaControl = sender.state == .on
+            let todo = "Update SystemMediaKeys state."
+            
+        default:
+            break
+        }
+    }
+
     var sidebarItemObserver: NSKeyValueObservation?
     var firstResponderObserver: NSKeyValueObservation?
     let waitTimer = WaitTimer(timeOut: .milliseconds(100)) {
@@ -88,6 +109,7 @@ class PreferencesViewController: NSViewController {
         ]
         
         initKeyEquivalentTextFields()
+        initGlobalButtonState()
         
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { _, changes in
             guard let v = changes.newValue, let vv = v, vv.type == .preferences else {
@@ -132,6 +154,15 @@ class PreferencesViewController: NSViewController {
             $0.isGlobal = key.isGlobal()
             $0.keyEquivalent = Preferences.shared.hotKeys[key]
             $0.initStringValue()
+        }
+    }
+    
+    func initGlobalButtonState() {
+        let s = Preferences.shared.enableGlobalHotKeys
+        textFieldsDic.filter {
+            $0.value.isGlobal()
+        }.forEach {
+            $0.key.isEnabled = s
         }
     }
     

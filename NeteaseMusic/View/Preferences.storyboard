@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="a3R-Kb-fM0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="a3R-Kb-fM0">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -322,7 +322,7 @@
                                     <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="resetKeyEquicalent:" target="a3R-Kb-fM0" id="W6K-u5-Ibd"/>
+                                    <action selector="buttonAction:" target="a3R-Kb-fM0" id="Tol-LV-46d"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-td-bGv">
@@ -332,6 +332,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="buttonAction:" target="a3R-Kb-fM0" id="kYD-hW-pXm"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGa-l5-Zew">
                                 <rect key="frame" x="102" y="138" width="115" height="18"/>
@@ -340,6 +343,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="buttonAction:" target="a3R-Kb-fM0" id="SSv-Dl-A60"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujj-PE-rPK">
                                 <rect key="frame" x="224" y="94" width="60" height="16"/>
@@ -400,6 +406,8 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="enableGlobalButton" destination="Aes-td-bGv" id="Bgw-6H-q9Y"/>
+                        <outlet property="enableSystemMediaButton" destination="pGa-l5-Zew" id="1rJ-9H-Dru"/>
                         <outlet property="gridView" destination="Wf0-Hw-cqX" id="kjj-A2-DiR"/>
                         <outlet property="likeGlobalTextField" destination="9YR-8y-Pn0" id="veK-ao-O4J"/>
                         <outlet property="likeTextField" destination="Bjs-Jj-dPO" id="Vpj-H0-l3B"/>
@@ -409,6 +417,7 @@
                         <outlet property="playTextField" destination="iow-B0-hl3" id="he6-8i-zT6"/>
                         <outlet property="preGlobalTextField" destination="rmk-o1-4yM" id="tuU-bv-AGq"/>
                         <outlet property="preTextField" destination="He6-A8-wTa" id="qkb-D1-6Bk"/>
+                        <outlet property="resetKeyEquicalentButton" destination="ok2-qP-Dhz" id="ky8-dd-lZ8"/>
                         <outlet property="volumeDownGlobalTextField" destination="kWE-nc-CGf" id="Rmx-pM-bYx"/>
                         <outlet property="volumeDownTextField" destination="U91-Ty-oth" id="BIU-21-fqV"/>
                         <outlet property="volumeUpGlobalTextField" destination="Ena-Ns-qcW" id="31a-mb-HJM"/>
