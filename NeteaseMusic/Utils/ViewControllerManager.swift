@@ -103,7 +103,7 @@ class ViewControllerManager: NSObject {
                 let playCore = PlayCore.shared
                 switch k {
                 case .playGlobal:
-                    playCore.continuePlayOrPause()
+                    playCore.togglePlayPause()
                 case .volumeUpGlobal:
                     playCore.increaseVolume()
                 case .volumeDownGlobal:

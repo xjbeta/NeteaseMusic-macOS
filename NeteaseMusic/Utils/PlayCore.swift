@@ -187,7 +187,7 @@ class PlayCore: NSObject {
         }
     }
     
-    func continuePlayOrPause() {
+    func togglePlayPause() {
         guard player.error == nil else { return }
         func playOrPause() {
             if player.rate == 0 {

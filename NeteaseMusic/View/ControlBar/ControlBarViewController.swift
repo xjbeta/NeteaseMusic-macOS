@@ -31,7 +31,7 @@ class ControlBarViewController: NSViewController {
         case previousButton:
             PlayCore.shared.previousSong()
         case pauseButton:
-            PlayCore.shared.continuePlayOrPause()
+            PlayCore.shared.togglePlayPause()
         case nextButton:
             PlayCore.shared.nextSong()
             if PlayCore.shared.fmMode, let id = PlayCore.shared.currentTrack?.id {
