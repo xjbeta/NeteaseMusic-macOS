@@ -83,6 +83,12 @@ class PreferencesViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(macOS 10.13, *) {
+            enableSystemMediaButton.isEnabled = true
+        } else {
+            enableSystemMediaButton.isEnabled = false
+        }
+        
         textFieldsDic = [playTextField: .play,
                          playGlobalTextField: .playGlobal,
                 
