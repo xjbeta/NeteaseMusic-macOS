@@ -13,7 +13,11 @@ extension PlayCore {
     
     func initMediaKeysObservers() {
         playerStateObserver = player.observe(\.rate, options: [.initial, .new]) { player, _ in
-            self.updateNowPlayingState(player.rate == 0 ? .paused : .playing)
+            let state: MPNowPlayingPlaybackState = player.rate == 0 ? .paused : .playing
+            self.updateNowPlayingState(state)
+            if state == .playing {
+                self.updateNowPlayingInfo()
+            }
         }
         playingInfoObserver = player.observe(\.currentItem, options: [.initial, .new]) { player, _ in
             self.updateNowPlayingInfo()

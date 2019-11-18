@@ -18,8 +18,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         ViewControllerManager.shared.initAllHotKeys()
-    }
+        
+        PlayCore.shared.setupSystemMediaKeys()
+        
+        
 
+    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }

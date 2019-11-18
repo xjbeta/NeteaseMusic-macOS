@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MediaPlayer
 import AVFoundation
 
 class PlayCore: NSObject {
@@ -16,12 +17,18 @@ class PlayCore: NSObject {
         player.automaticallyWaitsToMinimizeStalling = false
     }
     
-
+    let remoteCommandCenter = MPRemoteCommandCenter.shared()
+    let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
     
     let api = NeteaseMusicAPI()
     let player = AVPlayer()
     
     var playerShouldNextObserver: NSObjectProtocol?
+    var playerStateObserver: NSKeyValueObservation?
+    var playingInfoObserver: NSKeyValueObservation?
+    
+    let seekTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+    
     @objc dynamic var playlist: [Track] = []
     @objc dynamic var historys: [Track] = []
     
@@ -232,7 +239,52 @@ class PlayCore: NSObject {
         player.volume = v < 0 ? 0 : v
     }
     
+    func stop() {
+        player.pause()
+        player.replaceCurrentItem(with: nil)
+        if fmMode {
+            currentFMTrack = nil
+        } else {
+            currentTrack = nil
+        }
+    }
+    
+    func toggleRepeatMode() {
+        print(#function)
+    }
+    
+    func toggleShuffleMode() {
+        print(#function)
+    }
+    
+    func seekForward(_ seconds: Double) {
+        let lhs = player.currentTime()
+        let rhs = CMTimeMakeWithSeconds(5, preferredTimescale: 1)
+        let t = CMTimeAdd(lhs, rhs)
+        player.seek(to: t)
+    }
+    
+    func seekBackward(_ seconds: Double) {
+        let lhs = player.currentTime()
+        let rhs = CMTimeMakeWithSeconds(-5, preferredTimescale: 1)
+        let t = CMTimeAdd(lhs, rhs)
+        player.seek(to: t)
+    }
+    
+    func setupSystemMediaKeys() {
+        if #available(macOS 10.13, *) {
+            if Preferences.shared.useSystemMediaControl {
+                setupRemoteCommandCenter()
+                initMediaKeysObservers()
+            } else {
+                updateNowPlayingState(.stopped)
+                deinitMediaKeysObservers()
+            }
+        }
+    }
+    
     deinit {
+        deinitMediaKeysObservers()
         removeObserver()
     }
 }
