@@ -165,6 +165,9 @@ class ControlBarViewController: NSViewController {
                 }
                 
                 self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"
+                if Preferences.shared.useSystemMediaControl {
+                    PlayCore.shared.updateNowPlayingInfo()
+                }
         }
     }
     
