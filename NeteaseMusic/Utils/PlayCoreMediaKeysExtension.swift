@@ -76,6 +76,39 @@ extension PlayCore {
             self.seekBackward((event as! MPSkipIntervalCommandEvent).interval)
             return .success
         }
+        rcCenter.seekForwardCommand.addTarget { event in
+            let timer = self.seekTimer
+            switch (event as! MPSeekCommandEvent).type {
+            case .beginSeeking:
+                timer.schedule(deadline: .now(), repeating: .seconds(1))
+                timer.setEventHandler {
+                    self.seekForward(5)
+                }
+                timer.resume()
+            case .endSeeking:
+                timer.suspend()
+            @unknown default:
+                return .commandFailed
+            }
+            return .success
+        }
+        
+        rcCenter.seekBackwardCommand.addTarget { event in
+            let timer = self.seekTimer
+            switch (event as! MPSeekCommandEvent).type {
+            case .beginSeeking:
+                timer.schedule(deadline: .now(), repeating: .seconds(1))
+                timer.setEventHandler {
+                    self.seekBackward(5)
+                }
+                timer.resume()
+            case .endSeeking:
+                timer.suspend()
+            @unknown default:
+                return .commandFailed
+            }
+            return .success
+        }
         rcCenter.changePlaybackPositionCommand.addTarget { event in
             let d = (event as! MPChangePlaybackPositionCommandEvent).positionTime
             let time = CMTime(seconds: d, preferredTimescale: 1000)
@@ -108,17 +141,17 @@ extension PlayCore {
         info[MPNowPlayingInfoPropertyDefaultPlaybackRate] = 1
         
         info[MPMediaItemPropertyArtwork] =
-        MPMediaItemArtwork(boundsSize: .init(width: 512, height: 512)) {
-            let w = Int($0.width * (NSScreen.main?.backingScaleFactor ?? 1))
-            guard var str = track.album.picUrl?.absoluteString else {
-                return NSApp.applicationIconImage
-            }
-            str += "?param=\(w)y\(w)"
-            guard let imageU = URL(string: str),
-                let image = NSImage(contentsOf: imageU) else {
-                return NSApp.applicationIconImage
-            }
-            return image
+            MPMediaItemArtwork(boundsSize: .init(width: 512, height: 512)) {
+                let w = Int($0.width * (NSScreen.main?.backingScaleFactor ?? 1))
+                guard var str = track.album.picUrl?.absoluteString else {
+                    return NSApp.applicationIconImage
+                }
+                str += "?param=\(w)y\(w)"
+                guard let imageU = URL(string: str),
+                    let image = NSImage(contentsOf: imageU) else {
+                        return NSApp.applicationIconImage
+                }
+                return image
         }
         
         nowPlayingInfoCenter.nowPlayingInfo = info
