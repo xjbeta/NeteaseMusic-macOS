@@ -49,8 +49,7 @@ class PreferencesViewController: NSViewController {
             vcManager.updateGlobalHotKeysState()
         case enableSystemMediaButton:
             pref.useSystemMediaControl = sender.state == .on
-            let todo = "Update SystemMediaKeys state."
-            
+            PlayCore.shared.setupSystemMediaKeys()
         default:
             break
         }
@@ -83,6 +82,9 @@ class PreferencesViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let pref = Preferences.shared
+        enableSystemMediaButton.state = pref.useSystemMediaControl ? .on : .off
+        enableGlobalButton.state = pref.enableGlobalHotKeys ? .on : .off
         if #available(macOS 10.13, *) {
             enableSystemMediaButton.isEnabled = true
         } else {
