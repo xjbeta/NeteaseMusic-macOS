@@ -14,17 +14,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="885" height="615"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-5A-l0F">
-                                <rect key="frame" x="55" y="571" width="48" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Normal" id="0eR-hk-lML">
-                                    <font key="font" usesAppearanceFont="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-5A-l0F">
+                                <rect key="frame" x="38" y="558" width="123" height="27"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Preferences" id="0eR-hk-lML">
+                                    <font key="font" metaFont="system" size="23"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <gridView fixedFrame="YES" xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Wf0-Hw-cqX">
-                                <rect key="frame" x="104" y="251" width="488" height="280"/>
+                            <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Wf0-Hw-cqX">
+                                <rect key="frame" x="90" y="253" width="488" height="280"/>
                                 <rows>
                                     <gridRow id="aNc-Lb-2po"/>
                                     <gridRow id="4oL-l7-QeX"/>
@@ -47,7 +46,7 @@
                                             <rect key="frame" x="-2" y="264" width="58" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="功能说明" id="lhp-l4-Q1I">
                                                 <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -57,7 +56,7 @@
                                             <rect key="frame" x="136" y="264" width="164" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="快捷键" id="ett-OB-kli">
                                                 <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -67,7 +66,7 @@
                                             <rect key="frame" x="326" y="264" width="164" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="全局快捷键" id="9Lf-do-3qw">
                                                 <font key="font" usesAppearanceFont="YES"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
@@ -314,9 +313,8 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ok2-qP-Dhz">
-                                <rect key="frame" x="316" y="163" width="94" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ok2-qP-Dhz">
+                                <rect key="frame" x="225" y="199" width="94" height="32"/>
                                 <buttonCell key="cell" type="push" title="恢复默认" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BcG-6R-ywM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -325,9 +323,8 @@
                                     <action selector="buttonAction:" target="a3R-Kb-fM0" id="Tol-LV-46d"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-td-bGv">
-                                <rect key="frame" x="102" y="172" width="115" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-td-bGv">
+                                <rect key="frame" x="88" y="207" width="115" height="18"/>
                                 <buttonCell key="cell" type="check" title="启用全局快捷键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9ML-U3-v0S">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -336,9 +333,8 @@
                                     <action selector="buttonAction:" target="a3R-Kb-fM0" id="kYD-hW-pXm"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGa-l5-Zew">
-                                <rect key="frame" x="102" y="138" width="115" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pGa-l5-Zew">
+                                <rect key="frame" x="88" y="173" width="115" height="18"/>
                                 <buttonCell key="cell" type="check" title="使用系统媒体键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HYQ-PX-qyX">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -347,72 +343,106 @@
                                     <action selector="buttonAction:" target="a3R-Kb-fM0" id="SSv-Dl-A60"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujj-PE-rPK">
-                                <rect key="frame" x="224" y="94" width="60" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HTl-di-b2z">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-S0-fcS">
-                                <rect key="frame" x="296" y="94" width="61" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tOr-Hf-rAh">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="awj-i2-MS8">
-                                <rect key="frame" x="375" y="95" width="61" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iVF-at-CIc">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDl-Wq-DZP">
-                                <rect key="frame" x="102" y="95" width="58" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="播放音质" id="cKW-XZ-s27">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVa-p6-pY2">
-                                <rect key="frame" x="102" y="55" width="58" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-TS-ouD">
+                                <rect key="frame" x="231" y="139" width="210" height="16"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ujj-PE-rPK">
+                                        <rect key="frame" x="-1" y="-1" width="61" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HTl-di-b2z">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-S0-fcS">
+                                        <rect key="frame" x="75" y="-1" width="61" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tOr-Hf-rAh">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="awj-i2-MS8">
+                                        <rect key="frame" x="151" y="-1" width="61" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iVF-at-CIc">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FVa-p6-pY2">
+                                <rect key="frame" x="88" y="103" width="58" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="缓存大小" id="K33-4r-yXp">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4u-Vs-dJJ">
-                                <rect key="frame" x="189" y="52" width="217" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="44.444444444444443" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vk6-Ba-YlL"/>
-                            </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZI8-7L-lLp">
-                                <rect key="frame" x="491" y="52" width="38" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZI8-7L-lLp">
+                                <rect key="frame" x="472" y="103" width="38" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="512M" id="WAz-Sa-pne">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="miT-az-7n1">
-                                <rect key="frame" x="221" y="140" width="129" height="14"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="miT-az-7n1">
+                                <rect key="frame" x="229" y="175" width="129" height="14"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="(system version 10.13+)" id="ztg-sZ-HUr">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="label" size="11"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cDl-Wq-DZP">
+                                <rect key="frame" x="88" y="139" width="58" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="播放音质" id="cKW-XZ-s27">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d4u-Vs-dJJ">
+                                <rect key="frame" x="229" y="98" width="217" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="213" id="bp0-5b-6wy"/>
+                                </constraints>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="44.444444444444443" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vk6-Ba-YlL"/>
+                            </slider>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="FVa-p6-pY2" firstAttribute="top" secondItem="cDl-Wq-DZP" secondAttribute="bottom" constant="20" id="2cR-cH-NtK"/>
+                            <constraint firstItem="Aes-td-bGv" firstAttribute="top" secondItem="Wf0-Hw-cqX" secondAttribute="bottom" constant="30" id="31f-mV-Psn"/>
+                            <constraint firstItem="pGa-l5-Zew" firstAttribute="leading" secondItem="Aes-td-bGv" secondAttribute="leading" id="96S-Zs-HvW"/>
+                            <constraint firstItem="miT-az-7n1" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="9Xh-6x-KXX"/>
+                            <constraint firstItem="FVa-p6-pY2" firstAttribute="leading" secondItem="cDl-Wq-DZP" secondAttribute="leading" id="Ahv-Uo-RGS"/>
+                            <constraint firstItem="d4u-Vs-dJJ" firstAttribute="centerY" secondItem="FVa-p6-pY2" secondAttribute="centerY" id="G1H-hU-Byo"/>
+                            <constraint firstItem="cDl-Wq-DZP" firstAttribute="top" secondItem="pGa-l5-Zew" secondAttribute="bottom" constant="20" id="JJT-iY-03f"/>
+                            <constraint firstItem="ZI8-7L-lLp" firstAttribute="leading" secondItem="d4u-Vs-dJJ" secondAttribute="trailing" constant="30" id="KtY-Dv-Ksm"/>
+                            <constraint firstItem="miT-az-7n1" firstAttribute="centerY" secondItem="pGa-l5-Zew" secondAttribute="centerY" id="LuI-2E-xw0"/>
+                            <constraint firstItem="pGa-l5-Zew" firstAttribute="top" secondItem="Aes-td-bGv" secondAttribute="bottom" constant="20" id="MUe-se-8X0"/>
+                            <constraint firstItem="d4u-Vs-dJJ" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="Ndc-Yy-PEu"/>
+                            <constraint firstItem="Aes-td-bGv" firstAttribute="leading" secondItem="Wf0-Hw-cqX" secondAttribute="leading" id="Qd8-XO-kNM"/>
+                            <constraint firstItem="Wf0-Hw-cqX" firstAttribute="leading" secondItem="Rxf-oz-0Km" secondAttribute="leading" constant="90" id="dPp-5U-88p"/>
+                            <constraint firstItem="Wf0-Hw-cqX" firstAttribute="top" secondItem="TPG-5A-l0F" secondAttribute="bottom" constant="25" id="eEI-QI-wkT"/>
+                            <constraint firstItem="ok2-qP-Dhz" firstAttribute="centerY" secondItem="Aes-td-bGv" secondAttribute="centerY" id="eTb-dw-ZG2"/>
+                            <constraint firstItem="xXZ-TS-ouD" firstAttribute="leading" secondItem="miT-az-7n1" secondAttribute="leading" id="nDh-Zh-fUn"/>
+                            <constraint firstItem="TPG-5A-l0F" firstAttribute="leading" secondItem="Rxf-oz-0Km" secondAttribute="leading" constant="40" id="ovd-b9-BEa"/>
+                            <constraint firstItem="TPG-5A-l0F" firstAttribute="top" secondItem="Rxf-oz-0Km" secondAttribute="top" constant="30" id="p37-42-f1w"/>
+                            <constraint firstItem="ZI8-7L-lLp" firstAttribute="centerY" secondItem="d4u-Vs-dJJ" secondAttribute="centerY" id="qxr-Zn-r2o"/>
+                            <constraint firstItem="cDl-Wq-DZP" firstAttribute="leading" secondItem="pGa-l5-Zew" secondAttribute="leading" id="s7B-ob-EZf"/>
+                            <constraint firstItem="xXZ-TS-ouD" firstAttribute="centerY" secondItem="cDl-Wq-DZP" secondAttribute="centerY" id="sp3-gU-E0F"/>
+                            <constraint firstItem="ok2-qP-Dhz" firstAttribute="leading" secondItem="Aes-td-bGv" secondAttribute="trailing" constant="30" id="yfW-vc-fS3"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="enableGlobalButton" destination="Aes-td-bGv" id="Bgw-6H-q9Y"/>
