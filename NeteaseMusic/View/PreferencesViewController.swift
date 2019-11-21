@@ -73,7 +73,20 @@ class PreferencesViewController: NSViewController {
         }
         initMusicBrButtons()
     }
-
+    
+    @IBOutlet weak var cacheSlider: NSSlider!
+    @IBOutlet weak var cacheTextField: NSTextField!
+    @IBAction func sliderAction(_ sender: NSSlider) {
+        switch sender {
+        case cacheSlider:
+            let v = sender.doubleValue
+            Preferences.shared.cacheSize = v
+            initCacheSize(updateSlider: false)
+        default:
+            break
+        }
+    }
+    
     var sidebarItemObserver: NSKeyValueObservation?
     var firstResponderObserver: NSKeyValueObservation?
     let waitTimer = WaitTimer(timeOut: .milliseconds(100)) {
@@ -111,6 +124,7 @@ class PreferencesViewController: NSViewController {
         }
         
         initMusicBrButtons()
+        initCacheSize()
         
         textFieldsDic = [playTextField: .play,
                          playGlobalTextField: .playGlobal,
@@ -208,6 +222,14 @@ class PreferencesViewController: NSViewController {
             brButton1.state = .on
         case .best:
             brButton2.state = .on
+        }
+    }
+    
+    func initCacheSize(updateSlider: Bool = true) {
+        let v = Preferences.shared.cacheSize
+        cacheTextField.doubleValue = v * 1000000
+        if updateSlider {
+            cacheSlider.doubleValue = v
         }
     }
     

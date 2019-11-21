@@ -163,6 +163,15 @@ class Preferences: NSObject {
         }
     }
     
+    var cacheSize: Double {
+        get {
+            return defaults(.cacheSize) as? Double ?? 500
+        }
+        set {
+            defaultsSet(newValue, forKey: .cacheSize)
+        }
+    }
+    
 }
 
 private extension Preferences {
@@ -185,6 +194,7 @@ enum PreferenceKeys: String {
     case enableGlobalHotKeys
     case enableSystemMediaKeys
     case musicBitRate
+    case cacheSize
 }
 
 struct PreferencesKeyEvent {

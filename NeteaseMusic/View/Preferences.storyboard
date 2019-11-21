@@ -397,8 +397,9 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZI8-7L-lLp">
-                                <rect key="frame" x="472" y="103" width="38" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="512M" id="WAz-Sa-pne">
+                                <rect key="frame" x="472" y="103" width="4" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="WAz-Sa-pne">
+                                    <byteCountFormatter key="formatter" id="dex-3O-8ZC"/>
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -425,7 +426,10 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="213" id="bp0-5b-6wy"/>
                                 </constraints>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="44.444444444444443" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vk6-Ba-YlL"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="500" maxValue="4000" doubleValue="500" tickMarkPosition="above" numberOfTickMarks="15" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vk6-Ba-YlL"/>
+                                <connections>
+                                    <action selector="sliderAction:" target="a3R-Kb-fM0" id="NFQ-f7-O0C"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <constraints>
@@ -457,6 +461,8 @@
                         <outlet property="brButton0" destination="ujj-PE-rPK" id="OtF-qH-Fnc"/>
                         <outlet property="brButton1" destination="SVP-S0-fcS" id="IqD-wH-Kxf"/>
                         <outlet property="brButton2" destination="awj-i2-MS8" id="H2T-pB-BKI"/>
+                        <outlet property="cacheSlider" destination="d4u-Vs-dJJ" id="G9M-TU-t91"/>
+                        <outlet property="cacheTextField" destination="ZI8-7L-lLp" id="3a9-67-MXj"/>
                         <outlet property="enableGlobalButton" destination="Aes-td-bGv" id="Bgw-6H-q9Y"/>
                         <outlet property="enableSystemMediaButton" destination="pGa-l5-Zew" id="1rJ-9H-Dru"/>
                         <outlet property="gridView" destination="Wf0-Hw-cqX" id="kjj-A2-DiR"/>
