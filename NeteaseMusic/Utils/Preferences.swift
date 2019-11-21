@@ -153,6 +153,16 @@ class Preferences: NSObject {
         }
     }
     
+    var musicBitRate: MusicBitRate {
+        get {
+            let i = defaults(.musicBitRate) as? Int ?? MusicBitRate.best.rawValue
+            return MusicBitRate(rawValue: i) ?? .best
+        }
+        set {
+            defaultsSet(newValue.rawValue, forKey: .musicBitRate)
+        }
+    }
+    
 }
 
 private extension Preferences {
@@ -174,11 +184,18 @@ enum PreferenceKeys: String {
     case hotKeys
     case enableGlobalHotKeys
     case enableSystemMediaKeys
+    case musicBitRate
 }
 
 struct PreferencesKeyEvent {
     var flags: String?
     var keyCode: String?
+}
+
+enum MusicBitRate: Int {
+    case 🎹192kbps = 192000
+    case 🎹320kbps = 320000
+    case best = 999000
 }
 
 enum PreferencesKeyEquivalents: String {

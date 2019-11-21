@@ -41,8 +41,9 @@ class Track: NSObject, Decodable {
     var loved = false
     
     func playerItemm() -> Promise<AVPlayerItem?> {
+        let br = Preferences.shared.musicBitRate.rawValue
         return Promise { resolver in
-            PlayCore.shared.api.songUrl([id]).get {
+            PlayCore.shared.api.songUrl([id], br).get {
                 self.song = $0.first
                 }.done {
                     guard let uStr = $0.first?.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
@@ -178,6 +179,10 @@ class Song: NSObject, Decodable {
     let url: URL?
     // 320kbp  =>  320,000
     let br: Int
+    let type: String
+    let payed: Int
+    let level: String?
+    let encodeType: String?
 }
 
 struct RecommendResource: Decodable {

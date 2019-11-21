@@ -344,28 +344,37 @@
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-TS-ouD">
-                                <rect key="frame" x="231" y="139" width="210" height="16"/>
+                                <rect key="frame" x="231" y="139" width="226" height="16"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ujj-PE-rPK">
-                                        <rect key="frame" x="-1" y="-1" width="61" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HTl-di-b2z">
+                                        <rect key="frame" x="-1" y="-1" width="74" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="192kbps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HTl-di-b2z">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="brButtonAction:" target="a3R-Kb-fM0" id="L7a-hD-u4Q"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-S0-fcS">
-                                        <rect key="frame" x="75" y="-1" width="61" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tOr-Hf-rAh">
+                                        <rect key="frame" x="88" y="-1" width="76" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="320kbps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tOr-Hf-rAh">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="brButtonAction:" target="a3R-Kb-fM0" id="twt-1u-mzQ"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="awj-i2-MS8">
-                                        <rect key="frame" x="151" y="-1" width="61" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iVF-at-CIc">
+                                        <rect key="frame" x="179" y="-1" width="49" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="最佳" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iVF-at-CIc">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="brButtonAction:" target="a3R-Kb-fM0" id="jc4-0a-BqV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <visibilityPriorities>
@@ -445,6 +454,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="brButton0" destination="ujj-PE-rPK" id="OtF-qH-Fnc"/>
+                        <outlet property="brButton1" destination="SVP-S0-fcS" id="IqD-wH-Kxf"/>
+                        <outlet property="brButton2" destination="awj-i2-MS8" id="H2T-pB-BKI"/>
                         <outlet property="enableGlobalButton" destination="Aes-td-bGv" id="Bgw-6H-q9Y"/>
                         <outlet property="enableSystemMediaButton" destination="pGa-l5-Zew" id="1rJ-9H-Dru"/>
                         <outlet property="gridView" destination="Wf0-Hw-cqX" id="kjj-A2-DiR"/>

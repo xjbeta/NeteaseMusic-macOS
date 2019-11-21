@@ -261,7 +261,7 @@
 		01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		01E07ACC232724A700C95319 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlaylistDetail.json; sourceTree = "<group>"; };
-		01E0F4A62261661B0043FAB6 /* PlayerUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayerUrl.json; sourceTree = "<group>"; };
+		01E0F4A62261661B0043FAB6 /* SongUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SongUrl.json; sourceTree = "<group>"; };
 		01E40FE822C1DF4600864118 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		01E7C9D3228BB697004D80AD /* IdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdButton.swift; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -575,7 +575,7 @@
 			children = (
 				01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */,
 				0134B63822645D5900262AB8 /* UserPlaylist.json */,
-				01E0F4A62261661B0043FAB6 /* PlayerUrl.json */,
+				01E0F4A62261661B0043FAB6 /* SongUrl.json */,
 				0137264D226AF191004EDCE5 /* RecommendResource.json */,
 				01314397226B497E00B9E26F /* RecommendSongs.json */,
 				013143AC22706F1200B9E26F /* Lyric.json */,

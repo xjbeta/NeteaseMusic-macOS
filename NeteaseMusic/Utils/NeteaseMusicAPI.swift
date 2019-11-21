@@ -162,12 +162,12 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func songUrl(_ ids: [Int]) -> Promise<([Song])> {
+    func songUrl(_ ids: [Int], _ br: Int) -> Promise<([Song])> {
         struct P: Encodable {
             let ids: [Int]
-            let br = 9990000
 //            let level = "standard";
 //            let encodeType = "aac";
+            let br: Int
             let csrfToken: String
             enum CodingKeys: String, CodingKey {
 //                case ids, level, encodeType, csrfToken = "csrf_token"
@@ -175,7 +175,7 @@ class NeteaseMusicAPI: NSObject {
             }
         }
         
-        let p = P(ids: ids, csrfToken: csrf).jsonString()
+        let p = P(ids: ids, br: br, csrfToken: csrf).jsonString()
         
         struct Result: Decodable {
             let data: [Song]

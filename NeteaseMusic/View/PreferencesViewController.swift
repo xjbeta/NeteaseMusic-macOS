@@ -54,6 +54,25 @@ class PreferencesViewController: NSViewController {
             break
         }
     }
+    
+    @IBOutlet weak var brButton0: NSButton!
+    @IBOutlet weak var brButton1: NSButton!
+    @IBOutlet weak var brButton2: NSButton!
+    
+    @IBAction func brButtonAction(_ sender: NSButton) {
+        let perf = Preferences.shared
+        switch sender {
+        case brButton0:
+            perf.musicBitRate = .🎹192kbps
+        case brButton1:
+            perf.musicBitRate = .🎹320kbps
+        case brButton2:
+            perf.musicBitRate = .best
+        default:
+            break
+        }
+        initMusicBrButtons()
+    }
 
     var sidebarItemObserver: NSKeyValueObservation?
     var firstResponderObserver: NSKeyValueObservation?
@@ -90,6 +109,8 @@ class PreferencesViewController: NSViewController {
         } else {
             enableSystemMediaButton.isEnabled = false
         }
+        
+        initMusicBrButtons()
         
         textFieldsDic = [playTextField: .play,
                          playGlobalTextField: .playGlobal,
@@ -171,6 +192,22 @@ class PreferencesViewController: NSViewController {
             $0.value.isGlobal()
         }.forEach {
             $0.key.isEnabled = s
+        }
+    }
+    
+    func initMusicBrButtons() {
+        let br = Preferences.shared.musicBitRate
+        brButton0.state = .off
+        brButton1.state = .off
+        brButton2.state = .off
+        
+        switch br {
+        case .🎹192kbps:
+            brButton0.state = .on
+        case .🎹320kbps:
+            brButton1.state = .on
+        case .best:
+            brButton2.state = .on
         }
     }
     
