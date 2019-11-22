@@ -600,17 +600,19 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func songDetail(_ id: Int) -> Promise<(Track)> {
+    func songDetail(_ ids: [Int]) -> Promise<([Track])> {
         struct P: Encodable {
-            let id: String
+            let ids: String
             let c: String
             let csrfToken: String
             enum CodingKeys: String, CodingKey {
-                case id, c, csrfToken = "csrf_token"
+                case ids, c, csrfToken = "csrf_token"
             }
         }
+        let c = "[" + ids.map({ "{\"id\":\"\($0)\"}" }).joined(separator: ",") + "]"
+        let idsStr = "[" + ids.map(String.init).joined(separator: ",") + "]"
         
-        let p = P(id: "\(id)", c: "[{\"id\":\"\(id)\"}]", csrfToken: "").jsonString()
+        let p = P(ids: idsStr, c: c, csrfToken: csrf).jsonString()
         
         struct Result: Decodable {
             let songs: [Track]
@@ -621,8 +623,8 @@ class NeteaseMusicAPI: NSObject {
         return request("https://music.163.com/weapi/v3/song/detail",
                    p,
                    Result.self).map {
-                    if $0.code == 200, let track = $0.songs.first {
-                        return (track)
+                    if $0.code == 200 {
+                        return ($0.songs)
                     } else {
                         throw RequestError.errorCode(($0.code, ""))
                     }
