@@ -87,6 +87,21 @@ class PreferencesViewController: NSViewController {
         }
     }
     
+    @IBOutlet weak var addToPlaylistButton: NSButton!
+    @IBOutlet weak var replacePlaylistButton: NSButton!
+    
+    @IBAction func pButtonAction(_ sender: NSButton) {
+        switch sender {
+        case addToPlaylistButton:
+            Preferences.shared.replacePlaylist = false
+        case replacePlaylistButton:
+            Preferences.shared.replacePlaylist = true
+        default:
+            break
+        }
+        initPlaylistActionButtons()
+    }
+    
     var sidebarItemObserver: NSKeyValueObservation?
     var firstResponderObserver: NSKeyValueObservation?
     let waitTimer = WaitTimer(timeOut: .milliseconds(100)) {
@@ -125,6 +140,7 @@ class PreferencesViewController: NSViewController {
         
         initMusicBrButtons()
         initCacheSize()
+        initPlaylistActionButtons()
         
         textFieldsDic = [playTextField: .play,
                          playGlobalTextField: .playGlobal,
@@ -231,6 +247,12 @@ class PreferencesViewController: NSViewController {
         if updateSlider {
             cacheSlider.doubleValue = v
         }
+    }
+    
+    func initPlaylistActionButtons() {
+        let r = Preferences.shared.replacePlaylist
+        replacePlaylistButton.state = r ? .on : .off
+        addToPlaylistButton.state = !r ? .on : .off
     }
     
     deinit {

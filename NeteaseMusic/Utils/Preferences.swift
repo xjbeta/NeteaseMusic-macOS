@@ -172,6 +172,15 @@ class Preferences: NSObject {
         }
     }
     
+    var replacePlaylist: Bool {
+        get {
+            return defaults(.replacePlaylist) as? Bool ?? true
+        }
+        set {
+            defaultsSet(newValue, forKey: .replacePlaylist)
+        }
+    }
+    
 }
 
 private extension Preferences {
@@ -195,6 +204,7 @@ enum PreferenceKeys: String {
     case enableSystemMediaKeys
     case musicBitRate
     case cacheSize
+    case replacePlaylist
 }
 
 struct PreferencesKeyEvent {

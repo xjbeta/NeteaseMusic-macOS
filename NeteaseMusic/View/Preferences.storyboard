@@ -15,15 +15,15 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-5A-l0F">
-                                <rect key="frame" x="38" y="558" width="123" height="27"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Preferences" id="0eR-hk-lML">
-                                    <font key="font" metaFont="system" size="23"/>
+                                <rect key="frame" x="38" y="568" width="51" height="27"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="设置" id="0eR-hk-lML">
+                                    <font key="font" size="23" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Wf0-Hw-cqX">
-                                <rect key="frame" x="90" y="253" width="488" height="280"/>
+                                <rect key="frame" x="90" y="263" width="488" height="280"/>
                                 <rows>
                                     <gridRow id="aNc-Lb-2po"/>
                                     <gridRow id="4oL-l7-QeX"/>
@@ -314,7 +314,7 @@
                                 </gridCells>
                             </gridView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ok2-qP-Dhz">
-                                <rect key="frame" x="225" y="199" width="94" height="32"/>
+                                <rect key="frame" x="245" y="209" width="94" height="32"/>
                                 <buttonCell key="cell" type="push" title="恢复默认" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BcG-6R-ywM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -324,7 +324,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-td-bGv">
-                                <rect key="frame" x="88" y="207" width="115" height="18"/>
+                                <rect key="frame" x="88" y="217" width="115" height="18"/>
                                 <buttonCell key="cell" type="check" title="启用全局快捷键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9ML-U3-v0S">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -334,7 +334,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pGa-l5-Zew">
-                                <rect key="frame" x="88" y="173" width="115" height="18"/>
+                                <rect key="frame" x="88" y="183" width="115" height="18"/>
                                 <buttonCell key="cell" type="check" title="使用系统媒体键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HYQ-PX-qyX">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -343,8 +343,8 @@
                                     <action selector="buttonAction:" target="a3R-Kb-fM0" id="SSv-Dl-A60"/>
                                 </connections>
                             </button>
-                            <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-TS-ouD">
-                                <rect key="frame" x="231" y="139" width="226" height="16"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-TS-ouD">
+                                <rect key="frame" x="251" y="149" width="230" height="16"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ujj-PE-rPK">
                                         <rect key="frame" x="-1" y="-1" width="74" height="18"/>
@@ -357,7 +357,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-S0-fcS">
-                                        <rect key="frame" x="88" y="-1" width="76" height="18"/>
+                                        <rect key="frame" x="90" y="-1" width="76" height="18"/>
                                         <buttonCell key="cell" type="radio" title="320kbps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tOr-Hf-rAh">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -367,10 +367,10 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="awj-i2-MS8">
-                                        <rect key="frame" x="179" y="-1" width="49" height="18"/>
+                                        <rect key="frame" x="183" y="-1" width="49" height="18"/>
                                         <buttonCell key="cell" type="radio" title="最佳" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iVF-at-CIc">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="brButtonAction:" target="a3R-Kb-fM0" id="jc4-0a-BqV"/>
@@ -389,40 +389,15 @@
                                 </customSpacing>
                             </stackView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FVa-p6-pY2">
-                                <rect key="frame" x="88" y="103" width="58" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="缓存大小" id="K33-4r-yXp">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZI8-7L-lLp">
-                                <rect key="frame" x="472" y="103" width="4" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" id="WAz-Sa-pne">
-                                    <byteCountFormatter key="formatter" id="dex-3O-8ZC"/>
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="miT-az-7n1">
-                                <rect key="frame" x="229" y="175" width="129" height="14"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="(system version 10.13+)" id="ztg-sZ-HUr">
-                                    <font key="font" metaFont="label" size="11"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cDl-Wq-DZP">
-                                <rect key="frame" x="88" y="139" width="58" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="播放音质" id="cKW-XZ-s27">
+                                <rect key="frame" x="88" y="113" width="61" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="缓存大小:" id="K33-4r-yXp">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d4u-Vs-dJJ">
-                                <rect key="frame" x="229" y="98" width="217" height="24"/>
+                                <rect key="frame" x="249" y="108" width="217" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="213" id="bp0-5b-6wy"/>
                                 </constraints>
@@ -431,10 +406,78 @@
                                     <action selector="sliderAction:" target="a3R-Kb-fM0" id="NFQ-f7-O0C"/>
                                 </connections>
                             </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZI8-7L-lLp">
+                                <rect key="frame" x="492" y="113" width="4" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="WAz-Sa-pne">
+                                    <byteCountFormatter key="formatter" id="dex-3O-8ZC"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="miT-az-7n1">
+                                <rect key="frame" x="249" y="185" width="95" height="14"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="(系统版本 10.13+)" id="ztg-sZ-HUr">
+                                    <font key="font" metaFont="label" size="11"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cDl-Wq-DZP">
+                                <rect key="frame" x="88" y="149" width="61" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="播放音质:" id="cKW-XZ-s27">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4wj-an-QMM">
+                                <rect key="frame" x="88" y="77" width="141" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="双击歌曲列表内单曲时:" id="g6y-6e-b19">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ZF-HK-29O">
+                                <rect key="frame" x="251" y="77" width="337" height="16"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="agI-jk-VEu">
+                                        <rect key="frame" x="-1" y="-1" width="155" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="仅把单曲加入播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="BqD-rD-sHP">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="pButtonAction:" target="a3R-Kb-fM0" id="Ldx-GN-mO4"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BO8-uS-816">
+                                        <rect key="frame" x="171" y="-1" width="168" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="用歌曲列表替换播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Xpf-TU-5YY">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="pButtonAction:" target="a3R-Kb-fM0" id="mZs-Ab-rze"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="4wj-an-QMM" firstAttribute="leading" secondItem="FVa-p6-pY2" secondAttribute="leading" id="1cr-yz-WhX"/>
                             <constraint firstItem="FVa-p6-pY2" firstAttribute="top" secondItem="cDl-Wq-DZP" secondAttribute="bottom" constant="20" id="2cR-cH-NtK"/>
                             <constraint firstItem="Aes-td-bGv" firstAttribute="top" secondItem="Wf0-Hw-cqX" secondAttribute="bottom" constant="30" id="31f-mV-Psn"/>
+                            <constraint firstItem="4wj-an-QMM" firstAttribute="top" secondItem="FVa-p6-pY2" secondAttribute="bottom" constant="20" id="8jO-s1-vF8"/>
                             <constraint firstItem="pGa-l5-Zew" firstAttribute="leading" secondItem="Aes-td-bGv" secondAttribute="leading" id="96S-Zs-HvW"/>
                             <constraint firstItem="miT-az-7n1" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="9Xh-6x-KXX"/>
                             <constraint firstItem="FVa-p6-pY2" firstAttribute="leading" secondItem="cDl-Wq-DZP" secondAttribute="leading" id="Ahv-Uo-RGS"/>
@@ -445,19 +488,22 @@
                             <constraint firstItem="pGa-l5-Zew" firstAttribute="top" secondItem="Aes-td-bGv" secondAttribute="bottom" constant="20" id="MUe-se-8X0"/>
                             <constraint firstItem="d4u-Vs-dJJ" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="Ndc-Yy-PEu"/>
                             <constraint firstItem="Aes-td-bGv" firstAttribute="leading" secondItem="Wf0-Hw-cqX" secondAttribute="leading" id="Qd8-XO-kNM"/>
+                            <constraint firstItem="9ZF-HK-29O" firstAttribute="centerY" secondItem="4wj-an-QMM" secondAttribute="centerY" id="be6-jC-hgJ"/>
                             <constraint firstItem="Wf0-Hw-cqX" firstAttribute="leading" secondItem="Rxf-oz-0Km" secondAttribute="leading" constant="90" id="dPp-5U-88p"/>
                             <constraint firstItem="Wf0-Hw-cqX" firstAttribute="top" secondItem="TPG-5A-l0F" secondAttribute="bottom" constant="25" id="eEI-QI-wkT"/>
                             <constraint firstItem="ok2-qP-Dhz" firstAttribute="centerY" secondItem="Aes-td-bGv" secondAttribute="centerY" id="eTb-dw-ZG2"/>
                             <constraint firstItem="xXZ-TS-ouD" firstAttribute="leading" secondItem="miT-az-7n1" secondAttribute="leading" id="nDh-Zh-fUn"/>
                             <constraint firstItem="TPG-5A-l0F" firstAttribute="leading" secondItem="Rxf-oz-0Km" secondAttribute="leading" constant="40" id="ovd-b9-BEa"/>
-                            <constraint firstItem="TPG-5A-l0F" firstAttribute="top" secondItem="Rxf-oz-0Km" secondAttribute="top" constant="30" id="p37-42-f1w"/>
+                            <constraint firstItem="TPG-5A-l0F" firstAttribute="top" secondItem="Rxf-oz-0Km" secondAttribute="top" constant="20" id="p37-42-f1w"/>
                             <constraint firstItem="ZI8-7L-lLp" firstAttribute="centerY" secondItem="d4u-Vs-dJJ" secondAttribute="centerY" id="qxr-Zn-r2o"/>
                             <constraint firstItem="cDl-Wq-DZP" firstAttribute="leading" secondItem="pGa-l5-Zew" secondAttribute="leading" id="s7B-ob-EZf"/>
                             <constraint firstItem="xXZ-TS-ouD" firstAttribute="centerY" secondItem="cDl-Wq-DZP" secondAttribute="centerY" id="sp3-gU-E0F"/>
-                            <constraint firstItem="ok2-qP-Dhz" firstAttribute="leading" secondItem="Aes-td-bGv" secondAttribute="trailing" constant="30" id="yfW-vc-fS3"/>
+                            <constraint firstItem="ok2-qP-Dhz" firstAttribute="leading" secondItem="Aes-td-bGv" secondAttribute="trailing" constant="50" id="yfW-vc-fS3"/>
+                            <constraint firstItem="9ZF-HK-29O" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="znx-Hf-SPn"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToPlaylistButton" destination="agI-jk-VEu" id="WLn-tA-efZ"/>
                         <outlet property="brButton0" destination="ujj-PE-rPK" id="OtF-qH-Fnc"/>
                         <outlet property="brButton1" destination="SVP-S0-fcS" id="IqD-wH-Kxf"/>
                         <outlet property="brButton2" destination="awj-i2-MS8" id="H2T-pB-BKI"/>
@@ -474,6 +520,7 @@
                         <outlet property="playTextField" destination="iow-B0-hl3" id="he6-8i-zT6"/>
                         <outlet property="preGlobalTextField" destination="rmk-o1-4yM" id="tuU-bv-AGq"/>
                         <outlet property="preTextField" destination="He6-A8-wTa" id="qkb-D1-6Bk"/>
+                        <outlet property="replacePlaylistButton" destination="BO8-uS-816" id="FqC-kb-wOY"/>
                         <outlet property="resetKeyEquicalentButton" destination="ok2-qP-Dhz" id="ky8-dd-lZ8"/>
                         <outlet property="volumeDownGlobalTextField" destination="kWE-nc-CGf" id="Rmx-pM-bYx"/>
                         <outlet property="volumeDownTextField" destination="U91-Ty-oth" id="BIU-21-fqV"/>
