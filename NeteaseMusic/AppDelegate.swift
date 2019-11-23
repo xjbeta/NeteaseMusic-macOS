@@ -21,12 +21,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         PlayCore.shared.setupSystemMediaKeys()
         
-        
-
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        let playCore = PlayCore.shared
+        let fmPlaylist = playCore.fmPlaylist.map {
+            $0.id
+        }
+        let currentFMId = playCore.currentFMTrack?.id
+        Preferences.shared.fmPlaylist = (currentFMId, fmPlaylist)
+        
     }
 
 

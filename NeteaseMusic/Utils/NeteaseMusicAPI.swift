@@ -600,7 +600,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func songDetail(_ ids: [Int]) -> Promise<([Track])> {
+    func songDetail(_ ids: [Int]) -> Promise<[Track]> {
         struct P: Encodable {
             let ids: String
             let c: String

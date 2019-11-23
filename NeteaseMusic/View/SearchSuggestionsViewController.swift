@@ -20,8 +20,8 @@ class SearchSuggestionsViewController: NSViewController {
             ViewControllerManager.shared.selectSidebarItem(.searchResults, item.id)
         case .song:
             let playCore = PlayCore.shared
-            playCore.api.songDetail(item.id).done {
-                playCore.playNow([$0])
+            playCore.api.songDetail([item.id]).done {
+                playCore.playNow($0)
                 }.catch {
                    print("Song Detail error \($0)")
             }

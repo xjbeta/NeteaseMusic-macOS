@@ -50,7 +50,6 @@ class FMViewController: NSViewController {
     
     var currentTrackObserver: NSKeyValueObservation?
     var playerStatueObserver: NSKeyValueObservation?
-    var playListObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
     
     var imageViewsFrames = [NSRect]()
@@ -63,17 +62,6 @@ class FMViewController: NSViewController {
         imageViewsFrames.append(coverImageView.frame)
         imageViewsFrames.append(prevImageButton.frame)
         imageViewsFrames.append(ppImageView.frame)
-        
-        playListObserver = PlayCore.shared.observe(\.fmPlaylist, options: [.old, .new]) { [weak self] playcore, changes in
-            if changes.oldValue?.count == 0,
-                let tracksCount = changes.newValue?.count,
-                tracksCount > 0 {
-                // fmPlayList inited
-                playcore.currentFMTrack = changes.newValue?.first
-                self?.initView()
-                self?.playListObserver?.invalidate()
-            }
-        }
         
         currentTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new, .old]) { [weak self] playcore, changes in
             guard playcore.fmMode else { return }
@@ -135,13 +123,13 @@ class FMViewController: NSViewController {
             }
         }
         
-        PlayCore.shared.fmPlaylist.removeAll()
-        
+        initFMPlayList()
     }
     
     func loadFMTracks() {
-        PlayCore.shared.api.radioGet().done {
-            PlayCore.shared.fmPlaylist.append(contentsOf: $0)
+        let playCore = PlayCore.shared
+        playCore.api.radioGet().done {
+            playCore.fmPlaylist.append(contentsOf: $0)
             }.catch {
                 print($0)
         }
@@ -301,12 +289,38 @@ class FMViewController: NSViewController {
         ppImageLeadingLayoutConstraint.constant = frames[3].origin.x
     }
     
+    func initFMPlayList() {
+        let pref = Preferences.shared
+        let cId = pref.fmPlaylist.0
+        let ids = pref.fmPlaylist.1
+        let playCore = PlayCore.shared
+        if ids.count > 0 {
+            playCore.api.songDetail(ids).done(on: .main) {
+                playCore.fmPlaylist = $0
+                playCore.currentFMTrack = $0.first {
+                    $0.id == cId
+                }
+                self.initView()
+            }.catch {
+                print($0)
+            }
+        } else {
+            pref.fmPlaylist = (nil, [])
+            playCore.currentFMTrack = nil
+            playCore.api.radioGet().done(on: .main) {
+                playCore.fmPlaylist = $0
+                playCore.currentFMTrack = $0.first
+                self.initView()
+            }.catch {
+                print($0)
+            }
+        }
+    }
     
     deinit {
         lyricViewController()?.removePeriodicTimeObserver(PlayCore.shared.player)
         currentTrackObserver?.invalidate()
         playerStatueObserver?.invalidate()
-        playListObserver?.invalidate()
         fmModeObserver?.invalidate()
     }
 }

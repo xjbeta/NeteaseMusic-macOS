@@ -181,6 +181,23 @@ class Preferences: NSObject {
         }
     }
     
+    var fmPlaylist: (Int?, [Int]) {
+        get {
+            let dValue: (Int?, [Int]) = (nil, [])
+            guard let dic = defaults(.fmPlaylist) as? [String: Any] else {
+                return dValue
+            }
+            
+            return (dic["current"] as? Int, dic["playlist"] as? [Int] ?? [])
+        }
+        set {
+            var dic: [String: Any] = [:]
+            dic["current"] = newValue.0
+            dic["playlist"] = newValue.1
+            defaultsSet(dic, forKey: .fmPlaylist)
+        }
+    }
+    
 }
 
 private extension Preferences {
@@ -205,6 +222,7 @@ enum PreferenceKeys: String {
     case musicBitRate
     case cacheSize
     case replacePlaylist
+    case fmPlaylist
 }
 
 struct PreferencesKeyEvent {
