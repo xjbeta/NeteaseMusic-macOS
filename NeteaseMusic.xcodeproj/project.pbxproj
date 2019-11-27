@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01108870238D05D400184551 /* PlayerSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0110886F238D05D400184551 /* PlayerSliderCell.swift */; };
 		0114DB132380E2380034857F /* PlayCoreMediaKeysExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0114DB122380E2380034857F /* PlayCoreMediaKeysExtension.swift */; };
 		0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0116E1B623248E4F00606C6C /* LogoutViewController.swift */; };
 		0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0116E1B823248E5A00606C6C /* LogoutView.storyboard */; };
@@ -151,6 +152,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0110886F238D05D400184551 /* PlayerSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSliderCell.swift; sourceTree = "<group>"; };
 		0114DB122380E2380034857F /* PlayCoreMediaKeysExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCoreMediaKeysExtension.swift; sourceTree = "<group>"; };
 		0116E1B623248E4F00606C6C /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		0116E1B823248E5A00606C6C /* LogoutView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogoutView.storyboard; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			children = (
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
 				01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */,
+				0110886F238D05D400184551 /* PlayerSliderCell.swift */,
 				012FEA692289B8D200698969 /* ControlBar.storyboard */,
 			);
 			path = ControlBar;
@@ -705,6 +708,7 @@
 				011AC733237A87DA00722A48 /* WaitTimer.swift in Sources */,
 				012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */,
 				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
+				01108870238D05D400184551 /* PlayerSliderCell.swift in Sources */,
 				012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */,
 				011D41962338F898001A6F40 /* KeyEquivalentTextField.swift in Sources */,
 				012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */,

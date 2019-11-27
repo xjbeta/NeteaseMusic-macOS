@@ -16,6 +16,7 @@ class PlayerSlider: NSSlider {
         // Drawing code here.
     }
     
+    var cachedDoubleValue = 0.0
     var ignoreValueUpdate = false
     
     func updateValue(_ value: Double) {

@@ -104,15 +104,17 @@ class ControlBarViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let playCore = PlayCore.shared
+        
         addPeriodicTimeObserver()
         
         let volume = Preferences.shared.volume
         volumeSlider.floatValue = volume
-        PlayCore.shared.player.volume = volume
+        playCore.player.volume = volume
         
         let mute = Preferences.shared.mute
         muteButton.image = mute ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice"))
-        PlayCore.shared.player.isMuted = mute
+        playCore.player.isMuted = mute
         
         trackPicButton.wantsLayer = true
         trackPicButton.layer?.cornerRadius = 4
@@ -123,7 +125,7 @@ class ControlBarViewController: NSViewController {
         
         initPlayModeButton()
         
-        pauseStautsObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
+        pauseStautsObserver = playCore.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             switch player.timeControlStatus {
             case .playing:
                 self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-pause"))
@@ -134,16 +136,16 @@ class ControlBarViewController: NSViewController {
             }
         }
         
-        previousButtonObserver = PlayCore.shared.observe(\.playedTracks, options: [.initial, .new]) { [weak self] (playCore, changes) in
+        previousButtonObserver = playCore.observe(\.playedTracks, options: [.initial, .new]) { [weak self] (playCore, changes) in
             self?.previousButton.isEnabled = playCore.playedTracks.count > 0
         }
         
-        currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
+        currentTrackObserver = playCore.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
             guard !playCore.fmMode, let track = playCore.currentTrack else { return }
             self?.initViews(track)
         }
         
-        currentFMTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
+        currentFMTrackObserver = playCore.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
             guard playCore.fmMode, let track = playCore.currentFMTrack else { return }
             self?.initViews(track)
         }
@@ -156,12 +158,22 @@ class ControlBarViewController: NSViewController {
         periodicTimeObserverToken = PlayCore.shared.player
             .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
                 guard let duration = PlayCore.shared.player.currentItem?.asset.duration,
-                    let durationSlider = self?.durationSlider else { return }
+                    let slider = self?.durationSlider else { return }
+                
+                let loadedTimeRanges = PlayCore.shared.player.currentItem?.loadedTimeRanges
+
                 let periodicSec = Double(CMTimeGetSeconds(time))
-                durationSlider.updateValue(periodicSec)
+                slider.updateValue(periodicSec)
                 let durationSec = Double(CMTimeGetSeconds(duration))
-                if durationSec != durationSlider.maxValue {
-                    durationSlider.maxValue = durationSec
+                if durationSec != slider.maxValue {
+                    slider.maxValue = durationSec
+                }
+
+                if let range = loadedTimeRanges?.first {
+                    let time = CMTimeRangeGetEnd(range.timeRangeValue)
+                    let sec = Double(CMTimeGetSeconds(time))
+                    let todo = "Update cache value when paused."
+                    slider.cachedDoubleValue = sec
                 }
                 
                 self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"
