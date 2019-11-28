@@ -89,6 +89,7 @@
 		01B3015D234E1DAB00BBC6E9 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01B3015E234E1DB300BBC6E9 /* HotKey.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
+		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
 		01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; };
 		01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFB233DB3E100A87467 /* Alamofire.framework */; };
 		01DE5F07233DB3E100A87467 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFD233DB3E100A87467 /* Cache.framework */; };
@@ -251,6 +252,7 @@
 		01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = HotKey.framework.dSYM; path = Carthage/Build/Mac/HotKey.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		01B30159234E1DA500BBC6E9 /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = SOURCE_ROOT; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
+		01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
 		01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/Mac/CryptoSwift.framework; sourceTree = SOURCE_ROOT; };
 		01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Cache.framework.dSYM; path = Carthage/Build/Mac/Cache.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		01DE5EFB233DB3E100A87467 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = SOURCE_ROOT; };
@@ -351,6 +353,7 @@
 				01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */,
 				01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */,
 				0110886F238D05D400184551 /* PlayerSliderCell.swift */,
+				01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */,
 				012FEA692289B8D200698969 /* ControlBar.storyboard */,
 			);
 			path = ControlBar;
@@ -706,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				011AC733237A87DA00722A48 /* WaitTimer.swift in Sources */,
+				01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */,
 				012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */,
 				01467E942283F3180037B49D /* LyricViewController.swift in Sources */,
 				01108870238D05D400184551 /* PlayerSliderCell.swift in Sources */,
