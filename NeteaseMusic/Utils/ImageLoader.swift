@@ -56,24 +56,24 @@ class ImageLoader: NSObject {
 
 
 extension NSImageView {
-    public func setImage(_ url: String, _ autoSize: Bool = false, _ width: CGFloat? = nil) {
+    public func setImage(_ url: String?, _ autoSize: Bool = false, _ width: CGFloat? = nil) {
         self.image = nil
-        guard url != "" else {
+        guard let u = url, u != "" else {
             return
         }
-        ImageLoader.image(url, autoSize, width ?? frame.width) {
+        ImageLoader.image(u, autoSize, width ?? frame.width) {
             self.image = $0
         }
     }
 }
 
 extension NSButton {
-    public func setImage(_ url: String, _ autoSize: Bool = false, _ width: CGFloat? = nil) {
+    public func setImage(_ url: String?, _ autoSize: Bool = false, _ width: CGFloat? = nil) {
         self.image = nil
-        guard url != "" else {
+        guard let u = url, u != "" else {
             return
         }
-        ImageLoader.image(url, autoSize, width ?? frame.width) {
+        ImageLoader.image(u, autoSize, width ?? frame.width) {
             self.image = $0
         }
     }

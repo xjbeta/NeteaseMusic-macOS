@@ -108,13 +108,13 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
             view = tableView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
         case .albums:
             view = tableView.makeView(withIdentifier: .init("SearchAlbumInfoTableCellView"), owner: self) as? NSTableCellView
-            view?.imageView?.setImage(albums[safe: row]?.picUrl?.absoluteString ?? "", true)
+            view?.imageView?.setImage(albums[safe: row]?.picUrl?.absoluteString, true)
         case .artists:
             view = tableView.makeView(withIdentifier: .init("SearchArtistInfoTableCellView"), owner: self) as? NSTableCellView
-            view?.imageView?.setImage(artists[safe: row]?.picUrl ?? "", true)
+            view?.imageView?.setImage(artists[safe: row]?.picUrl, true)
         case .playlists:
             view = tableView.makeView(withIdentifier: .init("SearchPlaylistInfoTableCellView"), owner: self) as? NSTableCellView
-            view?.imageView?.setImage(playlists[safe: row]?.coverImgUrl.absoluteString ?? "", true)
+            view?.imageView?.setImage(playlists[safe: row]?.coverImgUrl.absoluteString, true)
         default:
             return nil
         }

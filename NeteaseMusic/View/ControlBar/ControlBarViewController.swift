@@ -184,7 +184,7 @@ class ControlBarViewController: NSViewController {
     }
     
     func initViews(_ track: Track) {
-        trackPicButton.setImage(track.album.picUrl?.absoluteString ?? "", true)
+        trackPicButton.setImage(track.album.picUrl?.absoluteString, true)
         trackNameTextField.stringValue = track.name
         let name = track.secondName
         trackSecondNameTextField.isHidden = name == ""

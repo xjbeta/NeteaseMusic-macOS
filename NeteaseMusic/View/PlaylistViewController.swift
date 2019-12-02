@@ -281,7 +281,7 @@ class PlaylistViewController: NSViewController {
     func initPlaylistWithAlbum(_ id: Int) {
         initPlaylistInfo()
         PlayCore.shared.api.album(id).done(on: .main) {
-            self.coverImageView.setImage($0.album.picUrl?.absoluteString ?? "", true)
+            self.coverImageView.setImage($0.album.picUrl?.absoluteString, true)
             self.titleTextFiled.stringValue = $0.album.name
             self.descriptionTextField.stringValue = $0.album.des ?? "none"
             self.descriptionTextField.toolTip = $0.album.des
@@ -295,7 +295,7 @@ class PlaylistViewController: NSViewController {
     func initPlaylistWithTopSongs(_ id: Int) {
         initPlaylistInfo()
         PlayCore.shared.api.artist(id).done(on: .main) {
-            self.coverImageView.setImage($0.artist.picUrl ?? "", true)
+            self.coverImageView.setImage($0.artist.picUrl, true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
             self.tracks = $0.hotSongs.initIndexes()
             }.catch {
