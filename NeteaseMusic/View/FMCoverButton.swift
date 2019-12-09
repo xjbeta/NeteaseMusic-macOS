@@ -1,5 +1,5 @@
 //
-//  CoverImageButton.swift
+//  FMCoverButton.swift
 //  NeteaseMusic
 //
 //  Created by xjbeta on 2019/5/11.
@@ -8,9 +8,12 @@
 
 import Cocoa
 
-class CoverImageButton: NSButton {
-    override func viewDidUnhide() {
-        super.viewDidUnhide()
+class FMCoverButton: NSButton {
+    var coverTrackID = 0
+    var index = -1
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         wantsLayer = true
         layer?.cornerRadius = 6
         layer?.borderWidth = 0.5

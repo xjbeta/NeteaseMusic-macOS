@@ -33,7 +33,7 @@
 		012FB7DD233389E1007F7247 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FB7DC233389E1007F7247 /* Preferences.storyboard */; };
 		012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FB7DE23338A00007F7247 /* PreferencesViewController.swift */; };
 		012FEA602286843D00698969 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA5F2286843D00698969 /* CoverImageView.swift */; };
-		012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* CoverImageButton.swift */; };
+		012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* FMCoverButton.swift */; };
 		012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA662289B80F00698969 /* Sidebar.storyboard */; };
 		012FEA6A2289B8D200698969 /* ControlBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA692289B8D200698969 /* ControlBar.storyboard */; };
 		012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA6B2289B96600698969 /* PlaylistView.storyboard */; };
@@ -185,7 +185,7 @@
 		012FB7DC233389E1007F7247 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		012FB7DE23338A00007F7247 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		012FEA5F2286843D00698969 /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
-		012FEA61228684ED00698969 /* CoverImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageButton.swift; sourceTree = "<group>"; };
+		012FEA61228684ED00698969 /* FMCoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMCoverButton.swift; sourceTree = "<group>"; };
 		012FEA662289B80F00698969 /* Sidebar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sidebar.storyboard; sourceTree = "<group>"; };
 		012FEA692289B8D200698969 /* ControlBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ControlBar.storyboard; sourceTree = "<group>"; };
 		012FEA6B2289B96600698969 /* PlaylistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaylistView.storyboard; sourceTree = "<group>"; };
@@ -529,7 +529,7 @@
 			children = (
 				01467E9622846B050037B49D /* FM.storyboard */,
 				01467E9822846B920037B49D /* FMViewController.swift */,
-				012FEA61228684ED00698969 /* CoverImageButton.swift */,
+				012FEA61228684ED00698969 /* FMCoverButton.swift */,
 			);
 			name = FM;
 			sourceTree = "<group>";
@@ -725,7 +725,7 @@
 				01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */,
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
-				012FEA62228684ED00698969 /* CoverImageButton.swift in Sources */,
+				012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */,
 				01FF8B72225C60F7002D7906 /* Colors.swift in Sources */,
 				01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
