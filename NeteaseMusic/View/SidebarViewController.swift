@@ -105,6 +105,8 @@ class SidebarViewController: NSViewController {
                 self.title = "发现音乐"
             case .fm:
                 self.title = "私人FM"
+            case .mySubscription:
+                self.title = "我的收藏"
             case .createdPlaylists:
                 self.title = "创建的歌单"
                 isLeaf = false
@@ -120,11 +122,12 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, subscribedPlaylists, preferences
+        case discover, fm, favourite, playlist, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, subscribedPlaylists, preferences, mySubscription
     }
     
     let defaultItems = [SidebarItem(type: .discover),
                         SidebarItem(type: .fm),
+                        SidebarItem(type: .mySubscription),
                         SidebarItem(type: .createdPlaylists),
                         SidebarItem(type: .subscribedPlaylists)]
     @objc dynamic var sidebarItems = [SidebarItem]()

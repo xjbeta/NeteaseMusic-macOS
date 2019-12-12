@@ -13,7 +13,7 @@ class MainViewController: NSViewController {
     @IBOutlet weak var contentTabView: NSTabView!
     @IBOutlet weak var playingSongTabView: NSTabView!
     enum ContentTabItems: Int {
-        case playlist, fm, preferences, discover, favourite, search, artist
+        case playlist, fm, preferences, discover, favourite, search, artist, mySubscription
     }
     enum MainTabItems: Int {
         case main, login
@@ -44,6 +44,8 @@ class MainViewController: NSViewController {
                     self.updateContentTabView(.discover)
                 case .fm:
                     self.updateContentTabView(.fm)
+                case .mySubscription:
+                    self.updateContentTabView(.mySubscription)
                 case .playlist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
                     self.updateContentTabView(.playlist)
                 case .artist:
