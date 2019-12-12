@@ -1,21 +1,19 @@
 //
-//  SearchSongsResultViewController.swift
+//  AlbumArtistTableViewController.swift
 //  NeteaseMusic
 //
-//  Created by xjbeta on 2019/6/6.
+//  Created by xjbeta on 2019/12/11.
 //  Copyright © 2019 xjbeta. All rights reserved.
 //
 
 import Cocoa
 
-class SearchResultContentsViewController: NSViewController {
+class AlbumArtistTableViewController: NSViewController {
     
-    @IBOutlet weak var songsTableView: NSTableView!
     @IBOutlet weak var tableView: NSTableView!
     
     var dataType: SearchSuggestionsViewController.GroupType = .none
     
-    var songs = [Track]()
     var albums = [Track.Album]()
     var artists = [Track.Artist]()
     var playlists = [Playlist]()
@@ -38,46 +36,30 @@ class SearchResultContentsViewController: NSViewController {
         }
     }
     
-    @IBAction func songsTableViewDoubleAction(_ sender: NSTableView) {
-        guard dataType == .songs else { return }
-        let row = sender.clickedRow
-        guard let t = songs[safe: row] else { return }
-        PlayCore.shared.playNow([t])
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func reloadTableView() {
-        if dataType == .songs {
-            songsTableView.reloadData()
-        } else {
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
     
     func resetData(_ type: SearchSuggestionsViewController.GroupType) {
-        songs.removeAll()
         albums.removeAll()
         artists.removeAll()
         playlists.removeAll()
         
         dataType = type
-        songsTableView.reloadData()
         tableView.reloadData()
         
-        songsTableView.enclosingScrollView?.isHidden = type != .songs
         tableView.enclosingScrollView?.isHidden = type == .songs
     }
 }
 
-extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDataSource {
+extension AlbumArtistTableViewController: NSTableViewDelegate, NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
         switch dataType {
-        case .songs:
-            return songs.count
         case .albums:
             return albums.count
         case .artists:
@@ -90,22 +72,12 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        switch dataType {
-        case .songs:
-            return 25
-        case .albums, .artists, .playlists:
-            return 80
-        default:
-            return 0
-        }
+        return 80
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view: NSTableCellView? = nil
         switch dataType {
-        case .songs:
-            guard let identifier = tableColumn?.identifier else { return nil }
-            view = tableView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
         case .albums:
             view = tableView.makeView(withIdentifier: .init("SearchAlbumInfoTableCellView"), owner: self) as? NSTableCellView
             view?.imageView?.setImage(albums[safe: row]?.picUrl?.absoluteString, true)
@@ -124,14 +96,6 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         switch dataType {
-        case .songs:
-            guard let song = songs[safe: row] else { return nil }
-            
-            return ["index": song.index,
-                    "name": song.name,
-                    "artist": song.artists.artistsString(),
-                    "album": song.album.name,
-                    "time": song.duration]
         case .albums:
             guard let album = albums[safe: row] else { return nil }
             
@@ -159,4 +123,5 @@ extension SearchResultContentsViewController: NSTableViewDelegate, NSTableViewDa
         }
     }
 }
+
 

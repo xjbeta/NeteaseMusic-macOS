@@ -10,6 +10,7 @@ import Cocoa
 
 class SearchResultViewController: NSViewController {
     
+    @IBOutlet weak var contentTabView: NSTabView!
     @IBOutlet weak var scrollView: NSScrollView!
     @IBOutlet weak var tableHeightLayoutConstraint: NSLayoutConstraint!
     
@@ -35,6 +36,7 @@ class SearchResultViewController: NSViewController {
                 let type = SearchSuggestionsViewController.GroupType(rawValue: id) else { return }
             self?.initContentView(type)
         }
+        
     }
     
     func initContentView(_ type: SearchSuggestionsViewController.GroupType) {
@@ -47,13 +49,23 @@ class SearchResultViewController: NSViewController {
     }
     
     func initResults(_ offset: Int = 0) {
-        guard let pageSegmentedControlVC = pageSegmentedControlViewController(),
-            let resultVC = resultViewController() else {
+        guard let pageVC = pageSegmentedControlViewController(),
+            let trackVC = trackTableVC(),
+            let albumArtistVC = albumArtistTableVC() else {
                 return
         }
+        
         let type = resultType
-        resultVC.resetData(type)
-        pageSegmentedControlVC.delegate = self
+        switch type {
+        case .songs:
+            trackVC.resetData()
+            contentTabView.selectTabViewItem(at: 0)
+        default:
+            albumArtistVC.resetData(type)
+            contentTabView.selectTabViewItem(at: 1)
+        }
+        
+        pageVC.delegate = self
         let keywords = ViewControllerManager.shared.searchFieldString
         let limit = resultType == .songs ? 100 : 20
         pageData.current = offset
@@ -72,29 +84,30 @@ class SearchResultViewController: NSViewController {
                 tracks.enumerated().forEach {
                     tracks[$0.offset].index = $0.offset + (offset * limit)
                 }
-                resultVC.songs = tracks
+                trackVC.songs = tracks
                 pageCount = Int(ceil(Double($0.songCount) / Double(limit)))
             case .albums:
-                resultVC.albums = $0.albums
+                albumArtistVC.albums = $0.albums
                 pageCount = Int(ceil(Double($0.albumCount) / Double(limit)))
             case .artists:
-                resultVC.artists = $0.artists
+                albumArtistVC.artists = $0.artists
                 pageCount = Int(ceil(Double($0.artistCount) / Double(limit)))
             case .playlists:
-                resultVC.playlists = $0.playlists
+                albumArtistVC.playlists = $0.playlists
                 pageCount = Int(ceil(Double($0.playlistCount) / Double(limit)))
             default:
                 break
             }
             
             self.pageData = (pageCount, offset)
-            pageSegmentedControlVC.reloadData()
-            resultVC.reloadTableView()
+            pageVC.reloadData()
             
             if type == .songs {
-                self.initLayoutConstraint(resultVC.songsTableView)
+                trackVC.tableView.reloadData()
+                self.initLayoutConstraint(trackVC.tableView)
             } else {
-                self.initLayoutConstraint(resultVC.tableView)
+                albumArtistVC.tableView.reloadData()
+                self.initLayoutConstraint(albumArtistVC.tableView)
             }
             
             }.catch {
@@ -109,9 +122,16 @@ class SearchResultViewController: NSViewController {
         return vc
     }
     
-    func resultViewController() -> SearchResultContentsViewController? {
+    func trackTableVC() -> TrackTableViewController? {
         let vc = children.compactMap {
-            $0 as? SearchResultContentsViewController
+            $0 as? TrackTableViewController
+            }.first
+        return vc
+    }
+    
+    func albumArtistTableVC() -> AlbumArtistTableViewController? {
+        let vc = children.compactMap {
+            $0 as? AlbumArtistTableViewController
             }.first
         return vc
     }

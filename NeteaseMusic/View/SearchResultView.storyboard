@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0qF-ht-nbs">
-                                <rect key="frame" x="303" y="582" width="308" height="24"/>
+                                <rect key="frame" x="311" y="582" width="292" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="Jor-iG-60G">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -35,17 +36,57 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1f-Mt-5QA">
-                                            <rect key="frame" x="0.0" y="20" width="872" height="522"/>
+                                            <rect key="frame" x="0.0" y="-10" width="872" height="552"/>
                                             <subviews>
-                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="us3-k2-TLt">
-                                                    <rect key="frame" x="8" y="62" width="857" height="460"/>
+                                                <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="blp-Zc-p5r">
+                                                    <rect key="frame" x="0.0" y="62" width="872" height="490"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="460" id="a2y-eH-1yq"/>
+                                                        <constraint firstAttribute="height" constant="490" id="haq-Vj-mVw"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <segue destination="P33-N2-CaS" kind="embed" id="mXf-Uy-8DL"/>
-                                                    </connections>
-                                                </containerView>
+                                                    <font key="font" metaFont="system"/>
+                                                    <tabViewItems>
+                                                        <tabViewItem label="Tab" identifier="" id="yVu-zu-rBn">
+                                                            <view key="view" id="sRg-OP-tQf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="872" height="490"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Yoz-pX-hM6">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="872" height="490"/>
+                                                                        <connections>
+                                                                            <segue destination="8f4-qF-Wbu" kind="embed" id="vxm-rJ-S3C"/>
+                                                                        </connections>
+                                                                    </containerView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="Yoz-pX-hM6" secondAttribute="trailing" id="7i2-dv-9rM"/>
+                                                                    <constraint firstItem="Yoz-pX-hM6" firstAttribute="top" secondItem="sRg-OP-tQf" secondAttribute="top" id="MoS-oB-hLi"/>
+                                                                    <constraint firstItem="Yoz-pX-hM6" firstAttribute="leading" secondItem="sRg-OP-tQf" secondAttribute="leading" id="WuK-t1-lXf"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Yoz-pX-hM6" secondAttribute="bottom" id="sJK-eL-iVw"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </tabViewItem>
+                                                        <tabViewItem label="View" identifier="" id="Gpc-L1-JJe">
+                                                            <view key="view" id="MzF-9y-X3K">
+                                                                <rect key="frame" x="0.0" y="0.0" width="872" height="490"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="lhW-Wa-yZK">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="872" height="490"/>
+                                                                        <connections>
+                                                                            <segue destination="Fjy-qJ-OZj" kind="embed" id="DL1-G7-yTD"/>
+                                                                        </connections>
+                                                                    </containerView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="lhW-Wa-yZK" firstAttribute="leading" secondItem="MzF-9y-X3K" secondAttribute="leading" id="B2O-rv-gY9"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="lhW-Wa-yZK" secondAttribute="bottom" id="X35-g3-mNJ"/>
+                                                                    <constraint firstItem="lhW-Wa-yZK" firstAttribute="top" secondItem="MzF-9y-X3K" secondAttribute="top" id="gmN-7b-v2X"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="lhW-Wa-yZK" secondAttribute="trailing" id="vFO-mr-BPs"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </tabViewItem>
+                                                    </tabViewItems>
+                                                </tabView>
                                                 <containerView translatesAutoresizingMaskIntoConstraints="NO" id="2XI-uT-bjs">
                                                     <rect key="frame" x="51" y="20" width="770" height="22"/>
                                                     <constraints>
@@ -93,22 +134,31 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentTabView" destination="blp-Zc-p5r" id="QEg-Ne-u6h"/>
                         <outlet property="scrollView" destination="Lds-M8-xhC" id="Qwl-2l-w30"/>
                         <outlet property="segmentedControl" destination="0qF-ht-nbs" id="4L7-wv-1pV"/>
-                        <outlet property="tableHeightLayoutConstraint" destination="a2y-eH-1yq" id="CGb-rx-vHy"/>
+                        <outlet property="tableHeightLayoutConstraint" destination="haq-Vj-mVw" id="dJj-cw-GJQ"/>
                     </connections>
                 </viewController>
                 <customObject id="44R-aO-9v0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="393" y="-66.5"/>
         </scene>
-        <!--SearchResultContentsView-->
-        <scene sceneID="Sd6-WA-kub">
+        <!--TrackTableView-->
+        <scene sceneID="aiu-J4-BkN">
             <objects>
-                <controllerPlaceholder storyboardName="SearchResultContentsView" id="P33-N2-CaS" sceneMemberID="viewController"/>
-                <customObject id="f2G-uq-XIi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <controllerPlaceholder storyboardName="TrackTableView" id="8f4-qF-Wbu" sceneMemberID="viewController"/>
+                <customObject id="C6s-ur-zoa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="-129"/>
+            <point key="canvasLocation" x="1027" y="-183"/>
+        </scene>
+        <!--AlbumArtistTableView-->
+        <scene sceneID="8xA-3z-47y">
+            <objects>
+                <controllerPlaceholder storyboardName="AlbumArtistTableView" id="Fjy-qJ-OZj" sceneMemberID="viewController"/>
+                <customObject id="a9T-6e-5sb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047" y="-110"/>
         </scene>
         <!--PageSegmentedControlView-->
         <scene sceneID="7rY-sB-lFl">
@@ -116,7 +166,7 @@
                 <controllerPlaceholder storyboardName="PageSegmentedControlView" id="OVZ-qw-fbQ" sceneMemberID="viewController"/>
                 <customObject id="M10-OS-nqT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1075" y="-70"/>
+            <point key="canvasLocation" x="1066" y="-44"/>
         </scene>
     </scenes>
 </document>
