@@ -24,6 +24,7 @@
 		012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012772E0229B9E4400C55537 /* SearchResultView.storyboard */; };
 		012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012772E2229E1D9A00C55537 /* SearchResultViewController.swift */; };
 		012AE96B2330883900E0CB6C /* DailyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012AE96A2330883900E0CB6C /* DailyCollectionView.swift */; };
+		012C158423A66A3B004586A5 /* SubscribeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C158323A66A3B004586A5 /* SubscribeButton.swift */; };
 		012F1156226028BA002D5599 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F1155226028BA002D5599 /* NotificationName.swift */; };
 		012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F115722603CE8002D5599 /* SidePlaylistViewController.swift */; };
 		012F2F412250613F00086870 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F402250613F00086870 /* PlayCore.swift */; };
@@ -182,6 +183,7 @@
 		012AE96A2330883900E0CB6C /* DailyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionView.swift; sourceTree = "<group>"; };
 		012C157F23A3BB30004586A5 /* AlbumSublist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AlbumSublist.json; sourceTree = "<group>"; };
 		012C158123A5EC92004586A5 /* ArtistSublist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ArtistSublist.json; sourceTree = "<group>"; };
+		012C158323A66A3B004586A5 /* SubscribeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeButton.swift; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				01FF8B78225C6DC5002D7906 /* PlaylistViewController.swift */,
 				01467E84227DDEBC0037B49D /* PlaylistTextFieldCell.swift */,
 				012FEA5F2286843D00698969 /* CoverImageView.swift */,
+				012C158323A66A3B004586A5 /* SubscribeButton.swift */,
 				012FEA6B2289B96600698969 /* PlaylistView.storyboard */,
 			);
 			name = Playlist;
@@ -784,6 +787,7 @@
 				01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */,
 				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
+				012C158423A66A3B004586A5 /* SubscribeButton.swift in Sources */,
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
 				01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */,
 				011D4198233907EC001A6F40 /* MainMenu.swift in Sources */,

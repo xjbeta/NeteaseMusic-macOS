@@ -12,7 +12,7 @@ import PromiseKit
 class PlaylistViewController: NSViewController {
 
     @IBOutlet weak var playAllButton: NSButton!
-    @IBOutlet weak var subscribeButton: NSButton!
+    @IBOutlet weak var subscribeButton: SubscribeButton!
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var titleTextFiled: NSTextField!
@@ -260,7 +260,7 @@ class PlaylistViewController: NSViewController {
             self.tracks = $0.tracks?.initIndexes() ?? []
             
             self.subscribeButton.isEnabled = $0.creator?.userId != ViewControllerManager.shared.userId
-            self.subscribeButton.title = $0.subscribed ? "Unsubscribe" : "Subscribe"
+            self.subscribeButton.subscribed = $0.subscribed
             }.catch {
                 print($0)
         }
@@ -293,7 +293,7 @@ class PlaylistViewController: NSViewController {
                 $0.id
             }.contains($0.0.album.id)
             
-            self.subscribeButton.title = subscribed ? "Unsubscribe" : "Subscribe"
+            self.subscribeButton.subscribed = $0.subscribed
             }.catch {
                 print($0)
         }
