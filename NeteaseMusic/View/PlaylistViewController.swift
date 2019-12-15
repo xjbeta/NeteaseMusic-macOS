@@ -280,13 +280,20 @@ class PlaylistViewController: NSViewController {
     
     func initPlaylistWithAlbum(_ id: Int) {
         initPlaylistInfo()
-        PlayCore.shared.api.album(id).done(on: .main) {
-            self.coverImageView.setImage($0.album.picUrl?.absoluteString, true)
-            self.titleTextFiled.stringValue = $0.album.name
-            self.descriptionTextField.stringValue = $0.album.des ?? "none"
-            self.descriptionTextField.toolTip = $0.album.des
-            self.artistTextField.stringValue = $0.album.artists?.artistsString() ?? ""
-            self.tracks = $0.songs.initIndexes()
+        let api = PlayCore.shared.api
+        when(fulfilled: api.album(id), api.albumSublist()).done(on: .main) {
+            self.coverImageView.setImage($0.0.album.picUrl?.absoluteString, true)
+            self.titleTextFiled.stringValue = $0.0.album.name
+            self.descriptionTextField.stringValue = $0.0.album.des ?? "none"
+            self.descriptionTextField.toolTip = $0.0.album.des
+            self.artistTextField.stringValue = $0.0.album.artists?.artistsString() ?? ""
+            self.tracks = $0.0.songs.initIndexes()
+            
+            let subscribed = $0.1.map {
+                $0.id
+            }.contains($0.0.album.id)
+            
+            self.subscribeButton.title = subscribed ? "Unsubscribe" : "Subscribe"
             }.catch {
                 print($0)
         }
