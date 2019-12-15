@@ -356,6 +356,58 @@ class NeteaseMusicAPI: NSObject {
             AlbumResult.self)
     }
     
+    func albumSublist() -> Promise<[Track.Album]> {
+        struct P: Encodable {
+            let limit = 1000
+            let offset = 0
+            let total = true
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case limit, offset, total, csrfToken = "csrf_token"
+            }
+        }
+        
+        struct Result: Decodable {
+            let code: Int
+            let data: [Track.Album]
+            let hasMore: Bool
+        }
+        
+        let p = P(csrfToken: csrf).jsonString()
+        
+        return request("https://music.163.com/weapi/album/sublist",
+            p,
+            Result.self).map {
+                $0.data
+        }
+    }
+    
+    func artistSublist() -> Promise<[Track.Artist]> {
+        struct P: Encodable {
+            let limit = 1000
+            let offset = 0
+            let total = true
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case limit, offset, total, csrfToken = "csrf_token"
+            }
+        }
+        
+        struct Result: Decodable {
+            let code: Int
+            let data: [Track.Artist]
+            let hasMore: Bool
+        }
+        
+        let p = P(csrfToken: csrf).jsonString()
+        
+        return request("https://music.163.com/weapi/artist/sublist",
+            p,
+            Result.self).map {
+                $0.data
+        }
+    }
+    
     func artist(_ id: Int) -> Promise<ArtistResult> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         return request("https://music.163.com/weapi/artist/\(id)",
