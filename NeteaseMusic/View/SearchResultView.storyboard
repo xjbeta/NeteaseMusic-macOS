@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,17 +29,17 @@
                                     <action selector="selectNewType:" target="Mzy-mQ-Wpc" id="QVW-52-eR3"/>
                                 </connections>
                             </segmentedControl>
-                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lds-M8-xhC">
-                                <rect key="frame" x="20" y="20" width="874" height="544"/>
-                                <clipView key="contentView" id="QxU-h6-8hT">
-                                    <rect key="frame" x="1" y="1" width="872" height="542"/>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lds-M8-xhC">
+                                <rect key="frame" x="0.0" y="0.0" width="914" height="564"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="QxU-h6-8hT">
+                                    <rect key="frame" x="0.0" y="0.0" width="914" height="564"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1f-Mt-5QA">
-                                            <rect key="frame" x="0.0" y="-10" width="872" height="552"/>
+                                            <rect key="frame" x="0.0" y="12" width="914" height="552"/>
                                             <subviews>
                                                 <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="blp-Zc-p5r">
-                                                    <rect key="frame" x="0.0" y="62" width="872" height="490"/>
+                                                    <rect key="frame" x="0.0" y="62" width="914" height="490"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="490" id="haq-Vj-mVw"/>
                                                     </constraints>
@@ -47,11 +47,11 @@
                                                     <tabViewItems>
                                                         <tabViewItem label="Tab" identifier="" id="yVu-zu-rBn">
                                                             <view key="view" id="sRg-OP-tQf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="872" height="490"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="914" height="490"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Yoz-pX-hM6">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="872" height="490"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="914" height="490"/>
                                                                         <connections>
                                                                             <segue destination="8f4-qF-Wbu" kind="embed" id="vxm-rJ-S3C"/>
                                                                         </connections>
@@ -88,7 +88,7 @@
                                                     </tabViewItems>
                                                 </tabView>
                                                 <containerView translatesAutoresizingMaskIntoConstraints="NO" id="2XI-uT-bjs">
-                                                    <rect key="frame" x="51" y="20" width="770" height="22"/>
+                                                    <rect key="frame" x="72" y="20" width="770" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="i6T-h1-84H"/>
                                                     </constraints>
@@ -115,22 +115,22 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="VwH-QR-CL6">
-                                    <rect key="frame" x="1" y="527" width="872" height="16"/>
+                                    <rect key="frame" x="0.0" y="548" width="914" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="wET-z0-33z">
-                                    <rect key="frame" x="857" y="1" width="16" height="542"/>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="wET-z0-33z">
+                                    <rect key="frame" x="898" y="0.0" width="16" height="564"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Lds-M8-xhC" firstAttribute="leading" secondItem="oPU-Ha-k43" secondAttribute="leading" constant="20" id="0gW-n4-duS"/>
+                            <constraint firstItem="Lds-M8-xhC" firstAttribute="leading" secondItem="oPU-Ha-k43" secondAttribute="leading" id="0gW-n4-duS"/>
                             <constraint firstItem="0qF-ht-nbs" firstAttribute="top" secondItem="oPU-Ha-k43" secondAttribute="top" constant="20" id="2yk-MK-WqH"/>
                             <constraint firstItem="0qF-ht-nbs" firstAttribute="centerX" secondItem="oPU-Ha-k43" secondAttribute="centerX" id="D0y-SU-JkS"/>
-                            <constraint firstAttribute="trailing" secondItem="Lds-M8-xhC" secondAttribute="trailing" constant="20" id="PnG-Ix-ju3"/>
+                            <constraint firstAttribute="trailing" secondItem="Lds-M8-xhC" secondAttribute="trailing" id="PnG-Ix-ju3"/>
                             <constraint firstItem="Lds-M8-xhC" firstAttribute="top" secondItem="0qF-ht-nbs" secondAttribute="bottom" constant="20" id="WEO-Vs-iSt"/>
-                            <constraint firstAttribute="bottom" secondItem="Lds-M8-xhC" secondAttribute="bottom" constant="20" id="t1f-wY-RKy"/>
+                            <constraint firstAttribute="bottom" secondItem="Lds-M8-xhC" secondAttribute="bottom" id="t1f-wY-RKy"/>
                         </constraints>
                     </view>
                     <connections>
