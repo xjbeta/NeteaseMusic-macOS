@@ -16,8 +16,14 @@ class UnresponsiveScrollView: NSScrollView {
         // Drawing code here.
     }
     
+    var responsiveScrolling = true
+    
     override func scrollWheel(with event: NSEvent) {
-        self.nextResponder?.scrollWheel(with: event)
+        if responsiveScrolling {
+            super.scrollWheel(with: event)
+        } else {
+            self.nextResponder?.scrollWheel(with: event)
+        }
     }
     
 }

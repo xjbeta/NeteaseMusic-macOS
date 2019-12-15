@@ -10,6 +10,7 @@ import Cocoa
 
 class TrackTableViewController: NSViewController {
 
+    @IBOutlet weak var scrollView: UnresponsiveScrollView!
     @IBOutlet weak var tableView: NSTableView!
     
     @IBAction func tableViewDoubleAction(_ sender: NSTableView) {
@@ -21,6 +22,7 @@ class TrackTableViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.responsiveScrolling = false
     }
     
     func resetData() {

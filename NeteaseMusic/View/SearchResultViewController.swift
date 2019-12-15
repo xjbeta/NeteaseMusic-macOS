@@ -61,7 +61,7 @@ class SearchResultViewController: NSViewController {
             trackVC.resetData()
             contentTabView.selectTabViewItem(at: 0)
         default:
-            albumArtistVC.resetData(type)
+            albumArtistVC.resetData(type, responsiveScrolling: false)
             contentTabView.selectTabViewItem(at: 1)
         }
         

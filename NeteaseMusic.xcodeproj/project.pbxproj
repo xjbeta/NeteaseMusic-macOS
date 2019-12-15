@@ -516,7 +516,6 @@
 				012772DE229AA1A500C55537 /* SearchSuggestionsView.storyboard */,
 				012772E2229E1D9A00C55537 /* SearchResultViewController.swift */,
 				012772E0229B9E4400C55537 /* SearchResultView.storyboard */,
-				014327AF22AA079200651064 /* UnresponsiveScrollView.swift */,
 				014327B322AB729F00651064 /* PageSegmentedControlViewController.swift */,
 				014327B122AB728D00651064 /* PageSegmentedControlView.storyboard */,
 			);
@@ -570,6 +569,7 @@
 				0190952823A0B2A800647F80 /* TrackTableViewController.swift */,
 				0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */,
 				0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */,
+				014327AF22AA079200651064 /* UnresponsiveScrollView.swift */,
 			);
 			name = ReuseViews;
 			sourceTree = "<group>";

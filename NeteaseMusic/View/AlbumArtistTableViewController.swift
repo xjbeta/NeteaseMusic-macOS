@@ -10,6 +10,7 @@ import Cocoa
 
 class AlbumArtistTableViewController: NSViewController {
     
+    @IBOutlet weak var scrollView: UnresponsiveScrollView!
     @IBOutlet weak var tableView: NSTableView!
     
     var dataType: SearchSuggestionsViewController.GroupType = .none
@@ -44,7 +45,7 @@ class AlbumArtistTableViewController: NSViewController {
         tableView.reloadData()
     }
     
-    func resetData(_ type: SearchSuggestionsViewController.GroupType) {
+    func resetData(_ type: SearchSuggestionsViewController.GroupType, responsiveScrolling: Bool) {
         albums.removeAll()
         artists.removeAll()
         playlists.removeAll()
@@ -52,7 +53,7 @@ class AlbumArtistTableViewController: NSViewController {
         dataType = type
         tableView.reloadData()
         
-        tableView.enclosingScrollView?.isHidden = type == .songs
+        scrollView.responsiveScrolling = responsiveScrolling
     }
 }
 
