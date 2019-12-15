@@ -180,6 +180,7 @@
 		012772EA22A753F200C55537 /* SearchArtists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchArtists.json; sourceTree = "<group>"; };
 		012772EC22A7542A00C55537 /* SearchPlaylists.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchPlaylists.json; sourceTree = "<group>"; };
 		012AE96A2330883900E0CB6C /* DailyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionView.swift; sourceTree = "<group>"; };
+		012C157F23A3BB30004586A5 /* AlbumSublist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AlbumSublist.json; sourceTree = "<group>"; };
 		012F1155226028BA002D5599 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		012F115722603CE8002D5599 /* SidePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlaylistViewController.swift; sourceTree = "<group>"; };
 		012F2F402250613F00086870 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
@@ -624,6 +625,7 @@
 				012772EC22A7542A00C55537 /* SearchPlaylists.json */,
 				0119048F2309065A00738904 /* FMTrashGet.json */,
 				0133AC57231CE67C00090D5E /* DiscoveryRecommendDislike.json */,
+				012C157F23A3BB30004586A5 /* AlbumSublist.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
