@@ -1,0 +1,50 @@
+{
+    "data": [{
+        "info": "",
+        "id": 15345,
+        "name": "上海アリス幻樂団",
+        "trans": "上海爱丽丝幻乐团",
+        "alias": ["しゃんはいアリスげんがくだん", "ZUN Soft"],
+        "albumSize": 56,
+        "mvSize": 0,
+        "picId": 3300733910578966,
+        "picUrl": "https://p1.music.126.net/Xtq7mE5yhsRfpSUIgvjJmw==/3300733910578966.jpg",
+        "img1v1Url": "https://p1.music.126.net/Xtq7mE5yhsRfpSUIgvjJmw==/3300733910578966.jpg"
+    }, {
+        "info": "",
+        "id": 17227,
+        "name": "森永真由美",
+        "trans": null,
+        "alias": ["もりsenya", "なが まゆみ", "Mayumi Morinaga"],
+        "albumSize": 8,
+        "mvSize": 1,
+        "picId": 878509790616824,
+        "picUrl": "https://p1.music.126.net/Ftpp1O4NV2xmdtMetQlrwg==/878509790616824.jpg",
+        "img1v1Url": "https://p1.music.126.net/Ftpp1O4NV2xmdtMetQlrwg==/878509790616824.jpg"
+    }, {
+        "info": "",
+        "id": 6452,
+        "name": "周杰伦",
+        "trans": null,
+        "alias": ["Jay Chou"],
+        "albumSize": 36,
+        "mvSize": 8,
+        "picId": 109951163111191410,
+        "picUrl": "https://p1.music.126.net/o-FjCrUlhyFC96xiVvJZ8g==/109951163111191410.jpg",
+        "img1v1Url": "https://p1.music.126.net/o-FjCrUlhyFC96xiVvJZ8g==/109951163111191410.jpg"
+    }, {
+        "info": "",
+        "id": 768306,
+        "name": "网易云音乐",
+        "trans": null,
+        "alias": [],
+        "albumSize": 12,
+        "mvSize": 43,
+        "picId": 2274889557915240,
+        "picUrl": "https://p1.music.126.net/0R_1imPfGwoeT199iPa5dA==/2274889557915240.jpg",
+        "img1v1Url": "https://p1.music.126.net/0R_1imPfGwoeT199iPa5dA==/2274889557915240.jpg"
+    }],
+    "hasMore": false,
+    "count": 4,
+    "code": 200
+}
