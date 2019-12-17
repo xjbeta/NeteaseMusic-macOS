@@ -128,26 +128,18 @@ class PlaylistViewController: NSViewController {
         }
     }
     
-    @IBAction func subscribe(_ sender: NSButton) {
+    @IBAction func subscribe(_ sender: SubscribeButton) {
         guard playlistId > 0 else { return }
         let id = playlistId
         sender.isEnabled = false
-        var unsubscribe = false
+        let subscribed = sender.subscribed
+        let api = PlayCore.shared.api
         
-        PlayCore.shared.api.userPlaylist().then { playlists -> Promise<()> in
-            let subscribedIds = playlists.filter {
-                $0.subscribed
-                }.map {
-                    $0.id
-            }
-            
-            unsubscribe = subscribedIds.contains(id)
-            
-            return PlayCore.shared.api.playlistSubscribe(id, unSubscribe: unsubscribe)
-            }.ensure(on: .main) {
+        api.subscribe(id, unSubscribe: subscribed, type: playlistType)
+            .ensure(on: .main) {
                 sender.isEnabled = true
             }.done {
-                sender.title = unsubscribe ? "Subscribe" : "Unsubscribe"
+                sender.subscribed = !sender.subscribed
                 guard let vc = self.view.window?.windowController?.contentViewController as? MainViewController else { return }
                 vc.children.compactMap {
                     $0 as? SidebarViewController
@@ -243,6 +235,7 @@ class PlaylistViewController: NSViewController {
         countAndViewsStackView.isHidden = albumMode || topSongsMode || discoverPlaylistMode
         artistStackView.isHidden = !albumMode
         subscribeButton.isHidden = topSongsMode || discoverPlaylistMode || playlistType == .favourite
+        subscribeButton.isEnabled = true
         descriptionStackView.isHidden = topSongsMode
     }
     
@@ -293,7 +286,7 @@ class PlaylistViewController: NSViewController {
                 $0.id
             }.contains($0.0.album.id)
             
-            self.subscribeButton.subscribed = $0.subscribed
+            self.subscribeButton.subscribed = subscribed
             }.catch {
                 print($0)
         }

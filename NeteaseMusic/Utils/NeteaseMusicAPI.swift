@@ -283,7 +283,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func playlistSubscribe(_ id: Int, unSubscribe: Bool = false) -> Promise<()> {
+    func subscribe(_ id: Int, unSubscribe: Bool = false, type: SidebarViewController.ItemType) -> Promise<()> {
         struct P: Encodable {
             let id: Int
             let csrfToken: String
@@ -292,9 +292,26 @@ class NeteaseMusicAPI: NSObject {
             }
         }
         let p = P(id: id, csrfToken: csrf).jsonString()
-        let apiStr = unSubscribe ? "unsubscribe" : "subscribe"
+        var apiString = ""
+        var subString = ""
         
-        return request("https://music.163.com/weapi/playlist/\(apiStr)",
+        switch type {
+        case .playlist:
+            apiString = "playlist"
+            subString = unSubscribe ? "unsubscribe" : "subscribe"
+        case .album:
+            apiString = "album"
+            subString = unSubscribe ? "unsub" : "sub"
+        case .artist:
+            apiString = "artist"
+            subString = unSubscribe ? "unsub" : "sub"
+        default:
+            return Promise { resolver in
+                resolver.reject(RequestError.errorCode((0, "Unknow Type.")))
+            }
+        }
+        
+        return request("https://music.163.com/weapi/\(apiString)/\(subString)",
             p,
             CodeResult.self).map {
                 if $0.code == 200 {
@@ -304,7 +321,7 @@ class NeteaseMusicAPI: NSObject {
                 }
         }
     }
-    
+
     func radioGet() -> Promise<[Track]> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         
@@ -408,6 +425,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+
     func artist(_ id: Int) -> Promise<ArtistResult> {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         return request("https://music.163.com/weapi/artist/\(id)",
