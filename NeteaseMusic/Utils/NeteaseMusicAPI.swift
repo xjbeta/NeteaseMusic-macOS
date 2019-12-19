@@ -284,25 +284,37 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func subscribe(_ id: Int, unSubscribe: Bool = false, type: SidebarViewController.ItemType) -> Promise<()> {
-        struct P: Encodable {
+        struct P1: Encodable {
             let id: Int
             let csrfToken: String
             enum CodingKeys: String, CodingKey {
                 case id, csrfToken = "csrf_token"
             }
         }
-        let p = P(id: id, csrfToken: csrf).jsonString()
+        struct P2: Encodable {
+            let artistId: String
+            let artistIds: String
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case artistId, artistIds, csrfToken = "csrf_token"
+            }
+        }
+        
+        var p = ""
         var apiString = ""
         var subString = ""
         
         switch type {
         case .playlist:
+            p = P1(id: id, csrfToken: csrf).jsonString()
             apiString = "playlist"
             subString = unSubscribe ? "unsubscribe" : "subscribe"
         case .album:
+            p = P1(id: id, csrfToken: csrf).jsonString()
             apiString = "album"
             subString = unSubscribe ? "unsub" : "sub"
         case .artist:
+            p = P2(artistId: "\(id)", artistIds: "[\(id)]", csrfToken: csrf).jsonString()
             apiString = "artist"
             subString = unSubscribe ? "unsub" : "sub"
         default:

@@ -107,6 +107,7 @@ class Track: NSObject, Decodable {
         let musicSize: Int?
         let albumSize: Int?
         let alias: [String]?
+        let followed: Bool?
     }
     
     enum CodingKeys: String, CodingKey {

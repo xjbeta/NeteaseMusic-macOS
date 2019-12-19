@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import PromiseKit
 
 class ArtistViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
@@ -24,6 +25,19 @@ class ArtistViewController: NSViewController {
             ViewControllerManager.shared.selectSidebarItem(.album, id)
         default:
             break
+        }
+    }
+    
+    @IBAction func subscribe(_ sender: SubscribeButton) {
+        sender.isEnabled = false
+        let api = PlayCore.shared.api
+        api.subscribe(id, unSubscribe: subscribed, type: .artist).done(on: .main) {
+            self.subscribed = !self.subscribed
+            self.tableView.reloadData(forRowIndexes: .init(integer: 0), columnIndexes: .init(integer: 0))
+        }.ensure(on: .main) {
+            sender.isEnabled = true
+        }.catch {
+            print($0)
         }
     }
     
@@ -46,6 +60,7 @@ class ArtistViewController: NSViewController {
     
     var id = -1
     var items = [Item]()
+    var subscribed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,16 +76,22 @@ class ArtistViewController: NSViewController {
     
     func initArtistView(_ id: Int) {
         self.id = id
-        PlayCore.shared.api.artistAlbums(id).done {
+        let api = PlayCore.shared.api
+        
+        when(fulfilled: api.artistAlbums(id), api.artistSublist()).done(on: .main) {
             guard id == self.id else { return }
+            let aA = $0.0
+            
+            self.subscribed = $0.1.map {
+                $0.id
+            }.contains(aA.artist.id)
             
             self.items.removeAll()
-            self.items.append(Item(type: .artist, artist: $0.artist))
-            self.items.append(Item(type: .topSongs, artist: $0.artist))
-            self.items.append(contentsOf: $0.hotAlbums.map({Item(album: $0)}))
-            
+            self.items.append(Item(type: .artist, artist: aA.artist))
+            self.items.append(Item(type: .topSongs, artist: aA.artist))
+            self.items.append(contentsOf: aA.hotAlbums.map({Item(album: $0)}))
             self.tableView.reloadData()
-            }.catch {
+        }.catch {
                 print($0)
         }
     }
@@ -101,6 +122,10 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
         case .artist:
             view = tableView.makeView(withIdentifier: .init("ArtistInfoTableCellView"), owner: nil) as? NSTableCellView
             view?.imageView?.setImage(item.artist?.picUrl, true)
+            let t = view?.subviews.compactMap {
+                $0 as? SubscribeButton
+                }.first
+            t?.subscribed = subscribed
         case .topSongs:
             view = tableView.makeView(withIdentifier: .init("AlbumInfoTableCellView"), owner: nil) as? NSTableCellView
             view?.imageView?.image = NSImage(named: .init("cover_top50"))
