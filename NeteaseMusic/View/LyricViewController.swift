@@ -16,12 +16,14 @@ class LyricViewController: NSViewController {
     
     struct Lyricline {
         enum LyricType {
-            case first, second
+            case first, second, both
         }
         
-        let string: String
-        var time: LyricTime
-        let type: LyricType
+        var stringF: String?
+        var stringS: String?
+        let time: LyricTime
+        var type: LyricType
+        var highlighted = false
     }
     var lyriclines = [Lyricline]()
     var currentLyricId = -1 {
@@ -57,16 +59,19 @@ class LyricViewController: NSViewController {
         guard let line = lyriclines.filter({ $0.time.totalMS < periodicMS }).last else {
             return
         }
-        let lins = lyriclines.enumerated().filter({ $0.element.time == line.time }).filter({ !$0.element.string.isEmpty })
+        let lins = lyriclines.enumerated().filter({ $0.element.time == line.time }).filter({ !($0.element.stringF ?? "").isEmpty })
         guard lins.count > 0 else { return }
         
-        let offsets = lins.map({ $0.offset })
+        var offsets = lins.map({ $0.offset })
         
+        lyriclines.enumerated().forEach {
+            lyriclines[$0.offset].highlighted = offsets.contains($0.offset)
+            if $0.element.highlighted, !offsets.contains($0.offset) {
+                offsets.append($0.offset)
+            }
+        }
         let indexSet = IndexSet(offsets)
-        guard tableView.selectedRowIndexes != indexSet else { return }
-        tableView.deselectAll(nil)
-        tableView.selectRowIndexes(indexSet, byExtendingSelection: true)
-        
+        tableView.reloadData(forRowIndexes: indexSet, columnIndexes: .init(integer: 0))
         guard let i = offsets.first else { return }
         
         let frame = tableView.frameOfCell(atColumn: 0, row: i)
@@ -97,9 +102,23 @@ class LyricViewController: NSViewController {
         } else if let uncollected = lyric.uncollected, uncollected {
             textField.isHidden = false
             textField.stringValue = "uncollected"
-        } else if let lyricStr = lyric.lrc?.lyric {
-            lyriclines.append(contentsOf: Lyric(lyricStr).lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .first) }))
-            lyriclines.append(contentsOf: Lyric(lyric.tlyric?.lyric ?? "").lyrics.map({ Lyricline(string: $0.1, time: $0.0, type: .second) }))
+        } else {
+            if let lyricStr = lyric.lrc?.lyric {
+                let linesF = Lyric(lyricStr).lyrics.map {
+                    Lyricline(stringF: $0.1, stringS: nil, time: $0.0, type: .first)
+                }
+                lyriclines.append(contentsOf: linesF)
+            }
+            
+            Lyric(lyric.tlyric?.lyric ?? "").lyrics.forEach { l in
+                if let i = lyriclines.enumerated().first(where: { $0.element.time == l.0 })?.offset {
+                    lyriclines[i].type = .both
+                    lyriclines[i].stringS = l.1
+                } else if !l.1.isEmpty {
+                    let line = Lyricline(stringF: nil, stringS: l.1, time: l.0, type: .second)
+                    lyriclines.append(line)
+                }
+            }
         }
         
         lyriclines.sort {
@@ -137,33 +156,26 @@ extension LyricViewController: NSTableViewDelegate, NSTableViewDataSource {
         return lyriclines.count
     }
     
-    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var rowHeight = tableView.rowHeight
-        let fixedHeight: CGFloat = 12
-        
-        if let line = lyriclines[safe: row],
-            let nextLine = lyriclines[safe: row + 1] {
-            if line.type == .second {
-                rowHeight += fixedHeight
-            } else if line.type == nextLine.type, line.type == .first {
-                rowHeight += fixedHeight
-            }
-        }
-        return rowHeight
-    }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
-        guard let type = lyriclines[safe: row]?.type else { return nil }
-        switch type {
-        case .first:
-            return tableView.makeView(withIdentifier: .init("LyricTableCellView"), owner: nil)
-        case .second:
-            return tableView.makeView(withIdentifier: .init("LyricSecondTableCellView"), owner: nil)
-        }
-    }
-    
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return lyriclines[safe: row]?.string
+        guard let line = lyriclines[safe: row] else { return nil }
+        let sStr = line.stringS ?? ""
+        
+        let fSize = line.highlighted ? 14 : 13
+        let sSize = line.highlighted ? 13 : 12
+        
+        let fColor = line.highlighted ? NSColor.systemRed : NSColor.labelColor
+        let sColor = line.highlighted ? NSColor.systemRed : NSColor.secondaryLabelColor
+        
+        return ["firstString": line.stringF ?? "",
+                "firstSize": fSize,
+                "firstColor": fColor,
+                "secondString": sStr,
+                "secondSize": sSize,
+                "secondColor": sColor,
+                "hideSecond": sStr.isEmpty]
+    }
+    
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return false
     }
 }
