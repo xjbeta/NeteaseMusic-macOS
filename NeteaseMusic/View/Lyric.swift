@@ -27,16 +27,31 @@ class Lyric: NSObject {
     convenience init(_ lyricStr: String) {
         self.init()
         lyricStr.split(separator: "\n").map(String.init).forEach {
-            let head = $0.subString(from:"[", to: "]")
-            if let time = LyricTime(head) {
-                lyrics.append((time, $0.subString(from: "]")))
+            var heads = [String]()
+            var line = $0
+            while line.starts(with: "["), line.contains("]") {
+                let head = line.subString(from:"[", to: "]")
+                heads.append(head)
+                line = line.subString(from: "]")
+            }
+            
+            if heads.count == 1, let h = heads.first {
+                if let time = LyricTime(h) {
+                    lyrics.append((time, line))
+                } else {
+                    let kv = h.split(separator: ":").map(String.init)
+                    guard kv.count == 2 else { return }
+                    if let str = kv.first,
+                        let tag = LyricTag(rawValue: str) {
+//TODO: - offset tag
+                        tags[tag] = kv.last
+                    }
+                }
             } else {
-                let kv = head.split(separator: ":").map(String.init)
-                guard kv.count == 2 else { return }
-                if let str = kv.first,
-                    let tag = LyricTag(rawValue: str) {
-                    assert(tag != .offset, "Should set defalut offset for lrc with  \(kv.last ?? "")")
-                    tags[tag] = kv.last
+                heads.compactMap {
+                    LyricTime($0)
+                }.forEach {
+                    lyrics.append(($0, line))
                 }
             }
         }
