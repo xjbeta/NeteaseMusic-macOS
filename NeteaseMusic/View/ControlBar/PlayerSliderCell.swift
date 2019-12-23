@@ -62,19 +62,19 @@ class PlayerSliderCell: NSSliderCell {
         var gradient: NSGradient?
         if cachedPer >= playedPer {
             gradient = NSGradient(colorsAndLocations:
-                (.quaternaryLabelColor, 0.0),
-                (.quaternaryLabelColor, 1 - cachedPer),
-                (.tertiaryLabelColor, 1 - cachedPer),
-                (.tertiaryLabelColor, 1 - playedPer),
-                (.secondaryLabelColor, 1 - playedPer),
-                (.secondaryLabelColor, 1.0))
+                (.secondaryLabelColor, 0),
+                (.secondaryLabelColor, playedPer),
+                (.tertiaryLabelColor, playedPer),
+                (.tertiaryLabelColor, cachedPer),
+                (.quaternaryLabelColor, cachedPer),
+                (.quaternaryLabelColor, 1))
         } else {
             gradient = NSGradient(colorsAndLocations:
-                (.quaternaryLabelColor, 0.0),
-                (.quaternaryLabelColor, 1 - playedPer),
-                (.secondaryLabelColor, 1 - playedPer),
-                (.secondaryLabelColor, 1.0))
+                (.secondaryLabelColor, 0),
+                (.secondaryLabelColor, playedPer),
+                (.quaternaryLabelColor, playedPer),
+                (.quaternaryLabelColor, 1))
         }
-        gradient?.draw(in: path, angle: 180)
+        gradient?.draw(in: path, angle: 0)
     }
 }
