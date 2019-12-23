@@ -59,6 +59,7 @@ class SearchResultViewController: NSViewController {
         switch type {
         case .songs:
             trackVC.resetData()
+            trackVC.scrollView.responsiveScrolling = false
             contentTabView.selectTabViewItem(at: 0)
         default:
             albumArtistVC.resetData(type, responsiveScrolling: false)
@@ -80,11 +81,11 @@ class SearchResultViewController: NSViewController {
             
             switch type {
             case .songs:
-                var tracks = $0.songs
+                let tracks = $0.songs
                 tracks.enumerated().forEach {
                     tracks[$0.offset].index = $0.offset + (offset * limit)
                 }
-                trackVC.songs = tracks
+                trackVC.tracks = tracks
                 pageCount = Int(ceil(Double($0.songCount) / Double(limit)))
             case .albums:
                 albumArtistVC.albums = $0.albums
