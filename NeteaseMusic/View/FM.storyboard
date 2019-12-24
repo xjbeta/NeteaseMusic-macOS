@@ -17,7 +17,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="8Vc-iN-v5f">
                                 <rect key="frame" x="13" y="82" width="815" height="473"/>
                                 <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="vBh-I9-HLC">
+                                    <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBh-I9-HLC">
                                         <rect key="frame" x="0.0" y="108" width="390" height="310"/>
                                         <subviews>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="jK4-ZL-v1D" customClass="FMCoverButton" customModule="NeteaseMusic" customModuleProvider="target">
@@ -67,7 +67,11 @@
                                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uax-7j-HB7">
                                                 <rect key="frame" x="260" y="35" width="45" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q6F-bg-lDm">
+                                                <shadow key="shadow" blurRadius="1">
+                                                    <size key="offset" width="1" height="1"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </shadow>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="Q6F-bg-lDm">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
