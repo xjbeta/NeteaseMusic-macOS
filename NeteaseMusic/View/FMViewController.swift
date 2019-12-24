@@ -33,22 +33,27 @@ class FMViewController: NSViewController {
     
     @IBAction func buttonAction(_ sender: NSButton) {
         let player = PlayCore.shared.player
-        switch sender {
-        case playButton:
-            guard player.error == nil else { return }
-            if PlayCore.shared.fmMode {
-                if player.rate == 0 {
-                    player.play()
-                } else {
-                    player.pause()
-                }
+        guard player.error == nil else { return }
+        if PlayCore.shared.fmMode {
+            if player.rate == 0 {
+                player.play()
             } else {
-                PlayCore.shared.start(enterFMMode: true)
+                player.pause()
             }
-        case coverButton1, coverButton2, coverButton3, coverButton4:
-            PlayCore.shared.previousSong()
-        default:
-            break
+        } else {
+            PlayCore.shared.start(enterFMMode: true)
+        }
+    }
+    
+    @IBAction func previousSong(_ sender: FMCoverButton) {
+        let pc = PlayCore.shared
+        guard sender.index == 1 else { return }
+        if pc.fmMode {
+            pc.previousSong()
+        } else if let t = pc.currentFMTrack,
+            let i
+            = pc.fmPlaylist.firstIndex(of: t) {
+            pc.currentFMTrack = pc.fmPlaylist[safe: i - 1]
         }
     }
     
@@ -72,7 +77,6 @@ class FMViewController: NSViewController {
         initCoverButtonsArray()
         
         currentTrackObserver = PlayCore.shared.observe(\.currentFMTrack, options: [.initial, .new, .old]) { [weak self] playcore, changes in
-            guard playcore.fmMode else { return }
             print("currentFMTrack changed \(changes).")
             if let oldTrack = changes.oldValue,
                 let newTrack = changes.newValue,
