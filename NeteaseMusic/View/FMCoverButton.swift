@@ -10,7 +10,13 @@ import Cocoa
 
 class FMCoverButton: NSButton {
     var coverTrackID = 0
-    var index = -1
+    var index = -1 {
+        didSet {
+            if let c = cell as? FMCoverButtonCell {
+                c.clickable = index == 1
+            }
+        }
+    }
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
