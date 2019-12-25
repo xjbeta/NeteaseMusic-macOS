@@ -18,33 +18,34 @@ class SongButtonsViewController: NSViewController {
     @IBAction func buttonsAction(_ sender: NSButton) {
         let id = trackId
         guard id > 0 else { return }
-        let api = PlayCore.shared.api
         let seconds = PlayCore.shared.player.currentTime().seconds
         let time = seconds.isNaN ? 25 : Int(seconds)
         switch sender {
         case loveButton:
-            let t = "check like status."
+            loveButton.isEnabled = false
             let loved = self.loved
-            api.like(id, !loved, time).done(on: .main) {
-                print("\(loved ? "unlike" : "like") \(id) done.")
-                PlayCore.shared.fmPlaylist.filter {
-                    $0.id == id
-                    }.forEach {
-                        $0.loved = !loved
-                }
-                let name = loved ? "icon.sp#icn-fm_love" : "icon.sp#icn-fm_loved"
-                self.loveButton.image = NSImage(named: .init(name))
-                }.catch {
-                    print($0)
+            pc.api.like(id, !loved, time).done {
+                self.checkLikeList()
+            }.catch {
+                print($0)
             }
         case deleteButton:
-            api.fmTrash(id: id, time).done {
-                print("fmTrash \(id) done.")
-                PlayCore.shared.fmPlaylist.removeAll {
-                    $0.id == id
+            deleteButton.isEnabled = false
+            pc.api.fmTrash(id: id, time).done {
+                let index = self.pc.fmPlaylist.enumerated().first {
+                    $0.element.id == id
+                }?.offset
+                guard let i = index else { return }
+                self.pc.fmPlaylist.remove(at: i)
+                self.pc.currentFMTrack = self.pc.fmPlaylist[safe: i]
+                
+                if self.pc.fmMode {
+                    self.pc.start(enterFMMode: true)
                 }
-                let t = "Update fm playlist"
-                }.catch {
+                print("fmTrash \(id) done.")
+            }.ensure(on: .main) {
+                self.deleteButton.isEnabled = true
+            }.catch {
                     print($0)
             }
         case moreButton:
@@ -56,19 +57,37 @@ class SongButtonsViewController: NSViewController {
         }
     }
     
-    var trackId = -1
-    var loved: Bool {
-        get {
-            let t = "Playing song?"
-            return PlayCore.shared.fmPlaylist.filter {
-                $0.id == trackId
-                }.first?.loved ?? false
+    let pc = PlayCore.shared
+    var trackId = -1 {
+        didSet {
+            loveButton.isEnabled = false
+            checkLikeList()
+        }
+    }
+    
+    var loved = false {
+        didSet {
+            let name = loved ? "icon.sp#icn-fm_loved" : "icon.sp#icn-fm_love"
+            loveButton.image = NSImage(named: .init(name))
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    }
+    
+    func checkLikeList() {
+        let id = trackId
+        self.loved = false
+        pc.api.likeList().done(on: .main) {
+            guard id == self.trackId else { return }
+            self.loved = $0.contains(id)
+        }.ensure(on: .main) {
+            self.loveButton.isEnabled = true
+        }.catch {
+            print($0)
+        }
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

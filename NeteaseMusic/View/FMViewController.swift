@@ -92,7 +92,6 @@ class FMViewController: NSViewController {
                         newI = $0.offset
                     }
                 }
-                guard oldI != -1, newI != -1 else { return }
                 
                 DispatchQueue.main.async {
                     if newI == oldI + 1 {

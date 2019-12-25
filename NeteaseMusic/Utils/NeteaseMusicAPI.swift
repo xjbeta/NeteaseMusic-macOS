@@ -490,6 +490,34 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    func likeList() -> Promise<[Int]> {
+        struct P: Encodable {
+            let uid: Int
+            let csrfToken: String
+            enum CodingKeys: String, CodingKey {
+                case uid, csrfToken = "csrf_token"
+            }
+        }
+        
+        let p = P(uid: uid, csrfToken: csrf).jsonString()
+        
+        struct Result: Decodable {
+            let code: Int
+            let ids: [Int]
+        }
+        
+        return request("https://music.163.com/weapi/song/like/get",
+            p,
+            Result.self, debug: true).map {
+                if $0.code == 200 {
+                    return $0.ids
+                } else {
+                    throw RequestError.errorCode(($0.code, ""))
+                }
+        }
+        
+    }
+    
     func fmTrash(id: Int, _ time: Int = 25) -> Promise<()> {
         struct P: Encodable {
             let songId: Int
