@@ -163,7 +163,7 @@ class FMViewController: NSViewController {
         }
         let imageWidth = coverViews[3].button.frame.width
         let playlist = playCore.fmPlaylist
-        
+        var coverList = [(id: Int?, url: String?)]()
         if let track = playCore.currentFMTrack,
             let index = playlist.firstIndex(of: track) {
             // Update sub VC
@@ -171,29 +171,35 @@ class FMViewController: NSViewController {
             songButtonsViewController()?.trackId = track.id
             songInfoViewController()?.initInfos(track)
             
-            var coverList = [String?]()
-            
             switch index {
             case 0:
-                coverList = [nil, nil]
-                coverList.append(playlist.first?.album.picUrl?.absoluteString)
-                if playlist.count > 1 {
-                    coverList.append(playlist[1].album.picUrl?.absoluteString)
-                }
+                coverList = [(nil, nil), (nil, nil)]
+                let alF = playlist.first?.album
+                coverList.append((alF?.id,
+                                  alF?.picUrl?.absoluteString))
+                let alS = playlist[safe: 1]?.album
+                coverList.append((alS?.id, alS?.picUrl?.absoluteString))
             case 1:
-                coverList = [nil]
-                coverList.append(playlist[0].album.picUrl?.absoluteString)
-                coverList.append(playlist[1].album.picUrl?.absoluteString)
-                if playlist.count > 2 {
-                    coverList.append(playlist[1].album.picUrl?.absoluteString)
-                }
+                coverList = [(nil, nil)]
+                let alF = playlist[0].album
+                coverList.append((alF.id,
+                                  alF.picUrl?.absoluteString))
+                let alS = playlist[1].album
+                coverList.append((alS.id,
+                                  alS.picUrl?.absoluteString))
+                let alT = playlist[safe: 2]?.album
+                coverList.append((alT?.id,
+                                  alT?.picUrl?.absoluteString))
             default:
-                coverList = [nil]
-                coverList.append(playlist[index - 1].album.picUrl?.absoluteString)
-                coverList.append(playlist[index].album.picUrl?.absoluteString)
-                if playlist.count > index {
-                    coverList.append(playlist[index + 1].album.picUrl?.absoluteString)
-                }
+                coverList = [(nil, nil)]
+                let alP = playlist[safe: index - 1]?.album
+                coverList.append((alP?.id, alP?.picUrl?.absoluteString))
+                
+                let al = playlist[safe: index]?.album
+                coverList.append((al?.id, al?.picUrl?.absoluteString))
+                
+                let alN = playlist[safe: index + 1]?.album
+                coverList.append((alN?.id, alN?.picUrl?.absoluteString))
             }
             
             if index > 1 {
@@ -201,52 +207,18 @@ class FMViewController: NSViewController {
             }
             
             guard coverList.count == 4 else { return }
+
             switch initMode {
             case .reset:
                 resetLayoutConstraints()
-                coverViews.enumerated().forEach {
-                    $0.element.button.setImage(coverList[$0.offset], true, imageWidth)
-                }
-                [0, 3].forEach {
-                    coverViews[$0].button.alphaValue = 0
-                    coverViews[$0].button.isHidden = true
-                }
-                coverViews[2].button.alphaValue = 1
-                coverViews[2].button.isHidden = false
-                if coverList[1] == nil {
-                    coverViews[1].button.isHidden = true
-                }
             case .next:
                 // Move first to last
                 let v = coverViews.remove(at: 0)
-                v.button.setImage(coverList[3], true, imageWidth)
                 coverViews.append(v)
-                if coverViews[2].button.image == nil {
-                    coverViews[2].button.setImage(coverList[2], true, imageWidth)
-                }
-                coverViews[2].button.isHidden = false
-                coverViews[2].button.alphaValue = 0
-
-                coverViews[3].button.isHidden = true
-                coverViews[3].button.alphaValue = 0
             case .prev:
                 // Move last to first
                 let v = coverViews.remove(at: 3)
-                v.button.image = nil
                 coverViews.insert(v, at: 0)
-                [1, 2].forEach {
-                    if coverViews[$0].button.image == nil {
-                        if let c = coverList[$0] {
-                            coverViews[$0].button.setImage(c, true, imageWidth)
-                        } else {
-                            coverViews[$0].button.alphaValue = 0
-                            coverViews[$0].button.isHidden = true
-                        }
-                    } else if $0 == 1 {
-                        coverViews[$0].button.alphaValue = 0
-                        coverViews[$0].button.isHidden = false
-                    }
-                }
             }
         } else {
             lyricViewController()?.currentLyricId = -1
@@ -259,7 +231,20 @@ class FMViewController: NSViewController {
         }
         
         coverViews.enumerated().forEach {
-            $0.element.button.index = $0.offset
+            let b = $0.element.button
+            b.index = $0.offset
+            let c = coverList[safe: $0.offset]
+            if let id = c?.id {
+                b.alphaValue = 1
+                b.isHidden = false
+                if b.coverAlbumID != id {
+                    b.setImage(c?.url, false, imageWidth)
+                    b.coverAlbumID = id
+                }
+            } else {
+                b.alphaValue = 0
+                b.isHidden = true
+            }
         }
         
         coversContainerView.sortSubviews({ (v1, v2, _) -> ComparisonResult in
@@ -318,11 +303,10 @@ class FMViewController: NSViewController {
     }
     
     func nextTrackAnimation() {
+        coverViews[3].button.isHidden = true
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.25
-            if coverViews[0].button.image != nil {
-                coverViews[0].button.animator().alphaValue = 0
-            }
+            coverViews[0].button.animator().alphaValue = 0
             coverViews[2].button.animator().alphaValue = 1
             coverViews.enumerated().forEach {
                 $0.element.leadingLC.animator().constant = coverViewsLC[$0.offset].leading
@@ -336,9 +320,7 @@ class FMViewController: NSViewController {
     func prevTrackAnimation() {
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.25
-            if coverViews[1].button.image != nil {
-                coverViews[1].button.animator().alphaValue = 1
-            }
+            coverViews[1].button.animator().alphaValue = 1
             coverViews[3].button.animator().alphaValue = 0
             
             coverViews.enumerated().forEach {

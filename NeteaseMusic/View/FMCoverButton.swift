@@ -9,7 +9,7 @@
 import Cocoa
 
 class FMCoverButton: NSButton {
-    var coverTrackID = 0
+    var coverAlbumID = 0
     var index = -1 {
         didSet {
             if let c = cell as? FMCoverButtonCell {
