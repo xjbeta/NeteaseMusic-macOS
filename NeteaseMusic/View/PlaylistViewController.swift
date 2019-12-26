@@ -117,13 +117,10 @@ class PlaylistViewController: NSViewController {
                 break
             }
         }
-        
     }
     
     func initPlaylistInfo() {
-        let albumMode = playlistType == .album
-        let topSongsMode = playlistType == .topSongs
-        let discoverPlaylistMode = playlistType == .discoverPlaylist
+        var typeList = [SidebarViewController.ItemType]()
         tracks = []
         
         coverImageView.image = nil
@@ -133,11 +130,14 @@ class PlaylistViewController: NSViewController {
         descriptionTextField.stringValue = ""
         descriptionTextField.toolTip = ""
         
-        countAndViewsStackView.isHidden = albumMode || topSongsMode || discoverPlaylistMode
-        artistStackView.isHidden = !albumMode
-        subscribeButton.isHidden = topSongsMode || discoverPlaylistMode || playlistType == .favourite
+        playAllButton.isHidden = playlistType == .fmTrash
+        typeList = [.album, .topSongs, .discoverPlaylist]
+        countAndViewsStackView.isHidden = typeList.contains(playlistType)
+        artistStackView.isHidden = playlistType != .album
+        typeList = [.topSongs, .discoverPlaylist, .favourite, .fmTrash]
+        subscribeButton.isHidden = typeList.contains(playlistType)
         subscribeButton.isEnabled = true
-        descriptionStackView.isHidden = topSongsMode
+        descriptionStackView.isHidden = playlistType == .topSongs
     }
     
     func initPlaylist(_ id: Int) {
