@@ -30,7 +30,7 @@
                                             <tableColumns>
                                                 <tableColumn width="30" minWidth="30" maxWidth="45" id="bnP-gg-VVi">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -75,7 +75,7 @@
                                                 </tableColumn>
                                                 <tableColumn width="231" minWidth="40" maxWidth="10000" id="lht-U1-iYQ">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -140,7 +140,7 @@
                                                 </tableColumn>
                                                 <tableColumn width="150" minWidth="150" maxWidth="1000" id="goy-46-SKY">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Artist">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -185,7 +185,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="PlaylistAlbum" width="163" minWidth="150" maxWidth="1000" id="Kdb-9V-eOG">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Album">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -226,7 +226,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="PlaylistPop" width="80" minWidth="80" maxWidth="80" id="J8Z-mz-CSF">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Pop">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -259,7 +259,7 @@
                                                 </tableColumn>
                                                 <tableColumn width="99" minWidth="50" maxWidth="100" id="0qm-A5-8sE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Time">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -308,7 +308,6 @@
                                                 <binding destination="fkU-wc-FFd" name="content" keyPath="arrangedObjects" id="hS9-oJ-mjK"/>
                                                 <binding destination="fkU-wc-FFd" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="hS9-oJ-mjK" id="9Dn-rk-6Lk"/>
                                                 <binding destination="fkU-wc-FFd" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="9Dn-rk-6Lk" id="gil-yK-pTz"/>
-                                                <outlet property="menu" destination="PoB-r6-3LF" id="6Vf-UY-xds"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -329,13 +328,6 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="addToPlaylistMenu" destination="EX6-BZ-HtP" id="Oiy-iQ-yfj"/>
-                        <outlet property="copyLinkMenuItem" destination="sJm-wW-bDH" id="r3R-TN-Cas"/>
-                        <outlet property="newPlaylistMenuItem" destination="WCN-4Q-9oX" id="K0e-p4-byf"/>
-                        <outlet property="playMenuItem" destination="HMT-bi-RaM" id="dap-2K-LAF"/>
-                        <outlet property="playNextMenuItem" destination="Hxc-4Z-BYd" id="fX6-XI-CV0"/>
-                        <outlet property="playlistMenu" destination="PoB-r6-3LF" id="ewE-kP-Uud"/>
-                        <outlet property="removeFromPlaylistMenuItem" destination="YIA-Bn-37m" id="vzF-x5-aOi"/>
                         <outlet property="scrollView" destination="kNU-Vp-yim" id="fjD-HU-wmB"/>
                         <outlet property="tableView" destination="IOd-l2-drq" id="HDC-hr-30q"/>
                     </connections>
@@ -346,53 +338,6 @@
                         <binding destination="maI-Rk-sVu" name="contentArray" keyPath="self.tracks" id="FG7-6x-bY9"/>
                     </connections>
                 </arrayController>
-                <menu id="PoB-r6-3LF">
-                    <items>
-                        <menuItem title="Play" id="HMT-bi-RaM">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="tMQ-P2-g9b"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Play Next" id="Hxc-4Z-BYd">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="y1R-Xf-fMs"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="zoQ-GW-9Bn"/>
-                        <menuItem title="Add to Playlist" id="Glh-G6-1Iy">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Add to Playlist" id="EX6-BZ-HtP">
-                                <items>
-                                    <menuItem title="New Playlist" id="WCN-4Q-9oX">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="menuItemAction:" target="maI-Rk-sVu" id="qTV-bp-5ls"/>
-                                        </connections>
-                                    </menuItem>
-                                    <menuItem isSeparatorItem="YES" id="Ytn-l9-env"/>
-                                </items>
-                            </menu>
-                        </menuItem>
-                        <menuItem title="Copy Link" id="sJm-wW-bDH">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="BzJ-Fl-veg"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="bXC-EL-8K6"/>
-                        <menuItem title="Remove from Playlist" id="YIA-Bn-37m">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="7eh-Rh-G57"/>
-                            </connections>
-                        </menuItem>
-                    </items>
-                    <connections>
-                        <outlet property="delegate" destination="maI-Rk-sVu" id="td2-kj-K1C"/>
-                    </connections>
-                </menu>
             </objects>
             <point key="canvasLocation" x="193.5" y="91.5"/>
         </scene>

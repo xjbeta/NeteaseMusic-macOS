@@ -244,20 +244,75 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToPlaylistMenu" destination="dVO-Xq-RBN" id="Pv8-lM-mnc"/>
+                        <outlet property="addToPlaylistMenuItem" destination="H5O-Hg-mUG" id="sed-ud-RCa"/>
                         <outlet property="artistStackView" destination="0Zx-j4-URg" id="bhV-zn-feD"/>
                         <outlet property="artistTextField" destination="dfT-ha-j7E" id="0yu-le-lIv"/>
+                        <outlet property="copyLinkMenuItem" destination="Neb-7u-i9t" id="3G4-8X-15h"/>
                         <outlet property="countAndViewsStackView" destination="R8B-gw-Jw9" id="wcz-fA-0kT"/>
                         <outlet property="coverImageView" destination="o6X-zr-lKP" id="aWD-dX-5FJ"/>
                         <outlet property="descriptionStackView" destination="XPC-lw-bZ5" id="Cpa-cQ-i8o"/>
                         <outlet property="descriptionTextField" destination="bI7-3H-ohy" id="jOM-8e-iLR"/>
+                        <outlet property="newPlaylistMenuItem" destination="DYz-EM-glQ" id="nt0-dq-dB5"/>
                         <outlet property="playAllButton" destination="2d0-ZZ-SO7" id="4TX-5T-i0X"/>
                         <outlet property="playCountTextField" destination="PWZ-Vv-gqv" id="MGU-JI-Cp7"/>
+                        <outlet property="playMenuItem" destination="SGG-0N-PNS" id="FtI-rt-sjs"/>
+                        <outlet property="playNextMenuItem" destination="P5L-8h-O7i" id="V9f-oJ-zx7"/>
+                        <outlet property="playlistMenu" destination="TsO-aW-sfb" id="bxJ-go-jCH"/>
+                        <outlet property="removeFromPlaylistMenuItem" destination="GEc-ZC-Mwd" id="Mp8-hg-uv5"/>
                         <outlet property="subscribeButton" destination="xfw-QW-naB" id="cLm-aI-DSL"/>
                         <outlet property="titleTextFiled" destination="plA-di-ceU" id="Kcj-eY-XEU"/>
                         <outlet property="trackCountTextField" destination="hdM-zM-AGs" id="T4u-yp-Xhy"/>
                     </connections>
                 </viewController>
                 <customObject id="UyR-48-Rva" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="TsO-aW-sfb">
+                    <items>
+                        <menuItem title="Play" id="SGG-0N-PNS">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="2OU-pu-qaX"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Play Next" id="P5L-8h-O7i">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="ZhM-12-dhk"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="XfK-Xo-5q1"/>
+                        <menuItem title="Add to Playlist" id="H5O-Hg-mUG">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Add to Playlist" id="dVO-Xq-RBN">
+                                <items>
+                                    <menuItem title="New Playlist" id="DYz-EM-glQ">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="menuItemAction:" target="rJU-yY-OIR" id="UjT-QT-7jd"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem isSeparatorItem="YES" id="5JX-Ra-S4L"/>
+                                </items>
+                            </menu>
+                        </menuItem>
+                        <menuItem title="Copy Link" id="Neb-7u-i9t">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="kvY-ad-RX0"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="Jug-5Y-HHh"/>
+                        <menuItem title="Remove from Playlist" id="GEc-ZC-Mwd">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="rJU-yY-OIR" id="g3E-tD-PZs"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="rJU-yY-OIR" id="aO3-9d-vZF"/>
+                    </connections>
+                </menu>
             </objects>
             <point key="canvasLocation" x="1203" y="90"/>
         </scene>
