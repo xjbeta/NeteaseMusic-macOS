@@ -518,7 +518,7 @@ class NeteaseMusicAPI: NSObject {
         
     }
     
-    func fmTrash(id: Int, _ time: Int = 25) -> Promise<()> {
+    func fmTrash(id: Int, _ time: Int = 25, _ add: Bool = true) -> Promise<()> {
         struct P: Encodable {
             let songId: Int
             let csrfToken: String
@@ -530,10 +530,10 @@ class NeteaseMusicAPI: NSObject {
 
         struct Result: Decodable {
             let code: Int
-            let count: Int
         }
+        let u = add ? "https://music.163.com/weapi/radio/trash/add?alg=RT&songId=\(id)&time=\(time)" : "https://music.163.com/weapi/radio/trash/del"
         
-        return request("https://music.163.com/weapi/radio/trash/add?alg=RT&songId=\(id)&time=\(time)",
+        return request(u,
             p,
             Result.self).map {
                 if $0.code == 200 {

@@ -80,6 +80,14 @@ class TrackTableViewController: NSViewController {
                         }
                         print("Remove \(ids) from discoverPlaylist error \($0).")
                 }
+            case .fmTrash:
+                guard let track = selectedTracks.first else { return }
+                PlayCore.shared.api.fmTrash(id: track.element.id, 0, false).done {
+                    let todo = "reload fmtrash"
+                    
+                }.catch {
+                    print("FM Trash Del error: \($0)")
+                }
             default:
                 PlayCore.shared.api.playlistTracks(add: false, ids, to: playlistId).done {
                     print("Remove \(ids) from playlist \(playlistId) done.")
