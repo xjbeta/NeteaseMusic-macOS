@@ -71,6 +71,8 @@ class PlaylistViewController: NSViewController {
     
     var playlistMenuUpdateID = ""
     
+    var removeMenuItemActionID = ""
+    
     @IBAction func menuItemAction(_ sender: NSMenuItem) {
         guard let tableView = trackTableViewController()?.tableView else {
             return
@@ -90,6 +92,7 @@ class PlaylistViewController: NSViewController {
                 ViewControllerManager.shared.copyToPasteboard(str)
             }
         case removeFromPlaylistMenuItem:
+            guard removeMenuItemActionID == "" else { return }
             let selectedTracks = tracks.enumerated().filter {
                 selectedIndexs.contains($0.offset)
             }
@@ -97,11 +100,16 @@ class PlaylistViewController: NSViewController {
                 $0.element.id
             }
             let playlistId = self.playlistId
+            let api = PlayCore.shared.api
+            let uuid = UUID().uuidString
+            removeMenuItemActionID = uuid
+            
             
             switch playlistType {
             case .discoverPlaylist:
                 guard let track = selectedTracks.first else { return }
-                PlayCore.shared.api.discoveryRecommendDislike(track.element.id).done {
+                api.discoveryRecommendDislike(track.element.id).done {
+                    guard uuid == self.removeMenuItemActionID else { return }
                     guard let newTrack = $0.0 else { return }
                     newTrack.index = track.element.index
                     self.tracks[track.offset] = newTrack
@@ -121,19 +129,30 @@ class PlaylistViewController: NSViewController {
                 }
             case .fmTrash:
                 guard let track = selectedTracks.first else { return }
-                PlayCore.shared.api.fmTrash(id: track.element.id, 0, false).done {
-                    let todo = "reload fmtrash"
-                    
-                }.catch {
-                    print("FM Trash Del error: \($0)")
+                api.fmTrash(id: track.element.id, 0, false).done(on: .main) {
+                    guard uuid == self.removeMenuItemActionID else { return }
+                    self.trackTableViewController()?.tracks.removeAll {
+                        ids.contains($0.id)
+                    }
+                    print("FM Trash Delected \(ids).")
+                }.catch(on: .main) {
+                    self.initFMTrashList()
+                    print("FM Trash Del error: \($0).")
                 }
-            default:
-                PlayCore.shared.api.playlistTracks(add: false, ids, to: playlistId).done {
+            case .favourite, .createdPlaylist:
+                api.playlistTracks(add: false, ids, to: playlistId).done {
+                    guard uuid == self.removeMenuItemActionID else { return }
+                    self.trackTableViewController()?.tracks.removeAll {
+                        ids.contains($0.id)
+                    }
                     print("Remove \(ids) from playlist \(playlistId) done.")
-                    //                    self.initPlaylist(playlistId)
-                }.catch {
+                }.catch(on: .main) {
+                    self.initPlaylist(playlistId)
                     print("Remove \(ids) from playlist \(playlistId) error \($0).")
                 }
+            default:
+                removeMenuItemActionID = ""
+                return
             }
         case newPlaylistMenuItem:
             guard let newPlaylistVC = newPlaylistViewController else { return }
@@ -210,6 +229,7 @@ class PlaylistViewController: NSViewController {
                 return
             }
             
+            self?.initPlaylistInfo()
             switch newValue.type {
             case .album:
                 self?.initPlaylistWithAlbum(id)
@@ -255,7 +275,6 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylist(_ id: Int) {
-        initPlaylistInfo()
         PlayCore.shared.api.playlistDetail(id).done(on: .main) {
             guard self.playlistId == id else { return }
             self.coverImageView.setImage($0.coverImgUrl.absoluteString, true)
@@ -275,7 +294,6 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylistWithRecommandSongs() {
-        initPlaylistInfo()
         PlayCore.shared.api.recommendSongs().done(on: .main) {
             guard self.playlistId == -114514 else { return }
             self.titleTextFiled.stringValue = "每日歌曲推荐"
@@ -287,7 +305,6 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylistWithAlbum(_ id: Int) {
-        initPlaylistInfo()
         let api = PlayCore.shared.api
         when(fulfilled: api.album(id), api.albumSublist()).done(on: .main) {
             self.coverImageView.setImage($0.0.album.picUrl?.absoluteString, true)
@@ -308,7 +325,6 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylistWithTopSongs(_ id: Int) {
-        initPlaylistInfo()
         PlayCore.shared.api.artist(id).done(on: .main) {
             self.coverImageView.setImage($0.artist.picUrl, true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
@@ -319,7 +335,6 @@ class PlaylistViewController: NSViewController {
     }
     
     func initFMTrashList() {
-        initPlaylistInfo()
         PlayCore.shared.api.fmTrashList().done(on: .main) {
             let t = "simple mode?"
             self.titleTextFiled.stringValue = "Trash."
@@ -335,7 +350,7 @@ class PlaylistViewController: NSViewController {
         playMenuItem.isHidden = playlistType == .fmTrash
         playNextMenuItem.isHidden = playlistType == .fmTrash
         copyLinkMenuItem.isHidden = false
-        typeList = [.subscribedPlaylist, .discoverPlaylist, .album, .topSongs]
+        typeList = [.subscribedPlaylist, .album, .topSongs]
         removeFromPlaylistMenuItem.isHidden = typeList.contains(playlistType)
         addToPlaylistMenuItem.isHidden = playlistType == .fmTrash
     }
@@ -426,13 +441,19 @@ extension PlaylistViewController: NSMenuItemValidation, NSMenuDelegate {
             }.catch {
                 print($0)
         }
-
+        
+        removeFromPlaylistMenuItem.isEnabled = removeMenuItemActionID == ""
+        
         switch playlistType {
         case .discoverPlaylist:
             // switch to not interested
             removeFromPlaylistMenuItem.title = "Not Interested"
-        default:
+        case .favourite, .createdPlaylist:
             removeFromPlaylistMenuItem.title = "Remove from Playlist"
+        case .fmTrash:
+            removeFromPlaylistMenuItem.title = "Restore"
+        default:
+            break
         }
     }
 }
