@@ -211,7 +211,7 @@ class PlayCore: NSObject {
             switch item {
             case .fm:
                 PlayCore.shared.start(enterFMMode: true)
-            case .playlist:
+            case .createdPlaylist, .subscribedPlaylist:
                 let todo = "play playlist."
                 break
             default:

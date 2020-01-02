@@ -28,7 +28,7 @@ class DiscoverViewController: NSViewController {
         case playNextMenuItem:
             break
         case subscribeMenuItem:
-            playCore.api.subscribe(item.id, type: .playlist).done {
+            playCore.api.subscribe(item.id, type: .subscribedPlaylist).done {
                 print("Subscribe playlist \(item.id) success.")
                 }.catch {
                     print("Subscribe playlist \(item.id) error \($0).")
@@ -139,11 +139,14 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
         // show playlist
         guard let item = indexPaths.first?.item,
             let rItem = recommendedItems[safe: item] else { return }
+        
+        let vcm = ViewControllerManager.shared
         if item == 0 {
             rItem.id = -114514
+            vcm.selectSidebarItem(.discoverPlaylist, rItem.id)
+        } else {
+            vcm.selectSidebarItem(.subscribedPlaylist, rItem.id)
         }
-        
-        ViewControllerManager.shared.selectSidebarItem(.discoverPlaylist, rItem.id)
         collectionView.deselectAll(nil)
     }
 }

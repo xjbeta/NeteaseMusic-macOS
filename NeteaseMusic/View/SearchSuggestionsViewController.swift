@@ -30,7 +30,7 @@ class SearchSuggestionsViewController: NSViewController {
         case .artist:
             ViewControllerManager.shared.selectSidebarItem(.artist, item.id)
         case .playlist:
-            ViewControllerManager.shared.selectSidebarItem(.playlist, item.id)
+            ViewControllerManager.shared.selectSidebarItem(.subscribedPlaylist, item.id)
         default:
             break
         }

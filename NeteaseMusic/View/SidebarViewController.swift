@@ -48,7 +48,7 @@ class SidebarViewController: NSViewController {
                     case .createdPlaylists:
                         re = PlayCore.shared.api.playlistDelete(item.id)
                     case .subscribedPlaylists:
-                        re = PlayCore.shared.api.subscribe(item.id, unSubscribe: true, type: .playlist)
+                        re = PlayCore.shared.api.subscribe(item.id, unSubscribe: true, type: .subscribedPlaylist)
                     default:
                         return
                     }
@@ -78,7 +78,7 @@ class SidebarViewController: NSViewController {
                     return NSImage(named: NSImage.Name("sidebar.sp#icn-fm"))
                 case .favourite:
                     return NSImage(named: NSImage.Name("sidebar.sp#icn-love"))
-                case .playlist:
+                case .createdPlaylist, .subscribedPlaylist:
                     return NSImage(named: NSImage.Name("sidebar.sp#icn-song"))
                 default:
                     return nil
@@ -122,7 +122,7 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, playlist, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, subscribedPlaylists, preferences, mySubscription
+        case discover, fm, favourite, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, createdPlaylist, subscribedPlaylists, subscribedPlaylist, preferences, mySubscription
     }
     
     let defaultItems = [SidebarItem(type: .discover),
@@ -151,7 +151,7 @@ class SidebarViewController: NSViewController {
                     self?.outlineView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
                     self?.outlineViewSelectionIsChanging(notification)
                 }
-            case .album, .artist, .topSongs, .searchResults, .playlist, .fmTrash, .discoverPlaylist, .preferences:
+            case .album, .artist, .topSongs, .searchResults, .createdPlaylist, .subscribedPlaylist, .fmTrash, .discoverPlaylist, .preferences:
                 self?.outlineView.deselectAll(self)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
             default:
@@ -162,10 +162,10 @@ class SidebarViewController: NSViewController {
     
     func updatePlaylists() {
         PlayCore.shared.api.userPlaylist().done(on: .main) {
-            var created = $0.filter {
+            let created = $0.filter {
                 !$0.subscribed
                 }.map {
-                    SidebarItem(title: $0.name, id: $0.id, type: .playlist)
+                    SidebarItem(title: $0.name, id: $0.id, type: .createdPlaylist)
             }
             
             if let item = created.first, item.title.contains("喜欢的音乐") {
@@ -180,7 +180,7 @@ class SidebarViewController: NSViewController {
             let subscribed = $0.filter {
                 $0.subscribed
                 }.map {
-                    SidebarItem(title: $0.name, id: $0.id, type: .playlist)
+                    SidebarItem(title: $0.name, id: $0.id, type: .subscribedPlaylist)
             }
             
             self.sidebarItems.filter({
@@ -273,7 +273,7 @@ extension SidebarViewController: NSMenuItemValidation, NSMenuDelegate {
         }
         
         switch item.type {
-        case .playlist, .favourite:
+        case .createdPlaylist, .subscribedPlaylist, .favourite:
             return true
         default:
             break

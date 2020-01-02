@@ -305,7 +305,7 @@ class NeteaseMusicAPI: NSObject {
         var subString = ""
         
         switch type {
-        case .playlist:
+        case .subscribedPlaylist:
             p = P1(id: id, csrfToken: csrf).jsonString()
             apiString = "playlist"
             subString = unSubscribe ? "unsubscribe" : "subscribe"

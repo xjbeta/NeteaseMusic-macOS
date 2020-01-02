@@ -31,7 +31,7 @@ class AlbumArtistTableViewController: NSViewController {
             vcManaget.selectSidebarItem(.artist, id)
         case .playlists:
             guard let id = playlists[safe: row]?.id else { return }
-            vcManaget.selectSidebarItem(.playlist, id)
+            vcManaget.selectSidebarItem(.subscribedPlaylist, id)
         default:
             break
         }

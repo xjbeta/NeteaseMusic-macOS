@@ -85,7 +85,7 @@ class PlaylistViewController: NSViewController {
                 let newValue = newV else { return }
             let id = newValue.id
             switch newValue.type {
-            case .playlist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
+            case .createdPlaylist, .subscribedPlaylist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
 //                if self?.playlistId == newValue.id,
 //                    self?.playlistType == newValue.type {
 //                    return
@@ -103,7 +103,7 @@ class PlaylistViewController: NSViewController {
                 self?.initPlaylistWithAlbum(id)
             case .topSongs:
                 self?.initPlaylistWithTopSongs(id)
-            case .playlist, .favourite:
+            case .subscribedPlaylist, .createdPlaylist, .favourite:
                 self?.initPlaylist(id)
             case .discoverPlaylist:
                 if id == -114514 {

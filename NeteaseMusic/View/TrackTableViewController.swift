@@ -163,7 +163,7 @@ extension TrackTableViewController: NSMenuItemValidation, NSMenuDelegate {
             return selectedIndexs.count > 0
         case removeFromPlaylistMenuItem:
             switch playlistType {
-            case .playlist:
+            case .createdPlaylist, .favourite, .fmTrash:
                 return selectedIndexs.count > 0
             case .discoverPlaylist:
                 return selectedIndexs.count == 1

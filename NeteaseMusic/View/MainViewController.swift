@@ -46,7 +46,7 @@ class MainViewController: NSViewController {
                     self.updateContentTabView(.fm)
                 case .mySubscription:
                     self.updateContentTabView(.mySubscription)
-                case .playlist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
+                case .subscribedPlaylist, .createdPlaylist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
                     self.updateContentTabView(.playlist)
                 case .artist:
                     self.updateContentTabView(.artist)
