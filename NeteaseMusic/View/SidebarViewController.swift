@@ -252,15 +252,17 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
 extension SidebarViewController: NSMenuItemValidation, NSMenuDelegate {
     
     func menuNeedsUpdate(_ menu: NSMenu) {
-        guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem,
-            let type = sidebarItems.filter({ $0.childrenItems.contains(item) }).first?.type else {
+        guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
             return
         }
         
+        let type = item.type
+        
+        deletePlaylistMenuItem.isHidden = type == .favourite
         switch type {
-        case .createdPlaylists:
+        case .createdPlaylist:
             deletePlaylistMenuItem.title = "Delete Playlist"
-        case .subscribedPlaylists:
+        case .subscribedPlaylist:
             deletePlaylistMenuItem.title = "Unsubscribe Playlist"
         default:
             break
