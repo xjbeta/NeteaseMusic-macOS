@@ -77,7 +77,8 @@ class ArtistViewController: NSViewController {
     func initArtistView(_ id: Int) {
         self.id = id
         let api = PlayCore.shared.api
-        
+        items.removeAll()
+        tableView.reloadData()
         when(fulfilled: api.artistAlbums(id), api.artistSublist()).done(on: .main) {
             guard id == self.id else { return }
             let aA = $0.0
@@ -86,7 +87,6 @@ class ArtistViewController: NSViewController {
                 $0.id
             }.contains(aA.artist.id)
             
-            self.items.removeAll()
             self.items.append(Item(type: .artist, artist: aA.artist))
             self.items.append(Item(type: .topSongs, artist: aA.artist))
             self.items.append(contentsOf: aA.hotAlbums.map({Item(album: $0)}))
