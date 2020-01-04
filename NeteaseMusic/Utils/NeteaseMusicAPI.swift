@@ -147,9 +147,10 @@ class NeteaseMusicAPI: NSObject {
                 case id, n, s, csrfToken = "csrf_token"
             }
         }
-        
+
         struct Result: Decodable {
             let playlist: Playlist
+            let privileges: [Track.Privilege]
             let code: Int
         }
 
@@ -157,8 +158,14 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/v3/playlist/detail",
             p,
-            Result.self).map {
-                $0.playlist
+            Result.self).map { re -> Playlist in
+                var p = re.playlist
+                p.tracks?.forEach { t in
+                    t.privilege = re.privileges.first(where: {
+                        $0.id == t.id
+                    })
+                }
+                return p
         }
     }
     

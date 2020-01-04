@@ -38,7 +38,19 @@ class Track: NSObject, Decodable {
         return artists.artistsString()
     }()
     
-    var loved = false
+    // privileges - st
+    // playable st == 0
+    var playable: Bool {
+        get {
+            if let p = privilege {
+                return p.status == .playable
+            } else {
+                return false
+            }
+        }
+    }
+    
+    var privilege: Privilege?
     
     func playerItemm() -> Promise<AVPlayerItem?> {
         let br = Preferences.shared.musicBitRate.rawValue
@@ -52,9 +64,55 @@ class Track: NSObject, Decodable {
                             return
                     }
                     let avAsset = AVURLAsset(url: url)
+                    guard avAsset.isPlayable else {
+                        resolver.fulfill(nil)
+                        return
+                    }
                     resolver.fulfill(AVPlayerItem(asset: avAsset))
                 }.catch {
                     resolver.reject($0)
+            }
+        }
+    }
+    
+    struct Privilege: Decodable {
+        let id: Int
+        let fee: Int
+        let payed: Int
+        let st: Int
+        let maxbr: Int
+        let pl: Int
+        let flag: Int
+        let dl: Int
+        
+        enum Status {
+            case needToBuy
+            case checkPrivilege
+            case copyrightProtection
+            case needToDownload
+            case playable
+        }
+        
+        var status: Status {
+            get {
+                // function cDV1x(d3x)
+                // l3x.qP9G = function(bn4r, action)
+                
+                if pl <= 0 && (fee > 63 || flag > 4095) {
+                    return .checkPrivilege
+                } else if st < 0 {
+                    return .copyrightProtection
+                } else if fee > 0 && fee != 8 && payed == 0 && pl <= 0 {
+                    return .needToBuy
+                } else if fee == 16 || fee == 4 && (flag & 2048) != 0 {
+                    return .needToDownload
+                } else if (fee == 0 || payed == 1) && pl > 0 && dl == 0 {
+                    return .playable
+                } else if pl == 0 && dl == 0 {
+                    return .copyrightProtection
+                } else {
+                    return .playable
+                }
             }
         }
     }
@@ -159,7 +217,7 @@ struct Playlist: Decodable {
     let description: String?
     let tags: [String]?
     let id: Int
-    let tracks: [Track]?
+    var tracks: [Track]?
     let trackIds: [TrackId]?
     let creator: Creator?
     
