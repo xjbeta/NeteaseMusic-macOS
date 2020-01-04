@@ -26,7 +26,7 @@
                                                     <constraint firstAttribute="width" constant="190" id="2cl-hh-5h9"/>
                                                     <constraint firstAttribute="width" secondItem="jK4-ZL-v1D" secondAttribute="height" multiplier="1:1" id="dvN-s4-ggv"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="aCL-AC-GzR" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="aCL-AC-GzR" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -40,7 +40,7 @@
                                                     <constraint firstAttribute="width" secondItem="9KC-UX-vy4" secondAttribute="height" multiplier="1:1" id="4ty-kQ-3bs"/>
                                                     <constraint firstAttribute="width" constant="230" id="Ppz-ca-lQY"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="BqE-UU-8Yd" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="BqE-UU-8Yd" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -54,7 +54,7 @@
                                                     <constraint firstAttribute="width" secondItem="MJi-33-1gC" secondAttribute="height" multiplier="1:1" id="7vm-hd-Sas"/>
                                                     <constraint firstAttribute="width" constant="270" id="K40-gj-RGl"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="MLL-uf-btj" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="MLL-uf-btj" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -68,7 +68,7 @@
                                                     <constraint firstAttribute="width" secondItem="IIS-JS-sEX" secondAttribute="height" multiplier="1:1" id="dgg-r9-vD5"/>
                                                     <constraint firstAttribute="width" constant="270" id="s7B-di-okE"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vkN-9t-dR0" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="vkN-9t-dR0" customClass="FMCoverButtonCell" customModule="NeteaseMusic" customModuleProvider="target">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
