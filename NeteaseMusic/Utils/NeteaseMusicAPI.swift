@@ -284,7 +284,7 @@ class NeteaseMusicAPI: NSObject {
         let p = P(s: keywords, type: typeInt, limit: limit, offset: page * limit, csrfToken: csrf).jsonString()
         
         
-        return request("https://music.163.com/weapi/search/get",
+        return request("https://music.163.com/weapi/cloudsearch/get/web",
                        p, SearchResult.self).map {
                         $0.result
         }
