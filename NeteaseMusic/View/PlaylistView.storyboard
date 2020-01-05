@@ -22,7 +22,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="o6X-zr-lKP" secondAttribute="height" multiplier="1:1" id="lJb-LC-gJA"/>
                                         </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="bQC-dU-dhD"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="bQC-dU-dhD"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-Nf-G1i">
                                         <rect key="frame" x="125" y="12" width="165" height="97"/>
