@@ -80,6 +80,8 @@ class SidebarViewController: NSViewController {
                     return NSImage(named: NSImage.Name("sidebar.sp#icn-love"))
                 case .createdPlaylist, .subscribedPlaylist:
                     return NSImage(named: NSImage.Name("sidebar.sp#icn-song"))
+                case .mySubscription:
+                    return NSImage(named: NSImage.Name("sidebar.sp#icn-myfav"))
                 default:
                     return nil
                 }
