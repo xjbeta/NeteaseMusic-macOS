@@ -158,8 +158,8 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/v3/playlist/detail",
             p,
-            Result.self).map { re -> Playlist in
-                var p = re.playlist
+            Result.self, pcOS: true).map { re -> Playlist in
+                let p = re.playlist
                 p.tracks?.forEach { t in
                     t.privilege = re.privileges.first(where: {
                         $0.id == t.id
@@ -191,7 +191,7 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/song/enhance/player/url",
             p,
-            Result.self).map {
+            Result.self, pcOS: true).map {
                 $0.data
         }
     }
@@ -211,7 +211,7 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/v1/discovery/recommend/songs",
             p,
-            RecommendSongs.self).map {
+            RecommendSongs.self, pcOS: true).map {
                 $0.recommend
         }
     }
@@ -351,7 +351,7 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/v1/radio/get",
             p,
-            Result.self).map {
+            Result.self, pcOS: true).map {
                 $0.data
         }
     }
@@ -389,7 +389,7 @@ class NeteaseMusicAPI: NSObject {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         return request("https://music.163.com/weapi/v1/album/\(id)",
             p,
-            AlbumResult.self)
+            AlbumResult.self, pcOS: true)
     }
     
     func albumSublist() -> Promise<[Track.Album]> {
