@@ -79,6 +79,7 @@
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
 		01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B99228C0D1400D11190 /* LyricScroller.swift */; };
 		01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B9E228CF3D200D11190 /* ViewControllerManager.swift */; };
+		0171427523C18E660051ADDF /* PlayableColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171427423C18E660051ADDF /* PlayableColorTransformer.swift */; };
 		017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */; };
 		0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */; };
 		01909522239E339A00647F80 /* SublistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01909521239E339A00647F80 /* SublistView.storyboard */; };
@@ -247,6 +248,7 @@
 		01677B99228C0D1400D11190 /* LyricScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricScroller.swift; sourceTree = "<group>"; };
 		01677B9C228C133D00D11190 /* Album.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Album.json; sourceTree = "<group>"; };
 		01677B9E228CF3D200D11190 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
+		0171427423C18E660051ADDF /* PlayableColorTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayableColorTransformer.swift; sourceTree = "<group>"; };
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMCoverButtonCell.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */,
 				012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */,
 				012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */,
+				0171427423C18E660051ADDF /* PlayableColorTransformer.swift */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
 				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
+				0171427523C18E660051ADDF /* PlayableColorTransformer.swift in Sources */,
 				01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */,
 				01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */,
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,

@@ -50,7 +50,7 @@
                                                                     <rect key="frame" x="0.0" y="5" width="30" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="00" id="SN6-JG-wHs">
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
@@ -98,11 +98,16 @@
                                                                             <rect key="frame" x="-2" y="0.0" width="96" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="DGY-Hp-Rt9">
                                                                                 <font key="font" metaFont="system"/>
-                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
                                                                                 <binding destination="Z1H-E0-3eH" name="value" keyPath="objectValue.name" id="Znw-Vz-S5x"/>
+                                                                                <binding destination="Z1H-E0-3eH" name="textColor" keyPath="objectValue.playable" id="cba-P4-ezd">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSValueTransformerName">PlayableColorTransformer</string>
+                                                                                    </dictionary>
+                                                                                </binding>
                                                                             </connections>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="8PQ-IB-xgt">
@@ -114,6 +119,11 @@
                                                                             </textFieldCell>
                                                                             <connections>
                                                                                 <binding destination="Z1H-E0-3eH" name="value" keyPath="objectValue.secondName" id="kNh-pk-MXx"/>
+                                                                                <binding destination="Z1H-E0-3eH" name="textColor" keyPath="objectValue.playable" id="kuL-cp-ICu">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSValueTransformerName">PlayableSecondaryColorTransformer</string>
+                                                                                    </dictionary>
+                                                                                </binding>
                                                                             </connections>
                                                                         </textField>
                                                                     </subviews>
@@ -160,13 +170,18 @@
                                                                     <rect key="frame" x="0.0" y="5" width="150" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="pJa-9s-DCE">
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
                                                                         <binding destination="wiM-Pb-KEu" name="value" keyPath="objectValue" id="bbK-j6-Kc3">
                                                                             <dictionary key="options">
                                                                                 <string key="NSValueTransformerName">ArtistsTransformer</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                        <binding destination="wiM-Pb-KEu" name="textColor" keyPath="objectValue.playable" id="ndo-oZ-Sor">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">PlayableColorTransformer</string>
                                                                             </dictionary>
                                                                         </binding>
                                                                     </connections>
@@ -205,11 +220,16 @@
                                                                     <rect key="frame" x="0.0" y="5" width="163" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="EZ5-3R-3rG">
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
                                                                         <binding destination="CbL-FV-Soi" name="value" keyPath="objectValue.album.name" id="dIl-YS-6FF"/>
+                                                                        <binding destination="CbL-FV-Soi" name="textColor" keyPath="objectValue.playable" id="jFW-Yp-TNZ">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">PlayableColorTransformer</string>
+                                                                            </dictionary>
+                                                                        </binding>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -279,13 +299,18 @@
                                                                     <rect key="frame" x="0.0" y="5" width="99" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TJP-nm-Iya">
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
                                                                         <binding destination="Udh-Zf-p94" name="value" keyPath="objectValue.duration" id="JaA-F0-HQm">
                                                                             <dictionary key="options">
                                                                                 <string key="NSValueTransformerName">DurationTransformer</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                        <binding destination="Udh-Zf-p94" name="textColor" keyPath="objectValue.playable" id="crw-Cm-3yK">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">PlayableColorTransformer</string>
                                                                             </dictionary>
                                                                         </binding>
                                                                     </connections>

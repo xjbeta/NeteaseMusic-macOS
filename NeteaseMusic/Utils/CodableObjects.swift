@@ -40,7 +40,7 @@ class Track: NSObject, Decodable {
     
     // privileges - st
     // playable st == 0
-    var playable: Bool {
+    @objc var playable: Bool {
         get {
             if let p = privilege {
                 return p.status == .playable
