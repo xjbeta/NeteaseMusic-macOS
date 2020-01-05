@@ -1148,12 +1148,41 @@
                                                         <constraint firstAttribute="height" constant="65" id="wPa-QQ-5S9"/>
                                                     </constraints>
                                                 </visualEffectView>
+                                                <box hidden="YES" boxType="custom" borderWidth="0.0" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="ckG-GY-bIK">
+                                                    <rect key="frame" x="449" y="85" width="102" height="26"/>
+                                                    <view key="contentView" id="lcx-aI-z3f">
+                                                        <rect key="frame" x="0.0" y="0.0" width="102" height="26"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZBC-DS-2T4">
+                                                                <rect key="frame" x="3" y="5" width="96" height="16"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="m9M-YL-aTn"/>
+                                                                </constraints>
+                                                                <textFieldCell key="cell" selectable="YES" alignment="center" title="Multiline Label" id="Ndl-lP-Ul8">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="ZBC-DS-2T4" firstAttribute="top" secondItem="lcx-aI-z3f" secondAttribute="top" constant="5" id="2f1-gh-hmI"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ZBC-DS-2T4" secondAttribute="trailing" constant="5" id="7p5-qr-ow2"/>
+                                                            <constraint firstItem="ZBC-DS-2T4" firstAttribute="leading" secondItem="lcx-aI-z3f" secondAttribute="leading" constant="5" id="Gee-2e-UdP"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ZBC-DS-2T4" secondAttribute="bottom" constant="5" id="yfV-t2-clz"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <color key="fillColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                </box>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="e5p-uP-FaE" secondAttribute="bottom" id="1PP-xW-RGh"/>
                                                 <constraint firstItem="e5p-uP-FaE" firstAttribute="leading" secondItem="c7C-3x-bjo" secondAttribute="leading" id="4AQ-rf-lHO"/>
                                                 <constraint firstAttribute="trailing" secondItem="e5p-uP-FaE" secondAttribute="trailing" id="FDE-45-CKi"/>
                                                 <constraint firstAttribute="trailing" secondItem="h1J-AM-GWX" secondAttribute="trailing" id="I38-Pg-wD4"/>
+                                                <constraint firstItem="e5p-uP-FaE" firstAttribute="top" secondItem="ckG-GY-bIK" secondAttribute="bottom" constant="20" id="Lji-uz-pYX"/>
+                                                <constraint firstItem="ckG-GY-bIK" firstAttribute="centerX" secondItem="c7C-3x-bjo" secondAttribute="centerX" id="Wql-5D-KNS"/>
                                                 <constraint firstItem="e5p-uP-FaE" firstAttribute="top" secondItem="h1J-AM-GWX" secondAttribute="bottom" id="Zcl-s6-m9g"/>
                                                 <constraint firstItem="h1J-AM-GWX" firstAttribute="leading" secondItem="c7C-3x-bjo" secondAttribute="leading" id="d5e-j0-mjd"/>
                                                 <constraint firstItem="h1J-AM-GWX" firstAttribute="top" secondItem="c7C-3x-bjo" secondAttribute="top" id="iQC-T1-ej9"/>
@@ -1193,6 +1222,8 @@
                     <connections>
                         <outlet property="contentTabView" destination="AWO-pv-Kg5" id="glS-Ji-PzT"/>
                         <outlet property="mainTabView" destination="Po7-mc-yBA" id="0Hx-XE-5kD"/>
+                        <outlet property="messageBox" destination="ckG-GY-bIK" id="2tK-pq-Vij"/>
+                        <outlet property="messageTextField" destination="ZBC-DS-2T4" id="ryu-Ns-xSL"/>
                         <outlet property="playingSongTabView" destination="h1J-AM-GWX" id="hZ0-bG-RI6"/>
                         <outlet property="playingSongView" destination="eNf-lb-9SZ" id="uo8-Ay-5FC"/>
                     </connections>

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import PromiseKit
 
 class MainViewController: NSViewController {
     @IBOutlet weak var mainTabView: NSTabView!
@@ -24,10 +25,14 @@ class MainViewController: NSViewController {
     }
     
     @IBOutlet weak var playingSongView: NSView!
+    @IBOutlet weak var messageBox: NSBox!
+    @IBOutlet weak var messageTextField: NSTextField!
+    private var messageID = ""
     
     var sidebarItemObserver: NSKeyValueObservation?
     var playlistNotification: NSObjectProtocol?
     var playingSongNotification: NSObjectProtocol?
+    var displayMessageNotification: NSObjectProtocol?
     var playingSongViewStatus: ExtendedViewState = .hidden {
         didSet {
             NotificationCenter.default.post(name: .playingSongViewStatus, object: nil, userInfo: ["status": playingSongViewStatus])
@@ -73,6 +78,32 @@ class MainViewController: NSViewController {
                 self?.playingSongViewStatus = newItem == .playingSong ? .display : .hidden
             }
         }
+        
+        displayMessageNotification = NotificationCenter.default.addObserver(forName: .displayMessage, object: nil, queue: .main) {
+            guard let kv = $0.userInfo as? [String: Any],
+                let message = kv["message"] as? String else {
+                return
+            }
+            self.showMessage(message)
+        }
+    }
+    
+    func showMessage(_ str: String) {
+        let id = UUID().uuidString
+        messageTextField.stringValue = str
+        if messageID == "" {
+            messageBox.alphaValue = 0
+            messageBox.isHidden = false
+            messageBox.animator().alphaValue = 1
+        }
+        messageID = id
+        print("display message \(str)")
+        after(seconds: 3).done {
+            guard id == self.messageID else { return }
+            print("hide message box.")
+            self.messageBox.animator().alphaValue = 0
+            self.messageID = ""
+        }
     }
     
     func updateMainTabView(_ item: MainTabItems) {
@@ -93,6 +124,9 @@ class MainViewController: NSViewController {
             NotificationCenter.default.removeObserver(obs)
         }
         if let obs = playingSongNotification {
+            NotificationCenter.default.removeObserver(obs)
+        }
+        if let obs = displayMessageNotification {
             NotificationCenter.default.removeObserver(obs)
         }
     }

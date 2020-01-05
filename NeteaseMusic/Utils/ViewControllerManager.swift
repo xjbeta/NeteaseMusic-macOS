@@ -183,6 +183,10 @@ class ViewControllerManager: NSObject {
             item.keyEquivalentModifierMask = .init(rawValue: 0)
         }
     }
+    
+    func displayMessage(_ str: String) {
+        NotificationCenter.default.post(name: .displayMessage, object: nil, userInfo: ["message": str])
+    }
 }
 
 extension NSTableView {
