@@ -172,13 +172,11 @@ class NeteaseMusicAPI: NSObject {
     func songUrl(_ ids: [Int], _ br: Int) -> Promise<([Song])> {
         struct P: Encodable {
             let ids: [Int]
-//            let level = "standard";
-//            let encodeType = "aac";
+            let encodeType = "aac"
             let br: Int
             let csrfToken: String
             enum CodingKeys: String, CodingKey {
-//                case ids, level, encodeType, csrfToken = "csrf_token"
-                case ids, br, csrfToken = "csrf_token"
+                case ids, br, encodeType, csrfToken = "csrf_token"
             }
         }
         
