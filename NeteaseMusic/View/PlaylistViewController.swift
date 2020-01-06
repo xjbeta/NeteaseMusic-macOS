@@ -58,125 +58,6 @@ class PlaylistViewController: NSViewController {
         }
     }
     
-        // MARK: - Playlist Menu
-    @IBOutlet var playlistMenu: NSMenu!
-    
-    @IBOutlet weak var playMenuItem: NSMenuItem!
-    @IBOutlet weak var playNextMenuItem: NSMenuItem!
-    @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
-    @IBOutlet weak var removeFromPlaylistMenuItem: NSMenuItem!
-    @IBOutlet weak var newPlaylistMenuItem: NSMenuItem!
-    @IBOutlet weak var addToPlaylistMenuItem: NSMenuItem!
-    @IBOutlet weak var addToPlaylistMenu: NSMenu!
-    
-    var playlistMenuUpdateID = ""
-    
-    var removeMenuItemActionID = ""
-    
-    @IBAction func menuItemAction(_ sender: NSMenuItem) {
-        guard let tableView = trackTableViewController()?.tableView else {
-            return
-        }
-        let selectedIndexs = tableView.selectedIndexs()
-        
-        switch sender {
-        case playMenuItem:
-            break
-        case playNextMenuItem:
-            break
-        case copyLinkMenuItem:
-            if let t = tracks.enumerated().filter ({
-                selectedIndexs.contains($0.offset)
-            }).first?.element {
-                let str = "https://music.163.com/song?id=\(t.id)"
-                ViewControllerManager.shared.copyToPasteboard(str)
-            }
-        case removeFromPlaylistMenuItem:
-            guard removeMenuItemActionID == "" else { return }
-            let selectedTracks = tracks.enumerated().filter {
-                selectedIndexs.contains($0.offset)
-            }
-            let ids = selectedTracks.map {
-                $0.element.id
-            }
-            let playlistId = self.playlistId
-            let api = PlayCore.shared.api
-            let uuid = UUID().uuidString
-            removeMenuItemActionID = uuid
-            
-            
-            switch playlistType {
-            case .discoverPlaylist:
-                guard let track = selectedTracks.first else { return }
-                api.discoveryRecommendDislike(track.element.id).done {
-                    guard uuid == self.removeMenuItemActionID else { return }
-                    guard let newTrack = $0.0 else { return }
-                    newTrack.index = track.element.index
-                    self.tracks[track.offset] = newTrack
-                    print("Remove \(ids) from discoverPlaylist done.")
-                }.catch {
-                    if let er = ($0 as? NeteaseMusicAPI.RequestError) {
-                        switch er {
-                        case .errorCode(let code, let msg):
-                            if code == 432, msg == "今日暂无更多推荐" {
-                                return
-                            }
-                        default:
-                            break
-                        }
-                    }
-                    print("Remove \(ids) from discoverPlaylist error \($0).")
-                }
-            case .fmTrash:
-                guard let track = selectedTracks.first else { return }
-                api.fmTrash(id: track.element.id, 0, false).done(on: .main) {
-                    guard uuid == self.removeMenuItemActionID else { return }
-                    self.trackTableViewController()?.tracks.removeAll {
-                        ids.contains($0.id)
-                    }
-                    print("FM Trash Delected \(ids).")
-                }.catch(on: .main) {
-                    self.initFMTrashList()
-                    print("FM Trash Del error: \($0).")
-                }
-            case .favourite, .createdPlaylist:
-                api.playlistTracks(add: false, ids, to: playlistId).done {
-                    guard uuid == self.removeMenuItemActionID else { return }
-                    self.trackTableViewController()?.tracks.removeAll {
-                        ids.contains($0.id)
-                    }
-                    print("Remove \(ids) from playlist \(playlistId) done.")
-                }.catch(on: .main) {
-                    self.initPlaylist(playlistId)
-                    print("Remove \(ids) from playlist \(playlistId) error \($0).")
-                }
-            default:
-                removeMenuItemActionID = ""
-                return
-            }
-        case newPlaylistMenuItem:
-            guard let newPlaylistVC = newPlaylistViewController else { return }
-            self.presentAsSheet(newPlaylistVC)
-        default:
-            let playlistId = sender.tag
-            guard playlistId > 0 else { return }
-            
-            let ids = tracks.enumerated().filter {
-                selectedIndexs.contains($0.offset)
-            }.map {
-                $0.element.id
-            }
-            
-            PlayCore.shared.api.playlistTracks(add: true, ids, to: playlistId).done {
-                print("Add \(ids) to playlist \(playlistId) done.")
-                if playlistId == self.playlistId {
-                    //                    self.initPlaylist(playlistId)
-                }
-            }.catch {
-                print("Add \(ids) to playlist \(playlistId) error \($0).")
-            }
-        }
-    }
     
     lazy var newPlaylistViewController: NewPlaylistViewController? = {
         let sb = NSStoryboard(name: "NewPlaylist", bundle: nil)
@@ -224,7 +105,9 @@ class PlaylistViewController: NSViewController {
                 self?.playlistType = newValue.type
                 self?.trackTableViewController()?.playlistId = id
                 self?.trackTableViewController()?.playlistType = newValue.type
-                self?.trackTableViewController()?.tableView.menu = self?.playlistMenu
+                if self?.trackTableViewController()?.delegate == nil {
+                    self?.trackTableViewController()?.delegate = self
+                }
             default:
                 return
             }
@@ -270,8 +153,7 @@ class PlaylistViewController: NSViewController {
         subscribeButton.isHidden = typeList.contains(playlistType)
         subscribeButton.isEnabled = true
         descriptionStackView.isHidden = playlistType == .topSongs
-        
-        initMenuItems()
+        trackTableViewController()?.initMenuItems()
     }
     
     func initPlaylist(_ id: Int) {
@@ -344,17 +226,6 @@ class PlaylistViewController: NSViewController {
         }
     }
     
-    func initMenuItems() {
-        var typeList = [SidebarViewController.ItemType]()
-        
-        playMenuItem.isHidden = playlistType == .fmTrash
-        playNextMenuItem.isHidden = playlistType == .fmTrash
-        copyLinkMenuItem.isHidden = false
-        typeList = [.subscribedPlaylist, .album, .topSongs]
-        removeFromPlaylistMenuItem.isHidden = typeList.contains(playlistType)
-        addToPlaylistMenuItem.isHidden = playlistType == .fmTrash
-    }
-    
     func trackTableViewController() -> TrackTableViewController? {
         let vc = children.compactMap {
             $0 as? TrackTableViewController
@@ -367,93 +238,102 @@ class PlaylistViewController: NSViewController {
     }
 }
 
-extension PlaylistViewController: NSMenuItemValidation, NSMenuDelegate {
-    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        guard let tableView = trackTableViewController()?.tableView else {
-            return false
-        }
+extension PlaylistViewController: TrackTableViewDelegate {
+    func trackTableView(_ tableView: NSTableView, startPlaying tracks: [Track], with track: Track?) {
+        
+    }
+    
+    func trackTableView(_ tableView: NSTableView, playNext tracks: [Track]) {
+        
+    }
+    
+    func trackTableView(_ tableView: NSTableView, copyLink track: Track) {
+        let str = "https://music.163.com/song?id=\(track.id)"
+        ViewControllerManager.shared.copyToPasteboard(str)
+    }
+    
+    func trackTableView(_ tableView: NSTableView, remove tracks: [Track], completionHandler: (() -> Void)? = nil) {
         let selectedIndexs = tableView.selectedIndexs()
-        
-        // Playlist items
-        if menuItem.tag != 0, selectedIndexs.count > 0 {
-            return true
+        let selectedTracks = tracks.enumerated().filter {
+            selectedIndexs.contains($0.offset)
         }
-        
-        switch menuItem {
-        case copyLinkMenuItem:
-            return selectedIndexs.count == 1
-        case playMenuItem, playNextMenuItem:
-            return selectedIndexs.count > 0
-        case removeFromPlaylistMenuItem:
-            switch playlistType {
-            case .createdPlaylist, .favourite, .fmTrash:
-                return selectedIndexs.count > 0
-            case .discoverPlaylist:
-                return selectedIndexs.count == 1
-            default:
-                return false
-            }
-        case newPlaylistMenuItem:
-            return true
-        default:
-            return false
+        let ids = selectedTracks.map {
+            $0.element.id
         }
-    }
-    
-    func menuDidClose(_ menu: NSMenu) {
-        playlistMenuUpdateID = ""
-    }
-    
-    func menuNeedsUpdate(_ menu: NSMenu) {
-        let markID = UUID().uuidString
-        playlistMenuUpdateID = markID
-
-        // Update playlist
-        addToPlaylistMenu.items.enumerated().forEach {
-            if $0.offset >= 2 {
-                addToPlaylistMenu.removeItem($0.element)
-            }
-        }
+        let playlistId = self.playlistId
+        let api = PlayCore.shared.api
+        let vcm = ViewControllerManager.shared
         
-        PlayCore.shared.api.userPlaylist().map { itmes -> [NSMenuItem] in
-            guard markID == self.playlistMenuUpdateID else {
-                return []
-            }
-            
-            return itmes.enumerated().compactMap { i -> NSMenuItem? in
-                if i.element.subscribed {
-                    return nil
-                }
-                
-                var name = i.element.name
-                if i.offset == 0, name.contains("喜欢的音乐") {
-                    name = "我喜欢的音乐"
-                }
-                let item = NSMenuItem(title: name,
-                                      action: #selector(self.menuItemAction), keyEquivalent: "")
-                item.tag = i.element.id
-                return item
-            }
-            }.done(on: .main) {
-                $0.forEach {
-                    self.addToPlaylistMenu.addItem($0)
-                }
-            }.catch {
-                print($0)
-        }
-        
-        removeFromPlaylistMenuItem.isEnabled = removeMenuItemActionID == ""
         
         switch playlistType {
         case .discoverPlaylist:
-            // switch to not interested
-            removeFromPlaylistMenuItem.title = "Not Interested"
-        case .favourite, .createdPlaylist:
-            removeFromPlaylistMenuItem.title = "Remove from Playlist"
+            guard let track = selectedTracks.first else { return }
+            api.discoveryRecommendDislike(track.element.id).done {
+                guard let newTrack = $0.0 else { return }
+                newTrack.index = track.element.index
+                self.tracks[track.offset] = newTrack
+                print("Remove \(ids) from discoverPlaylist done.")
+            }.ensure {
+                completionHandler?()
+            }.catch {
+                if let er = ($0 as? NeteaseMusicAPI.RequestError) {
+                    switch er {
+                    case .errorCode(let code, let msg):
+                        if code == 432, msg == "今日暂无更多推荐" {
+                            vcm.displayMessage(msg)
+                        }
+                    default:
+                        break
+                    }
+                }
+                print("Remove \(ids) from discoverPlaylist error \($0).")
+            }
         case .fmTrash:
-            removeFromPlaylistMenuItem.title = "Restore"
+            guard let track = selectedTracks.first else { return }
+            api.fmTrash(id: track.element.id, 0, false).done(on: .main) {
+                self.tracks.removeAll {
+                    ids.contains($0.id)
+                }
+                print("FM Trash Delected \(ids).")
+            }.ensure {
+                completionHandler?()
+            }.catch(on: .main) {
+                self.initFMTrashList()
+                print("FM Trash Del error: \($0).")
+            }
+        case .favourite, .createdPlaylist:
+            api.playlistTracks(add: false, ids, to: playlistId).done {
+                self.tracks.removeAll {
+                    ids.contains($0.id)
+                }
+                print("Remove \(ids) from playlist \(playlistId) done.")
+            }.ensure {
+                completionHandler?()
+            }.catch(on: .main) {
+                self.initPlaylist(playlistId)
+                print("Remove \(ids) from playlist \(playlistId) error \($0).")
+            }
         default:
-            break
+            completionHandler?()
+        }
+    }
+    
+    func trackTableView(_ tableView: NSTableView, createPlaylist tracks: [Track], completionHandler: (() -> Void)? = nil) {
+        guard let newPlaylistVC = newPlaylistViewController else { return }
+        self.presentAsSheet(newPlaylistVC)
+    }
+    
+    func trackTableView(_ tableView: NSTableView, add tracks: [Track], to playlist: Int) {
+        let ids = tracks.map {
+            $0.id
+        }
+        PlayCore.shared.api.playlistTracks(add: true, ids, to: playlist).done {
+            print("Add \(ids) to playlist \(playlist) done.")
+            if playlist == self.playlistId {
+                self.initPlaylist(self.playlistId)
+            }
+        }.catch {
+            print("Add \(ids) to playlist \(playlist) error \($0).")
         }
     }
 }

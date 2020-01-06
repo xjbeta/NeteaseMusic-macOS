@@ -333,6 +333,7 @@
                                                 <binding destination="fkU-wc-FFd" name="content" keyPath="arrangedObjects" id="hS9-oJ-mjK"/>
                                                 <binding destination="fkU-wc-FFd" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="hS9-oJ-mjK" id="9Dn-rk-6Lk"/>
                                                 <binding destination="fkU-wc-FFd" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="9Dn-rk-6Lk" id="gil-yK-pTz"/>
+                                                <outlet property="menu" destination="X3n-pc-27D" id="zew-0o-3a9"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -353,8 +354,16 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="addToPlaylistMenu" destination="17P-4s-Jmb" id="NAs-70-gYm"/>
+                        <outlet property="addToPlaylistMenuItem" destination="g5S-8m-2Ze" id="JDp-KT-XGb"/>
+                        <outlet property="copyLinkMenuItem" destination="U5Q-2S-wui" id="jL2-nO-ppD"/>
+                        <outlet property="newPlaylistMenuItem" destination="ak2-Qp-DjA" id="a9N-Dp-SSa"/>
+                        <outlet property="playMenuItem" destination="h7B-dJ-CXq" id="0WA-Tp-iQm"/>
+                        <outlet property="playNextMenuItem" destination="TCV-Sb-xSH" id="HV8-N4-ePn"/>
+                        <outlet property="removeFromPlaylistMenuItem" destination="of9-E9-5yw" id="KdQ-vA-8X5"/>
                         <outlet property="scrollView" destination="kNU-Vp-yim" id="fjD-HU-wmB"/>
                         <outlet property="tableView" destination="IOd-l2-drq" id="HDC-hr-30q"/>
+                        <outlet property="tableViewMenu" destination="X3n-pc-27D" id="n86-uk-Z3P"/>
                     </connections>
                 </viewController>
                 <customObject id="6TF-AP-BBl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -363,6 +372,53 @@
                         <binding destination="maI-Rk-sVu" name="contentArray" keyPath="self.tracks" id="FG7-6x-bY9"/>
                     </connections>
                 </arrayController>
+                <menu id="X3n-pc-27D">
+                    <items>
+                        <menuItem title="Play" id="h7B-dJ-CXq">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="8hn-ja-Trg"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Play Next" id="TCV-Sb-xSH">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="KQS-85-f1G"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="uTT-dW-bMH"/>
+                        <menuItem title="Add to Playlist" id="g5S-8m-2Ze">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Add to Playlist" id="17P-4s-Jmb">
+                                <items>
+                                    <menuItem title="New Playlist" id="ak2-Qp-DjA" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="menuItemAction:" target="maI-Rk-sVu" id="qp9-8i-rXU"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem isSeparatorItem="YES" id="2aU-g6-ukb"/>
+                                </items>
+                            </menu>
+                        </menuItem>
+                        <menuItem title="Copy Link" id="U5Q-2S-wui">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="uqq-7r-MM1"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="P2y-WB-mem"/>
+                        <menuItem title="Remove from Playlist" id="of9-E9-5yw" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="menuItemAction:" target="maI-Rk-sVu" id="q9X-if-fNg"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="maI-Rk-sVu" id="Pin-i9-oGG"/>
+                    </connections>
+                </menu>
             </objects>
             <point key="canvasLocation" x="193.5" y="91.5"/>
         </scene>
