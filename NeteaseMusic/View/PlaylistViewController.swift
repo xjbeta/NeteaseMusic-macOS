@@ -240,11 +240,31 @@ class PlaylistViewController: NSViewController {
 
 extension PlaylistViewController: TrackTableViewDelegate {
     func trackTableView(_ tableView: NSTableView, startPlaying tracks: [Track], with track: Track?) {
-        
+        let pc = PlayCore.shared
+        guard tracks.count >= 1 else { return }
+        if let t = track,
+            let i = tracks.firstIndex(of: t) {
+            // DoubleClick action
+            pc.playlist = tracks
+            pc.start(i)
+        } else if let c = pc.currentTrack,
+            let i = pc.playlist.firstIndex(of: c) {
+            // add to next and play
+            pc.playlist.insert(contentsOf: tracks, at: i + 1)
+            pc.start(i + 1)
+        }
     }
     
     func trackTableView(_ tableView: NSTableView, playNext tracks: [Track]) {
-        
+        let pc = PlayCore.shared
+        guard tracks.count >= 1 else { return }
+        if let c = pc.currentTrack,
+            let i = pc.playlist.firstIndex(of: c) {
+            pc.playlist.insert(contentsOf: tracks, at: i + 1)
+        } else {
+            pc.playlist = tracks
+            pc.start()
+        }
     }
     
     func trackTableView(_ tableView: NSTableView, copyLink track: Track) {
