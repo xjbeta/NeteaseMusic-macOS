@@ -153,7 +153,6 @@ class PlaylistViewController: NSViewController {
         subscribeButton.isHidden = typeList.contains(playlistType)
         subscribeButton.isEnabled = true
         descriptionStackView.isHidden = playlistType == .topSongs
-        trackTableViewController()?.initMenuItems()
     }
     
     func initPlaylist(_ id: Int) {
@@ -252,6 +251,9 @@ extension PlaylistViewController: TrackTableViewDelegate {
             // add to next and play
             pc.playlist.insert(contentsOf: tracks, at: i + 1)
             pc.start(i + 1)
+        } else {
+            pc.playlist = tracks
+            pc.start()
         }
     }
     

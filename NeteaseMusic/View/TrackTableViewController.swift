@@ -81,6 +81,7 @@ class TrackTableViewController: NSViewController {
     var playlistType: SidebarViewController.ItemType = .none {
         didSet {
             initTableColumn()
+            initMenuItems()
         }
     }
     
@@ -96,7 +97,7 @@ class TrackTableViewController: NSViewController {
         playMenuItem.isHidden = playlistType == .fmTrash
         playNextMenuItem.isHidden = playlistType == .fmTrash
         copyLinkMenuItem.isHidden = false
-        typeList = [.subscribedPlaylist, .album, .topSongs]
+        typeList = [.subscribedPlaylist, .album, .topSongs, .searchResults]
         removeFromPlaylistMenuItem.isHidden = typeList.contains(playlistType)
         addToPlaylistMenuItem.isHidden = playlistType == .fmTrash
     }

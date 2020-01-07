@@ -22,6 +22,15 @@ class SearchResultViewController: NSViewController {
         ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: sender.selectedSegment + 1, type: .searchResults)
     }
     
+    lazy var newPlaylistViewController: NewPlaylistViewController? = {
+        let sb = NSStoryboard(name: "NewPlaylist", bundle: nil)
+        let vc = sb.instantiateController(withIdentifier: "NewPlaylistViewController") as? NewPlaylistViewController
+        vc?.updateSidebarItems = { [weak self] in
+            (self?.view.window?.windowController as? MainWindowController)?.initSidebarItems()
+        }
+        return vc
+    }()
+    
     var sidebarItemObserver: NSKeyValueObservation?
     var pageData = (count: 0, current: 0)
     var resultType: SearchSuggestionsViewController.GroupType = .none
@@ -81,6 +90,7 @@ class SearchResultViewController: NSViewController {
             
             switch type {
             case .songs:
+                trackVC.playlistType = .searchResults
                 let tracks = $0.songs
                 tracks.enumerated().forEach {
                     tracks[$0.offset].index = $0.offset + (offset * limit)
@@ -105,6 +115,9 @@ class SearchResultViewController: NSViewController {
             
             if type == .songs {
                 trackVC.tableView.reloadData()
+                if trackVC.delegate == nil {
+                    trackVC.delegate = self
+                }
                 self.initLayoutConstraint(trackVC.tableView)
             } else {
                 albumArtistVC.tableView.reloadData()
@@ -160,5 +173,62 @@ extension SearchResultViewController: PageSegmentedControlDelegate {
     
     func clickedPage(_ number: Int) {
         initResults(number)
+    }
+}
+
+extension SearchResultViewController: TrackTableViewDelegate {
+    func trackTableView(_ tableView: NSTableView, startPlaying tracks: [Track], with track: Track?) {
+        let pc = PlayCore.shared
+        guard tracks.count >= 1 else { return }
+        if let t = track,
+            let i = tracks.firstIndex(of: t) {
+            // DoubleClick action
+            pc.playlist = tracks
+            pc.start(i)
+        } else if let c = pc.currentTrack,
+            let i = pc.playlist.firstIndex(of: c) {
+            // add to next and play
+            pc.playlist.insert(contentsOf: tracks, at: i + 1)
+            pc.start(i + 1)
+        } else {
+            pc.playlist = tracks
+            pc.start()
+        }
+    }
+    
+    func trackTableView(_ tableView: NSTableView, playNext tracks: [Track]) {
+        let pc = PlayCore.shared
+        guard tracks.count >= 1 else { return }
+        if let c = pc.currentTrack,
+            let i = pc.playlist.firstIndex(of: c) {
+            pc.playlist.insert(contentsOf: tracks, at: i + 1)
+        } else {
+            pc.playlist = tracks
+            pc.start()
+        }
+    }
+    
+    func trackTableView(_ tableView: NSTableView, copyLink track: Track) {
+        let str = "https://music.163.com/song?id=\(track.id)"
+        ViewControllerManager.shared.copyToPasteboard(str)
+    }
+    
+    func trackTableView(_ tableView: NSTableView, remove tracks: [Track], completionHandler: (() -> Void)?) {
+    }
+    
+    func trackTableView(_ tableView: NSTableView, createPlaylist tracks: [Track], completionHandler: (() -> Void)?) {
+        guard let newPlaylistVC = newPlaylistViewController else { return }
+        self.presentAsSheet(newPlaylistVC)
+    }
+    
+    func trackTableView(_ tableView: NSTableView, add tracks: [Track], to playlist: Int) {
+        let ids = tracks.map {
+            $0.id
+        }
+        PlayCore.shared.api.playlistTracks(add: true, ids, to: playlist).done {
+            print("Add \(ids) to playlist \(playlist) done.")
+        }.catch {
+            print("Add \(ids) to playlist \(playlist) error \($0).")
+        }
     }
 }
