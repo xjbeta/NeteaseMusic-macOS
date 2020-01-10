@@ -17,9 +17,22 @@ class SublistViewController: NSViewController {
     
     var sidebarItemObserver: NSKeyValueObservation?
     
+    lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
+        var objects: NSArray?
+        Bundle.main.loadNibNamed(.init("TAAPMenu"), owner: nil, topLevelObjects: &objects)
+        let mc = objects?.compactMap {
+            $0 as? TAAPMenuController
+        }.first
+        let m = objects?.compactMap {
+            $0 as? NSMenu
+        }.first
+        return (m, mc)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initContent()
+        albumArtistTableVC()?.menu = menuContainer.menu
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
             guard let newType = changes.newValue??.type,
                 newType != changes.oldValue??.type,
@@ -34,6 +47,9 @@ class SublistViewController: NSViewController {
         containerView.isHidden = true
         guard let vc = albumArtistTableVC() else { return }
         let api = PlayCore.shared.api
+        vc.tableView.menu = menuContainer.menu
+        menuContainer.menuController?.delegate = self
+        
         switch segmentedControl.selectedSegment {
         case 0:
             vc.resetData(.album, responsiveScrolling: true)
@@ -67,5 +83,50 @@ class SublistViewController: NSViewController {
     
     deinit {
         sidebarItemObserver?.invalidate()
+    }
+}
+
+extension SublistViewController: TAAPMenuDelegate {
+    func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
+        guard let pvcs = presentedViewControllers,
+            !pvcs.contains(newPlaylisyVC) else { return }
+        self.presentAsSheet(newPlaylisyVC)
+    }
+    
+    func removeSuccess(ids: [Int], newItem: Track?) {
+        return
+    }
+    
+    func shouldReloadData() {
+        initContent()
+    }
+    
+    func selectedIndexs() -> IndexSet {
+        return albumArtistTableVC()?.tableView.selectedIndexs() ?? IndexSet()
+    }
+    
+    func selectedItems() -> (tracks: [Track], albums: [Track.Album], artists: [Track.Artist], playlists: [Playlist]) {
+        guard let vc = albumArtistTableVC() else {
+            return ([], [], [], [])
+        }
+        let als = vc.albums.enumerated().filter {
+            vc.tableView.selectedIndexs().contains($0.offset)
+        }.map {
+            $0.element
+        }
+        let ars = vc.artists.enumerated().filter {
+            vc.tableView.selectedIndexs().contains($0.offset)
+        }.map {
+            $0.element
+        }
+        
+        return ([], als, ars, [])
+    }
+    
+    func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
+        guard let vc = albumArtistTableVC() else {
+            return (.none, 0, .none)
+        }
+        return (.mySubscription, 0, vc.dataType)
     }
 }
