@@ -22,15 +22,14 @@ class NewPlaylistViewController: NSViewController {
         let privacy = privacyButton.state == .on
         PlayCore.shared.api.playlistCreate(str, privacy: privacy).done(on: .main) {
             print("Playlist created with name \(str)")
-            self.updateSidebarItems?()
+            NotificationCenter.default.post(name: .reloadSidebarData, object: nil)
             self.textField.stringValue = ""
             self.dismiss(self)
             }.catch {
+                ViewControllerManager.shared.displayMessage("Create new playlist failed.")
                 print("Playlist create error \($0)")
         }
     }
-    
-    var updateSidebarItems: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
