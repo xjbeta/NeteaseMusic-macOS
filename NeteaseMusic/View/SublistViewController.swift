@@ -36,7 +36,7 @@ class SublistViewController: NSViewController {
         let api = PlayCore.shared.api
         switch segmentedControl.selectedSegment {
         case 0:
-            vc.resetData(.albums, responsiveScrolling: true)
+            vc.resetData(.album, responsiveScrolling: true)
             api.albumSublist().done(on: .main) {
                 self.containerView.isHidden = $0.count == 0
                 vc.albums = $0
@@ -45,7 +45,7 @@ class SublistViewController: NSViewController {
                 print($0)
             }
         case 1:
-            vc.resetData(.artists, responsiveScrolling: true)
+            vc.resetData(.artist, responsiveScrolling: true)
             api.artistSublist().done(on: .main) {
                 self.containerView.isHidden = $0.count == 0
                 vc.artists = $0

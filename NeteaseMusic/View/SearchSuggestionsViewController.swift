@@ -43,6 +43,22 @@ class SearchSuggestionsViewController: NSViewController {
     
     enum GroupType: Int {
         case none, songs, albums, artists, playlists
+        func taapItemType() -> TAAPItemsType {
+            var t = TAAPItemsType.none
+            switch self {
+            case .albums:
+                t = .album
+            case .artists:
+                t = .artist
+            case .playlists:
+                t = .playlist
+            case .songs:
+                t = .song
+            default:
+                break
+            }
+            return t
+        }
     }
     
     struct SuggestItem {

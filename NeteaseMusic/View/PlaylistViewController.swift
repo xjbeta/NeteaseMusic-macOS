@@ -43,7 +43,7 @@ class PlaylistViewController: NSViewController {
         let subscribed = sender.subscribed
         let api = PlayCore.shared.api
         
-        api.subscribe(id, unSubscribe: subscribed, type: playlistType)
+        api.subscribe(id, unsubscribe: subscribed, type: .playlist)
             .ensure(on: .main) {
                 sender.isEnabled = true
         }.done {
