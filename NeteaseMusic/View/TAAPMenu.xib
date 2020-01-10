@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <menu id="6L9-eE-bak">
+            <items>
+                <menuItem title="Play" id="yC1-xH-8EK">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="play:" target="48W-pb-Hku" id="5w6-hs-I8m"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Play Next" id="Gko-X4-vJt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="playNext:" target="48W-pb-Hku" id="3FK-uq-nLB"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Iu1-HB-nLI"/>
+                <menuItem title="Add to Playlist" id="Qih-hd-Egk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Add to Playlist" id="hRL-lG-HQ8">
+                        <items>
+                            <menuItem title="New Playlist" id="gob-TS-Ri1" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="newPlaylist:" target="48W-pb-Hku" id="Ftb-3S-CC8"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="8ue-ju-dqP"/>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Copy Link" id="fmt-iG-6UG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="copyLink:" target="48W-pb-Hku" id="1pa-ZL-mSg"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Subscribe" id="eU7-V4-rwk" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="subscribe:" target="48W-pb-Hku" id="3dP-Sf-wq3"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="qNN-vu-G3b"/>
+                <menuItem title="Remove from Playlist" id="I6h-h1-Lgu" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="remove:" target="48W-pb-Hku" id="hNA-cO-Bd8"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="48W-pb-Hku" id="XkT-rZ-bus"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="285"/>
+        </menu>
+        <customObject id="48W-pb-Hku" customClass="TAAPMenuController" customModule="NeteaseMusic" customModuleProvider="target">
+            <connections>
+                <outlet property="addToPlaylistMenu" destination="hRL-lG-HQ8" id="02F-5N-Ufb"/>
+                <outlet property="addToPlaylistMenuItem" destination="Qih-hd-Egk" id="09H-1h-iGc"/>
+                <outlet property="copyLinkMenuItem" destination="fmt-iG-6UG" id="umq-Er-tM3"/>
+                <outlet property="menu" destination="6L9-eE-bak" id="wQU-DU-EU5"/>
+                <outlet property="newPlaylistMenuItem" destination="gob-TS-Ri1" id="5NM-JS-AL1"/>
+                <outlet property="playMenuItem" destination="yC1-xH-8EK" id="iZM-TJ-JLh"/>
+                <outlet property="playNextMenuItem" destination="Gko-X4-vJt" id="BeC-ds-2Gi"/>
+                <outlet property="removeMenuItem" destination="I6h-h1-Lgu" id="Vyz-4T-iHA"/>
+                <outlet property="subscribeMenuItem" destination="eU7-V4-rwk" id="0ys-IA-49Q"/>
+            </connections>
+        </customObject>
+    </objects>
+</document>

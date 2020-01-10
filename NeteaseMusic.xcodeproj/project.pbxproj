@@ -115,6 +115,8 @@
 		01DE5F17233DB41800A87467 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */; };
 		01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E40FE822C1DF4600864118 /* ImageLoader.swift */; };
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
+		01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */; };
+		01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
 		01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */; };
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
@@ -286,6 +288,8 @@
 		01E0F4A62261661B0043FAB6 /* SongUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SongUrl.json; sourceTree = "<group>"; };
 		01E40FE822C1DF4600864118 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		01E7C9D3228BB697004D80AD /* IdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdButton.swift; sourceTree = "<group>"; };
+		01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAAPMenuController.swift; sourceTree = "<group>"; };
+		01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAAPMenu.xib; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutlineView.swift; sourceTree = "<group>"; };
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -582,6 +586,8 @@
 				0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */,
 				014327AF22AA079200651064 /* UnresponsiveScrollView.swift */,
 				0171427623C2E0B70051ADDF /* NetworkRequestMenuItem.swift */,
+				01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */,
+				01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */,
 			);
 			name = ReuseViews;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */,
+				01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */,
 				012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */,
 				01467E922283F2C30037B49D /* Lyric.storyboard in Resources */,
 				012772DF229AA1A500C55537 /* SearchSuggestionsView.storyboard in Resources */,
@@ -782,6 +789,7 @@
 				0137264A226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift in Sources */,
 				0190952C23A0CA9100647F80 /* AlbumArtistTableViewController.swift in Sources */,
 				01321B0322FE74EA002A568C /* SongButtonsPopUpViewController.swift in Sources */,
+				01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */,
 				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
 				012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */,
 				0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */,
