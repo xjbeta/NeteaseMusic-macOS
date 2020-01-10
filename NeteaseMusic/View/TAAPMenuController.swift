@@ -117,7 +117,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         sender.requesting = true
         pc.api.subscribe(id, unsubscribe: unsubscribe, type: type.contentType).done {
             if type.contentType == .playlist {
-                NotificationCenter.default.post(name: .reloadSidebarData, object: nil)
+                NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
             }
             if type == d.tableViewList(),
                 type.type == .mySubscription,
