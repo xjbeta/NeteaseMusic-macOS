@@ -288,7 +288,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    func subscribe(_ id: Int, unSubscribe: Bool = false, type: SidebarViewController.ItemType) -> Promise<()> {
+    func subscribe(_ id: Int, unsubscribe: Bool = false, type: TAAPItemsType) -> Promise<()> {
         struct P1: Encodable {
             let id: Int
             let csrfToken: String
@@ -310,18 +310,18 @@ class NeteaseMusicAPI: NSObject {
         var subString = ""
         
         switch type {
-        case .subscribedPlaylist:
+        case .playlist:
             p = P1(id: id, csrfToken: csrf).jsonString()
             apiString = "playlist"
-            subString = unSubscribe ? "unsubscribe" : "subscribe"
+            subString = unsubscribe ? "unsubscribe" : "subscribe"
         case .album:
             p = P1(id: id, csrfToken: csrf).jsonString()
             apiString = "album"
-            subString = unSubscribe ? "unsub" : "sub"
+            subString = unsubscribe ? "unsub" : "sub"
         case .artist:
             p = P2(artistId: "\(id)", artistIds: "[\(id)]", csrfToken: csrf).jsonString()
             apiString = "artist"
-            subString = unSubscribe ? "unsub" : "sub"
+            subString = unsubscribe ? "unsub" : "sub"
         default:
             return Promise { resolver in
                 resolver.reject(RequestError.errorCode((0, "Unknow Type.")))

@@ -48,7 +48,7 @@ class SidebarViewController: NSViewController {
                     case .createdPlaylists:
                         re = PlayCore.shared.api.playlistDelete(item.id)
                     case .subscribedPlaylists:
-                        re = PlayCore.shared.api.subscribe(item.id, unSubscribe: true, type: .subscribedPlaylist)
+                        re = PlayCore.shared.api.subscribe(item.id, unsubscribe: true, type: .playlist)
                     default:
                         return
                     }

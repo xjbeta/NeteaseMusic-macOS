@@ -28,7 +28,7 @@ class DiscoverViewController: NSViewController {
         case playNextMenuItem:
             break
         case subscribeMenuItem:
-            playCore.api.subscribe(item.id, type: .subscribedPlaylist).done {
+            playCore.api.subscribe(item.id, type: .playlist).done {
                 print("Subscribe playlist \(item.id) success.")
                 }.catch {
                     print("Subscribe playlist \(item.id) error \($0).")

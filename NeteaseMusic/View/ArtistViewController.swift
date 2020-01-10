@@ -31,7 +31,7 @@ class ArtistViewController: NSViewController {
     @IBAction func subscribe(_ sender: SubscribeButton) {
         sender.isEnabled = false
         let api = PlayCore.shared.api
-        api.subscribe(id, unSubscribe: subscribed, type: .artist).done(on: .main) {
+        api.subscribe(id, unsubscribe: subscribed, type: .artist).done(on: .main) {
             self.subscribed = !self.subscribed
             self.tableView.reloadData(forRowIndexes: .init(integer: 0), columnIndexes: .init(integer: 0))
         }.ensure(on: .main) {
