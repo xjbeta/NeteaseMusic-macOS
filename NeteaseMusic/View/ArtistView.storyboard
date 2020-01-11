@@ -29,7 +29,7 @@
                                             <tableColumns>
                                                 <tableColumn width="785" minWidth="10" maxWidth="99999999" id="Jx8-9d-GBP">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -306,7 +306,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <action selector="tableViewClick:" target="duO-1w-ADn" id="Byw-k5-J9J"/>
+                                                <action selector="tableViewClick:" target="duO-1w-ADn" id="IiZ-s4-2kk"/>
                                                 <outlet property="dataSource" destination="duO-1w-ADn" id="LWP-9N-xhV"/>
                                                 <outlet property="delegate" destination="duO-1w-ADn" id="2jB-ww-a61"/>
                                             </connections>

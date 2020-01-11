@@ -10,7 +10,7 @@ import Cocoa
 import PromiseKit
 
 enum TAAPItemsType: String {
-    case none, song, album, artist, playlist, createdPlaylist, discoverPlaylist, favouritePlaylist, dailyPlaylist
+    case none, song, album, artist, playlist, createdPlaylist, discoverPlaylist, favouritePlaylist, dailyPlaylist, topSongs
 }
 
 protocol TAAPMenuDelegate {
@@ -289,6 +289,9 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 subscribeMenuItem.title = "Unsubscribe"
             }
             subscribeMenuItem.tag = 1
+        } else if tableViewList.type == .mySubscription {
+            subscribeMenuItem.title = "Unsubscribe"
+            subscribeMenuItem.tag = 1
         } else {
             subscribeMenuItem.title = "Subscribe"
             subscribeMenuItem.tag = 0
@@ -374,7 +377,14 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         case .album:
             return songItems
         case .artist:
-            return []
+            switch cType {
+            case .topSongs:
+                return [playMenuItem, playNextMenuItem]
+            case .album:
+                return albumItems
+            default:
+                break
+            }
         case .topSongs:
             return songItems
         case .searchResults:
@@ -445,6 +455,11 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             }
         case .dailyPlaylist:
             return pc.api.recommendSongs()
+        case .topSongs:
+            guard id > 0 else { return empty }
+            return pc.api.artist(id).map {
+                $0.hotSongs
+            }
         default:
             return empty
         }
