@@ -280,16 +280,12 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         guard let delegate = delegate, menu == self.menu else { return }
         
         let tableViewList = delegate.tableViewList()
+        menu.items.forEach {
+            if !$0.isSeparatorItem {
+                $0.isHidden = !menuItemsToDisplay().contains($0)
+            }
+        }
         
-        var typeList = [SidebarViewController.ItemType]()
-        playMenuItem.isHidden = tableViewList.type == .fmTrash || tableViewList.contentType == .artist
-        playNextMenuItem.isHidden = tableViewList.type == .fmTrash || tableViewList.contentType == .artist
-        copyLinkMenuItem.isHidden = false
-        typeList = [.subscribedPlaylist, .album, .topSongs, .searchResults, .mySubscription]
-        removeMenuItem.isHidden = typeList.contains(tableViewList.type)
-        addToPlaylistMenuItem.isHidden = tableViewList.contentType != .song || tableViewList.type == .fmTrash
-        
-        subscribeMenuItem.isHidden = tableViewList.contentType == .song
         subscribeMenuItem.title = "Subscribe"
         subscribeMenuItem.tag = 0
         
@@ -346,6 +342,58 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         default:
             break
         }
+    }
+    
+    func menuItemsToDisplay() -> [NSMenuItem] {
+        guard let d = delegate else { return [] }
+        let type = d.tableViewList().type
+        let cType = d.tableViewList().contentType
+        let albumItems: [NSMenuItem] = [playMenuItem, playNextMenuItem, copyLinkMenuItem, subscribeMenuItem]
+        let songItems: [NSMenuItem] =  [playMenuItem, playNextMenuItem, copyLinkMenuItem, addToPlaylistMenuItem]
+        let songItems2: [NSMenuItem] =  [playMenuItem, playNextMenuItem, copyLinkMenuItem, addToPlaylistMenuItem, removeMenuItem]
+        switch type {
+        case .discover:
+            return []
+        case .favourite:
+            return songItems2
+        case .discoverPlaylist:
+            return songItems2
+        case .album:
+            return songItems
+        case .artist:
+            return []
+        case .topSongs:
+            return songItems
+        case .searchResults:
+            switch cType {
+            case .album, .playlist:
+                return albumItems
+            case .artist:
+                return [copyLinkMenuItem, subscribeMenuItem]
+            case .song:
+                return songItems
+            default:
+                break
+            }
+        case .fmTrash:
+            return [copyLinkMenuItem, removeMenuItem]
+        case .createdPlaylist:
+            return songItems2
+        case .subscribedPlaylist:
+            return songItems
+        case .mySubscription:
+            switch cType {
+            case .album:
+                return albumItems
+            case .artist:
+                return [copyLinkMenuItem, subscribeMenuItem]
+            default:
+                break
+            }
+        default:
+            break
+        }
+        return []
     }
     
     func getTracksForPlay() -> Promise<[Track]> {
