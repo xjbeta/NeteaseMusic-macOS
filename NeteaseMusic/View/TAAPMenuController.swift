@@ -10,15 +10,14 @@ import Cocoa
 import PromiseKit
 
 enum TAAPItemsType: String {
-    case none, song, album, artist, playlist, createdPlaylist, discoverPlaylist, favouritePlaylist
+    case none, song, album, artist, playlist, createdPlaylist, discoverPlaylist, favouritePlaylist, dailyPlaylist
 }
 
 protocol TAAPMenuDelegate {
-    func selectedItemIDs() -> [Int]
-    func tracksForPlay() -> [Track]
+    func selectedItems() -> (id: [Int], items: [Any])
     func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType)
     
-    func removeSuccess(ids: [Int], newItem: Track?)
+    func removeSuccess(ids: [Int], newItem: Any?)
     func shouldReloadData()
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController)
 }
@@ -74,7 +73,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     
     @IBAction func copyLink(_ sender: NSMenuItem) {
         guard let d = delegate,
-            d.selectedItemIDs().count == 1 else { return }
+            d.selectedItems().id.count == 1 else { return }
         let type = d.tableViewList().contentType
         var apiStr = ""
         switch type {
@@ -85,7 +84,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         default:
             return
         }
-        guard let id = d.selectedItemIDs().first, id > 0 else { return }
+        guard let id = d.selectedItems().id.first, id > 0 else { return }
         
         let str = "https://music.163.com/\(apiStr)?id=\(id)"
         ViewControllerManager.shared.copyToPasteboard(str)
@@ -96,7 +95,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         let pc = PlayCore.shared
         let type = d.tableViewList()
         
-        guard let id = d.selectedItemIDs().first, id > 0 else { return }
+        guard let id = d.selectedItems().id.first, id > 0 else { return }
         let unsubscribe = sender.tag == 1
         sender.requesting = true
         var p: Promise<()>
@@ -130,24 +129,28 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     
     @IBAction func remove(_ sender: NetworkRequestMenuItem) {
         guard let d = delegate,
-            d.selectedItemIDs().count > 0 else { return }
+            d.selectedItems().id.count > 0 else { return }
         let list = d.tableViewList()
-        let items = d.selectedItemIDs()
         
-        
-        guard list.contentType == .song else { return }
         let playlistId = list.id
         let api = PlayCore.shared.api
         let vcm = ViewControllerManager.shared
         sender.requesting = true
         switch list.type {
-        case .discoverPlaylist:
-            guard let id = d.selectedItemIDs().first, id > 0 else { return }
-            api.discoveryRecommendDislike(id).done {
+        case .discoverPlaylist, .discover:
+            guard let id = d.selectedItems().id.first, id > 0 else { return }
+            var alg = ""
+            if let item = d.selectedItems().items.first as? DiscoverViewController.RecommendItem {
+                alg = item.alg
+            }
+            api.discoveryRecommendDislike(id, isPlaylist: list.contentType == .playlist, alg: alg).done {
                 print("Remove \(id) from discoverPlaylist done.")
-                guard let newTrack = $0.0,
-                    d.tableViewList().type == .discover else { return }
-                d.removeSuccess(ids: [id], newItem: newTrack)
+                guard d.tableViewList() == list else { return }
+                if list.contentType == .playlist {
+                    d.removeSuccess(ids: [id], newItem: $0.1)
+                } else {
+                    d.removeSuccess(ids: [id], newItem: $0.0)
+                }
             }.ensure {
                 sender.requesting = false
             }.catch {
@@ -166,7 +169,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 print("Remove \(id) from discoverPlaylist error \($0).")
             }
         case .fmTrash:
-            guard let id = d.selectedItemIDs().first, id > 0 else { return }
+            guard let id = d.selectedItems().id.first, id > 0 else { return }
             api.fmTrash(id: id, 0, false).done {
                 print("FM Trash Delected \(id).")
                 guard d.tableViewList().type == .fmTrash else { return }
@@ -178,7 +181,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 print("FM Trash Del error: \($0).")
             }
         case .favourite, .createdPlaylist:
-            let ids = d.selectedItemIDs()
+            let ids = d.selectedItems().id
             api.playlistTracks(add: false, ids, to: playlistId).done {
                 guard list == d.tableViewList() else { return }
                 d.removeSuccess(ids: ids, newItem: nil)
@@ -205,9 +208,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         let playlistId = sender.tag
         guard let d = delegate,
             playlistId > 0,
-            let ids = delegate?.selectedItemIDs(),
+            let ids = delegate?.selectedItems().id,
             ids.count > 0 else { return }
-
         PlayCore.shared.api.playlistTracks(add: true, ids, to: playlistId).done {
             print("Add \(ids) to playlist \(playlistId) done.")
             guard playlistId == d.tableViewList().id else { return }
@@ -231,11 +233,11 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     }()
     
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        guard let delegate = delegate else {
+        guard let d = delegate else {
             return false
         }
-        let selectedIDs = delegate.selectedItemIDs()
-        let type = delegate.tableViewList().type
+        let selectedIDs = d.selectedItems().id
+        let type = d.tableViewList().type
         
         // Playlist items
         if menuItem.tag != 0, selectedIDs.count > 0 {
@@ -255,7 +257,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             switch type {
             case .createdPlaylist, .favourite, .fmTrash:
                 return selectedIDs.count > 0
-            case .discoverPlaylist:
+            case .discoverPlaylist, .discover:
                 return selectedIDs.count == 1
             default:
                 return false
@@ -310,7 +312,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             return itmes.enumerated().compactMap { i -> NSMenuItem? in
                 if i.element.subscribed {
                     if tableViewList.type != .sidebar,
-                        d.selectedItemIDs().first == i.element.id {
+                        d.selectedItems().id.first == i.element.id {
                         self.subscribeMenuItem.tag = 1
                         self.subscribeMenuItem.title = "Unsubscribe"
                     }
@@ -336,7 +338,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         }
         
         switch tableViewList.type {
-        case .discoverPlaylist:
+        case .discoverPlaylist, .discover:
             // switch to not interested
             removeMenuItem.title = "Not Interested"
         case .favourite, .createdPlaylist:
@@ -357,7 +359,14 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         let songItems2: [NSMenuItem] =  [playMenuItem, playNextMenuItem, copyLinkMenuItem, addToPlaylistMenuItem, removeMenuItem]
         switch type {
         case .discover:
-            return []
+            switch cType {
+            case .dailyPlaylist:
+                return [playMenuItem, playNextMenuItem]
+            case .playlist:
+                return [playMenuItem, playNextMenuItem, copyLinkMenuItem, subscribeMenuItem, removeMenuItem]
+            default:
+                break
+            }
         case .favourite:
             return songItems2
         case .discoverPlaylist:
@@ -416,10 +425,10 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         
         let pc = PlayCore.shared
         guard let d = delegate,
-            let id = d.selectedItemIDs().first else {
+            let id = d.selectedItems().id.first else {
                 return empty
         }
-        let tracks = d.tracksForPlay()
+        let tracks = d.selectedItems().items as? [Track] ?? []
         
         switch d.tableViewList().contentType {
         case .song:
@@ -434,6 +443,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             return pc.api.playlistDetail(id).map {
                 $0.tracks ?? []
             }
+        case .dailyPlaylist:
+            return pc.api.recommendSongs()
         default:
             return empty
         }

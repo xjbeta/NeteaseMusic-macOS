@@ -212,15 +212,11 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
 }
 
 extension SidebarViewController: TAAPMenuDelegate {
-    func selectedItemIDs() -> [Int] {
+    func selectedItems() -> (id: [Int], items: [Any]) {
         guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
-            return []
+            return ([], [])
         }
-        return [item.id]
-    }
-    
-    func tracksForPlay() -> [Track] {
-        return []
+        return ([item.id], [item])
     }
     
     func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
@@ -240,7 +236,7 @@ extension SidebarViewController: TAAPMenuDelegate {
         }
     }
     
-    func removeSuccess(ids: [Int], newItem: Track?) {
+    func removeSuccess(ids: [Int], newItem: Any?) {
         sidebarItems.filter {
             $0.type == .createdPlaylists || $0.type == .subscribedPlaylists
         }.forEach {

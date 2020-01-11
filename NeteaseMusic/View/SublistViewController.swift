@@ -87,29 +87,27 @@ class SublistViewController: NSViewController {
 }
 
 extension SublistViewController: TAAPMenuDelegate {
-    func tracksForPlay() -> [Track] {
-        return []
-    }
-    
-    func selectedItemIDs() -> [Int] {
+    func selectedItems() -> (id: [Int], items: [Any]) {
         guard let vc = albumArtistTableVC() else {
-            return []
+            return ([], [])
         }
         switch vc.dataType {
         case .album:
-            return vc.albums.enumerated().filter {
+            let items = vc.albums.enumerated().filter {
                 vc.tableView.selectedIndexs().contains($0.offset)
             }.map {
-                $0.element.id
+                $0.element
             }
+            return (items.map({ $0.id }), items)
         case .artist:
-            return vc.artists.enumerated().filter {
+            let items = vc.artists.enumerated().filter {
                 vc.tableView.selectedIndexs().contains($0.offset)
             }.map {
-                $0.element.id
+                $0.element
             }
+            return (items.map({ $0.id }), items)
         default:
-            return []
+            return ([], [])
         }
     }
     
@@ -118,8 +116,22 @@ extension SublistViewController: TAAPMenuDelegate {
         self.presentAsSheet(newPlaylisyVC)
     }
     
-    func removeSuccess(ids: [Int], newItem: Track?) {
-        return
+    func removeSuccess(ids: [Int], newItem: Any?) {
+        guard let vc = albumArtistTableVC() else {
+            return
+        }
+        switch vc.dataType {
+        case .album:
+            vc.albums.removeAll {
+                ids.contains($0.id)
+            }
+        case .artist:
+            vc.artists.removeAll {
+                ids.contains($0.id)
+            }
+        default:
+            return
+        }
     }
     
     func shouldReloadData() {

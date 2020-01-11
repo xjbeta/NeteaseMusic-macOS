@@ -245,22 +245,14 @@ class PlaylistViewController: NSViewController {
 }
 
 extension PlaylistViewController: TAAPMenuDelegate {
-    func selectedItemIDs() -> [Int] {
-        guard let vc = trackTableViewController() else { return [] }
-        return tracks.enumerated().filter {
-            vc.tableView.selectedIndexs().contains($0.offset)
-        }.map {
-            $0.element.id
-        }
-    }
-    
-    func tracksForPlay() -> [Track] {
-        guard let vc = trackTableViewController() else { return [] }
-        return tracks.enumerated().filter {
+    func selectedItems() -> (id: [Int], items: [Any]) {
+        guard let vc = trackTableViewController() else { return ([], []) }
+        let items = tracks.enumerated().filter {
             vc.tableView.selectedIndexs().contains($0.offset)
         }.map {
             $0.element
         }
+        return (items.map({ $0.id }), items)
     }
     
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
@@ -268,8 +260,22 @@ extension PlaylistViewController: TAAPMenuDelegate {
         self.presentAsSheet(newPlaylisyVC)
     }
     
-    func removeSuccess(ids: [Int], newItem: Track?) {
-        return
+    func removeSuccess(ids: [Int], newItem: Any?) {
+        guard let vc = trackTableViewController() else { return }
+        switch playlistType {
+        case .discoverPlaylist:
+            guard let item = newItem as? Track,
+                let id = ids.first,
+                let i = vc.tracks.enumerated().first(where: { $0.element.id == id })?.offset else { return }
+            
+            let todo = "check playable"
+            item.index = vc.tracks[i].index
+            vc.tracks[i] = item
+        default:
+            vc.tracks.removeAll {
+                ids.contains($0.id)
+            }
+        }
     }
     
     func shouldReloadData() {
