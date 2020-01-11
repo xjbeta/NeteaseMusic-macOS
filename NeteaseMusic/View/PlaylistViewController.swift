@@ -245,6 +245,24 @@ class PlaylistViewController: NSViewController {
 }
 
 extension PlaylistViewController: TAAPMenuDelegate {
+    func selectedItemIDs() -> [Int] {
+        guard let vc = trackTableViewController() else { return [] }
+        return tracks.enumerated().filter {
+            vc.tableView.selectedIndexs().contains($0.offset)
+        }.map {
+            $0.element.id
+        }
+    }
+    
+    func tracksForPlay() -> [Track] {
+        guard let vc = trackTableViewController() else { return [] }
+        return tracks.enumerated().filter {
+            vc.tableView.selectedIndexs().contains($0.offset)
+        }.map {
+            $0.element
+        }
+    }
+    
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
         guard let pvcs = presentedViewControllers,
             !pvcs.contains(newPlaylisyVC) else { return }
@@ -257,22 +275,6 @@ extension PlaylistViewController: TAAPMenuDelegate {
     
     func shouldReloadData() {
         initPlaylistContent()
-    }
-    
-    func selectedItems() -> (tracks: [Track], albums: [Track.Album], artists: [Track.Artist], playlists: [Playlist]) {
-        guard let selectedIndexs = trackTableViewController()?.tableView.selectedIndexs() else {
-            return ([], [], [], [])
-        }
-        let ts = tracks.enumerated().filter {
-            selectedIndexs.contains($0.offset)
-        }.map {
-            $0.element
-        }
-        return (ts, [], [], [])
-    }
-    
-    func selectedIndexs() -> IndexSet {
-        return trackTableViewController()?.tableView.selectedIndexs() ?? IndexSet()
     }
     
     func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {

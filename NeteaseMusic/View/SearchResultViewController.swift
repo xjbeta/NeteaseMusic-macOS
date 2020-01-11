@@ -181,6 +181,55 @@ extension SearchResultViewController: PageSegmentedControlDelegate {
 }
 
 extension SearchResultViewController: TAAPMenuDelegate {
+    func selectedItemIDs() -> [Int] {
+        guard let trackVC = trackTableVC(),
+            let albumArtistVC = albumArtistTableVC() else {
+                return []
+        }
+        let selectedIndexs = resultType == .songs ? trackVC.tableView.selectedIndexs() : albumArtistVC.tableView.selectedIndexs()
+        switch resultType {
+        case .songs:
+            return trackVC.tracks.enumerated().filter {
+                selectedIndexs.contains($0.offset)
+            }.map {
+                $0.element.id
+            }
+        case .albums:
+            return albumArtistVC.albums.enumerated().filter {
+                selectedIndexs.contains($0.offset)
+            }.map {
+                $0.element.id
+            }
+        case .artists:
+            return albumArtistVC.artists.enumerated().filter {
+                selectedIndexs.contains($0.offset)
+            }.map {
+                $0.element.id
+            }
+        case .playlists:
+            return albumArtistVC.playlists.enumerated().filter {
+                selectedIndexs.contains($0.offset)
+            }.map {
+                $0.element.id
+            }
+        default:
+            return []
+        }
+    }
+    
+    func tracksForPlay() -> [Track] {
+        guard let trackVC = trackTableVC(),
+            resultType == .songs else {
+                return []
+        }
+        let selectedIndexs = trackVC.tableView.selectedIndexs()
+        return trackVC.tracks.enumerated().filter {
+            selectedIndexs.contains($0.offset)
+        }.map {
+            $0.element
+        }
+    }
+    
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
         guard let pvcs = presentedViewControllers,
             !pvcs.contains(newPlaylisyVC) else { return }
@@ -193,56 +242,6 @@ extension SearchResultViewController: TAAPMenuDelegate {
     
     func shouldReloadData() {
         return
-    }
-    
-    func selectedItems() -> (tracks: [Track], albums: [Track.Album], artists: [Track.Artist], playlists: [Playlist]) {
-        
-        guard let trackVC = trackTableVC(),
-            let albumArtistVC = albumArtistTableVC() else {
-                return ([], [], [], [])
-        }
-        let selectedIndexs = resultType == .songs ? trackVC.tableView.selectedIndexs() : albumArtistVC.tableView.selectedIndexs()
-        switch resultType {
-        case .songs:
-            let ts = trackVC.tracks.enumerated().filter {
-                selectedIndexs.contains($0.offset)
-            }.map {
-                $0.element
-            }
-            return (ts, [], [], [])
-        case .albums:
-            let als = albumArtistVC.albums.enumerated().filter {
-                selectedIndexs.contains($0.offset)
-            }.map {
-                $0.element
-            }
-            return ([], als, [], [])
-        case .artists:
-            let ars = albumArtistVC.artists.enumerated().filter {
-                selectedIndexs.contains($0.offset)
-            }.map {
-                $0.element
-            }
-            return ([], [], ars, [])
-        case .playlists:
-            let ps = albumArtistVC.playlists.enumerated().filter {
-                selectedIndexs.contains($0.offset)
-            }.map {
-                $0.element
-            }
-            return ([], [], [], ps)
-        default:
-            break
-        }
-        return ([], [], [], [])
-    }
-    
-    func selectedIndexs() -> IndexSet {
-        guard let trackVC = trackTableVC(),
-            let albumArtistVC = albumArtistTableVC() else {
-                return IndexSet()
-        }
-        return resultType == .songs ? trackVC.tableView.selectedIndexs() : albumArtistVC.tableView.selectedIndexs()
     }
     
     func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
