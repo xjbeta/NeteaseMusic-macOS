@@ -264,8 +264,7 @@ extension PlaylistViewController: TAAPMenuDelegate {
     }
     
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
-        guard let pvcs = presentedViewControllers,
-            !pvcs.contains(newPlaylisyVC) else { return }
+        guard newPlaylisyVC.presentingViewController == nil else { return }
         self.presentAsSheet(newPlaylisyVC)
     }
     
