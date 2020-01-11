@@ -139,9 +139,6 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         
         
         guard list.contentType == .song else { return }
-        let ids = items.tracks.map {
-            $0.id
-        }
         let playlistId = list.id
         let api = PlayCore.shared.api
         let vcm = ViewControllerManager.shared
@@ -149,12 +146,12 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         sender.requesting = true
         switch list.type {
         case .discoverPlaylist:
-            guard let track = items.albums.first else { return }
-            api.discoveryRecommendDislike(track.id).done {
-                print("Remove \(ids) from discoverPlaylist done.")
+            guard let id = items.tracks.first?.id else { return }
+            api.discoveryRecommendDislike(id).done {
+                print("Remove \(id) from discoverPlaylist done.")
                 guard let newTrack = $0.0,
                     d.tableViewList().type == .discover else { return }
-                d.removeSuccess(ids: [track.id], newItem: newTrack)
+                d.removeSuccess(ids: [id], newItem: newTrack)
             }.ensure {
                 sender.requesting = false
             }.catch {
@@ -170,14 +167,14 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                     }
                 }
                 d.shouldReloadData()
-                print("Remove \(ids) from discoverPlaylist error \($0).")
+                print("Remove \(id) from discoverPlaylist error \($0).")
             }
         case .fmTrash:
-            guard let track = items.tracks.first else { return }
-            api.fmTrash(id: track.id, 0, false).done {
-                print("FM Trash Delected \(ids).")
+            guard let id = items.tracks.first?.id else { return }
+            api.fmTrash(id: id, 0, false).done {
+                print("FM Trash Delected \(id).")
                 guard d.tableViewList().type == .fmTrash else { return }
-                d.removeSuccess(ids: [track.id], newItem: nil)
+                d.removeSuccess(ids: [id], newItem: nil)
             }.ensure {
                 sender.requesting = false
             }.catch {
@@ -185,6 +182,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 print("FM Trash Del error: \($0).")
             }
         case .favourite, .createdPlaylist:
+            let ids = items.tracks.map { $0.id }
             api.playlistTracks(add: false, ids, to: playlistId).done {
                 guard list == d.tableViewList() else { return }
                 d.removeSuccess(ids: ids, newItem: nil)
