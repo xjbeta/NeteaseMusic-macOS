@@ -10,7 +10,7 @@ import Cocoa
 import PromiseKit
 
 enum TAAPItemsType: String {
-    case none, song, album, artist, playlist, discoverPlaylist
+    case none, song, album, artist, playlist, createdPlaylist, discoverPlaylist, favouritePlaylist
 }
 
 protocol TAAPMenuDelegate {
@@ -76,8 +76,18 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         guard let d = delegate,
             d.selectedItemIDs().count == 1 else { return }
         let type = d.tableViewList().contentType
+        var apiStr = ""
+        switch type {
+        case .song, .artist, .album:
+            apiStr = type.rawValue
+        case .playlist, .createdPlaylist, .favouritePlaylist:
+            apiStr = TAAPItemsType.playlist.rawValue
+        default:
+            return
+        }
         guard let id = d.selectedItemIDs().first, id > 0 else { return }
-        let str = "https://music.163.com/\(type.rawValue)?id=\(id)"
+        
+        let str = "https://music.163.com/\(apiStr)?id=\(id)"
         ViewControllerManager.shared.copyToPasteboard(str)
     }
     
@@ -89,14 +99,27 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         guard let id = d.selectedItemIDs().first, id > 0 else { return }
         let unsubscribe = sender.tag == 1
         sender.requesting = true
-        pc.api.subscribe(id, unsubscribe: unsubscribe, type: type.contentType).done {
+        var p: Promise<()>
+        switch type.contentType {
+        case .song, .artist, .album:
+            p = pc.api.subscribe(id, unsubscribe: unsubscribe, type: type.contentType)
+        case .playlist, .favouritePlaylist:
+            p = pc.api.subscribe(id, unsubscribe: unsubscribe, type: .playlist)
+        case .createdPlaylist:
+            p = pc.api.playlistDelete(id)
+        default:
+            return
+        }
+        
+        p.done {
             if type.contentType == .playlist {
                 NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
             }
             if type == d.tableViewList(),
-                type.type == .mySubscription,
                 unsubscribe {
-                d.removeSuccess(ids: [id], newItem: nil)
+                if type.type == .mySubscription || type.type == .sidebar {
+                    d.removeSuccess(ids: [id], newItem: nil)
+                }
             }
         }.ensure {
             sender.requesting = false
@@ -249,17 +272,25 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     }
     
     func menuNeedsUpdate(_ menu: NSMenu) {
-        guard let delegate = delegate, menu == self.menu else { return }
+        guard let d = delegate, menu == self.menu else { return }
         
-        let tableViewList = delegate.tableViewList()
+        let tableViewList = d.tableViewList()
         menu.items.forEach {
             if !$0.isSeparatorItem {
                 $0.isHidden = !menuItemsToDisplay().contains($0)
             }
         }
-        
-        subscribeMenuItem.title = "Subscribe"
-        subscribeMenuItem.tag = 0
+        if tableViewList.type == .sidebar {
+            if tableViewList.contentType == .createdPlaylist {
+                subscribeMenuItem.title = "Remove"
+            } else {
+                subscribeMenuItem.title = "Unsubscribe"
+            }
+            subscribeMenuItem.tag = 1
+        } else {
+            subscribeMenuItem.title = "Subscribe"
+            subscribeMenuItem.tag = 0
+        }
         
         let markID = UUID().uuidString
         playlistMenuUpdateID = markID
@@ -278,7 +309,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             
             return itmes.enumerated().compactMap { i -> NSMenuItem? in
                 if i.element.subscribed {
-                    if delegate.selectedItemIDs().first == i.element.id {
+                    if tableViewList.type != .sidebar,
+                        d.selectedItemIDs().first == i.element.id {
                         self.subscribeMenuItem.tag = 1
                         self.subscribeMenuItem.title = "Unsubscribe"
                     }
@@ -362,6 +394,15 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             default:
                 break
             }
+        case .sidebar:
+            switch cType {
+            case .favouritePlaylist:
+                return [playNextMenuItem, playMenuItem, copyLinkMenuItem]
+            case .playlist, .createdPlaylist:
+                return [playNextMenuItem, playMenuItem, copyLinkMenuItem, subscribeMenuItem]
+            default:
+                break
+            }
         default:
             break
         }
@@ -389,7 +430,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             return pc.api.album(id).map {
                 $0.songs
             }
-        case .playlist:
+        case .playlist, .createdPlaylist, .favouritePlaylist:
             return pc.api.playlistDetail(id).map {
                 $0.tracks ?? []
             }
