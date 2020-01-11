@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UqW-00-WoN">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UqW-00-WoN">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +39,6 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="UqW-00-WoN" id="cga-1y-nd9"/>
                                                 <outlet property="delegate" destination="UqW-00-WoN" id="HXN-zA-6M7"/>
-                                                <outlet property="menu" destination="pXd-vR-Im5" id="An5-Jo-pgB"/>
                                             </connections>
                                         </collectionView>
                                     </subviews>
@@ -66,54 +65,9 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="feH-qR-OPd" id="ru7-bg-GTU"/>
-                        <outlet property="collectionViewMenu" destination="pXd-vR-Im5" id="rs0-2C-EHb"/>
-                        <outlet property="copyLinkMenuItem" destination="vpW-Wc-de0" id="uht-ij-pfm"/>
-                        <outlet property="notInterestedMenuItem" destination="HbI-Is-23L" id="HE3-OM-pAu"/>
-                        <outlet property="playMenuItem" destination="vGm-8k-9jD" id="YC7-Kb-s15"/>
-                        <outlet property="playNextMenuItem" destination="G7T-BQ-r7n" id="DAY-wy-yNv"/>
-                        <outlet property="subscribeMenuItem" destination="woG-Xh-Ogi" id="nXq-6y-0tn"/>
                     </connections>
                 </viewController>
                 <customObject id="sgo-1y-Zes" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <menu id="pXd-vR-Im5">
-                    <items>
-                        <menuItem title="Play" id="vGm-8k-9jD">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="UqW-00-WoN" id="ZKQ-Ff-rfG"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Play Next" id="G7T-BQ-r7n">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="UqW-00-WoN" id="evP-z8-Ym7"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="jCE-12-Rsh"/>
-                        <menuItem title="Subscribe" id="woG-Xh-Ogi">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="UqW-00-WoN" id="88r-3T-TjD"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Copy Link" id="vpW-Wc-de0">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="UqW-00-WoN" id="fDa-Fy-GSX"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="Rmm-BB-w8x"/>
-                        <menuItem title="Not Interested" id="HbI-Is-23L">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="UqW-00-WoN" id="zX2-pg-bQ9"/>
-                            </connections>
-                        </menuItem>
-                    </items>
-                    <connections>
-                        <outlet property="delegate" destination="UqW-00-WoN" id="Bk1-uC-G8G"/>
-                    </connections>
-                </menu>
             </objects>
             <point key="canvasLocation" x="1175" y="757"/>
         </scene>

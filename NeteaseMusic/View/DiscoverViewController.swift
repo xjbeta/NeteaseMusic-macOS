@@ -10,70 +10,16 @@ import Cocoa
 import PromiseKit
 
 class DiscoverViewController: NSViewController {
-    @IBOutlet var collectionViewMenu: NSMenu!
-    @IBOutlet weak var playMenuItem: NSMenuItem!
-    @IBOutlet weak var playNextMenuItem: NSMenuItem!
-    @IBOutlet weak var subscribeMenuItem: NSMenuItem!
-    @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
-    @IBOutlet weak var notInterestedMenuItem: NSMenuItem!
-    
-    @IBAction func menuItemAction(_ sender: NSMenuItem) {
-        guard let index = collectionView.clickedIndex,
-            let item = recommendedItems[safe: index] else { return }
-        let playCore = PlayCore.shared
-        
-        switch sender {
-        case playMenuItem:
-            break
-        case playNextMenuItem:
-            break
-        case subscribeMenuItem:
-            playCore.api.subscribe(item.id, type: .playlist).done {
-                print("Subscribe playlist \(item.id) success.")
-                }.catch {
-                    print("Subscribe playlist \(item.id) error \($0).")
-            }
-        case copyLinkMenuItem:
-            let str = "https://music.163.com/playlist?id=\(item.id)"
-            ViewControllerManager.shared.copyToPasteboard(str)
-        case notInterestedMenuItem:
-            playCore.api.discoveryRecommendDislike(item.id, isPlaylist: true, alg: item.alg).done {
-                print("Dislike playlist \(item.id) success.")
-                guard let playlist = $0.1 else { return }
-                
-                if self.recommendedItems.contains(where: {
-                    $0.id == playlist.id
-                }) {
-                    //        code == 432, msg == "今日暂无更多推荐"
-                    
-                    
-                    return
-                }
-                
-                
-                self.recommendedItems[index] = .init(title: playlist.name, id: playlist.id, alg: playlist.alg, imageU: playlist.picUrl)
-                self.collectionView.reloadData()
-                }.catch {
-                   print("Dislike playlist \(item.id) error \($0).")
-            }
-        default:
-            break
-        }
-    }
-    
     @IBOutlet weak var collectionView: DailyCollectionView!
-    enum RecommendPlaylist {
-        case daily, normal
-    }
     
     class RecommendItem: NSObject {
         var title: String
         var imageUrl: URL?
         var id: Int = 0
         var alg: String
-        var type: RecommendPlaylist
+        var type: TAAPItemsType
         
-        init(title: String, id: Int = -1, alg: String = "", type: RecommendPlaylist = .normal, imageU: URL? = nil) {
+        init(title: String, id: Int = -1, alg: String = "", type: TAAPItemsType = .playlist, imageU: URL? = nil) {
             self.title = title
             self.id = id
             self.type = type
@@ -82,26 +28,39 @@ class DiscoverViewController: NSViewController {
         }   
     }
     
+    lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
+        var objects: NSArray?
+        Bundle.main.loadNibNamed(.init("TAAPMenu"), owner: nil, topLevelObjects: &objects)
+        let mc = objects?.compactMap {
+            $0 as? TAAPMenuController
+        }.first
+        let m = objects?.compactMap {
+            $0 as? NSMenu
+        }.first
+        return (m, mc)
+    }()
+    
     var recommendedItems = [RecommendItem]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collectionView.menu = menuContainer.menu
+        menuContainer.menuController?.delegate = self
     }
     
     func initRecommend() {
         PlayCore.shared.api.recommendResource().map(on: .global()) { [weak self] res in
             self?.initRecommendedItems(res)
-            }.done(on: .main) { [weak self] in
-                self?.collectionView.reloadData()
-            }.catch {
-                print($0)
+        }.done(on: .main) { [weak self] in
+            self?.collectionView.reloadData()
+        }.catch {
+            print($0)
         }
     }
     
     func initRecommendedItems(_ playlists: [RecommendResource.Playlist]) {
         recommendedItems.removeAll()
-        recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .daily))
+        recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .dailyPlaylist))
         playlists.forEach {
             recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, alg: $0.alg, imageU: $0.picUrl))
         }
@@ -119,7 +78,7 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
             let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DailyCollectionViewItem"), for: indexPath)
             guard let itemm = item as? DailyCollectionViewItem,
                 let rItem = recommendedItems[safe: indexPath.item] else {
-                return item
+                    return item
             }
             itemm.textField?.stringValue = rItem.title
             
@@ -151,28 +110,39 @@ extension DiscoverViewController: NSCollectionViewDelegate, NSCollectionViewData
     }
 }
 
-extension DiscoverViewController: NSMenuItemValidation {
-    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+extension DiscoverViewController: TAAPMenuDelegate {
+    func selectedItems() -> (id: [Int], items: [Any]) {
         guard let index = collectionView.clickedIndex,
-            let item = recommendedItems[safe: index] else { return false }
-        if index == 0 {
-            return false
-        } else {
-            switch menuItem {
-            case playMenuItem:
-                break
-            case playNextMenuItem:
-                break
-            case copyLinkMenuItem:
-                return true
-            case subscribeMenuItem:
-                return true
-            case notInterestedMenuItem:
-                return true
-            default:
-                break
-            }
+            let item = recommendedItems[safe: index] else { return ([], []) }
+        return ([item.id], [item])
+    }
+    
+    func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
+        guard let index = collectionView.clickedIndex,
+            let item = recommendedItems[safe: index] else {
+                return (.none, 0, .none)
         }
-        return false
+        return (.discover, item.id, item.type)
+    }
+    
+    func removeSuccess(ids: [Int], newItem: Any?) {
+        if let item = newItem as? RecommendResource.Playlist {
+            guard let i = recommendedItems.firstIndex(where: { $0.id == ids.first }) else { return }
+            recommendedItems[i] = .init(title: item.name, id: item.id, alg: item.alg, imageU: item.picUrl)
+            collectionView.reloadItems(at: [IndexPath(item: i, section: 0)])
+        } else {
+            recommendedItems.removeAll {
+                ids.contains($0.id)
+            }
+            collectionView.reloadData()
+        }
+    }
+    
+    func shouldReloadData() {
+        initRecommend()
+    }
+    
+    func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
+        return
     }
 }
