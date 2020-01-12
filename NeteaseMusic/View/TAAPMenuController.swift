@@ -192,6 +192,10 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 d.shouldReloadData()
                 print("Remove \(ids) from playlist \(playlistId) error \($0).")
             }
+        case .sidePlaylist:
+            sender.requesting = false
+            let ids = d.selectedItems().id
+            d.removeSuccess(ids: ids, newItem: nil)
         default:
             sender.requesting = false
             break
@@ -255,7 +259,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             return selectedIDs.count > 0
         case removeMenuItem:
             switch type {
-            case .createdPlaylist, .favourite, .fmTrash:
+            case .createdPlaylist, .favourite, .fmTrash, .sidePlaylist:
                 return selectedIDs.count > 0
             case .discoverPlaylist, .discover:
                 return selectedIDs.count == 1
@@ -346,6 +350,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             removeMenuItem.title = "Not Interested"
         case .favourite, .createdPlaylist:
             removeMenuItem.title = "Remove from Playlist"
+        case .sidePlaylist:
+            removeMenuItem.title = "Remove"
         case .fmTrash:
             removeMenuItem.title = "Restore"
         default:
@@ -422,6 +428,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             default:
                 break
             }
+        case .sidePlaylist:
+            return [playNextMenuItem, playMenuItem, copyLinkMenuItem, removeMenuItem]
         default:
             break
         }

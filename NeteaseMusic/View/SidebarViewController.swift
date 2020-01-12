@@ -69,7 +69,7 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, createdPlaylist, subscribedPlaylists, subscribedPlaylist, preferences, mySubscription, sidebar
+        case discover, fm, favourite, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, createdPlaylist, subscribedPlaylists, subscribedPlaylist, preferences, mySubscription, sidebar, sidePlaylist
     }
     
     let defaultItems = [SidebarItem(type: .discover),
