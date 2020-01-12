@@ -125,10 +125,12 @@ extension SublistViewController: TAAPMenuDelegate {
             vc.albums.removeAll {
                 ids.contains($0.id)
             }
+            vc.tableView.reloadData()
         case .artist:
             vc.artists.removeAll {
                 ids.contains($0.id)
             }
+            vc.tableView.reloadData()
         default:
             return
         }
