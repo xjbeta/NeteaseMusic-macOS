@@ -100,25 +100,30 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         sender.requesting = true
         var p: Promise<()>
         switch type.contentType {
-        case .song, .artist, .album:
+        case .artist, .album:
             p = pc.api.subscribe(id, unsubscribe: unsubscribe, type: type.contentType)
-        case .playlist, .favouritePlaylist:
+        case .playlist:
             p = pc.api.subscribe(id, unsubscribe: unsubscribe, type: .playlist)
         case .createdPlaylist:
             p = pc.api.playlistDelete(id)
         default:
+            sender.requesting = false
             return
         }
         
         p.done {
-            if type.contentType == .playlist {
-                NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
-            }
-            if type == d.tableViewList(),
-                unsubscribe {
-                if type.type == .mySubscription || type.type == .sidebar {
+            switch type.contentType {
+            case .artist, .album:
+                guard d.tableViewList() == type, unsubscribe else { return }
+                d.removeSuccess(ids: [id], newItem: nil)
+            case .playlist, .createdPlaylist:
+                if unsubscribe {
                     d.removeSuccess(ids: [id], newItem: nil)
+                } else {
+                    NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
                 }
+            default:
+                break
             }
         }.ensure {
             sender.requesting = false

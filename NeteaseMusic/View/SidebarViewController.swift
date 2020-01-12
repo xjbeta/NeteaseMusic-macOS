@@ -107,6 +107,12 @@ class SidebarViewController: NSViewController {
                 let id = dic["id"] as? Int,
                 let notification = self?.outlineViewNotification else { return }
             switch itemType {
+            case .favourite:
+                if let index = self?.sidebarItems.firstIndex(where: { $0.type == .createdPlaylists }) {
+                    self?.outlineView.deselectAll(self)
+                    self?.outlineView.selectRowIndexes(.init(integer: index + 1), byExtendingSelection: true)
+                    self?.outlineViewSelectionIsChanging(notification)
+                }
             case .fm:
                 if let index = self?.sidebarItems.firstIndex(where: { $0.type == itemType }) {
                     self?.outlineView.deselectAll(self)
@@ -243,6 +249,12 @@ extension SidebarViewController: TAAPMenuDelegate {
             $0.childrenItems.removeAll {
                 ids.contains($0.id)
             }
+        }
+        
+        if let item = ViewControllerManager.shared.selectedSidebarItem,
+            item.type == .createdPlaylist || item.type == .subscribedPlaylist,
+            ids.contains(item.id) {
+            ViewControllerManager.shared.selectSidebarItem(.favourite)
         }
     }
     
