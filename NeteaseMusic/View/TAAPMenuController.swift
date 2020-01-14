@@ -360,9 +360,11 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 if i.offset == 0, name.contains("喜欢的音乐") {
                     name = "我喜欢的音乐"
                 }
-                let item = NSMenuItem(title: name,
-                                      action: #selector(self.menuItemAction),
-                                      keyEquivalent: "")
+                
+                let item = NSMenuItem()
+                item.target = self
+                item.title = name
+                item.action = #selector(self.menuItemAction(_:))
                 item.tag = i.element.id
                 return item
             }
