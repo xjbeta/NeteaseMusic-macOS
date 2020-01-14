@@ -249,7 +249,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         let type = d.tableViewList().type
         
         // Playlist items
-        if menuItem.tag != 0, selectedIDs.count > 0 {
+        if menuItem.tag > 1, selectedIDs.count > 0 {
             return true
         }
         
@@ -283,7 +283,12 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     }
     
     func menuNeedsUpdate(_ menu: NSMenu) {
-        guard let d = delegate, menu == self.menu else { return }
+        guard let d = delegate, menu == self.menu else {
+            if menu == addToPlaylistMenu {
+                updatePlaylists()
+            }
+            return
+        }
         
         let tableViewList = d.tableViewList()
         menu.items.forEach {
@@ -306,12 +311,32 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             subscribeMenuItem.tag = 0
         }
         
+        switch tableViewList.type {
+        case .discoverPlaylist, .discover:
+            // switch to not interested
+            removeMenuItem.title = "Not Interested"
+        case .favourite, .createdPlaylist:
+            removeMenuItem.title = "Remove from Playlist"
+        case .sidePlaylist:
+            removeMenuItem.title = "Remove"
+        case .fmTrash:
+            removeMenuItem.title = "Restore"
+        default:
+            break
+        }
+    }
+    
+    func updatePlaylists() {
+        guard let d = delegate else { return }
+        
+        let tableViewList = d.tableViewList()
+        
         let markID = UUID().uuidString
         playlistMenuUpdateID = markID
         
         // Update playlist
         addToPlaylistMenu.items.enumerated().forEach {
-            if $0.offset >= 2 {
+            if $0.offset >= 1 {
                 addToPlaylistMenu.removeItem($0.element)
             }
         }
@@ -341,26 +366,17 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 item.tag = i.element.id
                 return item
             }
-        }.done(on: .main) {
+        }.done {
             $0.forEach {
                 self.addToPlaylistMenu.addItem($0)
             }
+            self.addToPlaylistMenu.insertItem(NSMenuItem.separator(), at: 1)
         }.catch {
+            let item = NSMenuItem(title: "Load Playlists Failed", action: nil, keyEquivalent: "")
+            item.isEnabled = false
+            self.addToPlaylistMenu.addItem(item)
+            self.addToPlaylistMenu.insertItem(NSMenuItem.separator(), at: 1)
             print($0)
-        }
-        
-        switch tableViewList.type {
-        case .discoverPlaylist, .discover:
-            // switch to not interested
-            removeMenuItem.title = "Not Interested"
-        case .favourite, .createdPlaylist:
-            removeMenuItem.title = "Remove from Playlist"
-        case .sidePlaylist:
-            removeMenuItem.title = "Remove"
-        case .fmTrash:
-            removeMenuItem.title = "Restore"
-        default:
-            break
         }
     }
     
