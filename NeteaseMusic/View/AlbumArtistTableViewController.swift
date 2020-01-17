@@ -13,7 +13,7 @@ class AlbumArtistTableViewController: NSViewController {
     @IBOutlet weak var scrollView: UnresponsiveScrollView!
     @IBOutlet weak var tableView: NSTableView!
     
-    var dataType: SearchSuggestionsViewController.GroupType = .none
+    var dataType: TAAPItemsType = .none
     
     var albums = [Track.Album]()
     var artists = [Track.Artist]()
@@ -23,13 +23,13 @@ class AlbumArtistTableViewController: NSViewController {
         let row = sender.selectedRow
         let vcManaget = ViewControllerManager.shared
         switch dataType {
-        case .albums:
+        case .album:
             guard let id = albums[safe: row]?.id else { return }
             vcManaget.selectSidebarItem(.album, id)
-        case .artists:
+        case .artist:
             guard let id = artists[safe: row]?.id else { return }
             vcManaget.selectSidebarItem(.artist, id)
-        case .playlists:
+        case .playlist:
             guard let id = playlists[safe: row]?.id else { return }
             vcManaget.selectSidebarItem(.subscribedPlaylist, id)
         default:
@@ -39,13 +39,14 @@ class AlbumArtistTableViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     func reloadTableView() {
         tableView.reloadData()
     }
     
-    func resetData(_ type: SearchSuggestionsViewController.GroupType, responsiveScrolling: Bool) {
+    func resetData(_ type: TAAPItemsType, responsiveScrolling: Bool) {
         albums.removeAll()
         artists.removeAll()
         playlists.removeAll()
@@ -61,11 +62,11 @@ extension AlbumArtistTableViewController: NSTableViewDelegate, NSTableViewDataSo
     
     func numberOfRows(in tableView: NSTableView) -> Int {
         switch dataType {
-        case .albums:
+        case .album:
             return albums.count
-        case .artists:
+        case .artist:
             return artists.count
-        case .playlists:
+        case .playlist:
             return playlists.count
         default:
             return 0
@@ -79,13 +80,13 @@ extension AlbumArtistTableViewController: NSTableViewDelegate, NSTableViewDataSo
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view: NSTableCellView? = nil
         switch dataType {
-        case .albums:
+        case .album:
             view = tableView.makeView(withIdentifier: .init("SearchAlbumInfoTableCellView"), owner: self) as? NSTableCellView
             view?.imageView?.setImage(albums[safe: row]?.picUrl?.absoluteString, true)
-        case .artists:
+        case .artist:
             view = tableView.makeView(withIdentifier: .init("SearchArtistInfoTableCellView"), owner: self) as? NSTableCellView
             view?.imageView?.setImage(artists[safe: row]?.picUrl, true)
-        case .playlists:
+        case .playlist:
             view = tableView.makeView(withIdentifier: .init("SearchPlaylistInfoTableCellView"), owner: self) as? NSTableCellView
             view?.imageView?.setImage(playlists[safe: row]?.coverImgUrl.absoluteString, true)
         default:
@@ -97,12 +98,12 @@ extension AlbumArtistTableViewController: NSTableViewDelegate, NSTableViewDataSo
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         switch dataType {
-        case .albums:
+        case .album:
             guard let album = albums[safe: row] else { return nil }
             
             return ["name": album.name,
                     "artist": album.artists?.artistsString() ?? ""]
-        case .artists:
+        case .artist:
             guard let artist = artists[safe: row] else { return nil }
             
             var secondName = ""
@@ -112,7 +113,7 @@ extension AlbumArtistTableViewController: NSTableViewDelegate, NSTableViewDataSo
             
             return ["name": artist.name,
                     "secondName": secondName]
-        case .playlists:
+        case .playlist:
             guard let playlist = playlists[safe: row] else { return nil }
             
             let name = playlist.creator?.nickname ?? "unknown"
@@ -124,5 +125,3 @@ extension AlbumArtistTableViewController: NSTableViewDelegate, NSTableViewDataSo
         }
     }
 }
-
-

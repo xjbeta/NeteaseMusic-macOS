@@ -35,6 +35,7 @@ class MainWindowController: NSWindowController {
     @IBOutlet weak var userButton: NSButton!
     
     var updateLoginStatusObserver: NSObjectProtocol?
+    var initSidebarPlaylistsObserver: NSObjectProtocol?
     
     let searchSuggestionsVC = NSStoryboard(name: .init("SearchSuggestionsView"), bundle: nil).instantiateController(withIdentifier: .init("SearchSuggestionsViewController")) as! SearchSuggestionsViewController
     
@@ -65,6 +66,10 @@ class MainWindowController: NSWindowController {
                 self.checkLoginStatus()
             }
         }
+        initSidebarPlaylistsObserver = NotificationCenter.default.addObserver(forName: .initSidebarPlaylists, object: nil, queue: .main) { _ in
+            self.initSidebarPlaylists()
+        }
+        
         checkLoginStatus()
     }
     
@@ -129,6 +134,9 @@ class MainWindowController: NSWindowController {
     
     deinit {
         if let o = updateLoginStatusObserver {
+            NotificationCenter.default.removeObserver(o)
+        }
+        if let o = initSidebarPlaylistsObserver {
             NotificationCenter.default.removeObserver(o)
         }
     }

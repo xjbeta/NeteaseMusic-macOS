@@ -43,7 +43,7 @@ class PlaylistViewController: NSViewController {
         let subscribed = sender.subscribed
         let api = PlayCore.shared.api
         
-        api.subscribe(id, unSubscribe: subscribed, type: playlistType)
+        api.subscribe(id, unsubscribe: subscribed, type: .playlist)
             .ensure(on: .main) {
                 sender.isEnabled = true
         }.done {
@@ -58,16 +58,17 @@ class PlaylistViewController: NSViewController {
         }
     }
     
-    
-    lazy var newPlaylistViewController: NewPlaylistViewController? = {
-        let sb = NSStoryboard(name: "NewPlaylist", bundle: nil)
-        let vc = sb.instantiateController(withIdentifier: "NewPlaylistViewController") as? NewPlaylistViewController
-        vc?.updateSidebarItems = { [weak self] in
-            (self?.view.window?.windowController as? MainWindowController)?.initSidebarItems()
-        }
-        return vc
+    lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
+        var objects: NSArray?
+        Bundle.main.loadNibNamed(.init("TAAPMenu"), owner: nil, topLevelObjects: &objects)
+        let mc = objects?.compactMap {
+            $0 as? TAAPMenuController
+        }.first
+        let m = objects?.compactMap {
+            $0 as? NSMenu
+        }.first
+        return (m, mc)
     }()
-    
     
     var sidebarItemObserver: NSKeyValueObservation?
     var tracks: [Track] {
@@ -84,6 +85,7 @@ class PlaylistViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        menuContainer.menuController?.delegate = self
         
         coverImageView.wantsLayer = true
         coverImageView.layer?.cornerRadius = 3
@@ -91,46 +93,29 @@ class PlaylistViewController: NSViewController {
         coverImageView.layer?.borderColor = NSColor.tertiaryLabelColor.cgColor
         
         
-        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
+        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
             guard let newV = changes.newValue,
                 let newValue = newV else { return }
             let id = newValue.id
             switch newValue.type {
             case .createdPlaylist, .subscribedPlaylist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
-//                if self?.playlistId == newValue.id,
-//                    self?.playlistType == newValue.type {
-//                    return
-//                }
-                self?.playlistId = id
-                self?.playlistType = newValue.type
-                self?.trackTableViewController()?.playlistId = id
-                self?.trackTableViewController()?.playlistType = newValue.type
-                if self?.trackTableViewController()?.delegate == nil {
-                    self?.trackTableViewController()?.delegate = self
-                }
+                //                if self?.playlistId == newValue.id,
+                //                    self?.playlistType == newValue.type {
+                //                    return
+                //                }
+                self.playlistId = id
+                self.playlistType = newValue.type
+                self.trackTableViewController()?.playlistId = id
+                self.trackTableViewController()?.playlistType = newValue.type
+                
+                self.trackTableViewController()?.tableView.menu = self.menuContainer.menu
+                
             default:
                 return
             }
             
-            self?.initPlaylistInfo()
-            switch newValue.type {
-            case .album:
-                self?.initPlaylistWithAlbum(id)
-            case .topSongs:
-                self?.initPlaylistWithTopSongs(id)
-            case .subscribedPlaylist, .createdPlaylist, .favourite:
-                self?.initPlaylist(id)
-            case .discoverPlaylist:
-                if id == -114514 {
-                    self?.initPlaylistWithRecommandSongs()
-                } else {
-                    self?.initPlaylist(id)
-                }
-            case .fmTrash:
-                self?.initFMTrashList()
-            default:
-                break
-            }
+            self.initPlaylistInfo()
+            self.initPlaylistContent()
         }
     }
     
@@ -155,6 +140,28 @@ class PlaylistViewController: NSViewController {
         descriptionStackView.isHidden = playlistType == .topSongs
     }
     
+    func initPlaylistContent() {
+        let id = playlistId
+        switch playlistType {
+        case .album:
+            self.initPlaylistWithAlbum(id)
+        case .topSongs:
+            self.initPlaylistWithTopSongs(id)
+        case .subscribedPlaylist, .createdPlaylist, .favourite:
+            self.initPlaylist(id)
+        case .discoverPlaylist:
+            if id == -114514 {
+                self.initPlaylistWithRecommandSongs()
+            } else {
+                self.initPlaylist(id)
+            }
+        case .fmTrash:
+            self.initFMTrashList()
+        default:
+            break
+        }
+    }
+    
     func initPlaylist(_ id: Int) {
         PlayCore.shared.api.playlistDetail(id).done(on: .main) {
             guard self.playlistId == id else { return }
@@ -169,8 +176,8 @@ class PlaylistViewController: NSViewController {
             
             self.subscribeButton.isEnabled = $0.creator?.userId != ViewControllerManager.shared.userId
             self.subscribeButton.subscribed = $0.subscribed
-            }.catch {
-                print($0)
+        }.catch {
+            print($0)
         }
     }
     
@@ -180,8 +187,8 @@ class PlaylistViewController: NSViewController {
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
             self.tracks = $0.initIndexes()
-            }.catch {
-                print($0)
+        }.catch {
+            print($0)
         }
     }
     
@@ -200,8 +207,8 @@ class PlaylistViewController: NSViewController {
             }.contains($0.0.album.id)
             
             self.subscribeButton.subscribed = subscribed
-            }.catch {
-                print($0)
+        }.catch {
+            print($0)
         }
     }
     
@@ -210,8 +217,8 @@ class PlaylistViewController: NSViewController {
             self.coverImageView.setImage($0.artist.picUrl, true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
             self.tracks = $0.hotSongs.initIndexes()
-            }.catch {
-                print($0)
+        }.catch {
+            print($0)
         }
     }
     
@@ -220,8 +227,8 @@ class PlaylistViewController: NSViewController {
             let t = "simple mode?"
             self.titleTextFiled.stringValue = "Trash."
             self.tracks = $0.initIndexes()
-            }.catch {
-                print($0)
+        }.catch {
+            print($0)
         }
     }
     
@@ -237,125 +244,46 @@ class PlaylistViewController: NSViewController {
     }
 }
 
-extension PlaylistViewController: TrackTableViewDelegate {
-    func trackTableView(_ tableView: NSTableView, startPlaying tracks: [Track], with track: Track?) {
-        let pc = PlayCore.shared
-        guard tracks.count >= 1 else { return }
-        if let t = track,
-            let i = tracks.firstIndex(of: t) {
-            // DoubleClick action
-            pc.playlist = tracks
-            pc.start(i)
-        } else if let c = pc.currentTrack,
-            let i = pc.playlist.firstIndex(of: c) {
-            // add to next and play
-            pc.playlist.insert(contentsOf: tracks, at: i + 1)
-            pc.start(i + 1)
-        } else {
-            pc.playlist = tracks
-            pc.start()
+extension PlaylistViewController: TAAPMenuDelegate {
+    func selectedItems() -> (id: [Int], items: [Any]) {
+        guard let vc = trackTableViewController() else { return ([], []) }
+        let items = tracks.enumerated().filter {
+            vc.tableView.selectedIndexs().contains($0.offset)
+        }.map {
+            $0.element
         }
+        return (items.map({ $0.id }), items)
     }
     
-    func trackTableView(_ tableView: NSTableView, playNext tracks: [Track]) {
-        let pc = PlayCore.shared
-        guard tracks.count >= 1 else { return }
-        if let c = pc.currentTrack,
-            let i = pc.playlist.firstIndex(of: c) {
-            pc.playlist.insert(contentsOf: tracks, at: i + 1)
-        } else {
-            pc.playlist = tracks
-            pc.start()
-        }
+    func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
+        guard newPlaylisyVC.presentingViewController == nil else { return }
+        self.presentAsSheet(newPlaylisyVC)
     }
     
-    func trackTableView(_ tableView: NSTableView, copyLink track: Track) {
-        let str = "https://music.163.com/song?id=\(track.id)"
-        ViewControllerManager.shared.copyToPasteboard(str)
-    }
-    
-    func trackTableView(_ tableView: NSTableView, remove tracks: [Track], completionHandler: (() -> Void)? = nil) {
-        let selectedIndexs = tableView.selectedIndexs()
-        let selectedTracks = tracks.enumerated().filter {
-            selectedIndexs.contains($0.offset)
-        }
-        let ids = selectedTracks.map {
-            $0.element.id
-        }
-        let playlistId = self.playlistId
-        let api = PlayCore.shared.api
-        let vcm = ViewControllerManager.shared
-        
-        
+    func removeSuccess(ids: [Int], newItem: Any?) {
+        guard let vc = trackTableViewController() else { return }
         switch playlistType {
         case .discoverPlaylist:
-            guard let track = selectedTracks.first else { return }
-            api.discoveryRecommendDislike(track.element.id).done {
-                guard let newTrack = $0.0 else { return }
-                newTrack.index = track.element.index
-                self.tracks[track.offset] = newTrack
-                print("Remove \(ids) from discoverPlaylist done.")
-            }.ensure {
-                completionHandler?()
-            }.catch {
-                if let er = ($0 as? NeteaseMusicAPI.RequestError) {
-                    switch er {
-                    case .errorCode(let code, let msg):
-                        if code == 432, msg == "今日暂无更多推荐" {
-                            vcm.displayMessage(msg)
-                        }
-                    default:
-                        break
-                    }
-                }
-                print("Remove \(ids) from discoverPlaylist error \($0).")
-            }
-        case .fmTrash:
-            guard let track = selectedTracks.first else { return }
-            api.fmTrash(id: track.element.id, 0, false).done(on: .main) {
-                self.tracks.removeAll {
-                    ids.contains($0.id)
-                }
-                print("FM Trash Delected \(ids).")
-            }.ensure {
-                completionHandler?()
-            }.catch(on: .main) {
-                self.initFMTrashList()
-                print("FM Trash Del error: \($0).")
-            }
-        case .favourite, .createdPlaylist:
-            api.playlistTracks(add: false, ids, to: playlistId).done {
-                self.tracks.removeAll {
-                    ids.contains($0.id)
-                }
-                print("Remove \(ids) from playlist \(playlistId) done.")
-            }.ensure {
-                completionHandler?()
-            }.catch(on: .main) {
-                self.initPlaylist(playlistId)
-                print("Remove \(ids) from playlist \(playlistId) error \($0).")
-            }
+            guard let item = newItem as? Track,
+                let id = ids.first,
+                let i = vc.tracks.enumerated().first(where: { $0.element.id == id })?.offset else { return }
+            
+            let todo = "check playable"
+            item.index = vc.tracks[i].index
+            vc.tracks[i] = item
         default:
-            completionHandler?()
-        }
-    }
-    
-    func trackTableView(_ tableView: NSTableView, createPlaylist tracks: [Track], completionHandler: (() -> Void)? = nil) {
-        guard let newPlaylistVC = newPlaylistViewController else { return }
-        self.presentAsSheet(newPlaylistVC)
-    }
-    
-    func trackTableView(_ tableView: NSTableView, add tracks: [Track], to playlist: Int) {
-        let ids = tracks.map {
-            $0.id
-        }
-        PlayCore.shared.api.playlistTracks(add: true, ids, to: playlist).done {
-            print("Add \(ids) to playlist \(playlist) done.")
-            if playlist == self.playlistId {
-                self.initPlaylist(self.playlistId)
+            vc.tracks.removeAll {
+                ids.contains($0.id)
             }
-        }.catch {
-            print("Add \(ids) to playlist \(playlist) error \($0).")
         }
     }
+    
+    func shouldReloadData() {
+        initPlaylistContent()
+    }
+    
+    func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
+        return (playlistType, playlistId, .song)
+    }
+    
 }

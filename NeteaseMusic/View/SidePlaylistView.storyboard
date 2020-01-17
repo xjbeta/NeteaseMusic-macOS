@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="ko4-2V-U9h">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="ko4-2V-U9h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -9,12 +10,12 @@
         <scene sceneID="7Ch-pq-dP3">
             <objects>
                 <viewController showSeguePresentationStyle="single" id="ko4-2V-U9h" customClass="SidePlaylistViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Yib-HV-fE6">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                    <view key="view" misplaced="YES" id="Yib-HV-fE6">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="599"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CyO-dY-QZc">
-                                <rect key="frame" x="18" y="63" width="54" height="17"/>
+                                <rect key="frame" x="18" y="64" width="54" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="0 Songs" id="7hs-8p-LIA">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -22,7 +23,7 @@
                                 </textFieldCell>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y7u-6M-h7G">
-                                <rect key="frame" x="73" y="18" width="154" height="24"/>
+                                <rect key="frame" x="77" y="18" width="146" height="24"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="rmR-DJ-mDj">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -45,21 +46,21 @@
                                 </connections>
                             </button>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="YPU-xg-Wgj">
-                                <rect key="frame" x="0.0" y="102" width="300" height="498"/>
+                                <rect key="frame" x="0.0" y="102" width="300" height="496"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="q8s-Ia-bdV">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="496"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="25" viewBased="YES" id="5Z2-U2-veI">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="498"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="496"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn width="15" minWidth="15" maxWidth="15" id="1Im-LA-fyB">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -92,7 +93,7 @@
                                                 </tableColumn>
                                                 <tableColumn width="140" minWidth="40" maxWidth="1000" id="fBs-2s-Ok7">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -108,7 +109,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ak9-fL-dri">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="1" width="40" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Name" id="LiX-dg-hHq">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -135,7 +136,7 @@
                                                 </tableColumn>
                                                 <tableColumn width="82" minWidth="10" maxWidth="3.4028234663852886e+38" id="ouE-rQ-EyK">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -151,7 +152,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NU6-XS-nff">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="82" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="1" width="82" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Artist" id="CGF-UX-RpH">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -182,7 +183,7 @@
                                                 </tableColumn>
                                                 <tableColumn width="49" minWidth="10" maxWidth="3.4028234663852886e+38" id="TFC-XD-eof">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -198,7 +199,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="w5X-Va-vAs">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="49" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="1" width="49" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Time" id="m0C-WR-GVv">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -230,7 +231,6 @@
                                             </tableColumns>
                                             <connections>
                                                 <binding destination="9Zw-Wf-cSx" name="content" keyPath="arrangedObjects" id="tVp-br-iTl"/>
-                                                <outlet property="menu" destination="0ER-Rl-bSp" id="c5o-gZ-4Gg"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -260,12 +260,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="copyLinkMenuItem" destination="aQI-dU-fcG" id="JEC-NE-89N"/>
-                        <outlet property="playMenuItem" destination="5Jw-Yr-azx" id="x2e-C7-lZr"/>
-                        <outlet property="playNextMenuItem" destination="VCz-G3-PGk" id="LNf-P4-KTH"/>
                         <outlet property="playlistArrayController" destination="9Zw-Wf-cSx" id="Xw4-pu-kd9"/>
-                        <outlet property="playlistMenu" destination="0ER-Rl-bSp" id="c3W-EO-jFJ"/>
-                        <outlet property="removeMenuItem" destination="Z2o-TR-K2a" id="Ane-Xt-3ov"/>
                         <outlet property="segmentedControl" destination="y7u-6M-h7G" id="QER-4M-Usa"/>
                         <outlet property="songsCountTextField" destination="CyO-dY-QZc" id="3S8-tD-wgX"/>
                         <outlet property="tableView" destination="5Z2-U2-veI" id="A8y-6A-LJP"/>
@@ -277,36 +272,6 @@
                         <binding destination="ko4-2V-U9h" name="contentArray" keyPath="self.playlist" id="D4G-vi-Moe"/>
                     </connections>
                 </arrayController>
-                <menu id="0ER-Rl-bSp">
-                    <items>
-                        <menuItem title="Play" id="5Jw-Yr-azx">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="ko4-2V-U9h" id="zo2-Hj-MeC"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="Play Next" id="VCz-G3-PGk">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="ko4-2V-U9h" id="tW5-aM-o8W"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="aIx-QN-mVo"/>
-                        <menuItem title="Copy Link" id="aQI-dU-fcG">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="ko4-2V-U9h" id="ldu-Cy-c51"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="hvd-Q5-8cP"/>
-                        <menuItem title="Remove from Playlist" id="Z2o-TR-K2a">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="menuItemAction:" target="ko4-2V-U9h" id="0LN-0A-u0k"/>
-                            </connections>
-                        </menuItem>
-                    </items>
-                </menu>
             </objects>
             <point key="canvasLocation" x="1835" y="1077.5"/>
         </scene>

@@ -11,61 +11,6 @@ import PromiseKit
 
 class SidebarViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
-    @IBOutlet var outlineViewMenu: NSMenu!
-    @IBOutlet weak var playMenuItem: NSMenuItem!
-    @IBOutlet weak var playNextMenuItem: NSMenuItem!
-    @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
-    @IBOutlet weak var deletePlaylistMenuItem: NSMenuItem!
-    
-    @IBAction func menuAction(_ sender: NSMenuItem) {
-        guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
-            return
-        }
-        
-        switch sender {
-        case playMenuItem:
-            break
-        case playNextMenuItem:
-            break
-        case copyLinkMenuItem:
-            let str = "https://music.163.com/playlist?id=\(item.id)"
-            ViewControllerManager.shared.copyToPasteboard(str)
-        case deletePlaylistMenuItem:
-            guard let w = view.window else { return }
-            let alert = NSAlert()
-            alert.messageText = "Delete Playlist."
-            alert.informativeText = "\(item.title) will be deleted."
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "Delete")
-            alert.addButton(withTitle: "Cancel")
-            alert.beginSheetModal(for: w) { [weak self] in
-                if $0 == .alertFirstButtonReturn,
-                    let parentItem = self?.sidebarItems.filter ({
-                    $0.childrenItems.contains(item)
-                }).first {
-                    var re: Promise<()>
-                    switch parentItem.type {
-                    case .createdPlaylists:
-                        re = PlayCore.shared.api.playlistDelete(item.id)
-                    case .subscribedPlaylists:
-                        re = PlayCore.shared.api.subscribe(item.id, unSubscribe: true, type: .subscribedPlaylist)
-                    default:
-                        return
-                    }
-                    re.done {
-                        parentItem.childrenItems.removeAll {
-                            $0.id == item.id
-                        }
-                        print("Delete / Unsubscribe playlist \(item.id) done.")
-                        }.catch {
-                            print("Delete / Unsubscribe playlist \(item.id) error \($0).")
-                    }
-                }
-            }
-        default:
-            break
-        }
-    }
     
     @objc class SidebarItem: NSObject {
         @objc dynamic var title: String
@@ -124,7 +69,7 @@ class SidebarViewController: NSViewController {
     }
     
     enum ItemType {
-        case discover, fm, favourite, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, createdPlaylist, subscribedPlaylists, subscribedPlaylist, preferences, mySubscription
+        case discover, fm, favourite, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, createdPlaylist, subscribedPlaylists, subscribedPlaylist, preferences, mySubscription, sidebar, sidePlaylist
     }
     
     let defaultItems = [SidebarItem(type: .discover),
@@ -137,8 +82,23 @@ class SidebarViewController: NSViewController {
     let outlineViewNotification = Notification(name: NSOutlineView.selectionDidChangeNotification, object: nil, userInfo: nil)
     var selectSidebarItemObserver: NSObjectProtocol?
     
+    lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
+        var objects: NSArray?
+        Bundle.main.loadNibNamed(.init("TAAPMenu"), owner: nil, topLevelObjects: &objects)
+        let mc = objects?.compactMap {
+            $0 as? TAAPMenuController
+        }.first
+        let m = objects?.compactMap {
+            $0 as? NSMenu
+        }.first
+        return (m, mc)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        outlineView.menu = menuContainer.menu
+        menuContainer.menuController?.delegate = self
+        
         sidebarItems = defaultItems
         
         selectSidebarItemObserver = NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
@@ -147,6 +107,12 @@ class SidebarViewController: NSViewController {
                 let id = dic["id"] as? Int,
                 let notification = self?.outlineViewNotification else { return }
             switch itemType {
+            case .favourite:
+                if let index = self?.sidebarItems.firstIndex(where: { $0.type == .createdPlaylists }) {
+                    self?.outlineView.deselectAll(self)
+                    self?.outlineView.selectRowIndexes(.init(integer: index + 1), byExtendingSelection: true)
+                    self?.outlineViewSelectionIsChanging(notification)
+                }
             case .fm:
                 if let index = self?.sidebarItems.firstIndex(where: { $0.type == itemType }) {
                     self?.outlineView.deselectAll(self)
@@ -251,37 +217,53 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
     }
 }
 
-extension SidebarViewController: NSMenuItemValidation, NSMenuDelegate {
-    
-    func menuNeedsUpdate(_ menu: NSMenu) {
+extension SidebarViewController: TAAPMenuDelegate {
+    func selectedItems() -> (id: [Int], items: [Any]) {
         guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
-            return
+            return ([], [])
         }
-        
-        let type = item.type
-        
-        deletePlaylistMenuItem.isHidden = type == .favourite
-        switch type {
-        case .createdPlaylist:
-            deletePlaylistMenuItem.title = "Delete Playlist"
-        case .subscribedPlaylist:
-            deletePlaylistMenuItem.title = "Unsubscribe Playlist"
-        default:
-            break
-        }
+        return ([item.id], [item])
     }
     
-    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
         guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
-            return false
+            return (.none, 0, .none)
         }
         
         switch item.type {
-        case .createdPlaylist, .subscribedPlaylist, .favourite:
-            return true
+        case .subscribedPlaylist:
+            return (.sidebar, item.id, .playlist)
+        case .createdPlaylist:
+            return (.sidebar, item.id, .createdPlaylist)
+        case .favourite:
+            return (.sidebar, item.id, .favouritePlaylist)
         default:
-            break
+            return (.sidebar, item.id, .none)
         }
-        return false
+    }
+    
+    func removeSuccess(ids: [Int], newItem: Any?) {
+        sidebarItems.filter {
+            $0.type == .createdPlaylists || $0.type == .subscribedPlaylists
+        }.forEach {
+            $0.childrenItems.removeAll {
+                ids.contains($0.id)
+            }
+        }
+        
+        if let item = ViewControllerManager.shared.selectedSidebarItem,
+            item.type == .createdPlaylist || item.type == .subscribedPlaylist,
+            ids.contains(item.id) {
+            ViewControllerManager.shared.selectSidebarItem(.favourite)
+        }
+    }
+    
+    func shouldReloadData() {
+        updatePlaylists()
+    }
+    
+    func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
+        guard newPlaylisyVC.presentingViewController == nil else { return }
+        self.presentAsSheet(newPlaylisyVC)
     }
 }

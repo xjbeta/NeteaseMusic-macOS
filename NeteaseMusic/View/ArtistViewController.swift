@@ -31,7 +31,7 @@ class ArtistViewController: NSViewController {
     @IBAction func subscribe(_ sender: SubscribeButton) {
         sender.isEnabled = false
         let api = PlayCore.shared.api
-        api.subscribe(id, unSubscribe: subscribed, type: .artist).done(on: .main) {
+        api.subscribe(id, unsubscribe: subscribed, type: .artist).done(on: .main) {
             self.subscribed = !self.subscribed
             self.tableView.reloadData(forRowIndexes: .init(integer: 0), columnIndexes: .init(integer: 0))
         }.ensure(on: .main) {
@@ -58,6 +58,18 @@ class ArtistViewController: NSViewController {
         }
     }
     
+    lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
+        var objects: NSArray?
+        Bundle.main.loadNibNamed(.init("TAAPMenu"), owner: nil, topLevelObjects: &objects)
+        let mc = objects?.compactMap {
+            $0 as? TAAPMenuController
+        }.first
+        let m = objects?.compactMap {
+            $0 as? NSMenu
+        }.first
+        return (m, mc)
+    }()
+    
     var id = -1
     var items = [Item]()
     var subscribed = false
@@ -65,6 +77,9 @@ class ArtistViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.deselectAll(nil)
+        tableView.menu = menuContainer.menu
+        menuContainer.menuController?.delegate = self
+        
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
             guard let new = changes.newValue,
                 new?.type == .artist,
@@ -156,5 +171,50 @@ extension ArtistViewController: NSTableViewDelegate, NSTableViewDataSource {
                     "size": album.size,
                     "publishTime": album.publishTime]
         }
+    }
+}
+
+extension ArtistViewController: TAAPMenuDelegate {
+    func selectedItems() -> (id: [Int], items: [Any]) {
+        guard let item = items.enumerated().first(where: { tableView.selectedIndexs().contains($0.offset)
+        })?.element else {
+            return ([], [])
+        }
+
+        switch item.type {
+        case .album:
+            return ([item.album?.id ?? 0], [item])
+        case .topSongs:
+            return ([id], [item])
+        default:
+            return ([], [])
+        }
+    }
+    
+    func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
+        guard let item = items.enumerated().first(where: { tableView.selectedIndexs().contains($0.offset)
+        })?.element else {
+            return (.none, 0, .none)
+        }
+        switch item.type {
+        case .topSongs:
+            return (.artist, id, .topSongs)
+        case .album:
+            return (.artist, item.album?.id ?? 0, .album)
+        default:
+            return (.none, 0, .none)
+        }
+    }
+    
+    func removeSuccess(ids: [Int], newItem: Any?) {
+        return
+    }
+    
+    func shouldReloadData() {
+        return
+    }
+    
+    func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
+        return
     }
 }

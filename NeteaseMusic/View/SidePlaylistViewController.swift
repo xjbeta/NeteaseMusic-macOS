@@ -9,42 +9,6 @@
 import Cocoa
 
 class SidePlaylistViewController: NSViewController {
-
-    @IBOutlet var playlistMenu: NSMenu!
-    
-    @IBOutlet weak var playMenuItem: NSMenuItem!
-    @IBOutlet weak var playNextMenuItem: NSMenuItem!
-    @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
-    @IBOutlet weak var removeMenuItem: NSMenuItem!
-    
-    @IBAction func menuItemAction(_ sender: NSMenuItem) {
-        let indexs = tableView.selectedIndexs()
-        
-        switch sender {
-        case playMenuItem:
-            break
-        case playNextMenuItem:
-            break
-        case copyLinkMenuItem:
-            if let t = playlist.enumerated().filter ({
-                indexs.contains($0.offset)
-            }).first?.element {
-                let str = "https://music.163.com/song?id=\(t.id)"
-                ViewControllerManager.shared.copyToPasteboard(str)
-            }
-        case removeMenuItem:
-            let offsets = playlist.enumerated().filter ({
-                indexs.contains($0.offset)
-            }).map({ $0.offset })
-            PlayCore.shared.playlist = PlayCore.shared.playlist.enumerated().filter {
-                !offsets.contains($0.offset)
-                }.map {
-                    $0.element
-            }
-        default:
-            break
-        }
-    }
     
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var playlistArrayController: NSArrayController!
@@ -69,11 +33,24 @@ class SidePlaylistViewController: NSViewController {
         }
     }
     
+    lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
+        var objects: NSArray?
+        Bundle.main.loadNibNamed(.init("TAAPMenu"), owner: nil, topLevelObjects: &objects)
+        let mc = objects?.compactMap {
+            $0 as? TAAPMenuController
+        }.first
+        let m = objects?.compactMap {
+            $0 as? NSMenu
+        }.first
+        return (m, mc)
+    }()
+    
     var playlistObserver: NSKeyValueObservation?
     var historysObserver: NSKeyValueObservation?
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        tableView.menu = menuContainer.menu
+        menuContainer.menuController?.delegate = self
         initObservers()
     }
     
@@ -111,23 +88,31 @@ class SidePlaylistViewController: NSViewController {
     }
 }
 
-extension SidePlaylistViewController: NSMenuItemValidation {
-    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        let indexs = tableView.selectedIndexs()
-        switch menuItem {
-        case playMenuItem:
-//            return indexs.count > 0
-            return false
-        case playNextMenuItem:
-//            return indexs.count > 0
-            return false
-        case copyLinkMenuItem:
-            return indexs.count == 1
-        case removeMenuItem:
-            return indexs.count > 0
-        default:
-            break
+extension SidePlaylistViewController: TAAPMenuDelegate {
+    func selectedItems() -> (id: [Int], items: [Any]) {
+        let items = playlist.enumerated().filter {
+            tableView.selectedIndexs().contains($0.offset)
+        }.map {
+            $0.element
         }
-        return false
+        return (items.map({ $0.id }), items)
+    }
+    
+    func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
+        return (.sidePlaylist, 0, .song)
+    }
+    
+    func removeSuccess(ids: [Int], newItem: Any?) {
+        PlayCore.shared.playlist = PlayCore.shared.playlist.filter {
+            !ids.contains($0.id)
+        }
+    }
+    
+    func shouldReloadData() {
+        tableView.reloadData()
+    }
+    
+    func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
+        return
     }
 }
