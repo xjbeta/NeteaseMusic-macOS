@@ -126,11 +126,10 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 guard d.tableViewList() == type, unsubscribe else { return }
                 d.removeSuccess(ids: [id], newItem: nil)
             case .playlist, .createdPlaylist:
-                if unsubscribe {
+                if unsubscribe, type.type != .discover {
                     d.removeSuccess(ids: [id], newItem: nil)
-                } else {
-                    NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
                 }
+                NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
             default:
                 break
             }
@@ -335,7 +334,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         case .mySubscription:
             subscribeMenuItem.title = "Unsubscribe"
             subscribeMenuItem.tag = 1
-        case .searchResults:
+        case .searchResults, .discover:
             subscribeMenuItem.isEnabled = false
             subscribeMenuItem.title = "..."
             guard let id = d.selectedItems().id.first else {
