@@ -37,17 +37,26 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     @IBOutlet weak var subscribeMenuItem: NetworkRequestMenuItem!
     
     @IBAction func play(_ sender: NSMenuItem) {
+        guard let d = delegate else { return }
         let pc = PlayCore.shared
-        getTracksForPlay().done {
-            let ts = $0
-            if ts.count > 0 {
-                pc.playlist = ts
-                pc.start()
-            } else {
-                print("Play empty tracks.")
+        if d.tableViewList().type == .sidePlaylist {
+            guard let id = d.selectedItems().id.first,
+                let index = pc.playlist.enumerated().first(where: { $0.element.id == id })?.offset else {
+                return
             }
-        }.catch {
-            print($0)
+            pc.start(index, enterFMMode: false)
+        } else {
+            getTracksForPlay().done {
+                let ts = $0
+                if ts.count > 0 {
+                    pc.playlist = ts
+                    pc.start()
+                } else {
+                    print("Play empty tracks.")
+                }
+            }.catch {
+                print($0)
+            }
         }
     }
     
@@ -496,7 +505,13 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 break
             }
         case .sidePlaylist:
-            return [playNextMenuItem, playMenuItem, copyLinkMenuItem, removeMenuItem]
+            let ids = d.selectedItems().id
+            if ids.count == 1 {
+//TODO: - Song Info  (artist, album, from)
+                return [playMenuItem, addToPlaylistMenuItem, copyLinkMenuItem, removeMenuItem]
+            } else if ids.count > 1 {
+                return [playMenuItem, addToPlaylistMenuItem, removeMenuItem]
+            }
         default:
             break
         }
