@@ -290,26 +290,16 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             return
         }
         
+        let markID = UUID().uuidString
+        playlistMenuUpdateID = markID
+        
         let tableViewList = d.tableViewList()
         menu.items.forEach {
             if !$0.isSeparatorItem {
                 $0.isHidden = !menuItemsToDisplay().contains($0)
             }
         }
-        if tableViewList.type == .sidebar {
-            if tableViewList.contentType == .createdPlaylist {
-                subscribeMenuItem.title = "Remove"
-            } else {
-                subscribeMenuItem.title = "Unsubscribe"
-            }
-            subscribeMenuItem.tag = 1
-        } else if tableViewList.type == .mySubscription {
-            subscribeMenuItem.title = "Unsubscribe"
-            subscribeMenuItem.tag = 1
-        } else {
-            subscribeMenuItem.title = "Subscribe"
-            subscribeMenuItem.tag = 0
-        }
+        
         
         switch tableViewList.type {
         case .discoverPlaylist, .discover:
@@ -323,6 +313,60 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             removeMenuItem.title = "Restore"
         default:
             break
+        }
+        
+        switch tableViewList.type {
+        case .sidebar:
+            if tableViewList.contentType == .createdPlaylist {
+                subscribeMenuItem.title = "Remove"
+            } else {
+                subscribeMenuItem.title = "Unsubscribe"
+            }
+            subscribeMenuItem.tag = 1
+        case .mySubscription:
+            subscribeMenuItem.title = "Unsubscribe"
+            subscribeMenuItem.tag = 1
+        case .searchResults:
+            subscribeMenuItem.isEnabled = false
+            subscribeMenuItem.title = "..."
+            guard let id = d.selectedItems().id.first else {
+                subscribeMenuItem.isHidden = true
+                return
+            }
+            var p: Promise<[Int]>
+            let api = PlayCore.shared.api
+            switch tableViewList.contentType {
+            case .album:
+                p = api.albumSublist().map {
+                    $0.map({ $0.id })
+                }
+            case .artist:
+                p = api.albumSublist().map {
+                    $0.map({ $0.id })
+                }
+            case .playlist:
+                p = api.userPlaylist().map {
+                    $0.filter({ $0.subscribed }).map({ $0.id })
+                }
+            default:
+                return
+            }
+            p.done {
+                guard markID == self.playlistMenuUpdateID else { return }
+                if $0.contains(id) {
+                    self.subscribeMenuItem.title = "Unsubscribe"
+                    self.subscribeMenuItem.tag = 1
+                } else {
+                    self.subscribeMenuItem.title = "Subscribe"
+                    self.subscribeMenuItem.tag = 0
+                }
+            }.catch {
+                self.subscribeMenuItem.isHidden = true
+                print("check subscribe album list error \($0)")
+            }
+        default:
+            subscribeMenuItem.title = "Subscribe"
+            subscribeMenuItem.tag = 0
         }
     }
     
