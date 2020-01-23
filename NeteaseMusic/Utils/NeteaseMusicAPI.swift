@@ -160,10 +160,12 @@ class NeteaseMusicAPI: NSObject {
             p,
             Result.self, pcOS: true).map { re -> Playlist in
                 let p = re.playlist
+                let type: SidebarViewController.ItemType = p.creator?.userId == self.uid ? .createdPlaylist: .subscribedPlaylist
                 p.tracks?.forEach { t in
                     t.privilege = re.privileges.first(where: {
                         $0.id == t.id
                     })
+                    t.from = (type, p.id, re.playlist.name)
                 }
                 return p
         }
@@ -211,6 +213,11 @@ class NeteaseMusicAPI: NSObject {
             p,
             RecommendSongs.self, pcOS: true).map {
                 $0.recommend
+        }.map {
+            $0.forEach {
+                $0.from = (.discoverPlaylist, -114514, "recommend songs")
+            }
+            return $0
         }
     }
     
@@ -284,7 +291,10 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/cloudsearch/get/web",
                        p, SearchResult.self).map {
-                        $0.result
+                        $0.result.songs.forEach {
+                            $0.from = (.searchResults, 0, "Search Result")
+                        }
+                        return $0.result
         }
     }
     
@@ -350,7 +360,10 @@ class NeteaseMusicAPI: NSObject {
         return request("https://music.163.com/weapi/v1/radio/get",
             p,
             Result.self, pcOS: true).map {
-                $0.data
+                $0.data.forEach {
+                    $0.from = (.fm, 0, "FM")
+                }
+                return $0.data
         }
     }
     
@@ -387,7 +400,12 @@ class NeteaseMusicAPI: NSObject {
         let p = DefaultParameters(csrfToken: csrf).jsonString()
         return request("https://music.163.com/weapi/v1/album/\(id)",
             p,
-            AlbumResult.self, pcOS: true)
+            AlbumResult.self, pcOS: true).map { al in
+                al.songs.forEach {
+                    $0.from = (.album, id, al.album.name)
+                }
+                return al
+        }
     }
     
     func albumSublist() -> Promise<[Track.Album]> {
