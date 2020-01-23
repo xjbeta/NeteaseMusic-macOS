@@ -21,6 +21,9 @@ class SearchSuggestionsViewController: NSViewController {
         case .song:
             let playCore = PlayCore.shared
             playCore.api.songDetail([item.id]).done {
+                $0.forEach {
+                    $0.from = (.searchResults, 0, "Search Suggestions")
+                }
                 playCore.playNow($0)
                 }.catch {
                    print("Song Detail error \($0)")

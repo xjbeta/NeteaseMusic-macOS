@@ -345,6 +345,9 @@ class FMViewController: NSViewController {
         let playCore = PlayCore.shared
         if ids.count > 0 {
             playCore.api.songDetail(ids).done(on: .main) {
+                $0.forEach {
+                    $0.from = (.fm, 0, "FM")
+                }
                 playCore.fmPlaylist = $0
                 playCore.currentFMTrack = $0.first {
                     $0.id == cId

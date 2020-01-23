@@ -26,6 +26,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     
     var delegate: TAAPMenuDelegate?
     
+// MARK: - Menu
     @IBOutlet var menu: NSMenu!
     @IBOutlet weak var playMenuItem: NSMenuItem!
     @IBOutlet weak var playNextMenuItem: NSMenuItem!
@@ -36,6 +37,11 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     @IBOutlet weak var addToPlaylistMenu: NSMenu!
     @IBOutlet weak var subscribeMenuItem: NetworkRequestMenuItem!
     
+    @IBOutlet weak var albumMenuItem: NSMenuItem!
+    @IBOutlet weak var artistMenuItem: NSMenuItem!
+    @IBOutlet weak var fromMenuItem: NSMenuItem!
+    
+// MARK: - Menu Actions
     @IBAction func play(_ sender: NSMenuItem) {
         guard let d = delegate else { return }
         let pc = PlayCore.shared
@@ -241,6 +247,25 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         }
     }
     
+    @IBAction func aafMenuActions(_ sender: NSMenuItem) {
+        guard let song = delegate?.selectedItems().items.first as? Track else {
+            return
+        }
+        let vcm = ViewControllerManager.shared
+        
+        switch sender {
+        case albumMenuItem:
+            vcm.selectSidebarItem(.album, song.album.id)
+        case artistMenuItem:
+            guard let id = song.artists.first?.id else { return }
+            vcm.selectSidebarItem(.artist, id)
+        case fromMenuItem:
+            vcm.selectSidebarItem(song.from.type, song.from.id)
+        default:
+            break
+        }
+    }
+    
     private var playlistMenuUpdateID = ""
     
     lazy var newPlaylistViewController: NewPlaylistViewController? = {
@@ -248,6 +273,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         let vc = sb.instantiateController(withIdentifier: "NewPlaylistViewController") as? NewPlaylistViewController
         return vc
     }()
+    
+// MARK: - Menu Delegate
     
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let d = delegate else {
@@ -281,6 +308,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             }
         case newPlaylistMenuItem:
             return true
+        case albumMenuItem, artistMenuItem, fromMenuItem:
+            return type == .sidePlaylist && selectedIDs.count == 1
         default:
             return false
         }
@@ -317,6 +346,13 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             removeMenuItem.title = "Remove from Playlist"
         case .sidePlaylist:
             removeMenuItem.title = "Remove"
+            let items = d.selectedItems()
+            if items.id.count == 1,
+                let song = items.items.first as? Track {
+                albumMenuItem.title = "Album: \(song.album.name)"
+                artistMenuItem.title = "Artist: \(song.artists.first?.name ?? "none")"
+                fromMenuItem.title = "From: \(song.from.name ?? "Unknown")"
+            }
         case .fmTrash:
             removeMenuItem.title = "Restore"
         default:
@@ -378,6 +414,9 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         }
     }
     
+    
+// MARK: - Other
+
     func updatePlaylists() {
         guard let d = delegate else { return }
         
@@ -506,8 +545,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         case .sidePlaylist:
             let ids = d.selectedItems().id
             if ids.count == 1 {
-//TODO: - Song Info  (artist, album, from)
-                return [playMenuItem, addToPlaylistMenuItem, copyLinkMenuItem, removeMenuItem]
+                return [playMenuItem, addToPlaylistMenuItem, copyLinkMenuItem, removeMenuItem, albumMenuItem, artistMenuItem, fromMenuItem]
             } else if ids.count > 1 {
                 return [playMenuItem, addToPlaylistMenuItem, removeMenuItem]
             }

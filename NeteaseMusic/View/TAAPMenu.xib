@@ -23,6 +23,25 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="Iu1-HB-nLI"/>
+                <menuItem title="Album:" id="ZI8-mQ-h0N">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="aafMenuActions:" target="48W-pb-Hku" id="EfR-pq-E9s"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Artist:" id="zC9-Yg-dDi">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="aafMenuActions:" target="48W-pb-Hku" id="uPD-g8-BgS"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="From:" id="jZm-yS-AdB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="aafMenuActions:" target="48W-pb-Hku" id="WBx-t3-4bT"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="T09-2P-njY"/>
                 <menuItem title="Add to Playlist" id="Qih-hd-Egk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Add to Playlist" id="hRL-lG-HQ8">
@@ -68,7 +87,10 @@
             <connections>
                 <outlet property="addToPlaylistMenu" destination="hRL-lG-HQ8" id="02F-5N-Ufb"/>
                 <outlet property="addToPlaylistMenuItem" destination="Qih-hd-Egk" id="09H-1h-iGc"/>
+                <outlet property="albumMenuItem" destination="ZI8-mQ-h0N" id="1gL-u6-drb"/>
+                <outlet property="artistMenuItem" destination="zC9-Yg-dDi" id="dvZ-wQ-P53"/>
                 <outlet property="copyLinkMenuItem" destination="fmt-iG-6UG" id="umq-Er-tM3"/>
+                <outlet property="fromMenuItem" destination="jZm-yS-AdB" id="Gt2-VU-IXJ"/>
                 <outlet property="menu" destination="6L9-eE-bak" id="wQU-DU-EU5"/>
                 <outlet property="newPlaylistMenuItem" destination="gob-TS-Ri1" id="5NM-JS-AL1"/>
                 <outlet property="playMenuItem" destination="yC1-xH-8EK" id="iZM-TJ-JLh"/>
