@@ -34,7 +34,7 @@ class PlayerSliderCell: NSSliderCell {
         let knobSize = NSSize(width: 4, height: 13)
         
         let barRect = self.barRect(flipped: false)
-        let knobOriginX = barRect.width * playedPer
+        let knobOriginX = barRect.width * playedPer + knobSize.width / 2
         let knobOriginY = barRect.origin.y + (barRect.height / 2) - (knobSize.height / 2)
         let knobOrigin = NSPoint(x: knobOriginX, y: knobOriginY)
         let knobRect = NSRect(origin: knobOrigin, size: knobSize)
