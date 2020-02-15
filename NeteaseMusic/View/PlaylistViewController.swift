@@ -213,10 +213,27 @@ class PlaylistViewController: NSViewController {
     }
     
     func initPlaylistWithTopSongs(_ id: Int) {
-        PlayCore.shared.api.artist(id).done(on: .main) {
+        let api = PlayCore.shared.api
+        
+        when(fulfilled: api.artist(id), api.artistPrivilege(id)).map { re -> ArtistResult in
+            let aRE = re.0
+            aRE.hotSongs.enumerated().forEach {
+                let cSong = aRE.hotSongs[$0.offset]
+                if cSong.id ==
+                    re.1[$0.offset].id {
+                    cSong.privilege = re.1[$0.offset]
+                } else {
+                    cSong.privilege = re.1.first(where: {
+                        $0.id == cSong.id
+                    })
+                }
+            }
+            return aRE
+        }.done(on: .main) {
             self.coverImageView.setImage($0.artist.picUrl, true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
             self.tracks = $0.hotSongs.initIndexes()
+            
         }.catch {
             print($0)
         }

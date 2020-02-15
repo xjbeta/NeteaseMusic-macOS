@@ -574,28 +574,12 @@ class NeteaseMusicAPI: NSObject {
         }
 
 //https://music.163.com/api/v3/radio/trash/get?pagesize=100&from=1&to=1&offset=0&total=true&limit=100&currsize=26&addTime=1491740318242
-        return Promise { resolver in
-            AF.request("https://music.163.com/api/v3/radio/trash/get?pagesize=1000&from=1&to=1&offset=0&total=true&limit=1000", method: .get).response { re in
-                if let error = re.error {
-                    resolver.reject(RequestError.error(error))
-                    return
-                }
-                guard let data = re.data else {
-                    resolver.reject(RequestError.noData)
-                    return
-                }
-                
-                do {
-                    let re = try JSONDecoder().decode(Result.self, from: data)
-                    resolver.fulfill(re.data)
-                } catch let error {
-                    if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
-                        resolver.reject(RequestError.errorCode((re.code, re.msg ?? re.message ?? "")))
-                    } else {
-                        resolver.reject(RequestError.error(error))
-                    }
-                }
-            }
+        
+        let u = "https://music.163.com/api/v3/radio/trash/get?pagesize=1000&from=1&to=1&offset=0&total=true&limit=1000"
+        
+        
+        return request(u, nil, headers: nil, Result.self, method: .get).map {
+            $0.data
         }
     }
     
@@ -764,35 +748,68 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    private func request<T: Decodable>(_ url: String, _ parameters: String, headers: HTTPHeaders? = nil, _ resultType: T.Type, pcOS: Bool = false, debug: Bool = false) -> Promise<T> {
+    func artistPrivilege(_ id: Int) -> Promise<[Track.Privilege]> {
+        let u = "https://music.163.com/api/artist/privilege?top=50&id=\(id)"
+        
+        struct Result: Decodable {
+            let data: [Track.Privilege]
+            let code: Int
+        }
+        
+        
+        return request(u, nil, headers: nil, Result.self, method: .get).map {
+            $0.data
+        }
+    }
+    
+    
+    private func request<T: Decodable>(
+        _ url: String,
+        _ parameters: String? = nil,
+        headers: HTTPHeaders? = nil,
+        _ resultType: T.Type,
+        method: HTTPMethod = .post,
+        pcOS: Bool = false,
+        debug: Bool = false) -> Promise<T> {
         return Promise { resolver in
             let session = pcOS ? pcOSSession : defaultSession
-            session.request(url, method: .post,
-                       parameters: crypto(parameters),
-                       headers: headers).response { re in
-                        if debug, let d = re.data, let str = String(data: d, encoding: .utf8) {
-                            print(str)
-                        }
-                        
-                        if let error = re.error {
-                            resolver.reject(RequestError.error(error))
-                            return
-                        }
-                        guard let data = re.data else {
-                            resolver.reject(RequestError.noData)
-                            return
-                        }
-                        
-                        do {
-                            let re = try JSONDecoder().decode(resultType.self, from: data)
-                            resolver.fulfill(re)
-                        } catch let error {
-                            if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
-                                resolver.reject(RequestError.errorCode((re.code, re.msg ?? re.message ?? "")))
-                            } else {
-                                resolver.reject(RequestError.error(error))
-                            }
-                        }
+            
+            var req: DataRequest
+                
+            switch method {
+            case .get:
+                req = session.request(url, method: method, headers: headers)
+            case .post where parameters != nil:
+                req = session.request(url, method: method, parameters: crypto(parameters!), headers: headers)
+            default:
+                resolver.reject(RequestError.unknown)
+                return
+            }
+                
+            req.response { re in
+                if debug, let d = re.data, let str = String(data: d, encoding: .utf8) {
+                    print(str)
+                }
+                
+                if let error = re.error {
+                    resolver.reject(RequestError.error(error))
+                    return
+                }
+                guard let data = re.data else {
+                    resolver.reject(RequestError.noData)
+                    return
+                }
+                
+                do {
+                    let re = try JSONDecoder().decode(resultType.self, from: data)
+                    resolver.fulfill(re)
+                } catch let error {
+                    if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
+                        resolver.reject(RequestError.errorCode((re.code, re.msg ?? re.message ?? "")))
+                    } else {
+                        resolver.reject(RequestError.error(error))
+                    }
+                }
             }
         }
     }
