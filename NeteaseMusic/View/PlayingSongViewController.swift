@@ -132,6 +132,7 @@ class PlayingSongViewController: NSViewController {
 
         songInfoViewController()?.initInfos(track)
         songButtonsViewController()?.trackId = track.id
+        songButtonsViewController()?.isFMView = false
         lyricViewController()?.currentLyricId = track.id
     }
     

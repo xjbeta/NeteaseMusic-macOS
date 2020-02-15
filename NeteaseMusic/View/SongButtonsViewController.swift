@@ -12,6 +12,7 @@ class SongButtonsViewController: NSViewController {
     @IBOutlet weak var loveButton: NSButton!
     @IBOutlet weak var favouriteButton: NSButton!
     @IBOutlet weak var deleteButton: NSButton!
+    @IBOutlet weak var linkButton: NSButton!
     @IBOutlet weak var moreButton: NSButton!
     @IBOutlet var moreMenu: NSMenu!
     
@@ -69,6 +70,14 @@ class SongButtonsViewController: NSViewController {
         didSet {
             let name = loved ? "icon.sp#icn-fm_loved" : "icon.sp#icn-fm_love"
             loveButton.image = NSImage(named: .init(name))
+        }
+    }
+    
+    var isFMView = true {
+        didSet {
+            deleteButton.isHidden = !isFMView
+            moreButton.isHidden = !isFMView
+            linkButton.isHidden = isFMView
         }
     }
     

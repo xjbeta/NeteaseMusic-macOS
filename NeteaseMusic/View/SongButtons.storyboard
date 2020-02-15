@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,11 +11,11 @@
             <objects>
                 <viewController id="fWa-K8-Ifq" customClass="SongButtonsViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kLl-bR-EiS">
-                        <rect key="frame" x="0.0" y="0.0" width="246" height="41"/>
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="41"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cn2-dC-Hgq">
-                                <rect key="frame" x="10" y="2" width="227" height="38"/>
+                                <rect key="frame" x="0.0" y="2" width="290" height="38"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-mh-aew">
                                         <rect key="frame" x="0.0" y="-1" width="38" height="39"/>
@@ -58,8 +58,21 @@
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="MHg-jj-oRd"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJI-wi-O3H">
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-0X-CdX">
                                         <rect key="frame" x="189" y="-1" width="38" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="7h6-0X-CdX" secondAttribute="height" multiplier="1:1" id="GuC-vD-7tP"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_link" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="82Q-zF-Zcu">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystemBold"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="copyLink:" target="fWa-K8-Ifq" id="hse-ct-HxD"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJI-wi-O3H">
+                                        <rect key="frame" x="252" y="-1" width="38" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" multiplier="1:1" id="G81-eN-UVN"/>
                                         </constraints>
@@ -74,6 +87,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Sd8-dW-QcA" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="5ZD-Ic-mZd"/>
+                                    <constraint firstItem="7h6-0X-CdX" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="BNZ-Pr-puw"/>
                                     <constraint firstItem="rJI-wi-O3H" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="Erg-ye-rC9"/>
                                     <constraint firstItem="DfE-Kp-XmY" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="ntL-1Y-dEk"/>
                                 </constraints>
@@ -82,8 +96,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -99,6 +115,7 @@
                     <connections>
                         <outlet property="deleteButton" destination="Sd8-dW-QcA" id="XIM-tk-C75"/>
                         <outlet property="favouriteButton" destination="DfE-Kp-XmY" id="5no-nx-88h"/>
+                        <outlet property="linkButton" destination="7h6-0X-CdX" id="6xZ-Oc-sps"/>
                         <outlet property="loveButton" destination="TOR-mh-aew" id="v1l-mT-puD"/>
                         <outlet property="moreButton" destination="rJI-wi-O3H" id="I5z-JG-r7H"/>
                         <outlet property="moreMenu" destination="Cy6-UT-pFS" id="ALI-JK-Q2p"/>
@@ -123,7 +140,7 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="15" y="185.5"/>
+            <point key="canvasLocation" x="15" y="184"/>
         </scene>
         <!--Song Buttons Pop Up View Controller-->
         <scene sceneID="MSW-nJ-jkA">
@@ -261,6 +278,7 @@
     <resources>
         <image name="icon.sp#icn-fm_delete" width="18" height="19"/>
         <image name="icon.sp#icn-fm_fav" width="18" height="18"/>
+        <image name="icon.sp#icn-fm_link" width="21" height="21"/>
         <image name="icon.sp#icn-fm_love" width="19" height="17"/>
         <image name="icon.sp#icn-fm_more" width="16" height="3"/>
     </resources>

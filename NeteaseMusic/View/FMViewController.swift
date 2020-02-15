@@ -156,6 +156,7 @@ class FMViewController: NSViewController {
     func initView(_ mode: CoversInitMode = .reset) {
         let playCore = PlayCore.shared
         var initMode = mode
+        songButtonsViewController()?.isFMView = true
         if coverViews.count != 4 || coverViewsLC.count != 4 {
             initCoverButtonsArray()
             initMode = .reset
