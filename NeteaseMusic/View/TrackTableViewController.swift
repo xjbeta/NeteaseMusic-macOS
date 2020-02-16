@@ -21,7 +21,11 @@ class TrackTableViewController: NSViewController {
         pc.start(clickedRow, enterFMMode: false)
     }
     
-    @objc dynamic var tracks = [Track]()
+    @objc dynamic var tracks = [Track]() {
+        didSet {
+            initCurrentTrack()
+        }
+    }
     var playlistId = -1
     var playlistType: SidebarViewController.ItemType = .none {
         didSet {
@@ -36,28 +40,39 @@ class TrackTableViewController: NSViewController {
         super.viewDidLoad()
         scrollView.responsiveScrolling = true
         initTableColumn()
-        
+        initObservers()
+    }
+    
+    func initObservers() {
+        currentTrackObserver?.invalidate()
+        playerStateObserver?.invalidate()
         currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.new, .initial]) { (pc, _) in
-            
-            self.tracks.filter {
-                $0.isCurrentTrack
-            }.forEach {
-                $0.isCurrentTrack = false
-            }
-            
-            guard let c = pc.currentTrack else { return }
+            self.initCurrentTrack()
+        }
+        
+        playerStateObserver =  PlayCore.shared.player.observe(\.timeControlStatus, options: [.new, .initial]) { (pc, _) in
+            let pc = PlayCore.shared
             self.tracks.first {
-                $0.from == c.from && $0.id == c.id
-            }?.isCurrentTrack = true
+                $0.isCurrentTrack
+                }?.isPlaying = pc.player.timeControlStatus == .playing
         }
-        
-       playerStateObserver =  PlayCore.shared.player.observe(\.timeControlStatus, options: [.new, .initial]) { (pc, _) in
+    }
+    
+    func initCurrentTrack() {
         let pc = PlayCore.shared
-        self.tracks.first {
+        tracks.filter {
             $0.isCurrentTrack
-        }?.isPlaying = pc.player.timeControlStatus == .playing
+        }.forEach {
+            $0.isCurrentTrack = false
         }
         
+        guard let c = pc.currentTrack else { return }
+
+        let t = tracks.first {
+            $0.from == c.from && $0.id == c.id
+        }
+        t?.isCurrentTrack = true
+        t?.isPlaying = pc.player.timeControlStatus == .playing
     }
     
     func initTableColumn() {
