@@ -29,10 +29,35 @@ class TrackTableViewController: NSViewController {
         }
     }
     
+    var currentTrackObserver: NSKeyValueObservation?
+    var playerStateObserver: NSKeyValueObservation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.responsiveScrolling = true
         initTableColumn()
+        
+        currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.new, .initial]) { (pc, _) in
+            
+            self.tracks.filter {
+                $0.isCurrentTrack
+            }.forEach {
+                $0.isCurrentTrack = false
+            }
+            
+            guard let c = pc.currentTrack else { return }
+            self.tracks.first {
+                $0.from == c.from && $0.id == c.id
+            }?.isCurrentTrack = true
+        }
+        
+       playerStateObserver =  PlayCore.shared.player.observe(\.timeControlStatus, options: [.new, .initial]) { (pc, _) in
+        let pc = PlayCore.shared
+        self.tracks.first {
+            $0.isCurrentTrack
+        }?.isPlaying = pc.player.timeControlStatus == .playing
+        }
+        
     }
     
     func initTableColumn() {
@@ -44,4 +69,10 @@ class TrackTableViewController: NSViewController {
     func resetData() {
         tracks.removeAll()
     }
+    
+    deinit {
+        currentTrackObserver?.invalidate()
+        playerStateObserver?.invalidate()
+    }
+    
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="maI-Rk-sVu">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="maI-Rk-sVu">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,6 +54,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="Hg5-UH-9pV" name="hidden" keyPath="objectValue.isCurrentTrack" id="9Yp-mC-zn1"/>
                                                                         <binding destination="Hg5-UH-9pV" name="value" keyPath="objectValue.index" id="OjK-Vo-xnA">
                                                                             <dictionary key="options">
                                                                                 <string key="NSValueTransformerName">IndexTransformer</string>
@@ -61,13 +62,37 @@
                                                                         </binding>
                                                                     </connections>
                                                                 </textField>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m4B-yM-Izw">
+                                                                    <rect key="frame" x="4" y="7" width="12" height="12"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="m4B-yM-Izw" secondAttribute="height" multiplier="1:1" id="kMc-vC-udc"/>
+                                                                        <constraint firstAttribute="width" constant="12" id="ned-gC-TSq"/>
+                                                                    </constraints>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyUpOrDown" image="playstate" id="XYf-Xu-8Bc"/>
+                                                                    <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                                    <connections>
+                                                                        <binding destination="Hg5-UH-9pV" name="hidden" keyPath="objectValue.isCurrentTrack" id="m9O-hi-J9L">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                        <binding destination="Hg5-UH-9pV" name="value" keyPath="objectValue.isPlaying" id="50S-78-PCL">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">TrackPlayStateTransformer</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </imageView>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstItem="m4B-yM-Izw" firstAttribute="centerY" secondItem="Hg5-UH-9pV" secondAttribute="centerY" id="6HJ-kF-Hml"/>
                                                                 <constraint firstAttribute="trailing" secondItem="msm-Qq-2fv" secondAttribute="trailing" constant="2" id="CYJ-kH-hY6"/>
                                                                 <constraint firstItem="msm-Qq-2fv" firstAttribute="centerY" secondItem="Hg5-UH-9pV" secondAttribute="centerY" id="M5W-AP-6iX"/>
+                                                                <constraint firstItem="m4B-yM-Izw" firstAttribute="leading" secondItem="Hg5-UH-9pV" secondAttribute="leading" constant="4" id="VBd-7s-61W"/>
                                                                 <constraint firstItem="msm-Qq-2fv" firstAttribute="leading" secondItem="Hg5-UH-9pV" secondAttribute="leading" constant="2" id="qvs-dw-t5x"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="imageView" destination="m4B-yM-Izw" id="lJi-e7-GLA"/>
                                                                 <outlet property="textField" destination="msm-Qq-2fv" id="Aph-20-XmZ"/>
                                                             </connections>
                                                         </tableCellView>
@@ -367,4 +392,7 @@
             <point key="canvasLocation" x="193.5" y="91.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="playstate" width="14" height="13"/>
+    </resources>
 </document>

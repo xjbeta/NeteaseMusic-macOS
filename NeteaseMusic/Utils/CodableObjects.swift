@@ -51,6 +51,9 @@ class Track: NSObject, Decodable {
     
     var from: (type: SidebarViewController.ItemType, id: Int, name: String?) = (.none, 0, nil)
     
+    @objc dynamic var isCurrentTrack = false
+    @objc dynamic var isPlaying = false
+    
     func playerItemm() -> Promise<AVPlayerItem?> {
         let br = Preferences.shared.musicBitRate.rawValue
         return Promise { resolver in

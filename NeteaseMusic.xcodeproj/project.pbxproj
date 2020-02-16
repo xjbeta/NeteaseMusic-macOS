@@ -117,6 +117,7 @@
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
 		01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */; };
 		01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */; };
+		01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
 		01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */; };
 		01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B76225C6551002D7906 /* MainWindowController.swift */; };
@@ -290,6 +291,7 @@
 		01E7C9D3228BB697004D80AD /* IdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdButton.swift; sourceTree = "<group>"; };
 		01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAAPMenuController.swift; sourceTree = "<group>"; };
 		01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAAPMenu.xib; sourceTree = "<group>"; };
+		01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPlayStateTransformer.swift; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutlineView.swift; sourceTree = "<group>"; };
 		01FF8B76225C6551002D7906 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */,
 				012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */,
 				0171427423C18E660051ADDF /* PlayableColorTransformer.swift */,
+				01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
 				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
+				01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
 				0171427523C18E660051ADDF /* PlayableColorTransformer.swift in Sources */,
 				01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */,
