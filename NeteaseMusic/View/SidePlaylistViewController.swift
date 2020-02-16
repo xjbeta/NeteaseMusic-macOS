@@ -47,6 +47,10 @@ class SidePlaylistViewController: NSViewController {
     
     var playlistObserver: NSKeyValueObservation?
     var historysObserver: NSKeyValueObservation?
+    
+    var currentTrackObserver: NSKeyValueObservation?
+    var playerStateObserver: NSKeyValueObservation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.menu = menuContainer.menu
@@ -57,6 +61,8 @@ class SidePlaylistViewController: NSViewController {
     func initObservers() {
         playlistObserver?.invalidate()
         historysObserver?.invalidate()
+        currentTrackObserver?.invalidate()
+        playerStateObserver?.invalidate()
         playlist.removeAll()
         switch segmentedControl.selectedSegment {
         case 0:
@@ -76,6 +82,27 @@ class SidePlaylistViewController: NSViewController {
         default:
             break
         }
+        
+        currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.new, .initial]) { (pc, _) in
+            
+            self.playlist.filter {
+                $0.isCurrentTrack
+            }.forEach {
+                $0.isCurrentTrack = false
+            }
+            
+            guard let c = pc.currentTrack else { return }
+            self.playlist.first {
+                $0.from == c.from && $0.id == c.id
+                }?.isCurrentTrack = true
+        }
+        
+        playerStateObserver =  PlayCore.shared.player.observe(\.timeControlStatus, options: [.new, .initial]) { (pc, _) in
+            let pc = PlayCore.shared
+            self.playlist.first {
+                $0.isCurrentTrack
+                }?.isPlaying = pc.player.timeControlStatus == .playing
+        }
     }
     
     func updateSongsCount() {
@@ -85,6 +112,8 @@ class SidePlaylistViewController: NSViewController {
     deinit {
         playlistObserver?.invalidate()
         historysObserver?.invalidate()
+        currentTrackObserver?.invalidate()
+        playerStateObserver?.invalidate()
     }
 }
 
