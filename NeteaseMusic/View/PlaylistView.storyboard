@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rJU-yY-OIR">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rJU-yY-OIR">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,13 +17,6 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ud1-DB-hxL">
                                 <rect key="frame" x="0.0" y="440" width="822" height="120"/>
                                 <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o6X-zr-lKP">
-                                        <rect key="frame" x="15" y="15" width="90" height="90"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="o6X-zr-lKP" secondAttribute="height" multiplier="1:1" id="lJb-LC-gJA"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="bQC-dU-dhD"/>
-                                    </imageView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-Nf-G1i">
                                         <rect key="frame" x="125" y="12" width="165" height="97"/>
                                         <subviews>
@@ -213,15 +206,69 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="Qfd-8x-2jZ">
+                                        <rect key="frame" x="15" y="15" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Qfd-8x-2jZ" secondAttribute="height" multiplier="1:1" id="MLg-UT-LbE"/>
+                                        </constraints>
+                                        <font key="font" metaFont="system"/>
+                                        <tabViewItems>
+                                            <tabViewItem label="Tab" identifier="1" id="oKQ-aj-BBy" userLabel="Cover">
+                                                <view key="view" id="rYo-r5-On9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o6X-zr-lKP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="bQC-dU-dhD"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="o6X-zr-lKP" firstAttribute="top" secondItem="rYo-r5-On9" secondAttribute="top" id="4Cy-Ij-ryQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="o6X-zr-lKP" secondAttribute="bottom" id="A1i-AL-2bO"/>
+                                                        <constraint firstAttribute="trailing" secondItem="o6X-zr-lKP" secondAttribute="trailing" id="pAX-xy-dpp"/>
+                                                        <constraint firstItem="o6X-zr-lKP" firstAttribute="leading" secondItem="rYo-r5-On9" secondAttribute="leading" id="s5R-bf-FSb"/>
+                                                    </constraints>
+                                                </view>
+                                            </tabViewItem>
+                                            <tabViewItem label="View" identifier="2" id="m7e-0g-rpV" userLabel="Daily">
+                                                <view key="view" id="E4T-UH-DgN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VO7-ym-DUf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="cover.sp#icn-calendar_box" id="CXL-Tu-Dd8"/>
+                                                        </imageView>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xtk-1v-I8Y">
+                                                            <rect key="frame" x="22" y="14" width="47" height="40"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="00" id="HFh-2J-y6v">
+                                                                <font key="font" metaFont="system" size="34"/>
+                                                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="VO7-ym-DUf" firstAttribute="leading" secondItem="E4T-UH-DgN" secondAttribute="leading" id="DTa-2x-wgC"/>
+                                                        <constraint firstItem="VO7-ym-DUf" firstAttribute="top" secondItem="E4T-UH-DgN" secondAttribute="top" id="EXI-xk-cVt"/>
+                                                        <constraint firstItem="Xtk-1v-I8Y" firstAttribute="top" secondItem="E4T-UH-DgN" secondAttribute="top" constant="36" id="P4O-WV-yEi"/>
+                                                        <constraint firstAttribute="bottom" secondItem="VO7-ym-DUf" secondAttribute="bottom" id="gTF-rE-Jq4"/>
+                                                        <constraint firstItem="Xtk-1v-I8Y" firstAttribute="centerX" secondItem="VO7-ym-DUf" secondAttribute="centerX" id="oNx-Cq-PvH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="VO7-ym-DUf" secondAttribute="trailing" id="uY6-2T-0Ov"/>
+                                                    </constraints>
+                                                </view>
+                                            </tabViewItem>
+                                        </tabViewItems>
+                                    </tabView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="2d0-ZZ-SO7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HBQ-Nf-G1i" secondAttribute="trailing" constant="20" id="2Mb-3G-9Lp"/>
                                     <constraint firstItem="HBQ-Nf-G1i" firstAttribute="centerY" secondItem="ud1-DB-hxL" secondAttribute="centerY" id="3NK-NN-EQe"/>
-                                    <constraint firstItem="HBQ-Nf-G1i" firstAttribute="leading" secondItem="o6X-zr-lKP" secondAttribute="trailing" constant="20" id="IT7-1d-CAs"/>
+                                    <constraint firstItem="Qfd-8x-2jZ" firstAttribute="leading" secondItem="ud1-DB-hxL" secondAttribute="leading" constant="15" id="9sJ-Vz-bDo"/>
+                                    <constraint firstItem="HBQ-Nf-G1i" firstAttribute="leading" secondItem="Qfd-8x-2jZ" secondAttribute="trailing" constant="20" id="KbT-De-eRd"/>
                                     <constraint firstAttribute="bottom" secondItem="NMj-IR-qPf" secondAttribute="bottom" constant="10" id="LIu-Ic-TRt"/>
-                                    <constraint firstItem="o6X-zr-lKP" firstAttribute="leading" secondItem="ud1-DB-hxL" secondAttribute="leading" constant="15" id="UEs-Yo-DWF"/>
-                                    <constraint firstItem="o6X-zr-lKP" firstAttribute="top" secondItem="ud1-DB-hxL" secondAttribute="top" constant="15" id="VWa-NA-mfC"/>
-                                    <constraint firstAttribute="bottom" secondItem="o6X-zr-lKP" secondAttribute="bottom" constant="15" id="aCy-vb-uEe"/>
+                                    <constraint firstItem="Qfd-8x-2jZ" firstAttribute="top" secondItem="ud1-DB-hxL" secondAttribute="top" constant="15" id="Unc-JA-iCJ"/>
                                     <constraint firstAttribute="trailing" secondItem="NMj-IR-qPf" secondAttribute="trailing" constant="20" id="psw-wO-VHx"/>
                                     <constraint firstAttribute="height" constant="120" id="qKJ-o4-z2d"/>
                                 </constraints>
@@ -234,6 +281,7 @@
                             </containerView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="UNI-Cz-U6E" firstAttribute="top" secondItem="Qfd-8x-2jZ" secondAttribute="bottom" constant="15" id="7qD-3R-nvO"/>
                             <constraint firstAttribute="trailing" secondItem="ud1-DB-hxL" secondAttribute="trailing" id="MiX-Ir-oal"/>
                             <constraint firstItem="ud1-DB-hxL" firstAttribute="leading" secondItem="LrU-MC-bgq" secondAttribute="leading" id="Z5W-Sc-X1E"/>
                             <constraint firstItem="ud1-DB-hxL" firstAttribute="top" secondItem="LrU-MC-bgq" secondAttribute="top" id="az1-HI-4FS"/>
@@ -248,6 +296,8 @@
                         <outlet property="artistTextField" destination="dfT-ha-j7E" id="0yu-le-lIv"/>
                         <outlet property="countAndViewsStackView" destination="R8B-gw-Jw9" id="wcz-fA-0kT"/>
                         <outlet property="coverImageView" destination="o6X-zr-lKP" id="aWD-dX-5FJ"/>
+                        <outlet property="coverTabView" destination="Qfd-8x-2jZ" id="lIH-RR-hc8"/>
+                        <outlet property="dateTextField" destination="Xtk-1v-I8Y" id="Rxh-3K-QP9"/>
                         <outlet property="descriptionStackView" destination="XPC-lw-bZ5" id="Cpa-cQ-i8o"/>
                         <outlet property="descriptionTextField" destination="bI7-3H-ohy" id="jOM-8e-iLR"/>
                         <outlet property="playAllButton" destination="2d0-ZZ-SO7" id="4TX-5T-i0X"/>
@@ -270,4 +320,7 @@
             <point key="canvasLocation" x="1771" y="90"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cover.sp#icn-calendar_box" width="80" height="79"/>
+    </resources>
 </document>

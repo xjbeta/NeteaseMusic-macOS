@@ -13,8 +13,10 @@ class PlaylistViewController: NSViewController {
     
     @IBOutlet weak var playAllButton: NSButton!
     @IBOutlet weak var subscribeButton: SubscribeButton!
+    @IBOutlet weak var coverTabView: NSTabView!
     @IBOutlet weak var coverImageView: NSImageView!
     @IBOutlet weak var titleTextFiled: NSTextField!
+    @IBOutlet weak var dateTextField: NSTextField!
     
     @IBOutlet weak var playCountTextField: NSTextField!
     @IBOutlet weak var trackCountTextField: NSTextField!
@@ -138,6 +140,16 @@ class PlaylistViewController: NSViewController {
         subscribeButton.isHidden = typeList.contains(playlistType)
         subscribeButton.isEnabled = true
         descriptionStackView.isHidden = playlistType == .topSongs
+        
+        let isRecommandSongs = playlistType == .discoverPlaylist && playlistId == -114514
+        
+        coverTabView.selectTabViewItem(at: isRecommandSongs ? 1 : 0)
+        if isRecommandSongs {
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM"
+            dateTextField.stringValue = formatter.string(from: date)
+        }
     }
     
     func initPlaylistContent() {
