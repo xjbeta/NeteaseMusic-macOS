@@ -24,7 +24,7 @@ class DailyCollectionViewItem: NSCollectionViewItem {
     func initDateTextField() {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM"
+        formatter.dateFormat = "dd"
         dateTextField.stringValue = formatter.string(from: date)
     }
     

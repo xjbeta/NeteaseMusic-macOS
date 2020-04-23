@@ -147,7 +147,7 @@ class PlaylistViewController: NSViewController {
         if isRecommandSongs {
             let date = Date()
             let formatter = DateFormatter()
-            formatter.dateFormat = "MM"
+            formatter.dateFormat = "dd"
             dateTextField.stringValue = formatter.string(from: date)
         }
     }
