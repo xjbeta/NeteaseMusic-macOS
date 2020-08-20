@@ -734,17 +734,24 @@ class NeteaseMusicAPI: NSObject {
         struct Result: Decodable {
             let songs: [Track]
             let code: Int
+            let privileges: [Track.Privilege]
         }
         
         // Can't get album picUrl if cookies contains pc=os.
         return request("https://music.163.com/weapi/v3/song/detail",
                    p,
                    Result.self).map {
-                    if $0.code == 200 {
-                        return ($0.songs)
-                    } else {
+                    guard $0.code == 200, $0.songs.count == $0.privileges.count else {
                         throw RequestError.errorCode(($0.code, ""))
                     }
+                    
+                    let re = $0.songs
+                    let p = $0.privileges
+                    re.enumerated().forEach {
+                        guard $0.element.id == p[$0.offset].id else { return }
+                        re[$0.offset].privilege = p[$0.offset]
+                    }
+                    return re
         }
     }
     
