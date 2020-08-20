@@ -101,6 +101,7 @@ class ControlBarViewController: NSViewController {
     var previousButtonObserver: NSKeyValueObservation?
     var currentTrackObserver: NSKeyValueObservation?
     var currentFMTrackObserver: NSKeyValueObservation?
+    var fmModeObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,6 +149,13 @@ class ControlBarViewController: NSViewController {
         currentFMTrackObserver = playCore.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
             guard playCore.fmMode, let track = playCore.currentFMTrack else { return }
             self?.initViews(track)
+        }
+        
+        fmModeObserver = playCore.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playCore, changes) in
+            let fmMode = playCore.fmMode
+            self?.previousButton.isHidden = fmMode
+            self?.repeatModeButton.isHidden = fmMode
+            self?.shuffleModeButton.isHidden = fmMode
         }
     }
     
@@ -233,6 +241,7 @@ class ControlBarViewController: NSViewController {
 //        muteStautsObserver?.invalidate()
         currentTrackObserver?.invalidate()
         currentFMTrackObserver?.invalidate()
+        fmModeObserver?.invalidate()
     }
     
 }
