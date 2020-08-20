@@ -145,9 +145,18 @@ class FMViewController: NSViewController {
     }
     
     func loadFMTracks() {
-        let playCore = PlayCore.shared
-        playCore.api.radioGet().done {
-            playCore.fmPlaylist.append(contentsOf: $0)
+        let pc = PlayCore.shared
+        if let track = pc.currentFMTrack,
+            let index = pc.fmPlaylist.firstIndex(of: track) {
+            if (pc.fmPlaylist.count - index) > 5 {
+                return
+            }
+        } else if pc.fmPlaylist.count > 5 {
+            return
+        }
+        
+        pc.api.radioGet().done {
+            pc.fmPlaylist.append(contentsOf: $0)
             }.catch {
                 print($0)
         }
