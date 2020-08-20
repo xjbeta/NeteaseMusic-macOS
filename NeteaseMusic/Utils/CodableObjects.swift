@@ -244,6 +244,7 @@ class Song: NSObject, Decodable {
     let payed: Int
     let level: String?
     let encodeType: String?
+    let expi: Int
 }
 
 struct RecommendResource: Decodable {
