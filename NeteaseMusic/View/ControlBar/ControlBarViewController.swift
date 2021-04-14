@@ -46,7 +46,7 @@ class ControlBarViewController: NSViewController {
             let mute = !player.isMuted
             player.isMuted = mute
             preferences.mute = mute
-            muteButton.image = mute ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice"))
+            initVolumeButton()
         case repeatModeButton:
             switch preferences.repeatMode {
             case .noRepeat:
@@ -91,6 +91,7 @@ class ControlBarViewController: NSViewController {
             let v = volumeSlider.floatValue
             PlayCore.shared.player.volume = v
             Preferences.shared.volume = v
+            initVolumeButton()
         default:
             break
         }
@@ -103,19 +104,18 @@ class ControlBarViewController: NSViewController {
     var currentFMTrackObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
     
+    let imgSize = NSSize(width: 15, height: 13)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        playlistButton.image?.size = imgSize
+        
         let playCore = PlayCore.shared
         
         addPeriodicTimeObserver()
         
-        let volume = Preferences.shared.volume
-        volumeSlider.floatValue = volume
-        playCore.player.volume = volume
+        initVolumeButton()
         
-        let mute = Preferences.shared.mute
-        muteButton.image = mute ? NSImage(named: NSImage.Name("btmbar.sp#icn-silence")) : NSImage(named: NSImage.Name("btmbar.sp#icn-voice"))
-        playCore.player.isMuted = mute
         
         trackPicButton.wantsLayer = true
         trackPicButton.layer?.cornerRadius = 4
@@ -129,9 +129,9 @@ class ControlBarViewController: NSViewController {
         pauseStautsObserver = playCore.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             switch player.timeControlStatus {
             case .playing:
-                self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-pause"))
+                self?.pauseButton.image = NSImage(named: NSImage.Name("sf.pause.circle"))
             case .paused:
-                self?.pauseButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-play"))
+                self?.pauseButton.image = NSImage(named: NSImage.Name("sf.play.circle"))
             default:
                 break
             }
@@ -207,31 +207,61 @@ class ControlBarViewController: NSViewController {
         }
     }
     
-    func initPlayModeButton() {
-        let preferences = Preferences.shared
-        switch preferences.repeatMode {
-        case .repeatPlayList:
-            repeatModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-loop"))
-            repeatModeButton.isTransparent = false
-        case .repeatItem:
-            repeatModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-one"))
-            repeatModeButton.isTransparent = false
-        case .noRepeat:
-            repeatModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-loop"))
-            repeatModeButton.isTransparent = true
-        }
+    func initVolumeButton() {
+        let pc = PlayCore.shared
+        let pref = Preferences.shared
         
-        switch preferences.shuffleMode {
-        case .shuffleItems:
-            shuffleModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
-            shuffleModeButton.isTransparent = false
-        case .shuffleAlbums:
-            shuffleModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
-            shuffleModeButton.isTransparent = false
-        case .noShuffle:
-            shuffleModeButton.image = NSImage(named: NSImage.Name("btmbar.sp#icn-shuffle"))
-            shuffleModeButton.isTransparent = true
+        let volume = pref.volume
+        volumeSlider.floatValue = volume
+        pc.player.volume = volume
+        
+        let mute = pref.mute
+        pc.player.isMuted = mute
+        
+        var imageName = ""
+        if mute {
+            imageName = "sf.speaker.slash"
+        } else {
+            switch volume {
+            case 0:
+                imageName = "sf.speaker"
+            case 0..<1/3:
+                imageName = "sf.speaker.wave.1"
+            case 1/3..<2/3:
+                imageName = "sf.speaker.wave.2"
+            case 2/3...1:
+                imageName = "sf.speaker.wave.3"
+            default:
+                imageName = "sf.speaker"
+            }
         }
+        guard let image = NSImage(named: NSImage.Name(imageName)) else {
+            return
+        }
+        let h: CGFloat = 14
+        let s = image.size
+        image.size = .init(width: (s.width / s.height) * h,
+                           height: h)
+        muteButton.image = image
+    }
+    
+    func initPlayModeButton() {
+        let pref = Preferences.shared
+        
+        let repeatImgName = pref.repeatMode == .repeatItem ? "sf.repeat.1" : "sf.repeat"
+        let shuffleImgName = "sf.shuffle"
+        
+        let repeatImgColor: NSColor = pref.repeatMode == .noRepeat ? .systemGray : .systemRed
+        let shuffleImgColor: NSColor = pref.shuffleMode == .noShuffle ? .systemGray : .systemRed
+
+        let repeatImage = NSImage(named: .init(repeatImgName))
+        let shuffleImage = NSImage(named: .init(shuffleImgName))
+        
+        repeatImage?.size = imgSize
+        shuffleImage?.size = imgSize
+        
+        repeatModeButton.image = repeatImage?.tint(color: repeatImgColor)
+        shuffleModeButton.image = shuffleImage?.tint(color: shuffleImgColor)
     }
     
     deinit {
