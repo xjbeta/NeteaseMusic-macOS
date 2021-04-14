@@ -165,10 +165,11 @@ class ControlBarViewController: NSViewController {
         let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
         periodicTimeObserverToken = PlayCore.shared.player
             .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-                guard let duration = PlayCore.shared.player.currentItem?.asset.duration,
+                let player = PlayCore.shared.player
+                guard let duration = player.currentItem?.asset.duration,
                     let slider = self?.durationSlider else { return }
                 
-                let loadedTimeRanges = PlayCore.shared.player.currentItem?.loadedTimeRanges
+                let loadedTimeRanges = player.currentItem?.loadedTimeRanges
 
                 let periodicSec = Double(CMTimeGetSeconds(time))
                 slider.updateValue(periodicSec)
@@ -182,6 +183,12 @@ class ControlBarViewController: NSViewController {
                     let sec = Double(CMTimeGetSeconds(time))
                     let todo = "Update cache value when paused."
                     slider.cachedDoubleValue = sec
+                    
+                    let loadProgress = sec / durationSec
+                    guard let item = player.currentItem as? NeteasePlayerItem,
+                          item.downloadState != .downloadFinished,
+                        loadProgress == 1 else { return }
+                    NotificationCenter.default.post(name: .AVPlayerItemDownloadFinished, object: nil, userInfo: ["id": item.id])
                 }
                 
                 self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"

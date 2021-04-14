@@ -24,6 +24,7 @@ class PlayCore: NSObject {
     let player = AVPlayer()
     
     var playerShouldNextObserver: NSObjectProtocol?
+    var playerItemDownloadObserver: NSObjectProtocol?
     var playerStateObserver: NSKeyValueObservation?
     var playingInfoObserver: NSKeyValueObservation?
     
@@ -57,11 +58,9 @@ class PlayCore: NSObject {
         }
         
         fmMode = enterFMMode
+        initObservers()
+        playedList.removeAll()
         
-        removeObserver()
-        playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
-            self.nextSong()
-        }
         if fmMode {
             if let track = currentFMTrack {
                 if fmSavedTime.id == track.id {
@@ -172,10 +171,32 @@ class PlayCore: NSObject {
         }
     }
     
-    func removeObserver() {
+    func initObservers() {
+        removeObservers()
+        playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
+            self.nextSong()
+        }
+        
+        playerItemDownloadObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDownloadFinished, object: nil, queue: .main) {
+            let list = self.fmMode ? self.fmPlaylist : self.playlist
+            
+            guard let dic = $0.object as? [String: Int],
+                  let id = dic["id"],
+                  let item = list.first(where: { $0.id == id })?.playerItem else { return }
+            
+            item.downloadState = .downloadFinished
+            self.loadMoreItems()
+        }
+    }
+    
+    func removeObservers() {
         if let obs = playerShouldNextObserver {
             NotificationCenter.default.removeObserver(obs)
             playerShouldNextObserver = nil
+        }
+        if let obs = playerItemDownloadObserver {
+            NotificationCenter.default.removeObserver(obs)
+            playerItemDownloadObserver = nil
         }
     }
     
@@ -285,7 +306,7 @@ class PlayCore: NSObject {
     
     deinit {
         deinitMediaKeysObservers()
-        removeObserver()
+        removeObservers()
     }
 }
 
