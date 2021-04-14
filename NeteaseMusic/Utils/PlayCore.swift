@@ -9,6 +9,7 @@
 import Cocoa
 import MediaPlayer
 import AVFoundation
+import PromiseKit
 
 class PlayCore: NSObject {
     static let shared = PlayCore()
@@ -52,7 +53,11 @@ class PlayCore: NSObject {
     @objc dynamic var currentFMTrack: Track?
     private var fmSavedTime = (id: -1, time: CMTime())
     
-    func start(_ index: Int = 0, enterFMMode: Bool = false) {
+    private var playedList = [Int]()
+    
+    func start(_ playlist: [Track],
+               index: Int = 0,
+               enterFMMode: Bool = false) {
         if fmMode, !enterFMMode {
             fmSavedTime = (currentFMTrack?.id ?? -1, player.currentTime())
         }
@@ -71,6 +76,9 @@ class PlayCore: NSObject {
                 fmSavedTime = (id: -1, time: CMTime())
             }
         } else {
+            guard playlist.count > 0 else { return }
+            self.playlist = playlist
+            playedList.removeAll()
             if let track = playlist[safe: index] {
                 play(track)
             }
@@ -224,14 +232,14 @@ class PlayCore: NSObject {
                 player.pause()
             }
         }
-        if PlayCore.shared.fmMode, PlayCore.shared.currentFMTrack != nil {
+        if fmMode, currentFMTrack != nil {
             playOrPause()
-        } else if !PlayCore.shared.fmMode, PlayCore.shared.currentTrack != nil {
+        } else if !fmMode, currentTrack != nil {
             playOrPause()
         } else if let item = ViewControllerManager.shared.selectedSidebarItem?.type {
             switch item {
             case .fm:
-                PlayCore.shared.start(enterFMMode: true)
+                start([], enterFMMode: true)
             case .createdPlaylist, .subscribedPlaylist:
                 let todo = "play playlist."
                 break

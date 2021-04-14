@@ -41,7 +41,7 @@ class SongButtonsViewController: NSViewController {
                 self.pc.currentFMTrack = self.pc.fmPlaylist[safe: i]
                 
                 if self.pc.fmMode {
-                    self.pc.start(enterFMMode: true)
+                    self.pc.start([], enterFMMode: true)
                 }
                 print("fmTrash \(id) done.")
             }.ensure(on: .main) {

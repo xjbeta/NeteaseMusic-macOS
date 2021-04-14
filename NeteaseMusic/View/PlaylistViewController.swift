@@ -28,13 +28,8 @@ class PlaylistViewController: NSViewController {
     @IBOutlet weak var artistStackView: NSStackView!
     
     @IBAction func playPlaylist(_ sender: Any) {
-        let ids = tracks.map { $0.id }
-        if PlayCore.shared.playlist.map({ $0.id }) != ids {
-            PlayCore.shared.playlist = tracks
-        }
-        
         if (sender as? NSButton) == playAllButton {
-            PlayCore.shared.start()
+            PlayCore.shared.start(tracks)
         }
     }
     

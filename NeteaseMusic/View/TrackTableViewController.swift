@@ -18,7 +18,7 @@ class TrackTableViewController: NSViewController {
         guard let _ = tracks[safe: clickedRow] else { return }
         let pc = PlayCore.shared
         pc.playlist = tracks
-        pc.start(clickedRow, enterFMMode: false)
+        pc.start(tracks, index: clickedRow)
     }
     
     @objc dynamic var tracks = [Track]() {

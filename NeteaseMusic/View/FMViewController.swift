@@ -41,7 +41,7 @@ class FMViewController: NSViewController {
                 player.pause()
             }
         } else {
-            PlayCore.shared.start(enterFMMode: true)
+            PlayCore.shared.start([], enterFMMode: true)
         }
     }
     

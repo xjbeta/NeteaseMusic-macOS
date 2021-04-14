@@ -50,13 +50,13 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 let index = pc.playlist.enumerated().first(where: { $0.element.id == id })?.offset else {
                 return
             }
-            pc.start(index, enterFMMode: false)
+            pc.start(pc.playlist, index: index)
         } else {
             getTracksForPlay().done {
                 let ts = $0
                 if ts.count > 0 {
                     pc.playlist = ts
-                    pc.start()
+                    pc.start(ts)
                 } else {
                     print("Play empty tracks.")
                 }
@@ -76,7 +76,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                     pc.playlist.insert(contentsOf: ts, at: i + 1)
                 } else {
                     pc.playlist = ts
-                    pc.start()
+                    pc.start(ts)
                 }
             } else {
                 print("Play empty tracks.")
