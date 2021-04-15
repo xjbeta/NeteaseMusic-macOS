@@ -15,10 +15,10 @@ class TrackTableViewController: NSViewController {
     
     @IBAction func doubleAction(_ sender: NSTableView) {
         let clickedRow = sender.clickedRow
-        guard let _ = tracks[safe: clickedRow] else { return }
+        guard let track = tracks[safe: clickedRow] else { return }
         let pc = PlayCore.shared
         pc.playlist = tracks
-        pc.start(tracks, index: clickedRow)
+        pc.start(tracks, id: track.id)
     }
     
     @objc dynamic var tracks = [Track]() {

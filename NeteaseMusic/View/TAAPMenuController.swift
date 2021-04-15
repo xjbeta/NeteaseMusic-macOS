@@ -46,11 +46,10 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         guard let d = delegate else { return }
         let pc = PlayCore.shared
         if d.tableViewList().type == .sidePlaylist {
-            guard let id = d.selectedItems().id.first,
-                let index = pc.playlist.enumerated().first(where: { $0.element.id == id })?.offset else {
+            guard let id = d.selectedItems().id.first else {
                 return
             }
-            pc.start(pc.playlist, index: index)
+            pc.start(pc.playlist, id: id)
         } else {
             getTracksForPlay().done {
                 let ts = $0

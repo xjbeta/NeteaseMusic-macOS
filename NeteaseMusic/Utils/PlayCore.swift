@@ -18,8 +18,13 @@ class PlayCore: NSObject {
         player.automaticallyWaitsToMinimizeStalling = false
     }
     
+// MARK: - NowPlayingInfoCenter
+    
     let remoteCommandCenter = MPRemoteCommandCenter.shared()
     let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
+    let seekTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+    
+// MARK: - AVPlayer
     
     let api = NeteaseMusicAPI()
     let player = AVPlayer()
@@ -29,15 +34,15 @@ class PlayCore: NSObject {
     var playerStateObserver: NSKeyValueObservation?
     var playingInfoObserver: NSKeyValueObservation?
     
-    let seekTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
-    
+    @objc dynamic var currentTrack: Track?
     @objc dynamic var playlist: [Track] = []
+    var plIDPrepared = [Int]()
+    var playedIDInLoop = [Int]()
+    
     @objc dynamic var historys: [Track] = []
     
-    @objc dynamic var currentTrack: Track?
     
     
-
     @objc dynamic var playedTracks = [Int]()
     var playedAlbums = [Int]()
     
@@ -49,61 +54,84 @@ class PlayCore: NSObject {
             }
         }
     }
-    @objc dynamic var fmPlaylist: [Track] = []
-    @objc dynamic var currentFMTrack: Track?
+    
     private var fmSavedTime = (id: -1, time: CMTime())
     
-    private var playedList = [Int]()
+    
+// MARK: - AVPlayer Functions
     
     func start(_ playlist: [Track],
-               index: Int = 0,
+               id: Int = -1,
                enterFMMode: Bool = false) {
+        self.playlist = playlist
+        
+        
         if fmMode, !enterFMMode {
-            fmSavedTime = (currentFMTrack?.id ?? -1, player.currentTime())
+            fmSavedTime = (currentTrack?.id ?? -1, player.currentTime())
         }
         
         fmMode = enterFMMode
         initObservers()
-        playedList.removeAll()
         
-        if fmMode {
-            if let track = currentFMTrack {
-                if fmSavedTime.id == track.id {
-                    play(track, time: fmSavedTime.time)
-                } else {
-                    play(track)
-                }
-                fmSavedTime = (id: -1, time: CMTime())
-            }
-        } else {
-            guard playlist.count > 0 else { return }
-            self.playlist = playlist
-            playedList.removeAll()
-            if let track = playlist[safe: index] {
-                play(track)
-            }
+        playedIDInLoop.removeAll()
+        
+        guard playlist.count > 0 else { return }
+        
+        if fmMode,
+           let track = currentTrack,
+           fmSavedTime.id == track.id {
+            play(track, time: fmSavedTime.time)
+        } else if let track = playlist.first(where: { $0.id == id }) {
+            play(track)
+        } else if let track = playlist.first {
+            play(track)
         }
     }
     
-    func play(_ track: Track, time: CMTime = CMTime(value: 0, timescale: 1000)) {
-        track.playerItemm().done {
-            if self.fmMode {
-                self.currentFMTrack = track
-            } else {
-                self.currentTrack = track
+    private func play(_ track: Track, time: CMTime = CMTime(value: 0, timescale: 1000)) {
+        if track.song != nil {
+            
+            
+            
+        } else {
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        playerItems([track.id]).done {
+            
+            guard let re = $0.first else {
+                let t = "empty result"
+                return
             }
             
+            guard re.2 != nil else {
+                let t = "nil item"
+                return
+            }
+            
+            track.song = re.1
+            
+            self.currentTrack = track
+
             self.player.pause()
-            self.player.replaceCurrentItem(with: $0)
+            self.player.replaceCurrentItem(with: re.2)
             self.player.seek(to: time) {_ in
                 self.player.play()
             }
-            
+
             self.historys.removeAll {
                 $0.id == track.id
             }
             self.historys.append(track)
-            
+            self.playedIDInLoop.append(track.id)
+
             if self.historys.count > 100 {
                 self.historys.removeFirst()
             }
@@ -114,10 +142,14 @@ class PlayCore: NSObject {
     
     func nextSong() {
         guard !fmMode else {
-            guard let currentTrack = currentFMTrack,
-                let index = fmPlaylist.firstIndex(of: currentTrack),
-                let nextTrack = fmPlaylist[safe: index + 1] else { return }
-            play(nextTrack)
+            if let track = currentTrack,
+               let i = playlist.firstIndex(of: track),
+               let next = playlist[safe: i + 1] {
+                play(next)
+            } else {
+                // todo
+                print("Can't find next FM track.")
+            }
             return
         }
         
@@ -166,10 +198,14 @@ class PlayCore: NSObject {
     
     func previousSong() {
         if fmMode {
-            guard let currentTrack = currentFMTrack,
-                let index = fmPlaylist.firstIndex(of: currentTrack),
-                let prevTrack = fmPlaylist[safe: index - 1] else { return }
-            play(prevTrack)
+            if let track = currentTrack,
+               let i = playlist.firstIndex(of: track),
+               let prev = playlist[safe: i - 1] {
+                play(prev)
+            } else {
+                // todo
+                print("Can't find prev FM track.")
+            }
         } else {
             guard playedTracks.count > 0 else { return }
             if let id = playedTracks.last, let track = playlist.first(where: { $0.id == id }) {
@@ -186,11 +222,9 @@ class PlayCore: NSObject {
         }
         
         playerItemDownloadObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDownloadFinished, object: nil, queue: .main) {
-            let list = self.fmMode ? self.fmPlaylist : self.playlist
-            
             guard let dic = $0.object as? [String: Int],
                   let id = dic["id"],
-                  let item = list.first(where: { $0.id == id })?.playerItem else { return }
+                  let item = self.playlist.first(where: { $0.id == id })?.playerItem else { return }
             
             item.downloadState = .downloadFinished
             self.loadMoreItems()
@@ -232,9 +266,7 @@ class PlayCore: NSObject {
                 player.pause()
             }
         }
-        if fmMode, currentFMTrack != nil {
-            playOrPause()
-        } else if !fmMode, currentTrack != nil {
+        if currentTrack != nil {
             playOrPause()
         } else if let item = ViewControllerManager.shared.selectedSidebarItem?.type {
             switch item {
@@ -271,11 +303,7 @@ class PlayCore: NSObject {
     func stop() {
         player.pause()
         player.replaceCurrentItem(with: nil)
-        if fmMode {
-            currentFMTrack = nil
-        } else {
-            currentTrack = nil
-        }
+        currentTrack = nil
     }
     
     func toggleRepeatMode() {
@@ -298,6 +326,35 @@ class PlayCore: NSObject {
         let rhs = CMTimeMakeWithSeconds(-5, preferredTimescale: 1)
         let t = CMTimeAdd(lhs, rhs)
         player.seek(to: t)
+    }
+    
+    func playerItems(_ ids: [Int]) -> Promise<[(Int, Song, AVPlayerItem?)]> {
+        let br = Preferences.shared.musicBitRate.rawValue
+        return Promise { resolver in
+            api.songUrl(ids, br).done {
+                let re = $0.map { s -> (id: Int, song: Song, playerItem: AVPlayerItem?) in
+                    
+                    var r: (id: Int, song: Song, playerItem: AVPlayerItem?) = (s.id, s, nil)
+                    
+                    guard let uStr = s.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
+                        let url = URL(string: uStr) else {
+                        return r
+                    }
+                    
+                    let asset = AVURLAsset(url: url)
+                    guard asset.isPlayable else { return r }
+                    r.playerItem = AVPlayerItem(asset: asset)
+                    return r
+                }
+                
+                resolver.fulfill(re)
+                }.catch {
+                    resolver.reject($0)
+            }
+        }
+    }
+    
+    func loadMoreItems() {
     }
     
     func setupSystemMediaKeys() {

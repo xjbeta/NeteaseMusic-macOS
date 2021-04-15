@@ -33,15 +33,17 @@ class SongButtonsViewController: NSViewController {
         case deleteButton:
             deleteButton.isEnabled = false
             pc.api.fmTrash(id: id, time).done {
-                let index = self.pc.fmPlaylist.enumerated().first {
-                    $0.element.id == id
-                }?.offset
-                guard let i = index else { return }
-                self.pc.fmPlaylist.remove(at: i)
-                self.pc.currentFMTrack = self.pc.fmPlaylist[safe: i]
+                guard let vc = self.parent as? FMViewController,
+                      let track = vc.fmPlaylist.enumerated().first(where: {
+                        $0.element.id == id
+                    }) else { return }
                 
+                let index = track.offset
+                vc.fmPlaylist.remove(at: index)
                 if self.pc.fmMode {
-                    self.pc.start([], enterFMMode: true)
+                    self.pc.start(vc.fmPlaylist,
+                                  id: track.element.id,
+                                  enterFMMode: true)
                 }
                 print("fmTrash \(id) done.")
             }.ensure(on: .main) {

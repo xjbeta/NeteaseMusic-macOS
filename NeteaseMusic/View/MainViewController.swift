@@ -66,12 +66,14 @@ class MainViewController: NSViewController {
         }
         
         playingSongNotification = NotificationCenter.default.addObserver(forName: .showPlayingSong, object: nil, queue: .main) { [weak self] _ in
-            if PlayCore.shared.fmMode,
-                let _ = PlayCore.shared.currentFMTrack {
+            let pc = PlayCore.shared
+            
+            if pc.fmMode,
+               let _ = pc.currentTrack {
                 ViewControllerManager.shared.selectSidebarItem(.fm)
-            } else if !PlayCore.shared.fmMode,
-                let _ = PlayCore.shared.currentTrack,
-                let playingSongViewStatus = self?.playingSongViewStatus {
+            } else if !pc.fmMode,
+                      let _ = pc.currentTrack,
+                      let playingSongViewStatus = self?.playingSongViewStatus {
                 
                 let newItem: playingSongTabItems = playingSongViewStatus == .hidden ? .playingSong : .main
                 self?.updatePlayingSongTabView(newItem)

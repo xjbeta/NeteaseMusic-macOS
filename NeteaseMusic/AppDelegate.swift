@@ -24,13 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        let playCore = PlayCore.shared
-        let fmPlaylist = playCore.fmPlaylist.map {
-            $0.id
-        }
-        let currentFMId = playCore.currentFMTrack?.id
-        Preferences.shared.fmPlaylist = (currentFMId, fmPlaylist)
-        
+        ViewControllerManager.shared.saveFMPlaylist()
     }
 
 

@@ -101,7 +101,6 @@ class ControlBarViewController: NSViewController {
     var pauseStautsObserver: NSKeyValueObservation?
     var previousButtonObserver: NSKeyValueObservation?
     var currentTrackObserver: NSKeyValueObservation?
-    var currentFMTrackObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
     
     let imgSize = NSSize(width: 15, height: 13)
@@ -142,12 +141,7 @@ class ControlBarViewController: NSViewController {
         }
         
         currentTrackObserver = playCore.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
-            guard !playCore.fmMode, let track = playCore.currentTrack else { return }
-            self?.initViews(track)
-        }
-        
-        currentFMTrackObserver = playCore.observe(\.currentFMTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
-            guard playCore.fmMode, let track = playCore.currentFMTrack else { return }
+            guard let track = playCore.currentTrack else { return }
             self?.initViews(track)
         }
         
@@ -277,7 +271,6 @@ class ControlBarViewController: NSViewController {
         previousButtonObserver?.invalidate()
 //        muteStautsObserver?.invalidate()
         currentTrackObserver?.invalidate()
-        currentFMTrackObserver?.invalidate()
         fmModeObserver?.invalidate()
     }
     

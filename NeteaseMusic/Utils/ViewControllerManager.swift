@@ -12,6 +12,8 @@ import HotKey
 class ViewControllerManager: NSObject {
     static let shared = ViewControllerManager()
     
+    var fmVC: FMViewController?
+    
     private override init() {
     }
     
@@ -186,6 +188,15 @@ class ViewControllerManager: NSObject {
     
     func displayMessage(_ str: String) {
         NotificationCenter.default.post(name: .displayMessage, object: nil, userInfo: ["message": str])
+    }
+    
+    func saveFMPlaylist() {
+        guard let vc = fmVC else { return }
+        let pl = vc.fmPlaylist.map {
+            $0.id
+        }
+        let id = vc.currentTrackId
+        Preferences.shared.fmPlaylist = (id, pl)
     }
 }
 

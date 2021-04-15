@@ -26,6 +26,7 @@ class Track: NSObject, Decodable {
     @objc let album: Album
     @objc let duration: Int
     var song: Song?
+    var playerItem: NeteasePlayerItem?
     
     @objc let pop: Int
     
@@ -53,29 +54,6 @@ class Track: NSObject, Decodable {
     
     @objc dynamic var isCurrentTrack = false
     @objc dynamic var isPlaying = false
-    
-    func playerItemm() -> Promise<AVPlayerItem?> {
-        let br = Preferences.shared.musicBitRate.rawValue
-        return Promise { resolver in
-            PlayCore.shared.api.songUrl([id], br).get {
-                self.song = $0.first
-                }.done {
-                    guard let uStr = $0.first?.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
-                        let url = URL(string: uStr) else {
-                            resolver.fulfill(nil)
-                            return
-                    }
-                    let avAsset = AVURLAsset(url: url)
-                    guard avAsset.isPlayable else {
-                        resolver.fulfill(nil)
-                        return
-                    }
-                    resolver.fulfill(AVPlayerItem(asset: avAsset))
-                }.catch {
-                    resolver.reject($0)
-            }
-        }
-    }
     
     struct Privilege: Decodable {
         let id: Int

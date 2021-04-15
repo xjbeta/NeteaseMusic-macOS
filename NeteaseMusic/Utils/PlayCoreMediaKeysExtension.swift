@@ -127,7 +127,7 @@ extension PlayCore {
     
     func updateNowPlayingInfo() {
         var info = [String: Any]()
-        guard let track = fmMode ? currentFMTrack : currentTrack else {
+        guard let track = currentTrack else {
             nowPlayingInfoCenter.nowPlayingInfo = [:]
             updateNowPlayingState(.unknown)
             return
