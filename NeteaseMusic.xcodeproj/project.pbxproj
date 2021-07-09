@@ -83,6 +83,21 @@
 		0171427723C2E0B70051ADDF /* NetworkRequestMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171427623C2E0B70051ADDF /* NetworkRequestMenuItem.swift */; };
 		017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */; };
 		0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */; };
+		0188B96526986D1000B7DC9C /* SZLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95226986D1000B7DC9C /* SZLog.swift */; };
+		0188B96626986D1000B7DC9C /* SZDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95426986D1000B7DC9C /* SZDatabase.swift */; };
+		0188B96726986D1000B7DC9C /* SZAVPlayerFileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95526986D1000B7DC9C /* SZAVPlayerFileSystem.swift */; };
+		0188B96826986D1000B7DC9C /* SZAVPlayerDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95626986D1000B7DC9C /* SZAVPlayerDatabase.swift */; };
+		0188B96926986D1000B7DC9C /* SZAVPlayerCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95726986D1000B7DC9C /* SZAVPlayerCache.swift */; };
+		0188B96A26986D1000B7DC9C /* SZBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95926986D1000B7DC9C /* SZBaseModel.swift */; };
+		0188B96B26986D1000B7DC9C /* SZAVPlayerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95A26986D1000B7DC9C /* SZAVPlayerConfig.swift */; };
+		0188B96C26986D1000B7DC9C /* SZAVPlayerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95B26986D1000B7DC9C /* SZAVPlayerError.swift */; };
+		0188B96D26986D1000B7DC9C /* SZAVPlayerSeekItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95C26986D1000B7DC9C /* SZAVPlayerSeekItem.swift */; };
+		0188B96E26986D1000B7DC9C /* SZAVPlayerLocalFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95D26986D1000B7DC9C /* SZAVPlayerLocalFileInfo.swift */; };
+		0188B96F26986D1000B7DC9C /* SZAVPlayerContentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B95E26986D1000B7DC9C /* SZAVPlayerContentInfo.swift */; };
+		0188B97026986D1000B7DC9C /* SZAVPlayerDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B96026986D1000B7DC9C /* SZAVPlayerDataLoader.swift */; };
+		0188B97126986D1000B7DC9C /* SZAVPlayerItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B96126986D1000B7DC9C /* SZAVPlayerItemRequest.swift */; };
+		0188B97326986D1000B7DC9C /* SZAVPlayerRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B96326986D1000B7DC9C /* SZAVPlayerRequestOperation.swift */; };
+		0188B97426986D1000B7DC9C /* SZAVPlayerAssetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188B96426986D1000B7DC9C /* SZAVPlayerAssetLoader.swift */; };
 		01909522239E339A00647F80 /* SublistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01909521239E339A00647F80 /* SublistView.storyboard */; };
 		0190952423A0913F00647F80 /* TrackTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0190952323A0913E00647F80 /* TrackTableView.storyboard */; };
 		0190952623A0914F00647F80 /* AlbumArtistTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */; };
@@ -258,6 +273,21 @@
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMCoverButtonCell.swift; sourceTree = "<group>"; };
+		0188B95226986D1000B7DC9C /* SZLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZLog.swift; sourceTree = "<group>"; };
+		0188B95426986D1000B7DC9C /* SZDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZDatabase.swift; sourceTree = "<group>"; };
+		0188B95526986D1000B7DC9C /* SZAVPlayerFileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerFileSystem.swift; sourceTree = "<group>"; };
+		0188B95626986D1000B7DC9C /* SZAVPlayerDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerDatabase.swift; sourceTree = "<group>"; };
+		0188B95726986D1000B7DC9C /* SZAVPlayerCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerCache.swift; sourceTree = "<group>"; };
+		0188B95926986D1000B7DC9C /* SZBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZBaseModel.swift; sourceTree = "<group>"; };
+		0188B95A26986D1000B7DC9C /* SZAVPlayerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerConfig.swift; sourceTree = "<group>"; };
+		0188B95B26986D1000B7DC9C /* SZAVPlayerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerError.swift; sourceTree = "<group>"; };
+		0188B95C26986D1000B7DC9C /* SZAVPlayerSeekItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerSeekItem.swift; sourceTree = "<group>"; };
+		0188B95D26986D1000B7DC9C /* SZAVPlayerLocalFileInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerLocalFileInfo.swift; sourceTree = "<group>"; };
+		0188B95E26986D1000B7DC9C /* SZAVPlayerContentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerContentInfo.swift; sourceTree = "<group>"; };
+		0188B96026986D1000B7DC9C /* SZAVPlayerDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerDataLoader.swift; sourceTree = "<group>"; };
+		0188B96126986D1000B7DC9C /* SZAVPlayerItemRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerItemRequest.swift; sourceTree = "<group>"; };
+		0188B96326986D1000B7DC9C /* SZAVPlayerRequestOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerRequestOperation.swift; sourceTree = "<group>"; };
+		0188B96426986D1000B7DC9C /* SZAVPlayerAssetLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZAVPlayerAssetLoader.swift; sourceTree = "<group>"; };
 		01909521239E339A00647F80 /* SublistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SublistView.storyboard; sourceTree = "<group>"; };
 		0190952323A0913E00647F80 /* TrackTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackTableView.storyboard; sourceTree = "<group>"; };
 		0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumArtistTableView.storyboard; sourceTree = "<group>"; };
@@ -574,6 +604,60 @@
 			name = SongActionButtons;
 			sourceTree = "<group>";
 		};
+		0188B95026986D1000B7DC9C /* SZAVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				0188B95126986D1000B7DC9C /* Utils */,
+				0188B95326986D1000B7DC9C /* Storage */,
+				0188B95826986D1000B7DC9C /* Model */,
+				0188B95F26986D1000B7DC9C /* Request */,
+				0188B96426986D1000B7DC9C /* SZAVPlayerAssetLoader.swift */,
+			);
+			path = SZAVPlayer;
+			sourceTree = "<group>";
+		};
+		0188B95126986D1000B7DC9C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0188B95226986D1000B7DC9C /* SZLog.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0188B95326986D1000B7DC9C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				0188B95426986D1000B7DC9C /* SZDatabase.swift */,
+				0188B95526986D1000B7DC9C /* SZAVPlayerFileSystem.swift */,
+				0188B95626986D1000B7DC9C /* SZAVPlayerDatabase.swift */,
+				0188B95726986D1000B7DC9C /* SZAVPlayerCache.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		0188B95826986D1000B7DC9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0188B95926986D1000B7DC9C /* SZBaseModel.swift */,
+				0188B95A26986D1000B7DC9C /* SZAVPlayerConfig.swift */,
+				0188B95B26986D1000B7DC9C /* SZAVPlayerError.swift */,
+				0188B95C26986D1000B7DC9C /* SZAVPlayerSeekItem.swift */,
+				0188B95D26986D1000B7DC9C /* SZAVPlayerLocalFileInfo.swift */,
+				0188B95E26986D1000B7DC9C /* SZAVPlayerContentInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0188B95F26986D1000B7DC9C /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				0188B96026986D1000B7DC9C /* SZAVPlayerDataLoader.swift */,
+				0188B96126986D1000B7DC9C /* SZAVPlayerItemRequest.swift */,
+				0188B96326986D1000B7DC9C /* SZAVPlayerRequestOperation.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		01909520239E336C00647F80 /* Sublist */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +702,7 @@
 		01957D8A224D01850006FCEC /* NeteaseMusic */ = {
 			isa = PBXGroup;
 			children = (
+				0188B95026986D1000B7DC9C /* SZAVPlayer */,
 				01957D8B224D01850006FCEC /* AppDelegate.swift */,
 				01957D8D224D01850006FCEC /* ViewController.swift */,
 				01957D8F224D01860006FCEC /* Assets.xcassets */,
@@ -767,6 +852,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0188B97126986D1000B7DC9C /* SZAVPlayerItemRequest.swift in Sources */,
 				011AC733237A87DA00722A48 /* WaitTimer.swift in Sources */,
 				01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */,
 				012772CC2297AD5B00C55537 /* PubilshTimeTransformer.swift in Sources */,
@@ -777,6 +863,7 @@
 				011D41962338F898001A6F40 /* KeyEquivalentTextField.swift in Sources */,
 				012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */,
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
+				0188B96526986D1000B7DC9C /* SZLog.swift in Sources */,
 				01FF8B7C225CD38F002D7906 /* MainViewController.swift in Sources */,
 				01FF8B7F225D7DFE002D7906 /* CodableObjects.swift in Sources */,
 				0114DB132380E2380034857F /* PlayCoreMediaKeysExtension.swift in Sources */,
@@ -784,6 +871,7 @@
 				013143A3226DC43B00B9E26F /* PlayingSongViewController.swift in Sources */,
 				01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */,
 				0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */,
+				0188B96E26986D1000B7DC9C /* SZAVPlayerLocalFileInfo.swift in Sources */,
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
 				012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */,
@@ -798,6 +886,7 @@
 				01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */,
 				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
 				012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */,
+				0188B97426986D1000B7DC9C /* SZAVPlayerAssetLoader.swift in Sources */,
 				01FCE4F724E63C4F0055EC93 /* NeteasePlayerItem.swift in Sources */,
 				0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */,
 				012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */,
@@ -805,10 +894,15 @@
 				01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */,
 				012165CA232E07F300D74344 /* Crypto.swift in Sources */,
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
+				0188B96C26986D1000B7DC9C /* SZAVPlayerError.swift in Sources */,
 				01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */,
 				013143A5226ECD1A00B9E26F /* ExtendedViewState.swift in Sources */,
+				0188B96826986D1000B7DC9C /* SZAVPlayerDatabase.swift in Sources */,
 				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
+				0188B96A26986D1000B7DC9C /* SZBaseModel.swift in Sources */,
+				0188B96D26986D1000B7DC9C /* SZAVPlayerSeekItem.swift in Sources */,
 				01467E9922846B920037B49D /* FMViewController.swift in Sources */,
+				0188B96626986D1000B7DC9C /* SZDatabase.swift in Sources */,
 				012F1156226028BA002D5599 /* NotificationName.swift in Sources */,
 				01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */,
 				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
@@ -816,8 +910,10 @@
 				012C158423A66A3B004586A5 /* SubscribeButton.swift in Sources */,
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
 				01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */,
+				0188B96B26986D1000B7DC9C /* SZAVPlayerConfig.swift in Sources */,
 				011D4198233907EC001A6F40 /* MainMenu.swift in Sources */,
 				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
+				0188B97326986D1000B7DC9C /* SZAVPlayerRequestOperation.swift in Sources */,
 				0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,
@@ -831,11 +927,15 @@
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
 				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
 				01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */,
+				0188B96726986D1000B7DC9C /* SZAVPlayerFileSystem.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
 				0171427523C18E660051ADDF /* PlayableColorTransformer.swift in Sources */,
 				01467E85227DDEBC0037B49D /* PlaylistTextFieldCell.swift in Sources */,
 				01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */,
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,
+				0188B96926986D1000B7DC9C /* SZAVPlayerCache.swift in Sources */,
+				0188B97026986D1000B7DC9C /* SZAVPlayerDataLoader.swift in Sources */,
+				0188B96F26986D1000B7DC9C /* SZAVPlayerContentInfo.swift in Sources */,
 				0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */,
 				0133AC722320CDE800090D5E /* NSImage+RoundedCorners.swift in Sources */,
 				0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */,
