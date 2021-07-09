@@ -28,6 +28,7 @@ class PlayCore: NSObject {
     
     let api = NeteaseMusicAPI()
     let player = AVPlayer()
+    var playerAssetLoader: SZAVPlayerAssetLoader?
     
     var playerShouldNextObserver: NSObjectProtocol?
     var playerItemDownloadObserver: NSObjectProtocol?
@@ -111,18 +112,20 @@ class PlayCore: NSObject {
                 return
             }
             
-            guard re.2 != nil else {
+            guard re.assetLoader != nil else {
                 let t = "nil item"
                 return
             }
             
-            track.song = re.1
+            track.song = re.song
             
             self.currentTrack = track
-
             self.player.pause()
-            self.player.replaceCurrentItem(with: re.2)
-            self.player.seek(to: time) {_ in
+            self.playerAssetLoader = re.assetLoader
+            
+            re.assetLoader?.loadAsset {
+                let item = AVPlayerItem(asset: $0)
+                self.player.replaceCurrentItem(with: item)
                 self.player.play()
             }
 
@@ -328,28 +331,25 @@ class PlayCore: NSObject {
         player.seek(to: t)
     }
     
-    func playerItems(_ ids: [Int]) -> Promise<[(Int, Song, AVPlayerItem?)]> {
+    func playerItems(_ ids: [Int]) -> Promise<[(song: Song, assetLoader: SZAVPlayerAssetLoader?)]> {
         let br = Preferences.shared.musicBitRate.rawValue
-        return Promise { resolver in
-            api.songUrl(ids, br).done {
-                let re = $0.map { s -> (id: Int, song: Song, playerItem: AVPlayerItem?) in
-                    
-                    var r: (id: Int, song: Song, playerItem: AVPlayerItem?) = (s.id, s, nil)
-                    
-                    guard let uStr = s.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
-                        let url = URL(string: uStr) else {
-                        return r
-                    }
-                    
-                    let asset = AVURLAsset(url: url)
-                    guard asset.isPlayable else { return r }
-                    r.playerItem = AVPlayerItem(asset: asset)
+        
+        return api.songUrl(ids, br).map {
+            return $0.map { s -> (song: Song, assetLoader: SZAVPlayerAssetLoader?) in
+                
+                var r: (song: Song, assetLoader: SZAVPlayerAssetLoader?) = (s, nil)
+                
+                guard let uStr = s.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
+                    let url = URL(string: uStr) else {
                     return r
                 }
                 
-                resolver.fulfill(re)
-                }.catch {
-                    resolver.reject($0)
+                let id = "\(s.id)"
+                let assetLoader = SZAVPlayerAssetLoader(url: url)
+                assetLoader.uniqueID = id
+                
+                r.assetLoader = assetLoader
+                return r
             }
         }
     }
@@ -372,10 +372,5 @@ class PlayCore: NSObject {
     deinit {
         deinitMediaKeysObservers()
         removeObservers()
-    }
-}
-
-
-
     }
 }
