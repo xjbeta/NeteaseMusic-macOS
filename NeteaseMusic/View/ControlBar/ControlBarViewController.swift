@@ -177,12 +177,6 @@ class ControlBarViewController: NSViewController {
                     let sec = Double(CMTimeGetSeconds(time))
                     let todo = "Update cache value when paused."
                     slider.cachedDoubleValue = sec
-                    
-                    let loadProgress = sec / durationSec
-                    guard let item = player.currentItem as? NeteasePlayerItem,
-                          item.downloadState != .downloadFinished,
-                        loadProgress == 1 else { return }
-                    NotificationCenter.default.post(name: .AVPlayerItemDownloadFinished, object: nil, userInfo: ["id": item.id])
                 }
                 
                 self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"

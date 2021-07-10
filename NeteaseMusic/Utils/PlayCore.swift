@@ -31,7 +31,6 @@ class PlayCore: NSObject {
     var playerAssetLoader: SZAVPlayerAssetLoader?
     
     var playerShouldNextObserver: NSObjectProtocol?
-    var playerItemDownloadObserver: NSObjectProtocol?
     var playerStateObserver: NSKeyValueObservation?
     var playingInfoObserver: NSKeyValueObservation?
     
@@ -225,24 +224,12 @@ class PlayCore: NSObject {
             self.nextSong()
         }
         
-        playerItemDownloadObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDownloadFinished, object: nil, queue: .main) {
-            guard let dic = $0.object as? [String: Int],
-                  let id = dic["id"],
-                  let item = self.playlist.first(where: { $0.id == id })?.playerItem else { return }
-            
-            item.downloadState = .downloadFinished
-            self.loadMoreItems()
-        }
     }
     
     func removeObservers() {
         if let obs = playerShouldNextObserver {
             NotificationCenter.default.removeObserver(obs)
             playerShouldNextObserver = nil
-        }
-        if let obs = playerItemDownloadObserver {
-            NotificationCenter.default.removeObserver(obs)
-            playerItemDownloadObserver = nil
         }
     }
     
@@ -378,11 +365,18 @@ class PlayCore: NSObject {
 
 extension PlayCore: SZAVPlayerAssetLoaderDelegate {
     func assetLoaderDidFinishDownloading(_ assetLoader: SZAVPlayerAssetLoader) {
-        print(#function, assetLoader.uniqueID)
+        let id = assetLoader.uniqueID
+        print(#function, id)
+        
+        guard let id = Int(id),
+              let item = playlist.first(where: { $0.id == id })?.playerItem else { return }
+
+        item.downloadState = .downloadFinished
+        loadMoreItems()
     }
     
     func assetLoader(_ assetLoader: SZAVPlayerAssetLoader, didDownload bytes: Int64) {
-        print(#function, assetLoader.uniqueID, bytes)
+//        print(#function, assetLoader.uniqueID, bytes)
     }
     
     func assetLoader(_ assetLoader: SZAVPlayerAssetLoader, downloadingFailed error: Error) {
