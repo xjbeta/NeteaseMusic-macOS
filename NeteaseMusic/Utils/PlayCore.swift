@@ -122,6 +122,7 @@ class PlayCore: NSObject {
             self.currentTrack = track
             self.player.pause()
             self.playerAssetLoader = re.assetLoader
+            self.playerAssetLoader?.delegate = self
             
             re.assetLoader?.loadAsset {
                 let item = AVPlayerItem(asset: $0)
@@ -372,5 +373,19 @@ class PlayCore: NSObject {
     deinit {
         deinitMediaKeysObservers()
         removeObservers()
+    }
+}
+
+extension PlayCore: SZAVPlayerAssetLoaderDelegate {
+    func assetLoaderDidFinishDownloading(_ assetLoader: SZAVPlayerAssetLoader) {
+        print(#function, assetLoader.uniqueID)
+    }
+    
+    func assetLoader(_ assetLoader: SZAVPlayerAssetLoader, didDownload bytes: Int64) {
+        print(#function, assetLoader.uniqueID, bytes)
+    }
+    
+    func assetLoader(_ assetLoader: SZAVPlayerAssetLoader, downloadingFailed error: Error) {
+        print(#function, assetLoader.uniqueID, error)
     }
 }
