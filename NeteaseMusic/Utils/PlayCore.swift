@@ -88,47 +88,27 @@ class PlayCore: NSObject {
         }
     }
     
-    private func play(_ track: Track, time: CMTime = CMTime(value: 0, timescale: 1000)) {
-        if track.song != nil {
-            
-            
-            
-        } else {
-            
-            
-            
-            
-        }
+    private func play(_ track: Track,
+                      time: CMTime = CMTime(value: 0, timescale: 1000)) {
         
-        
-        
-        
-        
-        playerItems([track.id]).done {
-            
-            guard let re = $0.first else {
-                let t = "empty result"
-                return
+        findSong(track).done { song in
+            if track.song == nil {
+                track.song = song
             }
-            
-            guard re.assetLoader != nil else {
-                let t = "nil item"
-                return
-            }
-            
-            track.song = re.song
             
             self.currentTrack = track
             self.player.pause()
-            self.playerAssetLoader = re.assetLoader
+            self.playerAssetLoader?.delegate = nil
+            self.playerAssetLoader = nil
+            self.playerAssetLoader = song.assetLoader
             self.playerAssetLoader?.delegate = self
             
-            re.assetLoader?.loadAsset {
+            self.playerAssetLoader?.loadAsset {
                 let item = AVPlayerItem(asset: $0)
                 self.player.replaceCurrentItem(with: item)
                 self.player.play()
             }
-
+            
             self.historys.removeAll {
                 $0.id == track.id
             }
@@ -138,8 +118,38 @@ class PlayCore: NSObject {
             if self.historys.count > 100 {
                 self.historys.removeFirst()
             }
-            }.catch {
+        }.catch {
+            switch $0 {
+            case PlayCoreError.trackUnplayable:
+                print("trackUnplayable")
+                self.nextSong()
+            case PlayCoreError.notFindSong:
+                print("notFindSong")
+                self.nextSong()
+            default:
                 print($0)
+            }
+        }
+    }
+    
+    func findSong(_ track: Track) -> Promise<Song> {
+        return Promise { resolver in
+            // check privilege first
+            guard track.playable else {
+                resolver.reject(PlayCoreError.trackUnplayable)
+                return
+            }
+
+            if let s = track.song,
+               s.urlValid {
+                resolver.fulfill(s)
+            } else {
+                playerItems([track.id]).compactMap({ $0.first }).done {
+                    resolver.fulfill($0)
+                }.catch { _ in
+                    resolver.reject(PlayCoreError.notFindSong)
+                }
+            }
         }
     }
     
@@ -319,27 +329,9 @@ class PlayCore: NSObject {
         player.seek(to: t)
     }
     
-    func playerItems(_ ids: [Int]) -> Promise<[(song: Song, assetLoader: SZAVPlayerAssetLoader?)]> {
+    func playerItems(_ ids: [Int]) -> Promise<[Song]> {
         let br = Preferences.shared.musicBitRate.rawValue
-        
-        return api.songUrl(ids, br).map {
-            return $0.map { s -> (song: Song, assetLoader: SZAVPlayerAssetLoader?) in
-                
-                var r: (song: Song, assetLoader: SZAVPlayerAssetLoader?) = (s, nil)
-                
-                guard let uStr = s.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
-                    let url = URL(string: uStr) else {
-                    return r
-                }
-                
-                let id = "\(s.id)"
-                let assetLoader = SZAVPlayerAssetLoader(url: url)
-                assetLoader.uniqueID = id
-                
-                r.assetLoader = assetLoader
-                return r
-            }
-        }
+        return api.songUrl(ids, br)
     }
     
     func loadMoreItems() {
@@ -360,6 +352,11 @@ class PlayCore: NSObject {
     deinit {
         deinitMediaKeysObservers()
         removeObservers()
+    }
+    
+    enum PlayCoreError: Error {
+        case notFindSong
+        case trackUnplayable
     }
 }
 

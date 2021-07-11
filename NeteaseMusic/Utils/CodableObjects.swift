@@ -222,7 +222,38 @@ class Song: NSObject, Decodable {
     let payed: Int
     let level: String?
     let encodeType: String?
-    let expi: Int
+    let md5: String
+    let expi: Int // useless
+
+    
+    var urlValid: Bool {
+        get {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            
+            guard let pcs = url?.pathComponents,
+                  pcs.count > 2,
+                  pcs[1].count == 14,
+                  let date = formatter.date(from: pcs[1]),
+                  let now = Calendar.current.date(byAdding: .minute, value: 5, to: Date()) else {
+                return false
+            }
+            
+            return now < date
+        }
+    }
+    
+    lazy var assetLoader: SZAVPlayerAssetLoader? = {
+        guard let uStr = url?.absoluteString
+                .replacingOccurrences(of: "http://", with: "https://"),
+              let url = URL(string: uStr) else {
+            return nil
+        }
+        
+        let assetLoader = SZAVPlayerAssetLoader(url: url)
+        assetLoader.uniqueID = "\(id)"
+        return assetLoader
+    }()
 }
 
 struct RecommendResource: Decodable {
