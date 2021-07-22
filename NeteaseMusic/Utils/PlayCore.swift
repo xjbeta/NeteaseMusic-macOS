@@ -221,14 +221,6 @@ class PlayCore: NSObject {
             self.nextSong()
         }
         
-        playerItemDownloadObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDownloadFinished, object: nil, queue: .main) {
-            guard let dic = $0.object as? [String: Int],
-                  let id = dic["id"],
-                  let item = self.playlist.first(where: { $0.id == id })?.playerItem else { return }
-            
-            item.downloadState = .downloadFinished
-            self.loadMoreItems()
-        }
     }
     
     func removeObservers() {
