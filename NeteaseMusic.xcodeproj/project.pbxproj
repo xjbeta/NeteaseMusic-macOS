@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -96,6 +96,7 @@
 		01B3015C234E1DAB00BBC6E9 /* HotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; };
 		01B3015D234E1DAB00BBC6E9 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01B3015E234E1DB300BBC6E9 /* HotKey.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */; };
+		01BFA88326A98D310075F06D /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01BFA88226A98D310075F06D /* GSPlayer */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
 		01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; };
@@ -312,6 +313,7 @@
 				01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */,
 				01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */,
 				01DE5F0D233DB3ED00A87467 /* Sparkle.framework in Frameworks */,
+				01BFA88326A98D310075F06D /* GSPlayer in Frameworks */,
 				01DE5F07233DB3E100A87467 /* Cache.framework in Frameworks */,
 				01DE5F08233DB3E100A87467 /* PromiseKit.framework in Frameworks */,
 			);
@@ -682,6 +684,7 @@
 			);
 			name = NeteaseMusic;
 			packageProductDependencies = (
+				01BFA88226A98D310075F06D /* GSPlayer */,
 			);
 			productName = NeteaseMusic;
 			productReference = 01957D88224D01850006FCEC /* NeteaseMusic.app */;
@@ -712,6 +715,7 @@
 			);
 			mainGroup = 01957D7F224D01850006FCEC;
 			packageReferences = (
+				01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */,
 			);
 			productRefGroup = 01957D89224D01850006FCEC /* Products */;
 			projectDirPath = "";
@@ -1045,6 +1049,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xjbeta/GSPlayer";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01BFA88226A98D310075F06D /* GSPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */;
+			productName = GSPlayer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01957D80224D01850006FCEC /* Project object */;
 }

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GSPlayer",
+        "repositoryURL": "https://github.com/xjbeta/GSPlayer",
+        "state": {
+          "branch": "master",
+          "revision": "542f59fe4559980e551b255e9281a3cb9a88ba09",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
