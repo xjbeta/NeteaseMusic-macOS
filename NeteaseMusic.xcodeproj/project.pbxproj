@@ -117,7 +117,6 @@
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
 		01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */; };
 		01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */; };
-		01FCE4F724E63C4F0055EC93 /* NeteasePlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FCE4F624E63C4F0055EC93 /* NeteasePlayerItem.swift */; };
 		01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */; };
 		01FF8B72225C60F7002D7906 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B71225C60F7002D7906 /* Colors.swift */; };
 		01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */; };
@@ -292,7 +291,6 @@
 		01E7C9D3228BB697004D80AD /* IdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdButton.swift; sourceTree = "<group>"; };
 		01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAAPMenuController.swift; sourceTree = "<group>"; };
 		01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAAPMenu.xib; sourceTree = "<group>"; };
-		01FCE4F624E63C4F0055EC93 /* NeteasePlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeteasePlayerItem.swift; sourceTree = "<group>"; };
 		01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPlayStateTransformer.swift; sourceTree = "<group>"; };
 		01FF8B71225C60F7002D7906 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		01FF8B73225C64B7002D7906 /* SidebarOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarOutlineView.swift; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				012F2F402250613F00086870 /* PlayCore.swift */,
-				01FCE4F624E63C4F0055EC93 /* NeteasePlayerItem.swift */,
 				0114DB122380E2380034857F /* PlayCoreMediaKeysExtension.swift */,
 				012F2F422250619A00086870 /* NeteaseMusicAPI.swift */,
 				01677B9E228CF3D200D11190 /* ViewControllerManager.swift */,
@@ -798,7 +795,6 @@
 				01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */,
 				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
 				012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */,
-				01FCE4F724E63C4F0055EC93 /* NeteasePlayerItem.swift in Sources */,
 				0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */,
 				012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */,
 				013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */,
