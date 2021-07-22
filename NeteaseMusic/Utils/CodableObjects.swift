@@ -26,7 +26,6 @@ class Track: NSObject, Decodable {
     @objc let album: Album
     @objc let duration: Int
     var song: Song?
-    var playerItem: NeteasePlayerItem?
     
     @objc let pop: Int
     
@@ -222,7 +221,38 @@ class Song: NSObject, Decodable {
     let payed: Int
     let level: String?
     let encodeType: String?
-    let expi: Int
+    let md5: String
+    let expi: Int // useless
+
+    
+    var urlValid: Bool {
+        get {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyyMMddHHmmss"
+            
+            guard let pcs = url?.pathComponents,
+                  pcs.count > 2,
+                  pcs[1].count == 14,
+                  let date = formatter.date(from: pcs[1]),
+                  let now = Calendar.current.date(byAdding: .minute, value: 5, to: Date()) else {
+                return false
+            }
+            
+            return now < date
+        }
+    }
+    
+    lazy var playerItem: AVPlayerItem? = {
+        guard let uStr = url?.absoluteString
+                .replacingOccurrences(of: "http://", with: "https://"),
+              let url = URL(string: uStr) else {
+            return nil
+        }
+
+        let item = AVPlayerItem(loader: url)
+        item.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+        return item
+    }()
 }
 
 struct RecommendResource: Decodable {
