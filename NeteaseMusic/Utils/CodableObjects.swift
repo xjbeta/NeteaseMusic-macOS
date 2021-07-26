@@ -244,9 +244,7 @@ class Song: NSObject, Decodable {
     }
     
     lazy var playerItem: AVPlayerItem? = {
-        guard let uStr = url?.absoluteString
-                .replacingOccurrences(of: "http://", with: "https://"),
-              let url = URL(string: uStr) else {
+        guard let url = url?.https else {
             return nil
         }
 

@@ -97,6 +97,7 @@
 		01B3015D234E1DAB00BBC6E9 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01B3015E234E1DB300BBC6E9 /* HotKey.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */; };
 		01BFA88326A98D310075F06D /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01BFA88226A98D310075F06D /* GSPlayer */; };
+		01BFA88526A9B8E20075F06D /* HttpsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFA88426A9B8E20075F06D /* HttpsURL.swift */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
 		01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; };
@@ -273,6 +274,7 @@
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
 		01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = HotKey.framework.dSYM; path = Carthage/Build/Mac/HotKey.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		01B30159234E1DA500BBC6E9 /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = SOURCE_ROOT; };
+		01BFA88426A9B8E20075F06D /* HttpsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsURL.swift; sourceTree = "<group>"; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
 		01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/Mac/CryptoSwift.framework; sourceTree = SOURCE_ROOT; };
@@ -521,6 +523,7 @@
 				012F1155226028BA002D5599 /* NotificationName.swift */,
 				013EF1552256500100E4D7D8 /* SubString.swift */,
 				01FF8B71225C60F7002D7906 /* Colors.swift */,
+				01BFA88426A9B8E20075F06D /* HttpsURL.swift */,
 				01603087225B850B0064EC88 /* SafeSubscript.swift */,
 				013EF167225B2A1F00E4D7D8 /* Crypto.js */,
 			);
@@ -787,6 +790,7 @@
 				0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */,
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
+				01BFA88526A9B8E20075F06D /* HttpsURL.swift in Sources */,
 				012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */,
 				01FF8B72225C60F7002D7906 /* Colors.swift in Sources */,
 				01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */,
