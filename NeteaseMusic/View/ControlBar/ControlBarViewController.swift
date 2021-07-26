@@ -97,8 +97,8 @@ class ControlBarViewController: NSViewController {
         }
     }
     
-    var periodicTimeObserverToken: Any?
     var pauseStautsObserver: NSKeyValueObservation?
+
     var previousButtonObserver: NSKeyValueObservation?
     var currentTrackObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
@@ -109,9 +109,8 @@ class ControlBarViewController: NSViewController {
         super.viewDidLoad()
         playlistButton.image?.size = imgSize
         
-        let playCore = PlayCore.shared
-        
-        addPeriodicTimeObserver()
+        let pc = PlayCore.shared
+        pc.playerProgressDelegate = self
         
         initVolumeButton()
         
@@ -125,7 +124,7 @@ class ControlBarViewController: NSViewController {
         
         initPlayModeButton()
         
-        pauseStautsObserver = playCore.player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
+        pauseStautsObserver = pc.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             switch player.timeControlStatus {
             case .playing:
                 self?.pauseButton.image = NSImage(named: NSImage.Name("sf.pause.circle"))
@@ -136,16 +135,31 @@ class ControlBarViewController: NSViewController {
             }
         }
         
-        previousButtonObserver = playCore.observe(\.playedTracks, options: [.initial, .new]) { [weak self] (playCore, changes) in
-            self?.previousButton.isEnabled = playCore.playedTracks.count > 0
+        previousButtonObserver = pc.observe(\.pnItemType, options: [.initial, .new]) { [weak self] pc, _ in
+            
+            self?.previousButton.isEnabled = true
+            self?.nextButton.isEnabled = true
+            
+            switch pc.pnItemType {
+            case .withoutNext:
+                self?.nextButton.isEnabled = false
+            case .withoutPrevious:
+                self?.previousButton.isEnabled = false
+            case .withoutPreviousAndNext:
+                self?.nextButton.isEnabled = false
+                self?.previousButton.isEnabled = false
+            case .other:
+                break
+            }
+            
         }
         
-        currentTrackObserver = playCore.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
+        currentTrackObserver = pc.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
             guard let track = playCore.currentTrack else { return }
             self?.initViews(track)
         }
         
-        fmModeObserver = playCore.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playCore, changes) in
+        fmModeObserver = pc.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playCore, changes) in
             let fmMode = playCore.fmMode
             self?.previousButton.isHidden = fmMode
             self?.repeatModeButton.isHidden = fmMode
@@ -153,44 +167,6 @@ class ControlBarViewController: NSViewController {
         }
     }
     
-    func addPeriodicTimeObserver() {
-        // Notify every half second
-        let timeScale = CMTimeScale(NSEC_PER_SEC)
-        let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
-        periodicTimeObserverToken = PlayCore.shared.player
-            .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-                let player = PlayCore.shared.player
-                guard let duration = player.currentItem?.asset.duration,
-                    let slider = self?.durationSlider else { return }
-                
-                let loadedTimeRanges = player.currentItem?.loadedTimeRanges
-
-                let periodicSec = Double(CMTimeGetSeconds(time))
-                slider.updateValue(periodicSec)
-                let durationSec = Double(CMTimeGetSeconds(duration))
-                if durationSec != slider.maxValue {
-                    slider.maxValue = durationSec
-                }
-
-                if let range = loadedTimeRanges?.first {
-                    let time = CMTimeRangeGetEnd(range.timeRangeValue)
-                    let sec = Double(CMTimeGetSeconds(time))
-                    let todo = "Update cache value when paused."
-                    slider.cachedDoubleValue = sec
-                    
-                    let loadProgress = sec / durationSec
-                    guard let item = player.currentItem as? NeteasePlayerItem,
-                          item.downloadState != .downloadFinished,
-                        loadProgress == 1 else { return }
-                    NotificationCenter.default.post(name: .AVPlayerItemDownloadFinished, object: nil, userInfo: ["id": item.id])
-                }
-                
-                self?.durationTextField.stringValue = "\(periodicSec.durationFormatter()) / \(durationSec.durationFormatter())"
-                if Preferences.shared.useSystemMediaControl {
-                    PlayCore.shared.updateNowPlayingInfo()
-                }
-        }
-    }
     
     func initViews(_ track: Track) {
         trackPicButton.setImage(track.album.picUrl?.absoluteString, true)
@@ -199,14 +175,14 @@ class ControlBarViewController: NSViewController {
         trackSecondNameTextField.isHidden = name == ""
         trackSecondNameTextField.stringValue = name
         trackArtistTextField.stringValue = track.artists.artistsString()
+        
+        
+        durationSlider.maxValue = 1
+        durationSlider.doubleValue = 0
+        durationSlider.cachedDoubleValue = 0
+        durationTextField.stringValue = "00:00 / 00:00"
     }
-    
-    func removePeriodicTimeObserver() {
-        if let timeObserverToken = periodicTimeObserverToken {
-            PlayCore.shared.player.removeTimeObserver(timeObserverToken)
-            self.periodicTimeObserverToken = nil
-        }
-    }
+
     
     func initVolumeButton() {
         let pc = PlayCore.shared
@@ -266,7 +242,6 @@ class ControlBarViewController: NSViewController {
     }
     
     deinit {
-        removePeriodicTimeObserver()
         pauseStautsObserver?.invalidate()
         previousButtonObserver?.invalidate()
 //        muteStautsObserver?.invalidate()
@@ -274,4 +249,29 @@ class ControlBarViewController: NSViewController {
         fmModeObserver?.invalidate()
     }
     
+}
+
+extension ControlBarViewController: AVPlayerProgressDelegate {
+    func avplayer(_ player: AVPlayer, didUpdate progress: Double) {
+        guard let slider = durationSlider else { return }
+        
+        guard player.currentItem != nil else {
+            slider.maxValue = 1
+            slider.doubleValue = 0
+            slider.cachedDoubleValue = 0
+            durationTextField.stringValue = "00:00 / 00:00"
+            return
+        }
+        
+        let cd = player.currentDuration
+        let td = player.totalDuration
+        
+        if td != slider.maxValue {
+            slider.maxValue = td
+        }
+        slider.updateValue(cd)
+        slider.cachedDoubleValue = player.currentBufferDuration
+        
+        durationTextField.stringValue = "\(cd.durationFormatter()) / \(td.durationFormatter())"
+    }
 }

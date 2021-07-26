@@ -120,7 +120,7 @@ class FMViewController: NSViewController {
             }
         }
         
-        playerStatueObserver = PlayCore.shared.player.observe(\.timeControlStatus, options: [.initial, .new]) { player, changes in
+        playerStatueObserver = PlayCore.shared.observe(\.timeControlStatus, options: [.initial, .new]) { player, changes in
             guard PlayCore.shared.fmMode else { return }
             self.updateCoverButtonStatus(player.timeControlStatus)
         }

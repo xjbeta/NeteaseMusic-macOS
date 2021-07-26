@@ -10,6 +10,11 @@ import Cocoa
 import MediaPlayer
 import AVFoundation
 import PromiseKit
+import GSPlayer
+
+protocol AVPlayerProgressDelegate {
+    func avplayer(_ player: AVPlayer, didUpdate progress: Double)
+}
 
 class PlayCore: NSObject {
     static let shared = PlayCore()
@@ -27,10 +32,44 @@ class PlayCore: NSObject {
 // MARK: - AVPlayer
     
     let api = NeteaseMusicAPI()
-    let player = AVPlayer()
+    @objc dynamic var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
+    
+    
+    private var playerConfigure = [String: Any]()
+    var player = AVPlayer() {
+        willSet {
+            playerConfigure.removeAll()
+            playerConfigure["volume"] = player.volume
+            playerConfigure["isMuted"] = player.isMuted
+            playerConfigure["rate"] = player.rate
+            
+            player.pause()
+            player.currentItem?.cancelPendingSeeks()
+            player.currentItem?.asset.cancelLoading()
+            player.replaceCurrentItem(with: nil)
+            deinitDelegateObserver()
+        }
+        didSet {
+            if let volume = playerConfigure["volume"] as? Float {
+                player.volume = volume
+            }
+            if let isMuted = playerConfigure["isMuted"] as? Bool {
+                player.isMuted = isMuted
+            }
+            if let rate = playerConfigure["rate"] as? Float {
+                player.rate = rate
+            }
+            initDelegateObserver()
+        }
+    }
+    
+    var playerProgressDelegate: AVPlayerProgressDelegate?
+
+    var periodicTimeObserverToken: Any?
+    var timeControlStautsObserver: NSKeyValueObservation?
+    
     
     var playerShouldNextObserver: NSObjectProtocol?
-    var playerItemDownloadObserver: NSObjectProtocol?
     var playerStateObserver: NSKeyValueObservation?
     var playingInfoObserver: NSKeyValueObservation?
     
@@ -228,10 +267,6 @@ class PlayCore: NSObject {
             NotificationCenter.default.removeObserver(obs)
             playerShouldNextObserver = nil
         }
-        if let obs = playerItemDownloadObserver {
-            NotificationCenter.default.removeObserver(obs)
-            playerItemDownloadObserver = nil
-        }
     }
     
     func playNow(_ tracks: [Track]) {
@@ -349,6 +384,8 @@ class PlayCore: NSObject {
     func loadMoreItems() {
     }
     
+// MARK: - System Media Keys
+    
     func setupSystemMediaKeys() {
         if #available(macOS 10.13, *) {
             if Preferences.shared.useSystemMediaControl {
@@ -361,13 +398,42 @@ class PlayCore: NSObject {
         }
     }
     
+    func initDelegateObserver() {
+
+        
+        timeControlStautsObserver = player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
+            self?.timeControlStatus = player.timeControlStatus
+        }
+        
+        let timeScale = CMTimeScale(NSEC_PER_SEC)
+        let time = CMTime(seconds: 0.33, preferredTimescale: timeScale)
+        
+        periodicTimeObserverToken = player .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
+            let pc = PlayCore.shared
+            let player = pc.player
+            
+            
+            self?.playerProgressDelegate?.avplayer(player, didUpdate: player.playProgress)
+            
+            if Preferences.shared.useSystemMediaControl {
+                pc.updateNowPlayingInfo()
+            }
+        }
+        
+    }
+    
+    func deinitDelegateObserver() {
+        if let timeObserverToken = periodicTimeObserverToken {
+            player.removeTimeObserver(timeObserverToken)
+            periodicTimeObserverToken = nil
+        }
+        
+        timeControlStautsObserver?.invalidate()
+    }
+    
     deinit {
+        deinitDelegateObserver()
         deinitMediaKeysObservers()
         removeObservers()
-    }
-}
-
-
-
     }
 }
