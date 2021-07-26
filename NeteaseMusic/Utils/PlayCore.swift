@@ -75,16 +75,7 @@ class PlayCore: NSObject {
     
     @objc dynamic var currentTrack: Track?
     @objc dynamic var playlist: [Track] = []
-    var plIDPrepared = [Int]()
-    var playedIDInLoop = [Int]()
-    
     @objc dynamic var historys: [Track] = []
-    
-    
-    
-    @objc dynamic var playedTracks = [Int]()
-    var playedAlbums = [Int]()
-    
     @objc dynamic var fmMode = false {
         didSet {
             if fmMode {
@@ -94,7 +85,44 @@ class PlayCore: NSObject {
         }
     }
     
+    @objc enum PNItemType: Int {
+        case withoutNext
+        case withoutPrevious
+        case withoutPreviousAndNext
+        case other
+    }
+    
+    @objc dynamic var pnItemType: PNItemType = .withoutPreviousAndNext
+    
     private var fmSavedTime = (id: -1, time: CMTime())
+    
+// MARK: - AVPlayer Internal Playlist
+    private var playingNextLimit = 20
+    private var playingNextList = [Int]()
+    
+    private var internalPlaylistIndex = -1 {
+        didSet {
+            switch internalPlaylistIndex {
+            case 0 where internalPlaylist.count == 1:
+                pnItemType = .withoutPreviousAndNext
+            case 0:
+                pnItemType = .withoutPrevious
+            case -1:
+                pnItemType = .withoutPreviousAndNext
+            case internalPlaylist.count - 1:
+                pnItemType = .withoutNext
+            default:
+                pnItemType = .other
+            }
+        }
+    }
+    private var internalPlaylist = [Int]()
+    
+    
+// MARK: - AVPlayer Waiting
+    
+    private var itemWaitingToLoad: Int?
+    private var loadingList = [Int]()
     
     
 // MARK: - AVPlayer Functions
@@ -102,8 +130,13 @@ class PlayCore: NSObject {
     func start(_ playlist: [Track],
                id: Int = -1,
                enterFMMode: Bool = false) {
-        self.playlist = playlist
-        
+        self.playlist = playlist.filter {
+            $0.playable
+        }
+        internalPlaylist = []
+        playingNextList = []
+        internalPlaylistIndex = 0
+        initPlayingNextList()
         
         if fmMode, !enterFMMode {
             fmSavedTime = (currentTrack?.id ?? -1, player.currentTime())
@@ -112,160 +145,23 @@ class PlayCore: NSObject {
         fmMode = enterFMMode
         initObservers()
         
-        playedIDInLoop.removeAll()
-        
         guard playlist.count > 0 else { return }
         
         if fmMode,
            let track = currentTrack,
            fmSavedTime.id == track.id {
             play(track, time: fmSavedTime.time)
-        } else if let track = playlist.first(where: { $0.id == id }) {
+        } else if id != -1,
+                  let i = internalPlaylist.firstIndex(of: id),
+                  let track = playlist.first(where: { $0.id == id }) {
+            internalPlaylistIndex = i
             play(track)
-        } else if let track = playlist.first {
+        } else if let id = internalPlaylist.first,
+                  let track = playlist.first(where: { $0.id == id }) {
+            internalPlaylistIndex = 0
             play(track)
-        }
-    }
-    
-    private func play(_ track: Track, time: CMTime = CMTime(value: 0, timescale: 1000)) {
-        if track.song != nil {
-            
-            
-            
         } else {
-            
-            
-            
-            
-        }
-        
-        
-        
-        
-        
-        playerItems([track.id]).done {
-            
-            guard let re = $0.first else {
-                let t = "empty result"
-                return
-            }
-            
-            guard re.2 != nil else {
-                let t = "nil item"
-                return
-            }
-            
-            track.song = re.1
-            
-            self.currentTrack = track
-
-            self.player.pause()
-            self.player.replaceCurrentItem(with: re.2)
-            self.player.seek(to: time) {_ in
-                self.player.play()
-            }
-
-            self.historys.removeAll {
-                $0.id == track.id
-            }
-            self.historys.append(track)
-            self.playedIDInLoop.append(track.id)
-
-            if self.historys.count > 100 {
-                self.historys.removeFirst()
-            }
-            }.catch {
-                print($0)
-        }
-    }
-    
-    func nextSong() {
-        guard !fmMode else {
-            if let track = currentTrack,
-               let i = playlist.firstIndex(of: track),
-               let next = playlist[safe: i + 1] {
-                play(next)
-            } else {
-                // todo
-                print("Can't find next FM track.")
-            }
-            return
-        }
-        
-        let repeatMode = Preferences.shared.repeatMode
-        let shuffleMode = Preferences.shared.shuffleMode
-        
-        switch repeatMode {
-        case .noRepeat, .repeatPlayList:
-            guard let currentTrack = playlist.enumerated().first(where: { $0.element.id == currentTrack?.id }) else {
-                print(playlist)
-                print(player.currentItem)
-                let t = "some thing wrong when break."
-                break
-            }
-            playedTracks.append(currentTrack.element.id)
-            
-            switch shuffleMode {
-            case .shuffleItems:
-                if playlist.count == playedTracks.count, repeatMode == .repeatPlayList {
-                    playedTracks.removeAll()
-                }
-                
-                if let track = playlist.filter({ !playedTracks.contains($0.id) }).randomItem() {
-                    play(track)
-                }
-            case .shuffleAlbums:
-                break
-            case .noShuffle:
-                if currentTrack.offset + 1 == playlist.count {
-                    // last track
-                    if repeatMode == .repeatPlayList, let track = playlist.first {
-                        play(track)
-                    }
-                } else {
-                    // next track
-                    if let track = playlist[safe: currentTrack.offset + 1] {
-                        play(track)
-                    }
-                }
-            }
-        case .repeatItem:
-            player.seek(to: CMTime(value: 0, timescale: 1000))
-            player.play()
-        }
-    }
-    
-    func previousSong() {
-        if fmMode {
-            if let track = currentTrack,
-               let i = playlist.firstIndex(of: track),
-               let prev = playlist[safe: i - 1] {
-                play(prev)
-            } else {
-                // todo
-                print("Can't find prev FM track.")
-            }
-        } else {
-            guard playedTracks.count > 0 else { return }
-            if let id = playedTracks.last, let track = playlist.first(where: { $0.id == id }) {
-                playedTracks.removeLast()
-                play(track)
-            }
-        }
-    }
-    
-    func initObservers() {
-        removeObservers()
-        playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
-            self.nextSong()
-        }
-        
-    }
-    
-    func removeObservers() {
-        if let obs = playerShouldNextObserver {
-            NotificationCenter.default.removeObserver(obs)
-            playerShouldNextObserver = nil
+            print("Not find track to start play.")
         }
     }
     
@@ -284,6 +180,49 @@ class PlayCore: NSObject {
         }
     }
     
+    func nextSong() {
+        let repeatMode = Preferences.shared.repeatMode
+        guard repeatMode != .repeatItem else {
+            player.seek(to: CMTime(value: 0, timescale: 1000))
+            player.play()
+            return
+        }
+        
+        initPlayingNextList()
+        
+        guard let id = internalPlaylist[safe: internalPlaylistIndex + 1],
+              let track = playlist.first(where: { $0.id == id }) else {
+            return
+        }
+        internalPlaylistIndex += 1
+        play(track)
+    }
+    
+    func previousSong() {
+        guard let id = internalPlaylist[safe: internalPlaylistIndex - 1],
+              let track = playlist.first(where: { $0.id == id })
+              else {
+            return
+        }
+        internalPlaylistIndex -= 1
+        play(track)
+    }
+    
+    func initObservers() {
+        removeObservers()
+        playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
+            self.nextSong()
+        }
+    }
+    
+    func removeObservers() {
+        if let obs = playerShouldNextObserver {
+            NotificationCenter.default.removeObserver(obs)
+            playerShouldNextObserver = nil
+        }
+    }
+    
+
     func togglePlayPause() {
         guard player.error == nil else { return }
         func playOrPause() {
@@ -328,6 +267,8 @@ class PlayCore: NSObject {
     }
     
     func stop() {
+        player.currentItem?.cancelPendingSeeks()
+        player.currentItem?.asset.cancelLoading()
         player.pause()
         player.replaceCurrentItem(with: nil)
         currentTrack = nil
@@ -355,33 +296,151 @@ class PlayCore: NSObject {
         player.seek(to: t)
     }
     
-    func playerItems(_ ids: [Int]) -> Promise<[(Int, Song, AVPlayerItem?)]> {
-        let br = Preferences.shared.musicBitRate.rawValue
-        return Promise { resolver in
-            api.songUrl(ids, br).done {
-                let re = $0.map { s -> (id: Int, song: Song, playerItem: AVPlayerItem?) in
-                    
-                    var r: (id: Int, song: Song, playerItem: AVPlayerItem?) = (s.id, s, nil)
-                    
-                    guard let uStr = s.url?.absoluteString.replacingOccurrences(of: "http://", with: "https://"),
-                        let url = URL(string: uStr) else {
-                        return r
-                    }
-                    
-                    let asset = AVURLAsset(url: url)
-                    guard asset.isPlayable else { return r }
-                    r.playerItem = AVPlayerItem(asset: asset)
-                    return r
-                }
-                
-                resolver.fulfill(re)
-                }.catch {
-                    resolver.reject($0)
-            }
+// MARK: - AVPlayer Internal Functions
+    
+    private func play(_ track: Track,
+                      time: CMTime = CMTime(value: 0, timescale: 1000)) {
+        
+        currentTrack = track
+        
+        if let song = track.song,
+           song.urlValid {
+            itemWaitingToLoad = nil
+            realPlay(track)
+        } else if itemWaitingToLoad == track.id {
+            return
+        } else {
+            itemWaitingToLoad = track.id
+            loadUrls(track)
         }
     }
     
-    func loadMoreItems() {
+    
+    private func loadUrls(_ track: Track) {
+        let list = playingNextList.filter {
+            !loadingList.contains($0)
+        }.compactMap { id in
+            playlist.first(where: { $0.id == id })
+        }.filter {
+            $0.playable
+        }.filter {
+            !($0.song?.urlValid ?? false)
+        }
+        
+        var ids = [track.id]
+        if list.count >= 4 {
+            let l = list[0..<4].map { $0.id }
+            ids.append(contentsOf: l)
+        } else {
+            let l = list.map { $0.id }
+            ids.append(contentsOf: l)
+        }
+        
+        ids = Array(Set(ids))
+        loadingList.append(contentsOf: ids)
+        
+        let br = Preferences.shared.musicBitRate.rawValue
+        api.songUrl(ids, br).done(on: .main) {
+            $0.forEach { song in
+                guard let track = self.playlist.first(where: { $0.id == song.id }) else { return }
+                track.song = song
+                self.loadingList.removeAll(where: { $0 == song.id })
+                
+                if self.itemWaitingToLoad == song.id {
+                    self.realPlay(track)
+                    self.itemWaitingToLoad = nil
+                }
+            }
+        }.catch {
+            print("Load Song urls error: \($0)")
+        }
+    }
+    
+    
+    private func realPlay(_ track: Track) {
+        guard let song = track.song,
+              let playerItem = song.playerItem else {
+            return
+        }
+
+        // Fixing 'invalid numeric value' for asset.duration
+        // GSPlayer VIMediaCache has the same bug.
+        player = AVPlayer(playerItem: playerItem)
+        player.play()
+        
+        historys.removeAll {
+            $0.id == track.id
+        }
+        historys.append(track)
+        
+        if historys.count > 100 {
+            historys.removeFirst()
+        }
+    }
+    
+    private func updateInternalPlaylist() {
+        let repeatMode = Preferences.shared.repeatMode
+        let shuffleMode = Preferences.shared.shuffleMode
+        
+        let idList = playlist.map {
+            $0.id
+        }
+        
+        guard playlist.count > 0 else {
+            print("Nothing playable.")
+            return
+        }
+        
+        switch repeatMode {
+        case .noRepeat where shuffleMode == .noShuffle:
+            internalPlaylist = idList
+        case .noRepeat where shuffleMode == .shuffleItems:
+            internalPlaylist = idList.shuffled()
+        case .noRepeat where shuffleMode == .shuffleAlbums:
+            var albumList = Set<Int>()
+            var dic = [Int: [Int]]()
+            playlist.forEach {
+                let aid = $0.album.id
+                var items = dic[aid] ?? []
+                items.append($0.id)
+                dic[aid] = items
+                albumList.insert(aid)
+            }
+            break
+        case .repeatPlayList where shuffleMode == .noShuffle:
+            while internalPlaylist.count - internalPlaylistIndex < playingNextLimit {
+                internalPlaylist.append(contentsOf: idList)
+            }
+        case .repeatPlayList where shuffleMode == .shuffleItems:
+            while internalPlaylist.count - internalPlaylistIndex < playingNextLimit {
+                let list = idList + idList
+                internalPlaylist.append(contentsOf: list.shuffled())
+            }
+        case .repeatPlayList where shuffleMode == .shuffleAlbums:
+            break
+        default:
+            break
+        }
+    }
+    
+    private func initPlayingNextList() {
+        let repeatMode = Preferences.shared.repeatMode
+        
+        updateInternalPlaylist()
+        
+        switch repeatMode {
+        case .repeatItem where currentTrack != nil:
+            playingNextList = [currentTrack!.id]
+        case .repeatItem:
+            playingNextList = []
+        case .noRepeat, .repeatPlayList:
+            let sIndex = internalPlaylistIndex + 1
+            var eIndex = sIndex + playingNextLimit
+            if eIndex > internalPlaylist.count {
+                eIndex = internalPlaylist.count
+            }
+            playingNextList = internalPlaylist[sIndex..<eIndex].map{ $0 }
+        }
     }
     
 // MARK: - System Media Keys
