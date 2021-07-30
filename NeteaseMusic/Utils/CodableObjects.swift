@@ -242,16 +242,6 @@ class Song: NSObject, Decodable {
             return now < date
         }
     }
-    
-    lazy var playerItem: AVPlayerItem? = {
-        guard let url = url?.https else {
-            return nil
-        }
-
-        let item = AVPlayerItem(loader: url)
-        item.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-        return item
-    }()
 }
 
 struct RecommendResource: Decodable {

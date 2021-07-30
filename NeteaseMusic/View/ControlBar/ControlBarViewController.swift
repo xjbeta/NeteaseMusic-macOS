@@ -239,6 +239,8 @@ class ControlBarViewController: NSViewController {
         
         repeatModeButton.image = repeatImage?.tint(color: repeatImgColor)
         shuffleModeButton.image = shuffleImage?.tint(color: shuffleImgColor)
+        
+        PlayCore.shared.updateRepeatShuffleMode()
     }
     
     deinit {
