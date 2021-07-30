@@ -207,21 +207,6 @@ class PlayCore: NSObject {
         internalPlaylistIndex -= 1
         play(track)
     }
-    
-    func initObservers() {
-        removeObservers()
-        playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
-            self.nextSong()
-        }
-    }
-    
-    func removeObservers() {
-        if let obs = playerShouldNextObserver {
-            NotificationCenter.default.removeObserver(obs)
-            playerShouldNextObserver = nil
-        }
-    }
-    
 
     func togglePlayPause() {
         guard player.error == nil else { return }
@@ -457,9 +442,8 @@ class PlayCore: NSObject {
         }
     }
     
+// MARK: - Observers
     func initDelegateObserver() {
-
-        
         timeControlStautsObserver = player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             self?.timeControlStatus = player.timeControlStatus
         }
@@ -489,6 +473,21 @@ class PlayCore: NSObject {
         
         timeControlStautsObserver?.invalidate()
     }
+    
+    func initObservers() {
+        removeObservers()
+        playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
+            self.nextSong()
+        }
+    }
+    
+    func removeObservers() {
+        if let obs = playerShouldNextObserver {
+            NotificationCenter.default.removeObserver(obs)
+            playerShouldNextObserver = nil
+        }
+    }
+    
     
     deinit {
         deinitDelegateObserver()
