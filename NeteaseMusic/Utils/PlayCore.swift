@@ -209,6 +209,7 @@ class PlayCore: NSObject {
         
         guard let id = internalPlaylist[safe: internalPlaylistIndex + 1],
               let track = playlist.first(where: { $0.id == id }) else {
+            stop()
             return
         }
         internalPlaylistIndex += 1
@@ -269,11 +270,15 @@ class PlayCore: NSObject {
     }
     
     func stop() {
+        player.pause()
         player.currentItem?.cancelPendingSeeks()
         player.currentItem?.asset.cancelLoading()
-        player.pause()
         player.replaceCurrentItem(with: nil)
         currentTrack = nil
+        internalPlaylist.removeAll()
+        internalPlaylistIndex = -1
+        pnItemType = .withoutPreviousAndNext
+        playlist.removeAll()
     }
     
     func toggleRepeatMode() {

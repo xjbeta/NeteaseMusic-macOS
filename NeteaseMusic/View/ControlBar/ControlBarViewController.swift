@@ -154,9 +154,8 @@ class ControlBarViewController: NSViewController {
             
         }
         
-        currentTrackObserver = pc.observe(\.currentTrack, options: [.initial, .new]) { [weak self] (playCore, changes) in
-            guard let track = playCore.currentTrack else { return }
-            self?.initViews(track)
+        currentTrackObserver = pc.observe(\.currentTrack, options: [.initial, .new]) { [weak self] pc, _ in
+            self?.initViews(pc.currentTrack)
         }
         
         fmModeObserver = pc.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playCore, changes) in
@@ -168,14 +167,20 @@ class ControlBarViewController: NSViewController {
     }
     
     
-    func initViews(_ track: Track) {
-        trackPicButton.setImage(track.album.picUrl?.absoluteString, true)
-        trackNameTextField.stringValue = track.name
-        let name = track.secondName
-        trackSecondNameTextField.isHidden = name == ""
-        trackSecondNameTextField.stringValue = name
-        trackArtistTextField.stringValue = track.artists.artistsString()
-        
+    func initViews(_ track: Track?) {
+        if let t = track {
+            trackPicButton.setImage(t.album.picUrl?.absoluteString, true)
+            trackNameTextField.stringValue = t.name
+            let name = t.secondName
+            trackSecondNameTextField.isHidden = name == ""
+            trackSecondNameTextField.stringValue = name
+            trackArtistTextField.stringValue = t.artists.artistsString()
+        } else {
+            trackPicButton.image = nil
+            trackNameTextField.stringValue = ""
+            trackSecondNameTextField.stringValue = ""
+            trackArtistTextField.stringValue = ""
+        }
         
         durationSlider.maxValue = 1
         durationSlider.doubleValue = 0
