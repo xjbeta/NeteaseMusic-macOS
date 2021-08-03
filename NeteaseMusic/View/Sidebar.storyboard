@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmA-py-oK2">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmA-py-oK2">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,25 +11,24 @@
             <objects>
                 <viewController showSeguePresentationStyle="single" id="SmA-py-oK2" customClass="SidebarViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="z3A-mc-CSB">
-                        <rect key="frame" x="0.0" y="0.0" width="220" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="519"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR7-ab-Tuc">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="519"/>
                                 <clipView key="contentView" drawsBackground="NO" id="0ik-Y0-pfX">
-                                    <rect key="frame" x="0.0" y="0.0" width="220" height="519"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="519"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="zze-Z8-F54" id="M0C-JA-8qr" customClass="SidebarOutlineView" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="220" height="519"/>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="4" outlineTableColumn="zze-Z8-F54" id="M0C-JA-8qr" customClass="SidebarOutlineView" customModule="NeteaseMusic" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="519"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="12"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="217" minWidth="16" maxWidth="1000" id="zze-Z8-F54">
+                                                <tableColumn width="208" minWidth="16" maxWidth="1000" id="zze-Z8-F54">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -41,7 +40,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="SidebarHeaderCell" id="NEz-ZH-3NS">
-                                                            <rect key="frame" x="1" y="6" width="217" height="17"/>
+                                                            <rect key="frame" x="11" y="6" width="217" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zkO-XQ-qAq">
@@ -66,11 +65,11 @@
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="SidebarDataCell" id="Hcm-a1-mgv">
-                                                            <rect key="frame" x="1" y="35" width="217" height="17"/>
+                                                            <rect key="frame" x="11" y="35" width="217" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView translatesAutoresizingMaskIntoConstraints="NO" id="HS7-Vp-Pg9">
-                                                                    <rect key="frame" x="1" y="1" width="16" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="-2" width="16" height="22"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="16" id="F2p-k6-cQb"/>
                                                                         <constraint firstAttribute="width" secondItem="HS7-Vp-Pg9" secondAttribute="height" multiplier="1:1" id="OOS-cd-UyO"/>
@@ -82,7 +81,7 @@
                                                                     </connections>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="apS-b2-TlA">
-                                                                    <rect key="frame" x="23" y="1" width="96" height="16"/>
+                                                                    <rect key="frame" x="18" y="1" width="96" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="zS7-5J-vIN">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -96,8 +95,8 @@
                                                             <constraints>
                                                                 <constraint firstItem="HS7-Vp-Pg9" firstAttribute="centerY" secondItem="Hcm-a1-mgv" secondAttribute="centerY" id="8wF-52-ufG"/>
                                                                 <constraint firstItem="apS-b2-TlA" firstAttribute="centerY" secondItem="Hcm-a1-mgv" secondAttribute="centerY" id="d21-16-dmg"/>
-                                                                <constraint firstItem="apS-b2-TlA" firstAttribute="leading" secondItem="HS7-Vp-Pg9" secondAttribute="trailing" constant="8" id="e88-tv-k5x"/>
-                                                                <constraint firstItem="HS7-Vp-Pg9" firstAttribute="leading" secondItem="Hcm-a1-mgv" secondAttribute="leading" constant="1" id="qBu-p9-axw"/>
+                                                                <constraint firstItem="apS-b2-TlA" firstAttribute="leading" secondItem="HS7-Vp-Pg9" secondAttribute="trailing" constant="4" id="e88-tv-k5x"/>
+                                                                <constraint firstItem="HS7-Vp-Pg9" firstAttribute="leading" secondItem="Hcm-a1-mgv" secondAttribute="leading" id="qBu-p9-axw"/>
                                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="apS-b2-TlA" secondAttribute="trailing" constant="2" id="yVd-VD-ByP"/>
                                                             </constraints>
                                                             <connections>
@@ -142,6 +141,7 @@
                 </viewController>
                 <customObject id="Yil-Cm-SPe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <treeController objectClassName="SidebarItem" editable="NO" automaticallyPreparesContent="YES" childrenKeyPath="childrenItems" leafKeyPath="isLeaf" id="HiJ-Kl-Xtg">
+                    <classReference key="objectClass" className="SidebarItem"/>
                     <connections>
                         <binding destination="SmA-py-oK2" name="contentArray" keyPath="self.sidebarItems" id="cUx-k9-eBz"/>
                     </connections>
@@ -151,6 +151,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
     </resources>
 </document>
