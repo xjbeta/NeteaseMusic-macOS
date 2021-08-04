@@ -144,20 +144,22 @@ extension PlayCore {
         info[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
         info[MPNowPlayingInfoPropertyDefaultPlaybackRate] = 1
         
-        info[MPMediaItemPropertyArtwork] =
-            MPMediaItemArtwork(boundsSize: .init(width: 512, height: 512)) {
-                let w = Int($0.width * (NSScreen.main?.backingScaleFactor ?? 1))
-                guard var str = track.album.picUrl?.absoluteString else {
-                    return NSApp.applicationIconImage
-                }
-                str += "?param=\(w)y\(w)"
-                guard let imageU = URL(string: str),
-                    let image = NSImage(contentsOf: imageU) else {
-                        return NSApp.applicationIconImage
-                }
-                return image
+        if let appIcon = NSApp.applicationIconImage {
+            info[MPMediaItemPropertyArtwork] =
+                MPMediaItemArtwork(boundsSize: .init(width: 512, height: 512)) {
+                    let w = Int($0.width * (NSScreen.main?.backingScaleFactor ?? 1))
+                    guard var str = track.album.picUrl?.absoluteString else {
+                        return appIcon
+                    }
+                    str += "?param=\(w)y\(w)"
+                    guard let imageU = URL(string: str),
+                        let image = NSImage(contentsOf: imageU) else {
+                            return appIcon
+                    }
+                    return image
+            }
         }
-        
+
         nowPlayingInfoCenter.nowPlayingInfo = info
     }
 }
