@@ -89,6 +89,7 @@
                                                                     </textFieldCell>
                                                                     <connections>
                                                                         <binding destination="Hcm-a1-mgv" name="value" keyPath="objectValue.title" id="83b-z4-ezs"/>
+                                                                        <binding destination="Hcm-a1-mgv" name="textColor" keyPath="objectValue.titleColor" id="YHB-G4-QDp"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>

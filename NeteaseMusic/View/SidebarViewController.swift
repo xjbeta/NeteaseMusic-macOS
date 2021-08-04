@@ -14,26 +14,36 @@ class SidebarViewController: NSViewController {
     
     @objc class SidebarItem: NSObject {
         @objc dynamic var title: String
-        @objc var icon: NSImage? {
+        @objc dynamic var titleColor: NSColor {
             get {
+                return selected ? .nColor : .labelColor
+            }
+        }
+        
+        @objc dynamic var icon: NSImage? {
+            get {
+                var i: NSImage?
                 switch type {
                 case .discover:
-                    return NSImage(named: NSImage.Name("sidebar.sp#icn-discover"))
+                    i = NSImage(named: NSImage.Name("sidebar.sp#icn-discover"))
                 case .fm:
-                    return NSImage(named: NSImage.Name("sidebar.sp#icn-fm"))
+                    i = NSImage(named: NSImage.Name("sidebar.sp#icn-fm"))
                 case .favourite:
-                    return NSImage(named: NSImage.Name("sidebar.sp#icn-love"))
+                    i = NSImage(named: NSImage.Name("sidebar.sp#icn-love"))
                 case .createdPlaylist, .subscribedPlaylist:
-                    return NSImage(named: NSImage.Name("sidebar.sp#icn-song"))
+                    i = NSImage(named: NSImage.Name("sidebar.sp#icn-song"))
                 case .mySubscription:
-                    return NSImage(named: NSImage.Name("sidebar.sp#icn-myfav"))
+                    i = NSImage(named: NSImage.Name("sidebar.sp#icn-myfav"))
                 default:
-                    return nil
+                    break
                 }
+                
+                return i?.tint(color: titleColor)
             }
         }
         var id: Int = 0
         var type: ItemType = .none
+        @objc dynamic var selected = false
         
         @objc var isLeaf: Bool
         @objc var childrenCount = 0
@@ -66,10 +76,36 @@ class SidebarViewController: NSViewController {
             
             self.id = id
         }
+        
+        override public class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
+            switch key {
+            case "icon", "titleColor":
+                return Set(["selected"])
+            default:
+                return super.keyPathsForValuesAffectingValue(forKey: key)
+            }
+        }
     }
     
     enum ItemType {
-        case discover, fm, favourite, none, discoverPlaylist, album, artist, topSongs, searchResults, fmTrash, createdPlaylists, createdPlaylist, subscribedPlaylists, subscribedPlaylist, preferences, mySubscription, sidebar, sidePlaylist
+        case discover,
+             fm,
+             favourite,
+             none,
+             discoverPlaylist,
+             album,
+             artist,
+             topSongs,
+             searchResults,
+             fmTrash,
+             createdPlaylists,
+             createdPlaylist,
+             subscribedPlaylists,
+             subscribedPlaylist,
+             preferences,
+             mySubscription,
+             sidebar,
+             sidePlaylist
     }
     
     let defaultItems = [SidebarItem(type: .discover),
@@ -126,6 +162,8 @@ class SidebarViewController: NSViewController {
                 break
             }
         }
+        
+        outlineViewSelectionIsChanging(.init(name: .init("")))
     }
     
     func updatePlaylists() {
@@ -209,9 +247,17 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
     }
     
     func outlineViewSelectionIsChanging(_ notification: Notification) {
+        sidebarItems.forEach {
+            $0.selected = false
+            $0.childrenItems.forEach {
+                $0.selected = false
+            }
+        }
+        
         guard let item = (outlineView.item(atRow: outlineView.selectedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
             return
         }
+        item.selected = true
         
         ViewControllerManager.shared.selectedSidebarItem = item
     }
