@@ -7,35 +7,15 @@
 //
 
 import Cocoa
-import Cache
+import Kingfisher
 import Alamofire
 
 class ImageLoader: NSObject {
-    static var storage: DiskStorage<Image> {
-        get {
-            
-            let diskConfig = DiskConfig(name: Bundle.main.bundleIdentifier! + ".imageCache",
-                                        expiry: .seconds(3600 * 24 * 7),  // a week
-                maxSize: 100*1000000)
-            
-            let storage = try! DiskStorage<Image>(config: diskConfig,
-                                                  transformer: TransformerFactory.forImage())
-            return storage
-        }
-    }
-    
-    static func request(_ url: String, complete: @escaping ((NSImage) -> ())) {
-        AF.request(url).responseData {
-            guard let d = $0.data,
-                let image = NSImage(data: d) else { return }
-            complete(image)
-        }
-    }
+
     
     static func image(_ url: String,
                       _ autoSize: Bool = false,
-                      _ width: CGFloat = 0,
-                      complete: @escaping ((NSImage) -> ())) {
+                      _ width: CGFloat = 0) -> KF.Builder {
         var u = url
         
         if autoSize {
@@ -43,14 +23,8 @@ class ImageLoader: NSObject {
             u += "?param=\(w)y\(w)"
         }
         
-        if let image = try? ImageLoader.storage.object(forKey: u) {
-            complete(image)
-        } else {
-            ImageLoader.request(u) { image in
-                try? ImageLoader.storage.setObject(image, forKey: u)
-                complete(image)
-            }
-        }
+        
+        return KF.url(URL(string: u))
     }
 }
 
@@ -61,9 +35,7 @@ extension NSImageView {
         guard let u = url, u != "" else {
             return
         }
-        ImageLoader.image(u, autoSize, width ?? frame.width) {
-            self.image = $0
-        }
+        ImageLoader.image(u, autoSize, width ?? frame.width).set(to: self)
     }
 }
 
@@ -73,8 +45,6 @@ extension NSButton {
         guard let u = url, u != "" else {
             return
         }
-        ImageLoader.image(u, autoSize, width ?? frame.width) {
-            self.image = $0
-        }
+        ImageLoader.image(u, autoSize, width ?? frame.width).set(to: self)
     }
 }

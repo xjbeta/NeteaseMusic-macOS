@@ -103,10 +103,10 @@ class MainWindowController: NSWindowController {
             ViewControllerManager.shared.userId = $0.userId
             self.userButton.title = $0.nickname
             guard let u = $0.avatarImage else { return }
-            ImageLoader.image(u, true, 13) {
-                self.userButton.image = $0.roundCorners(withRadius: $0.size.width / 8)
-                self.userButton.isHidden = false
-            }
+            ImageLoader.image(u, true, 13)
+                .roundCorner(radius: .point(self.userButton.frame.size.width / 8))
+                .set(to: self.userButton)
+            self.userButton.isHidden = false
             }.catch {
                 print($0)
         }

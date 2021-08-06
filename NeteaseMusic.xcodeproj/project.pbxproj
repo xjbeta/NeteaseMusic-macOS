@@ -73,6 +73,12 @@
 		01467E942283F3180037B49D /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E932283F3180037B49D /* LyricViewController.swift */; };
 		01467E9722846B050037B49D /* FM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01467E9622846B050037B49D /* FM.storyboard */; };
 		01467E9922846B920037B49D /* FMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E9822846B920037B49D /* FMViewController.swift */; };
+		0148762426BD485100B4F754 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762326BD485100B4F754 /* Sparkle */; };
+		0148762726BD488500B4F754 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762626BD488500B4F754 /* Alamofire */; };
+		0148762A26BD48E700B4F754 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762926BD48E700B4F754 /* PromiseKit */; };
+		0148762D26BD490D00B4F754 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762C26BD490D00B4F754 /* CryptoSwift */; };
+		0148763026BD498100B4F754 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762F26BD498100B4F754 /* HotKey */; };
+		0148763326BD49C800B4F754 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0148763226BD49C800B4F754 /* Kingfisher */; };
 		0153934E22E1BA9600CD10F9 /* SongButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */; };
 		0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
@@ -93,28 +99,10 @@
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
-		01B3015C234E1DAB00BBC6E9 /* HotKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; };
-		01B3015D234E1DAB00BBC6E9 /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01B30159234E1DA500BBC6E9 /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01B3015E234E1DB300BBC6E9 /* HotKey.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */; };
 		01BFA88326A98D310075F06D /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01BFA88226A98D310075F06D /* GSPlayer */; };
 		01BFA88526A9B8E20075F06D /* HttpsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFA88426A9B8E20075F06D /* HttpsURL.swift */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
-		01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; };
-		01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFB233DB3E100A87467 /* Alamofire.framework */; };
-		01DE5F07233DB3E100A87467 /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFD233DB3E100A87467 /* Cache.framework */; };
-		01DE5F08233DB3E100A87467 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFE233DB3E100A87467 /* PromiseKit.framework */; };
-		01DE5F0D233DB3ED00A87467 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5F01233DB3E100A87467 /* Sparkle.framework */; };
-		01DE5F0E233DB3ED00A87467 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5F01233DB3E100A87467 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01DE5F0F233DB3FC00A87467 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFB233DB3E100A87467 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01DE5F10233DB3FC00A87467 /* Cache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFD233DB3E100A87467 /* Cache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01DE5F11233DB3FC00A87467 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01DE5F12233DB3FC00A87467 /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01DE5EFE233DB3E100A87467 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		01DE5F13233DB41800A87467 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5EFC233DB3E100A87467 /* Alamofire.framework.dSYM */; };
-		01DE5F14233DB41800A87467 /* Cache.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */; };
-		01DE5F15233DB41800A87467 /* CryptoSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5F00233DB3E100A87467 /* CryptoSwift.framework.dSYM */; };
-		01DE5F16233DB41800A87467 /* PromiseKit.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5EFF233DB3E100A87467 /* PromiseKit.framework.dSYM */; };
-		01DE5F17233DB41800A87467 /* Sparkle.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */; };
 		01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E40FE822C1DF4600864118 /* ImageLoader.swift */; };
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
 		01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */; };
@@ -130,40 +118,6 @@
 		01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */; };
 		01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		013EF13922564DD300E4D7D8 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				01B3015D234E1DAB00BBC6E9 /* HotKey.framework in Embed Frameworks */,
-				01DE5F0F233DB3FC00A87467 /* Alamofire.framework in Embed Frameworks */,
-				01DE5F10233DB3FC00A87467 /* Cache.framework in Embed Frameworks */,
-				01DE5F11233DB3FC00A87467 /* CryptoSwift.framework in Embed Frameworks */,
-				01DE5F12233DB3FC00A87467 /* PromiseKit.framework in Embed Frameworks */,
-				01DE5F0E233DB3ED00A87467 /* Sparkle.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		013EF15122564E4600E4D7D8 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				01B3015E234E1DB300BBC6E9 /* HotKey.framework.dSYM in CopyFiles */,
-				01DE5F13233DB41800A87467 /* Alamofire.framework.dSYM in CopyFiles */,
-				01DE5F14233DB41800A87467 /* Cache.framework.dSYM in CopyFiles */,
-				01DE5F15233DB41800A87467 /* CryptoSwift.framework.dSYM in CopyFiles */,
-				01DE5F16233DB41800A87467 /* PromiseKit.framework.dSYM in CopyFiles */,
-				01DE5F17233DB41800A87467 /* Sparkle.framework.dSYM in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0110886F238D05D400184551 /* PlayerSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSliderCell.swift; sourceTree = "<group>"; };
@@ -272,22 +226,9 @@
 		01957D92224D01860006FCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
-		01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = HotKey.framework.dSYM; path = Carthage/Build/Mac/HotKey.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		01B30159234E1DA500BBC6E9 /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = SOURCE_ROOT; };
 		01BFA88426A9B8E20075F06D /* HttpsURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsURL.swift; sourceTree = "<group>"; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
-		01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/Mac/CryptoSwift.framework; sourceTree = SOURCE_ROOT; };
-		01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Cache.framework.dSYM; path = Carthage/Build/Mac/Cache.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		01DE5EFB233DB3E100A87467 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = SOURCE_ROOT; };
-		01DE5EFC233DB3E100A87467 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/Mac/Alamofire.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		01DE5EFD233DB3E100A87467 /* Cache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cache.framework; path = Carthage/Build/Mac/Cache.framework; sourceTree = SOURCE_ROOT; };
-		01DE5EFE233DB3E100A87467 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/Mac/PromiseKit.framework; sourceTree = SOURCE_ROOT; };
-		01DE5EFF233DB3E100A87467 /* PromiseKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = PromiseKit.framework.dSYM; path = Carthage/Build/Mac/PromiseKit.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		01DE5F00233DB3E100A87467 /* CryptoSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CryptoSwift.framework.dSYM; path = Carthage/Build/Mac/CryptoSwift.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		01DE5F01233DB3E100A87467 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = SOURCE_ROOT; };
-		01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Sparkle.framework.dSYM; path = Carthage/Build/Mac/Sparkle.framework.dSYM; sourceTree = SOURCE_ROOT; };
-		01E07ACC232724A700C95319 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		01E0F4A4226165DD0043FAB6 /* PlaylistDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlaylistDetail.json; sourceTree = "<group>"; };
 		01E0F4A62261661B0043FAB6 /* SongUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SongUrl.json; sourceTree = "<group>"; };
 		01E40FE822C1DF4600864118 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -311,13 +252,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01B3015C234E1DAB00BBC6E9 /* HotKey.framework in Frameworks */,
-				01DE5F03233DB3E100A87467 /* CryptoSwift.framework in Frameworks */,
-				01DE5F05233DB3E100A87467 /* Alamofire.framework in Frameworks */,
-				01DE5F0D233DB3ED00A87467 /* Sparkle.framework in Frameworks */,
+				0148762726BD488500B4F754 /* Alamofire in Frameworks */,
+				0148762426BD485100B4F754 /* Sparkle in Frameworks */,
+				0148762A26BD48E700B4F754 /* PromiseKit in Frameworks */,
+				0148763026BD498100B4F754 /* HotKey in Frameworks */,
+				0148763326BD49C800B4F754 /* Kingfisher in Frameworks */,
+				0148762D26BD490D00B4F754 /* CryptoSwift in Frameworks */,
 				01BFA88326A98D310075F06D /* GSPlayer in Frameworks */,
-				01DE5F07233DB3E100A87467 /* Cache.framework in Frameworks */,
-				01DE5F08233DB3E100A87467 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,25 +437,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		013EF13A22564DF300E4D7D8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				01DE5EFB233DB3E100A87467 /* Alamofire.framework */,
-				01DE5EFC233DB3E100A87467 /* Alamofire.framework.dSYM */,
-				01DE5EFD233DB3E100A87467 /* Cache.framework */,
-				01DE5EFA233DB3E100A87467 /* Cache.framework.dSYM */,
-				01DE5EF9233DB3E100A87467 /* CryptoSwift.framework */,
-				01DE5F00233DB3E100A87467 /* CryptoSwift.framework.dSYM */,
-				01B30159234E1DA500BBC6E9 /* HotKey.framework */,
-				01B30158234E1DA500BBC6E9 /* HotKey.framework.dSYM */,
-				01DE5EFE233DB3E100A87467 /* PromiseKit.framework */,
-				01DE5EFF233DB3E100A87467 /* PromiseKit.framework.dSYM */,
-				01DE5F01233DB3E100A87467 /* Sparkle.framework */,
-				01DE5F02233DB3E100A87467 /* Sparkle.framework.dSYM */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		013EF1572256501000E4D7D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,7 +527,6 @@
 			children = (
 				01957D8A224D01850006FCEC /* NeteaseMusic */,
 				01957D89224D01850006FCEC /* Products */,
-				013EF13A22564DF300E4D7D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -623,7 +544,6 @@
 				01957D8B224D01850006FCEC /* AppDelegate.swift */,
 				01957D8D224D01850006FCEC /* ViewController.swift */,
 				01957D8F224D01860006FCEC /* Assets.xcassets */,
-				01E07ACC232724A700C95319 /* Cartfile */,
 				013EF12B22563C5400E4D7D8 /* View */,
 				012F2F44225061AB00086870 /* Utils */,
 				01957D94224D01860006FCEC /* Info.plist */,
@@ -678,8 +598,6 @@
 				01957D84224D01850006FCEC /* Sources */,
 				01957D85224D01850006FCEC /* Frameworks */,
 				01957D86224D01850006FCEC /* Resources */,
-				013EF13922564DD300E4D7D8 /* Embed Frameworks */,
-				013EF15122564E4600E4D7D8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -688,6 +606,12 @@
 			name = NeteaseMusic;
 			packageProductDependencies = (
 				01BFA88226A98D310075F06D /* GSPlayer */,
+				0148762326BD485100B4F754 /* Sparkle */,
+				0148762626BD488500B4F754 /* Alamofire */,
+				0148762926BD48E700B4F754 /* PromiseKit */,
+				0148762C26BD490D00B4F754 /* CryptoSwift */,
+				0148762F26BD498100B4F754 /* HotKey */,
+				0148763226BD49C800B4F754 /* Kingfisher */,
 			);
 			productName = NeteaseMusic;
 			productReference = 01957D88224D01850006FCEC /* NeteaseMusic.app */;
@@ -719,6 +643,12 @@
 			mainGroup = 01957D7F224D01850006FCEC;
 			packageReferences = (
 				01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */,
+				0148762226BD485100B4F754 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				0148762526BD488500B4F754 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0148762826BD48E700B4F754 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				0148762B26BD490D00B4F754 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				0148762E26BD498100B4F754 /* XCRemoteSwiftPackageReference "HotKey" */,
+				0148763126BD49C800B4F754 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 01957D89224D01850006FCEC /* Products */;
 			projectDirPath = "";
@@ -990,10 +920,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = NeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1015,10 +942,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = NeteaseMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1055,6 +979,54 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0148762226BD485100B4F754 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.26.0;
+			};
+		};
+		0148762526BD488500B4F754 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		0148762826BD48E700B4F754 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.15.3;
+			};
+		};
+		0148762B26BD490D00B4F754 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
+		0148762E26BD498100B4F754 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+		0148763126BD49C800B4F754 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.1;
+			};
+		};
 		01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xjbeta/GSPlayer";
@@ -1066,6 +1038,36 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0148762326BD485100B4F754 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0148762226BD485100B4F754 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		0148762626BD488500B4F754 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0148762526BD488500B4F754 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0148762926BD48E700B4F754 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0148762826BD48E700B4F754 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		0148762C26BD490D00B4F754 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0148762B26BD490D00B4F754 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+		0148762F26BD498100B4F754 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0148762E26BD498100B4F754 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+		0148763226BD49C800B4F754 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0148763126BD49C800B4F754 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		01BFA88226A98D310075F06D /* GSPlayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */;
