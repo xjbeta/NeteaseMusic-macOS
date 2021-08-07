@@ -153,10 +153,10 @@
                                             </customSpacing>
                                         </stackView>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Des-9I-q0L" userLabel="ControlButtons Stack View">
-                                            <rect key="frame" x="337" y="9" width="110" height="38"/>
+                                            <rect key="frame" x="337" y="8" width="111" height="39"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VM5-Nf-Rg3">
-                                                    <rect key="frame" x="0.0" y="12" width="14" height="13"/>
+                                                    <rect key="frame" x="0.0" y="13" width="14" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="VM5-Nf-Rg3" secondAttribute="height" multiplier="14:13" id="Qz1-4A-8Oc"/>
                                                         <constraint firstAttribute="width" constant="14" id="dea-3O-uBK"/>
@@ -170,10 +170,10 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FaU-Jj-bts">
-                                                    <rect key="frame" x="36" y="0.0" width="38" height="38"/>
+                                                    <rect key="frame" x="36" y="0.0" width="39" height="39"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="FaU-Jj-bts" secondAttribute="height" multiplier="1:1" id="LdJ-WO-hAZ"/>
-                                                        <constraint firstAttribute="width" constant="38" id="zk1-lS-Sbj"/>
+                                                        <constraint firstAttribute="width" constant="39" id="zk1-lS-Sbj"/>
                                                     </constraints>
                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="sf.play.circle" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="F3x-pZ-VnO">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -184,7 +184,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tAJ-rN-cuN">
-                                                    <rect key="frame" x="96" y="12" width="14" height="13"/>
+                                                    <rect key="frame" x="97" y="13" width="14" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tAJ-rN-cuN" secondAttribute="height" multiplier="14:13" id="MrL-al-9Di"/>
                                                     </constraints>

@@ -107,7 +107,13 @@ class ControlBarViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playlistButton.image?.size = imgSize
+        pauseButton.contentTintColor = .nColor
+        previousButton.contentTintColor = .nColor
+        nextButton.contentTintColor = .nColor
+        if let image = NSImage(named: .init("sf.music.note.list")) {
+            image.size = imgSize
+            playlistButton.image = image.tint(color: .nColor)
+        }
         
         let pc = PlayCore.shared
         pc.playerProgressDelegate = self
@@ -179,11 +185,13 @@ class ControlBarViewController: NSViewController {
             trackSecondNameTextField.isHidden = name == ""
             trackSecondNameTextField.stringValue = name
             trackArtistTextField.stringValue = t.artists.artistsString()
+            durationTextField.isHidden = false
         } else {
             trackPicButton.image = nil
             trackNameTextField.stringValue = ""
             trackSecondNameTextField.stringValue = ""
             trackArtistTextField.stringValue = ""
+            durationTextField.isHidden = true
         }
         
         durationSlider.maxValue = 1
@@ -237,8 +245,8 @@ class ControlBarViewController: NSViewController {
         let repeatImgName = pref.repeatMode == .repeatItem ? "sf.repeat.1" : "sf.repeat"
         let shuffleImgName = "sf.shuffle"
         
-        let repeatImgColor: NSColor = pref.repeatMode == .noRepeat ? .systemGray : .systemRed
-        let shuffleImgColor: NSColor = pref.shuffleMode == .noShuffle ? .systemGray : .systemRed
+        let repeatImgColor: NSColor = pref.repeatMode == .noRepeat ? .systemGray : .nColor
+        let shuffleImgColor: NSColor = pref.shuffleMode == .noShuffle ? .systemGray : .nColor
 
         let repeatImage = NSImage(named: .init(repeatImgName))
         let shuffleImage = NSImage(named: .init(shuffleImgName))
