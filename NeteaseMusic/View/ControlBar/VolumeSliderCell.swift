@@ -15,14 +15,9 @@ class VolumeSliderCell: NSSliderCell {
     
     override func drawKnob(_ knobRect: NSRect) {
         let path = NSBezierPath(ovalIn: knobRect)
-        path.lineWidth = 0.5
-        
         let darkMode = NSApp.effectiveAppearance == NSAppearance(named: .darkAqua)
         
-        (darkMode ? NSColor.black : NSColor.white).setFill()
-        path.stroke()
-        
-        (darkMode ? NSColor.white : NSColor.black).setFill()
+        (darkMode ? NSColor.nColor : NSColor.nColor).setFill()
         path.fill()
     }
     
@@ -31,7 +26,8 @@ class VolumeSliderCell: NSSliderCell {
         let valuePer = CGFloat(slider.doubleValue / (slider.maxValue - slider.minValue))
         
         let barRect = self.barRect(flipped: false)
-        let knobOriginX = barRect.width * valuePer
+        
+        let knobOriginX = barRect.origin.x + barRect.width * valuePer - knobSize.width / 2
         let knobOriginY = barRect.origin.y + (barRect.height / 2) - (knobSize.height / 2)
         let knobOrigin = NSPoint(x: knobOriginX, y: knobOriginY)
         let knobRect = NSRect(origin: knobOrigin, size: knobSize)
@@ -52,13 +48,16 @@ class VolumeSliderCell: NSSliderCell {
         let barRadius = barHeight / 2
         let r = rect
         
+        let color1 = NSColor.nColor
+        let color3 = NSColor(red:0.96, green:0.96, blue:0.96, alpha:1.00)
+        
         let valuePer = CGFloat(slider.doubleValue / (slider.maxValue - slider.minValue))
         let path = NSBezierPath(roundedRect: r, xRadius: barRadius, yRadius: barRadius)
         let gradient = NSGradient(colorsAndLocations:
-            (.quaternaryLabelColor, 0.0),
-            (.quaternaryLabelColor, 1 - valuePer),
-            (.secondaryLabelColor, 1 - valuePer),
-            (.secondaryLabelColor, 1.0))
+            (color3, 0.0),
+            (color3, 1 - valuePer),
+            (color1, 1 - valuePer),
+            (color1, 1.0))
         gradient?.draw(in: path, angle: 180)
     }
 }
