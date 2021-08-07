@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SrH-3P-WM0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SrH-3P-WM0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,14 +11,14 @@
             <objects>
                 <viewController id="SrH-3P-WM0" customClass="SongInfoViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="vi1-I0-bbK">
-                        <rect key="frame" x="0.0" y="0.0" width="426" height="73"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="72"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pOq-LO-uDn">
-                                <rect key="frame" x="0.0" y="0.0" width="426" height="73"/>
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="72"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="DhV-dQ-1Zj">
-                                        <rect key="frame" x="-2" y="50" width="55" height="23"/>
+                                        <rect key="frame" x="-2" y="49" width="54" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="46" id="wWt-S9-dUn"/>
                                         </constraints>
@@ -28,7 +29,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LDU-1X-Qyx">
-                                        <rect key="frame" x="-2" y="25" width="86" height="17"/>
+                                        <rect key="frame" x="-2" y="25" width="86" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="SecondName" id="xAS-9Y-LgK">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -36,10 +37,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyd-iC-Rgh">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="17"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RZC-Cr-QN3">
-                                                <rect key="frame" x="-2" y="0.0" width="47" height="17"/>
+                                                <rect key="frame" x="-2" y="0.0" width="47" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Album:" id="P9E-c2-4BR">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -47,7 +48,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ogm-Ct-1It" customClass="IdButton" customModule="NeteaseMusic" customModuleProvider="target">
-                                                <rect key="frame" x="51" y="0.0" width="4" height="15"/>
+                                                <rect key="frame" x="51" y="0.0" width="50" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="125" id="D9B-M0-Yow"/>
                                                 </constraints>
@@ -60,41 +61,19 @@
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JHq-x5-WWg">
-                                                <rect key="frame" x="61" y="0.0" width="41" height="17"/>
+                                                <rect key="frame" x="107" y="0.0" width="41" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Artist:" id="CGe-Lp-jnG">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="3sJ-Ij-BZ3">
-                                                <rect key="frame" x="108" y="0.0" width="276" height="17"/>
-                                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="JUn-ij-S3v">
-                                                    <rect key="frame" x="0.0" y="0.0" width="276" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z3e-Sc-agm">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="17" id="w4M-EJ-k84"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="z3e-Sc-agm" secondAttribute="bottom" id="8NA-Su-cn5"/>
-                                                        <constraint firstItem="z3e-Sc-agm" firstAttribute="leading" secondItem="JUn-ij-S3v" secondAttribute="leading" id="Waq-vW-F1t"/>
-                                                        <constraint firstItem="z3e-Sc-agm" firstAttribute="top" secondItem="JUn-ij-S3v" secondAttribute="top" id="wNC-gV-Kjd"/>
-                                                    </constraints>
-                                                </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="fpK-dB-ku9">
-                                                    <rect key="frame" x="-100" y="-100" width="197" height="16"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="8fX-0n-sFV">
-                                                    <rect key="frame" x="-100" y="-100" width="16" height="17"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                            </scrollView>
+                                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="J0r-fc-9rm">
+                                                <rect key="frame" x="154" y="0.0" width="250" height="17"/>
+                                                <connections>
+                                                    <segue destination="bK1-DN-Nlz" kind="embed" id="gzq-Mi-NAP"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="ujU-G2-jbq"/>
@@ -134,15 +113,21 @@
                     </view>
                     <connections>
                         <outlet property="albumButton" destination="ogm-Ct-1It" id="KOY-8d-1M9"/>
-                        <outlet property="artistScrollView" destination="3sJ-Ij-BZ3" id="SMd-Ks-fMq"/>
-                        <outlet property="artistStackView" destination="z3e-Sc-agm" id="maW-oy-58A"/>
                         <outlet property="nameTextField" destination="DhV-dQ-1Zj" id="bvF-6n-BH1"/>
                         <outlet property="secondNameTextField" destination="LDU-1X-Qyx" id="TOu-dq-0cS"/>
                     </connections>
                 </viewController>
                 <customObject id="m5q-3Y-8dv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94" y="24.5"/>
+            <point key="canvasLocation" x="94" y="24"/>
+        </scene>
+        <!--ArtistButtons-->
+        <scene sceneID="9VF-tq-2Dn">
+            <objects>
+                <controllerPlaceholder storyboardName="ArtistButtons" id="bK1-DN-Nlz" sceneMemberID="viewController"/>
+                <customObject id="r9T-z0-9XE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="94" y="177"/>
         </scene>
     </scenes>
 </document>

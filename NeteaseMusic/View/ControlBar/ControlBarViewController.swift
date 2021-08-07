@@ -14,7 +14,6 @@ class ControlBarViewController: NSViewController {
     @IBOutlet weak var trackPicButton: NSButton!
     @IBOutlet weak var trackNameTextField: NSTextField!
     @IBOutlet weak var trackSecondNameTextField: NSTextField!
-    @IBOutlet weak var trackArtistTextField: NSTextField!
 
     @IBOutlet weak var previousButton: NSButton!
     @IBOutlet weak var pauseButton: NSButton!
@@ -125,7 +124,7 @@ class ControlBarViewController: NSViewController {
         
         trackNameTextField.stringValue = ""
         trackSecondNameTextField.stringValue = ""
-        trackArtistTextField.stringValue = ""
+        artistButtonsViewController()?.removeAllButtons()
         
         initPlayModeButton()
         
@@ -207,13 +206,13 @@ class ControlBarViewController: NSViewController {
             let name = t.secondName
             trackSecondNameTextField.isHidden = name == ""
             trackSecondNameTextField.stringValue = name
-            trackArtistTextField.stringValue = t.artists.artistsString()
+            artistButtonsViewController()?.initButtons(t, small: true)
             durationTextField.isHidden = false
         } else {
             trackPicButton.image = nil
             trackNameTextField.stringValue = ""
             trackSecondNameTextField.stringValue = ""
-            trackArtistTextField.stringValue = ""
+            artistButtonsViewController()?.removeAllButtons()
             durationTextField.isHidden = true
         }
         
@@ -281,6 +280,13 @@ class ControlBarViewController: NSViewController {
         shuffleModeButton.image = shuffleImage?.tint(color: shuffleImgColor)
         
         PlayCore.shared.updateRepeatShuffleMode()
+    }
+    
+    func artistButtonsViewController() -> ArtistButtonsViewController? {
+        let vc = children.compactMap {
+            $0 as? ArtistButtonsViewController
+        }.first
+        return vc
     }
     
     deinit {

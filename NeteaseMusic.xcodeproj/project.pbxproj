@@ -79,6 +79,8 @@
 		0148762D26BD490D00B4F754 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762C26BD490D00B4F754 /* CryptoSwift */; };
 		0148763026BD498100B4F754 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762F26BD498100B4F754 /* HotKey */; };
 		0148763326BD49C800B4F754 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0148763226BD49C800B4F754 /* Kingfisher */; };
+		0148763626BE3D8400B4F754 /* ArtistButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0148763526BE3D8400B4F754 /* ArtistButtons.storyboard */; };
+		0148763826BE3DD100B4F754 /* ArtistButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */; };
 		0153934E22E1BA9600CD10F9 /* SongButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */; };
 		0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
@@ -201,6 +203,8 @@
 		01467E9622846B050037B49D /* FM.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FM.storyboard; sourceTree = "<group>"; };
 		01467E9822846B920037B49D /* FMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMViewController.swift; sourceTree = "<group>"; };
 		01467E9C2284713A0037B49D /* RadioGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RadioGet.json; sourceTree = "<group>"; };
+		0148763526BE3D8400B4F754 /* ArtistButtons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistButtons.storyboard; sourceTree = "<group>"; };
+		0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistButtonsViewController.swift; sourceTree = "<group>"; };
 		0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongButtons.storyboard; sourceTree = "<group>"; };
 		0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongButtonsViewController.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
@@ -433,6 +437,7 @@
 				01190491230E64D700738904 /* NewPlaylist */,
 				012FB7DB233389C1007F7247 /* Preferences */,
 				01909520239E336C00647F80 /* Sublist */,
+				0148763426BE371500B4F754 /* ArtistButtons */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -486,6 +491,15 @@
 				0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */,
 			);
 			name = FM;
+			sourceTree = "<group>";
+		};
+		0148763426BE371500B4F754 /* ArtistButtons */ = {
+			isa = PBXGroup;
+			children = (
+				0148763526BE3D8400B4F754 /* ArtistButtons.storyboard */,
+				0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */,
+			);
+			name = ArtistButtons;
 			sourceTree = "<group>";
 		};
 		0153934C22E1BA6800CD10F9 /* SongActionButtons */ = {
@@ -677,6 +691,7 @@
 				012FEA702289BA3F00698969 /* SidePlaylistView.storyboard in Resources */,
 				014327B222AB728D00651064 /* PageSegmentedControlView.storyboard in Resources */,
 				012FEA6C2289B96600698969 /* PlaylistView.storyboard in Resources */,
+				0148763626BE3D8400B4F754 /* ArtistButtons.storyboard in Resources */,
 				012FEA6A2289B8D200698969 /* ControlBar.storyboard in Resources */,
 				0131439E226C23AC00B9E26F /* DailyCollectionViewItem.xib in Resources */,
 				0190952623A0914F00647F80 /* AlbumArtistTableView.storyboard in Resources */,
@@ -754,6 +769,7 @@
 				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
 				0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
+				0148763826BE3DD100B4F754 /* ArtistButtonsViewController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,
 				012F115822603CE8002D5599 /* SidePlaylistViewController.swift in Sources */,
 				013143AB226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift in Sources */,

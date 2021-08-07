@@ -12,8 +12,6 @@ class SongInfoViewController: NSViewController {
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var secondNameTextField: NSTextField!
     @IBOutlet weak var albumButton: IdButton!
-    @IBOutlet weak var artistStackView: NSStackView!
-    @IBOutlet weak var artistScrollView: NSScrollView!
     @IBAction @objc func buttonAction(_ sender: IdButton) {
         if sender == albumButton {
             ViewControllerManager.shared.selectSidebarItem(.album, sender.id)
@@ -41,24 +39,14 @@ class SongInfoViewController: NSViewController {
         albumButton.title = track.album.name
         albumButton.id = track.album.id
         
-        let buttons = track.artists.map { artist -> IdButton in
-            let b = IdButton(title: artist.name, target: self, action: #selector(buttonAction(_:)))
-            b.id = artist.id
-            return b
-        }
-        
-        artistStackView.arrangedSubviews.forEach {
-            artistStackView.removeArrangedSubview($0)
-            $0.removeFromSuperview()
-        }
-
-        buttons.enumerated().forEach {
-            artistStackView.addArrangedSubview($0.element)
-            if $0.offset < (buttons.count - 1) {
-                let textField = NSTextField(labelWithString: "/")
-                textField.textColor = .tertiaryLabelColor
-                artistStackView.addArrangedSubview(textField)
-            }
-        }
+        artistButtonsViewController()?.initButtons(track)
     }
+    
+    func artistButtonsViewController() -> ArtistButtonsViewController? {
+        let vc = children.compactMap {
+            $0 as? ArtistButtonsViewController
+        }.first
+        return vc
+    }
+    
 }
