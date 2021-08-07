@@ -164,6 +164,10 @@ class ControlBarViewController: NSViewController {
             self?.repeatModeButton.isHidden = fmMode
             self?.shuffleModeButton.isHidden = fmMode
         }
+        
+        if durationSlider.trackingAreas.isEmpty {
+            durationSlider.addTrackingArea(NSTrackingArea(rect: durationSlider.frame, options: [.activeAlways, .mouseEnteredAndExited, .inVisibleRect], owner: self, userInfo: ["obj": 0]))
+        }
     }
     
     
@@ -254,6 +258,26 @@ class ControlBarViewController: NSViewController {
 //        muteStautsObserver?.invalidate()
         currentTrackObserver?.invalidate()
         fmModeObserver?.invalidate()
+    }
+    
+}
+
+extension ControlBarViewController {
+    
+    override func mouseEntered(with event: NSEvent) {
+        guard let userInfo = event.trackingArea?.userInfo as? [String: Int],
+              userInfo["obj"] == 0 else {
+            return
+        }
+        durationSlider.mouseIn = true
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        guard let userInfo = event.trackingArea?.userInfo as? [String: Int],
+              userInfo["obj"] == 0 else {
+            return
+        }
+        durationSlider.mouseIn = false
     }
     
 }

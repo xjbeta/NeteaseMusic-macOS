@@ -18,6 +18,12 @@ class PlayerSlider: NSSlider {
     
     var cachedDoubleValue = 0.0
     var ignoreValueUpdate = false
+    var mouseIn = false {
+        didSet {
+            (cell as? PlayerSliderCell)?.mouseIn = mouseIn
+            needsDisplay = true
+        }
+    }
     
     func updateValue(_ value: Double) {
         if !ignoreValueUpdate {
