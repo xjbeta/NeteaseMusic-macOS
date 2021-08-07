@@ -33,7 +33,7 @@ class PlayingSongViewController: NSViewController {
             break
         }
         
-        let time = PlayCore.shared.player.currentTime()
+        let time = PlayCore.shared.player.currentDuration
         lyricViewController()?.updateLyric(time)
     }
     
@@ -97,9 +97,9 @@ class PlayingSongViewController: NSViewController {
         fmModeObserver = PlayCore.shared.observe(\.fmMode, options: [.initial, .new]) { [weak self] (playcore, _) in
             guard let vc = self?.lyricViewController() else { return }
             if !playcore.fmMode {
-                vc.addPeriodicTimeObserver(playcore.player)
+                vc.addPlayProgressObserver()
             } else {
-                vc.removePeriodicTimeObserver(playcore.player)
+                vc.removePlayProgressObserver()
             }
         }
         
@@ -197,7 +197,7 @@ class PlayingSongViewController: NSViewController {
         playerStatueObserver?.invalidate()
         fmModeObserver?.invalidate()
         viewFrameObserver?.invalidate()
-        lyricViewController()?.removePeriodicTimeObserver(PlayCore.shared.player)
+        lyricViewController()?.removePlayProgressObserver()
         if let obs = viewStatusObserver {
             NotificationCenter.default.removeObserver(obs)
         }

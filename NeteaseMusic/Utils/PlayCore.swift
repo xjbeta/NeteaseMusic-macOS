@@ -12,10 +12,6 @@ import AVFoundation
 import PromiseKit
 import GSPlayer
 
-protocol AVPlayerProgressDelegate {
-    func avplayer(_ player: AVPlayer, didUpdate progress: Double)
-}
-
 class PlayCore: NSObject {
     static let shared = PlayCore()
     
@@ -47,7 +43,7 @@ class PlayCore: NSObject {
             player.currentItem?.cancelPendingSeeks()
             player.currentItem?.asset.cancelLoading()
             player.replaceCurrentItem(with: nil)
-            deinitDelegateObserver()
+            deinitPlayerObserver()
         }
         didSet {
             if let volume = playerConfigure["volume"] as? Float {
@@ -63,7 +59,7 @@ class PlayCore: NSObject {
         }
     }
     
-    var playerProgressDelegate: AVPlayerProgressDelegate?
+    @objc dynamic var playProgress: Double = 0
 
     var periodicTimeObserverToken: Any?
     var timeControlStautsObserver: NSKeyValueObservation?
@@ -501,8 +497,7 @@ class PlayCore: NSObject {
             let pc = PlayCore.shared
             let player = pc.player
             
-            
-            self?.playerProgressDelegate?.avplayer(player, didUpdate: player.playProgress)
+            self?.playProgress = player.playProgress
             
             if Preferences.shared.useSystemMediaControl {
                 pc.updateNowPlayingInfo()
@@ -511,10 +506,11 @@ class PlayCore: NSObject {
         
     }
     
-    func deinitDelegateObserver() {
+    func deinitPlayerObserver() {
         if let timeObserverToken = periodicTimeObserverToken {
             player.removeTimeObserver(timeObserverToken)
             periodicTimeObserverToken = nil
+            playProgress = 0
         }
         
         timeControlStautsObserver?.invalidate()
@@ -536,7 +532,7 @@ class PlayCore: NSObject {
     
     
     deinit {
-        deinitDelegateObserver()
+        deinitPlayerObserver()
         deinitMediaKeysObservers()
         removeObservers()
     }

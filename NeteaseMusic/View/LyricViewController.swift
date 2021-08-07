@@ -44,7 +44,7 @@ class LyricViewController: NSViewController {
     // lyricOffset ms
     @objc dynamic var lyricOffset = 0
     
-    var periodicTimeObserverToken: Any?
+    var playProgressObserver: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,18 +52,18 @@ class LyricViewController: NSViewController {
         tableView.refusesFirstResponder = true
     }
     
-    func updateLyric(_ time: CMTime) {
-        var periodicMS = Int(CMTimeGetSeconds(time) * 1000)
+    func updateLyric(_ time: Double) {
+        var periodicMS = Int(time * 1000)
         periodicMS += lyricOffset
-        
+
         guard let line = lyriclines.filter({ $0.time.totalMS < periodicMS }).last else {
             return
         }
         let lins = lyriclines.enumerated().filter({ $0.element.time == line.time }).filter({ !($0.element.stringF ?? "").isEmpty })
         guard lins.count > 0 else { return }
-        
+
         var offsets = lins.map({ $0.offset })
-        
+
         lyriclines.enumerated().forEach {
             lyriclines[$0.offset].highlighted = offsets.contains($0.offset)
             if $0.element.highlighted, !offsets.contains($0.offset) {
@@ -73,7 +73,7 @@ class LyricViewController: NSViewController {
         let indexSet = IndexSet(offsets)
         tableView.reloadData(forRowIndexes: indexSet, columnIndexes: .init(integer: 0))
         guard let i = offsets.first else { return }
-        
+
         let frame = tableView.frameOfCell(atColumn: 0, row: i)
         let y = frame.midY - scrollView.frame.height / 2
         NSAnimationContext.runAnimationGroup { [weak self] (context) in
@@ -130,21 +130,17 @@ class LyricViewController: NSViewController {
         }
     }
     
-    func addPeriodicTimeObserver(_ player: AVPlayer) {
-        // Notify every half second
-        let timeScale = CMTimeScale(NSEC_PER_SEC)
-        let time = CMTime(seconds: 0.25, preferredTimescale: timeScale)
-        periodicTimeObserverToken = player
-            .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-                self?.updateLyric(time)
+    func addPlayProgressObserver() {
+        let pc = PlayCore.shared
+        playProgressObserver = pc.observe(\.playProgress, options: [.initial, .new]) { [weak self] pc, _ in
+            let time = pc.player.currentDuration
+            self?.updateLyric(time)
         }
     }
     
-    func removePeriodicTimeObserver(_ player: AVPlayer) {
-        if let timeObserverToken = periodicTimeObserverToken {
-            player.removeTimeObserver(timeObserverToken)
-            self.periodicTimeObserverToken = nil
-        }
+    func removePlayProgressObserver() {
+        playProgressObserver?.invalidate()
+        playProgressObserver = nil
     }
     
     
@@ -163,8 +159,8 @@ extension LyricViewController: NSTableViewDelegate, NSTableViewDataSource {
         let fSize = line.highlighted ? 14 : 13
         let sSize = line.highlighted ? 13 : 12
         
-        let fColor = line.highlighted ? NSColor.systemRed : NSColor.labelColor
-        let sColor = line.highlighted ? NSColor.systemRed : NSColor.secondaryLabelColor
+        let fColor = line.highlighted ? NSColor.nColor : NSColor.labelColor
+        let sColor = line.highlighted ? NSColor.nColor : NSColor.secondaryLabelColor
         
         return ["firstString": line.stringF ?? "",
                 "firstSize": fSize,

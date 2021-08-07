@@ -97,8 +97,8 @@ class ControlBarViewController: NSViewController {
         }
     }
     
+    var playProgressObserver: NSKeyValueObservation?
     var pauseStautsObserver: NSKeyValueObservation?
-
     var previousButtonObserver: NSKeyValueObservation?
     var currentTrackObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
@@ -116,7 +116,6 @@ class ControlBarViewController: NSViewController {
         }
         
         let pc = PlayCore.shared
-        pc.playerProgressDelegate = self
         
         initVolumeButton()
         
@@ -129,6 +128,30 @@ class ControlBarViewController: NSViewController {
         trackArtistTextField.stringValue = ""
         
         initPlayModeButton()
+        
+        playProgressObserver = pc.observe(\.playProgress, options: [.initial, .new]) { [weak self] pc, _ in
+            guard let slider = self?.durationSlider,
+                  let textFiled = self?.durationTextField else { return }
+            let player = pc.player
+            guard player.currentItem != nil else {
+                slider.maxValue = 1
+                slider.doubleValue = 0
+                slider.cachedDoubleValue = 0
+                textFiled.stringValue = "00:00 / 00:00"
+                return
+            }
+            
+            let cd = player.currentDuration
+            let td = player.totalDuration
+            
+            if td != slider.maxValue {
+                slider.maxValue = td
+            }
+            slider.updateValue(cd)
+            slider.cachedDoubleValue = player.currentBufferDuration
+            
+            textFiled.stringValue = "\(cd.durationFormatter()) / \(td.durationFormatter())"
+        }
         
         pauseStautsObserver = pc.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             switch player.timeControlStatus {
@@ -261,6 +284,7 @@ class ControlBarViewController: NSViewController {
     }
     
     deinit {
+        playProgressObserver?.invalidate()
         pauseStautsObserver?.invalidate()
         previousButtonObserver?.invalidate()
 //        muteStautsObserver?.invalidate()
@@ -288,29 +312,4 @@ extension ControlBarViewController {
         durationSlider.mouseIn = false
     }
     
-}
-
-extension ControlBarViewController: AVPlayerProgressDelegate {
-    func avplayer(_ player: AVPlayer, didUpdate progress: Double) {
-        guard let slider = durationSlider else { return }
-        
-        guard player.currentItem != nil else {
-            slider.maxValue = 1
-            slider.doubleValue = 0
-            slider.cachedDoubleValue = 0
-            durationTextField.stringValue = "00:00 / 00:00"
-            return
-        }
-        
-        let cd = player.currentDuration
-        let td = player.totalDuration
-        
-        if td != slider.maxValue {
-            slider.maxValue = td
-        }
-        slider.updateValue(cd)
-        slider.cachedDoubleValue = player.currentBufferDuration
-        
-        durationTextField.stringValue = "\(cd.durationFormatter()) / \(td.durationFormatter())"
-    }
 }

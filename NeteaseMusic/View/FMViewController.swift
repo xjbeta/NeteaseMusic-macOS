@@ -129,10 +129,10 @@ class FMViewController: NSViewController {
             guard let vc = self.lyricViewController() else { return }
             if playcore.fmMode {
                 self.updateCoverButtonStatus(playcore.player.timeControlStatus)
-                vc.addPeriodicTimeObserver(playcore.player)
+                vc.addPlayProgressObserver()
             } else {
                 self.updateCoverButtonStatus(.paused)
-                vc.removePeriodicTimeObserver(playcore.player)
+                vc.removePlayProgressObserver()
             }
         }
         
@@ -389,7 +389,7 @@ class FMViewController: NSViewController {
     deinit {
         Preferences.shared.fmPlaylist = (currentTrackId, fmPlaylist.map({ $0.id }))
         
-        lyricViewController()?.removePeriodicTimeObserver(PlayCore.shared.player)
+        lyricViewController()?.removePlayProgressObserver()
         currentTrackObserver?.invalidate()
         playerStatueObserver?.invalidate()
         fmModeObserver?.invalidate()
