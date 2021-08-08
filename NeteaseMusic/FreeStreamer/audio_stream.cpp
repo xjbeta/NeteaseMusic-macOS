@@ -736,7 +736,7 @@ CFStringRef Audio_Stream::contentType()
     
 CFStringRef Audio_Stream::createCacheIdentifierForURL(CFURLRef url)
 {
-    CFStringRef urlString = CFURLGetString(url);
+    CFStringRef urlString = CFURLCopyLastPathComponent(url);
     CFStringRef urlHash = createHashForString(urlString);
     
     CFStringRef cacheIdentifier = CFStringCreateWithFormat(NULL, NULL, CFSTR("FSCache-%@"), urlHash);
