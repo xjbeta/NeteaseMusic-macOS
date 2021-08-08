@@ -81,6 +81,23 @@
 		0148763326BD49C800B4F754 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0148763226BD49C800B4F754 /* Kingfisher */; };
 		0148763626BE3D8400B4F754 /* ArtistButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0148763526BE3D8400B4F754 /* ArtistButtons.storyboard */; };
 		0148763826BE3DD100B4F754 /* ArtistButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */; };
+		0148766126BFE9AC00B4F754 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148763F26BFE9AB00B4F754 /* Reachability.m */; };
+		0148766226BFE9AC00B4F754 /* FSParseRssPodcastFeedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148764026BFE9AB00B4F754 /* FSParseRssPodcastFeedRequest.m */; };
+		0148766326BFE9AC00B4F754 /* http_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148764226BFE9AB00B4F754 /* http_stream.cpp */; };
+		0148766426BFE9AC00B4F754 /* FSPlaylistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148764326BFE9AB00B4F754 /* FSPlaylistItem.m */; };
+		0148766526BFE9AC00B4F754 /* audio_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148764426BFE9AB00B4F754 /* audio_stream.cpp */; };
+		0148766626BFE9AC00B4F754 /* id3_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148764626BFE9AB00B4F754 /* id3_parser.cpp */; };
+		0148766726BFE9AC00B4F754 /* FSCheckContentTypeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148764726BFE9AB00B4F754 /* FSCheckContentTypeRequest.m */; };
+		0148766826BFE9AC00B4F754 /* stream_configuration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148764826BFE9AB00B4F754 /* stream_configuration.cpp */; };
+		0148766926BFE9AC00B4F754 /* input_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148764A26BFE9AB00B4F754 /* input_stream.cpp */; };
+		0148766A26BFE9AC00B4F754 /* FSAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148764D26BFE9AB00B4F754 /* FSAudioController.m */; };
+		0148766B26BFE9AC00B4F754 /* file_output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148764E26BFE9AB00B4F754 /* file_output.cpp */; };
+		0148766C26BFE9AC00B4F754 /* caching_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148764F26BFE9AB00B4F754 /* caching_stream.cpp */; };
+		0148766D26BFE9AC00B4F754 /* FSXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148765326BFE9AC00B4F754 /* FSXMLHttpRequest.m */; };
+		0148766E26BFE9AC00B4F754 /* FSAudioStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0148765626BFE9AC00B4F754 /* FSAudioStream.mm */; };
+		0148766F26BFE9AC00B4F754 /* audio_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148765826BFE9AC00B4F754 /* audio_queue.cpp */; };
+		0148767026BFE9AC00B4F754 /* file_stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0148765A26BFE9AC00B4F754 /* file_stream.cpp */; };
+		0148767126BFE9AC00B4F754 /* FSParsePlaylistRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0148765B26BFE9AC00B4F754 /* FSParsePlaylistRequest.m */; };
 		0153934E22E1BA9600CD10F9 /* SongButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */; };
 		0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
@@ -205,6 +222,42 @@
 		01467E9C2284713A0037B49D /* RadioGet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RadioGet.json; sourceTree = "<group>"; };
 		0148763526BE3D8400B4F754 /* ArtistButtons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistButtons.storyboard; sourceTree = "<group>"; };
 		0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistButtonsViewController.swift; sourceTree = "<group>"; };
+		0148763926BFE99400B4F754 /* NeteaseMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NeteaseMusic-Bridging-Header.h"; sourceTree = "<group>"; };
+		0148763E26BFE9AB00B4F754 /* audio_queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_queue.h; sourceTree = "<group>"; };
+		0148763F26BFE9AB00B4F754 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0148764026BFE9AB00B4F754 /* FSParseRssPodcastFeedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSParseRssPodcastFeedRequest.m; sourceTree = "<group>"; };
+		0148764126BFE9AB00B4F754 /* FSXMLHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSXMLHttpRequest.h; sourceTree = "<group>"; };
+		0148764226BFE9AB00B4F754 /* http_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = http_stream.cpp; sourceTree = "<group>"; };
+		0148764326BFE9AB00B4F754 /* FSPlaylistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaylistItem.m; sourceTree = "<group>"; };
+		0148764426BFE9AB00B4F754 /* audio_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_stream.cpp; sourceTree = "<group>"; };
+		0148764526BFE9AB00B4F754 /* FSParsePlaylistRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSParsePlaylistRequest.h; sourceTree = "<group>"; };
+		0148764626BFE9AB00B4F754 /* id3_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = id3_parser.cpp; sourceTree = "<group>"; };
+		0148764726BFE9AB00B4F754 /* FSCheckContentTypeRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCheckContentTypeRequest.m; sourceTree = "<group>"; };
+		0148764826BFE9AB00B4F754 /* stream_configuration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stream_configuration.cpp; sourceTree = "<group>"; };
+		0148764926BFE9AB00B4F754 /* file_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_stream.h; sourceTree = "<group>"; };
+		0148764A26BFE9AB00B4F754 /* input_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_stream.cpp; sourceTree = "<group>"; };
+		0148764B26BFE9AB00B4F754 /* input_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input_stream.h; sourceTree = "<group>"; };
+		0148764C26BFE9AB00B4F754 /* file_output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_output.h; sourceTree = "<group>"; };
+		0148764D26BFE9AB00B4F754 /* FSAudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAudioController.m; sourceTree = "<group>"; };
+		0148764E26BFE9AB00B4F754 /* file_output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_output.cpp; sourceTree = "<group>"; };
+		0148764F26BFE9AB00B4F754 /* caching_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = caching_stream.cpp; sourceTree = "<group>"; };
+		0148765026BFE9AC00B4F754 /* audio_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_stream.h; sourceTree = "<group>"; };
+		0148765126BFE9AC00B4F754 /* http_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = http_stream.h; sourceTree = "<group>"; };
+		0148765226BFE9AC00B4F754 /* FSPlaylistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlaylistItem.h; sourceTree = "<group>"; };
+		0148765326BFE9AC00B4F754 /* FSXMLHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSXMLHttpRequest.m; sourceTree = "<group>"; };
+		0148765426BFE9AC00B4F754 /* FSParseRssPodcastFeedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSParseRssPodcastFeedRequest.h; sourceTree = "<group>"; };
+		0148765526BFE9AC00B4F754 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0148765626BFE9AC00B4F754 /* FSAudioStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FSAudioStream.mm; sourceTree = "<group>"; };
+		0148765726BFE9AC00B4F754 /* id3_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = id3_parser.h; sourceTree = "<group>"; };
+		0148765826BFE9AC00B4F754 /* audio_queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio_queue.cpp; sourceTree = "<group>"; };
+		0148765926BFE9AC00B4F754 /* FSCheckContentTypeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCheckContentTypeRequest.h; sourceTree = "<group>"; };
+		0148765A26BFE9AC00B4F754 /* file_stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_stream.cpp; sourceTree = "<group>"; };
+		0148765B26BFE9AC00B4F754 /* FSParsePlaylistRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSParsePlaylistRequest.m; sourceTree = "<group>"; };
+		0148765C26BFE9AC00B4F754 /* FSAudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAudioStream.h; sourceTree = "<group>"; };
+		0148765D26BFE9AC00B4F754 /* FreeStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeStreamer.h; sourceTree = "<group>"; };
+		0148765E26BFE9AC00B4F754 /* FSAudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAudioController.h; sourceTree = "<group>"; };
+		0148765F26BFE9AC00B4F754 /* stream_configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream_configuration.h; sourceTree = "<group>"; };
+		0148766026BFE9AC00B4F754 /* caching_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = caching_stream.h; sourceTree = "<group>"; };
 		0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongButtons.storyboard; sourceTree = "<group>"; };
 		0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongButtonsViewController.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
@@ -502,6 +555,48 @@
 			name = ArtistButtons;
 			sourceTree = "<group>";
 		};
+		0148763D26BFE9AB00B4F754 /* FreeStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				0148763E26BFE9AB00B4F754 /* audio_queue.h */,
+				0148763F26BFE9AB00B4F754 /* Reachability.m */,
+				0148764026BFE9AB00B4F754 /* FSParseRssPodcastFeedRequest.m */,
+				0148764126BFE9AB00B4F754 /* FSXMLHttpRequest.h */,
+				0148764226BFE9AB00B4F754 /* http_stream.cpp */,
+				0148764326BFE9AB00B4F754 /* FSPlaylistItem.m */,
+				0148764426BFE9AB00B4F754 /* audio_stream.cpp */,
+				0148764526BFE9AB00B4F754 /* FSParsePlaylistRequest.h */,
+				0148764626BFE9AB00B4F754 /* id3_parser.cpp */,
+				0148764726BFE9AB00B4F754 /* FSCheckContentTypeRequest.m */,
+				0148764826BFE9AB00B4F754 /* stream_configuration.cpp */,
+				0148764926BFE9AB00B4F754 /* file_stream.h */,
+				0148764A26BFE9AB00B4F754 /* input_stream.cpp */,
+				0148764B26BFE9AB00B4F754 /* input_stream.h */,
+				0148764C26BFE9AB00B4F754 /* file_output.h */,
+				0148764D26BFE9AB00B4F754 /* FSAudioController.m */,
+				0148764E26BFE9AB00B4F754 /* file_output.cpp */,
+				0148764F26BFE9AB00B4F754 /* caching_stream.cpp */,
+				0148765026BFE9AC00B4F754 /* audio_stream.h */,
+				0148765126BFE9AC00B4F754 /* http_stream.h */,
+				0148765226BFE9AC00B4F754 /* FSPlaylistItem.h */,
+				0148765326BFE9AC00B4F754 /* FSXMLHttpRequest.m */,
+				0148765426BFE9AC00B4F754 /* FSParseRssPodcastFeedRequest.h */,
+				0148765526BFE9AC00B4F754 /* Reachability.h */,
+				0148765626BFE9AC00B4F754 /* FSAudioStream.mm */,
+				0148765726BFE9AC00B4F754 /* id3_parser.h */,
+				0148765826BFE9AC00B4F754 /* audio_queue.cpp */,
+				0148765926BFE9AC00B4F754 /* FSCheckContentTypeRequest.h */,
+				0148765A26BFE9AC00B4F754 /* file_stream.cpp */,
+				0148765B26BFE9AC00B4F754 /* FSParsePlaylistRequest.m */,
+				0148765C26BFE9AC00B4F754 /* FSAudioStream.h */,
+				0148765D26BFE9AC00B4F754 /* FreeStreamer.h */,
+				0148765E26BFE9AC00B4F754 /* FSAudioController.h */,
+				0148765F26BFE9AC00B4F754 /* stream_configuration.h */,
+				0148766026BFE9AC00B4F754 /* caching_stream.h */,
+			);
+			path = FreeStreamer;
+			sourceTree = "<group>";
+		};
 		0153934C22E1BA6800CD10F9 /* SongActionButtons */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,11 +652,13 @@
 			children = (
 				01957D8B224D01850006FCEC /* AppDelegate.swift */,
 				01957D8D224D01850006FCEC /* ViewController.swift */,
+				0148763D26BFE9AB00B4F754 /* FreeStreamer */,
 				01957D8F224D01860006FCEC /* Assets.xcassets */,
 				013EF12B22563C5400E4D7D8 /* View */,
 				012F2F44225061AB00086870 /* Utils */,
 				01957D94224D01860006FCEC /* Info.plist */,
 				01957D95224D01860006FCEC /* NeteaseMusic.entitlements */,
+				0148763926BFE99400B4F754 /* NeteaseMusic-Bridging-Header.h */,
 			);
 			path = NeteaseMusic;
 			sourceTree = "<group>";
@@ -643,6 +740,7 @@
 				TargetAttributes = {
 					01957D87224D01850006FCEC = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -723,6 +821,7 @@
 				01108870238D05D400184551 /* PlayerSliderCell.swift in Sources */,
 				012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */,
 				0190952F23A100BB00647F80 /* SublistViewController.swift in Sources */,
+				0148766C26BFE9AC00B4F754 /* caching_stream.cpp in Sources */,
 				011D41962338F898001A6F40 /* KeyEquivalentTextField.swift in Sources */,
 				012FEA7A228A5F7100698969 /* SongInfoViewController.swift in Sources */,
 				017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */,
@@ -734,13 +833,18 @@
 				01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */,
 				0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */,
 				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
+				0148767026BFE9AC00B4F754 /* file_stream.cpp in Sources */,
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
 				01BFA88526A9B8E20075F06D /* HttpsURL.swift in Sources */,
 				012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */,
 				01FF8B72225C60F7002D7906 /* Colors.swift in Sources */,
+				0148766526BFE9AC00B4F754 /* audio_stream.cpp in Sources */,
+				0148766826BFE9AC00B4F754 /* stream_configuration.cpp in Sources */,
+				0148766E26BFE9AC00B4F754 /* FSAudioStream.mm in Sources */,
 				01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */,
 				0171427723C2E0B70051ADDF /* NetworkRequestMenuItem.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,
+				0148767126BFE9AC00B4F754 /* FSParsePlaylistRequest.m in Sources */,
 				0190952923A0B2A800647F80 /* TrackTableViewController.swift in Sources */,
 				0137264A226ADA3E004EDCE5 /* PlaylistCollectionViewItem.swift in Sources */,
 				0190952C23A0CA9100647F80 /* AlbumArtistTableViewController.swift in Sources */,
@@ -754,11 +858,16 @@
 				01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */,
 				012165CA232E07F300D74344 /* Crypto.swift in Sources */,
 				01603086225B82C00064EC88 /* Identifiers.swift in Sources */,
+				0148766726BFE9AC00B4F754 /* FSCheckContentTypeRequest.m in Sources */,
 				01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */,
 				013143A5226ECD1A00B9E26F /* ExtendedViewState.swift in Sources */,
 				01FF8B79225C6DC5002D7906 /* PlaylistViewController.swift in Sources */,
 				01467E9922846B920037B49D /* FMViewController.swift in Sources */,
+				0148766A26BFE9AC00B4F754 /* FSAudioController.m in Sources */,
 				012F1156226028BA002D5599 /* NotificationName.swift in Sources */,
+				0148766D26BFE9AC00B4F754 /* FSXMLHttpRequest.m in Sources */,
+				0148766426BFE9AC00B4F754 /* FSPlaylistItem.m in Sources */,
+				0148766326BFE9AC00B4F754 /* http_stream.cpp in Sources */,
 				01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */,
 				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
@@ -766,8 +875,12 @@
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
 				01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */,
 				011D4198233907EC001A6F40 /* MainMenu.swift in Sources */,
+				0148766B26BFE9AC00B4F754 /* file_output.cpp in Sources */,
+				0148766226BFE9AC00B4F754 /* FSParseRssPodcastFeedRequest.m in Sources */,
 				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
+				0148766F26BFE9AC00B4F754 /* audio_queue.cpp in Sources */,
 				0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */,
+				0148766126BFE9AC00B4F754 /* Reachability.m in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,
 				0148763826BE3DD100B4F754 /* ArtistButtonsViewController.swift in Sources */,
 				01FF8B81225D8064002D7906 /* DurationTransformer.swift in Sources */,
@@ -775,11 +888,13 @@
 				013143AB226F5F3B00B9E26F /* PlaySongViewBackgroundView.swift in Sources */,
 				012F2F412250613F00086870 /* PlayCore.swift in Sources */,
 				014327B022AA079200651064 /* UnresponsiveScrollView.swift in Sources */,
+				0148766626BFE9AC00B4F754 /* id3_parser.cpp in Sources */,
 				012F2F432250619A00086870 /* NeteaseMusicAPI.swift in Sources */,
 				01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */,
 				01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
 				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
+				0148766926BFE9AC00B4F754 /* input_stream.cpp in Sources */,
 				01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
 				0171427523C18E660051ADDF /* PlayableColorTransformer.swift in Sources */,
@@ -931,6 +1046,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NeteaseMusic/NeteaseMusic.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
@@ -945,6 +1061,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NeteaseMusic/NeteaseMusic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -953,6 +1071,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NeteaseMusic/NeteaseMusic.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
@@ -967,6 +1086,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NeteaseMusic/NeteaseMusic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
