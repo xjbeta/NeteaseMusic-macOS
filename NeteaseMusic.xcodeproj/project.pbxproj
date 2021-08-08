@@ -118,7 +118,6 @@
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
-		01BFA88326A98D310075F06D /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01BFA88226A98D310075F06D /* GSPlayer */; };
 		01BFA88526A9B8E20075F06D /* HttpsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFA88426A9B8E20075F06D /* HttpsURL.swift */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
@@ -315,7 +314,6 @@
 				0148763026BD498100B4F754 /* HotKey in Frameworks */,
 				0148763326BD49C800B4F754 /* Kingfisher in Frameworks */,
 				0148762D26BD490D00B4F754 /* CryptoSwift in Frameworks */,
-				01BFA88326A98D310075F06D /* GSPlayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,7 +714,6 @@
 			);
 			name = NeteaseMusic;
 			packageProductDependencies = (
-				01BFA88226A98D310075F06D /* GSPlayer */,
 				0148762326BD485100B4F754 /* Sparkle */,
 				0148762626BD488500B4F754 /* Alamofire */,
 				0148762926BD48E700B4F754 /* PromiseKit */,
@@ -754,7 +751,6 @@
 			);
 			mainGroup = 01957D7F224D01850006FCEC;
 			packageReferences = (
-				01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */,
 				0148762226BD485100B4F754 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				0148762526BD488500B4F754 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0148762826BD48E700B4F754 /* XCRemoteSwiftPackageReference "PromiseKit" */,
@@ -1163,14 +1159,6 @@
 				minimumVersion = 6.3.1;
 			};
 		};
-		01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/xjbeta/GSPlayer";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1203,11 +1191,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0148763126BD49C800B4F754 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		01BFA88226A98D310075F06D /* GSPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */;
-			productName = GSPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
