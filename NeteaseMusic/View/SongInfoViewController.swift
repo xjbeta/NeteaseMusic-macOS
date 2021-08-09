@@ -18,13 +18,6 @@ class SongInfoViewController: NSViewController {
         } else {
             ViewControllerManager.shared.selectSidebarItem(.artist, sender.id)
         }
-        
-//        exit playingSongView
-        if let vc = view.window?.windowController?.contentViewController as? MainViewController,
-            vc.playingSongViewStatus != .hidden {
-            vc.updatePlayingSongTabView(.main)
-            vc.playingSongViewStatus = .hidden
-        }
     }
     
     override func viewDidLoad() {

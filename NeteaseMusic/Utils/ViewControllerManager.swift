@@ -29,6 +29,18 @@ class ViewControllerManager: NSObject {
     
     func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
                            _ id: Int = -1) {
+        
+        // Exit Playing Song
+        let mainVC = NSApp.windows.compactMap {
+            $0.windowController as? MainWindowController
+        }.first?.contentViewController as? MainViewController
+        
+        if let vc = mainVC,
+           vc.playingSongViewStatus != .hidden {
+            vc.updatePlayingSongTabView(.main)
+            vc.playingSongViewStatus = .hidden
+        }
+        
         print(#function, "\(itemType)", "ID: \(id)")
         NotificationCenter.default.post(name: .selectSidebarItem, object: nil, userInfo: ["itemType": itemType, "id": id])
     }
