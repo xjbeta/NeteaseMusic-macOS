@@ -19,14 +19,10 @@ extension PlayCore {
                 self.updateNowPlayingInfo()
             }
         }
-        playingInfoObserver = player.observe(\.currentItem, options: [.initial, .new]) { player, _ in
-            self.updateNowPlayingInfo()
-        }
     }
     
     func deinitMediaKeysObservers() {
         playerStateObserver?.invalidate()
-        playingInfoObserver?.invalidate()
     }
     
     func setupRemoteCommandCenter() {

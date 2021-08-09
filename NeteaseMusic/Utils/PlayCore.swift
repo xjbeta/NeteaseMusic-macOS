@@ -70,9 +70,13 @@ class PlayCore: NSObject {
     
     var playerShouldNextObserver: NSObjectProtocol?
     var playerStateObserver: NSKeyValueObservation?
-    var playingInfoObserver: NSKeyValueObservation?
     
-    @objc dynamic var currentTrack: Track?
+    @objc dynamic var currentTrack: Track? {
+        didSet {
+            updateNowPlayingInfo()
+        }
+    }
+    
     @objc dynamic var playlist: [Track] = []
     @objc dynamic var historys: [Track] = []
     @objc dynamic var fmMode = false {
@@ -508,9 +512,7 @@ class PlayCore: NSObject {
             
             self?.playProgress = player.playProgress
             
-            if Preferences.shared.useSystemMediaControl {
-                pc.updateNowPlayingInfo()
-            }
+            pc.updateNowPlayingInfo()
         }
         
     }
