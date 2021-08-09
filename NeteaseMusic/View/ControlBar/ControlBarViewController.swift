@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import AVFoundation
 
 class ControlBarViewController: NSViewController {
     
@@ -24,26 +23,28 @@ class ControlBarViewController: NSViewController {
     @IBOutlet weak var shuffleModeButton: NSButton!
     
     @IBAction func controlAction(_ sender: NSButton) {
-        let player = PlayCore.shared.player
+        let pc = PlayCore.shared
+        
+        let player = pc.player
         let preferences = Preferences.shared
         switch sender {
         case previousButton:
-            PlayCore.shared.previousSong()
+            pc.previousSong()
         case pauseButton:
-            PlayCore.shared.togglePlayPause()
+            pc.togglePlayPause()
         case nextButton:
-            PlayCore.shared.nextSong()
-            if PlayCore.shared.fmMode, let id = PlayCore.shared.currentTrack?.id {
-                let seconds = Int(player.currentTime().seconds)
-                PlayCore.shared.api.radioSkip(id, seconds).done {
+            pc.nextSong()
+            if pc.fmMode, let id = pc.currentTrack?.id {
+                let seconds = Int(pc.currentTime())
+                pc.api.radioSkip(id, seconds).done {
                     print("Song skipped, id: \(id) seconds: \(seconds)")
                     }.catch {
                         print($0)
                 }
             }
         case muteButton:
-            let mute = !player.isMuted
-            player.isMuted = mute
+            let mute = !pc.isMuted
+            pc.isMuted = mute
             preferences.mute = mute
             initVolumeButton()
         case repeatModeButton:
@@ -78,10 +79,12 @@ class ControlBarViewController: NSViewController {
     @IBOutlet weak var volumeSlider: NSSlider!
     
     @IBAction func sliderAction(_ sender: NSSlider) {
+        let pc = PlayCore.shared
         switch sender {
         case durationSlider:
-            let time = CMTime(seconds: sender.doubleValue, preferredTimescale: 1000)
-            PlayCore.shared.player.seek(to: time) { _ in }
+            var pos = FSStreamPosition()
+            pos.position = sender.floatValue
+            pc.player.activeStream.seek(to: pos)
             if let eventType = NSApp.currentEvent?.type,
                 eventType == .leftMouseUp {
                 durationSlider.ignoreValueUpdate = false
@@ -132,7 +135,7 @@ class ControlBarViewController: NSViewController {
             guard let slider = self?.durationSlider,
                   let textFiled = self?.durationTextField else { return }
             let player = pc.player
-            guard player.currentItem != nil else {
+            guard player.activeStream != nil else {
                 slider.maxValue = 1
                 slider.doubleValue = 0
                 slider.cachedDoubleValue = 0
@@ -140,20 +143,19 @@ class ControlBarViewController: NSViewController {
                 return
             }
             
-            let cd = player.currentDuration
-            let td = player.totalDuration
+            let cur = player.activeStream.currentTimePlayed
+            let end = player.activeStream.duration
             
-            if td != slider.maxValue {
-                slider.maxValue = td
-            }
-            slider.updateValue(cd)
-            slider.cachedDoubleValue = player.currentBufferDuration
             
-            textFiled.stringValue = "\(cd.durationFormatter()) / \(td.durationFormatter())"
+            slider.maxValue = 1
+            
+            slider.updateValue(Double(pc.playProgress))
+            
+            textFiled.stringValue = String(format: "%i:%02i / %i:%02i", cur.minute, cur.second, end.minute, end.second)
         }
         
-        pauseStautsObserver = pc.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
-            switch player.timeControlStatus {
+        pauseStautsObserver = pc.observe(\.playerState, options: [.initial, .new]) { [weak self] (player, changes) in
+            switch player.playerState {
             case .playing:
                 self?.pauseButton.image = NSImage(named: NSImage.Name("sf.pause.circle"))
             case .paused:
@@ -232,7 +234,7 @@ class ControlBarViewController: NSViewController {
         pc.player.volume = volume
         
         let mute = pref.mute
-        pc.player.isMuted = mute
+        pc.isMuted = mute
         
         var imageName = ""
         if mute {
@@ -293,7 +295,6 @@ class ControlBarViewController: NSViewController {
         playProgressObserver?.invalidate()
         pauseStautsObserver?.invalidate()
         previousButtonObserver?.invalidate()
-//        muteStautsObserver?.invalidate()
         currentTrackObserver?.invalidate()
         fmModeObserver?.invalidate()
     }

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import AVFoundation
 
 class LyricViewController: NSViewController {
     @IBOutlet weak var scrollView: NSScrollView!
@@ -52,7 +51,7 @@ class LyricViewController: NSViewController {
         tableView.refusesFirstResponder = true
     }
     
-    func updateLyric(_ time: Double) {
+    func updateLyric(_ time: Float) {
         var periodicMS = Int(time * 1000)
         periodicMS += lyricOffset
 
@@ -133,7 +132,7 @@ class LyricViewController: NSViewController {
     func addPlayProgressObserver() {
         let pc = PlayCore.shared
         playProgressObserver = pc.observe(\.playProgress, options: [.initial, .new]) { [weak self] pc, _ in
-            let time = pc.player.currentDuration
+            let time = pc.currentTime()
             self?.updateLyric(time)
         }
     }

@@ -97,11 +97,11 @@ class SidePlaylistViewController: NSViewController {
                 }?.isCurrentTrack = true
         }
         
-        playerStateObserver =  PlayCore.shared.observe(\.timeControlStatus, options: [.new, .initial]) { (pc, _) in
+        playerStateObserver =  PlayCore.shared.observe(\.playerState, options: [.new, .initial]) { (pc, _) in
             let pc = PlayCore.shared
             self.playlist.first {
                 $0.isCurrentTrack
-                }?.isPlaying = pc.player.timeControlStatus == .playing
+            }?.isPlaying = pc.player.isPlaying()
         }
     }
     

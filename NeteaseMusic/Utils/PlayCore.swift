@@ -8,15 +8,15 @@
 
 import Cocoa
 import MediaPlayer
-import AVFoundation
 import PromiseKit
-import GSPlayer
 
 class PlayCore: NSObject {
     static let shared = PlayCore()
     
     private override init() {
-        player.automaticallyWaitsToMinimizeStalling = false
+        player = FSAudioController()
+        let conf = player.configuration
+        conf?.enableTimeAndPitchConversion = true
     }
     
 // MARK: - NowPlayingInfoCenter
@@ -28,48 +28,36 @@ class PlayCore: NSObject {
 // MARK: - AVPlayer
     
     let api = NeteaseMusicAPI()
-    @objc dynamic var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
     
+    @objc dynamic var playerState: PlayerState = .unknown
     
-    private var playerConfigure = [String: Any]()
-    var player = AVPlayer() {
-        willSet {
-            playerConfigure.removeAll()
-            playerConfigure["volume"] = player.volume
-            playerConfigure["isMuted"] = player.isMuted
-            playerConfigure["rate"] = player.rate
-            
-            player.pause()
-            player.currentItem?.cancelPendingSeeks()
-            player.currentItem?.asset.cancelLoading()
-            player.replaceCurrentItem(with: nil)
-            deinitPlayerObserver()
-        }
+    let player: FSAudioController
+    
+    private var muteVolume: Float = -1
+    @objc dynamic var isMuted = false {
         didSet {
-            if let volume = playerConfigure["volume"] as? Float {
-                player.volume = volume
+            if isMuted {
+                muteVolume = player.volume
+                player.volume = 0
+            } else if muteVolume != -1 {
+                player.volume = muteVolume
+                muteVolume = -1
             }
-            if let isMuted = playerConfigure["isMuted"] as? Bool {
-                player.isMuted = isMuted
-            }
-            if let rate = playerConfigure["rate"] as? Float {
-                player.rate = rate
-            }
-            initDelegateObserver()
         }
     }
     
-    @objc dynamic var playProgress: Double = 0
+    var nowPlayingCoverInited = false
+    
+    @objc dynamic var playProgress: Float = 0
 
-    var periodicTimeObserverToken: Any?
-    var timeControlStautsObserver: NSKeyValueObservation?
+    var progressUpdateTimer: DispatchSourceTimer?
     
-    
-    var playerShouldNextObserver: NSObjectProtocol?
-    var playerStateObserver: NSKeyValueObservation?
-    var playingInfoObserver: NSKeyValueObservation?
-    
-    @objc dynamic var currentTrack: Track?
+    @objc dynamic var currentTrack: Track? {
+        didSet {
+            nowPlayingCoverInited = false
+            updateNowPlayingInfo()
+        }
+    }
     @objc dynamic var playlist: [Track] = []
     @objc dynamic var historys: [Track] = []
     @objc dynamic var fmMode = false {
@@ -90,7 +78,7 @@ class PlayCore: NSObject {
     
     @objc dynamic var pnItemType: PNItemType = .withoutPreviousAndNext
     
-    private var fmSavedTime = (id: -1, time: CMTime())
+    private var fmSavedTime: (id: Int, time: Float) = (-1, 0)
     
 // MARK: - AVPlayer Internal Playlist
     private var playingNextLimit = 20
@@ -155,11 +143,11 @@ class PlayCore: NSObject {
         updateInternalPlaylist()
         
         if fmMode, !enterFMMode {
-            fmSavedTime = (currentTrack?.id ?? -1, player.currentTime())
+            let time = player.activeStream.currentTimePlayed.playbackTimeInSeconds
+            fmSavedTime = (currentTrack?.id ?? -1, time)
         }
         
         fmMode = enterFMMode
-        initObservers()
         
         guard playlist.count > 0 else { return }
         
@@ -196,7 +184,9 @@ class PlayCore: NSObject {
     func nextSong() {
         let repeatMode = Preferences.shared.repeatMode
         guard repeatMode != .repeatItem else {
-            player.seek(to: CMTime(value: 0, timescale: 1000))
+            var pos = FSStreamPosition()
+            pos.position = 0
+            player.activeStream.seek(to: pos)
             player.play()
             return
         }
@@ -223,16 +213,8 @@ class PlayCore: NSObject {
     }
 
     func togglePlayPause() {
-        guard player.error == nil else { return }
-        func playOrPause() {
-            if player.rate == 0 {
-                player.play()
-            } else {
-                player.pause()
-            }
-        }
         if currentTrack != nil {
-            playOrPause()
+            player.pause()
         } else if let item = ViewControllerManager.shared.selectedSidebarItem?.type {
             switch item {
             case .fm:
@@ -266,10 +248,7 @@ class PlayCore: NSObject {
     }
     
     func stop() {
-        player.pause()
-        player.currentItem?.cancelPendingSeeks()
-        player.currentItem?.asset.cancelLoading()
-        player.replaceCurrentItem(with: nil)
+        player.stop()
         currentTrack = nil
         internalPlaylist.removeAll()
         internalPlaylistIndex = -1
@@ -286,23 +265,24 @@ class PlayCore: NSObject {
     }
     
     func seekForward(_ seconds: Double) {
-        let lhs = player.currentTime()
-        let rhs = CMTimeMakeWithSeconds(5, preferredTimescale: 1)
-        let t = CMTimeAdd(lhs, rhs)
-        player.seek(to: t)
+        var pos = FSStreamPosition()
+        player.activeStream.seek(to: pos)
     }
     
     func seekBackward(_ seconds: Double) {
-        let lhs = player.currentTime()
-        let rhs = CMTimeMakeWithSeconds(-5, preferredTimescale: 1)
-        let t = CMTimeAdd(lhs, rhs)
-        player.seek(to: t)
+        var pos = FSStreamPosition()
+        player.activeStream.seek(to: pos)
+    }
+    
+    func currentTime() -> Float {
+        guard let stream = player.activeStream else { return 0 }
+        return Float(stream.currentTimePlayed.second)
     }
     
 // MARK: - AVPlayer Internal Functions
     
     private func play(_ track: Track,
-                      time: CMTime = CMTime(value: 0, timescale: 1000)) {
+                      time: Float = 0) {
         
         currentTrack = track
         
@@ -365,13 +345,13 @@ class PlayCore: NSObject {
               let url = song.url?.https else {
             return
         }
-        let item = AVPlayerItem(loader: url)
-        item.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-        // Fixing 'invalid numeric value' for asset.duration
-        // GSPlayer VIMediaCache has the same bug.
         
-        player = AVPlayer(playerItem: item)
+        player.url = url as NSURL
         player.play()
+        
+        player.activeStream.onStateChange = { state in
+            self.updatePlayerState(state)
+        }
         
         historys.removeAll {
             $0.id == track.id
@@ -476,64 +456,84 @@ class PlayCore: NSObject {
         if #available(macOS 10.13, *) {
             if Preferences.shared.useSystemMediaControl {
                 setupRemoteCommandCenter()
-                initMediaKeysObservers()
             } else {
                 updateNowPlayingState(.stopped)
-                deinitMediaKeysObservers()
             }
         }
     }
     
 // MARK: - Observers
-    func initDelegateObserver() {
-        timeControlStautsObserver = player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
-            self?.timeControlStatus = player.timeControlStatus
+
+    func updatePlayerState(_ state: FSAudioStreamState) {
+        
+        let state = PlayerState(rawValue: state.rawValue) ?? .unknown
+        
+        
+        self.playerState = state
+        
+        var npState: MPNowPlayingPlaybackState = .unknown
+        
+        print(state.debug)
+        
+        switch state {
+        case .playing:
+            npState = .playing
+            startProgressTimer()
+            self.updateNowPlayingInfo()
+        case .paused:
+            npState = .paused
+        case .seeking:
+            break
+        case .stopped:
+            npState = .stopped
+            stopProgressTimer()
+        case .buffering:
+            break
+        case .endOfFile:
+            break
+        case .failed:
+            break
+        case .playbackCompleted:
+            self.nextSong()
+            break
+        case .retrievingURL:
+            break
+        case .retryingStarted:
+            break
+        case .retryingFailed:
+            break
+        case .retryingSucceeded:
+            break
+        case .unknown:
+            break
         }
         
-        let timeScale = CMTimeScale(NSEC_PER_SEC)
-        let time = CMTime(seconds: 0.33, preferredTimescale: timeScale)
-        
-        periodicTimeObserverToken = player .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-            let pc = PlayCore.shared
-            let player = pc.player
-            
-            self?.playProgress = player.playProgress
-            
-            if Preferences.shared.useSystemMediaControl {
-                pc.updateNowPlayingInfo()
+        self.updateNowPlayingState(npState)
+    }
+    
+    func startProgressTimer() {
+        guard progressUpdateTimer == nil else { return }
+
+        progressUpdateTimer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+        guard let timer = progressUpdateTimer else { return }
+        timer.schedule(deadline: .now(), repeating: .milliseconds(500))
+        timer.setEventHandler {
+            if let stream = self.player.activeStream {
+                self.playProgress = stream.currentTimePlayed.position
+            } else {
+                self.playProgress = -1
             }
         }
-        
+        timer.resume()
     }
     
-    func deinitPlayerObserver() {
-        if let timeObserverToken = periodicTimeObserverToken {
-            player.removeTimeObserver(timeObserverToken)
-            periodicTimeObserverToken = nil
-            playProgress = 0
-        }
-        
-        timeControlStautsObserver?.invalidate()
+    func stopProgressTimer() {
+        guard let timer = progressUpdateTimer else { return }
+        timer.cancel()
+        progressUpdateTimer = nil
     }
-    
-    func initObservers() {
-        removeObservers()
-        playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
-            self.nextSong()
-        }
-    }
-    
-    func removeObservers() {
-        if let obs = playerShouldNextObserver {
-            NotificationCenter.default.removeObserver(obs)
-            playerShouldNextObserver = nil
-        }
-    }
-    
     
     deinit {
-        deinitPlayerObserver()
-        deinitMediaKeysObservers()
-        removeObservers()
+        
     }
 }

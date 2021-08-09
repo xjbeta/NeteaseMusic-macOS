@@ -50,11 +50,11 @@ class TrackTableViewController: NSViewController {
             self.initCurrentTrack()
         }
         
-        playerStateObserver =  PlayCore.shared.observe(\.timeControlStatus, options: [.new, .initial]) { (pc, _) in
+        playerStateObserver =  PlayCore.shared.observe(\.playerState, options: [.new, .initial]) { (pc, _) in
             let pc = PlayCore.shared
             self.tracks.first {
                 $0.isCurrentTrack
-                }?.isPlaying = pc.player.timeControlStatus == .playing
+            }?.isPlaying = pc.player.isPlaying()
         }
     }
     
@@ -72,7 +72,7 @@ class TrackTableViewController: NSViewController {
             $0.from == c.from && $0.id == c.id
         }
         t?.isCurrentTrack = true
-        t?.isPlaying = pc.player.timeControlStatus == .playing
+        t?.isPlaying = pc.player.isPlaying()
     }
     
     func initTableColumn() {

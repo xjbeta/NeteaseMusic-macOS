@@ -11,32 +11,14 @@ import MediaPlayer
 
 extension PlayCore {
     
-    func initMediaKeysObservers() {
-        playerStateObserver = player.observe(\.rate, options: [.initial, .new]) { player, _ in
-            let state: MPNowPlayingPlaybackState = player.rate == 0 ? .paused : .playing
-            self.updateNowPlayingState(state)
-            if state == .playing {
-                self.updateNowPlayingInfo()
-            }
-        }
-        playingInfoObserver = player.observe(\.currentItem, options: [.initial, .new]) { player, _ in
-            self.updateNowPlayingInfo()
-        }
-    }
-    
-    func deinitMediaKeysObservers() {
-        playerStateObserver?.invalidate()
-        playingInfoObserver?.invalidate()
-    }
-    
     func setupRemoteCommandCenter() {
         let rcCenter = remoteCommandCenter
         rcCenter.playCommand.addTarget { _ in
-            self.player.play()
+            self.togglePlayPause()
             return .success
         }
         rcCenter.pauseCommand.addTarget { _ in
-            self.player.pause()
+            self.togglePlayPause()
             return .success
         }
         rcCenter.togglePlayPauseCommand.addTarget { _ in
@@ -64,10 +46,13 @@ extension PlayCore {
             self.toggleShuffleMode()
             return .success
         }
-        rcCenter.changePlaybackRateCommand.supportedPlaybackRates = [0.25, 0.5, 0.75, 1]
+        rcCenter.changePlaybackRateCommand.supportedPlaybackRates = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
         
         rcCenter.changePlaybackRateCommand.addTarget { event in
-            self.player.rate = (event as! MPChangePlaybackRateCommandEvent).playbackRate
+            guard let rate = (event as? MPChangePlaybackRateCommandEvent)?.playbackRate else {
+                return .commandFailed
+            }
+            self.player.activeStream.setPlayRate(rate)
             return .success
         }
         rcCenter.skipForwardCommand.preferredIntervals = [5]
@@ -114,9 +99,10 @@ extension PlayCore {
             return .success
         }
         rcCenter.changePlaybackPositionCommand.addTarget { event in
-            let d = (event as! MPChangePlaybackPositionCommandEvent).positionTime
-            let time = CMTime(seconds: d, preferredTimescale: 1000)
-            self.player.seek(to: time) { _ in }
+            let time = (event as! MPChangePlaybackPositionCommandEvent).positionTime
+            var pos = FSStreamPosition()
+            pos.playbackTimeInSeconds = Float(time)
+            self.player.activeStream.seek(to: pos)
             return .success
         }
     }
@@ -127,7 +113,8 @@ extension PlayCore {
     
     func updateNowPlayingInfo() {
         var info = [String: Any]()
-        guard let track = currentTrack else {
+        guard Preferences.shared.useSystemMediaControl,
+              let track = currentTrack else {
             nowPlayingInfoCenter.nowPlayingInfo = [:]
             updateNowPlayingState(.unknown)
             return
@@ -139,12 +126,15 @@ extension PlayCore {
         info[MPMediaItemPropertyArtist] = track.artistsString
         
         info[MPMediaItemPropertyPlaybackDuration] = track.duration / 1000
-        info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime().seconds
+        info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = currentTime
         
-        info[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
+//        info[MPNowPlayingInfoPropertyPlaybackRate] = player.activeStream.setPlayRate(_:)
         info[MPNowPlayingInfoPropertyDefaultPlaybackRate] = 1
         
-        if let appIcon = NSApp.applicationIconImage {
+        
+        
+        if !nowPlayingCoverInited,
+           let appIcon = NSApp.applicationIconImage {
             info[MPMediaItemPropertyArtwork] =
                 MPMediaItemArtwork(boundsSize: .init(width: 512, height: 512)) {
                     let w = Int($0.width * (NSScreen.main?.backingScaleFactor ?? 1))
@@ -156,10 +146,13 @@ extension PlayCore {
                         let image = NSImage(contentsOf: imageU) else {
                             return appIcon
                     }
+                    self.nowPlayingCoverInited = true
                     return image
             }
+        } else {
+            info[MPMediaItemPropertyArtwork] = nowPlayingInfoCenter.nowPlayingInfo?[MPMediaItemPropertyArtwork]
         }
-
+        
         nowPlayingInfoCenter.nowPlayingInfo = info
     }
 }

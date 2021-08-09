@@ -114,6 +114,7 @@
 		0190952923A0B2A800647F80 /* TrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190952823A0B2A800647F80 /* TrackTableViewController.swift */; };
 		0190952C23A0CA9100647F80 /* AlbumArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */; };
 		0190952F23A100BB00647F80 /* SublistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190952E23A100BB00647F80 /* SublistViewController.swift */; };
+		01937D4426C11364008E21C1 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01937D4326C11364008E21C1 /* PlayerState.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
@@ -275,6 +276,7 @@
 		0190952823A0B2A800647F80 /* TrackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewController.swift; sourceTree = "<group>"; };
 		0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtistTableViewController.swift; sourceTree = "<group>"; };
 		0190952E23A100BB00647F80 /* SublistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublistViewController.swift; sourceTree = "<group>"; };
+		01937D4326C11364008E21C1 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				012F2F422250619A00086870 /* NeteaseMusicAPI.swift */,
 				01677B9E228CF3D200D11190 /* ViewControllerManager.swift */,
 				01FF8B7E225D7DFE002D7906 /* CodableObjects.swift */,
+				01937D4326C11364008E21C1 /* PlayerState.swift */,
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
 				01E40FE822C1DF4600864118 /* ImageLoader.swift */,
@@ -875,6 +878,7 @@
 				0148766226BFE9AC00B4F754 /* FSParseRssPodcastFeedRequest.m in Sources */,
 				012772E3229E1D9A00C55537 /* SearchResultViewController.swift in Sources */,
 				0148766F26BFE9AC00B4F754 /* audio_queue.cpp in Sources */,
+				01937D4426C11364008E21C1 /* PlayerState.swift in Sources */,
 				0116E1B723248E4F00606C6C /* LogoutViewController.swift in Sources */,
 				0148766126BFE9AC00B4F754 /* Reachability.m in Sources */,
 				01FF8B77225C6551002D7906 /* MainWindowController.swift in Sources */,

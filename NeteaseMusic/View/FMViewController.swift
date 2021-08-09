@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import AVFoundation
 
 class FMViewController: NSViewController {
     @IBOutlet weak var coverButton1: FMCoverButton!
@@ -34,13 +33,8 @@ class FMViewController: NSViewController {
     @IBAction func buttonAction(_ sender: NSButton) {
         let pc = PlayCore.shared
         let player = pc.player
-        guard player.error == nil else { return }
         if pc.fmMode {
-            if player.rate == 0 {
-                player.play()
-            } else {
-                player.pause()
-            }
+            pc.togglePlayPause()
         } else {
             pc.start(fmPlaylist,
                      id: currentTrackId,
@@ -120,18 +114,18 @@ class FMViewController: NSViewController {
             }
         }
         
-        playerStatueObserver = PlayCore.shared.observe(\.timeControlStatus, options: [.initial, .new]) { player, changes in
+        playerStatueObserver = PlayCore.shared.observe(\.playerState, options: [.initial, .new]) { pc, changes in
             guard PlayCore.shared.fmMode else { return }
-            self.updateCoverButtonStatus(player.timeControlStatus)
+            self.updateCoverButtonStatus(!pc.player.isPlaying())
         }
         
-        fmModeObserver = PlayCore.shared.observe(\.fmMode, options: [.initial, .new]) { playcore, _ in
+        fmModeObserver = PlayCore.shared.observe(\.fmMode, options: [.initial, .new]) { pc, _ in
             guard let vc = self.lyricViewController() else { return }
-            if playcore.fmMode {
-                self.updateCoverButtonStatus(playcore.player.timeControlStatus)
+            if pc.fmMode {
+                self.updateCoverButtonStatus(!pc.player.isPlaying())
                 vc.addPlayProgressObserver()
             } else {
-                self.updateCoverButtonStatus(.paused)
+                self.updateCoverButtonStatus(true)
                 vc.removePlayProgressObserver()
             }
         }
@@ -277,21 +271,12 @@ class FMViewController: NSViewController {
         }, context: nil)
     }
     
-    func updateCoverButtonStatus(_ status: AVPlayer.TimeControlStatus) {
+    func updateCoverButtonStatus(_ paused: Bool) {
         guard PlayCore.shared.fmMode else {
             updatePlayButton(true)
             return
         }
-        switch status {
-        case .paused:
-            updatePlayButton(true)
-        case .playing:
-            updatePlayButton(false)
-        case .waitingToPlayAtSpecifiedRate:
-            break
-        @unknown default:
-            break
-        }
+        updatePlayButton(paused)
     }
     
     func updatePlayButton(_ paused: Bool) {

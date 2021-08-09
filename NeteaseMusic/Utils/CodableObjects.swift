@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import AVFoundation
 import AppKit
 import PromiseKit
-import GSPlayer
 
 struct ServerError: Decodable {
     let code: Int

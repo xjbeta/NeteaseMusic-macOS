@@ -19,8 +19,7 @@ class SongButtonsViewController: NSViewController {
     @IBAction func buttonsAction(_ sender: NSButton) {
         let id = trackId
         guard id > 0 else { return }
-        let seconds = PlayCore.shared.player.currentTime().seconds
-        let time = seconds.isNaN ? 25 : Int(seconds)
+        let time = Int(pc.currentTime())
         switch sender {
         case loveButton:
             loveButton.isEnabled = false
