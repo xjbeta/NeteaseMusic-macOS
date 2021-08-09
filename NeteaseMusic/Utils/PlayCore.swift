@@ -27,6 +27,9 @@ class PlayCore: NSObject {
     
 // MARK: - AVPlayer
     
+    private let playerQueue = DispatchQueue(label: "com.xjbeta.NeteaseMusic.AVPlayerItem")
+    
+    
     let api = NeteaseMusicAPI()
     @objc dynamic var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
     
@@ -365,21 +368,27 @@ class PlayCore: NSObject {
               let url = song.url?.https else {
             return
         }
-        let item = AVPlayerItem(loader: url)
-        item.canUseNetworkResourcesForLiveStreamingWhilePaused = true
-        // Fixing 'invalid numeric value' for asset.duration
-        // GSPlayer VIMediaCache has the same bug.
         
-        player = AVPlayer(playerItem: item)
-        player.play()
-        
-        historys.removeAll {
-            $0.id == track.id
-        }
-        historys.append(track)
-        
-        if historys.count > 100 {
-            historys.removeFirst()
+        playerQueue.async {
+            let item = AVPlayerItem(loader: url)
+            item.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+            
+            DispatchQueue.main.async {
+                // Fixing 'invalid numeric value' for asset.duration
+                // GSPlayer VIMediaCache has the same bug.
+                
+                self.player = AVPlayer(playerItem: item)
+                self.player.play()
+                
+                self.historys.removeAll {
+                    $0.id == track.id
+                }
+                self.historys.append(track)
+                
+                if self.historys.count > 100 {
+                    self.historys.removeFirst()
+                }
+            }
         }
     }
     
