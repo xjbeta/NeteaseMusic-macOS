@@ -403,6 +403,9 @@ class NeteaseMusicAPI: NSObject {
             AlbumResult.self, pcOS: true).map { al in
                 al.songs.forEach {
                     $0.from = (.album, id, al.album.name)
+                    if $0.album.picUrl == nil {
+                        $0.album.picUrl = al.album.picUrl
+                    }
                 }
                 return al
         }

@@ -101,7 +101,7 @@ class Track: NSObject, Decodable {
     class Album: NSObject, Decodable {
         @objc let name: String
         let id: Int
-        let picUrl: URL?
+        var picUrl: URL?
         let des: String?
         @objc let publishTime: Int
         let artists: [Artist]?
