@@ -30,12 +30,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func initCache() {
         // Music cache
-        print("Music Cache Path", VideoCacheManager.directory)
+        print("Music Cache Path: \n", VideoCacheManager.directory)
         
         
         // Image cache
         ImageCache.default.cleanExpiredCache()
-        print("Image Cache Path", ImageCache.default.diskStorage.directoryURL.path)
+        print("Image Cache Path: \n", ImageCache.default.diskStorage.directoryURL.path)
     }
 
 }
