@@ -121,11 +121,8 @@ class Track: NSObject, Decodable {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.name = try container.decode(String.self, forKey: .name)
             self.id = try container.decode(Int.self, forKey: .id)
-            if var urlStr = try container.decodeIfPresent(String.self, forKey: .picUrl) {
-                if urlStr.starts(with: "http://") {
-                    urlStr = urlStr.replacingOccurrences(of: "http://", with: "https://")
-                }
-                self.picUrl = URL(string: urlStr)
+            if let str = try container.decodeIfPresent(String.self, forKey: .picUrl) {
+                self.picUrl = URL(string: str.https)
             } else {
                 self.picUrl = nil
             }
@@ -141,7 +138,7 @@ class Track: NSObject, Decodable {
     class Artist: NSObject, Decodable {
         let name: String
         let id: Int
-        let picUrl: String?  // 640 x 520
+        var picUrl: String?  // 640 x 520
         let musicSize: Int?
         let albumSize: Int?
         let alias: [String]?

@@ -101,8 +101,7 @@ class NeteaseMusicAPI: NSObject {
                     case "nickname":
                         user.nickname = value
                     case "avatarUrl":
-                        let s = value.replacingOccurrences(of: "http://", with: "https://")
-                        user.avatarImage = s
+                        user.avatarImage = value.https
                     default:
                         break
                     }
@@ -459,7 +458,10 @@ class NeteaseMusicAPI: NSObject {
         return request("https://music.163.com/weapi/artist/sublist",
             p,
             Result.self).map {
-                $0.data
+                $0.data.forEach {
+                    $0.picUrl = $0.picUrl?.https
+                }
+                return $0.data
         }
     }
     
