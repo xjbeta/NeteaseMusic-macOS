@@ -18,13 +18,21 @@ class ImageLoader: NSObject {
                       _ width: CGFloat = 0) -> KF.Builder {
         var u = url
         
+        var key: String?
         if autoSize {
             let w = Int(width * (NSScreen.main?.backingScaleFactor ?? 1))
-            u += "?param=\(w)y\(w)"
+            let p = "?param=\(w)y\(w)"
+            u += p
+            key = p
         }
         
+        let uu = URL(string: u)
         
-        return KF.url(URL(string: u))
+        if let p = uu?.lastPathComponent {
+            key = p + (key ?? "")
+        }
+        
+        return KF.url(uu, cacheKey: key)
     }
 }
 

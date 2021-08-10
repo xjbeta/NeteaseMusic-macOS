@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import Kingfisher
+import GSPlayer
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -15,18 +17,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        
-        
         ViewControllerManager.shared.initAllHotKeys()
         
         PlayCore.shared.setupSystemMediaKeys()
         
+        initCache()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         ViewControllerManager.shared.saveFMPlaylist()
     }
 
+    func initCache() {
+        // Music cache
+        print("Music Cache Path", VideoCacheManager.directory)
+        
+        
+        // Image cache
+        ImageCache.default.cleanExpiredCache()
+        print("Image Cache Path", ImageCache.default.diskStorage.directoryURL.path)
+    }
 
 }
 
