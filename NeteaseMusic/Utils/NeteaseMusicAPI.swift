@@ -536,7 +536,7 @@ class NeteaseMusicAPI: NSObject {
         
         return request("https://music.163.com/weapi/song/like/get",
             p,
-            Result.self, debug: true).map {
+            Result.self).map {
                 if $0.code == 200 {
                     return $0.ids
                 } else {
