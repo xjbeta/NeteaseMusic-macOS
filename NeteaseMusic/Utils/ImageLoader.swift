@@ -11,28 +11,30 @@ import Kingfisher
 import Alamofire
 
 class ImageLoader: NSObject {
-
-    
     static func image(_ url: String,
                       _ autoSize: Bool = false,
                       _ width: CGFloat = 0) -> KF.Builder {
         var u = url
         
-        var key: String?
         if autoSize {
             let w = Int(width * (NSScreen.main?.backingScaleFactor ?? 1))
             let p = "?param=\(w)y\(w)"
             u += p
-            key = p
         }
         
         let uu = URL(string: u)
-        
-        if let p = uu?.lastPathComponent {
-            key = p + (key ?? "")
-        }
+        let key = key(uu)
         
         return KF.url(uu, cacheKey: key)
+    }
+    
+    static func key(_ url: URL?) -> String? {
+        guard let url = url else { return nil }
+        var key = url.lastPathComponent
+        if let query = URLComponents(url: url, resolvingAgainstBaseURL: true)?.query {
+            key.append(query)
+        }
+        return key
     }
 }
 

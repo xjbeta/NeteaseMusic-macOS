@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="duO-1w-ADn">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="duO-1w-ADn">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,25 +11,24 @@
             <objects>
                 <viewController id="duO-1w-ADn" customClass="ArtistViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="u5T-iN-bPi">
-                        <rect key="frame" x="0.0" y="0.0" width="788" height="553"/>
+                        <rect key="frame" x="0.0" y="0.0" width="808" height="553"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="92" horizontalPageScroll="10" verticalLineScroll="92" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="xu8-BV-rWV">
-                                <rect key="frame" x="0.0" y="0.0" width="788" height="553"/>
+                                <rect key="frame" x="0.0" y="0.0" width="808" height="553"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8lb-ah-008">
-                                    <rect key="frame" x="0.0" y="0.0" width="788" height="553"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="808" height="553"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" viewBased="YES" id="5Zy-Al-FKF">
-                                            <rect key="frame" x="0.0" y="0.0" width="788" height="553"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="808" height="553"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="12"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="785" minWidth="10" maxWidth="99999999" id="Jx8-9d-GBP">
+                                                <tableColumn width="776" minWidth="10" maxWidth="99999999" id="Jx8-9d-GBP">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -41,7 +40,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="AlbumInfoTableCellView" id="mcV-ih-tNz">
-                                                            <rect key="frame" x="1" y="6" width="785" height="80"/>
+                                                            <rect key="frame" x="11" y="6" width="785" height="80"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ji9-Yy-8os">
@@ -53,7 +52,7 @@
                                                                                 <constraint firstAttribute="width" secondItem="JYv-wV-AKL" secondAttribute="height" multiplier="1:1" id="QPl-mD-iuv"/>
                                                                                 <constraint firstAttribute="width" constant="60" id="tIr-86-Vwc"/>
                                                                             </constraints>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="KIa-3z-lHA"/>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="KIa-3z-lHA"/>
                                                                         </imageView>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-rO-njT">
                                                                             <rect key="frame" x="60" y="0.0" width="10" height="60"/>
@@ -152,7 +151,7 @@
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="ArtistInfoTableCellView" id="16l-ml-c0G">
-                                                            <rect key="frame" x="1" y="98" width="785" height="240"/>
+                                                            <rect key="frame" x="11" y="98" width="785" height="240"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ohi-je-DDs" customClass="CoverImageView" customModule="NeteaseMusic" customModuleProvider="target">
@@ -277,7 +276,7 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LwB-K5-ME5" customClass="SubscribeButton" customModule="NeteaseMusic" customModuleProvider="target">
-                                                                    <rect key="frame" x="670" y="13" width="101" height="32"/>
+                                                                    <rect key="frame" x="677" y="13" width="95" height="32"/>
                                                                     <buttonCell key="cell" type="push" title="Subscribe" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Qi-Yd-lN8">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
