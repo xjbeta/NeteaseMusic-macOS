@@ -115,7 +115,7 @@ class SidebarViewController: NSViewController {
                         SidebarItem(type: .subscribedPlaylists)]
     @objc dynamic var sidebarItems = [SidebarItem]()
     
-    let outlineViewNotification = Notification(name: NSOutlineView.selectionDidChangeNotification, object: nil, userInfo: nil)
+    
     var selectSidebarItemObserver: NSObjectProtocol?
     
     lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
@@ -140,20 +140,17 @@ class SidebarViewController: NSViewController {
         selectSidebarItemObserver = NotificationCenter.default.addObserver(forName: .selectSidebarItem, object: nil, queue: .main) { [weak self] in
             guard let dic = $0.userInfo as? [String: Any],
                 let itemType = dic["itemType"] as? ItemType,
-                let id = dic["id"] as? Int,
-                let notification = self?.outlineViewNotification else { return }
+                let id = dic["id"] as? Int else { return }
             switch itemType {
             case .favourite:
                 if let index = self?.sidebarItems.firstIndex(where: { $0.type == .createdPlaylists }) {
                     self?.outlineView.deselectAll(self)
                     self?.outlineView.selectRowIndexes(.init(integer: index + 1), byExtendingSelection: true)
-                    self?.outlineViewSelectionIsChanging(notification)
                 }
             case .fm:
                 if let index = self?.sidebarItems.firstIndex(where: { $0.type == itemType }) {
                     self?.outlineView.deselectAll(self)
                     self?.outlineView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
-                    self?.outlineViewSelectionIsChanging(notification)
                 }
             case .album, .artist, .topSongs, .searchResults, .createdPlaylist, .subscribedPlaylist, .fmTrash, .discoverPlaylist, .preferences:
                 self?.outlineView.deselectAll(self)
@@ -161,9 +158,10 @@ class SidebarViewController: NSViewController {
             default:
                 break
             }
+            self?.updateSidebarItemsSelection()
         }
+        updateSidebarItemsSelection()
         
-        outlineViewSelectionIsChanging(.init(name: .init("")))
     }
     
     func updatePlaylists() {
@@ -244,6 +242,11 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
             return false
         }
         return node.isLeaf
+    }
+    
+    func updateSidebarItemsSelection() {
+        let outlineViewNotification = Notification(name: NSOutlineView.selectionDidChangeNotification, object: nil, userInfo: nil)
+        outlineViewSelectionIsChanging(outlineViewNotification)
     }
     
     func outlineViewSelectionIsChanging(_ notification: Notification) {
