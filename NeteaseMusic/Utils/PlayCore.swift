@@ -19,7 +19,7 @@ class PlayCore: NSObject {
         player = AVPlayer()
         player.automaticallyWaitsToMinimizeStalling = false
         super.init()
-        initDelegateObserver()
+        initPlayerObservers()
     }
     
 // MARK: - NowPlayingInfoCenter
@@ -32,14 +32,33 @@ class PlayCore: NSObject {
     
     private let playerQueue = DispatchQueue(label: "com.xjbeta.NeteaseMusic.AVPlayerItem")
     
-    
     let api = NeteaseMusicAPI()
     @objc dynamic var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
     
     
     let player: AVPlayer
     
-    @objc dynamic var playProgress: Double = 0
+    @objc dynamic var playProgress: Double = 0 {
+        didSet {
+            updateNowPlayingInfo()
+        }
+    }
+    
+    @objc enum PlayerState: Int {
+        case unknown = 0
+        case playing = 1
+        case paused = 2
+        case stopped = 3
+        case interrupted = 4
+    }
+    
+    @objc dynamic var playerState: PlayerState = .stopped {
+        didSet {
+            updateNowPlayingInfo()
+            let state = MPNowPlayingPlaybackState(rawValue: UInt(playerState.rawValue)) ?? .stopped
+            updateNowPlayingState(state)
+        }
+    }
 
     var periodicTimeObserverToken: Any?
     var timeControlStautsObserver: NSKeyValueObservation?
@@ -48,11 +67,7 @@ class PlayCore: NSObject {
     var playerShouldNextObserver: NSObjectProtocol?
     var playerStateObserver: NSKeyValueObservation?
     
-    @objc dynamic var currentTrack: Track? {
-        didSet {
-            updateNowPlayingInfo()
-        }
-    }
+    @objc dynamic var currentTrack: Track?
     
     @objc dynamic var playlist: [Track] = []
     @objc dynamic var historys: [Track] = []
@@ -143,7 +158,6 @@ class PlayCore: NSObject {
         }
         
         fmMode = enterFMMode
-        initObservers()
         
         guard playlist.count > 0 else { return }
         
@@ -178,6 +192,8 @@ class PlayCore: NSObject {
     }
     
     func nextSong() {
+        playerState = .unknown
+        
         let repeatMode = Preferences.shared.repeatMode
         guard repeatMode != .repeatItem else {
             player.seek(to: CMTime(value: 0, timescale: 1000))
@@ -250,6 +266,7 @@ class PlayCore: NSObject {
     }
     
     func stop() {
+        playerState = .stopped
         player.pause()
         player.currentItem?.cancelPendingSeeks()
         player.currentItem?.asset.cancelLoading()
@@ -357,6 +374,8 @@ class PlayCore: NSObject {
             DispatchQueue.main.async {
                 self.player.replaceCurrentItem(with: item)
                 self.player.play()
+                self.playerState = .playing
+                self.initNowPlayingInfo()
                 
                 self.historys.removeAll {
                     $0.id == track.id
@@ -463,16 +482,14 @@ class PlayCore: NSObject {
         if #available(macOS 10.13, *) {
             if Preferences.shared.useSystemMediaControl {
                 setupRemoteCommandCenter()
-                initMediaKeysObservers()
             } else {
                 updateNowPlayingState(.stopped)
-                deinitMediaKeysObservers()
             }
         }
     }
     
 // MARK: - Observers
-    func initDelegateObserver() {
+    func initPlayerObservers() {
         timeControlStautsObserver = player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
             self?.timeControlStatus = player.timeControlStatus
         }
@@ -480,35 +497,35 @@ class PlayCore: NSObject {
         let timeScale = CMTimeScale(NSEC_PER_SEC)
         let time = CMTime(seconds: 0.33, preferredTimescale: timeScale)
         
+
+        playerStateObserver = player.observe(\.rate, options: [.initial, .new]) { player, _ in
+            guard player.status == .readyToPlay else { return }
+            
+            self.playerState = player.rate.isZero ? .paused : .playing
+        }
+        
         periodicTimeObserverToken = player .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
             let pc = PlayCore.shared
             let player = pc.player
             
             self?.playProgress = player.playProgress
             
-            pc.updateNowPlayingInfo()
         }
         
-    }
-    
-    func deinitPlayerObserver() {
-        if let timeObserverToken = periodicTimeObserverToken {
-            player.removeTimeObserver(timeObserverToken)
-            periodicTimeObserverToken = nil
-            playProgress = 0
-        }
-        
-        timeControlStautsObserver?.invalidate()
-    }
-    
-    func initObservers() {
-        removeObservers()
         playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
             self.nextSong()
         }
     }
     
-    func removeObservers() {
+    func deinitPlayerObservers() {
+        if let timeObserverToken = periodicTimeObserverToken {
+            player.removeTimeObserver(timeObserverToken)
+            periodicTimeObserverToken = nil
+            playProgress = 0
+        }
+        playerStateObserver?.invalidate()
+        timeControlStautsObserver?.invalidate()
+        
         if let obs = playerShouldNextObserver {
             NotificationCenter.default.removeObserver(obs)
             playerShouldNextObserver = nil
@@ -517,8 +534,6 @@ class PlayCore: NSObject {
     
     
     deinit {
-        deinitPlayerObserver()
-        deinitMediaKeysObservers()
-        removeObservers()
+        deinitPlayerObservers()
     }
 }
