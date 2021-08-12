@@ -813,14 +813,25 @@ class NeteaseMusicAPI: NSObject {
                 }
                 
                 do {
-                    let re = try JSONDecoder().decode(resultType.self, from: data)
-                    resolver.fulfill(re)
-                } catch let error {
-                    if let re = try? JSONDecoder().decode(ServerError.self, from: data), re.code != 200 {
-                        resolver.reject(RequestError.errorCode((re.code, re.msg ?? re.message ?? "")))
-                    } else {
-                        resolver.reject(RequestError.error(error))
+                    if let re = try? JSONDecoder().decode(ServerError.self, from: data),
+                       re.code != 200 {
+                        throw re
                     }
+                    
+                    let re = try JSONDecoder().decode(resultType.self, from: data)
+                    
+                    resolver.fulfill(re)
+                } catch let error where error is ServerError {
+                    guard let re = error as? ServerError else { return }
+
+                    var msg = re.msg ?? re.message ?? ""
+                    
+                    if re.code == -462 {
+                        msg = "绑定手机号或短信验证成功后，可进行下一步操作哦~🙃"
+                    }
+                    resolver.reject(RequestError.errorCode((re.code, msg)))
+                } catch let error {
+                    resolver.reject(error)
                 }
             }
         }

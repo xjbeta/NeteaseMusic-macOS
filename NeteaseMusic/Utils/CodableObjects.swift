@@ -12,7 +12,7 @@ import AppKit
 import PromiseKit
 import GSPlayer
 
-struct ServerError: Decodable {
+struct ServerError: Decodable, Error {
     let code: Int
     let msg: String?
     let message: String?
