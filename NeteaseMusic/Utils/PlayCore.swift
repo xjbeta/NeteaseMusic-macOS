@@ -16,7 +16,10 @@ class PlayCore: NSObject {
     static let shared = PlayCore()
     
     private override init() {
+        player = AVPlayer()
         player.automaticallyWaitsToMinimizeStalling = false
+        super.init()
+        initDelegateObserver()
     }
     
 // MARK: - NowPlayingInfoCenter
@@ -34,33 +37,7 @@ class PlayCore: NSObject {
     @objc dynamic var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
     
     
-    private var playerConfigure = [String: Any]()
-    var player = AVPlayer() {
-        willSet {
-            playerConfigure.removeAll()
-            playerConfigure["volume"] = player.volume
-            playerConfigure["isMuted"] = player.isMuted
-            playerConfigure["rate"] = player.rate
-            
-            player.pause()
-            player.currentItem?.cancelPendingSeeks()
-            player.currentItem?.asset.cancelLoading()
-            player.replaceCurrentItem(with: nil)
-            deinitPlayerObserver()
-        }
-        didSet {
-            if let volume = playerConfigure["volume"] as? Float {
-                player.volume = volume
-            }
-            if let isMuted = playerConfigure["isMuted"] as? Bool {
-                player.isMuted = isMuted
-            }
-            if let rate = playerConfigure["rate"] as? Float {
-                player.rate = rate
-            }
-            initDelegateObserver()
-        }
-    }
+    let player: AVPlayer
     
     @objc dynamic var playProgress: Double = 0
 
@@ -378,10 +355,7 @@ class PlayCore: NSObject {
             item.canUseNetworkResourcesForLiveStreamingWhilePaused = true
             
             DispatchQueue.main.async {
-                // Fixing 'invalid numeric value' for asset.duration
-                // GSPlayer VIMediaCache has the same bug.
-                
-                self.player = AVPlayer(playerItem: item)
+                self.player.replaceCurrentItem(with: item)
                 self.player.play()
                 
                 self.historys.removeAll {

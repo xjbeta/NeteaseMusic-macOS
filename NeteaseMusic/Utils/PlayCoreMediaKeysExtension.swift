@@ -135,7 +135,7 @@ extension PlayCore {
         info[MPMediaItemPropertyArtist] = track.artistsString
         
         info[MPMediaItemPropertyPlaybackDuration] = track.duration / 1000
-        info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentTime().seconds
+        info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player.currentDuration
         
         info[MPNowPlayingInfoPropertyPlaybackRate] = player.rate
         info[MPNowPlayingInfoPropertyDefaultPlaybackRate] = 1
