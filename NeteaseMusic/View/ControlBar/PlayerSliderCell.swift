@@ -15,9 +15,7 @@ class PlayerSliderCell: NSSliderCell {
     let barHeight: CGFloat = 4
     
     override func drawKnob(_ knobRect: NSRect) {
-        if !mouseIn {
-            return
-        }
+        guard mouseIn else { return }
         
         let knobRadius: CGFloat = knobRect.width / 2
         let path = NSBezierPath(roundedRect: knobRect,
@@ -32,7 +30,8 @@ class PlayerSliderCell: NSSliderCell {
     
 
     override func knobRect(flipped: Bool) -> NSRect {
-        guard let slider = self.controlView as? PlayerSlider else { return .zero }
+        guard let slider = self.controlView as? PlayerSlider,
+              mouseIn else { return .zero }
         let playedPer = CGFloat(slider.doubleValue / (slider.maxValue - slider.minValue))
 
         let knobSize = NSSize(width: 13, height: 13)
@@ -69,7 +68,13 @@ class PlayerSliderCell: NSSliderCell {
         
         
         var gradient: NSGradient?
-        if cachedPer >= playedPer {
+        if cachedPer == 1 {
+            gradient = NSGradient(colorsAndLocations:
+                (color1, 0),
+                (color1, playedPer),
+                (color2, playedPer),
+                (color2, 1))
+        } else if cachedPer >= playedPer {
             gradient = NSGradient(colorsAndLocations:
                 (color1, 0),
                 (color1, playedPer),

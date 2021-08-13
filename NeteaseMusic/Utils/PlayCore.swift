@@ -393,7 +393,6 @@ class PlayCore: NSObject {
         let repeatMode = Preferences.shared.repeatMode
         let shuffleMode = Preferences.shared.shuffleMode
         internalPlaylist.removeAll()
-        internalPlaylistIndex = 0
         let idList = playlist.map {
             $0.id
         }
@@ -402,6 +401,7 @@ class PlayCore: NSObject {
             internalPlaylistIndex = -1
             return
         }
+        internalPlaylistIndex = 0
         
         if sid == -1 || !idList.contains(sid) {
             sid = fid
@@ -495,7 +495,7 @@ class PlayCore: NSObject {
         }
         
         let timeScale = CMTimeScale(NSEC_PER_SEC)
-        let time = CMTime(seconds: 0.33, preferredTimescale: timeScale)
+        let time = CMTime(seconds: 0.5, preferredTimescale: timeScale)
         
 
         playerStateObserver = player.observe(\.rate, options: [.initial, .new]) { player, _ in
