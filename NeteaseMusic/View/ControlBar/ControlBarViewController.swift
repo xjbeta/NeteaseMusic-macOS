@@ -102,20 +102,18 @@ class ControlBarViewController: NSViewController {
     var currentTrackObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
     
-    let imgSize = NSSize(width: 15, height: 13)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        pauseButton.contentTintColor = .nColor
         previousButton.contentTintColor = .nColor
         nextButton.contentTintColor = .nColor
-        if let image = NSImage(named: .init("sf.music.note.list")) {
-            image.size = imgSize
-            playlistButton.image = image.tint(color: .nColor)
+        
+        var musicListImage = NSImage(named: .init("music.note.list"))
+        if #available(macOS 11.0, *) {
+            musicListImage = musicListImage?.withSymbolConfiguration(.init(scale: .large))
         }
+        playlistButton.image = musicListImage?.tint(color: .nColor)
         
         let pc = PlayCore.shared
-        
         initVolumeButton()
         
         
@@ -152,15 +150,14 @@ class ControlBarViewController: NSViewController {
             textFiled.stringValue = "\(cd.durationFormatter()) / \(td.durationFormatter())"
         }
         
-        pauseStautsObserver = pc.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
-            switch player.timeControlStatus {
-            case .playing:
-                self?.pauseButton.image = NSImage(named: NSImage.Name("sf.pause.circle"))
-            case .paused:
-                self?.pauseButton.image = NSImage(named: NSImage.Name("sf.play.circle"))
-            default:
-                break
+        pauseStautsObserver = pc.observe(\.playerState, options: [.initial, .new]) { [weak self] pc, _ in
+            guard let button = self?.pauseButton else { return }
+            let name = pc.playerState == .playing ? "pause.circle" : "play.circle"
+            var img = NSImage(named: NSImage.Name(name))
+            if #available(macOS 11.0, *) {
+                img = img?.withSymbolConfiguration(.init(pointSize: button.frame.width, weight: .light, scale: .large))
             }
+            button.image = img?.tint(color: .nColor)
         }
         
         previousButtonObserver = pc.observe(\.pnItemType, options: [.initial, .new]) { [weak self] pc, _ in
@@ -235,46 +232,49 @@ class ControlBarViewController: NSViewController {
         pc.player.isMuted = mute
         
         var imageName = ""
+        var color = NSColor.nColor
         if mute {
-            imageName = "sf.speaker.slash"
+            imageName = "speaker.slash"
+            color = .systemGray
         } else {
             switch volume {
             case 0:
-                imageName = "sf.speaker"
+                imageName = "speaker"
+                color = .systemGray
             case 0..<1/3:
-                imageName = "sf.speaker.wave.1"
+                imageName = "speaker.wave.1"
             case 1/3..<2/3:
-                imageName = "sf.speaker.wave.2"
+                imageName = "speaker.wave.2"
             case 2/3...1:
-                imageName = "sf.speaker.wave.3"
+                imageName = "speaker.wave.3"
             default:
-                imageName = "sf.speaker"
+                imageName = "speaker"
             }
         }
-        guard let image = NSImage(named: NSImage.Name(imageName)) else {
-            return
+        var img = NSImage(named: .init(imageName))
+        if #available(macOS 11.0, *) {
+            img = img?.withSymbolConfiguration(.init(scale: .large))
         }
-        let h: CGFloat = 14
-        let s = image.size
-        image.size = .init(width: (s.width / s.height) * h,
-                           height: h)
-        muteButton.image = image
+        
+        muteButton.image = img?.tint(color: color)
     }
     
     func initPlayModeButton() {
         let pref = Preferences.shared
         
-        let repeatImgName = pref.repeatMode == .repeatItem ? "sf.repeat.1" : "sf.repeat"
-        let shuffleImgName = "sf.shuffle"
+        let repeatImgName = pref.repeatMode == .repeatItem ? "repeat.1" : "repeat"
+        let shuffleImgName = "shuffle"
         
         let repeatImgColor: NSColor = pref.repeatMode == .noRepeat ? .systemGray : .nColor
         let shuffleImgColor: NSColor = pref.shuffleMode == .noShuffle ? .systemGray : .nColor
 
-        let repeatImage = NSImage(named: .init(repeatImgName))
-        let shuffleImage = NSImage(named: .init(shuffleImgName))
+        var repeatImage = NSImage(named: .init(repeatImgName))
+        var shuffleImage = NSImage(named: .init(shuffleImgName))
         
-        repeatImage?.size = imgSize
-        shuffleImage?.size = imgSize
+        if #available(macOS 11.0, *) {
+            repeatImage = repeatImage?.withSymbolConfiguration(.init(scale: .large))
+            shuffleImage = shuffleImage?.withSymbolConfiguration(.init(scale: .large))
+        }
         
         repeatModeButton.image = repeatImage?.tint(color: repeatImgColor)
         shuffleModeButton.image = shuffleImage?.tint(color: shuffleImgColor)
