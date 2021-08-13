@@ -143,6 +143,7 @@ class PlaylistViewController: NSViewController {
             let date = Date()
             let formatter = DateFormatter()
             formatter.dateFormat = "dd"
+            dateTextField.textColor = .nColor
             dateTextField.stringValue = formatter.string(from: date)
         }
     }
