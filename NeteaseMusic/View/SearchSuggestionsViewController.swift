@@ -141,7 +141,8 @@ extension SearchSuggestionsViewController: NSTableViewDelegate, NSTableViewDataS
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        return tableView.makeView(withIdentifier: .init("SearchSuggestTableCellView"), owner: nil)
+        let i = suggestItems[safe: row]?.type == .groupItem ? "SearchSuggestTableGroupView" : "SearchSuggestTableCellView"
+        return tableView.makeView(withIdentifier: .init(i), owner: nil)
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
