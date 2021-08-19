@@ -44,6 +44,7 @@ class MainWindowController: NSWindowController {
         searchSuggestionsVC.dismissPopover = {
             p.close()
         }
+        p.behavior = .semitransient
         p.contentViewController = searchSuggestionsVC
         return p
     }()
