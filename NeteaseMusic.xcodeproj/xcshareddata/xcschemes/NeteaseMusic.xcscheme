@@ -37,6 +37,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "01EE1FC626CB6D9400B441D0"
+               BuildableName = "NMChannelTests.xctest"
+               BlueprintName = "NMChannelTests"
+               ReferencedContainer = "container:NeteaseMusic.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
