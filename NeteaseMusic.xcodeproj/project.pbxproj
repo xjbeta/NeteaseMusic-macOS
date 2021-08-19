@@ -107,6 +107,7 @@
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
 		01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E40FE822C1DF4600864118 /* ImageLoader.swift */; };
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
+		01EE1FCA26CB6D9400B441D0 /* NMChannelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE1FC926CB6D9400B441D0 /* NMChannelTests.swift */; };
 		01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */; };
 		01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */; };
 		01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */; };
@@ -120,6 +121,16 @@
 		01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B82225DC4C2002D7906 /* ArtistsTransformer.swift */; };
 		01FF8B85225E1B21002D7906 /* ControlBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF8B84225E1B21002D7906 /* ControlBarViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01EE1FCC26CB6D9400B441D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01957D80224D01850006FCEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01957D87224D01850006FCEC;
+			remoteInfo = NeteaseMusic;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0110886F238D05D400184551 /* PlayerSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSliderCell.swift; sourceTree = "<group>"; };
@@ -237,6 +248,9 @@
 		01E0F4A62261661B0043FAB6 /* SongUrl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SongUrl.json; sourceTree = "<group>"; };
 		01E40FE822C1DF4600864118 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		01E7C9D3228BB697004D80AD /* IdButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdButton.swift; sourceTree = "<group>"; };
+		01EE1FC726CB6D9400B441D0 /* NMChannelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NMChannelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01EE1FC926CB6D9400B441D0 /* NMChannelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMChannelTests.swift; sourceTree = "<group>"; };
+		01EE1FCB26CB6D9400B441D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAAPMenuController.swift; sourceTree = "<group>"; };
 		01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAAPMenu.xib; sourceTree = "<group>"; };
 		01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPlayStateTransformer.swift; sourceTree = "<group>"; };
@@ -263,6 +277,13 @@
 				0148763326BD49C800B4F754 /* Kingfisher in Frameworks */,
 				0148762D26BD490D00B4F754 /* CryptoSwift in Frameworks */,
 				01BFA88326A98D310075F06D /* GSPlayer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EE1FC426CB6D9400B441D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				01957D8A224D01850006FCEC /* NeteaseMusic */,
+				01EE1FC826CB6D9400B441D0 /* NMChannelTests */,
 				01957D89224D01850006FCEC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -548,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				01957D88224D01850006FCEC /* NeteaseMusic.app */,
+				01EE1FC726CB6D9400B441D0 /* NMChannelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -592,6 +615,15 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		01EE1FC826CB6D9400B441D0 /* NMChannelTests */ = {
+			isa = PBXGroup;
+			children = (
+				01EE1FC926CB6D9400B441D0 /* NMChannelTests.swift */,
+				01EE1FCB26CB6D9400B441D0 /* Info.plist */,
+			);
+			path = NMChannelTests;
+			sourceTree = "<group>";
+		};
 		01FF8B75225C6527002D7906 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,18 +663,40 @@
 			productReference = 01957D88224D01850006FCEC /* NeteaseMusic.app */;
 			productType = "com.apple.product-type.application";
 		};
+		01EE1FC626CB6D9400B441D0 /* NMChannelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01EE1FCE26CB6D9400B441D0 /* Build configuration list for PBXNativeTarget "NMChannelTests" */;
+			buildPhases = (
+				01EE1FC326CB6D9400B441D0 /* Sources */,
+				01EE1FC426CB6D9400B441D0 /* Frameworks */,
+				01EE1FC526CB6D9400B441D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01EE1FCD26CB6D9400B441D0 /* PBXTargetDependency */,
+			);
+			name = NMChannelTests;
+			productName = NMChannelTests;
+			productReference = 01EE1FC726CB6D9400B441D0 /* NMChannelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		01957D80224D01850006FCEC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = xjbeta;
 				TargetAttributes = {
 					01957D87224D01850006FCEC = {
 						CreatedOnToolsVersion = 10.2;
+					};
+					01EE1FC626CB6D9400B441D0 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 01957D87224D01850006FCEC;
 					};
 				};
 			};
@@ -669,6 +723,7 @@
 			projectRoot = "";
 			targets = (
 				01957D87224D01850006FCEC /* NeteaseMusic */,
+				01EE1FC626CB6D9400B441D0 /* NMChannelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -706,6 +761,13 @@
 				01909522239E339A00647F80 /* SublistView.storyboard in Resources */,
 				013EF168225B2A2000E4D7D8 /* Crypto.js in Resources */,
 				01190493230E651B00738904 /* NewPlaylist.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01EE1FC526CB6D9400B441D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,7 +858,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		01EE1FC326CB6D9400B441D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01EE1FCA26CB6D9400B441D0 /* NMChannelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01EE1FCD26CB6D9400B441D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01957D87224D01850006FCEC /* NeteaseMusic */;
+			targetProxy = 01EE1FCC26CB6D9400B441D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		01957D91224D01860006FCEC /* Main.storyboard */ = {
@@ -971,6 +1049,52 @@
 			};
 			name = Release;
 		};
+		01EE1FCF26CB6D9400B441D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = NMChannelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NMChannelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeteaseMusic.app/Contents/MacOS/NeteaseMusic";
+			};
+			name = Debug;
+		};
+		01EE1FD026CB6D9400B441D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = NMChannelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NMChannelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NeteaseMusic.app/Contents/MacOS/NeteaseMusic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -988,6 +1112,15 @@
 			buildConfigurations = (
 				01957D99224D01860006FCEC /* Debug */,
 				01957D9A224D01860006FCEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01EE1FCE26CB6D9400B441D0 /* Build configuration list for PBXNativeTarget "NMChannelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01EE1FCF26CB6D9400B441D0 /* Debug */,
+				01EE1FD026CB6D9400B441D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
