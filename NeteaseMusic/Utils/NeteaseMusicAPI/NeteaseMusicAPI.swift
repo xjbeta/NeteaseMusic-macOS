@@ -13,6 +13,8 @@ import JavaScriptCore
 
 class NeteaseMusicAPI: NSObject {
     
+    private let channel = NMChannel()
+    
     lazy var pcOSSession: Session = {
         let session = Session(configuration: .ephemeral)
         let cookie = HTTPCookie(properties: [.domain : "music.163.com",
@@ -112,24 +114,18 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func userPlaylist() -> Promise<[Playlist]> {
-        struct P: Encodable {
-            let uid: Int
-            let limit: Int
-            let offset: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case uid, limit, offset, csrfToken = "csrf_token"
-            }
-        }
-        
         struct Result: Decodable {
             let playlist: [Playlist]
             let code: Int
         }
         
-        let p = P(uid: uid, limit: 1000, offset: 0, csrfToken: csrf).jsonString()
+        let p = [
+            "uid": uid,
+            "offset": 0,
+            "limit": 1000
+        ]
         
-        return request("https://music.163.com/weapi/user/playlist?csrf_token=\(csrf)",
+        return eapiRequest("https://music.163.com/eapi/user/playlist/",
             p,
             Result.self).map {
                 $0.playlist
@@ -137,118 +133,150 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func playlistDetail(_ id: Int) -> Promise<(Playlist)> {
-        struct P: Encodable {
-            let id: Int
-            let n: Int
-            let s: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case id, n, s, csrfToken = "csrf_token"
-            }
-        }
-
         struct Result: Decodable {
             let playlist: Playlist
             let privileges: [Track.Privilege]
             let code: Int
         }
 
-        let p = P(id: id, n: 1000, s: 0, csrfToken: csrf).jsonString()
+        let p = [
+            "id": id,
+            "n": 0,
+            "s": 0,
+            "t": -1
+        ]
         
-        return request("https://music.163.com/weapi/v3/playlist/detail",
+        
+        var playlist: Playlist?
+        
+        return eapiRequest(
+            "https://music.163.com/eapi/v3/playlist/detail",
             p,
-            Result.self, pcOS: true).map { re -> Playlist in
-                let p = re.playlist
-                let type: SidebarViewController.ItemType = p.creator?.userId == self.uid ? .createdPlaylist: .subscribedPlaylist
-                p.tracks?.forEach { t in
-                    t.privilege = re.privileges.first(where: {
-                        $0.id == t.id
-                    })
-                    t.from = (type, p.id, re.playlist.name)
+            Result.self).get {
+                playlist = $0.playlist
+            }.compactMap { re -> [Promise<[Track]>]? in
+                guard let ids = re.playlist.trackIds?.map({ $0.id }) else {
+                    return nil
                 }
-                return p
-        }
+                let list = stride(from: 0, to: ids.count, by: 500).map {
+                    Array(ids[$0..<($0+500 >= ids.count ? ids.count : $0+500)])
+                }
+                return list.map {
+                    self.songDetail($0)
+                }
+            }.then {
+                when(fulfilled: $0)
+            }.compactMap { re -> Playlist? in
+                let tracks = re.flatMap { $0 }
+                guard var pl = playlist else {
+                    return nil
+                }
+                let type: SidebarViewController.ItemType = pl.creator?.userId == self.uid ? .createdPlaylist: .subscribedPlaylist
+                pl.tracks = tracks
+                pl.tracks?.forEach { t in
+                    t.from = (type, pl.id, pl.name)
+                }
+                return pl
+            }
     }
     
-    func songUrl(_ ids: [Int], _ br: Int) -> Promise<([Song])> {
+    /*
+    func playlistDetail(_ id: Int) -> Promise<(Playlist)> {
         struct P: Encodable {
-            let ids: [Int]
-            let encodeType = "aac"
-            let br: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case ids, br, encodeType, csrfToken = "csrf_token"
-            }
+            let id: Int
+            let n: Int
+            let s: Int
+            let t = -1
         }
         
-        let p = P(ids: ids, br: br, csrfToken: csrf).jsonString()
+        struct Result: Decodable {
+            let playlist: Playlist
+            let privileges: [Track.Privilege]
+            let code: Int
+        }
         
+        let p = P(id: id, n: 0, s: 0)
+        
+        return eapiRequest("https://music.163.com/eapi/v3/playlist/detail",
+                           p,
+                           Result.self).map { re -> Playlist in
+                            let p = re.playlist
+                            let type: SidebarViewController.ItemType = p.creator?.userId == self.uid ? .createdPlaylist: .subscribedPlaylist
+                            p.tracks?.forEach { t in
+                                t.privilege = re.privileges.first(where: {
+                                    $0.id == t.id
+                                })
+                                t.from = (type, p.id, re.playlist.name)
+                            }
+                            return p
+                           }
+    }
+ */
+    
+    func songUrl(_ ids: [Int], _ br: Int) -> Promise<([Song])> {
         struct Result: Decodable {
             let data: [Song]
             let code: Int
         }
         
-        return request("https://music.163.com/weapi/song/enhance/player/url",
+        let p: [String : Any] = [
+            "ids": ids,
+            "br": br,
+            "e_r": true
+        ]
+        
+        return eapiRequest("https://music.163.com/eapi/song/enhance/player/url",
             p,
-            Result.self, pcOS: true).map {
+            Result.self,
+            shouldDeSerial: true).map {
                 $0.data
         }
     }
     
     func recommendResource() -> Promise<[RecommendResource.Playlist]> {
-        let p = DefaultParameters(csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/v1/discovery/recommend/resource",
-            p,
+        eapiRequest(
+            "https://music.163.com/eapi/v1/discovery/recommend/resource",
+            [:],
             RecommendResource.self).map {
                 $0.recommend
-        }
+            }
     }
     
     func recommendSongs() -> Promise<[Track]> {
-        let p = DefaultParameters(csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/v1/discovery/recommend/songs",
-            p,
-            RecommendSongs.self, pcOS: true).map {
+        eapiRequest(
+            "https://music.163.com/eapi/v1/discovery/recommend/songs",
+            [:],
+            RecommendSongs.self).map {
                 $0.recommend
-        }.map {
-            $0.forEach {
-                $0.from = (.discoverPlaylist, -114514, "recommend songs")
+            }.map {
+                $0.forEach {
+                    $0.from = (.discoverPlaylist, -114514, "recommend songs")
+                }
+                return $0
             }
-            return $0
-        }
     }
     
     func lyric(_ id: Int) -> Promise<(LyricResult)> {
-        struct P: Encodable {
-            let id: Int
-            let lv = -1
-            let tv = -1
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case id, lv, tv, csrfToken = "csrf_token"
+        let u = "https://music.163.com/api/song/lyric?os=osx&id=\(id)&lv=-1&kv=-1&tv=-1"
+        
+        return Promise { resolver in
+            AF.request(u).responseDecodable(of: LyricResult.self) {
+                do {
+                    resolver.fulfill(try $0.result.get())
+                } catch let error {
+                    resolver.reject(error)
+                }
             }
         }
-        let p = P(id: id, csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/song/lyric",
-            p,
-            LyricResult.self)
     }
     
     func searchSuggest(_ keywords: String) -> Promise<(SearchSuggest.Result)> {
-        struct P: Encodable {
-            let s: String
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case s, csrfToken = "csrf_token"
-            }
-        }
         
-        let p = P(s: keywords, csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/search/suggest/web",
+        let p = [
+            "s": keywords,
+//            "limit": 6
+        ]
+        return eapiRequest("https://music.163.com/eapi/search/suggest/web",
             p,
             SearchSuggest.self).map {
                 $0.result
@@ -259,76 +287,61 @@ class NeteaseMusicAPI: NSObject {
                 limit: Int,
                 page: Int,
                 type: SearchSuggestionsViewController.GroupType) -> Promise<SearchResult.Result> {
-        struct P: Encodable {
-            let s: String
-            // 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频
-            let type: Int
-            let limit: Int
-            let offset: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case s, type, limit, offset, csrfToken = "csrf_token"
-            }
-        }
+        var p: [String: Any] = [
+            "s": keywords,
+            "limit": limit,
+            "offset": page * limit,
+            "total": true
+        ]
+
         
-        var typeInt = 0
+        var u = "https://music.163.com/eapi/search/pc"
+        
+        // 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频
         switch type {
         case .songs:
-            typeInt = 1
+            p["type"] = 1
+            u = "https://music.163.com/eapi/cloudsearch/pc"
         case .albums:
-            typeInt = 10
+            p["type"] = 10
         case .artists:
-            typeInt = 100
+            p["type"] = 100
         case .playlists:
-            typeInt = 1000
+            p["type"] = 1000
         default:
-            typeInt = 0
+            p["type"] = 0
         }
         
-        let p = P(s: keywords, type: typeInt, limit: limit, offset: page * limit, csrfToken: csrf).jsonString()
-        
-        
-        return request("https://music.163.com/weapi/cloudsearch/get/web",
-                       p, SearchResult.self).map {
-                        $0.result.songs.forEach {
-                            $0.from = (.searchResults, 0, "Search Result")
-                        }
-                        return $0.result
+        return eapiRequest(u,
+                           p,
+                           SearchResult.self).map {
+                            $0.result.songs.forEach {
+                                $0.from = (.searchResults, 0, "Search Result")
+                            }
+                            return $0.result
         }
     }
     
     func subscribe(_ id: Int, unsubscribe: Bool = false, type: TAAPItemsType) -> Promise<()> {
-        struct P1: Encodable {
-            let id: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case id, csrfToken = "csrf_token"
-            }
-        }
-        struct P2: Encodable {
-            let artistId: String
-            let artistIds: String
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case artistId, artistIds, csrfToken = "csrf_token"
-            }
-        }
         
-        var p = ""
+        var p = [String: Any]()
         var apiString = ""
         var subString = ""
         
         switch type {
         case .playlist:
-            p = P1(id: id, csrfToken: csrf).jsonString()
+            p["id"] = id
             apiString = "playlist"
             subString = unsubscribe ? "unsubscribe" : "subscribe"
         case .album:
-            p = P1(id: id, csrfToken: csrf).jsonString()
+            p["id"] = id
             apiString = "album"
             subString = unsubscribe ? "unsub" : "sub"
         case .artist:
-            p = P2(artistId: "\(id)", artistIds: "[\(id)]", csrfToken: csrf).jsonString()
+            p = [
+                "artistId": "\(id)",
+                "artistIds": "[\(id)]"
+            ]
             apiString = "artist"
             subString = unsubscribe ? "unsub" : "sub"
         default:
@@ -337,7 +350,9 @@ class NeteaseMusicAPI: NSObject {
             }
         }
         
-        return request("https://music.163.com/weapi/\(apiString)/\(subString)",
+        let u = "https://music.163.com/eapi/\(apiString)/\(subString)"
+        
+        return eapiRequest(u,
             p,
             CodeResult.self).map {
                 if $0.code == 200 {
@@ -349,16 +364,14 @@ class NeteaseMusicAPI: NSObject {
     }
 
     func radioGet() -> Promise<[Track]> {
-        let p = DefaultParameters(csrfToken: csrf).jsonString()
-        
         struct Result: Decodable {
             let data: [Track]
             let code: Int
         }
-        
-        return request("https://music.163.com/weapi/v1/radio/get",
-            p,
-            Result.self, pcOS: true).map {
+        let u = "https://music.163.com/eapi/v1/radio/get"
+        return eapiRequest(u,
+                           [:],
+                           Result.self).map {
                 $0.data.forEach {
                     $0.from = (.fm, 0, "FM")
                 }
@@ -367,23 +380,18 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func radioSkip(_ id: Int, _ time: Int = 0) -> Promise<()> {
-        struct P: Encodable {
-            let alg = "itembased" //"alg_fm_rt_view_comment"
-            let songId: Int
-            let time: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case alg, songId, time, csrfToken = "csrf_token"
-            }
-        }
-        
-        let p = P(songId: id, time: time, csrfToken: csrf).jsonString()
-        
         struct Result: Decodable {
             let code: Int
         }
         
-        return request("https://music.163.com/weapi/v1/radio/skip",
+        let p: [String: Any] = [
+            "alg": "itembased",  //"alg_fm_rt_view_comment"
+            "songId": id,
+            "time": time
+        ]
+
+        let u = "https://music.163.com/eapi/v1/radio/skip"
+        return eapiRequest(u,
             p,
             Result.self).map {
                 if $0.code == 200 {
@@ -395,11 +403,11 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func album(_ id: Int) -> Promise<AlbumResult> {
-        
-        let p = DefaultParameters(csrfToken: csrf).jsonString()
-        return request("https://music.163.com/weapi/v1/album/\(id)",
-            p,
-            AlbumResult.self, pcOS: true).map { al in
+        let u = "https://music.163.com/eapi/v1/album/\(id)"
+        return eapiRequest(
+            u,
+            [:],
+            AlbumResult.self).map { al in
                 al.songs.forEach {
                     $0.from = (.album, id, al.album.name)
                     if $0.album.picUrl == nil {
@@ -407,29 +415,23 @@ class NeteaseMusicAPI: NSObject {
                     }
                 }
                 return al
-        }
+            }
     }
     
     func albumSublist() -> Promise<[Track.Album]> {
-        struct P: Encodable {
-            let limit = 1000
-            let offset = 0
-            let total = true
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case limit, offset, total, csrfToken = "csrf_token"
-            }
-        }
-        
         struct Result: Decodable {
             let code: Int
             let data: [Track.Album]
             let hasMore: Bool
         }
         
-        let p = P(csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/album/sublist",
+        let p: [String: Any] = [
+            "limit": 1000,
+            "offset": 0,
+            "total": true
+        ]
+        return eapiRequest(
+            "https://music.163.com/eapi/album/sublist",
             p,
             Result.self).map {
                 $0.data
@@ -437,25 +439,19 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func artistSublist() -> Promise<[Track.Artist]> {
-        struct P: Encodable {
-            let limit = 1000
-            let offset = 0
-            let total = true
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case limit, offset, total, csrfToken = "csrf_token"
-            }
-        }
-        
         struct Result: Decodable {
             let code: Int
             let data: [Track.Artist]
             let hasMore: Bool
         }
         
-        let p = P(csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/artist/sublist",
+        let p: [String: Any] = [
+            "limit": 1000,
+            "offset": 0,
+            "total": true
+        ]
+        return eapiRequest(
+            "https://music.163.com/eapi/artist/sublist",
             p,
             Result.self).map {
                 $0.data.forEach {
@@ -467,47 +463,46 @@ class NeteaseMusicAPI: NSObject {
     
 
     func artist(_ id: Int) -> Promise<ArtistResult> {
-        let p = DefaultParameters(csrfToken: csrf).jsonString()
-        return request("https://music.163.com/weapi/artist/\(id)",
+        let p: [String: Any] = [
+            "id": id,
+            "ext": "true",
+            "top": "50",
+            "private_cloud": "true",
+        ]
+        return eapiRequest(
+            "https://music.163.com/eapi/v1/artist/\(id)",
             p,
             ArtistResult.self)
     }
     
     func artistAlbums(_ id: Int) -> Promise<ArtistAlbumsResult> {
-        struct P: Encodable {
-            let limit: Int = 1000
-            let offset: Int = 0
-            let total: Bool = true
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case total, limit, offset, csrfToken = "csrf_token"
-            }
-        }
+        let p: [String: Any] = [
+            "limit": 1000,
+            "offset": 0,
+            "total": true
+        ]
         
-        let p = P(csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/artist/albums/\(id)",
+        return eapiRequest(
+            "https://music.163.com/eapi/artist/albums/\(id)",
             p,
             ArtistAlbumsResult.self)
     }
     
     func like(_ id: Int, _ like: Bool = true, _ time: Int = 25) -> Promise<()> {
-        struct P: Encodable {
-            let trackId: Int
-            let like: String
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case trackId, like, csrfToken = "csrf_token"
-            }
-        }
-        let p = P(trackId: id, like: "\(like)", csrfToken: csrf).jsonString()
-        
         struct Result: Decodable {
             let code: Int
             let playlistId: Int
         }
+        
+        let p: [String: Any] = [
+            "time": time,
+            "trackId": id,
+            "alg": "itembased",
+            "like": true,
+        ]
 
-        return request("https://music.163.com/weapi/radio/like?alg=itembased&trackId=\(id)&time=\(time)",
+        return eapiRequest(
+            "https://music.163.com/eapi/radio/like",
             p,
             Result.self).map {
                 if $0.code == 200 {
@@ -519,22 +514,14 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func likeList() -> Promise<[Int]> {
-        struct P: Encodable {
-            let uid: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case uid, csrfToken = "csrf_token"
-            }
-        }
-        
-        let p = P(uid: uid, csrfToken: csrf).jsonString()
-        
         struct Result: Decodable {
             let code: Int
             let ids: [Int]
         }
+        let p = ["uid": uid]
         
-        return request("https://music.163.com/weapi/song/like/get",
+        return eapiRequest(
+            "https://music.163.com/eapi/song/like/get",
             p,
             Result.self).map {
                 if $0.code == 200 {
@@ -547,21 +534,29 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func fmTrash(id: Int, _ time: Int = 25, _ add: Bool = true) -> Promise<()> {
-        struct P: Encodable {
-            let songId: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case songId, csrfToken = "csrf_token"
-            }
-        }
-        let p = P(songId: id, csrfToken: csrf).jsonString()
-
         struct Result: Decodable {
             let code: Int
         }
-        let u = add ? "https://music.163.com/weapi/radio/trash/add?alg=RT&songId=\(id)&time=\(time)" : "https://music.163.com/weapi/radio/trash/del"
         
-        return request(u,
+        var p = [String: Any]()
+        if add {
+            p = [
+                "songId": id,
+                "alg": "redRec",
+                "time": time,
+            ]
+        } else {
+            p = [
+                "songIds": "[\(id)]",
+            ]
+        }
+        
+        let u = add ?
+            "https://music.163.com/eapi/radio/trash/add" :
+            "https://music.163.com/eapi/radio/trash/del/batch"
+        
+        return eapiRequest(
+            u,
             p,
             Result.self).map {
                 if $0.code == 200 {
@@ -577,31 +572,25 @@ class NeteaseMusicAPI: NSObject {
             let code: Int
             let data: [Track]
         }
-
-//https://music.163.com/api/v3/radio/trash/get?pagesize=100&from=1&to=1&offset=0&total=true&limit=100&currsize=26&addTime=1491740318242
         
-        let u = "https://music.163.com/api/v3/radio/trash/get?pagesize=1000&from=1&to=1&offset=0&total=true&limit=1000"
-        
-        
-        return request(u, nil, headers: nil, Result.self, method: .get).map {
+        return eapiRequest(
+            "https://music.163.com/eapi/v3/radio/trash/get",
+            [:],
+            Result.self).map {
             $0.data
         }
     }
     
     func playlistTracks(add: Bool, _ trackIds: [Int], to playlistId: Int) -> Promise<()> {
-        struct P: Encodable {
-            let op: String  // del,add
-            let pid: Int
-            let trackIds: String
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case op, pid, trackIds, csrfToken = "csrf_token"
-            }
-        }
+        let p: [String: Any] = [
+            "op": add ? "add" : "del",
+            "pid": playlistId,
+            "trackIds": "[\(trackIds)]",
+            "imme": true
+        ]
         
-        let p = P(op: add ? "add" : "del", pid: playlistId, trackIds: "\(trackIds)", csrfToken: csrf).jsonString()
-        
-        return request("https://music.163.com/weapi/playlist/manipulate/tracks",
+        return eapiRequest(
+            "https://music.163.com/eapi/v1/playlist/manipulate/tracks",
             p,
             CodeResult.self).map {
                 if $0.code == 200 {
@@ -613,45 +602,31 @@ class NeteaseMusicAPI: NSObject {
     }
     
     func playlistCreate(_ name: String, privacy: Bool = false) -> Promise<()> {
-        struct P: Encodable {
-            let name: String
-            let privacy: Int  // privacy 10
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case name, privacy, csrfToken = "csrf_token"
-            }
-        }
-
-        let p = P(name: name, privacy: privacy ? 10 : 0, csrfToken: csrf).jsonString()
+        let p: [String: Any] = [
+            "name": name,
+            "uid": uid,
+            "privacy": privacy ? 10 : 0
+        ]
         
-        return request("https://music.163.com/weapi/playlist/create",
-                       p,
-                       CodeResult.self, pcOS: true).map {
-                        if $0.code == 200 {
-                            return ()
-                        } else {
-                            throw RequestError.errorCode(($0.code, $0.msg ?? ""))
-                        }
-        }
+        return eapiRequest(
+            "https://music.163.com/eapi/playlist/create",
+            p,
+            CodeResult.self).map {
+                if $0.code == 200 {
+                    return ()
+                } else {
+                    throw RequestError.errorCode(($0.code, $0.msg ?? ""))
+                }
+            }
     }
 
     func discoveryRecommendDislike(_ id: Int, isPlaylist: Bool = false, alg: String = "") -> Promise<((Track?, RecommendResource.Playlist?))> {
-        struct P: Encodable {
-            let resId: Int
-            let resType: Int  // daily 4  playlist 1
-            let sceneType: Int?  // daily 1  playlist nil
-            let alg: String?  // daily nil
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case resId, resType, sceneType, alg, csrfToken = "csrf_token"
-            }
-        }
-
-        let p = P(resId: id,
-                  resType: isPlaylist ? 1 : 4,
-                  sceneType: isPlaylist ? nil : 1,
-                  alg: isPlaylist ? alg : nil,
-                  csrfToken: csrf).jsonString()
+        let p: [String: Any] = [
+            "resId": id,
+            "resType": isPlaylist ? 1 : 4, // daily 4  playlist 1
+            "sceneType": isPlaylist ? nil : 1, // daily 1  playlist nil
+            "alg": isPlaylist ? alg : nil, // daily nil
+        ]
 
         class Result: Decodable {
             let code: Int
@@ -671,79 +646,68 @@ class NeteaseMusicAPI: NSObject {
         }
         
 //        code == 432, msg == "今日暂无更多推荐"
-        return request("https://music.163.com/weapi/v2/discovery/recommend/dislike",
-                       p,
-                       Result.self).map {
-                        if $0.code == 200 {
-                            return (($0.track, $0.playlist))
-                        } else {
-                            throw RequestError.errorCode(($0.code, ""))
-                        }
-        }
+        return eapiRequest(
+            "https://music.163.com/eapi/discovery/recommend/dislike",
+            p,
+            Result.self).map {
+                if $0.code == 200 {
+                    return (($0.track, $0.playlist))
+                } else {
+                    throw RequestError.errorCode(($0.code, ""))
+                }
+            }
     }
     
     func playlistDelete(_ id: Int) -> Promise<()> {
-        struct P: Encodable {
-            let pid: Int
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case pid, csrfToken = "csrf_token"
-            }
-        }
-        
-        let p = P(pid: id, csrfToken: csrf).jsonString()
-        
         struct Result: Decodable {
             let code: Int
             let id: Int
         }
+        let p = [
+            "pid": id,
+            "id": id
+        ]
         
-        return request("https://music.163.com/weapi/playlist/delete",
-                       p,
-                       Result.self).map {
-                        if $0.code == 200, $0.id == id {
-                            return ()
-                       } else {
-                            throw RequestError.errorCode(($0.code, ""))
-                        }
-        }
+        return eapiRequest(
+            "https://music.163.com/eapi/playlist/delete",
+            p,
+            Result.self).map {
+                if $0.code == 200, $0.id == id {
+                    return ()
+                } else {
+                    throw RequestError.errorCode(($0.code, ""))
+                }
+            }
     }
     
     func logout() -> Promise<()> {
-        let p = DefaultParameters(csrfToken: csrf).jsonString()
-        return request("https://music.163.com/weapi/logout",
-                       p,
-                       CodeResult.self).map {
-                        if $0.code == 200 {
-                            return ()
-                        } else {
-                            throw RequestError.errorCode(($0.code, $0.msg ?? ""))
-                        }
-        }
+        return eapiRequest(
+            "https://music.163.com/eapi/logout",
+            [:],
+            CodeResult.self).map {
+                if $0.code == 200 {
+                    return ()
+                } else {
+                    throw RequestError.errorCode(($0.code, $0.msg ?? ""))
+                }
+            }
     }
     
     func songDetail(_ ids: [Int]) -> Promise<[Track]> {
-        struct P: Encodable {
-            let ids: String
-            let c: String
-            let csrfToken: String
-            enum CodingKeys: String, CodingKey {
-                case ids, c, csrfToken = "csrf_token"
-            }
-        }
-        let c = "[" + ids.map({ "{\"id\":\"\($0)\"}" }).joined(separator: ",") + "]"
-        let idsStr = "[" + ids.map(String.init).joined(separator: ",") + "]"
-        
-        let p = P(ids: idsStr, c: c, csrfToken: csrf).jsonString()
-        
         struct Result: Decodable {
             let songs: [Track]
             let code: Int
             let privileges: [Track.Privilege]
         }
         
-        // Can't get album picUrl if cookies contains pc=os.
-        return request("https://music.163.com/weapi/v3/song/detail",
+        let c = "[" + ids.map({ "{\"id\":\"\($0)\", \"v\":\"\(0)\"}" }).joined(separator: ",") + "]"
+        
+        let p = [
+            "c": c
+        ]
+        
+        return eapiRequest(
+            "https://music.163.com/eapi/v3/song/detail",
                    p,
                    Result.self).map {
                     guard $0.code == 200, $0.songs.count == $0.privileges.count else {
@@ -760,6 +724,7 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
+    /*
     func artistPrivilege(_ id: Int) -> Promise<[Track.Privilege]> {
         let u = "https://music.163.com/api/artist/privilege?top=50&id=\(id)"
         
@@ -773,8 +738,9 @@ class NeteaseMusicAPI: NSObject {
             $0.data
         }
     }
+     */
     
-    
+    /*
     private func request<T: Decodable>(
         _ url: String,
         _ parameters: String? = nil,
@@ -830,6 +796,68 @@ class NeteaseMusicAPI: NSObject {
                         msg = "绑定手机号或短信验证成功后，可进行下一步操作哦~🙃"
                     }
                     resolver.reject(RequestError.errorCode((re.code, msg)))
+                } catch let error {
+                    resolver.reject(error)
+                }
+            }
+        }
+    }
+    */
+    
+    private func eapiRequest<T: Decodable>(
+        _ url: String,
+        _ params: [String: Any],
+        _ resultType: T.Type,
+        shouldDeSerial: Bool = false,
+        debug: Bool = false) -> Promise<T> {
+        
+        
+        return Promise { resolver in
+            let p = try channel.serialData(params, url: url)
+            
+            AF.request(url, method: .post, parameters: ["params": p]).response { re in
+                
+                if debug, let d = re.data, let str = String(data: d, encoding: .utf8) {
+                    print(str)
+                }
+                
+                if let error = re.error {
+                    resolver.reject(RequestError.error(error))
+                    return
+                }
+                guard var data = re.data else {
+                    resolver.reject(RequestError.noData)
+                    return
+                }
+                
+                do {
+                    if shouldDeSerial {
+                        if let d = try self.channel.deSerialData(data.toHexString(), split: false)?.data(using: .utf8) {
+                            data = d
+                        } else {
+                            throw RequestError.noData
+                        }
+                    }
+                    
+                    if let re = try? JSONDecoder().decode(ServerError.self, from: data),
+                       re.code != 200 {
+                        throw re
+                    }
+                    
+                    let re = try JSONDecoder().decode(resultType.self, from: data)
+                    
+                    resolver.fulfill(re)
+                } catch let error where error is ServerError {
+                    guard let err = error as? ServerError else { return }
+                    
+                    var msg = err.msg ?? err.message ?? ""
+                    
+                    if err.code == -462 {
+                        msg = "绑定手机号或短信验证成功后，可进行下一步操作哦~🙃"
+                    }
+                    
+                    let u = re.request?.url?.absoluteString ?? ""
+                    resolver.reject(RequestError.errorCode((err.code, "\(u)  \(msg)")))
                 } catch let error {
                     resolver.reject(error)
                 }
