@@ -73,12 +73,6 @@
 		01467E942283F3180037B49D /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E932283F3180037B49D /* LyricViewController.swift */; };
 		01467E9722846B050037B49D /* FM.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01467E9622846B050037B49D /* FM.storyboard */; };
 		01467E9922846B920037B49D /* FMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01467E9822846B920037B49D /* FMViewController.swift */; };
-		0148762426BD485100B4F754 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762326BD485100B4F754 /* Sparkle */; };
-		0148762726BD488500B4F754 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762626BD488500B4F754 /* Alamofire */; };
-		0148762A26BD48E700B4F754 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762926BD48E700B4F754 /* PromiseKit */; };
-		0148762D26BD490D00B4F754 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762C26BD490D00B4F754 /* CryptoSwift */; };
-		0148763026BD498100B4F754 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 0148762F26BD498100B4F754 /* HotKey */; };
-		0148763326BD49C800B4F754 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0148763226BD49C800B4F754 /* Kingfisher */; };
 		0148763626BE3D8400B4F754 /* ArtistButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0148763526BE3D8400B4F754 /* ArtistButtons.storyboard */; };
 		0148763826BE3DD100B4F754 /* ArtistButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */; };
 		0153934E22E1BA9600CD10F9 /* SongButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */; };
@@ -91,6 +85,21 @@
 		0171427723C2E0B70051ADDF /* NetworkRequestMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171427623C2E0B70051ADDF /* NetworkRequestMenuItem.swift */; };
 		017AB6EF227BEA9100A2EF36 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */; };
 		0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */; };
+		018E927D26CF565D005FBD69 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 018E927C26CF565D005FBD69 /* Cartfile */; };
+		018E928626CF5A0D005FBD69 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928026CF5A0D005FBD69 /* Alamofire.xcframework */; };
+		018E928726CF5A0D005FBD69 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928026CF5A0D005FBD69 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018E928826CF5A0D005FBD69 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */; };
+		018E928926CF5A0D005FBD69 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018E928A26CF5A0D005FBD69 /* HotKey.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928226CF5A0D005FBD69 /* HotKey.xcframework */; };
+		018E928B26CF5A0D005FBD69 /* HotKey.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928226CF5A0D005FBD69 /* HotKey.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018E928C26CF5A0D005FBD69 /* Kingfisher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */; };
+		018E928D26CF5A0D005FBD69 /* Kingfisher.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018E928E26CF5A0D005FBD69 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */; };
+		018E928F26CF5A0D005FBD69 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018E929026CF5A0D005FBD69 /* Sparkle.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928526CF5A0D005FBD69 /* Sparkle.xcframework */; };
+		018E929126CF5A0D005FBD69 /* Sparkle.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928526CF5A0D005FBD69 /* Sparkle.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		018E929426CF5BDC005FBD69 /* GSPlayer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */; };
+		018E929526CF5BDC005FBD69 /* GSPlayer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01909522239E339A00647F80 /* SublistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01909521239E339A00647F80 /* SublistView.storyboard */; };
 		0190952423A0913F00647F80 /* TrackTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0190952323A0913E00647F80 /* TrackTableView.storyboard */; };
 		0190952623A0914F00647F80 /* AlbumArtistTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */; };
@@ -101,7 +110,6 @@
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
-		01BFA88326A98D310075F06D /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01BFA88226A98D310075F06D /* GSPlayer */; };
 		01BFA88526A9B8E20075F06D /* HttpsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFA88426A9B8E20075F06D /* HttpsExtensions.swift */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
@@ -133,6 +141,26 @@
 			remoteInfo = NeteaseMusic;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		018E929226CF5A0D005FBD69 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				018E928B26CF5A0D005FBD69 /* HotKey.xcframework in Embed Frameworks */,
+				018E928926CF5A0D005FBD69 /* CryptoSwift.xcframework in Embed Frameworks */,
+				018E928F26CF5A0D005FBD69 /* PromiseKit.xcframework in Embed Frameworks */,
+				018E929526CF5BDC005FBD69 /* GSPlayer.xcframework in Embed Frameworks */,
+				018E928726CF5A0D005FBD69 /* Alamofire.xcframework in Embed Frameworks */,
+				018E929126CF5A0D005FBD69 /* Sparkle.xcframework in Embed Frameworks */,
+				018E928D26CF5A0D005FBD69 /* Kingfisher.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0110886F238D05D400184551 /* PlayerSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSliderCell.swift; sourceTree = "<group>"; };
@@ -230,6 +258,14 @@
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		017AB6EE227BEA9100A2EF36 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMCoverButtonCell.swift; sourceTree = "<group>"; };
+		018E927C26CF565D005FBD69 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		018E928026CF5A0D005FBD69 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = Carthage/Build/CryptoSwift.xcframework; sourceTree = "<group>"; };
+		018E928226CF5A0D005FBD69 /* HotKey.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HotKey.xcframework; path = Carthage/Build/HotKey.xcframework; sourceTree = "<group>"; };
+		018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
+		018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromiseKit.xcframework; path = Carthage/Build/PromiseKit.xcframework; sourceTree = "<group>"; };
+		018E928526CF5A0D005FBD69 /* Sparkle.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Sparkle.xcframework; path = Carthage/Build/Sparkle.xcframework; sourceTree = "<group>"; };
+		018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GSPlayer.xcframework; path = Carthage/Build/GSPlayer.xcframework; sourceTree = "<group>"; };
 		01909521239E339A00647F80 /* SublistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SublistView.storyboard; sourceTree = "<group>"; };
 		0190952323A0913E00647F80 /* TrackTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackTableView.storyboard; sourceTree = "<group>"; };
 		0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumArtistTableView.storyboard; sourceTree = "<group>"; };
@@ -274,13 +310,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0148762726BD488500B4F754 /* Alamofire in Frameworks */,
-				0148762426BD485100B4F754 /* Sparkle in Frameworks */,
-				0148762A26BD48E700B4F754 /* PromiseKit in Frameworks */,
-				0148763026BD498100B4F754 /* HotKey in Frameworks */,
-				0148763326BD49C800B4F754 /* Kingfisher in Frameworks */,
-				0148762D26BD490D00B4F754 /* CryptoSwift in Frameworks */,
-				01BFA88326A98D310075F06D /* GSPlayer in Frameworks */,
+				018E928A26CF5A0D005FBD69 /* HotKey.xcframework in Frameworks */,
+				018E928826CF5A0D005FBD69 /* CryptoSwift.xcframework in Frameworks */,
+				018E928E26CF5A0D005FBD69 /* PromiseKit.xcframework in Frameworks */,
+				018E929426CF5BDC005FBD69 /* GSPlayer.xcframework in Frameworks */,
+				018E928626CF5A0D005FBD69 /* Alamofire.xcframework in Frameworks */,
+				018E929026CF5A0D005FBD69 /* Sparkle.xcframework in Frameworks */,
+				018E928C26CF5A0D005FBD69 /* Kingfisher.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +583,20 @@
 			name = SongActionButtons;
 			sourceTree = "<group>";
 		};
+		018E927F26CF5A0C005FBD69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */,
+				018E928026CF5A0D005FBD69 /* Alamofire.xcframework */,
+				018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */,
+				018E928226CF5A0D005FBD69 /* HotKey.xcframework */,
+				018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */,
+				018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */,
+				018E928526CF5A0D005FBD69 /* Sparkle.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		01909520239E336C00647F80 /* Sublist */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +627,7 @@
 				01957D8A224D01850006FCEC /* NeteaseMusic */,
 				01EE1FC826CB6D9400B441D0 /* NMChannelTests */,
 				01957D89224D01850006FCEC /* Products */,
+				018E927F26CF5A0C005FBD69 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -595,6 +646,7 @@
 				01957D8B224D01850006FCEC /* AppDelegate.swift */,
 				01957D8D224D01850006FCEC /* ViewController.swift */,
 				01957D8F224D01860006FCEC /* Assets.xcassets */,
+				018E927C26CF565D005FBD69 /* Cartfile */,
 				013EF12B22563C5400E4D7D8 /* View */,
 				012F2F44225061AB00086870 /* Utils */,
 				01957D94224D01860006FCEC /* Info.plist */,
@@ -658,6 +710,8 @@
 				01957D84224D01850006FCEC /* Sources */,
 				01957D85224D01850006FCEC /* Frameworks */,
 				01957D86224D01850006FCEC /* Resources */,
+				018E927E26CF590B005FBD69 /* Carthage outdated check Script */,
+				018E929226CF5A0D005FBD69 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -665,13 +719,6 @@
 			);
 			name = NeteaseMusic;
 			packageProductDependencies = (
-				01BFA88226A98D310075F06D /* GSPlayer */,
-				0148762326BD485100B4F754 /* Sparkle */,
-				0148762626BD488500B4F754 /* Alamofire */,
-				0148762926BD48E700B4F754 /* PromiseKit */,
-				0148762C26BD490D00B4F754 /* CryptoSwift */,
-				0148762F26BD498100B4F754 /* HotKey */,
-				0148763226BD49C800B4F754 /* Kingfisher */,
 			);
 			productName = NeteaseMusic;
 			productReference = 01957D88224D01850006FCEC /* NeteaseMusic.app */;
@@ -724,13 +771,6 @@
 			);
 			mainGroup = 01957D7F224D01850006FCEC;
 			packageReferences = (
-				01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */,
-				0148762226BD485100B4F754 /* XCRemoteSwiftPackageReference "Sparkle" */,
-				0148762526BD488500B4F754 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				0148762826BD48E700B4F754 /* XCRemoteSwiftPackageReference "PromiseKit" */,
-				0148762B26BD490D00B4F754 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
-				0148762E26BD498100B4F754 /* XCRemoteSwiftPackageReference "HotKey" */,
-				0148763126BD49C800B4F754 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 01957D89224D01850006FCEC /* Products */;
 			projectDirPath = "";
@@ -750,6 +790,7 @@
 				0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */,
 				01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */,
 				012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */,
+				018E927D26CF565D005FBD69 /* Cartfile in Resources */,
 				01467E922283F2C30037B49D /* Lyric.storyboard in Resources */,
 				012772DF229AA1A500C55537 /* SearchSuggestionsView.storyboard in Resources */,
 				012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */,
@@ -786,6 +827,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		018E927E26CF590B005FBD69 /* Carthage outdated check Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Carthage outdated check Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings 2>/dev/null\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		01957D84224D01850006FCEC /* Sources */ = {
@@ -1142,103 +1204,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0148762226BD485100B4F754 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sparkle-project/Sparkle";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.26.0;
-			};
-		};
-		0148762526BD488500B4F754 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.4.3;
-			};
-		};
-		0148762826BD48E700B4F754 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mxcl/PromiseKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.15.3;
-			};
-		};
-		0148762B26BD490D00B4F754 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.1;
-			};
-		};
-		0148762E26BD498100B4F754 /* XCRemoteSwiftPackageReference "HotKey" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/soffes/HotKey";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
-		0148763126BD49C800B4F754 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.3.1;
-			};
-		};
-		01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/xjbeta/GSPlayer";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0148762326BD485100B4F754 /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0148762226BD485100B4F754 /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
-		};
-		0148762626BD488500B4F754 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0148762526BD488500B4F754 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		0148762926BD48E700B4F754 /* PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0148762826BD48E700B4F754 /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
-		};
-		0148762C26BD490D00B4F754 /* CryptoSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0148762B26BD490D00B4F754 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
-			productName = CryptoSwift;
-		};
-		0148762F26BD498100B4F754 /* HotKey */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0148762E26BD498100B4F754 /* XCRemoteSwiftPackageReference "HotKey" */;
-			productName = HotKey;
-		};
-		0148763226BD49C800B4F754 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0148763126BD49C800B4F754 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		01BFA88226A98D310075F06D /* GSPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01BFA88126A98D310075F06D /* XCRemoteSwiftPackageReference "GSPlayer" */;
-			productName = GSPlayer;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01957D80224D01850006FCEC /* Project object */;
 }
