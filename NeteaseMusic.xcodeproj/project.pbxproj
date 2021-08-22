@@ -174,6 +174,7 @@
 		011D41952338F898001A6F40 /* KeyEquivalentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyEquivalentTextField.swift; sourceTree = "<group>"; };
 		011D4197233907EC001A6F40 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		012165C9232E07F300D74344 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
+		01275C9626D2599700096C52 /* NeteaseMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NeteaseMusic-Bridging-Header.h"; sourceTree = "<group>"; };
 		012772C92297AD4000C55537 /* AlbumSizeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSizeTransformer.swift; sourceTree = "<group>"; };
 		012772CB2297AD5B00C55537 /* PubilshTimeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubilshTimeTransformer.swift; sourceTree = "<group>"; };
 		012772CD2297B5E800C55537 /* EmptyStringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStringTransformer.swift; sourceTree = "<group>"; };
@@ -651,6 +652,7 @@
 				012F2F44225061AB00086870 /* Utils */,
 				01957D94224D01860006FCEC /* Info.plist */,
 				01957D95224D01860006FCEC /* NeteaseMusic.entitlements */,
+				01275C9626D2599700096C52 /* NeteaseMusic-Bridging-Header.h */,
 			);
 			path = NeteaseMusic;
 			sourceTree = "<group>";
@@ -754,6 +756,7 @@
 				TargetAttributes = {
 					01957D87224D01850006FCEC = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1250;
 					};
 					01EE1FC626CB6D9400B441D0 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -1087,6 +1090,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NeteaseMusic/NeteaseMusic.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
@@ -1101,6 +1105,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NeteaseMusic/NeteaseMusic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1109,6 +1115,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NeteaseMusic/NeteaseMusic.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
@@ -1123,6 +1130,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NeteaseMusic/NeteaseMusic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
