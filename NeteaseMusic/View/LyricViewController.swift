@@ -132,6 +132,7 @@ class LyricViewController: NSViewController {
     
     func addPlayProgressObserver() {
         let pc = PlayCore.shared
+        guard playProgressObserver == nil else { return }
         playProgressObserver = pc.observe(\.playProgress, options: [.initial, .new]) { [weak self] pc, _ in
             let time = pc.player.currentDuration
             self?.updateLyric(time)

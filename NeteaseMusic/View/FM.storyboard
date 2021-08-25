@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="G6x-Kr-Kbk">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="G6x-Kr-Kbk">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -76,14 +76,13 @@
                                                     <action selector="previousSong:" target="G6x-Kr-Kbk" id="Nbg-TM-O4k"/>
                                                 </connections>
                                             </button>
-                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uax-7j-HB7">
-                                                <rect key="frame" x="260" y="35" width="45" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <shadow key="shadow" blurRadius="1">
-                                                    <size key="offset" width="1" height="1"/>
-                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </shadow>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" id="Q6F-bg-lDm">
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Uax-7j-HB7">
+                                                <rect key="frame" x="290" y="35" width="45" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Uax-7j-HB7" secondAttribute="height" multiplier="1:1" id="GQD-xI-mjT"/>
+                                                    <constraint firstAttribute="width" constant="45" id="nNU-Xq-UvJ"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q6F-bg-lDm">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -100,7 +99,9 @@
                                             <constraint firstItem="9KC-UX-vy4" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="apr-BM-ls7"/>
                                             <constraint firstItem="jK4-ZL-v1D" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" id="icj-UD-uQ9"/>
                                             <constraint firstItem="MJi-33-1gC" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="80" id="ire-vc-hOh"/>
+                                            <constraint firstAttribute="trailing" secondItem="Uax-7j-HB7" secondAttribute="trailing" constant="55" id="jhb-Zm-H0J"/>
                                             <constraint firstItem="IIS-JS-sEX" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="sFN-I6-io1"/>
+                                            <constraint firstAttribute="bottom" secondItem="Uax-7j-HB7" secondAttribute="bottom" constant="35" id="sP5-4N-gga"/>
                                             <constraint firstItem="jK4-ZL-v1D" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="uTc-JB-NrQ"/>
                                             <constraint firstItem="9KC-UX-vy4" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="40" id="xgw-u5-s2S"/>
                                         </constraints>
@@ -208,4 +209,7 @@
             <point key="canvasLocation" x="935" y="325"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play.circle" width="13" height="13"/>
+    </resources>
 </document>

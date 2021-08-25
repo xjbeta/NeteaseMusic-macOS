@@ -69,16 +69,19 @@ class PlayCore: NSObject {
     
     @objc dynamic var currentTrack: Track?
     
-    @objc dynamic var playlist: [Track] = []
-    @objc dynamic var historys: [Track] = []
-    @objc dynamic var fmMode = false {
+    @objc dynamic var playlist: [Track] = [] {
         didSet {
-            if fmMode {
-                // hide prevSong, repeatMode, shuffleMode, playlist
-                
+            guard fmMode else { return }
+            if let ct = currentTrack,
+               let i = playlist.firstIndex(of: ct) {
+                internalPlaylistIndex = i
+            } else {
+                internalPlaylistIndex = -1
             }
         }
     }
+    @objc dynamic var historys: [Track] = []
+    @objc dynamic var fmMode = false
     
     @objc enum PNItemType: Int {
         case withoutNext
@@ -95,6 +98,11 @@ class PlayCore: NSObject {
     private var playingNextLimit = 20
     private var playingNextList: [Int] {
         get {
+            if fmMode {
+                let list = playlist[internalPlaylistIndex..<playlist.count]
+                return list.map({ $0.id })
+            }
+            
             let repeatMode = Preferences.shared.repeatMode
             updateInternalPlaylist()
             
@@ -118,14 +126,16 @@ class PlayCore: NSObject {
     
     private var internalPlaylistIndex = -1 {
         didSet {
-            switch internalPlaylistIndex {
-            case 0 where internalPlaylist.count == 1:
+            switch (internalPlaylistIndex, fmMode) {
+            case (0, false) where internalPlaylist.count == 1:
                 pnItemType = .withoutPreviousAndNext
-            case 0:
+            case (0, _):
                 pnItemType = .withoutPrevious
-            case -1:
+            case (-1, _):
                 pnItemType = .withoutPreviousAndNext
-            case internalPlaylist.count - 1:
+            case (internalPlaylist.count - 1, false):
+                pnItemType = .withoutNext
+            case (playlist.count - 1, true):
                 pnItemType = .withoutNext
             default:
                 pnItemType = .other
@@ -146,25 +156,40 @@ class PlayCore: NSObject {
     func start(_ playlist: [Track],
                id: Int = -1,
                enterFMMode: Bool = false) {
+        var sid = id
+        if fmMode {
+            if !enterFMMode {
+                fmSavedTime = (currentTrack?.id ?? -1, player.currentTime())
+            } else {
+                sid = fmSavedTime.id
+            }
+        }
+        fmMode = enterFMMode
+        
         self.playlist = playlist.filter {
             $0.playable
         }
-        currentTrack = nil
-        initInternalPlaylist(id)
-        updateInternalPlaylist()
-        
-        if fmMode, !enterFMMode {
-            fmSavedTime = (currentTrack?.id ?? -1, player.currentTime())
+        guard self.playlist.count > 0 else {
+            return
         }
         
-        fmMode = enterFMMode
-        
-        guard playlist.count > 0 else { return }
-        
-        if fmMode,
-           let track = currentTrack,
-           fmSavedTime.id == track.id {
-            play(track, time: fmSavedTime.time)
+        currentTrack = nil
+        initInternalPlaylist(sid)
+        updateInternalPlaylist()
+
+        if fmMode {
+            var time = CMTime(value: 0, timescale: 1000)
+            let id = id == -1 ? playlist.first!.id : id
+            if id == fmSavedTime.id {
+                time = fmSavedTime.time
+            }
+            
+            guard let i = playlist.firstIndex(where: { $0.id == id }) else {
+                return
+            }
+            internalPlaylistIndex = i
+            let track = playlist[i]
+            play(track, time: time)
         } else if id != -1,
                   let i = internalPlaylist.firstIndex(of: id),
                   let track = playlist.first(where: { $0.id == id }) {
@@ -194,26 +219,40 @@ class PlayCore: NSObject {
     func nextSong() {
         playerState = .unknown
         
-        let repeatMode = Preferences.shared.repeatMode
-        guard repeatMode != .repeatItem else {
-            player.seek(to: CMTime(value: 0, timescale: 1000))
-            player.play()
-            return
+        if fmMode {
+            guard let c = currentTrack,
+               let ci = playlist.firstIndex(of: c),
+               let track = playlist[safe: ci + 1] else {
+                print("Can't find next fm track.")
+                stop()
+                return
+            }
+            play(track)
+        } else {
+            let repeatMode = Preferences.shared.repeatMode
+            guard repeatMode != .repeatItem else {
+                player.seek(to: CMTime(value: 0, timescale: 1000))
+                player.play()
+                return
+            }
+            
+            updateInternalPlaylist()
+            
+            guard let id = internalPlaylist[safe: internalPlaylistIndex + 1],
+                  let track = playlist.first(where: { $0.id == id }) else {
+                print("Can't find next track.")
+                stop()
+                return
+            }
+            internalPlaylistIndex += 1
+            play(track)
         }
-        
-        updateInternalPlaylist()
-        
-        guard let id = internalPlaylist[safe: internalPlaylistIndex + 1],
-              let track = playlist.first(where: { $0.id == id }) else {
-            stop()
-            return
-        }
-        internalPlaylistIndex += 1
-        play(track)
     }
     
     func previousSong() {
-        guard let id = internalPlaylist[safe: internalPlaylistIndex - 1],
+        let list = fmMode ? playlist.map({ $0.id }) : internalPlaylist
+        
+        guard let id = list[safe: internalPlaylistIndex - 1],
               let track = playlist.first(where: { $0.id == id })
               else {
             return
@@ -397,7 +436,9 @@ class PlayCore: NSObject {
             $0.id
         }
         var sid = sid
-        guard idList.count > 0, let fid = idList.first else {
+        guard idList.count > 0,
+              let fid = idList.first,
+              !fmMode else {
             internalPlaylistIndex = -1
             return
         }
@@ -441,6 +482,7 @@ class PlayCore: NSObject {
     }
     
     private func updateInternalPlaylist() {
+        guard !fmMode else { return }
         guard playlist.count > 0 else {
             print("Nothing playable.")
             internalPlaylistIndex = -1
