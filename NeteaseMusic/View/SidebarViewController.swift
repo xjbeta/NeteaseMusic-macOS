@@ -10,7 +10,13 @@ import Cocoa
 import PromiseKit
 
 class SidebarViewController: NSViewController {
+
+    @IBOutlet var topVisualEffectView: NSVisualEffectView!
+    @IBOutlet var scrollView: NSScrollView!
+    @IBOutlet var searchField: NSSearchField!
     @IBOutlet weak var outlineView: NSOutlineView!
+    @IBOutlet var outlineHeightLayoutConstraint: NSLayoutConstraint!
+    
     
     @objc class SidebarItem: NSObject {
         @objc dynamic var title: String
@@ -115,7 +121,8 @@ class SidebarViewController: NSViewController {
                         SidebarItem(type: .subscribedPlaylists)]
     @objc dynamic var sidebarItems = [SidebarItem]()
     
-    
+    var outlineViewFrameObserver: NSObjectProtocol?
+    var scrollViewObserver: NSObjectProtocol?
     var selectSidebarItemObserver: NSObjectProtocol?
     
     lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
@@ -160,6 +167,50 @@ class SidebarViewController: NSViewController {
             }
             self?.updateSidebarItemsSelection()
         }
+        
+        topVisualEffectView.shadow = nil
+        
+        (outlineView.enclosingScrollView as? UnresponsiveScrollView)?.responsiveScrolling = false
+        outlineView.enclosingScrollView?.documentView?.postsFrameChangedNotifications = true
+        
+        outlineViewFrameObserver = NotificationCenter.default.addObserver(forName: NSView.frameDidChangeNotification, object: nil, queue: .main) {
+
+            guard let view = $0.object as? NSView,
+                  view == self.scrollView.documentView else {
+                return
+            }
+
+            self.updateScrollViews()
+        }
+        
+        scrollViewObserver = NotificationCenter.default.addObserver(forName: NSScrollView.didLiveScrollNotification, object: nil, queue: .main) {
+            guard let sView = $0.object as? NSScrollView,
+                  sView == self.scrollView,
+                  let veView = self.topVisualEffectView else {
+                return
+            }
+            
+            let visibleRect = sView.contentView.documentVisibleRect
+            let documentRect = sView.contentView.documentRect
+            
+            let y = documentRect.height - visibleRect.height - visibleRect.origin.y
+            
+            
+            
+            // top - 12 - searchField
+            if y > 12,
+               veView.shadow == nil {
+                let s = NSShadow()
+                s.shadowColor = .black
+                s.shadowOffset = .init(width: 0, height: 2)
+                s.shadowBlurRadius = 2
+                veView.shadow = s
+            } else if y <= 12, veView.shadow != nil {
+                veView.shadow = nil
+            }
+        }
+        
+
         updateSidebarItemsSelection()
         
     }
@@ -195,6 +246,28 @@ class SidebarViewController: NSViewController {
             }.catch {
                 print($0)
         }
+    }
+    
+    func updateScrollViews() {
+        let h = outlineViewHeight()
+        guard let docView = scrollView.documentView else {
+            return
+        }
+        
+        outlineHeightLayoutConstraint.constant = h
+        var size = docView.frame.size
+        
+        // top - 12 - searchField - 4 - outlineView
+        size.height = h + (12 + searchField.frame.height + 4)
+        
+        let min = scrollView.frame.height
+        
+        if size.height < min {
+            size.height = min
+        }
+        
+        docView.setFrameSize(size)
+        docView.scroll(.init(x: 0, y: size.height))
     }
     
     deinit {
@@ -243,6 +316,34 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         }
         return node.isLeaf
     }
+    
+    func outlineViewItemDidExpand(_ notification: Notification) {
+        updateScrollViews()
+    }
+    
+    func outlineViewItemDidCollapse(_ notification: Notification) {
+        updateScrollViews()
+    }
+    
+    
+    func outlineViewHeight() -> CGFloat {
+        guard outlineView.numberOfRows > 0 else {
+            return 0
+        }
+        let hs = (0..<outlineView.numberOfRows).compactMap {
+            outlineView.item(atRow: $0)
+        }.map {
+            outlineView(outlineView, heightOfRowByItem: $0)
+        }
+        
+        var height = hs.reduce(0, +)
+        height += CGFloat(outlineView.numberOfRows) * outlineView.intercellSpacing.height
+//        height += outlineView.headerView?.frame.height ?? 0
+        
+        height += 10
+        return height
+    }
+    
     
     func updateSidebarItemsSelection() {
         let outlineViewNotification = Notification(name: NSOutlineView.selectionDidChangeNotification, object: nil, userInfo: nil)
