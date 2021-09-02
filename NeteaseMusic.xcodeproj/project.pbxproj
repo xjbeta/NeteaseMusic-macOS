@@ -345,7 +345,6 @@
 			children = (
 				012F2F402250613F00086870 /* PlayCore.swift */,
 				0114DB122380E2380034857F /* PlayCoreMediaKeysExtension.swift */,
-				01677B9E228CF3D200D11190 /* ViewControllerManager.swift */,
 				01FF8B7E225D7DFE002D7906 /* CodableObjects.swift */,
 				013143A4226ECD1A00B9E26F /* ExtendedViewState.swift */,
 				01467E87227EB3EA0037B49D /* PlaylistViewsFormatter.swift */,
@@ -482,6 +481,7 @@
 				01FF8B76225C6551002D7906 /* MainWindowController.swift */,
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
 				011D4197233907EC001A6F40 /* MainMenu.swift */,
+				01677B9E228CF3D200D11190 /* ViewControllerManager.swift */,
 				0190952723A0AE2C00647F80 /* ReuseViews */,
 				012FEA732289BC3000698969 /* Login */,
 				01467E86227EA8500037B49D /* Playlist */,
