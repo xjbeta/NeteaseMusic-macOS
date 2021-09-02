@@ -55,10 +55,13 @@ class MainViewController: NSViewController {
                     self.updateContentTabView(.playlist)
                 case .artist:
                     self.updateContentTabView(.artist)
-                case .searchResults:
-                    self.updateContentTabView(.search)
                 case .preferences:
                     self.updateContentTabView(.preferences)
+                case .searchSuggestionHeaderSongs,
+                     .searchSuggestionHeaderAlbums,
+                     .searchSuggestionHeaderArtists,
+                     .searchSuggestionHeaderPlaylists:
+                    self.updateContentTabView(.search)
                 default:
                     break
                 }

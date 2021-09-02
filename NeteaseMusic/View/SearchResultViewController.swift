@@ -16,10 +16,9 @@ class SearchResultViewController: NSViewController {
     
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBAction func selectNewType(_ sender: NSSegmentedControl) {
-        guard let type = SearchSuggestionsViewController.GroupType(rawValue: sender.selectedSegment + 1),
-            type != resultType else { return }
         
-        ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: sender.selectedSegment + 1, type: .searchResults)
+        resultType = .init(rawValue: sender.selectedSegment + 1) ?? .none
+        initContentView()
     }
     
     lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
@@ -36,27 +35,60 @@ class SearchResultViewController: NSViewController {
     
     var sidebarItemObserver: NSKeyValueObservation?
     var pageData = (count: 0, current: 0)
-    var resultType: SearchSuggestionsViewController.GroupType = .none
+    
+    enum ResultType: Int {
+        case none, songs, albums, artists, playlists
+        func taapItemType() -> TAAPItemsType {
+            var t = TAAPItemsType.none
+            switch self {
+            case .albums:
+                t = .album
+            case .artists:
+                t = .artist
+            case .playlists:
+                t = .playlist
+            case .songs:
+                t = .song
+            default:
+                break
+            }
+            return t
+        }
+        
+        init(_ type: SidebarViewController.ItemType) {
+            switch type {
+            case .searchSuggestionHeaderSongs:
+                self = .songs
+            case .searchSuggestionHeaderAlbums:
+                self = .albums
+            case .searchSuggestionHeaderArtists:
+                self = .artists
+            case .searchSuggestionHeaderPlaylists:
+                self = .playlists
+            default:
+                self = .none
+            }
+        }
+    }
+    
+    var resultType: ResultType = .none
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
             guard let newV = changes.newValue,
                 let newValue = newV else { return }
-            let id = newValue.id
-            guard newValue.type == .searchResults,
-                let type = SearchSuggestionsViewController.GroupType(rawValue: id) else { return }
-            self?.initContentView(type)
+            
+            self?.resultType =  ResultType(newValue.type)
+            self?.initContentView()
         }
         
     }
     
-    func initContentView(_ type: SearchSuggestionsViewController.GroupType) {
-        let index = type.rawValue - 1
+    func initContentView() {
+        let index = resultType.rawValue - 1
         guard index >= 0 else { return }
         segmentedControl.setSelected(true, forSegment: index)
-        
-        resultType = type
         initResults()
     }
     
