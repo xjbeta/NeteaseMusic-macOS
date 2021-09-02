@@ -35,6 +35,9 @@
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </searchFieldCell>
+                                                            <connections>
+                                                                <action selector="search:" target="SmA-py-oK2" id="mb6-6p-vdS"/>
+                                                            </connections>
                                                         </searchField>
                                                         <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR7-ab-Tuc" customClass="UnresponsiveScrollView" customModule="NeteaseMusic" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="182" width="240" height="250"/>
@@ -125,6 +128,91 @@
                                                                                         <connections>
                                                                                             <outlet property="imageView" destination="HS7-Vp-Pg9" id="mgy-eC-csf"/>
                                                                                             <outlet property="textField" destination="apS-b2-TlA" id="ECI-SL-LTJ"/>
+                                                                                        </connections>
+                                                                                    </tableCellView>
+                                                                                    <tableCellView identifier="SidebarSearchHeaderCell" id="wIx-GE-tm5">
+                                                                                        <rect key="frame" x="11" y="64" width="200" height="17"/>
+                                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                        <subviews>
+                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="viS-5V-bgE">
+                                                                                                <rect key="frame" x="0.0" y="1" width="200" height="15"/>
+                                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Search Header Cell" id="VaV-hY-D4q">
+                                                                                                    <font key="font" metaFont="systemMedium" size="12"/>
+                                                                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                                </textFieldCell>
+                                                                                                <connections>
+                                                                                                    <binding destination="wIx-GE-tm5" name="value" keyPath="objectValue.title" id="bmQ-0y-O82"/>
+                                                                                                </connections>
+                                                                                            </textField>
+                                                                                        </subviews>
+                                                                                        <constraints>
+                                                                                            <constraint firstItem="viS-5V-bgE" firstAttribute="centerY" secondItem="wIx-GE-tm5" secondAttribute="centerY" id="NZH-0C-uM7"/>
+                                                                                            <constraint firstItem="viS-5V-bgE" firstAttribute="leading" secondItem="wIx-GE-tm5" secondAttribute="leading" constant="2" id="XTe-W4-r9o"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="viS-5V-bgE" secondAttribute="trailing" constant="2" id="tbU-Ra-oqq"/>
+                                                                                        </constraints>
+                                                                                        <connections>
+                                                                                            <outlet property="textField" destination="viS-5V-bgE" id="XIF-FV-tTk"/>
+                                                                                        </connections>
+                                                                                    </tableCellView>
+                                                                                    <tableCellView identifier="SidebarSearchDataCell" id="1u9-zI-G32">
+                                                                                        <rect key="frame" x="11" y="93" width="200" height="17"/>
+                                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                        <subviews>
+                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="252" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5B-2g-JZz">
+                                                                                                <rect key="frame" x="0.0" y="1" width="96" height="16"/>
+                                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ufl-IP-Sfg">
+                                                                                                    <font key="font" metaFont="system"/>
+                                                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                                </textFieldCell>
+                                                                                                <connections>
+                                                                                                    <binding destination="1u9-zI-G32" name="value" keyPath="objectValue.title" id="EmF-Kf-Bee"/>
+                                                                                                </connections>
+                                                                                            </textField>
+                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP1-9w-kUe">
+                                                                                                <rect key="frame" x="93" y="1" width="11" height="16"/>
+                                                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="T1B-CU-DE2">
+                                                                                                    <font key="font" metaFont="system"/>
+                                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                                </textFieldCell>
+                                                                                                <connections>
+                                                                                                    <binding destination="1u9-zI-G32" name="hidden" keyPath="objectValue.withSecondLabel" id="tGZ-Uv-Yqa">
+                                                                                                        <dictionary key="options">
+                                                                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                                                        </dictionary>
+                                                                                                    </binding>
+                                                                                                </connections>
+                                                                                            </textField>
+                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wJp-pd-eUh">
+                                                                                                <rect key="frame" x="103" y="1" width="35" height="15"/>
+                                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="BNx-H0-PWy">
+                                                                                                    <font key="font" metaFont="system" size="12"/>
+                                                                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                                </textFieldCell>
+                                                                                                <connections>
+                                                                                                    <binding destination="1u9-zI-G32" name="hidden" keyPath="objectValue.withSecondLabel" id="pQC-zr-c9g">
+                                                                                                        <dictionary key="options">
+                                                                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                                                        </dictionary>
+                                                                                                    </binding>
+                                                                                                    <binding destination="1u9-zI-G32" name="value" keyPath="objectValue.secondName" id="6c2-8o-bxP"/>
+                                                                                                </connections>
+                                                                                            </textField>
+                                                                                        </subviews>
+                                                                                        <constraints>
+                                                                                            <constraint firstItem="wJp-pd-eUh" firstAttribute="centerY" secondItem="1u9-zI-G32" secondAttribute="centerY" id="Cot-rN-joU"/>
+                                                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wJp-pd-eUh" secondAttribute="trailing" constant="2" id="IXg-9h-zDP"/>
+                                                                                            <constraint firstItem="j5B-2g-JZz" firstAttribute="centerY" secondItem="1u9-zI-G32" secondAttribute="centerY" id="JhR-BM-x3V"/>
+                                                                                            <constraint firstItem="j5B-2g-JZz" firstAttribute="leading" secondItem="1u9-zI-G32" secondAttribute="leading" constant="2" id="KBI-ky-h3w"/>
+                                                                                            <constraint firstItem="wJp-pd-eUh" firstAttribute="leading" secondItem="NP1-9w-kUe" secondAttribute="trailing" constant="2" id="PcB-uW-Muc"/>
+                                                                                            <constraint firstItem="NP1-9w-kUe" firstAttribute="centerY" secondItem="1u9-zI-G32" secondAttribute="centerY" id="fJR-Ln-kWt"/>
+                                                                                            <constraint firstItem="NP1-9w-kUe" firstAttribute="leading" secondItem="j5B-2g-JZz" secondAttribute="trailing" constant="2" id="p4m-9N-aP4"/>
+                                                                                        </constraints>
+                                                                                        <connections>
+                                                                                            <outlet property="textField" destination="j5B-2g-JZz" id="h6v-Ro-u80"/>
                                                                                         </connections>
                                                                                     </tableCellView>
                                                                                 </prototypeCellViews>
