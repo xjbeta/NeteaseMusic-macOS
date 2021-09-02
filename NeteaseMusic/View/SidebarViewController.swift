@@ -17,9 +17,65 @@ class SidebarViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var outlineHeightLayoutConstraint: NSLayoutConstraint!
     
+    @IBAction func search(_ sender: NSSearchField) {
+        let pc = PlayCore.shared
+        let str = sender.stringValue
+        guard !str.isEmpty else {
+            return
+        }
+        
+        ViewControllerManager.shared.searchFieldString = str
+        
+        pc.api.searchSuggest(str).done {
+            guard self.searchMode,
+                  str == self.searchField.stringValue else {
+                return
+            }
+            var items = [SidebarItem]()
+            let re = $0
+            if let songs = re.songs {
+                let item = SidebarItem(title: "单曲", type: .searchSuggestionHeaderSongs)
+                item.childrenItems = songs.map { song -> SidebarItem in
+                    let i = SidebarItem(title: song.name, id: song.id, type: .searchSuggestionCellSong)
+                    i.secondTitle = song.artists.map({ $0.name }).joined(separator: " ")
+                    return i
+                }
+                items.append(item)
+            }
+            if let albums = re.albums {
+                let item = SidebarItem(title: "专辑", type: .searchSuggestionHeaderAlbums)
+                item.childrenItems = albums.map {
+                    SidebarItem(title: $0.name, id: $0.id, type: .searchSuggestionCellAlbum)
+                }
+                items.append(item)
+            }
+            if let artists = re.artists {
+                let item = SidebarItem(title: "歌手", type: .searchSuggestionHeaderArtists)
+                item.childrenItems = artists.map {
+                    SidebarItem(title: $0.name, id: $0.id, type: .searchSuggestionCellArtist)
+                }
+                items.append(item)
+            }
+            if let playlists = re.playlists {
+                let item = SidebarItem(title: "歌单", type: .searchSuggestionHeaderPlaylists)
+                
+                item.childrenItems = playlists.map {
+                    SidebarItem(title: $0.name, id: $0.id, type: .searchSuggestionCellPlaylist)
+                }
+                items.append(item)
+            }
+            
+            self.sidebarItems = items
+            self.outlineView.deselectAll(nil)
+            self.outlineView.expandItem(nil, expandChildren: true)
+            }.catch {
+                print($0)
+        }
+    }
     
     @objc class SidebarItem: NSObject {
         @objc dynamic var title: String
+        @objc dynamic var secondTitle = ""
         @objc dynamic var titleColor: NSColor {
             get {
                 return selected ? .nColor : .labelColor
@@ -111,7 +167,17 @@ class SidebarViewController: NSViewController {
              preferences,
              mySubscription,
              sidebar,
-             sidePlaylist
+             sidePlaylist,
+             
+             // SearchMode
+             searchSuggestionHeaderSongs,
+             searchSuggestionCellSong,
+             searchSuggestionHeaderAlbums,
+             searchSuggestionCellAlbum,
+             searchSuggestionHeaderArtists,
+             searchSuggestionCellArtist,
+             searchSuggestionHeaderPlaylists,
+             searchSuggestionCellPlaylist
     }
     
     let defaultItems = [SidebarItem(type: .discover),
@@ -124,6 +190,11 @@ class SidebarViewController: NSViewController {
     var outlineViewFrameObserver: NSObjectProtocol?
     var scrollViewObserver: NSObjectProtocol?
     var selectSidebarItemObserver: NSObjectProtocol?
+    
+    private var searchMode = false
+    private var savedSidebarItems = [SidebarItem]()
+    private var savedOutlineExpand = [Bool]()
+    
     
     lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
         var objects: NSArray?
@@ -159,7 +230,21 @@ class SidebarViewController: NSViewController {
                     self?.outlineView.deselectAll(self)
                     self?.outlineView.selectRowIndexes(.init(integer: index), byExtendingSelection: true)
                 }
-            case .album, .artist, .topSongs, .searchResults, .createdPlaylist, .subscribedPlaylist, .fmTrash, .discoverPlaylist, .preferences:
+            case .album,
+                 .artist,
+                 .topSongs,
+                 .createdPlaylist,
+                 .subscribedPlaylist,
+                 .fmTrash,
+                 .discoverPlaylist,
+                 .preferences,
+                 
+                 
+                 .searchSuggestionHeaderSongs,
+                 .searchSuggestionHeaderAlbums,
+                 .searchSuggestionHeaderArtists,
+                 .searchSuggestionHeaderPlaylists:
+                
                 self?.outlineView.deselectAll(self)
                 ViewControllerManager.shared.selectedSidebarItem = .init(title: "", id: id, type: itemType)
             default:
@@ -213,6 +298,8 @@ class SidebarViewController: NSViewController {
 
         updateSidebarItemsSelection()
         
+        
+        searchField.delegate = self
     }
     
     func updatePlaylists() {
@@ -283,27 +370,62 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
             return nil
         }
-        if !node.isLeaf {
-            if let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("SidebarHeaderCell"), owner: self) as? NSTableCellView {
-                view.textField?.stringValue = node.title
-                
-                return view
+        
+        var identifier = ""
+        
+        if searchMode {
+            switch node.type {
+            case .searchSuggestionHeaderSongs,
+                 .searchSuggestionHeaderAlbums,
+                 .searchSuggestionHeaderArtists,
+                 .searchSuggestionHeaderPlaylists:
+                identifier = "SidebarSearchHeaderCell"
+            case .searchSuggestionCellSong,
+                 .searchSuggestionCellAlbum,
+                 .searchSuggestionCellArtist,
+                 .searchSuggestionCellPlaylist:
+                identifier = "SidebarSearchDataCell"
+            default:
+                break
             }
+        } else if !node.isLeaf {
+            identifier = "SidebarHeaderCell"
         } else {
-            if let view = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("SidebarDataCell"), owner: self) as? NSTableCellView {
-                view.textField?.stringValue = node.title
-                view.imageView?.image = node.icon
-                return view
-            }
+            identifier = "SidebarDataCell"
         }
-        return nil
+        
+        guard let view = outlineView.makeView(
+                withIdentifier: .init(identifier),
+                owner: self) as? NSTableCellView else {
+            return nil
+        }
+        
+        return view
+    }
+    
+    
+    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
+        guard searchMode,
+              let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return nil
+        }
+        
+        
+        
+        
+        return ["title": node.title,
+                "secondName": node.secondTitle,
+                "withSecondLabel": node.type == .searchSuggestionCellSong]
     }
     
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
         guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
             return 0
         }
-        if node.isLeaf {
+        
+        if searchMode {
+            return 15
+        } else if node.isLeaf {
             return 21
         } else {
             return 17
@@ -314,7 +436,8 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         guard let node = (item as? NSTreeNode)?.representedObject as? SidebarItem else {
             return false
         }
-        return node.isLeaf
+        
+        return node.isLeaf || searchMode
     }
     
     func outlineViewItemDidExpand(_ notification: Notification) {
@@ -351,19 +474,56 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
     }
     
     func outlineViewSelectionIsChanging(_ notification: Notification) {
-        sidebarItems.forEach {
-            $0.selected = false
-            $0.childrenItems.forEach {
-                $0.selected = false
-            }
-        }
         
         guard let item = (outlineView.item(atRow: outlineView.selectedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
             return
         }
-        item.selected = true
         
-        ViewControllerManager.shared.selectedSidebarItem = item
+        if searchMode {
+            
+            print(item.id, item.title)
+            
+            let pc = PlayCore.shared
+            let vcm =  ViewControllerManager.shared
+            switch item.type {
+            case .searchSuggestionCellSong:
+                pc.api.songDetail([item.id]).done {
+                    $0.forEach {
+                        $0.from = (.searchResults, 0, "Search Suggestions")
+                    }
+                    pc.playNow($0)
+                    }.catch {
+                       print("Song Detail error \($0)")
+                }
+            case .searchSuggestionCellAlbum:
+                vcm.selectSidebarItem(.album, item.id)
+            case .searchSuggestionCellArtist:
+                vcm.selectSidebarItem(.artist, item.id)
+            case .searchSuggestionCellPlaylist:
+                vcm.selectSidebarItem(.subscribedPlaylist, item.id)
+            case .searchSuggestionHeaderSongs,
+                 .searchSuggestionHeaderAlbums,
+                 .searchSuggestionHeaderArtists,
+                 .searchSuggestionHeaderPlaylists:
+                vcm.selectSidebarItem(item.type, item.id)
+            default:
+                break
+            }
+            
+            searchField.stringValue = ""
+            searchFieldDidEndSearching(searchField)
+        } else {
+            sidebarItems.forEach {
+                $0.selected = false
+                $0.childrenItems.forEach {
+                    $0.selected = false
+                }
+            }
+            
+            item.selected = true
+            
+            ViewControllerManager.shared.selectedSidebarItem = item
+        }
     }
 }
 
@@ -415,5 +575,37 @@ extension SidebarViewController: TAAPMenuDelegate {
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
         guard newPlaylisyVC.presentingViewController == nil else { return }
         self.presentAsSheet(newPlaylisyVC)
+    }
+}
+
+
+extension SidebarViewController: NSSearchFieldDelegate {
+    func searchFieldDidStartSearching(_ sender: NSSearchField) {
+        searchMode = true
+        savedOutlineExpand = (0..<outlineView.numberOfRows).compactMap {
+            outlineView.item(atRow: $0)
+        }.map {
+            outlineView.isItemExpanded($0)
+        }
+        
+        savedSidebarItems = sidebarItems
+        sidebarItems = []
+    }
+    
+    func searchFieldDidEndSearching(_ sender: NSSearchField) {
+        searchMode = false
+        sidebarItems = savedSidebarItems
+        
+        savedOutlineExpand.enumerated().forEach {
+            guard let item = outlineView.item(atRow: $0.offset) else { return }
+            if $0.element {
+                outlineView.expandItem(item)
+            } else {
+                outlineView.collapseItem(item)
+            }
+        }
+        
+        savedSidebarItems = []
+        savedOutlineExpand = []
     }
 }
