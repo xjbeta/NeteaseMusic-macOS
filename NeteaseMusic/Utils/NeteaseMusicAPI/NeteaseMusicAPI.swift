@@ -286,7 +286,7 @@ class NeteaseMusicAPI: NSObject {
     func search(_ keywords: String,
                 limit: Int,
                 page: Int,
-                type: SearchSuggestionsViewController.GroupType) -> Promise<SearchResult.Result> {
+                type: SearchResultViewController.ResultType) -> Promise<SearchResult.Result> {
         var p: [String: Any] = [
             "s": keywords,
             "limit": limit,
