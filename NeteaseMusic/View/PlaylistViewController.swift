@@ -67,7 +67,6 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
         return (m, mc)
     }()
     
-    var sidebarItemObserver: NSKeyValueObservation?
     var tracks: [Track] {
         get {
             return trackTableViewController()?.tracks ?? []
@@ -236,10 +235,6 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
             $0 as? TrackTableViewController
         }.first
         return vc
-    }
-    
-    deinit {
-        sidebarItemObserver?.invalidate()
     }
 }
 

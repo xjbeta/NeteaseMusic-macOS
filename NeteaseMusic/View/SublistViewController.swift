@@ -7,15 +7,18 @@
 //
 
 import Cocoa
+import PromiseKit
 
-class SublistViewController: NSViewController {
+class SublistViewController: NSViewController, ContentTabViewController {
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBOutlet weak var containerView: NSView!
     @IBAction func actions(_ sender: NSSegmentedControl) {
-        initContent()
+        initContent().done {
+            
+        }.catch {
+            print($0)
+        }
     }
-    
-    var sidebarItemObserver: NSKeyValueObservation?
     
     lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
         var objects: NSArray?
@@ -31,58 +34,42 @@ class SublistViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initContent()
         albumArtistTableVC()?.menu = menuContainer.menu
-        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
-            guard let newType = changes.newValue??.type,
-                newType != changes.oldValue??.type,
-                newType == .mySubscription else { return }
-            
-            self.initContent()
-            
-        }
     }
     
-    func initContent() {
+    func initContent() -> Promise<()> {
         containerView.isHidden = true
-        guard let vc = albumArtistTableVC() else { return }
+        guard let vc = albumArtistTableVC() else { return .init() }
         let api = PlayCore.shared.api
         vc.tableView.menu = menuContainer.menu
         menuContainer.menuController?.delegate = self
-        
+
         switch segmentedControl.selectedSegment {
         case 0:
             vc.resetData(.album, responsiveScrolling: true)
-            api.albumSublist().done(on: .main) {
+            return api.albumSublist().done(on: .main) {
                 self.containerView.isHidden = $0.count == 0
                 vc.albums = $0
                 vc.reloadTableView()
-            }.catch {
-                print($0)
             }
         case 1:
             vc.resetData(.artist, responsiveScrolling: true)
-            api.artistSublist().done(on: .main) {
+            return api.artistSublist().done(on: .main) {
                 self.containerView.isHidden = $0.count == 0
                 vc.artists = $0
                 vc.reloadTableView()
-            }.catch {
-                print($0)
             }
         default:
-            return
+            return .init()
         }
     }
     
+
     func albumArtistTableVC() -> AlbumArtistTableViewController? {
         let vc = children.compactMap {
             $0 as? AlbumArtistTableViewController
             }.first
         return vc
-    }
-    
-    deinit {
-        sidebarItemObserver?.invalidate()
     }
 }
 
