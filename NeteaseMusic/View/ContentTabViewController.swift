@@ -11,7 +11,7 @@ import PromiseKit
 
 enum ContentTabInitError: Error {
     case wrongTab
-    
+    case noneID
     
 }
 

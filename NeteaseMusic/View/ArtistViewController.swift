@@ -9,9 +9,8 @@
 import Cocoa
 import PromiseKit
 
-class ArtistViewController: NSViewController {
+class ArtistViewController: NSViewController, ContentTabViewController {
     @IBOutlet weak var tableView: NSTableView!
-    var sidebarItemObserver: NSKeyValueObservation?
     
     @IBAction func tableViewClick(_ sender: Any) {
         guard let item = items[safe: tableView.selectedRow] else { return }
@@ -79,23 +78,18 @@ class ArtistViewController: NSViewController {
         tableView.deselectAll(nil)
         tableView.menu = menuContainer.menu
         menuContainer.menuController?.delegate = self
-        
-        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
-            guard let new = changes.newValue,
-                new?.type == .artist,
-                let id = new?.id else { return }
-            guard id != self?.id else { return }
-            self?.initArtistView(id)
-        }
     }
     
-    func initArtistView(_ id: Int) {
-        self.id = id
+    func initContent() -> Promise<()> {
+        guard let item = ViewControllerManager.shared.selectedSidebarItem else {
+            return .init(error: ContentTabInitError.noneID)
+        }
+        
+        id = item.id
         let api = PlayCore.shared.api
         items.removeAll()
         tableView.reloadData()
-        when(fulfilled: api.artistAlbums(id), api.artistSublist()).done(on: .main) {
-            guard id == self.id else { return }
+        return when(fulfilled: api.artistAlbums(id), api.artistSublist()).done(on: .main) {
             let aA = $0.0
             
             self.subscribed = $0.1.map {
@@ -106,13 +100,7 @@ class ArtistViewController: NSViewController {
             self.items.append(Item(type: .topSongs, artist: aA.artist))
             self.items.append(contentsOf: aA.hotAlbums.map({Item(album: $0)}))
             self.tableView.reloadData()
-        }.catch {
-                print($0)
         }
-    }
-    
-    deinit {
-        sidebarItemObserver?.invalidate()
     }
 }
 
