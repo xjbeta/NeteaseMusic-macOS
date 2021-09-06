@@ -9,7 +9,7 @@
 import Cocoa
 import PromiseKit
 
-class PlaylistViewController: NSViewController {
+class PlaylistViewController: NSViewController, ContentTabViewController {
     
     @IBOutlet weak var playAllButton: NSButton!
     @IBOutlet weak var subscribeButton: SubscribeButton!
@@ -80,6 +80,8 @@ class PlaylistViewController: NSViewController {
     var playlistId = -1
     var playlistType: SidebarViewController.ItemType = .none
     
+    private let api = PlayCore.shared.api
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuContainer.menuController?.delegate = self
@@ -89,31 +91,30 @@ class PlaylistViewController: NSViewController {
         coverImageView.layer?.borderWidth = 0.5
         coverImageView.layer?.borderColor = NSColor.tertiaryLabelColor.cgColor
         
-        
-        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
-            guard let newV = changes.newValue,
-                let newValue = newV else { return }
-            let id = newValue.id
-            switch newValue.type {
-            case .createdPlaylist, .subscribedPlaylist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
-                //                if self?.playlistId == newValue.id,
-                //                    self?.playlistType == newValue.type {
-                //                    return
-                //                }
-                self.playlistId = id
-                self.playlistType = newValue.type
-                self.trackTableViewController()?.playlistId = id
-                self.trackTableViewController()?.playlistType = newValue.type
-                
-                self.trackTableViewController()?.tableView.menu = self.menuContainer.menu
-                
-            default:
-                return
-            }
-            
-            self.initPlaylistInfo()
-            self.initPlaylistContent()
+    }
+    
+    func initContent() -> Promise<()> {
+        guard let item = ViewControllerManager.shared.selectedSidebarItem,
+              [.createdPlaylist,
+               .subscribedPlaylist,
+               .favourite,
+               .discoverPlaylist,
+               .album,
+               .topSongs,
+               .fmTrash].contains(item.type)
+              else {
+            return .init(error: ContentTabInitError.wrongTab)
         }
+        
+        playlistId = item.id
+        playlistType = item.type
+        trackTableViewController()?.playlistId = item.id
+        trackTableViewController()?.playlistType = item.type
+        trackTableViewController()?.tableView.menu = menuContainer.menu
+        
+        initPlaylistInfo()
+        
+        return initPlaylistContent()
     }
     
     func initPlaylistInfo() {
@@ -148,30 +149,30 @@ class PlaylistViewController: NSViewController {
         }
     }
     
-    func initPlaylistContent() {
+    func initPlaylistContent() -> Promise<()> {
         let id = playlistId
         switch playlistType {
         case .album:
-            self.initPlaylistWithAlbum(id)
+            return initPlaylistWithAlbum(id)
         case .topSongs:
-            self.initPlaylistWithTopSongs(id)
+            return initPlaylistWithTopSongs(id)
         case .subscribedPlaylist, .createdPlaylist, .favourite:
-            self.initPlaylist(id)
+            return initPlaylist(id)
         case .discoverPlaylist:
             if id == -114514 {
-                self.initPlaylistWithRecommandSongs()
+                return initPlaylistWithRecommandSongs()
             } else {
-                self.initPlaylist(id)
+                return initPlaylist(id)
             }
         case .fmTrash:
-            self.initFMTrashList()
+            return initFMTrashList()
         default:
-            break
+            return .init(error: ContentTabInitError.wrongTab)
         }
     }
     
-    func initPlaylist(_ id: Int) {
-        PlayCore.shared.api.playlistDetail(id).done(on: .main) {
+    func initPlaylist(_ id: Int) -> Promise<()> {
+        api.playlistDetail(id).done(on: .main) {
             guard self.playlistId == id else { return }
             self.coverImageView.setImage($0.coverImgUrl.absoluteString, true)
             self.titleTextFiled.stringValue = self.playlistType == .favourite ? "我喜欢的音乐" : $0.name
@@ -184,24 +185,19 @@ class PlaylistViewController: NSViewController {
             
             self.subscribeButton.isEnabled = $0.creator?.userId != ViewControllerManager.shared.userId
             self.subscribeButton.subscribed = $0.subscribed
-        }.catch {
-            print($0)
         }
     }
     
-    func initPlaylistWithRecommandSongs() {
-        PlayCore.shared.api.recommendSongs().done(on: .main) {
+    func initPlaylistWithRecommandSongs() -> Promise<()> {
+        api.recommendSongs().done(on: .main) {
             guard self.playlistId == -114514 else { return }
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
             self.tracks = $0.initIndexes()
-        }.catch {
-            print($0)
         }
     }
     
-    func initPlaylistWithAlbum(_ id: Int) {
-        let api = PlayCore.shared.api
+    func initPlaylistWithAlbum(_ id: Int) -> Promise<()> {
         when(fulfilled: api.album(id), api.albumSublist()).done(on: .main) {
             self.coverImageView.setImage($0.0.album.picUrl?.absoluteString, true)
             self.titleTextFiled.stringValue = $0.0.album.name
@@ -215,31 +211,23 @@ class PlaylistViewController: NSViewController {
             }.contains($0.0.album.id)
             
             self.subscribeButton.subscribed = subscribed
-        }.catch {
-            print($0)
         }
     }
     
-    func initPlaylistWithTopSongs(_ id: Int) {
-        let api = PlayCore.shared.api
-        
+    func initPlaylistWithTopSongs(_ id: Int) -> Promise<()> {
         api.artist(id).done(on: .main) {
             self.coverImageView.setImage($0.artist.picUrl, true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
             self.tracks = $0.hotSongs.initIndexes()
             
-        }.catch {
-            print($0)
         }
     }
     
-    func initFMTrashList() {
-        PlayCore.shared.api.fmTrashList().done(on: .main) {
+    func initFMTrashList() -> Promise<()> {
+        api.fmTrashList().done(on: .main) {
             let t = "simple mode?"
             self.titleTextFiled.stringValue = "Trash."
             self.tracks = $0.initIndexes()
-        }.catch {
-            print($0)
         }
     }
     
