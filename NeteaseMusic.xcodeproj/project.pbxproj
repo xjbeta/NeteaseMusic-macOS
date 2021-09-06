@@ -108,6 +108,7 @@
 		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
+		01990FB026E34766002CDBAE /* ContentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01990FAF26E34766002CDBAE /* ContentTabViewController.swift */; };
 		01BFA88526A9B8E20075F06D /* HttpsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFA88426A9B8E20075F06D /* HttpsExtensions.swift */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
@@ -276,6 +277,7 @@
 		01957D92224D01860006FCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
+		01990FAF26E34766002CDBAE /* ContentTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabViewController.swift; sourceTree = "<group>"; };
 		01BFA88426A9B8E20075F06D /* HttpsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsExtensions.swift; sourceTree = "<group>"; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				01957D91224D01860006FCEC /* Main.storyboard */,
 				01FF8B76225C6551002D7906 /* MainWindowController.swift */,
 				01FF8B7A225CD38F002D7906 /* MainViewController.swift */,
+				01990FAF26E34766002CDBAE /* ContentTabViewController.swift */,
 				011D4197233907EC001A6F40 /* MainMenu.swift */,
 				01677B9E228CF3D200D11190 /* ViewControllerManager.swift */,
 				0190952723A0AE2C00647F80 /* ReuseViews */,
@@ -914,6 +917,7 @@
 				01190495230E653300738904 /* NewPlaylistViewController.swift in Sources */,
 				01467E8C22830A780037B49D /* LyricOffsetTransformer.swift in Sources */,
 				0137264122697D32004EDCE5 /* IndexTransformer.swift in Sources */,
+				01990FB026E34766002CDBAE /* ContentTabViewController.swift in Sources */,
 				01467E8A2281AAD00037B49D /* Lyric.swift in Sources */,
 				01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */,
 				012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */,
