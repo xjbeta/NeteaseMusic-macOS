@@ -8,8 +8,9 @@
 
 import Cocoa
 import AVFoundation
+import PromiseKit
 
-class FMViewController: NSViewController {
+class FMViewController: NSViewController, ContentTabViewController {
     @IBOutlet weak var coverButton1: FMCoverButton!
     @IBOutlet weak var coverButton1LeadingLC: NSLayoutConstraint!
     @IBOutlet weak var coverButton1WidthLC: NSLayoutConstraint!
@@ -83,19 +84,16 @@ class FMViewController: NSViewController {
         updatePlayButton(true)
         initCoverButtonsArray()
         
-        initFMPlayList()
-        
         let pc = PlayCore.shared
         currentTrackObserver = pc.observe(\.currentTrack, options: [.initial, .new, .old]) { pc, changes in
-            guard pc.fmMode else { return }
+            guard pc.fmMode,
+                  let oldTrack = changes.oldValue,
+                  let newTrack = changes.newValue,
+                  let old = oldTrack,
+                  let new = newTrack
+            else { return }
             self.currentTrackId = pc.currentTrack?.id ?? -1
-            self.loadFMTracks()
-            
-            if let oldTrack = changes.oldValue,
-                let newTrack = changes.newValue,
-                let old = oldTrack,
-                let new = newTrack {
-                
+            self.loadFMTracks().done(on: .main) {
                 var oldI = -1
                 var newI = -1
                 self.fmPlaylist.enumerated().forEach {
@@ -106,17 +104,17 @@ class FMViewController: NSViewController {
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    if newI == oldI + 1 {
-                        self.initView(.next)
-                        self.nextTrackAnimation()
-                    } else if newI == oldI - 1 {
-                        self.initView(.prev)
-                        self.prevTrackAnimation()
-                    } else {
-                        self.initView()
-                    }
+                if newI == oldI + 1 {
+                    self.initView(.next)
+                    self.nextTrackAnimation()
+                } else if newI == oldI - 1 {
+                    self.initView(.prev)
+                    self.prevTrackAnimation()
+                } else {
+                    self.initView()
                 }
+            }.catch {
+                print($0)
             }
         }
         
@@ -137,6 +135,39 @@ class FMViewController: NSViewController {
         }
     }
     
+    func initContent() -> Promise<()> {
+        let pref = Preferences.shared
+        let pc = PlayCore.shared
+        
+        let cid = pref.fmPlaylist.0 ?? -1
+        let ids = pref.fmPlaylist.1
+        
+        
+        if fmPlaylist.count == 0 {
+            let p = ids.count > 0 ? pc.api.songDetail(ids) : pc.api.radioGet()
+            
+            return p.done(on: .main) {
+                guard let fid = $0.first?.id else {
+                    print("Init fm playlist failed, Empty result.")
+                    return
+                }
+                $0.forEach {
+                    $0.from = (.fm, 0, "FM")
+                }
+                self.fmPlaylist = $0
+                if cid != -1,
+                   $0.map({ $0.id }).contains(cid) {
+                    self.currentTrackId = cid
+                } else {
+                    self.currentTrackId = fid
+                }
+                self.initView()
+            }
+        } else {
+            return loadFMTracks()
+        }
+    }
+    
     func initCoverButtonsArray() {
         coverViews = [(coverButton1, coverButton1LeadingLC, coverButton1WidthLC),
                       (coverButton2, coverButton2LeadingLC, coverButton2WidthLC),
@@ -148,7 +179,7 @@ class FMViewController: NSViewController {
         }
     }
     
-    func loadFMTracks() {
+    func loadFMTracks() -> Promise<()> {
         let pc = PlayCore.shared
         let id = currentTrackId
         let playlist = fmPlaylist
@@ -168,17 +199,15 @@ class FMViewController: NSViewController {
             }
             
             if (playlist.count - index) > max {
-                return
+                return .init()
             }
         } else if playlist.count > max {
-            return
+            return .init()
         }
         
-        pc.api.radioGet().done {
+        return pc.api.radioGet().done {
             self.fmPlaylist.append(contentsOf: $0)
             updatePlaylist()
-            }.catch {
-                print($0)
         }
     }
     
@@ -252,7 +281,11 @@ class FMViewController: NSViewController {
             if playlist.count > 0 {
                 currentTrackId = playlist[0].id
             } else {
-                initFMPlayList()
+                initContent().done {
+                    print("initContent")
+                }.catch {
+                    print($0)
+                }
             }
         }
         
@@ -365,36 +398,6 @@ class FMViewController: NSViewController {
         coverViews.enumerated().forEach {
             $0.element.leadingLC.constant = coverViewsLC[$0.offset].leading
             $0.element.widthLC.constant = coverViewsLC[$0.offset].width
-        }
-    }
-    
-    func initFMPlayList() {
-        let pref = Preferences.shared
-        let pc = PlayCore.shared
-        
-        let cid = pref.fmPlaylist.0 ?? -1
-        let ids = pref.fmPlaylist.1
-        
-        let f = ids.count > 0 ? pc.api.songDetail(ids) : pc.api.radioGet()
-        
-        f.done(on: .main) {
-            guard let fid = $0.first?.id else {
-                print("Init fm playlist failed, Empty result.")
-                return
-            }
-            $0.forEach {
-                $0.from = (.fm, 0, "FM")
-            }
-            self.fmPlaylist = $0
-            if cid != -1,
-               $0.map({ $0.id }).contains(cid) {
-                self.currentTrackId = cid
-            } else {
-                self.currentTrackId = fid
-            }
-            self.initView()
-        }.catch {
-            print($0)
         }
     }
     

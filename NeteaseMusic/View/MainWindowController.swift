@@ -78,10 +78,6 @@ class MainWindowController: NSWindowController {
     func initSidebarItems() {
         guard let vc = self.contentViewController as? MainViewController else { return }
         initSidebarPlaylists()
-        
-        vc.children.compactMap {
-            $0 as? FMViewController
-            }.first?.loadFMTracks()
     }
     
     func initSidebarPlaylists() {
