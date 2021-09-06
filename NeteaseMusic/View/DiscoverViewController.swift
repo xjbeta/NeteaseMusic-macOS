@@ -9,7 +9,7 @@
 import Cocoa
 import PromiseKit
 
-class DiscoverViewController: NSViewController {
+class DiscoverViewController: NSViewController, ContentTabViewController {
     @IBOutlet weak var collectionView: DailyCollectionView!
     
     class RecommendItem: NSObject {
@@ -48,13 +48,11 @@ class DiscoverViewController: NSViewController {
         menuContainer.menuController?.delegate = self
     }
     
-    func initRecommend() {
+    func initContent() -> Promise<()> {
         PlayCore.shared.api.recommendResource().map(on: .global()) { [weak self] res in
             self?.initRecommendedItems(res)
         }.done(on: .main) { [weak self] in
             self?.collectionView.reloadData()
-        }.catch {
-            print($0)
         }
     }
     
@@ -139,7 +137,11 @@ extension DiscoverViewController: TAAPMenuDelegate {
     }
     
     func shouldReloadData() {
-        initRecommend()
+        initContent().done {
+            
+        }.catch {
+            print($0)
+        }
     }
     
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {

@@ -80,10 +80,6 @@ class MainWindowController: NSWindowController {
         initSidebarPlaylists()
         
         vc.children.compactMap {
-            $0 as? DiscoverViewController
-            }.first?.initRecommend()
-        
-        vc.children.compactMap {
             $0 as? FMViewController
             }.first?.loadFMTracks()
     }
