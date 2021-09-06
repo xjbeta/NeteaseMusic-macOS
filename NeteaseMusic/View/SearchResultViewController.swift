@@ -7,8 +7,9 @@
 //
 
 import Cocoa
+import PromiseKit
 
-class SearchResultViewController: NSViewController {
+class SearchResultViewController: NSViewController, ContentTabViewController {
     
     @IBOutlet weak var contentTabView: NSTabView!
     @IBOutlet weak var scrollView: NSScrollView!
@@ -18,7 +19,11 @@ class SearchResultViewController: NSViewController {
     @IBAction func selectNewType(_ sender: NSSegmentedControl) {
         
         resultType = .init(rawValue: sender.selectedSegment + 1) ?? .none
-        initContentView()
+        initContentView().done {
+
+        }.catch {
+            print($0)
+        }
     }
     
     lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {
@@ -33,7 +38,6 @@ class SearchResultViewController: NSViewController {
         return (m, mc)
     }()
     
-    var sidebarItemObserver: NSKeyValueObservation?
     var pageData = (count: 0, current: 0)
     
     enum ResultType: Int {
@@ -75,28 +79,30 @@ class SearchResultViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { [weak self] core, changes in
-            guard let newV = changes.newValue,
-                let newValue = newV else { return }
-            
-            self?.resultType =  ResultType(newValue.type)
-            self?.initContentView()
+
+    }
+    
+    func initContent() -> Promise<()> {
+        guard let item = ViewControllerManager.shared.selectedSidebarItem else {
+            return .init()
         }
         
+        resultType = ResultType(item.type)
+        return initContentView()
     }
     
-    func initContentView() {
+    func initContentView() -> Promise<()> {
         let index = resultType.rawValue - 1
-        guard index >= 0 else { return }
+        guard index >= 0 else { return .init() }
         segmentedControl.setSelected(true, forSegment: index)
-        initResults()
+        return initResults()
     }
     
-    func initResults(_ offset: Int = 0) {
+    func initResults(_ offset: Int = 0) -> Promise<()> {
         guard let pageVC = pageSegmentedControlViewController(),
             let trackVC = trackTableVC(),
             let albumArtistVC = albumArtistTableVC() else {
-                return
+            return .init()
         }
         
         let type = resultType
@@ -115,7 +121,7 @@ class SearchResultViewController: NSViewController {
         let limit = resultType == .songs ? 100 : 20
         pageData.current = offset
         
-        PlayCore.shared.api.search(keywords, limit: limit, page: offset, type: resultType).done {
+        return PlayCore.shared.api.search(keywords, limit: limit, page: offset, type: resultType).done {
             guard type == self.resultType,
                 offset == self.pageData.current else { return }
             
@@ -160,8 +166,6 @@ class SearchResultViewController: NSViewController {
                 self.initLayoutConstraint(albumArtistVC.tableView)
             }
             
-        }.catch {
-            print($0)
         }
     }
     
@@ -191,10 +195,6 @@ class SearchResultViewController: NSViewController {
         let height = tableView.intrinsicContentSize.height + tableView.intercellSpacing.height + headerViewHeight
         tableHeightLayoutConstraint.constant = height
     }
-    
-    deinit {
-        sidebarItemObserver?.invalidate()
-    }
 }
 
 
@@ -208,7 +208,11 @@ extension SearchResultViewController: PageSegmentedControlDelegate {
     }
     
     func clickedPage(_ number: Int) {
-        initResults(number)
+        initResults(number).done {
+            
+        }.catch {
+            print($0)
+        }
     }
 }
 
