@@ -102,9 +102,11 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
                .topSongs,
                .fmTrash].contains(item.type)
               else {
+            playlistId = -1
+            playlistType = .none
+            initPlaylistInfo()
             return .init(error: ContentTabInitError.wrongTab)
         }
-        
         playlistId = item.id
         playlistType = item.type
         trackTableViewController()?.playlistId = item.id
@@ -149,19 +151,18 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
     }
     
     func initPlaylistContent() -> Promise<()> {
-        let id = playlistId
         switch playlistType {
         case .album:
-            return initPlaylistWithAlbum(id)
+            return initPlaylistWithAlbum()
         case .topSongs:
-            return initPlaylistWithTopSongs(id)
+            return initPlaylistWithTopSongs()
         case .subscribedPlaylist, .createdPlaylist, .favourite:
-            return initPlaylist(id)
+            return initPlaylist()
         case .discoverPlaylist:
-            if id == -114514 {
+            if playlistId == -114514 {
                 return initPlaylistWithRecommandSongs()
             } else {
-                return initPlaylist(id)
+                return initPlaylist()
             }
         case .fmTrash:
             return initFMTrashList()
@@ -170,9 +171,13 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
         }
     }
     
-    func initPlaylist(_ id: Int) -> Promise<()> {
-        api.playlistDetail(id).done(on: .main) {
-            guard self.playlistId == id else { return }
+    func initPlaylist() -> Promise<()> {
+        let id = playlistId
+        let type = playlistType
+        
+        return api.playlistDetail(id).done(on: .main) {
+            guard self.playlistId == id,
+                  type == self.playlistType else { return }
             self.coverImageView.setImage($0.coverImgUrl.absoluteString, true)
             self.titleTextFiled.stringValue = self.playlistType == .favourite ? "我喜欢的音乐" : $0.name
             let descriptionStr = $0.description ?? "none"
@@ -188,16 +193,26 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
     }
     
     func initPlaylistWithRecommandSongs() -> Promise<()> {
-        api.recommendSongs().done(on: .main) {
-            guard self.playlistId == -114514 else { return }
+        let type = playlistType
+        
+        return api.recommendSongs().done(on: .main) {
+            guard self.playlistId == -114514,
+                  type == self.playlistType else { return }
+            
             self.titleTextFiled.stringValue = "每日歌曲推荐"
             self.descriptionTextField.stringValue = "根据你的音乐口味生成, 每天6:00更新"
             self.tracks = $0.initIndexes()
         }
     }
     
-    func initPlaylistWithAlbum(_ id: Int) -> Promise<()> {
-        when(fulfilled: api.album(id), api.albumSublist()).done(on: .main) {
+    func initPlaylistWithAlbum() -> Promise<()> {
+        let id = playlistId
+        let type = playlistType
+        
+        return when(fulfilled: api.album(id), api.albumSublist()).done(on: .main) {
+            guard self.playlistId == id,
+                  type == self.playlistType else { return }
+            
             self.coverImageView.setImage($0.0.album.picUrl?.absoluteString, true)
             self.titleTextFiled.stringValue = $0.0.album.name
             self.descriptionTextField.stringValue = $0.0.album.des ?? "none"
@@ -213,8 +228,13 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
         }
     }
     
-    func initPlaylistWithTopSongs(_ id: Int) -> Promise<()> {
-        api.artist(id).done(on: .main) {
+    func initPlaylistWithTopSongs() -> Promise<()> {
+        let id = playlistId
+        let type = playlistType
+        
+        return api.artist(id).done(on: .main) {
+            guard self.playlistId == id,
+                  type == self.playlistType else { return }
             self.coverImageView.setImage($0.artist.picUrl, true)
             self.titleTextFiled.stringValue = $0.artist.name + "'s Top 50 Songs"
             self.tracks = $0.hotSongs.initIndexes()
@@ -223,7 +243,11 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
     }
     
     func initFMTrashList() -> Promise<()> {
-        api.fmTrashList().done(on: .main) {
+        let type = playlistType
+        
+        return api.fmTrashList().done(on: .main) {
+            guard type == self.playlistType else { return }
+            
             let t = "simple mode?"
             self.titleTextFiled.stringValue = "Trash."
             self.tracks = $0.initIndexes()
