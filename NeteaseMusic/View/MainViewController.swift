@@ -42,7 +42,11 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
-            guard let newType = changes.newValue??.type, newType != changes.oldValue??.type else { return }
+            
+            guard let newType = changes.newValue??.type else {
+                return
+            }
+            
             DispatchQueue.main.async {
                 switch newType {
                 case .discover:
@@ -117,6 +121,42 @@ class MainViewController: NSViewController {
     
     func updateContentTabView(_ item: ContentTabItems) {
         contentTabView.selectTabViewItem(at: item.rawValue)
+        
+        guard let vc = contentTabVC(item) else {
+            return
+        }
+        
+        vc.initContent().done {
+            print("\(item) Content inited.")
+            
+            
+        }.catch {
+            print($0)
+        }
+    }
+    
+    func contentTabVC(_ item: ContentTabItems) -> ContentTabViewController? {
+        children.compactMap {
+            $0 as? ContentTabViewController
+        }.first {
+//            case playlist, fm, preferences, discover, favourite, search, artist, mySubscription
+            switch item {
+            case .playlist:
+                return $0 is PlaylistViewController
+            case .fm:
+                return $0 is FMViewController
+            case .discover:
+                return $0 is DiscoverViewController
+            case .search:
+                return $0 is SearchResultViewController
+            case .artist:
+                return $0 is ArtistViewController
+            case .mySubscription:
+                return $0 is SublistViewController
+            default:
+                return false
+            }
+        }
     }
     
     func updatePlayingSongTabView(_ item: playingSongTabItems) {
