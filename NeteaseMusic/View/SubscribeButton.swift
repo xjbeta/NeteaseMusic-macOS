@@ -18,7 +18,7 @@ class SubscribeButton: NSButton {
     
     var subscribed: Bool = false {
         didSet {
-            title = subscribed ? "Unsubscribe" : "Subscribe"
+            title = subscribed ? "已收藏" : "收藏"
         }
     }
     

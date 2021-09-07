@@ -180,7 +180,7 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
                   type == self.playlistType else { return }
             self.coverImageView.setImage($0.coverImgUrl.absoluteString, true)
             self.titleTextFiled.stringValue = self.playlistType == .favourite ? "我喜欢的音乐" : $0.name
-            let descriptionStr = $0.description ?? "none"
+            let descriptionStr = $0.description ?? "无"
             self.descriptionTextField.stringValue = descriptionStr
             self.descriptionTextField.toolTip = descriptionStr
             self.playCountTextField.integerValue = $0.playCount
