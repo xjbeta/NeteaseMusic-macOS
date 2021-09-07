@@ -482,23 +482,14 @@
 				011D4197233907EC001A6F40 /* MainMenu.swift */,
 				01677B9E228CF3D200D11190 /* ViewControllerManager.swift */,
 				0190952723A0AE2C00647F80 /* ReuseViews */,
+				01E920A026E79F1F00B657E7 /* ContentTabs */,
 				012FEA732289BC3000698969 /* Login */,
-				01467E86227EA8500037B49D /* Playlist */,
 				012FEA682289B8BB00698969 /* ControlBar */,
-				01467E65227D27210037B49D /* SearchSuggest */,
 				01FF8B75225C6527002D7906 /* Sidebar */,
 				0134B63A22649BD300262AB8 /* SidePlaylist */,
 				0131439F226D657700B9E26F /* PlayingSong */,
-				0137264422698FBD004EDCE5 /* Discover */,
-				01467E9522846AEC0037B49D /* FM */,
-				012FEA63228686CD00698969 /* Lyric */,
 				012FEA76228A5F4400698969 /* SongInfo */,
-				0132E1BF2292684C00484D7E /* ArtistView */,
-				0153934C22E1BA6800CD10F9 /* SongActionButtons */,
 				01190491230E64D700738904 /* NewPlaylist */,
-				012FB7DB233389C1007F7247 /* Preferences */,
-				01909520239E336C00647F80 /* Sublist */,
-				0148763426BE371500B4F754 /* ArtistButtons */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,7 +509,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		01467E65227D27210037B49D /* SearchSuggest */ = {
+		01467E65227D27210037B49D /* SearchResult */ = {
 			isa = PBXGroup;
 			children = (
 				012772E2229E1D9A00C55537 /* SearchResultViewController.swift */,
@@ -526,7 +517,7 @@
 				014327B322AB729F00651064 /* PageSegmentedControlViewController.swift */,
 				014327B122AB728D00651064 /* PageSegmentedControlView.storyboard */,
 			);
-			name = SearchSuggest;
+			name = SearchResult;
 			sourceTree = "<group>";
 		};
 		01467E86227EA8500037B49D /* Playlist */ = {
@@ -607,10 +598,10 @@
 		0190952723A0AE2C00647F80 /* ReuseViews */ = {
 			isa = PBXGroup;
 			children = (
-				0190952323A0913E00647F80 /* TrackTableView.storyboard */,
-				0190952823A0B2A800647F80 /* TrackTableViewController.swift */,
-				0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */,
-				0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */,
+				0153934C22E1BA6800CD10F9 /* SongActionButtons */,
+				0148763426BE371500B4F754 /* ArtistButtons */,
+				01E920A226E7A68300B657E7 /* TrackTableView */,
+				01E920A326E7A69700B657E7 /* AlbumArtistTableView */,
 				014327AF22AA079200651064 /* UnresponsiveScrollView.swift */,
 				0171427623C2E0B70051ADDF /* NetworkRequestMenuItem.swift */,
 				01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */,
@@ -678,6 +669,39 @@
 				012C158123A5EC92004586A5 /* ArtistSublist.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		01E920A026E79F1F00B657E7 /* ContentTabs */ = {
+			isa = PBXGroup;
+			children = (
+				012FB7DB233389C1007F7247 /* Preferences */,
+				0137264422698FBD004EDCE5 /* Discover */,
+				01467E9522846AEC0037B49D /* FM */,
+				01467E86227EA8500037B49D /* Playlist */,
+				01467E65227D27210037B49D /* SearchResult */,
+				0132E1BF2292684C00484D7E /* ArtistView */,
+				01909520239E336C00647F80 /* Sublist */,
+				012FEA63228686CD00698969 /* Lyric */,
+			);
+			name = ContentTabs;
+			sourceTree = "<group>";
+		};
+		01E920A226E7A68300B657E7 /* TrackTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0190952323A0913E00647F80 /* TrackTableView.storyboard */,
+				0190952823A0B2A800647F80 /* TrackTableViewController.swift */,
+			);
+			name = TrackTableView;
+			sourceTree = "<group>";
+		};
+		01E920A326E7A69700B657E7 /* AlbumArtistTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */,
+				0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */,
+			);
+			name = AlbumArtistTableView;
 			sourceTree = "<group>";
 		};
 		01EE1FC826CB6D9400B441D0 /* NMChannelTests */ = {
