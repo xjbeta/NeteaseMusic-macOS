@@ -14,7 +14,7 @@ class MainViewController: NSViewController {
     @IBOutlet weak var contentTabView: NSTabView!
     @IBOutlet weak var playingSongTabView: NSTabView!
     enum ContentTabItems: Int {
-        case playlist, fm, preferences, discover, favourite, search, artist, mySubscription
+        case loading, playlist, fm, preferences, discover, favourite, search, artist, mySubscription
     }
     enum MainTabItems: Int {
         case main, login
@@ -39,36 +39,32 @@ class MainViewController: NSViewController {
         }
     }
     
+// MARK: - Loading Tab
+    @IBOutlet var loadingTabView: NSTabView!
+    enum loadingTabItems: Int {
+        case loading, tryAgain
+    }
+    
+    @IBOutlet var loadingProgressIndicator: NSProgressIndicator!
+    
+    @IBAction func loadingTryAgain(_ sender: NSButton) {
+        guard let item = ViewControllerManager.shared.selectedSidebarItem else {
+            return
+        }
+        updateContentTabView(item)
+    }
+    
+// MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .old, .new]) { core, changes in
+        sidebarItemObserver = ViewControllerManager.shared.observe(\.selectedSidebarItem, options: [.initial, .new]) { vcm, _ in
             
-            guard let newType = changes.newValue??.type else {
+            guard let item = vcm.selectedSidebarItem else {
                 return
             }
             
             DispatchQueue.main.async {
-                switch newType {
-                case .discover:
-                    self.updateContentTabView(.discover)
-                case .fm:
-                    self.updateContentTabView(.fm)
-                case .mySubscription:
-                    self.updateContentTabView(.mySubscription)
-                case .subscribedPlaylist, .createdPlaylist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
-                    self.updateContentTabView(.playlist)
-                case .artist:
-                    self.updateContentTabView(.artist)
-                case .preferences:
-                    self.updateContentTabView(.preferences)
-                case .searchSuggestionHeaderSongs,
-                     .searchSuggestionHeaderAlbums,
-                     .searchSuggestionHeaderArtists,
-                     .searchSuggestionHeaderPlaylists:
-                    self.updateContentTabView(.search)
-                default:
-                    break
-                }
+                self.updateContentTabView(item)
             }
         }
         
@@ -119,19 +115,51 @@ class MainViewController: NSViewController {
         mainTabView.selectTabViewItem(at: item.rawValue)
     }
     
-    func updateContentTabView(_ item: ContentTabItems) {
-        contentTabView.selectTabViewItem(at: item.rawValue)
+    func updateContentTabView(_ item: SidebarViewController.SidebarItem) {
         
-        guard let vc = contentTabVC(item) else {
+        var ctItem: ContentTabItems = .loading
+        
+        switch item.type {
+        case .discover:
+            ctItem = .discover
+        case .fm:
+            ctItem = .fm
+        case .mySubscription:
+            ctItem = .mySubscription
+        case .subscribedPlaylist, .createdPlaylist, .favourite, .discoverPlaylist, .album, .topSongs, .fmTrash:
+            ctItem = .playlist
+        case .artist:
+            ctItem = .artist
+        case .preferences:
+            ctItem = .preferences
+        case .searchSuggestionHeaderSongs,
+             .searchSuggestionHeaderAlbums,
+             .searchSuggestionHeaderArtists,
+             .searchSuggestionHeaderPlaylists:
+            ctItem = .search
+        default:
+            break
+        }
+        
+        
+        guard let vc = contentTabVC(ctItem) else {
+            contentTabView.selectTabViewItem(at: ctItem.rawValue)
             return
         }
         
-        vc.initContent().done {
-            print("\(item) Content inited.")
-            
-            
+        
+        loadingTabView.selectTabViewItem(at: loadingTabItems.loading.rawValue)
+        loadingProgressIndicator.startAnimation(nil)
+        contentTabView.selectTabViewItem(at: ContentTabItems.loading.rawValue)
+        
+        vc.initContent().ensure {
+            self.loadingProgressIndicator.stopAnimation(nil)
+        }.done(on:.main) {
+            self.contentTabView.selectTabViewItem(at: ctItem.rawValue)
+            print("\(ctItem) Content inited.")
         }.catch {
-            print($0)
+            print("\(ctItem) Content init failed.  \($0)")
+            self.loadingTabView.selectTabViewItem(at: loadingTabItems.tryAgain.rawValue)
         }
     }
     

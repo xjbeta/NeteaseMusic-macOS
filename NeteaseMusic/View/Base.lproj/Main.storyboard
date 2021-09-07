@@ -828,18 +828,18 @@
                                                     <tabViewItems>
                                                         <tabViewItem label="Tab" identifier="1" id="Hte-z1-31f" userLabel="Main">
                                                             <view key="view" id="wFl-RT-0d3">
-                                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="595"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="591"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQx-Sy-S4l">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="595"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="591"/>
                                                                         <subviews>
                                                                             <customView id="Mrb-qI-bUM">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="174" height="595"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="174" height="591"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fso-nb-eos">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="174" height="595"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="174" height="591"/>
                                                                                         <connections>
                                                                                             <segue destination="DJj-ZS-YFg" kind="embed" id="uPG-g7-4En"/>
                                                                                         </connections>
@@ -855,26 +855,106 @@
                                                                                 </constraints>
                                                                             </customView>
                                                                             <customView id="7Yu-7O-R67">
-                                                                                <rect key="frame" x="175" y="0.0" width="825" height="595"/>
+                                                                                <rect key="frame" x="175" y="0.0" width="825" height="591"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
                                                                                     <box boxType="custom" borderType="none" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="kd1-WV-fpx">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="595"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                         <view key="contentView" id="pPz-3S-gze">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="825" height="595"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                             <subviews>
                                                                                                 <tabView type="noTabsNoBorder" initialItem="2Qr-o0-lnR" translatesAutoresizingMaskIntoConstraints="NO" id="AWO-pv-Kg5">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="825" height="595"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                     <font key="font" metaFont="system"/>
                                                                                                     <tabViewItems>
+                                                                                                        <tabViewItem label="Loading" identifier="" id="RKA-Lu-fuJ">
+                                                                                                            <view key="view" id="hXn-Vu-vZQ">
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
+                                                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                                                <subviews>
+                                                                                                                    <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="Z8K-wQ-7Qw">
+                                                                                                                        <rect key="frame" x="353" y="236" width="120" height="120"/>
+                                                                                                                        <constraints>
+                                                                                                                            <constraint firstAttribute="width" constant="120" id="TTP-6T-8Pn"/>
+                                                                                                                            <constraint firstAttribute="width" secondItem="Z8K-wQ-7Qw" secondAttribute="height" multiplier="1:1" id="zRE-M7-oky"/>
+                                                                                                                        </constraints>
+                                                                                                                        <font key="font" metaFont="system"/>
+                                                                                                                        <tabViewItems>
+                                                                                                                            <tabViewItem label="Tab" identifier="1" id="CSh-eP-GdX" userLabel="Loading">
+                                                                                                                                <view key="view" id="EjH-IG-8XH">
+                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                                                                    <subviews>
+                                                                                                                                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0nN-c8-vsi">
+                                                                                                                                            <rect key="frame" x="40" y="38" width="40" height="44"/>
+                                                                                                                                            <subviews>
+                                                                                                                                                <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zMF-6D-fpC">
+                                                                                                                                                    <rect key="frame" x="12" y="28" width="16" height="16"/>
+                                                                                                                                                </progressIndicator>
+                                                                                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YDH-60-qDp">
+                                                                                                                                                    <rect key="frame" x="-2" y="0.0" width="44" height="16"/>
+                                                                                                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="加载中" id="DLc-dD-P6I">
+                                                                                                                                                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                                                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                                                                                    </textFieldCell>
+                                                                                                                                                </textField>
+                                                                                                                                            </subviews>
+                                                                                                                                            <visibilityPriorities>
+                                                                                                                                                <integer value="1000"/>
+                                                                                                                                                <integer value="1000"/>
+                                                                                                                                            </visibilityPriorities>
+                                                                                                                                            <customSpacing>
+                                                                                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                                                                            </customSpacing>
+                                                                                                                                        </stackView>
+                                                                                                                                    </subviews>
+                                                                                                                                    <constraints>
+                                                                                                                                        <constraint firstItem="0nN-c8-vsi" firstAttribute="centerY" secondItem="EjH-IG-8XH" secondAttribute="centerY" id="FV4-Sf-iFi"/>
+                                                                                                                                        <constraint firstItem="0nN-c8-vsi" firstAttribute="centerX" secondItem="EjH-IG-8XH" secondAttribute="centerX" id="bHJ-SA-Owt"/>
+                                                                                                                                    </constraints>
+                                                                                                                                </view>
+                                                                                                                            </tabViewItem>
+                                                                                                                            <tabViewItem label="View" identifier="2" id="4BS-Hs-ub2">
+                                                                                                                                <view key="view" id="3Nv-Pe-EsL">
+                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                                                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                                                                    <subviews>
+                                                                                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="soh-8M-qLK">
+                                                                                                                                            <rect key="frame" x="14" y="43" width="91" height="32"/>
+                                                                                                                                            <buttonCell key="cell" type="push" title="Try Again" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hMB-LP-eG4">
+                                                                                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                                                                                <font key="font" metaFont="system"/>
+                                                                                                                                            </buttonCell>
+                                                                                                                                            <connections>
+                                                                                                                                                <action selector="loadingTryAgain:" target="XfG-lQ-9wD" id="5kp-D4-gqH"/>
+                                                                                                                                            </connections>
+                                                                                                                                        </button>
+                                                                                                                                    </subviews>
+                                                                                                                                    <constraints>
+                                                                                                                                        <constraint firstItem="soh-8M-qLK" firstAttribute="centerX" secondItem="3Nv-Pe-EsL" secondAttribute="centerX" id="Awk-6x-YSa"/>
+                                                                                                                                        <constraint firstItem="soh-8M-qLK" firstAttribute="centerY" secondItem="3Nv-Pe-EsL" secondAttribute="centerY" id="rw5-AB-gjH"/>
+                                                                                                                                    </constraints>
+                                                                                                                                </view>
+                                                                                                                            </tabViewItem>
+                                                                                                                        </tabViewItems>
+                                                                                                                    </tabView>
+                                                                                                                </subviews>
+                                                                                                                <constraints>
+                                                                                                                    <constraint firstItem="Z8K-wQ-7Qw" firstAttribute="centerX" secondItem="hXn-Vu-vZQ" secondAttribute="centerX" id="mgL-i6-jzK"/>
+                                                                                                                    <constraint firstItem="Z8K-wQ-7Qw" firstAttribute="centerY" secondItem="hXn-Vu-vZQ" secondAttribute="centerY" id="sbd-xh-Y00"/>
+                                                                                                                </constraints>
+                                                                                                            </view>
+                                                                                                        </tabViewItem>
                                                                                                         <tabViewItem label="PlayList" identifier="" id="iQG-4j-4rh" userLabel="PlayList">
                                                                                                             <view key="view" id="5IT-G8-uN3">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="595"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <subviews>
                                                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-xI-l9e">
-                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="595"/>
+                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                         <connections>
                                                                                                                             <segue destination="1Hm-qT-83q" kind="embed" id="YiH-S5-rVD"/>
                                                                                                                         </connections>
@@ -890,11 +970,11 @@
                                                                                                         </tabViewItem>
                                                                                                         <tabViewItem label="FM" identifier="" id="GFu-C8-YIB" userLabel="FM">
                                                                                                             <view key="view" id="Ux7-La-kjT">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <subviews>
                                                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="tOV-hm-8fP">
-                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                        <rect key="frame" x="0.0" y="6" width="825" height="585"/>
                                                                                                                         <connections>
                                                                                                                             <segue destination="Wq4-hO-qaB" kind="embed" id="Jnd-te-GBF"/>
                                                                                                                         </connections>
@@ -910,11 +990,11 @@
                                                                                                         </tabViewItem>
                                                                                                         <tabViewItem label="Preferences" identifier="" id="Use-Rr-zxh" userLabel="Preferences">
                                                                                                             <view key="view" id="Ydw-QF-hzx">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <subviews>
                                                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="VBw-3J-dRZ">
-                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                        <rect key="frame" x="0.0" y="6" width="825" height="585"/>
                                                                                                                         <connections>
                                                                                                                             <segue destination="bqu-Rc-Ecb" kind="embed" id="ibQ-R1-7ch"/>
                                                                                                                         </connections>
@@ -930,11 +1010,11 @@
                                                                                                         </tabViewItem>
                                                                                                         <tabViewItem label="Discover" identifier="" id="2Qr-o0-lnR" userLabel="Discover">
                                                                                                             <view key="view" id="8fz-mJ-Rur">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <subviews>
                                                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Knh-Vh-UCK">
-                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                        <rect key="frame" x="0.0" y="6" width="825" height="585"/>
                                                                                                                         <connections>
                                                                                                                             <segue destination="zL7-cd-vEy" kind="embed" id="Q9s-pc-0rW"/>
                                                                                                                         </connections>
@@ -950,17 +1030,17 @@
                                                                                                         </tabViewItem>
                                                                                                         <tabViewItem label="Favourite" identifier="" id="CFK-R6-c6R" userLabel="Favourite">
                                                                                                             <view key="view" id="ghc-Gt-k7F">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                             </view>
                                                                                                         </tabViewItem>
                                                                                                         <tabViewItem label="Item 5" identifier="" id="1yf-sk-vGB" userLabel="Search">
                                                                                                             <view key="view" id="XeL-Tp-kNn">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <subviews>
                                                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-T0-GFZ">
-                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                        <rect key="frame" x="0.0" y="6" width="825" height="585"/>
                                                                                                                         <connections>
                                                                                                                             <segue destination="Xdt-fC-huh" kind="embed" id="twu-7o-Uft"/>
                                                                                                                         </connections>
@@ -976,11 +1056,11 @@
                                                                                                         </tabViewItem>
                                                                                                         <tabViewItem label="Item 6" identifier="" id="bsz-vJ-zpk" userLabel="Artist">
                                                                                                             <view key="view" id="lrv-nL-hjT">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <subviews>
                                                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="i8M-Hf-SQH">
-                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                        <rect key="frame" x="0.0" y="6" width="825" height="585"/>
                                                                                                                         <connections>
                                                                                                                             <segue destination="cq6-3d-Khw" kind="embed" id="aH9-nb-7sy"/>
                                                                                                                         </connections>
@@ -996,11 +1076,11 @@
                                                                                                         </tabViewItem>
                                                                                                         <tabViewItem label="Item 7" identifier="" id="W5V-WG-mRr" userLabel="Sublist">
                                                                                                             <view key="view" id="VCk-0I-yUM">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="825" height="591"/>
                                                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                 <subviews>
                                                                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="4sB-pS-dl6">
-                                                                                                                        <rect key="frame" x="0.0" y="0.0" width="825" height="585"/>
+                                                                                                                        <rect key="frame" x="0.0" y="6" width="825" height="585"/>
                                                                                                                         <connections>
                                                                                                                             <segue destination="mXM-0x-fSU" kind="embed" id="rOx-AW-8uQ"/>
                                                                                                                         </connections>
@@ -1153,6 +1233,8 @@
                     </view>
                     <connections>
                         <outlet property="contentTabView" destination="AWO-pv-Kg5" id="glS-Ji-PzT"/>
+                        <outlet property="loadingProgressIndicator" destination="zMF-6D-fpC" id="YDe-jp-klp"/>
+                        <outlet property="loadingTabView" destination="Z8K-wQ-7Qw" id="h29-Vz-9KD"/>
                         <outlet property="mainTabView" destination="Po7-mc-yBA" id="0Hx-XE-5kD"/>
                         <outlet property="messageBox" destination="ckG-GY-bIK" id="2tK-pq-Vij"/>
                         <outlet property="messageTextField" destination="ZBC-DS-2T4" id="ryu-Ns-xSL"/>
