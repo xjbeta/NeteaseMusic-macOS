@@ -341,7 +341,7 @@ class SidebarViewController: NSViewController {
             return
         }
         
-        outlineHeightLayoutConstraint.constant = h
+        outlineHeightLayoutConstraint.constant = h + scrollView.pageHeader.size().height
         var size = docView.frame.size
         
         // top - 12 - searchField - 4 - outlineView
