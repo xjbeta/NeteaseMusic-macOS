@@ -15,17 +15,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="fbG-fA-8Qp">
-                                <rect key="frame" x="0.0" y="3" width="240" height="478"/>
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="481"/>
                                 <subviews>
                                     <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="0.0" horizontalPageScroll="0.0" verticalLineScroll="0.0" verticalPageScroll="0.0" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrE-Ip-XY5">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="478"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="481"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" drawsBackground="NO" id="ySV-he-icj">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="478"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="481"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <view id="aOE-sb-h2i">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="478"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="481"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bq-Cn-cYr">
@@ -171,7 +171,7 @@
                                                                                                 </connections>
                                                                                             </textField>
                                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP1-9w-kUe">
-                                                                                                <rect key="frame" x="93" y="1" width="11" height="16"/>
+                                                                                                <rect key="frame" x="94" y="1" width="11" height="16"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="T1B-CU-DE2">
                                                                                                     <font key="font" metaFont="system"/>
                                                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -188,17 +188,17 @@
                                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wJp-pd-eUh">
                                                                                                 <rect key="frame" x="103" y="1" width="35" height="15"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="BNx-H0-PWy">
-                                                                                                    <font key="font" metaFont="system" size="12"/>
+                                                                                                    <font key="font" metaFont="cellTitle"/>
                                                                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                 </textFieldCell>
                                                                                                 <connections>
+                                                                                                    <binding destination="1u9-zI-G32" name="value" keyPath="objectValue.secondName" id="6c2-8o-bxP"/>
                                                                                                     <binding destination="1u9-zI-G32" name="hidden" keyPath="objectValue.withSecondLabel" id="pQC-zr-c9g">
                                                                                                         <dictionary key="options">
                                                                                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                                                                         </dictionary>
                                                                                                     </binding>
-                                                                                                    <binding destination="1u9-zI-G32" name="value" keyPath="objectValue.secondName" id="6c2-8o-bxP"/>
                                                                                                 </connections>
                                                                                             </textField>
                                                                                         </subviews>
@@ -278,7 +278,7 @@
                         <constraints>
                             <constraint firstItem="4bP-rG-qfF" firstAttribute="leading" secondItem="z3A-mc-CSB" secondAttribute="leading" id="0G6-pg-H7l"/>
                             <constraint firstItem="fbG-fA-8Qp" firstAttribute="top" secondItem="4bP-rG-qfF" secondAttribute="bottom" id="5Ig-mU-DZN"/>
-                            <constraint firstAttribute="bottom" secondItem="fbG-fA-8Qp" secondAttribute="bottom" constant="3" id="ATo-fa-I4F"/>
+                            <constraint firstAttribute="bottom" secondItem="fbG-fA-8Qp" secondAttribute="bottom" id="ATo-fa-I4F"/>
                             <constraint firstAttribute="trailing" secondItem="fbG-fA-8Qp" secondAttribute="trailing" id="KjR-rl-jGF"/>
                             <constraint firstItem="4bP-rG-qfF" firstAttribute="top" secondItem="z3A-mc-CSB" secondAttribute="top" id="P2W-8L-fBB"/>
                             <constraint firstItem="fbG-fA-8Qp" firstAttribute="leading" secondItem="z3A-mc-CSB" secondAttribute="leading" id="eRE-gy-Fq4"/>

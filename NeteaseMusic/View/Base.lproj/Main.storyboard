@@ -823,7 +823,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="h1J-AM-GWX">
-                                                    <rect key="frame" x="0.0" y="55" width="1000" height="595"/>
+                                                    <rect key="frame" x="0.0" y="59" width="1000" height="591"/>
                                                     <font key="font" metaFont="system"/>
                                                     <tabViewItems>
                                                         <tabViewItem label="Tab" identifier="1" id="Hte-z1-31f" userLabel="Main">
@@ -849,7 +849,7 @@
                                                                                     <constraint firstAttribute="trailing" secondItem="Fso-nb-eos" secondAttribute="trailing" id="Adc-rX-W43"/>
                                                                                     <constraint firstItem="Fso-nb-eos" firstAttribute="top" secondItem="Mrb-qI-bUM" secondAttribute="top" id="J1q-z6-d8M"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="Fso-nb-eos" secondAttribute="bottom" id="LuW-MX-VLD"/>
-                                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="Tor-uo-kis"/>
+                                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Tor-uo-kis"/>
                                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="X4g-Am-4nS"/>
                                                                                     <constraint firstItem="Fso-nb-eos" firstAttribute="leading" secondItem="Mrb-qI-bUM" secondAttribute="leading" id="gm9-ye-dqq"/>
                                                                                 </constraints>
@@ -1051,11 +1051,11 @@
                                                         </tabViewItem>
                                                         <tabViewItem label="View" identifier="2" id="YYp-xY-vee" userLabel="PlayingSong">
                                                             <view key="view" id="VRy-kM-eAq">
-                                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="585"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="1000" height="591"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ" customClass="PlaySongViewBackgroundView" customModule="NeteaseMusic" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="585"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="591"/>
                                                                         <connections>
                                                                             <segue destination="4w4-6c-N5y" kind="embed" id="7hD-fW-INt"/>
                                                                         </connections>
@@ -1116,7 +1116,7 @@
                                                 <constraint firstItem="h1J-AM-GWX" firstAttribute="top" secondItem="c7C-3x-bjo" secondAttribute="top" id="iQC-T1-ej9"/>
                                                 <constraint firstItem="TwN-LA-77b" firstAttribute="top" secondItem="lcx-aI-z3f" secondAttribute="bottom" constant="20" id="mMD-Oe-6Ax"/>
                                                 <constraint firstAttribute="trailing" secondItem="TwN-LA-77b" secondAttribute="trailing" id="njI-VX-is0"/>
-                                                <constraint firstItem="TwN-LA-77b" firstAttribute="top" secondItem="h1J-AM-GWX" secondAttribute="bottom" constant="-12" id="s3o-J7-9Co"/>
+                                                <constraint firstItem="TwN-LA-77b" firstAttribute="top" secondItem="h1J-AM-GWX" secondAttribute="bottom" constant="-8" id="s3o-J7-9Co"/>
                                                 <constraint firstAttribute="bottom" secondItem="TwN-LA-77b" secondAttribute="bottom" id="wPK-1L-6hQ"/>
                                             </constraints>
                                         </view>
