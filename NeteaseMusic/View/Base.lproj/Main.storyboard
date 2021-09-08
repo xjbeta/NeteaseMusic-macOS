@@ -895,7 +895,7 @@
                                                                                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YDH-60-qDp">
                                                                                                                                                     <rect key="frame" x="-2" y="0.0" width="44" height="16"/>
                                                                                                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="加载中" id="DLc-dD-P6I">
-                                                                                                                                                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                                                                                                                        <font key="font" metaFont="system"/>
                                                                                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                                                                     </textFieldCell>
