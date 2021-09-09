@@ -302,12 +302,12 @@ class SidebarViewController: NSViewController {
         searchField.delegate = self
     }
     
-    func updatePlaylists() {
+    func updatePlaylists() -> Promise<()> {
         PlayCore.shared.api.userPlaylist().done(on: .main) {
             let created = $0.filter {
                 !$0.subscribed
-                }.map {
-                    SidebarItem(title: $0.name, id: $0.id, type: .createdPlaylist)
+            }.map {
+                SidebarItem(title: $0.name, id: $0.id, type: .createdPlaylist)
             }
             
             if let item = created.first, item.title.contains("喜欢的音乐") {
@@ -321,8 +321,8 @@ class SidebarViewController: NSViewController {
             
             let subscribed = $0.filter {
                 $0.subscribed
-                }.map {
-                    SidebarItem(title: $0.name, id: $0.id, type: .subscribedPlaylist)
+            }.map {
+                SidebarItem(title: $0.name, id: $0.id, type: .subscribedPlaylist)
             }
             
             self.sidebarItems.filter({
@@ -330,8 +330,6 @@ class SidebarViewController: NSViewController {
             }).first?.childrenItems = subscribed
             
             self.outlineView.expandItem(nil, expandChildren: true)
-            }.catch {
-                print($0)
         }
     }
     

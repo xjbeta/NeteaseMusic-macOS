@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import PromiseKit
 
 class MainWindowController: NSWindowController {
     var updateLoginStatusObserver: NSObjectProtocol?
@@ -16,75 +17,65 @@ class MainWindowController: NSWindowController {
         super.windowDidLoad()
         window?.isMovableByWindowBackground = true
         
-        updateLoginStatusObserver = NotificationCenter.default.addObserver(forName: .updateLoginStatus, object: nil, queue: .main) {
-            guard let kv = $0.userInfo as? [String: Any],
-                let logout = kv["logout"] as? Bool else {
-                self.initLoginStatus(true)
-                return
-            }
-            
-            if logout {
-                self.initLoginStatus(false)
-            } else {
-                self.checkLoginStatus()
-            }
+        updateLoginStatusObserver = NotificationCenter.default.addObserver(forName: .updateLoginStatus, object: nil, queue: .main) { _ in
+            self.test()
         }
         initSidebarPlaylistsObserver = NotificationCenter.default.addObserver(forName: .initSidebarPlaylists, object: nil, queue: .main) { _ in
             self.initSidebarPlaylists()
         }
         
-        checkLoginStatus()
+        test()
+        
     }
     
-    func checkLoginStatus() {
-        PlayCore.shared.api.isLogin().done(on: .main) {
-            self.initLoginStatus($0)
-            }.catch {
-                print($0)
-        }
-    }
-    
-    func initLoginStatus(_ isLogin: Bool) {
-        guard let vc = contentViewController as? MainViewController else { return }
-        if isLogin {
+    func test() {
+        guard let vc = self.contentViewController as? MainViewController,
+              let discoverVC = vc.contentTabVC(.discover),
+              let sidebarVC = sidebarVC(),
+              let loginVC = loginVC()
+        else { return }
+        
+        when(fulfilled: [
+            discoverVC.initContent(),
+            sidebarVC.updatePlaylists()
+        ]).done {
             vc.updateMainTabView(.main)
-            initUserButton()
-            initSidebarItems()
-        } else  {
-            vc.updateMainTabView(.login)
-            // login initViews
-            vc.children.compactMap {
-                $0 as? LoginViewController
-                }.first?.initViews()
-//            userButton.isHidden = true
+            
+            
+            print("123  init")
+        }.catch(on: .main) {
+            switch $0 {
+            case NeteaseMusicAPI.RequestError.errorCode((let code, let string)):
+                if code == 301 {
+                    print("should login.")
+                    vc.updateMainTabView(.login)
+                    loginVC.initViews()
+                } else {
+                    print(code, string)
+                }
+            default:
+                print($0)
+            }
         }
-    }
-    
-    func initUserButton() {
-//        userButton.isHidden = true
-//        PlayCore.shared.api.userInfo().done(on: .main) {
-//            ViewControllerManager.shared.userId = $0.userId
-//            self.userButton.title = $0.nickname
-//            guard let u = $0.avatarImage else { return }
-//            ImageLoader.image(u, true, 13)
-//                .roundCorner(radius: .point(self.userButton.frame.size.width / 8))
-//                .set(to: self.userButton)
-//            self.userButton.isHidden = false
-//            }.catch {
-//                print($0)
-//        }
-    }
-    
-    func initSidebarItems() {
-        guard let vc = self.contentViewController as? MainViewController else { return }
-        initSidebarPlaylists()
     }
     
     func initSidebarPlaylists() {
-        guard let vc = self.contentViewController as? MainViewController else { return }
-        vc.children.compactMap {
-            $0 as? SidebarViewController
-            }.first?.updatePlaylists()
+        guard let sidebarVC = sidebarVC() else { return }
+        sidebarVC.updatePlaylists().done {
+            
+        }.catch {
+            print($0)
+        }
+    }
+    
+    func sidebarVC() -> SidebarViewController? {
+        guard let vc = contentViewController as? MainViewController else { return nil }
+        return vc.children.compactMap({ $0 as? SidebarViewController }).first
+    }
+    
+    func loginVC() -> LoginViewController? {
+        guard let vc = contentViewController as? MainViewController else { return nil }
+        return vc.children.compactMap({ $0 as? LoginViewController }).first
     }
     
     deinit {
