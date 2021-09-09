@@ -9,6 +9,7 @@
 import Cocoa
 import Kingfisher
 import GSPlayer
+import WebKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -38,5 +39,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("Image Cache Path: \n", ImageCache.default.diskStorage.directoryURL.path)
     }
 
+    @IBAction func logout(_ sender: NSMenuItem) {
+        
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+            }
+        }
+        
+        NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
+//        PlayCore.shared.api.logout().done {
+//            print("Logout success.")
+//            NotificationCenter.default.post(name: .updateLoginStatus, object: nil, userInfo: ["logout": true])
+//        }.ensure {
+//
+//        }.catch {
+//            print("Logout error \($0).")
+//            NotificationCenter.default.post(name: .updateLoginStatus, object: nil, userInfo: ["logout": false])
+//        }
+    }
 }
 
