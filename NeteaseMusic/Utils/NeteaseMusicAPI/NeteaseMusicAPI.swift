@@ -68,49 +68,23 @@ class NeteaseMusicAPI: NSObject {
         }
     }
     
-    struct User {
-        var nickname: String
-        var userId: Int
-        var avatarImage: String?
-    }
-    
     struct CodeResult: Decodable {
         let code: Int
         let msg: String?
     }
     
-    func isLogin() -> Promise<(Bool)> {
-        return userInfo().map {
-            $0.userId != -1
+    func nuserAccount() -> Promise<NUserProfile?> {
+        struct Result: Decodable {
+            let code: Int
+            let profile: NUserProfile?
         }
-    }
-    
-    
-    func userInfo() -> Promise<(User)> {
-        return Promise { resolver in
-            AF.request("https://music.163.com").responseString {
-                let gUserStr = $0.value?.subString(from: "var GUser={", to: "};").replacingOccurrences(of: "\"", with: "")
-                
-                var user = User(nickname: "", userId: -1, avatarImage: nil)
-                gUserStr?.split(separator: ",").map(String.init).forEach {
-                    let pars = $0.split(separator: ":", maxSplits: 1).map(String.init)
-                    guard pars.count == 2, let key = pars.first else { return }
-                    let value = pars[1]
-                    switch key {
-                    case "userId":
-                        user.userId = Int(value) ?? -1
-                        self.uid = user.userId
-                    case "nickname":
-                        user.nickname = value
-                    case "avatarUrl":
-                        user.avatarImage = value.https
-                    default:
-                        break
-                    }
-                }
-                resolver.fulfill(user)
+        
+        return eapiRequest(
+            "https://music.163.com/eapi/nuser/account/get",
+            [:],
+            Result.self, debug: true).map {
+                $0.profile
             }
-        }
     }
     
     func userPlaylist() -> Promise<[Playlist]> {

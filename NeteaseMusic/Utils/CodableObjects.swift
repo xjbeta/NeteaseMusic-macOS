@@ -374,3 +374,9 @@ struct SearchResult: Decodable {
         }
     }
 }
+
+struct NUserProfile: Decodable {
+    let userId: Int
+    let nickname: String
+    let avatarUrl: String
+}

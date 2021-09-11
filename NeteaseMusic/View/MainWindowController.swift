@@ -35,14 +35,21 @@ class MainWindowController: NSWindowController {
               let loginVC = loginVC()
         else { return }
         
-        when(fulfilled: [
-            discoverVC.initContent(),
-            sidebarVC.updatePlaylists()
-        ]).done {
+        let napi = PlayCore.shared.api
+        
+        napi.nuserAccount().get {
+            if let id = $0?.userId {
+                napi.uid = id
+            } else {
+                throw NeteaseMusicAPI.RequestError.errorCode((301, ""))
+            }
+        }.then { _ in
+            when(fulfilled: [
+                discoverVC.initContent(),
+                sidebarVC.updatePlaylists()
+            ])
+        }.done {
             vc.updateMainTabView(.main)
-            
-            
-            print("123  init")
         }.catch(on: .main) {
             switch $0 {
             case NeteaseMusicAPI.RequestError.errorCode((let code, let string)):
