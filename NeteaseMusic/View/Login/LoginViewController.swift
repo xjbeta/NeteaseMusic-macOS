@@ -8,6 +8,7 @@
 
 import Cocoa
 import WebKit
+import PromiseKit
 
 class LoginViewController: NSViewController {
     @IBOutlet weak var tryAgainButton: NSButton!
@@ -76,8 +77,7 @@ class LoginViewController: NSViewController {
         tryAgainButton.isEnabled = true
     }
     
-    
-    func evaluateLoginJS() {
+    func evaluateLoginJS() -> Promise<()> {
         let script = """
 // top bar
 document.getElementsByClassName("g-topbar")[0].style.display='none';
@@ -90,8 +90,28 @@ document.getElementById('g_iframe').contentDocument.getElementsByClassName("g-ft
 document.getElementById('g_iframe').contentDocument.getElementsByClassName('m-top')[0].style.display='none';
 document.getElementById('g_iframe').contentDocument.getElementsByClassName('m-subnav')[0].style.display='none';
 """
-        webView.evaluateJavaScript(script) { (_, err) in
-            print(err ?? "")
+        return evaluateJavaScript(script).map { _ in }
+    }
+    
+    func evaluateJavaScript(_ script: String) -> Promise<Any?> {
+        Promise { resolver in
+            webView.evaluateJavaScript(script) { re, error in
+                if let e = error {
+                    resolver.reject(e)
+                }
+                resolver.fulfill(re)
+            }
+        }
+    }
+    
+    func syncCookies() -> Promise<()> {
+        Promise { resolver in
+            WKWebsiteDataStore.default().httpCookieStore.getAllCookies {
+                $0.forEach {
+                    HTTPCookieStorage.shared.setCookie($0)
+                }
+                resolver.fulfill_()
+            }
         }
     }
 }
@@ -110,17 +130,20 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
         
         switch urlC.fragment {
         case "/login":
-            evaluateLoginJS()
-            selectTab(.webView)
+            evaluateLoginJS().done {
+                self.selectTab(.webView)
+            }.catch {
+                print($0)
+            }
         case "/discover":
             webView.stopLoading()
-            WKWebsiteDataStore.default().httpCookieStore.getAllCookies {
-                $0.forEach {
-                    HTTPCookieStorage.shared.setCookie($0)
-                }
+            
+            syncCookies().done {
                 NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
                 
                 webView.load(URLRequest(url: URL(string:"about:blank")!))
+            }.catch {
+                print($0)
             }
         default:
             break
