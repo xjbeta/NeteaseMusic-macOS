@@ -49,18 +49,18 @@
                                     </tabViewItem>
                                     <tabViewItem label="View" identifier="2" id="ZXc-LT-ZFy" userLabel="Progress">
                                         <view key="view" id="Wt4-uR-3Id">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="440"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="425"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="26" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeE-pN-rPE">
-                                                    <rect key="frame" x="247" y="183" width="60" height="75"/>
+                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeE-pN-rPE">
+                                                    <rect key="frame" x="257" y="183" width="40" height="60"/>
                                                     <subviews>
                                                         <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ZAn-Me-Ku1">
-                                                            <rect key="frame" x="14" y="43" width="32" height="32"/>
+                                                            <rect key="frame" x="4" y="28" width="32" height="32"/>
                                                         </progressIndicator>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kuS-BE-Xs0">
-                                                            <rect key="frame" x="-2" y="0.0" width="64" height="17"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Loading..." id="sVA-1V-IVs">
+                                                            <rect key="frame" x="-2" y="0.0" width="44" height="16"/>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="加载中" id="sVA-1V-IVs">
                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -85,14 +85,14 @@
                                     </tabViewItem>
                                     <tabViewItem label="Item 2" identifier="" id="JOF-i9-JwW" userLabel="TryAgain">
                                         <view key="view" id="niE-ia-3Qj">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="440"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="425"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ls-PG-KNf">
-                                                    <rect key="frame" x="235" y="195" width="85" height="50"/>
+                                                    <rect key="frame" x="240" y="189" width="75" height="48"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LxS-D9-uoc">
-                                                            <rect key="frame" x="38" y="33" width="8" height="17"/>
+                                                            <rect key="frame" x="33" y="32" width="8" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="4Uq-uO-oFl">
                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -100,8 +100,11 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RfU-JD-fZM">
-                                                            <rect key="frame" x="-6" y="-7" width="97" height="32"/>
-                                                            <buttonCell key="cell" type="push" title="Try Again" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LLW-Na-Qna">
+                                                            <rect key="frame" x="-7" y="-7" width="89" height="32"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="75" id="ZkK-pG-CBz"/>
+                                                            </constraints>
+                                                            <buttonCell key="cell" type="push" title="重试" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LLW-Na-Qna">
                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                                 <string key="keyEquivalent" base64-UTF8="YES">
