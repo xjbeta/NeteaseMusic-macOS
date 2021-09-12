@@ -58,10 +58,14 @@ class DiscoverViewController: NSViewController, ContentTabViewController {
     
     func initRecommendedItems(_ playlists: [RecommendResource.Playlist]) {
         recommendedItems.removeAll()
-        recommendedItems.append(RecommendItem(title: "每日歌曲推荐", type: .dailyPlaylist))
-        playlists.forEach {
-            recommendedItems.append(RecommendItem(title: $0.name, id: $0.id, alg: $0.alg, imageU: $0.picUrl))
-        }
+        
+        var items = [RecommendItem]()
+        items.append(RecommendItem(title: "每日歌曲推荐", type: .dailyPlaylist))
+        items.append(contentsOf: playlists.map({
+            RecommendItem(title: $0.name, id: $0.id, alg: $0.alg, imageU: $0.picUrl)
+        }))
+        
+        recommendedItems = items
     }
     
 }
