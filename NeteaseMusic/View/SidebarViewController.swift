@@ -23,6 +23,7 @@ class SidebarViewController: NSViewController {
         guard !str.isEmpty else {
             return
         }
+        searchFieldDidStartSearching(sender)
         
         ViewControllerManager.shared.searchFieldString = str
         
@@ -185,14 +186,26 @@ class SidebarViewController: NSViewController {
                         SidebarItem(type: .mySubscription),
                         SidebarItem(type: .createdPlaylists),
                         SidebarItem(type: .subscribedPlaylists)]
-    @objc dynamic var sidebarItems = [SidebarItem]()
+    @objc dynamic var sidebarItems = [SidebarItem]() {
+        didSet {
+            print("sidebarItems", sidebarItems.count)
+        }
+    }
     
     var outlineViewFrameObserver: NSObjectProtocol?
     var scrollViewObserver: NSObjectProtocol?
     var selectSidebarItemObserver: NSObjectProtocol?
     
-    private var searchMode = false
-    private var savedSidebarItems = [SidebarItem]()
+    private var searchMode = false {
+        didSet {
+            print("searchMode", searchMode)
+        }
+    }
+    private var savedSidebarItems = [SidebarItem]() {
+        didSet {
+            print("savedSidebarItems", savedSidebarItems.count)
+        }
+    }
     private var savedOutlineExpand = [Bool]()
     
     
@@ -579,6 +592,7 @@ extension SidebarViewController: TAAPMenuDelegate {
 
 extension SidebarViewController: NSSearchFieldDelegate {
     func searchFieldDidStartSearching(_ sender: NSSearchField) {
+        guard !searchMode else { return }
         searchMode = true
         savedOutlineExpand = (0..<outlineView.numberOfRows).compactMap {
             outlineView.item(atRow: $0)
@@ -591,6 +605,7 @@ extension SidebarViewController: NSSearchFieldDelegate {
     }
     
     func searchFieldDidEndSearching(_ sender: NSSearchField) {
+        guard searchMode else { return }
         searchMode = false
         sidebarItems = savedSidebarItems
         
