@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="JtO-Dh-XNL">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="JtO-Dh-XNL">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,11 +11,11 @@
             <objects>
                 <viewController id="JtO-Dh-XNL" customClass="PageSegmentedControlViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="HOY-jX-DP7">
-                        <rect key="frame" x="0.0" y="0.0" width="215" height="22"/>
+                        <rect key="frame" x="0.0" y="0.0" width="233" height="20"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nXs-rs-A7P">
-                                <rect key="frame" x="0.0" y="-1" width="215" height="23"/>
+                                <rect key="frame" x="-1" y="-2" width="235" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="capsule" trackingMode="selectOne" id="CEg-bV-Rf5">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -32,10 +33,11 @@
                             </segmentedControl>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="nXs-rs-A7P" firstAttribute="leading" secondItem="HOY-jX-DP7" secondAttribute="leading" id="V9X-wN-NGu"/>
-                            <constraint firstAttribute="trailing" secondItem="nXs-rs-A7P" secondAttribute="trailing" id="aJT-3u-LVI"/>
+                            <constraint firstItem="nXs-rs-A7P" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HOY-jX-DP7" secondAttribute="leading" id="V9X-wN-NGu"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nXs-rs-A7P" secondAttribute="trailing" id="aJT-3u-LVI"/>
                             <constraint firstItem="nXs-rs-A7P" firstAttribute="top" secondItem="HOY-jX-DP7" secondAttribute="top" id="aXg-tV-txn"/>
                             <constraint firstAttribute="bottom" secondItem="nXs-rs-A7P" secondAttribute="bottom" id="jUa-EY-uoT"/>
+                            <constraint firstItem="nXs-rs-A7P" firstAttribute="centerX" secondItem="HOY-jX-DP7" secondAttribute="centerX" id="sTJ-eB-iWF"/>
                         </constraints>
                     </view>
                     <connections>

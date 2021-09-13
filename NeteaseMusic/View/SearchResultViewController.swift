@@ -13,14 +13,16 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
     
     @IBOutlet weak var contentTabView: NSTabView!
     @IBOutlet weak var scrollView: NSScrollView!
-    @IBOutlet weak var tableHeightLayoutConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBAction func selectNewType(_ sender: NSSegmentedControl) {
         
+        contentTabView.scroll(.init(x: 0, y: 0))
+        
         resultType = .init(rawValue: sender.selectedSegment + 1) ?? .none
+        
         initContentView().done {
-
+            
         }.catch {
             print($0)
         }
@@ -77,18 +79,82 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
     
     var resultType: ResultType = .none
     
+    var tableViewFrameObserver: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     func initContent() -> Promise<()> {
         guard let item = ViewControllerManager.shared.selectedSidebarItem else {
             return .init()
         }
-        
+        initObserver()
         resultType = ResultType(item.type)
         return initContentView()
+    }
+    
+    func initObserver() {
+        guard let trackVC = trackTableVC() else {
+            return
+        }
+        trackVC.tableView.enclosingScrollView?.documentView?.postsFrameChangedNotifications = true
+
+        tableViewFrameObserver = NotificationCenter.default.addObserver(forName: NSView.frameDidChangeNotification, object: nil, queue: .main) {
+
+            guard let view = $0.object as? NSView,
+                  let docView = trackVC.tableView.enclosingScrollView?.documentView,
+                  view == docView else {
+                return
+            }
+            self.updateScrollViews()
+        }
+    }
+    
+    func updateScrollViews() {
+        guard let trackVC = trackTableVC(),
+              let docView = scrollView.documentView else {
+            return
+        }
+        
+        var size = docView.frame.size
+        
+//        tableView - 20 - PageSegmentedControlView 22 - 20 - button
+        
+        let h = tableViewHeight()
+        
+        size.height = h + 20 + 22 + 20
+        
+        let min = scrollView.frame.height
+        
+        if size.height < min {
+            size.height = min
+        }
+        
+        
+        
+        docView.setFrameSize(size)
+        docView.scroll(.init(x: 0, y: size.height))
+    }
+    
+    func tableViewHeight() -> CGFloat {
+        guard let table = resultType == .songs ? trackTableVC()?.tableView : albumArtistTableVC()?.tableView
+        else {
+            return 0
+        }
+        
+        if table.numberOfRows == 0 {
+            return table.headerView?.frame.height ?? 0
+        }
+        
+        var height = table.rowHeight * CGFloat(table.numberOfRows)
+        height += CGFloat(table.numberOfRows) * table.intercellSpacing.height
+        
+        height += table.headerView?.frame.height ?? 0
+        
+        height += 15
+        return height
     }
     
     func initContentView() -> Promise<()> {
@@ -158,14 +224,13 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
                 trackVC.tableView.reloadData()
                 trackVC.tableView.menu = self.menuContainer.menu
                 self.menuContainer.menuController?.delegate = self
-                self.initLayoutConstraint(trackVC.tableView)
             } else {
                 albumArtistVC.tableView.reloadData()
                 albumArtistVC.tableView.menu = self.menuContainer.menu
                 self.menuContainer.menuController?.delegate = self
-                self.initLayoutConstraint(albumArtistVC.tableView)
             }
             
+            self.updateScrollViews()
         }
     }
     
@@ -190,10 +255,10 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
         return vc
     }
     
-    func initLayoutConstraint(_ tableView: NSTableView) {
-        let headerViewHeight = tableView.headerView?.frame.height ?? 0
-        let height = tableView.intrinsicContentSize.height + tableView.intercellSpacing.height + headerViewHeight
-        tableHeightLayoutConstraint.constant = height
+    deinit {
+        if let o = tableViewFrameObserver {
+            NotificationCenter.default.removeObserver(o)
+        }
     }
 }
 
