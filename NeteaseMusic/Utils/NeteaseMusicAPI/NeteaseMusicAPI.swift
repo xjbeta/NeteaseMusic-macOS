@@ -9,37 +9,54 @@
 import Cocoa
 import Alamofire
 import PromiseKit
-import JavaScriptCore
 
 class NeteaseMusicAPI: NSObject {
     
-    private let channel = NMChannel()
+    let nmDeviceId = "\(UUID().uuidString)|\(UUID().uuidString)"
+    let nmAppver = "1.5.10"
     
-    lazy var pcOSSession: Session = {
-        let session = Session(configuration: .ephemeral)
-        let cookie = HTTPCookie(properties: [.domain : "music.163.com",
-                                             .name: "os",
-                                             .value: "pc",
-                                             .path: "/"])!
-        
-        URLSessionConfiguration.default.httpCookieStorage?.cookies?.forEach {
-            session.sessionConfiguration.httpCookieStorage?.setCookie($0)
-        }
-        session.sessionConfiguration.httpCookieStorage?.setCookie(cookie)
-        session.sessionConfiguration.headers = HTTPHeaders.default
-        session.sessionConfiguration.headers.update(name: "user-agent", value: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15")
-        return session
+    private lazy var channel: NMChannel = {
+        NMChannel(nmDeviceId, nmAppver)
     }()
     
-    lazy var defaultSession: Session = {
+    lazy var nmSession: Session = {
         let session = Session(configuration: .default)
+        let cookies = ["deviceId",
+                       "os",
+                       "appver",
+                       "MUSIC_U",
+                       "__csrf",
+                       "ntes_kaola_ad",
+                       "channel",
+                       "__remember_me",
+                       "NMTID",
+                       "osver"]
+        
         session.sessionConfiguration.httpCookieStorage?.cookies?.filter {
-            $0.name == "os" && $0.value == "pc"
-            }.forEach {
-                session.sessionConfiguration.httpCookieStorage?.deleteCookie($0)
+            !cookies.contains($0.name)
+        }.forEach {
+            session.sessionConfiguration.httpCookieStorage?.deleteCookie($0)
         }
+        
+        
+        ["deviceId": nmDeviceId,
+         "os": "osx",
+         "appver": nmAppver,
+         "channel": "netease",
+         "osver": "Version%2010.16%20(Build%2020G165)",
+        ].compactMap {
+            HTTPCookie(properties: [
+                .domain : ".music.163.com",
+                .name: $0.key,
+                .value: $0.value,
+                .path: "/"
+            ])
+        }.forEach {
+            session.sessionConfiguration.httpCookieStorage?.setCookie($0)
+        }
+        
         session.sessionConfiguration.headers = HTTPHeaders.default
-        session.sessionConfiguration.headers.update(name: "user-agent", value: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.2 Safari/605.1.15")
+        session.sessionConfiguration.headers.update(name: "user-agent", value: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_16) AppleWebKit/605.1.15 (KHTML, like Gecko)")
         return session
     }()
     
@@ -47,24 +64,6 @@ class NeteaseMusicAPI: NSObject {
     var csrf: String {
         get {
             return HTTPCookieStorage.shared.cookies?.filter({ $0.name == "__csrf" }).first?.value ?? ""
-        }
-    }
-    
-    lazy var cryptoJSContext: JSContext? = {
-        guard let jsContext = JSContext(),
-            let cryptoFilePath = Bundle.main.path(forResource: "Crypto", ofType: "js"),
-            let content = try? String(contentsOfFile: cryptoFilePath) else {
-                return nil
-        }
-        jsContext.evaluateScript(content)
-        return jsContext
-    }()
-    
-    
-    struct DefaultParameters: Encodable {
-        let csrfToken: String
-        enum CodingKeys: String, CodingKey {
-            case csrfToken = "csrf_token"
         }
     }
     
@@ -785,11 +784,12 @@ class NeteaseMusicAPI: NSObject {
         shouldDeSerial: Bool = false,
         debug: Bool = false) -> Promise<T> {
         
+
         
         return Promise { resolver in
             let p = try channel.serialData(params, url: url)
             
-            AF.request(url, method: .post, parameters: ["params": p]).response { re in
+            nmSession.request(url, method: .post, parameters: ["params": p]).response { re in
                 
                 if debug, let d = re.data, let str = String(data: d, encoding: .utf8) {
                     print(str)
@@ -846,20 +846,6 @@ class NeteaseMusicAPI: NSObject {
         case unknown
     }
     
-    
-    private func crypto(_ text: String, _ useJSCore: Bool = false) -> [String: String] {
-        if useJSCore {
-            guard let data = cryptoJSContext?.evaluateScript("p('\(text)')")?.toString().data(using: .utf8),
-                var json = try? JSONDecoder().decode([String: String].self, from: data) else {
-                    return [:]
-            }
-            json["params"] = json["encText"]
-            json["encText"] = nil
-            return json
-        } else {
-            return Crypto.paramsEncrypt(text)
-        }
-    }
     
     enum APIError: Error {
         case errorCode(Int)

@@ -17,7 +17,7 @@ struct NMEapiParams: Codable {
 
 struct NMEapiHeader: Codable {
     var os = "osx"
-    var appver = "1.5.10"
+    var appver: String
     var deviceId: String
     var requestId: String
     var clientSign = ""

@@ -12,8 +12,17 @@ import CryptoSwift
 class NMChannel: NSObject {
     private let EAPI_AES_KEY = "e82ckenh8dichen8"
 
-    let deviceId = "\(UUID().uuidString)|\(UUID().uuidString)"
+    let deviceId: String
+    let appver: String
+    
     let deviceIdS = UUID().uuidString.replacingOccurrences(of: "-", with: "").lowercased()
+    
+    
+    init(_ deviceId: String, _ appver: String) {
+        self.deviceId = deviceId
+        self.appver = appver
+    }
+    
     
     func serialData(_ params: [String: Any], url: String) throws -> String {
         let key = "36cd479b6b5"
@@ -52,6 +61,7 @@ class NMChannel: NSObject {
     private func eapiParams(_ params: [String: Any]) throws -> String {
         
         let header = NMEapiHeader(
+            appver: appver,
             deviceId: deviceId,
             requestId: "\(randomInt(8))")
             .jsonString()
