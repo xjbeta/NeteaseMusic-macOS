@@ -471,7 +471,7 @@ class NeteaseMusicAPI: NSObject {
             "time": time,
             "trackId": id,
             "alg": "itembased",
-            "like": true,
+            "like": like,
         ]
 
         return eapiRequest(
@@ -558,7 +558,7 @@ class NeteaseMusicAPI: NSObject {
         let p: [String: Any] = [
             "op": add ? "add" : "del",
             "pid": playlistId,
-            "trackIds": "[\(trackIds)]",
+            "trackIds": "\(trackIds)",
             "imme": true
         ]
         
