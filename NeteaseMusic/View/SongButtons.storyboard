@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="2" width="290" height="38"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-mh-aew">
-                                        <rect key="frame" x="0.0" y="-1" width="38" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="lEU-2F-Cfh"/>
                                             <constraint firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="height" multiplier="1:1" id="nsX-io-Tch"/>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DfE-Kp-XmY">
-                                        <rect key="frame" x="63" y="-1" width="38" height="39"/>
+                                        <rect key="frame" x="63" y="0.0" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="DfE-Kp-XmY" secondAttribute="height" multiplier="1:1" id="Plb-LV-c7g"/>
                                         </constraints>
@@ -46,7 +46,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sd8-dW-QcA">
-                                        <rect key="frame" x="126" y="-1" width="38" height="39"/>
+                                        <rect key="frame" x="126" y="0.0" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Sd8-dW-QcA" secondAttribute="height" multiplier="1:1" id="HnM-27-UKn"/>
                                         </constraints>
@@ -59,7 +59,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-0X-CdX">
-                                        <rect key="frame" x="189" y="-1" width="38" height="39"/>
+                                        <rect key="frame" x="189" y="0.0" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7h6-0X-CdX" secondAttribute="height" multiplier="1:1" id="GuC-vD-7tP"/>
                                         </constraints>
@@ -72,7 +72,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJI-wi-O3H">
-                                        <rect key="frame" x="252" y="-1" width="38" height="39"/>
+                                        <rect key="frame" x="252" y="0.0" width="38" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" multiplier="1:1" id="G81-eN-UVN"/>
                                         </constraints>
@@ -151,12 +151,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ce9-D4-p8I">
-                                <rect key="frame" x="82" y="318" width="154" height="24"/>
+                                <rect key="frame" x="82" y="317" width="154" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="O49-rV-WiS"/>
                                 </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Add to playlist." id="PGI-Cu-3pE">
-                                    <font key="font" metaFont="system" size="21"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="添加到歌单" id="PGI-Cu-3pE">
+                                    <font key="font" size="21" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -164,20 +164,19 @@
                             <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="66" horizontalPageScroll="10" verticalLineScroll="66" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zG1-JE-2As">
                                 <rect key="frame" x="0.0" y="0.0" width="318" height="309"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="wFt-yE-Srr">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="wFt-yE-Srr">
                                     <rect key="frame" x="0.0" y="0.0" width="318" height="309"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="kBQ-Td-KLw">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="kBQ-Td-KLw">
                                             <rect key="frame" x="0.0" y="0.0" width="318" height="309"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="315" minWidth="40" maxWidth="1000" id="wNZ-JL-kVP">
+                                                <tableColumn width="286" minWidth="40" maxWidth="1000" id="wNZ-JL-kVP">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -189,7 +188,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="SongButtonsPopUpTableCellView" id="uZv-Ar-EHd">
-                                                            <rect key="frame" x="1" y="1" width="315" height="64"/>
+                                                            <rect key="frame" x="11" y="1" width="295" height="64"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yO9-Jf-NtX">

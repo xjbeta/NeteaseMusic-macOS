@@ -32,7 +32,10 @@ class SongButtonsPopUpViewController: NSViewController {
     
     func loadPlaylists() {
         PlayCore.shared.api.userPlaylist().done(on: .main) { [weak self] in
-            self?.playlists = $0
+            self?.playlists = $0.filter {
+                !$0.subscribed
+            }
+            
             self?.tableView.reloadData()
             }.catch {
                 print("Load user playlist error: \($0).")
