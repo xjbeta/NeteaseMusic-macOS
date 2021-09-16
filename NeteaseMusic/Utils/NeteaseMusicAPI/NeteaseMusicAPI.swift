@@ -108,7 +108,7 @@ class NeteaseMusicAPI: NSObject {
     func playlistDetail(_ id: Int) -> Promise<(Playlist)> {
         struct Result: Decodable {
             let playlist: Playlist
-            let privileges: [Track.Privilege]
+            let privileges: [Track.Privilege]?
             let code: Int
         }
 
