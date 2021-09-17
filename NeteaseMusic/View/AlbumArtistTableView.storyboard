@@ -138,7 +138,7 @@
                                                                                 <constraint firstAttribute="width" secondItem="YTC-5O-U1j" secondAttribute="height" multiplier="1:1" id="e4f-fh-lbC"/>
                                                                                 <constraint firstAttribute="width" constant="60" id="ikl-u9-RGt"/>
                                                                             </constraints>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Elk-3H-2Ua"/>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="Elk-3H-2Ua"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dxi-yV-MWY">
                                                                             <rect key="frame" x="70" y="21" width="375" height="19"/>
@@ -220,7 +220,7 @@
                                                                                 <constraint firstAttribute="width" constant="60" id="IgM-yv-bCG"/>
                                                                                 <constraint firstAttribute="width" secondItem="lbe-vv-w9G" secondAttribute="height" multiplier="1:1" id="e5B-pH-aGU"/>
                                                                             </constraints>
-                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="XiJ-Bj-1Y1"/>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="XiJ-Bj-1Y1"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-Kz-iPO">
                                                                             <rect key="frame" x="70" y="21" width="42" height="19"/>
