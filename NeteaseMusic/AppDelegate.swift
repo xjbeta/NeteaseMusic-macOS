@@ -14,19 +14,24 @@ import WebKit
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var mainMenu: MainMenu!
-
+    let pc = PlayCore.shared
+    let vcm = ViewControllerManager.shared
+    
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        ViewControllerManager.shared.initAllHotKeys()
+        vcm.initAllHotKeys()
         
-        PlayCore.shared.setupSystemMediaKeys()
+        pc.setupSystemMediaKeys()
+        pc.api.startNRMListening()
         
         initCache()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
-        ViewControllerManager.shared.saveFMPlaylist()
+        vcm.saveFMPlaylist()
+        pc.api.stopNRMListening()
     }
 
     func initCache() {

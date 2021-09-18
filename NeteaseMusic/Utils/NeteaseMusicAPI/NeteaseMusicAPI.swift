@@ -12,14 +12,17 @@ import PromiseKit
 
 class NeteaseMusicAPI: NSObject {
     
-    let nmDeviceId = "\(UUID().uuidString)|\(UUID().uuidString)"
-    let nmAppver = "1.5.10"
+    let nmDeviceId: String
+    let nmAppver: String
+    let channel: NMChannel
+    let nmSession: Session
+    var reachabilityManager: NetworkReachabilityManager?
     
-    private lazy var channel: NMChannel = {
-        NMChannel(nmDeviceId, nmAppver)
-    }()
-    
-    lazy var nmSession: Session = {
+    override init() {
+        nmDeviceId = "\(UUID().uuidString)|\(UUID().uuidString)"
+        nmAppver = "1.5.10"
+        channel = NMChannel(nmDeviceId, nmAppver)
+        
         let session = Session(configuration: .default)
         let cookies = ["deviceId",
                        "os",
@@ -57,8 +60,9 @@ class NeteaseMusicAPI: NSObject {
         
         session.sessionConfiguration.headers = HTTPHeaders.default
         session.sessionConfiguration.headers.update(name: "user-agent", value: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_16) AppleWebKit/605.1.15 (KHTML, like Gecko)")
-        return session
-    }()
+        nmSession = session
+    }
+
     
     var uid = -1
     var csrf: String {
@@ -70,6 +74,29 @@ class NeteaseMusicAPI: NSObject {
     struct CodeResult: Decodable {
         let code: Int
         let msg: String?
+    }
+    
+    func startNRMListening() {
+        stopNRMListening()
+        
+        reachabilityManager = NetworkReachabilityManager(host: "music.163.com")
+        reachabilityManager?.startListening { status in
+            switch status {
+            case .reachable(.cellular):
+                print("NetworkReachability reachable cellular.")
+            case .reachable(.ethernetOrWiFi):
+                print("NetworkReachability reachable ethernetOrWiFi.")
+            case .notReachable:
+                print("NetworkReachability notReachable.")
+            case .unknown:
+                break
+            }
+        }
+    }
+    
+    func stopNRMListening() {
+        reachabilityManager?.stopListening()
+        reachabilityManager = nil
     }
     
     func nuserAccount() -> Promise<NUserProfile?> {
