@@ -186,11 +186,7 @@ class SidebarViewController: NSViewController {
                         SidebarItem(type: .mySubscription),
                         SidebarItem(type: .createdPlaylists),
                         SidebarItem(type: .subscribedPlaylists)]
-    @objc dynamic var sidebarItems = [SidebarItem]() {
-        didSet {
-            print("sidebarItems", sidebarItems.count)
-        }
-    }
+    @objc dynamic var sidebarItems = [SidebarItem]()
     
     var outlineViewFrameObserver: NSObjectProtocol?
     var scrollViewObserver: NSObjectProtocol?

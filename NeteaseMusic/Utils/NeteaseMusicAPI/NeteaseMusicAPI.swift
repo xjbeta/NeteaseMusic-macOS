@@ -108,7 +108,7 @@ class NeteaseMusicAPI: NSObject {
         return eapiRequest(
             "https://music.163.com/eapi/nuser/account/get",
             [:],
-            Result.self, debug: true).map {
+            Result.self).map {
                 $0.profile
             }
     }
