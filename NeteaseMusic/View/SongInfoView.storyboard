@@ -37,18 +37,18 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyd-iC-Rgh">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="386" height="17"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RZC-Cr-QN3">
-                                                <rect key="frame" x="-2" y="0.0" width="47" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Album:" id="P9E-c2-4BR">
-                                                    <font key="font" metaFont="system"/>
+                                                <rect key="frame" x="-2" y="0.0" width="35" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="专辑:" id="P9E-c2-4BR">
+                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ogm-Ct-1It" customClass="IdButton" customModule="NeteaseMusic" customModuleProvider="target">
-                                                <rect key="frame" x="51" y="0.0" width="50" height="17"/>
+                                                <rect key="frame" x="39" y="0.0" width="50" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="125" id="D9B-M0-Yow"/>
                                                 </constraints>
@@ -61,15 +61,15 @@
                                                 </connections>
                                             </button>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JHq-x5-WWg">
-                                                <rect key="frame" x="107" y="0.0" width="41" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Artist:" id="CGe-Lp-jnG">
-                                                    <font key="font" metaFont="system"/>
+                                                <rect key="frame" x="95" y="0.0" width="35" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="歌手:" id="CGe-Lp-jnG">
+                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="J0r-fc-9rm">
-                                                <rect key="frame" x="154" y="0.0" width="250" height="17"/>
+                                                <rect key="frame" x="136" y="0.0" width="250" height="17"/>
                                                 <connections>
                                                     <segue destination="bK1-DN-Nlz" kind="embed" id="gzq-Mi-NAP"/>
                                                 </connections>

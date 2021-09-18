@@ -32,7 +32,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     @IBOutlet weak var playNextMenuItem: NSMenuItem!
     @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
     @IBOutlet weak var removeMenuItem: NetworkRequestMenuItem!
-    @IBOutlet weak var newPlaylistMenuItem: NetworkRequestMenuItem!
+    @IBOutlet weak var newPlaylistSubMenuItem: NetworkRequestMenuItem!
+    @IBOutlet weak var newPlaylistMenuItem: NSMenuItem!
     @IBOutlet weak var addToPlaylistMenuItem: NSMenuItem!
     @IBOutlet weak var addToPlaylistMenu: NSMenu!
     @IBOutlet weak var subscribeMenuItem: NetworkRequestMenuItem!
@@ -220,7 +221,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         }
     }
     
-    @IBAction func newPlaylist(_ sender: NetworkRequestMenuItem) {
+    @IBAction func newPlaylist(_ sender: NSMenuItem) {
         guard let vc = newPlaylistViewController,
             let d = delegate else { return }
         d.presentNewPlaylist(vc)
@@ -305,7 +306,8 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             default:
                 return false
             }
-        case newPlaylistMenuItem:
+    
+        case newPlaylistMenuItem, newPlaylistSubMenuItem:
             return true
         case albumMenuItem, artistMenuItem, fromMenuItem:
             return type == .sidePlaylist && selectedIDs.count == 1
@@ -340,20 +342,20 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         switch tableViewList.type {
         case .discoverPlaylist, .discover:
             // switch to not interested
-            removeMenuItem.title = "Not Interested"
+            removeMenuItem.title = "不感兴趣"
         case .favourite, .createdPlaylist:
-            removeMenuItem.title = "Remove from Playlist"
+            removeMenuItem.title = "从歌单中删除"
         case .sidePlaylist:
-            removeMenuItem.title = "Remove"
+            removeMenuItem.title = "从列表中删除"
             let items = d.selectedItems()
             if items.id.count == 1,
                 let song = items.items.first as? Track {
-                albumMenuItem.title = "Album: \(song.album.name)"
-                artistMenuItem.title = "Artist: \(song.artists.first?.name ?? "none")"
-                fromMenuItem.title = "From: \(song.from.name ?? "Unknown")"
+                albumMenuItem.title = "专辑: \(song.album.name)"
+                artistMenuItem.title = "歌手: \(song.artists.first?.name ?? "none")"
+                fromMenuItem.title = "来自: \(song.from.name ?? "Unknown")"
             }
         case .fmTrash:
-            removeMenuItem.title = "Restore"
+            removeMenuItem.title = "还原"
         default:
             break
         }
@@ -361,13 +363,13 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         switch tableViewList.type {
         case .sidebar:
             if tableViewList.contentType == .createdPlaylist {
-                subscribeMenuItem.title = "Remove"
+                subscribeMenuItem.title = "删除歌单"
             } else {
-                subscribeMenuItem.title = "Unsubscribe"
+                subscribeMenuItem.title = "删除歌单"
             }
             subscribeMenuItem.tag = 1
         case .mySubscription:
-            subscribeMenuItem.title = "Unsubscribe"
+            subscribeMenuItem.title = "删除歌单"
             subscribeMenuItem.tag = 1
         case .searchResults, .discover:
             subscribeMenuItem.isEnabled = false
@@ -536,8 +538,10 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             switch cType {
             case .favouritePlaylist:
                 return [playNextMenuItem, playMenuItem, copyLinkMenuItem]
-            case .playlist, .createdPlaylist:
-                return [playNextMenuItem, playMenuItem, copyLinkMenuItem, subscribeMenuItem]
+            case .playlist:
+                return [playNextMenuItem, playMenuItem, copyLinkMenuItem, newPlaylistSubMenuItem, subscribeMenuItem]
+            case .createdPlaylist:
+                return [playNextMenuItem, playMenuItem, copyLinkMenuItem, newPlaylistMenuItem, subscribeMenuItem]
             default:
                 break
             }
