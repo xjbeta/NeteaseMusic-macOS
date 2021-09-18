@@ -16,23 +16,23 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="iZY-fi-8ju">
-                                <rect key="frame" x="20" y="20" width="554" height="425"/>
+                                <rect key="frame" x="20" y="60" width="554" height="382"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="Tab" identifier="1" id="ewc-fC-ECH" userLabel="WebView">
                                         <view key="view" id="s4s-Dp-PLB">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="425"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="382"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRf-54-Z4D">
-                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="425"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="382"/>
                                                     <wkWebViewConfiguration key="configuration">
                                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                                         <wkPreferences key="preferences"/>
                                                     </wkWebViewConfiguration>
                                                 </wkWebView>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="oKt-Y0-sg6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="425"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="382"/>
                                                 </customView>
                                             </subviews>
                                             <constraints>
@@ -49,30 +49,20 @@
                                     </tabViewItem>
                                     <tabViewItem label="View" identifier="2" id="ZXc-LT-ZFy" userLabel="Progress">
                                         <view key="view" id="Wt4-uR-3Id">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="425"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="382"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeE-pN-rPE">
-                                                    <rect key="frame" x="257" y="183" width="40" height="60"/>
+                                                    <rect key="frame" x="261" y="175" width="32" height="32"/>
                                                     <subviews>
                                                         <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ZAn-Me-Ku1">
-                                                            <rect key="frame" x="4" y="28" width="32" height="32"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                                         </progressIndicator>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kuS-BE-Xs0">
-                                                            <rect key="frame" x="-2" y="0.0" width="44" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="加载中" id="sVA-1V-IVs">
-                                                                <font key="font" usesAppearanceFont="YES"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
                                                     </subviews>
                                                     <visibilityPriorities>
                                                         <integer value="1000"/>
-                                                        <integer value="1000"/>
                                                     </visibilityPriorities>
                                                     <customSpacing>
-                                                        <real value="3.4028234663852886e+38"/>
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
                                                 </stackView>
@@ -85,11 +75,11 @@
                                     </tabViewItem>
                                     <tabViewItem label="Item 2" identifier="" id="JOF-i9-JwW" userLabel="TryAgain">
                                         <view key="view" id="niE-ia-3Qj">
-                                            <rect key="frame" x="0.0" y="0.0" width="554" height="425"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="554" height="382"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ls-PG-KNf">
-                                                    <rect key="frame" x="240" y="189" width="75" height="48"/>
+                                                    <rect key="frame" x="240" y="167" width="75" height="48"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LxS-D9-uoc">
                                                             <rect key="frame" x="33" y="32" width="8" height="16"/>
@@ -134,12 +124,27 @@ DQ
                                     </tabViewItem>
                                 </tabViewItems>
                             </tabView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j61-PH-06u">
+                                <rect key="frame" x="492" y="13" width="89" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="OYv-jW-C8Q"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="刷新" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkT-16-XId">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="Refresh:" target="5fk-7F-ndf" id="Wap-Ep-3XJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iZY-fi-8ju" secondAttribute="trailing" constant="20" id="37t-wr-HAc"/>
-                            <constraint firstItem="iZY-fi-8ju" firstAttribute="top" secondItem="aDx-MT-LO0" secondAttribute="top" constant="35" id="PBJ-QJ-WhY"/>
+                            <constraint firstAttribute="trailing" secondItem="j61-PH-06u" secondAttribute="trailing" constant="20" symbolic="YES" id="HV7-gN-fVW"/>
+                            <constraint firstItem="iZY-fi-8ju" firstAttribute="top" secondItem="aDx-MT-LO0" secondAttribute="top" constant="38" id="PBJ-QJ-WhY"/>
+                            <constraint firstItem="j61-PH-06u" firstAttribute="top" secondItem="iZY-fi-8ju" secondAttribute="bottom" constant="20" id="SNo-y9-brO"/>
                             <constraint firstItem="iZY-fi-8ju" firstAttribute="leading" secondItem="aDx-MT-LO0" secondAttribute="leading" constant="20" id="TWR-ch-zFH"/>
-                            <constraint firstAttribute="bottom" secondItem="iZY-fi-8ju" secondAttribute="bottom" constant="20" id="m8P-oT-t9m"/>
+                            <constraint firstAttribute="bottom" secondItem="j61-PH-06u" secondAttribute="bottom" constant="20" id="phd-Fo-xG7"/>
                         </constraints>
                     </view>
                     <connections>

@@ -30,25 +30,38 @@ class LoginViewController: NSViewController {
     let discoverURL = URL(string: "https://music.163.com/#/discover")
     
     
-    var shouldTryAgain = false
+    @IBAction func Refresh(_ sender: NSButton) {
+        initViews()
+    }
+
+    private var checkingCookies = false
+    private var cookieStoreObserverStarted = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        clearCookies()
-
-//        WKWebsiteDataStore.default().httpCookieStore.add(self)
     }
     
     func initViews() {
-        tryAgainButton.isEnabled = false
-        thirdPartyWebView = nil
-        thirdPartyWebView?.isHidden = true
-        progressIndicator.startAnimation(nil)
-        selectTab(.progress)
-        loadWebView()
+        if let isReachable = PlayCore.shared.api.reachabilityManager?.isReachable,
+           !isReachable {
+            showUnknownError()
+        } else {
+            startCookieStoreObserver()
+            checkingCookies = false
+            tryAgainButton.isEnabled = false
+            thirdPartyWebView?.isHidden = true
+            thirdPartyWebView = nil
+            webView.stopLoading()
+            webView.load(URLRequest(url: URL(string:"about:blank")!))
+            
+            selectTab(.progress)
+            loadWebView()
+        }
     }
     
     func loadWebView() {
+
         webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -67,13 +80,18 @@ class LoginViewController: NSViewController {
     }
     
     func selectTab(_ tab: Tabs) {
+        if tab == .progress {
+            progressIndicator.startAnimation(nil)
+        } else {
+            progressIndicator.stopAnimation(nil)
+        }
+        
         tabView.selectTabViewItem(at: tab.rawValue)
     }
     
     func showUnknownError() {
         selectTab(.result)
-        resultTextField.stringValue = "Unkown error."
-        shouldTryAgain = true
+        resultTextField.stringValue = "未知错误."
         tryAgainButton.isEnabled = true
     }
     
@@ -114,6 +132,20 @@ document.getElementById('g_iframe').contentDocument.getElementsByClassName('m-su
             }
         }
     }
+    
+    func startCookieStoreObserver(_ start: Bool = true) {
+        let httpCookieStore = WKWebsiteDataStore.default().httpCookieStore
+        if start, !cookieStoreObserverStarted {
+            httpCookieStore.add(self)
+        } else if !start, cookieStoreObserverStarted {
+            httpCookieStore.remove(self)
+        }
+        
+    }
+    
+    deinit {
+        startCookieStoreObserver(false)
+    }
 }
 
 
@@ -135,16 +167,6 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
             }.catch {
                 print($0)
             }
-        case "/discover":
-            webView.stopLoading()
-            
-            syncCookies().done {
-                NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
-                
-                webView.load(URLRequest(url: URL(string:"about:blank")!))
-            }.catch {
-                print($0)
-            }
         default:
             break
         }
@@ -155,6 +177,8 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
             print("createWebView from unknown webview.")
             return nil
         }
+        
+        print(#function)
         
         thirdPartyWebView = WKWebView(frame: NSZeroRect, configuration: configuration)
         guard let tWebView = thirdPartyWebView else { return nil }
@@ -174,22 +198,8 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         guard webView == thirdPartyWebView, webView.url?.host == "music.163.com" else { return }
+        
         webView.isHidden = true
-    }
-    
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        
-        guard let urlStr = navigationAction.request.url?.absoluteString else {
-            decisionHandler(.cancel)
-            return
-        }
-        
-        print(#function, urlStr)
-        
-        if urlStr == "https://music.163.com/discover" {
-            selectTab(.progress)
-        }
-        decisionHandler(.allow)
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
@@ -206,6 +216,8 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
                 print("Error code: " + String(describing: err.code) + "  does not fall under known failures")
             }
         }
+        
+        showUnknownError()
     }
 }
 
@@ -215,13 +227,33 @@ extension LoginViewController: WKHTTPCookieStoreObserver {
             let names = $0.map {
                 $0.name
             }
-            print(names)
             
-//            let items = $0.filter {
-//                ["MUSIC_U", "__remember_me", "__csrf"].contains($0.name)
-//            }
-//
-//            print(items)
+            guard Set(names).intersection(["MUSIC_U", "__csrf"]).count == 2,
+                  !self.checkingCookies else {
+                return
+            }
+            
+            print("Login Cookies Passed.")
+            
+            
+            self.checkingCookies = true
+            self.selectTab(.progress)
+            
+            self.webView.stopLoading()
+            self.webView.load(URLRequest(url: URL(string:"about:blank")!))
+            
+            self.syncCookies().then {
+                PlayCore.shared.api.nuserAccount()
+            }.ensure {
+                self.checkingCookies = false
+            }.done { _ in
+                print("Login Success.")
+                NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
+                self.startCookieStoreObserver(false)
+            }.catch {
+                print($0)
+                self.showUnknownError()
+            }
         }
     }
 }
