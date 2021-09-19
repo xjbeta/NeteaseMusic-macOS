@@ -156,7 +156,7 @@ class MainViewController: NSViewController {
             self.loadingProgressIndicator.stopAnimation(nil)
         }.done(on:.main) {
             self.contentTabView.selectTabViewItem(at: ctItem.rawValue)
-            print("\(ctItem) Content inited.")
+            print("\(ctItem) \(item.id) Content inited.")
         }.catch {
             print("\(ctItem) Content init failed.  \($0)")
             self.loadingTabView.selectTabViewItem(at: loadingTabItems.tryAgain.rawValue)

@@ -29,7 +29,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bq-Cn-cYr">
-                                                            <rect key="frame" x="12" y="436" width="216" height="30"/>
+                                                            <rect key="frame" x="12" y="439" width="216" height="30"/>
                                                             <searchFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="b9y-wR-LLL">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -40,7 +40,7 @@
                                                             </connections>
                                                         </searchField>
                                                         <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="29" horizontalPageScroll="10" verticalLineScroll="29" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR7-ab-Tuc" customClass="UnresponsiveScrollView" customModule="NeteaseMusic" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="182" width="240" height="250"/>
+                                                            <rect key="frame" x="0.0" y="185" width="240" height="250"/>
                                                             <clipView key="contentView" drawsBackground="NO" id="0ik-Y0-pfX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="250"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,7 +114,6 @@
                                                                                                 </textFieldCell>
                                                                                                 <connections>
                                                                                                     <binding destination="Hcm-a1-mgv" name="value" keyPath="objectValue.title" id="83b-z4-ezs"/>
-                                                                                                    <binding destination="Hcm-a1-mgv" name="textColor" keyPath="objectValue.titleColor" id="YHB-G4-QDp"/>
                                                                                                 </connections>
                                                                                             </textField>
                                                                                         </subviews>

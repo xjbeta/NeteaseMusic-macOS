@@ -77,12 +77,7 @@ class SidebarViewController: NSViewController {
     @objc class SidebarItem: NSObject {
         @objc dynamic var title: String
         @objc dynamic var secondTitle = ""
-        @objc dynamic var titleColor: NSColor {
-            get {
-                return selected ? .nColor : .labelColor
-            }
-        }
-        
+
         @objc dynamic var icon: NSImage? {
             get {
                 var i: NSImage?
@@ -101,7 +96,7 @@ class SidebarViewController: NSViewController {
                     break
                 }
                 
-                return i?.tint(color: titleColor)
+                return i?.tint(color: .nColor)
             }
         }
         var id: Int = 0
@@ -520,14 +515,6 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
             searchField.stringValue = ""
             searchFieldDidEndSearching(searchField)
         } else {
-            sidebarItems.forEach {
-                $0.selected = false
-                $0.childrenItems.forEach {
-                    $0.selected = false
-                }
-            }
-            
-            item.selected = true
             
             ViewControllerManager.shared.selectedSidebarItem = item
         }
