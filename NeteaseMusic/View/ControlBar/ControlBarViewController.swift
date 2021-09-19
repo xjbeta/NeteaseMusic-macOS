@@ -217,6 +217,8 @@ class ControlBarViewController: NSViewController {
         durationSlider.doubleValue = 0
         durationSlider.cachedDoubleValue = 0
         durationTextField.stringValue = "00:00 / 00:00"
+        
+        durationSlider.mouseResponse = !durationTextField.isHidden
     }
 
     

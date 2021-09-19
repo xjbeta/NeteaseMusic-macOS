@@ -18,11 +18,22 @@ class PlayerSlider: NSSlider {
     
     var cachedDoubleValue = 0.0
     var ignoreValueUpdate = false
+    
+    var mouseResponse = false {
+        didSet {
+            updateMouse()
+        }
+    }
+    
     var mouseIn = false {
         didSet {
-            (cell as? PlayerSliderCell)?.mouseIn = mouseIn
-            needsDisplay = true
+            updateMouse()
         }
+    }
+    
+    func updateMouse() {
+        (cell as? PlayerSliderCell)?.mouseIn = mouseIn && mouseResponse
+        needsDisplay = true
     }
     
     func updateValue(_ value: Double) {
@@ -32,6 +43,11 @@ class PlayerSlider: NSSlider {
     }
     
     override func mouseDown(with event: NSEvent) {
+        guard mouseResponse else {
+            doubleValue = 0
+            return
+        }
+        
         ignoreValueUpdate = true
         super.mouseDown(with: event)
     }
