@@ -40,7 +40,21 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
         let subscribed = sender.subscribed
         let api = PlayCore.shared.api
         
-        api.subscribe(id, unsubscribe: subscribed, type: .playlist)
+        
+        var type: TAAPItemsType = .none
+        
+        switch playlistType {
+        case .album:
+            type = .album
+        case .artist:
+            type = .artist
+        case .subscribedPlaylist:
+            type = .playlist
+        default:
+            return
+        }
+        
+        api.subscribe(id, unsubscribe: subscribed, type: type)
             .ensure(on: .main) {
                 sender.isEnabled = true
         }.done {
@@ -49,7 +63,9 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
             vc.children.compactMap {
                 $0 as? SidebarViewController
             }.first?.updatePlaylists()
-            print("playlist subscribe / unsubscribe success")
+            
+            
+            print("\(type) \(subscribed ? "unsubscribe" : "subscribe") success")
         }.catch {
             print($0)
         }
@@ -133,7 +149,7 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
         typeList = [.album, .topSongs, .discoverPlaylist]
         countAndViewsStackView.isHidden = typeList.contains(playlistType)
         artistStackView.isHidden = playlistType != .album
-        typeList = [.topSongs, .discoverPlaylist, .favourite, .fmTrash]
+        typeList = [.topSongs, .discoverPlaylist, .favourite, .fmTrash, .createdPlaylist]
         subscribeButton.isHidden = typeList.contains(playlistType)
         subscribeButton.isEnabled = true
         descriptionStackView.isHidden = playlistType == .topSongs
