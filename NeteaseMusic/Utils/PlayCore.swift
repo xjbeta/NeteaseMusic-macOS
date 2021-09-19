@@ -156,6 +156,14 @@ class PlayCore: NSObject {
     func start(_ playlist: [Track],
                id: Int = -1,
                enterFMMode: Bool = false) {
+        
+        let pl = playlist.filter {
+            $0.playable
+        }
+        guard pl.count > 0 else {
+            return
+        }
+        
         var sid = id
         if fmMode {
             if !enterFMMode {
@@ -166,14 +174,10 @@ class PlayCore: NSObject {
         }
         fmMode = enterFMMode
         
-        self.playlist = playlist.filter {
-            $0.playable
-        }
-        guard self.playlist.count > 0 else {
-            return
-        }
+        stop()
         
-        currentTrack = nil
+        self.playlist = pl
+        
         initInternalPlaylist(sid)
         updateInternalPlaylist()
 
