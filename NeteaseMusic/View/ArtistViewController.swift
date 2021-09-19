@@ -205,4 +205,30 @@ extension ArtistViewController: TAAPMenuDelegate {
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
         return
     }
+    
+    func startPlay() {
+        guard let item = items.enumerated().first(where: { tableView.selectedIndexs().contains($0.offset)
+        })?.element else {
+            return
+        }
+        let pc = PlayCore.shared
+        
+        var p: Promise<[Track]>?
+        
+        switch item.type {
+        case .album:
+            guard let id = item.album?.id else { return }
+            p = pc.api.album(id).map({ $0.songs })
+        case .topSongs:
+            p = pc.api.artist(id).map({ $0.hotSongs })
+        default:
+            break
+        }
+        
+        p?.done {
+            pc.start($0)
+        }.catch {
+            print($0)
+        }
+    }
 }

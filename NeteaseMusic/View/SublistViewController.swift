@@ -124,7 +124,11 @@ extension SublistViewController: TAAPMenuDelegate {
     }
     
     func shouldReloadData() {
-        initContent()
+        initContent().done {
+            
+        }.catch {
+            print($0)
+        }
     }
     
     func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
@@ -132,5 +136,19 @@ extension SublistViewController: TAAPMenuDelegate {
             return (.none, 0, .none)
         }
         return (.mySubscription, 0, vc.dataType)
+    }
+    
+    func startPlay() {
+        guard let items = selectedItems().items as? [Track.Album],
+              let item = items.first
+        else { return }
+        let pc = PlayCore.shared
+        pc.api.album(item.id).map {
+            $0.songs
+        }.done {
+            pc.start($0)
+        }.catch {
+            print($0)
+        }
     }
 }

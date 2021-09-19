@@ -144,4 +144,12 @@ extension SidePlaylistViewController: TAAPMenuDelegate {
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
         return
     }
+    
+    func startPlay() {
+        guard let tracks = selectedItems().items as? [Track] else {
+            return
+        }
+        
+        PlayCore.shared.start(tracks)
+    }
 }

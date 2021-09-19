@@ -576,12 +576,35 @@ extension SidebarViewController: TAAPMenuDelegate {
     }
     
     func shouldReloadData() {
-        updatePlaylists()
+        updatePlaylists().done {
+            
+        }.catch {
+            print($0)
+        }
     }
     
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
         guard newPlaylisyVC.presentingViewController == nil else { return }
         self.presentAsSheet(newPlaylisyVC)
+    }
+    
+    func startPlay() {
+        guard let item = (outlineView.item(atRow: outlineView.clickedRow) as? NSTreeNode)?.representedObject as? SidebarItem else {
+            return
+        }
+        let pc = PlayCore.shared
+        switch item.type {
+        case .createdPlaylist, .subscribedPlaylist, .favourite:
+            pc.api.playlistDetail(item.id).compactMap {
+                $0.tracks
+            }.done {
+                pc.start($0)
+            }.catch {
+                print($0)
+            }
+        default:
+            break
+        }
     }
 }
 

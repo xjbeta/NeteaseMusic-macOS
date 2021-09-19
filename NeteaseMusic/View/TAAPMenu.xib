@@ -16,12 +16,6 @@
                         <action selector="play:" target="48W-pb-Hku" id="5w6-hs-I8m"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Play Next" id="Gko-X4-vJt">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="playNext:" target="48W-pb-Hku" id="3FK-uq-nLB"/>
-                    </connections>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="Iu1-HB-nLI"/>
                 <menuItem title="Album:" id="ZI8-mQ-h0N">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -101,7 +95,6 @@
                 <outlet property="newPlaylistMenuItem" destination="HpH-du-Uon" id="qSL-9T-bim"/>
                 <outlet property="newPlaylistSubMenuItem" destination="gob-TS-Ri1" id="5NM-JS-AL1"/>
                 <outlet property="playMenuItem" destination="yC1-xH-8EK" id="iZM-TJ-JLh"/>
-                <outlet property="playNextMenuItem" destination="Gko-X4-vJt" id="BeC-ds-2Gi"/>
                 <outlet property="removeMenuItem" destination="I6h-h1-Lgu" id="Vyz-4T-iHA"/>
                 <outlet property="subscribeMenuItem" destination="eU7-V4-rwk" id="0ys-IA-49Q"/>
             </connections>

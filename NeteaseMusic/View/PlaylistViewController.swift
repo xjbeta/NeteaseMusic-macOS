@@ -27,8 +27,8 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
     @IBOutlet weak var countAndViewsStackView: NSStackView!
     @IBOutlet weak var artistStackView: NSStackView!
     
-    @IBAction func playPlaylist(_ sender: Any) {
-        if (sender as? NSButton) == playAllButton {
+    @IBAction func playPlaylist(_ sender: NSButton) {
+        if sender == playAllButton {
             PlayCore.shared.start(tracks)
         }
     }
@@ -297,11 +297,22 @@ extension PlaylistViewController: TAAPMenuDelegate {
     }
     
     func shouldReloadData() {
-        initPlaylistContent()
+        initPlaylistContent().done {
+            
+        }.catch {
+            print($0)
+        }
     }
     
     func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
         return (playlistType, playlistId, .song)
     }
     
+    func startPlay() {
+        guard let tracks = selectedItems().items as? [Track] else {
+            return
+        }
+        
+        PlayCore.shared.start(tracks)
+    }
 }

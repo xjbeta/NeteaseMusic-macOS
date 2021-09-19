@@ -20,6 +20,8 @@ protocol TAAPMenuDelegate {
     func removeSuccess(ids: [Int], newItem: Any?)
     func shouldReloadData()
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController)
+    
+    func startPlay()
 }
 
 class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
@@ -29,7 +31,6 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
 // MARK: - Menu
     @IBOutlet var menu: NSMenu!
     @IBOutlet weak var playMenuItem: NSMenuItem!
-    @IBOutlet weak var playNextMenuItem: NSMenuItem!
     @IBOutlet weak var copyLinkMenuItem: NSMenuItem!
     @IBOutlet weak var removeMenuItem: NetworkRequestMenuItem!
     @IBOutlet weak var newPlaylistSubMenuItem: NetworkRequestMenuItem!
@@ -45,45 +46,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
 // MARK: - Menu Actions
     @IBAction func play(_ sender: NSMenuItem) {
         guard let d = delegate else { return }
-        let pc = PlayCore.shared
-        if d.tableViewList().type == .sidePlaylist {
-            guard let id = d.selectedItems().id.first else {
-                return
-            }
-            pc.start(pc.playlist, id: id)
-        } else {
-            getTracksForPlay().done {
-                let ts = $0
-                if ts.count > 0 {
-                    pc.playlist = ts
-                    pc.start(ts)
-                } else {
-                    print("Play empty tracks.")
-                }
-            }.catch {
-                print($0)
-            }
-        }
-    }
-    
-    @IBAction func playNext(_ sender: NSMenuItem) {
-        let pc = PlayCore.shared
-        getTracksForPlay().done {
-            let ts = $0
-            if ts.count > 0 {
-                if let c = pc.currentTrack,
-                    let i = pc.playlist.firstIndex(of: c) {
-                    pc.playlist.insert(contentsOf: ts, at: i + 1)
-                } else {
-                    pc.playlist = ts
-                    pc.start(ts)
-                }
-            } else {
-                print("Play empty tracks.")
-            }
-        }.catch {
-            print($0)
-        }
+        d.startPlay()
     }
     
     @IBAction func copyLink(_ sender: NSMenuItem) {
@@ -295,7 +258,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         switch menuItem {
         case copyLinkMenuItem, subscribeMenuItem:
             return selectedIDs.count == 1
-        case playMenuItem, playNextMenuItem:
+        case playMenuItem:
             return selectedIDs.count > 0
         case removeMenuItem:
             switch type {
@@ -478,16 +441,16 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         guard let d = delegate else { return [] }
         let type = d.tableViewList().type
         let cType = d.tableViewList().contentType
-        let albumItems: [NSMenuItem] = [playMenuItem, playNextMenuItem, copyLinkMenuItem, subscribeMenuItem]
-        let songItems: [NSMenuItem] =  [playMenuItem, playNextMenuItem, copyLinkMenuItem, addToPlaylistMenuItem]
-        let songItems2: [NSMenuItem] =  [playMenuItem, playNextMenuItem, copyLinkMenuItem, addToPlaylistMenuItem, removeMenuItem]
+        let albumItems: [NSMenuItem] = [playMenuItem, copyLinkMenuItem, subscribeMenuItem]
+        let songItems: [NSMenuItem] =  [playMenuItem, copyLinkMenuItem, addToPlaylistMenuItem]
+        let songItems2: [NSMenuItem] =  [playMenuItem, copyLinkMenuItem, addToPlaylistMenuItem, removeMenuItem]
         switch type {
         case .discover:
             switch cType {
             case .dailyPlaylist:
-                return [playMenuItem, playNextMenuItem]
+                return [playMenuItem]
             case .playlist:
-                return [playMenuItem, playNextMenuItem, copyLinkMenuItem, subscribeMenuItem, removeMenuItem]
+                return [playMenuItem, copyLinkMenuItem, subscribeMenuItem, removeMenuItem]
             default:
                 break
             }
@@ -500,7 +463,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         case .artist:
             switch cType {
             case .topSongs:
-                return [playMenuItem, playNextMenuItem]
+                return [playMenuItem]
             case .album:
                 return albumItems
             default:
@@ -537,11 +500,11 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         case .sidebar:
             switch cType {
             case .favouritePlaylist:
-                return [playNextMenuItem, playMenuItem, copyLinkMenuItem]
+                return [playMenuItem, copyLinkMenuItem]
             case .playlist:
-                return [playNextMenuItem, playMenuItem, copyLinkMenuItem, newPlaylistSubMenuItem, subscribeMenuItem]
+                return [playMenuItem, copyLinkMenuItem, newPlaylistSubMenuItem, subscribeMenuItem]
             case .createdPlaylist:
-                return [playNextMenuItem, playMenuItem, copyLinkMenuItem, newPlaylistMenuItem, subscribeMenuItem]
+                return [playMenuItem, copyLinkMenuItem, newPlaylistMenuItem, subscribeMenuItem]
             default:
                 break
             }
