@@ -512,7 +512,9 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
                 break
             }
             
-            searchField.stringValue = ""
+            searchField.stringValue = "" 
+            
+            usleep(useconds_t(500))
             searchFieldDidEndSearching(searchField)
         } else {
             
