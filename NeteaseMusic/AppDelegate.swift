@@ -37,6 +37,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func initCache() {
         // Music cache
         print("Music Cache Path: \n", VideoCacheManager.directory)
+        let vcm = ViewControllerManager.shared
+        vcm.cleanMusicCache()
         
         
         // Image cache

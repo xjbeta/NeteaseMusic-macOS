@@ -8,6 +8,7 @@
 
 import Cocoa
 import HotKey
+import GSPlayer
 
 class ViewControllerManager: NSObject {
     static let shared = ViewControllerManager()
@@ -209,6 +210,48 @@ class ViewControllerManager: NSObject {
         }
         let id = vc.currentTrackId
         Preferences.shared.fmPlaylist = (id, pl)
+    }
+    
+    func cleanMusicCache() {
+        let fm = FileManager.default
+        let path = VideoCacheManager.directory
+        let contents = (try? fm.contentsOfDirectory(atPath: path)) ?? []
+        guard contents.count > 0 else { return }
+        
+        let maxSize = UInt64(Preferences.shared.cacheSize) * 1_000_000
+        
+        var size: UInt64 = 0
+        var isfull = false
+        var deleteList = [String]()
+        
+        contents.filter {
+            NSString(string: $0).pathExtension != "cfg"
+        }.compactMap { name -> (String, Date, Int)? in
+            guard let attributes = try? fm.attributesOfItem(atPath: path + "/" + name),
+                  let date = attributes[FileAttributeKey.creationDate] as? Date,
+                  let size = attributes[FileAttributeKey.size] as? Int
+            else {
+                return nil
+            }
+            return (name, date, size)
+        }.sorted { f1, f2 in
+            f1.1 > f2.1
+        }.forEach {
+            size += UInt64($0.2)
+            if !isfull, size > maxSize {
+                isfull = true
+            }
+            
+            if isfull {
+                deleteList.append($0.0)
+            }
+        }
+        
+        deleteList.forEach {
+            let path = path + "/" + $0
+            try? fm.removeItem(atPath: path)
+            try? fm.removeItem(atPath: path + ".cfg")
+        }
     }
 }
 
