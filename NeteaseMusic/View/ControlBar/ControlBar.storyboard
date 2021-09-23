@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="OYD-vG-24V">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="OYD-vG-24V">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +35,7 @@
                                             </connections>
                                         </button>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1A-BQ-5Ag" userLabel="Volume Stack View">
-                                            <rect key="frame" x="516" y="18" width="136" height="20"/>
+                                            <rect key="frame" x="510" y="18" width="136" height="20"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-B2-GAl">
                                                     <rect key="frame" x="0.0" y="2" width="28" height="15"/>
@@ -72,7 +72,7 @@
                                             </customSpacing>
                                         </stackView>
                                         <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D0e-1L-ctA" userLabel="PlayMode Stack View">
-                                            <rect key="frame" x="672" y="18" width="144" height="20"/>
+                                            <rect key="frame" x="666" y="18" width="144" height="20"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ihI-ao-Zda">
                                                     <rect key="frame" x="-7" y="-7" width="54" height="32"/>
@@ -201,7 +201,7 @@
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-nr-1oj">
                                                             <rect key="frame" x="38" y="0.0" width="76" height="15"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" title="second name" id="NWZ-9c-nZ5">
-                                                                <font key="font" metaFont="system" size="12"/>
+                                                                <font key="font" metaFont="cellTitle"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -257,7 +257,7 @@
                                         <constraint firstItem="tTn-fn-E7d" firstAttribute="leading" secondItem="3Ug-Nc-Qef" secondAttribute="leading" constant="6" id="92v-Rl-hGf"/>
                                         <constraint firstItem="D0e-1L-ctA" firstAttribute="leading" secondItem="F1A-BQ-5Ag" secondAttribute="trailing" constant="20" id="IZE-EF-ZYV"/>
                                         <constraint firstItem="VM5-Nf-Rg3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Syb-ra-XyK" secondAttribute="trailing" constant="8" id="QtA-C3-OJK"/>
-                                        <constraint firstAttribute="trailing" secondItem="D0e-1L-ctA" secondAttribute="trailing" constant="6" id="mkg-95-2Qr"/>
+                                        <constraint firstAttribute="trailing" secondItem="D0e-1L-ctA" secondAttribute="trailing" constant="12" id="mkg-95-2Qr"/>
                                         <constraint firstItem="Syb-ra-XyK" firstAttribute="centerY" secondItem="3Ug-Nc-Qef" secondAttribute="centerY" id="t3K-rT-zgo"/>
                                         <constraint firstItem="Des-9I-q0L" firstAttribute="centerX" secondItem="3Ug-Nc-Qef" secondAttribute="centerX" id="wfa-GF-bBw"/>
                                         <constraint firstItem="tTn-fn-E7d" firstAttribute="centerY" secondItem="3Ug-Nc-Qef" secondAttribute="centerY" id="xg6-M3-Ypw"/>
@@ -322,12 +322,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backward.fill" width="18" height="10"/>
-        <image name="forward.fill" width="18" height="10"/>
-        <image name="music.note.list" width="13" height="13"/>
-        <image name="play.circle" width="13" height="13"/>
-        <image name="repeat.1" width="14" height="12"/>
-        <image name="shuffle" width="15" height="12"/>
-        <image name="speaker" width="8" height="12"/>
+        <image name="backward.fill" width="23" height="13"/>
+        <image name="forward.fill" width="23" height="13"/>
+        <image name="music.note.list" width="17" height="17"/>
+        <image name="play.circle" width="17" height="17"/>
+        <image name="repeat.1" width="18" height="15"/>
+        <image name="shuffle" width="19" height="15"/>
+        <image name="speaker" width="10" height="15"/>
     </resources>
 </document>
