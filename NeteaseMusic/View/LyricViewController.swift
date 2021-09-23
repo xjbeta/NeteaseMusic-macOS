@@ -14,6 +14,9 @@ class LyricViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var textField: NSTextField!
     
+    var mouseInLyric = false
+    var autoScrollLyrics = true
+    
     struct Lyricline {
         enum LyricType {
             case first, second, both
@@ -50,7 +53,12 @@ class LyricViewController: NSViewController {
         super.viewDidLoad()
         textField.isHidden = true
         tableView.refusesFirstResponder = true
+        
+
+        initTrackingArea()
     }
+    
+    
     
     func updateLyric(_ time: Double) {
         var periodicMS = Int(time * 1000)
@@ -72,7 +80,7 @@ class LyricViewController: NSViewController {
         }
         let indexSet = IndexSet(offsets)
         tableView.reloadData(forRowIndexes: indexSet, columnIndexes: .init(integer: 0))
-        guard let i = offsets.first else { return }
+        guard let i = offsets.first, autoScrollLyrics else { return }
 
         let frame = tableView.frameOfCell(atColumn: 0, row: i)
         let y = frame.midY - scrollView.frame.height / 2
@@ -144,6 +152,40 @@ class LyricViewController: NSViewController {
         playProgressObserver = nil
     }
     
+    func initTrackingArea() {
+        scrollView.addTrackingArea(.init(
+            rect: scrollView.bounds,
+            options: [.mouseEnteredAndExited, .activeInActiveApp, .mouseMoved],
+            owner: self,
+            userInfo: nil))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(scrollViewDidScroll(_:)), name: NSScrollView.didLiveScrollNotification, object: scrollView)
+        
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        mouseInLyric = true
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        mouseInLyric = false
+        autoScrollLyrics = true
+        let time = PlayCore.shared.player.currentDuration
+        updateLyric(time)
+    }
+    
+    
+    @objc func scrollViewDidScroll(_ notification: Notification) {
+        guard let sv = notification.object as? NSScrollView,
+              sv == scrollView else {
+                  return
+              }
+        
+        if mouseInLyric,
+           autoScrollLyrics {
+            autoScrollLyrics = false
+        }
+    }
     
 }
 

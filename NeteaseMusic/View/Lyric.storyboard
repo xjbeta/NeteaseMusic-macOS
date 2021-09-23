@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mgw-BZ-VM8">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mgw-BZ-VM8">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,11 +11,11 @@
             <objects>
                 <viewController id="Mgw-BZ-VM8" customClass="LyricViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="lw8-he-16K">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="392"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="392"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LrU-ED-e1w">
-                                <rect key="frame" x="198" y="186" width="4" height="20"/>
+                                <rect key="frame" x="208" y="186" width="4" height="20"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" id="yzY-nT-P6b">
                                     <font key="font" metaFont="system" size="17"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -23,25 +23,24 @@
                                 </textFieldCell>
                             </textField>
                             <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Xhn-jk-nTG">
-                                <rect key="frame" x="397" y="4" width="5" height="384"/>
+                                <rect key="frame" x="417" y="4" width="5" height="384"/>
                             </box>
-                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="63" horizontalPageScroll="10" verticalLineScroll="63" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDD-QC-Qat">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="392"/>
+                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="49" horizontalPageScroll="10" verticalLineScroll="49" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDD-QC-Qat">
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="392"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="LQ2-4g-czP">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="392"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LQ2-4g-czP">
+                                    <rect key="frame" x="0.0" y="0.0" width="420" height="392"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="55" rowSizeStyle="automatic" usesAutomaticRowHeights="YES" viewBased="YES" id="OLh-pJ-zQV">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="392"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="41" rowSizeStyle="automatic" usesAutomaticRowHeights="YES" viewBased="YES" id="OLh-pJ-zQV">
+                                            <rect key="frame" x="0.0" y="0.0" width="420" height="392"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="397" minWidth="40" maxWidth="1000" id="bGU-9f-6qo">
+                                                <tableColumn width="388" minWidth="40" maxWidth="1000" id="bGU-9f-6qo">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -53,7 +52,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="2pD-0m-2Z6">
-                                                            <rect key="frame" x="1" y="4" width="397" height="41"/>
+                                                            <rect key="frame" x="11" y="4" width="397" height="41"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ek-Il-R21">
@@ -67,22 +66,22 @@
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="2pD-0m-2Z6" name="fontSize" keyPath="objectValue.firstSize" id="xv1-LM-iWz"/>
                                                                                 <binding destination="2pD-0m-2Z6" name="textColor" keyPath="objectValue.firstColor" id="eN8-5H-Je6"/>
+                                                                                <binding destination="2pD-0m-2Z6" name="fontSize" keyPath="objectValue.firstSize" id="xv1-LM-iWz"/>
                                                                                 <binding destination="2pD-0m-2Z6" name="value" keyPath="objectValue.firstString" id="Glt-tp-njC"/>
                                                                             </connections>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="yvc-Zl-ZlL">
                                                                             <rect key="frame" x="-2" y="0.0" width="36" height="15"/>
                                                                             <textFieldCell key="cell" selectable="YES" title="lyric2" id="NyF-1x-DN3">
-                                                                                <font key="font" metaFont="controlContent"/>
+                                                                                <font key="font" metaFont="cellTitle"/>
                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                             <connections>
-                                                                                <binding destination="2pD-0m-2Z6" name="fontSize" keyPath="objectValue.secondSize" id="ECf-WM-X8W"/>
                                                                                 <binding destination="2pD-0m-2Z6" name="hidden" keyPath="objectValue.hideSecond" id="Fqy-tI-q5f"/>
                                                                                 <binding destination="2pD-0m-2Z6" name="textColor" keyPath="objectValue.secondColor" id="wTf-j9-06c"/>
+                                                                                <binding destination="2pD-0m-2Z6" name="fontSize" keyPath="objectValue.secondSize" id="ECf-WM-X8W"/>
                                                                                 <binding destination="2pD-0m-2Z6" name="value" keyPath="objectValue.secondString" id="bFA-iW-c51"/>
                                                                             </connections>
                                                                         </textField>
@@ -116,7 +115,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ahE-oy-fFL">
-                                    <rect key="frame" x="1" y="335" width="378" height="16"/>
+                                    <rect key="frame" x="0.0" y="376" width="400" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="KxO-Rm-e2z">
