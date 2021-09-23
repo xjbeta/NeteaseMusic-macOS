@@ -77,10 +77,10 @@
                                                 </connections>
                                             </button>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Uax-7j-HB7">
-                                                <rect key="frame" x="290" y="35" width="45" height="45"/>
+                                                <rect key="frame" x="285" y="35" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Uax-7j-HB7" secondAttribute="height" multiplier="1:1" id="GQD-xI-mjT"/>
-                                                    <constraint firstAttribute="width" constant="45" id="nNU-Xq-UvJ"/>
+                                                    <constraint firstAttribute="width" constant="50" id="nNU-Xq-UvJ"/>
                                                 </constraints>
                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q6F-bg-lDm">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -95,13 +95,13 @@
                                             <constraint firstAttribute="height" constant="310" id="Cwf-8q-Dnb"/>
                                             <constraint firstItem="IIS-JS-sEX" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="390" id="R6i-jb-oPc"/>
                                             <constraint firstItem="MJi-33-1gC" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="WRu-DB-FJy"/>
+                                            <constraint firstItem="Uax-7j-HB7" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="285" id="XDg-RS-I84"/>
                                             <constraint firstAttribute="width" constant="390" id="XF5-qq-WAV"/>
                                             <constraint firstItem="9KC-UX-vy4" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="apr-BM-ls7"/>
                                             <constraint firstItem="jK4-ZL-v1D" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" id="icj-UD-uQ9"/>
                                             <constraint firstItem="MJi-33-1gC" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="80" id="ire-vc-hOh"/>
-                                            <constraint firstAttribute="trailing" secondItem="Uax-7j-HB7" secondAttribute="trailing" constant="55" id="jhb-Zm-H0J"/>
+                                            <constraint firstItem="Uax-7j-HB7" firstAttribute="top" secondItem="vBh-I9-HLC" secondAttribute="top" constant="225" id="lMg-id-6wi"/>
                                             <constraint firstItem="IIS-JS-sEX" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="sFN-I6-io1"/>
-                                            <constraint firstAttribute="bottom" secondItem="Uax-7j-HB7" secondAttribute="bottom" constant="35" id="sP5-4N-gga"/>
                                             <constraint firstItem="jK4-ZL-v1D" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="uTc-JB-NrQ"/>
                                             <constraint firstItem="9KC-UX-vy4" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="40" id="xgw-u5-s2S"/>
                                         </constraints>
@@ -152,7 +152,7 @@
                                     </containerView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="qww-me-ocA" firstAttribute="top" secondItem="MJi-33-1gC" secondAttribute="bottom" constant="28" id="LoM-xu-1tR"/>
+                                    <constraint firstItem="qww-me-ocA" firstAttribute="top" secondItem="vBh-I9-HLC" secondAttribute="bottom" constant="8" symbolic="YES" id="At3-q9-Fj0"/>
                                     <constraint firstItem="vBh-I9-HLC" firstAttribute="top" secondItem="8Vc-iN-v5f" secondAttribute="top" constant="55" id="Pqh-iv-cna"/>
                                     <constraint firstAttribute="trailing" secondItem="DBx-k6-lve" secondAttribute="trailing" constant="20" id="ijQ-O5-1fC"/>
                                     <constraint firstAttribute="height" constant="473" id="jA3-cu-QB2"/>
