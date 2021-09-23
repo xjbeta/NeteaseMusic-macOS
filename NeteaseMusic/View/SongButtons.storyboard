@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,34 +11,34 @@
             <objects>
                 <viewController id="fWa-K8-Ifq" customClass="SongButtonsViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kLl-bR-EiS">
-                        <rect key="frame" x="0.0" y="0.0" width="290" height="41"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="41"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cn2-dC-Hgq">
-                                <rect key="frame" x="0.0" y="2" width="290" height="38"/>
+                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="35" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cn2-dC-Hgq">
+                                <rect key="frame" x="10" y="1" width="340" height="40"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-mh-aew">
-                                        <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="38" id="lEU-2F-Cfh"/>
-                                            <constraint firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="height" multiplier="1:1" id="nsX-io-Tch"/>
+                                            <constraint firstAttribute="width" constant="40" id="Qc3-5j-XQA"/>
+                                            <constraint firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="height" multiplier="1:1" id="eSK-te-dJm"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_love" imagePosition="only" borderStyle="border" inset="2" id="32I-T2-s1e">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="heart.circle.fill" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="32I-T2-s1e">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="ie7-cx-zIT"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DfE-Kp-XmY">
-                                        <rect key="frame" x="63" y="0.0" width="38" height="38"/>
+                                        <rect key="frame" x="75" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="DfE-Kp-XmY" secondAttribute="height" multiplier="1:1" id="Plb-LV-c7g"/>
+                                            <constraint firstAttribute="width" secondItem="DfE-Kp-XmY" secondAttribute="height" multiplier="1:1" id="Eh9-2w-nCO"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_fav" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="waE-2W-uIv">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="plus.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="waE-2W-uIv">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="gJR-z4-yQs"/>
@@ -46,39 +46,39 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sd8-dW-QcA">
-                                        <rect key="frame" x="126" y="0.0" width="38" height="38"/>
+                                        <rect key="frame" x="150" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Sd8-dW-QcA" secondAttribute="height" multiplier="1:1" id="HnM-27-UKn"/>
+                                            <constraint firstAttribute="width" secondItem="Sd8-dW-QcA" secondAttribute="height" multiplier="1:1" id="6xJ-gT-gCA"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_delete" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="7cL-Si-k7b">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="trash.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="7cL-Si-k7b">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="MHg-jj-oRd"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-0X-CdX">
-                                        <rect key="frame" x="189" y="0.0" width="38" height="38"/>
+                                        <rect key="frame" x="225" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="7h6-0X-CdX" secondAttribute="height" multiplier="1:1" id="GuC-vD-7tP"/>
+                                            <constraint firstAttribute="width" secondItem="7h6-0X-CdX" secondAttribute="height" id="a9F-uv-fNw"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_link" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="82Q-zF-Zcu">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="link.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="82Q-zF-Zcu">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="copyLink:" target="fWa-K8-Ifq" id="hse-ct-HxD"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJI-wi-O3H">
-                                        <rect key="frame" x="252" y="0.0" width="38" height="38"/>
+                                        <rect key="frame" x="300" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" multiplier="1:1" id="G81-eN-UVN"/>
+                                            <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" id="fg7-9w-oHX"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="inline" bezelStyle="inline" image="icon.sp#icn-fm_more" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="P7C-k5-oyy">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ellipsis.circle" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="P7C-k5-oyy">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystemBold"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="sGT-H4-TcY"/>
@@ -86,10 +86,10 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Sd8-dW-QcA" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="5ZD-Ic-mZd"/>
-                                    <constraint firstItem="7h6-0X-CdX" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="BNZ-Pr-puw"/>
-                                    <constraint firstItem="rJI-wi-O3H" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="Erg-ye-rC9"/>
-                                    <constraint firstItem="DfE-Kp-XmY" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="ntL-1Y-dEk"/>
+                                    <constraint firstItem="Sd8-dW-QcA" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" multiplier="1:1" id="07U-I9-9kQ"/>
+                                    <constraint firstItem="DfE-Kp-XmY" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" multiplier="1:1" id="Tc1-AV-fC5"/>
+                                    <constraint firstItem="rJI-wi-O3H" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="iR8-TB-n9i"/>
+                                    <constraint firstItem="7h6-0X-CdX" firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="width" id="xKg-LY-y17"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -114,11 +114,11 @@
                     </view>
                     <connections>
                         <outlet property="deleteButton" destination="Sd8-dW-QcA" id="XIM-tk-C75"/>
-                        <outlet property="favouriteButton" destination="DfE-Kp-XmY" id="5no-nx-88h"/>
                         <outlet property="linkButton" destination="7h6-0X-CdX" id="6xZ-Oc-sps"/>
                         <outlet property="loveButton" destination="TOR-mh-aew" id="v1l-mT-puD"/>
                         <outlet property="moreButton" destination="rJI-wi-O3H" id="I5z-JG-r7H"/>
                         <outlet property="moreMenu" destination="Cy6-UT-pFS" id="ALI-JK-Q2p"/>
+                        <outlet property="subscribeButton" destination="DfE-Kp-XmY" id="5no-nx-88h"/>
                     </connections>
                 </viewController>
                 <customObject id="pAC-TV-Rrn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -140,7 +140,7 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="15" y="184"/>
+            <point key="canvasLocation" x="50" y="183.5"/>
         </scene>
         <!--Song Buttons Pop Up View Controller-->
         <scene sceneID="MSW-nJ-jkA">
@@ -156,7 +156,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="O49-rV-WiS"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="添加到歌单" id="PGI-Cu-3pE">
-                                    <font key="font" size="21" name=".PingFangSC-Regular"/>
+                                    <font key="font" metaFont="system" size="21"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -275,10 +275,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon.sp#icn-fm_delete" width="18" height="19"/>
-        <image name="icon.sp#icn-fm_fav" width="18" height="18"/>
-        <image name="icon.sp#icn-fm_link" width="21" height="21"/>
-        <image name="icon.sp#icn-fm_love" width="19" height="17"/>
-        <image name="icon.sp#icn-fm_more" width="16" height="3"/>
+        <image name="ellipsis.circle" width="17" height="17"/>
+        <image name="heart.circle.fill" width="17" height="17"/>
+        <image name="link.circle" width="17" height="17"/>
+        <image name="plus.circle" width="17" height="17"/>
+        <image name="trash.circle" width="17" height="17"/>
     </resources>
 </document>

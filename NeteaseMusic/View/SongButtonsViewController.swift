@@ -10,7 +10,7 @@ import Cocoa
 
 class SongButtonsViewController: NSViewController {
     @IBOutlet weak var loveButton: NSButton!
-    @IBOutlet weak var favouriteButton: NSButton!
+    @IBOutlet weak var subscribeButton: NSButton!
     @IBOutlet weak var deleteButton: NSButton!
     @IBOutlet weak var linkButton: NSButton!
     @IBOutlet weak var moreButton: NSButton!
@@ -63,15 +63,13 @@ class SongButtonsViewController: NSViewController {
     let pc = PlayCore.shared
     var trackId = -1 {
         didSet {
-            loveButton.isEnabled = false
             checkLikeList()
         }
     }
     
     var loved = false {
         didSet {
-            let name = loved ? "icon.sp#icn-fm_loved" : "icon.sp#icn-fm_love"
-            loveButton.image = NSImage(named: .init(name))
+            initButtonImage(loveButton)
         }
     }
     
@@ -85,12 +83,41 @@ class SongButtonsViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        initButtonImage(loveButton)
+        initButtonImage(subscribeButton)
+        initButtonImage(deleteButton)
+        initButtonImage(moreButton)
+    }
+    
+    func initButtonImage(_ button: NSButton) {
+        
+        var name = ""
+        switch button {
+        case loveButton:
+            name = loved ? "heart.circle.fill" : "heart.circle"
+        case subscribeButton:
+            name = "plus.circle"
+        case deleteButton:
+            name = "trash.circle"
+        case moreButton:
+            name = "ellipsis.circle"
+        default:
+            return
+        }
+        
+        var img = NSImage(named: .init(name))
+        if #available(macOS 11.0, *) {
+            img = img?.withSymbolConfiguration(.init(pointSize: button.frame.size.width, weight: .thin, scale: .large))
+        }
+        
+        button.image = img
+
     }
     
     func checkLikeList() {
         let id = trackId
-        self.loved = false
+        loved = false
+        loveButton.isEnabled = false
         pc.api.likeList().done(on: .main) {
             guard id == self.trackId else { return }
             self.loved = $0.contains(id)
