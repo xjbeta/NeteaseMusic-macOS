@@ -86,6 +86,7 @@ class SongButtonsViewController: NSViewController {
         initButtonImage(loveButton)
         initButtonImage(subscribeButton)
         initButtonImage(deleteButton)
+        initButtonImage(linkButton)
         initButtonImage(moreButton)
     }
     
@@ -101,6 +102,8 @@ class SongButtonsViewController: NSViewController {
             name = "trash.circle"
         case moreButton:
             name = "ellipsis.circle"
+        case linkButton:
+            name = "link.circle"
         default:
             return
         }

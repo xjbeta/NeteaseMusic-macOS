@@ -11,11 +11,11 @@
             <objects>
                 <viewController id="fWa-K8-Ifq" customClass="SongButtonsViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kLl-bR-EiS">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="41"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="45"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="35" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cn2-dC-Hgq">
-                                <rect key="frame" x="10" y="1" width="340" height="40"/>
+                                <rect key="frame" x="10" y="3" width="340" height="40"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-mh-aew">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
