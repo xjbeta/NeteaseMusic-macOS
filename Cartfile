@@ -1,4 +1,4 @@
-github "xjbeta/GSPlayer" "develop"
+github "xjbeta/GSPlayer" "master"
 github "sparkle-project/Sparkle"
 github "Alamofire/Alamofire"
 github "mxcl/PromiseKit"
