@@ -34,18 +34,10 @@ class FMViewController: NSViewController, ContentTabViewController {
     
     @IBAction func buttonAction(_ sender: NSButton) {
         let pc = PlayCore.shared
-        let player = pc.player
-        guard player.error == nil else { return }
         if pc.fmMode {
-            if player.rate == 0 {
-                player.play()
-            } else {
-                player.pause()
-            }
+            pc.togglePlayPause()
         } else {
-            pc.start(fmPlaylist,
-                     id: currentTrackId,
-                     enterFMMode: true)
+            startPlay(true)
         }
     }
     
@@ -166,6 +158,13 @@ class FMViewController: NSViewController, ContentTabViewController {
         } else {
             return loadFMTracks()
         }
+    }
+    
+    func startPlay(_ all: Bool) {
+        let pc = PlayCore.shared
+        pc.start(fmPlaylist,
+                 id: currentTrackId,
+                 enterFMMode: true)
     }
     
     func initCoverButtonsArray() {

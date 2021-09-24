@@ -28,15 +28,24 @@ class ViewControllerManager: NSObject {
     
     var hotKeysEnabled = false
     
+    func togglePlayPause() {
+        let pc = PlayCore.shared
+        if pc.playlist.count == 0 {
+            guard let vc = mainVC(),
+                  let tabVC = vc.currentContentTabVC() else { return }
+            
+            tabVC.startPlay(true)
+        } else {
+            pc.togglePlayPause()
+        }
+    }
+    
     func selectSidebarItem(_ itemType: SidebarViewController.ItemType,
                            _ id: Int = -1) {
         
         // Exit Playing Song
-        let mainVC = NSApp.windows.compactMap {
-            $0.windowController as? MainWindowController
-        }.first?.contentViewController as? MainViewController
         
-        if let vc = mainVC,
+        if let vc = mainVC(),
            vc.playingSongViewStatus != .hidden {
             vc.updatePlayingSongTabView(.main)
             vc.playingSongViewStatus = .hidden
@@ -44,6 +53,12 @@ class ViewControllerManager: NSObject {
         
         print(#function, "\(itemType)", "ID: \(id)")
         NotificationCenter.default.post(name: .selectSidebarItem, object: nil, userInfo: ["itemType": itemType, "id": id])
+    }
+    
+    func mainVC() -> MainViewController? {
+        NSApp.windows.compactMap {
+            $0.windowController as? MainWindowController
+        }.first?.contentViewController as? MainViewController
     }
     
     func copyToPasteboard(_ str: String) {

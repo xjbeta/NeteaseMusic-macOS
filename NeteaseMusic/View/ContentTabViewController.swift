@@ -18,4 +18,5 @@ enum ContentTabInitError: Error {
 
 protocol ContentTabViewController {
     func initContent() -> Promise<()>
+    func startPlay(_ all: Bool)
 }

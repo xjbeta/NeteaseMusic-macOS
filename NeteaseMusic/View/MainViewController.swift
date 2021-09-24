@@ -163,6 +163,17 @@ class MainViewController: NSViewController {
         }
     }
     
+    func currentContentTabVC() -> ContentTabViewController? {
+        guard let item = contentTabView.selectedTabViewItem else {
+                  return nil
+              }
+        let index = contentTabView.indexOfTabViewItem(item)
+        guard let ctItem = ContentTabItems(rawValue: index) else {
+            return nil
+        }
+        return contentTabVC(ctItem)
+    }
+    
     func contentTabVC(_ item: ContentTabItems) -> ContentTabViewController? {
         children.compactMap {
             $0 as? ContentTabViewController

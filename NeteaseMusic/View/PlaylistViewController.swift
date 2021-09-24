@@ -134,6 +134,11 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
         return initPlaylistContent()
     }
     
+    func startPlay(_ all: Bool) {
+        let tracks = all ? tracks : selectedItems().items as? [Track] ?? []
+        PlayCore.shared.start(tracks)
+    }
+    
     func initPlaylistInfo() {
         var typeList = [SidebarViewController.ItemType]()
         tracks = []
@@ -324,11 +329,4 @@ extension PlaylistViewController: TAAPMenuDelegate {
         return (playlistType, playlistId, .song)
     }
     
-    func startPlay() {
-        guard let tracks = selectedItems().items as? [Track] else {
-            return
-        }
-        
-        PlayCore.shared.start(tracks)
-    }
 }

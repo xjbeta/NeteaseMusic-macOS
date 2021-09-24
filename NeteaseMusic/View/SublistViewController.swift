@@ -64,7 +64,21 @@ class SublistViewController: NSViewController, ContentTabViewController {
         }
     }
     
-
+    func startPlay(_ all: Bool) {
+        guard let items = selectedItems().items as? [Track.Album],
+              let item = items.first,
+              !all
+        else { return }
+        let pc = PlayCore.shared
+        pc.api.album(item.id).map {
+            $0.songs
+        }.done {
+            pc.start($0)
+        }.catch {
+            print($0)
+        }
+    }
+    
     func albumArtistTableVC() -> AlbumArtistTableViewController? {
         let vc = children.compactMap {
             $0 as? AlbumArtistTableViewController
@@ -138,17 +152,4 @@ extension SublistViewController: TAAPMenuDelegate {
         return (.mySubscription, 0, vc.dataType)
     }
     
-    func startPlay() {
-        guard let items = selectedItems().items as? [Track.Album],
-              let item = items.first
-        else { return }
-        let pc = PlayCore.shared
-        pc.api.album(item.id).map {
-            $0.songs
-        }.done {
-            pc.start($0)
-        }.catch {
-            print($0)
-        }
-    }
 }

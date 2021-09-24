@@ -95,6 +95,37 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
         return initContentView()
     }
     
+    func startPlay(_ all: Bool) {
+        let items = selectedItems().items
+        let pc = PlayCore.shared
+        
+        
+        var p: Promise<[Track]>?
+        
+        if let items = items as? [Track] {
+            pc.start(items)
+            return
+        } else if let items = items as? [Track.Album],
+                  let item = items.first {
+            p = pc.api.album(item.id).map {
+                $0.songs
+            }
+        } else if let items = items as? [Playlist],
+                  let item = items.first {
+            p = pc.api.playlistDetail(item.id).compactMap {
+                $0.tracks
+            }
+        } else if let items = items as? [Track.Artist] {
+            return
+        }
+        
+        p?.done {
+            pc.start($0)
+        }.catch {
+            print($0)
+        }
+    }
+    
     func initObserver() {
         guard let trackVC = trackTableVC() else {
             return
@@ -338,35 +369,5 @@ extension SearchResultViewController: TAAPMenuDelegate {
     func tableViewList() -> (type: SidebarViewController.ItemType, id: Int, contentType: TAAPItemsType) {
         return (.searchResults, 0, resultType.taapItemType())
     }
-    
-    func startPlay() {
-        let items = selectedItems().items
-        let pc = PlayCore.shared
-        
-        
-        var p: Promise<[Track]>?
-        
-        if let items = items as? [Track] {
-            pc.start(items)
-            return
-        } else if let items = items as? [Track.Album],
-                  let item = items.first {
-            p = pc.api.album(item.id).map {
-                $0.songs
-            }
-        } else if let items = items as? [Playlist],
-                  let item = items.first {
-            p = pc.api.playlistDetail(item.id).compactMap {
-                $0.tracks
-            }
-        } else if let items = items as? [Track.Artist] {
-            return
-        }
-        
-        p?.done {
-            pc.start($0)
-        }.catch {
-            print($0)
-        }
-    }
+
 }

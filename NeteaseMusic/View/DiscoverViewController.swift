@@ -56,6 +56,25 @@ class DiscoverViewController: NSViewController, ContentTabViewController {
         }
     }
     
+    func startPlay(_ all: Bool) {
+        guard let items = selectedItems().items as? [DiscoverViewController.RecommendItem],
+              let item = items.first else {
+            return
+        }
+        
+        let pc = PlayCore.shared
+        
+        firstly {
+            item.id == -114514 ?
+                pc.api.recommendSongs() :
+                pc.api.playlistDetail(item.id).compactMap({ $0.tracks })
+        }.done {
+            pc.start($0)
+        }.catch {
+            print($0)
+        }
+    }
+    
     func initRecommendedItems(_ playlists: [RecommendResource.Playlist]) {
         recommendedItems.removeAll()
         
@@ -151,23 +170,5 @@ extension DiscoverViewController: TAAPMenuDelegate {
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController) {
         return
     }
-    
-    func startPlay() {
-        guard let items = selectedItems().items as? [DiscoverViewController.RecommendItem],
-              let item = items.first else {
-            return
-        }
-        
-        let pc = PlayCore.shared
-        
-        firstly {
-            item.id == -114514 ?
-                pc.api.recommendSongs() :
-                pc.api.playlistDetail(item.id).compactMap({ $0.tracks })
-        }.done {
-            pc.start($0)
-        }.catch {
-            print($0)
-        }
-    }
+
 }

@@ -20,8 +20,6 @@ protocol TAAPMenuDelegate {
     func removeSuccess(ids: [Int], newItem: Any?)
     func shouldReloadData()
     func presentNewPlaylist(_ newPlaylisyVC: NewPlaylistViewController)
-    
-    func startPlay()
 }
 
 class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
@@ -45,8 +43,9 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
     
 // MARK: - Menu Actions
     @IBAction func play(_ sender: NSMenuItem) {
-        guard let d = delegate else { return }
-        d.startPlay()
+        guard let vc = delegate as? ContentTabViewController else { return }
+        
+        vc.startPlay(false)
     }
     
     @IBAction func copyLink(_ sender: NSMenuItem) {

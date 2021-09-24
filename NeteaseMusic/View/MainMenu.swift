@@ -28,7 +28,8 @@ class MainMenu: NSObject, NSMenuItemValidation {
     
     @IBAction func play(_ sender: Any) {
         print(#function)
-        playCore.togglePlayPause()
+        
+        ViewControllerManager.shared.togglePlayPause()
     }
     
     @IBAction func next(_ sender: Any) {

@@ -24,21 +24,25 @@ class ControlBarViewController: NSViewController {
     @IBOutlet weak var shuffleModeButton: NSButton!
     
     @IBAction func controlAction(_ sender: NSButton) {
-        let player = PlayCore.shared.player
+        let pc = PlayCore.shared
+        let player = pc.player
         let preferences = Preferences.shared
+        let vcm = ViewControllerManager.shared
+        
         switch sender {
         case previousButton:
-            PlayCore.shared.previousSong()
+            pc.previousSong()
         case pauseButton:
-            PlayCore.shared.togglePlayPause()
+            vcm.togglePlayPause()
         case nextButton:
-            PlayCore.shared.nextSong()
-            if PlayCore.shared.fmMode, let id = PlayCore.shared.currentTrack?.id {
+            pc.nextSong()
+            if pc.fmMode,
+               let id = pc.currentTrack?.id {
                 let seconds = Int(player.currentTime().seconds)
-                PlayCore.shared.api.radioSkip(id, seconds).done {
+                pc.api.radioSkip(id, seconds).done {
                     print("Song skipped, id: \(id) seconds: \(seconds)")
-                    }.catch {
-                        print($0)
+                }.catch {
+                    print($0)
                 }
             }
         case muteButton:
