@@ -296,6 +296,7 @@ class PlayCore: NSObject {
         }
         v += 0.1
         player.volume = v >= 1 ? 1 : v
+        playerVolumeChanged()
     }
     
     func decreaseVolume() {
@@ -306,6 +307,12 @@ class PlayCore: NSObject {
         }
         v -= 0.1
         player.volume = v < 0 ? 0 : v
+        playerVolumeChanged()
+    }
+    
+    func playerVolumeChanged() {
+        Preferences.shared.volume = player.volume
+        NotificationCenter.default.post(name: .volumeChanged, object: nil)
     }
     
     func stop() {

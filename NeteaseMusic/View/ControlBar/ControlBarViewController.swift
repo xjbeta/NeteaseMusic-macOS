@@ -105,6 +105,7 @@ class ControlBarViewController: NSViewController {
     var previousButtonObserver: NSKeyValueObservation?
     var currentTrackObserver: NSKeyValueObservation?
     var fmModeObserver: NSKeyValueObservation?
+    var volumeChangedNotification: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,6 +193,10 @@ class ControlBarViewController: NSViewController {
             self?.previousButton.isHidden = fmMode
             self?.repeatModeButton.isHidden = fmMode
             self?.shuffleModeButton.isHidden = fmMode
+        }
+        
+        volumeChangedNotification = NotificationCenter.default.addObserver(forName: .volumeChanged, object: nil, queue: .main) { _ in
+            self.initVolumeButton()
         }
         
         if durationSlider.trackingAreas.isEmpty {
@@ -302,6 +307,11 @@ class ControlBarViewController: NSViewController {
 //        muteStautsObserver?.invalidate()
         currentTrackObserver?.invalidate()
         fmModeObserver?.invalidate()
+        
+        if let n = volumeChangedNotification {
+            NotificationCenter.default.removeObserver(n)
+        }
+        
     }
     
 }

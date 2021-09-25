@@ -16,4 +16,6 @@ extension Notification.Name {
     static let updateLoginStatus = Notification.Name("com.xjbeta.NeteaseMusic.UpdateLoginStatus")
     static let displayMessage = Notification.Name("com.xjbeta.NeteaseMusic.displayMessage")
     static let initSidebarPlaylists = Notification.Name("com.xjbeta.NeteaseMusic.initSidebarPlaylists")
+    
+    static let volumeChanged = Notification.Name("com.xjbeta.NeteaseMusic.volumeChanged")
 }
