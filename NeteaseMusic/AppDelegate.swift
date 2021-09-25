@@ -10,6 +10,7 @@ import Cocoa
 import Kingfisher
 import GSPlayer
 import WebKit
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -65,6 +66,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //            print("Logout error \($0).")
 //            NotificationCenter.default.post(name: .updateLoginStatus, object: nil, userInfo: ["logout": false])
 //        }
+    }
+    
+    @IBAction func checkForUpdate(_ sender: NSMenuItem) {
+        SUUpdater().checkForUpdates(sender)
     }
 }
 
