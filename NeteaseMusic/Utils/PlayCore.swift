@@ -167,7 +167,7 @@ class PlayCore: NSObject {
         var sid = id
         if fmMode {
             if !enterFMMode {
-                fmSavedTime = (currentTrack?.id ?? -1, player.currentTime())
+                fmSavedTime = (currentTrack?.id ?? -1, CMTime(value: 0, timescale: 1000))
             } else {
                 sid = fmSavedTime.id
             }
