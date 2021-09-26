@@ -280,7 +280,7 @@
 		0190952823A0B2A800647F80 /* TrackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewController.swift; sourceTree = "<group>"; };
 		0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtistTableViewController.swift; sourceTree = "<group>"; };
 		0190952E23A100BB00647F80 /* SublistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublistViewController.swift; sourceTree = "<group>"; };
-		01957D88224D01850006FCEC /* NeteaseMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeteaseMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01957D88224D01850006FCEC /* Netease Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netease Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01957D8F224D01860006FCEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -638,7 +638,7 @@
 		01957D89224D01850006FCEC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01957D88224D01850006FCEC /* NeteaseMusic.app */,
+				01957D88224D01850006FCEC /* Netease Music.app */,
 				01EE1FC726CB6D9400B441D0 /* NMChannelTests.xctest */,
 			);
 			name = Products;
@@ -741,9 +741,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		01957D87224D01850006FCEC /* NeteaseMusic */ = {
+		01957D87224D01850006FCEC /* Netease Music */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01957D98224D01860006FCEC /* Build configuration list for PBXNativeTarget "NeteaseMusic" */;
+			buildConfigurationList = 01957D98224D01860006FCEC /* Build configuration list for PBXNativeTarget "Netease Music" */;
 			buildPhases = (
 				01957D84224D01850006FCEC /* Sources */,
 				01957D85224D01850006FCEC /* Frameworks */,
@@ -756,11 +756,11 @@
 			);
 			dependencies = (
 			);
-			name = NeteaseMusic;
+			name = "Netease Music";
 			packageProductDependencies = (
 			);
 			productName = NeteaseMusic;
-			productReference = 01957D88224D01850006FCEC /* NeteaseMusic.app */;
+			productReference = 01957D88224D01850006FCEC /* Netease Music.app */;
 			productType = "com.apple.product-type.application";
 		};
 		01EE1FC626CB6D9400B441D0 /* NMChannelTests */ = {
@@ -816,7 +816,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				01957D87224D01850006FCEC /* NeteaseMusic */,
+				01957D87224D01850006FCEC /* Netease Music */,
 				01EE1FC626CB6D9400B441D0 /* NMChannelTests */,
 			);
 		};
@@ -1007,7 +1007,7 @@
 /* Begin PBXTargetDependency section */
 		01EE1FCD26CB6D9400B441D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 01957D87224D01850006FCEC /* NeteaseMusic */;
+			target = 01957D87224D01850006FCEC /* Netease Music */;
 			targetProxy = 01EE1FCC26CB6D9400B441D0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1252,7 +1252,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01957D98224D01860006FCEC /* Build configuration list for PBXNativeTarget "NeteaseMusic" */ = {
+		01957D98224D01860006FCEC /* Build configuration list for PBXNativeTarget "Netease Music" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01957D99224D01860006FCEC /* Debug */,
