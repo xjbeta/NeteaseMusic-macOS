@@ -18,17 +18,16 @@ class MainWindowController: NSWindowController {
         window?.isMovableByWindowBackground = true
         
         updateLoginStatusObserver = NotificationCenter.default.addObserver(forName: .updateLoginStatus, object: nil, queue: .main) { _ in
-            self.test()
+            self.initUsers()
         }
         initSidebarPlaylistsObserver = NotificationCenter.default.addObserver(forName: .initSidebarPlaylists, object: nil, queue: .main) { _ in
             self.initSidebarPlaylists()
         }
         
-        test()
-        
+        initUsers()
     }
     
-    func test() {
+    func initUsers() {
         guard let vc = self.contentViewController as? MainViewController,
               let discoverVC = vc.contentTabVC(.discover),
               let sidebarVC = sidebarVC(),
