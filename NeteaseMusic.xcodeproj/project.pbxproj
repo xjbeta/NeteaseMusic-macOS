@@ -750,6 +750,7 @@
 				01957D86224D01850006FCEC /* Resources */,
 				018E927E26CF590B005FBD69 /* Carthage outdated check Script */,
 				018E929226CF5A0D005FBD69 /* Embed Frameworks */,
+				0163F90F270086270078A2F6 /* Build number Script */,
 			);
 			buildRules = (
 			);
@@ -867,6 +868,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0163F90F270086270078A2F6 /* Build number Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build number Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nBUILD_NUMBER=`git rev-list --all --count`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILD_NUMBER\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n";
+		};
 		018E927E26CF590B005FBD69 /* Carthage outdated check Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
