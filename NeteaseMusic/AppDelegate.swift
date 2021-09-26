@@ -36,6 +36,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vcm.saveFMPlaylist()
         pc.api.stopNRMListening()
     }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if !flag {
+            for window in sender.windows {
+                if window.windowController is MainWindowController {
+                    window.makeKeyAndOrderFront(self)
+                }
+            }
+        }
+        return true
+    }
 
     func initCache() {
         // Music cache
