@@ -768,13 +768,13 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NeteaseMusic" customModuleProvider="target">
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Netease_Music" customModuleProvider="target">
                     <connections>
                         <outlet property="mainMenu" destination="5W0-kA-yYe" id="tkR-8r-ibX"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-                <customObject id="5W0-kA-yYe" customClass="MainMenu" customModule="NeteaseMusic" customModuleProvider="target">
+                <customObject id="5W0-kA-yYe" customClass="MainMenu" customModule="Netease_Music" customModuleProvider="target">
                     <connections>
                         <outlet property="decreaseVolumeMenuItem" destination="Xg2-cm-2Nm" id="hvd-wO-sS6"/>
                         <outlet property="increaseVolumeMenuItem" destination="ETR-H2-hTX" id="AZ4-Ck-vEA"/>
@@ -791,7 +791,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="MainWindowController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="MainWindowController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" toolbarStyle="compact" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1000" height="635"/>
@@ -821,7 +821,7 @@
         <!--Main View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="MainViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="MainViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="650"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -899,34 +899,13 @@
                                                                                                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                                                                     <subviews>
-                                                                                                                                        <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0nN-c8-vsi">
-                                                                                                                                            <rect key="frame" x="40" y="38" width="40" height="44"/>
-                                                                                                                                            <subviews>
-                                                                                                                                                <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zMF-6D-fpC">
-                                                                                                                                                    <rect key="frame" x="12" y="28" width="16" height="16"/>
-                                                                                                                                                </progressIndicator>
-                                                                                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YDH-60-qDp">
-                                                                                                                                                    <rect key="frame" x="-2" y="0.0" width="44" height="16"/>
-                                                                                                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="加载中" id="DLc-dD-P6I">
-                                                                                                                                                        <font key="font" metaFont="system"/>
-                                                                                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                                                                                                    </textFieldCell>
-                                                                                                                                                </textField>
-                                                                                                                                            </subviews>
-                                                                                                                                            <visibilityPriorities>
-                                                                                                                                                <integer value="1000"/>
-                                                                                                                                                <integer value="1000"/>
-                                                                                                                                            </visibilityPriorities>
-                                                                                                                                            <customSpacing>
-                                                                                                                                                <real value="3.4028234663852886e+38"/>
-                                                                                                                                                <real value="3.4028234663852886e+38"/>
-                                                                                                                                            </customSpacing>
-                                                                                                                                        </stackView>
+                                                                                                                                        <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zMF-6D-fpC">
+                                                                                                                                            <rect key="frame" x="52" y="52" width="16" height="16"/>
+                                                                                                                                        </progressIndicator>
                                                                                                                                     </subviews>
                                                                                                                                     <constraints>
-                                                                                                                                        <constraint firstItem="0nN-c8-vsi" firstAttribute="centerY" secondItem="EjH-IG-8XH" secondAttribute="centerY" id="FV4-Sf-iFi"/>
-                                                                                                                                        <constraint firstItem="0nN-c8-vsi" firstAttribute="centerX" secondItem="EjH-IG-8XH" secondAttribute="centerX" id="bHJ-SA-Owt"/>
+                                                                                                                                        <constraint firstItem="zMF-6D-fpC" firstAttribute="centerX" secondItem="EjH-IG-8XH" secondAttribute="centerX" id="2jU-LR-LcY"/>
+                                                                                                                                        <constraint firstItem="zMF-6D-fpC" firstAttribute="centerY" secondItem="EjH-IG-8XH" secondAttribute="centerY" id="nHN-yk-3A6"/>
                                                                                                                                     </constraints>
                                                                                                                                 </view>
                                                                                                                             </tabViewItem>
@@ -1147,7 +1126,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="1000" height="591"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ" customClass="PlaySongViewBackgroundView" customModule="NeteaseMusic" customModuleProvider="target">
+                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="eNf-lb-9SZ" customClass="PlaySongViewBackgroundView" customModule="Netease_Music" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="1000" height="591"/>
                                                                         <connections>
                                                                             <segue destination="4w4-6c-N5y" kind="embed" id="7hD-fW-INt"/>
