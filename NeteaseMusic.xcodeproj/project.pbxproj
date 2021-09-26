@@ -78,6 +78,11 @@
 		0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
+		0163F90827002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */; };
+		0163F90927002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0163F90B270032800078A2F6 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */; };
+		0163F90C270032800078A2F6 /* CocoaLumberjack.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0163F90E2700339C0078A2F6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163F90D2700339C0078A2F6 /* Log.swift */; };
 		01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B99228C0D1400D11190 /* LyricScroller.swift */; };
 		01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B9E228CF3D200D11190 /* ViewControllerManager.swift */; };
 		0171427523C18E660051ADDF /* PlayableColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171427423C18E660051ADDF /* PlayableColorTransformer.swift */; };
@@ -150,6 +155,8 @@
 			files = (
 				018E928B26CF5A0D005FBD69 /* HotKey.xcframework in Embed Frameworks */,
 				018E928926CF5A0D005FBD69 /* CryptoSwift.xcframework in Embed Frameworks */,
+				0163F90927002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
+				0163F90C270032800078A2F6 /* CocoaLumberjack.xcframework in Embed Frameworks */,
 				018E928F26CF5A0D005FBD69 /* PromiseKit.xcframework in Embed Frameworks */,
 				018E929526CF5BDC005FBD69 /* GSPlayer.xcframework in Embed Frameworks */,
 				018E928726CF5A0D005FBD69 /* Alamofire.xcframework in Embed Frameworks */,
@@ -249,6 +256,9 @@
 		0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongButtonsViewController.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
+		0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
+		0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
+		0163F90D2700339C0078A2F6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		01677B99228C0D1400D11190 /* LyricScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricScroller.swift; sourceTree = "<group>"; };
 		01677B9C228C133D00D11190 /* Album.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Album.json; sourceTree = "<group>"; };
 		01677B9E228CF3D200D11190 /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
@@ -311,6 +321,8 @@
 			files = (
 				018E928A26CF5A0D005FBD69 /* HotKey.xcframework in Frameworks */,
 				018E928826CF5A0D005FBD69 /* CryptoSwift.xcframework in Frameworks */,
+				0163F90827002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Frameworks */,
+				0163F90B270032800078A2F6 /* CocoaLumberjack.xcframework in Frameworks */,
 				018E928E26CF5A0D005FBD69 /* PromiseKit.xcframework in Frameworks */,
 				018E929426CF5BDC005FBD69 /* GSPlayer.xcframework in Frameworks */,
 				018E928626CF5A0D005FBD69 /* Alamofire.xcframework in Frameworks */,
@@ -350,6 +362,7 @@
 				012165C9232E07F300D74344 /* Crypto.swift */,
 				012FB7D923337FCD007F7247 /* Preferences.swift */,
 				011AC732237A87D900722A48 /* WaitTimer.swift */,
+				0163F90D2700339C0078A2F6 /* Log.swift */,
 				014F5FFB26CA111500874C66 /* NeteaseMusicAPI */,
 				0133AC732321FEB800090D5E /* Transformers */,
 				01E0F4A82261FA6F0043FAB6 /* JSON */,
@@ -575,6 +588,8 @@
 		018E927F26CF5A0C005FBD69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */,
+				0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */,
 				018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */,
 				018E928026CF5A0D005FBD69 /* Alamofire.xcframework */,
 				018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */,
@@ -899,6 +914,7 @@
 				01BFA88526A9B8E20075F06D /* HttpsExtensions.swift in Sources */,
 				012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */,
 				01FF8B72225C60F7002D7906 /* Colors.swift in Sources */,
+				0163F90E2700339C0078A2F6 /* Log.swift in Sources */,
 				01FF8B74225C64B7002D7906 /* SidebarOutlineView.swift in Sources */,
 				0171427723C2E0B70051ADDF /* NetworkRequestMenuItem.swift in Sources */,
 				013EF1562256500100E4D7D8 /* SubString.swift in Sources */,

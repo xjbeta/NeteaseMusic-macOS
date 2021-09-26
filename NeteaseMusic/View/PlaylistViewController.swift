@@ -65,9 +65,9 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
             }.first?.updatePlaylists()
             
             
-            print("\(type) \(subscribed ? "unsubscribe" : "subscribe") success")
+            Log.info("\(type) \(subscribed ? "unsubscribe" : "subscribe") success")
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     
@@ -321,7 +321,7 @@ extension PlaylistViewController: TAAPMenuDelegate {
         initPlaylistContent().done {
             
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     

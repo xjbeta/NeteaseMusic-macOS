@@ -83,11 +83,11 @@ class NeteaseMusicAPI: NSObject {
         reachabilityManager?.startListening { status in
             switch status {
             case .reachable(.cellular):
-                print("NetworkReachability reachable cellular.")
+                Log.error("NetworkReachability reachable cellular.")
             case .reachable(.ethernetOrWiFi):
-                print("NetworkReachability reachable ethernetOrWiFi.")
+                Log.error("NetworkReachability reachable ethernetOrWiFi.")
             case .notReachable:
-                print("NetworkReachability notReachable.")
+                Log.error("NetworkReachability notReachable.")
             case .unknown:
                 break
             }
@@ -818,8 +818,9 @@ class NeteaseMusicAPI: NSObject {
             
             nmSession.request(url, method: .post, parameters: ["params": p]).response { re in
                 
-                if debug, let d = re.data, let str = String(data: d, encoding: .utf8) {
-                    print(str)
+                if debug, let d = re.data,
+                    let str = String(data: d, encoding: .utf8) {
+                    Log.verbose(str)
                 }
                 
                 if let error = re.error {

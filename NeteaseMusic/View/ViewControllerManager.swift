@@ -50,8 +50,7 @@ class ViewControllerManager: NSObject {
             vc.updatePlayingSongTabView(.main)
             vc.playingSongViewStatus = .hidden
         }
-        
-        print(#function, "\(itemType)", "ID: \(id)")
+        Log.info("\(itemType) ID: \(id)")
         NotificationCenter.default.post(name: .selectSidebarItem, object: nil, userInfo: ["itemType": itemType, "id": id])
     }
     
@@ -119,8 +118,8 @@ class ViewControllerManager: NSObject {
             let keyCode = keyEvent.keyCode else {
             return
         }
-        guard let kCode = UInt32(keyCode), let key = Key(carbonKeyCode: kCode) else {
-            print(pKey)
+        guard let kCode = UInt32(keyCode),
+                let key = Key(carbonKeyCode: kCode) else {
             return
         }
         

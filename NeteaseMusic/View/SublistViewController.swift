@@ -16,7 +16,7 @@ class SublistViewController: NSViewController, ContentTabViewController {
         initContent().done {
             
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     
@@ -75,7 +75,7 @@ class SublistViewController: NSViewController, ContentTabViewController {
         }.done {
             pc.start($0)
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     
@@ -141,7 +141,7 @@ extension SublistViewController: TAAPMenuDelegate {
         initContent().done {
             
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     

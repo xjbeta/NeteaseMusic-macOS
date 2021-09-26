@@ -165,7 +165,7 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
             evaluateLoginJS().done {
                 self.selectTab(.webView)
             }.catch {
-                print($0)
+                Log.error("\($0)")
             }
         default:
             break
@@ -174,11 +174,11 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         guard webView.url == loginURL else {
-            print("createWebView from unknown webview.")
+            Log.info("createWebView from unknown webview.")
             return nil
         }
         
-        print(#function)
+        Log.info("")
         
         thirdPartyWebView = WKWebView(frame: NSZeroRect, configuration: configuration)
         guard let tWebView = thirdPartyWebView else { return nil }
@@ -205,15 +205,15 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         let nserr = error as NSError
         if nserr.code == -1022 {
-            print("NSURLErrorAppTransportSecurityRequiresSecureConnection")
+            Log.error("NSURLErrorAppTransportSecurityRequiresSecureConnection")
         } else if let err = error as? URLError {
             switch(err.code) {
             case .cancelled:
                 break
             case .cannotFindHost, .notConnectedToInternet, .resourceUnavailable, .timedOut:
-                print("Can't load web.")
+                Log.error("Can't load web.")
             default:
-                print("Error code: " + String(describing: err.code) + "  does not fall under known failures")
+                Log.error("Error code: " + String(describing: err.code) + "  does not fall under known failures")
             }
         }
         
@@ -233,8 +233,7 @@ extension LoginViewController: WKHTTPCookieStoreObserver {
                 return
             }
             
-            print("Login Cookies Passed.")
-            
+            Log.info("Login Cookies Passed.")
             
             self.checkingCookies = true
             self.selectTab(.progress)
@@ -247,11 +246,11 @@ extension LoginViewController: WKHTTPCookieStoreObserver {
             }.ensure {
                 self.checkingCookies = false
             }.done { _ in
-                print("Login Success.")
+                Log.info("Login Success.")
                 NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
                 self.startCookieStoreObserver(false)
             }.catch {
-                print($0)
+                Log.error("\($0)")
                 self.showUnknownError()
             }
         }

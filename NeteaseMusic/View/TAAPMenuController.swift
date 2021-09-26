@@ -104,7 +104,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
         }.ensure {
             sender.requesting = false
         }.catch {
-            print($0)
+            Log.error("Subscribe error \($0)")
         }
     }
     
@@ -125,7 +125,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 alg = item.alg
             }
             api.discoveryRecommendDislike(id, isPlaylist: list.contentType == .playlist, alg: alg).done {
-                print("Remove \(id) from discoverPlaylist done.")
+                Log.info("Remove \(id) from discoverPlaylist done.")
                 guard d.tableViewList() == list else { return }
                 if list.contentType == .playlist {
                     d.removeSuccess(ids: [id], newItem: $0.1)
@@ -137,7 +137,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             }.catch {
                 if let er = ($0 as? NeteaseMusicAPI.RequestError) {
                     switch er {
-                    case .errorCode(let code, let msg):
+                    case .errorCode((let code, let msg)):
                         if code == 432, msg == "今日暂无更多推荐" {
                             vcm.displayMessage(msg)
                             return
@@ -147,31 +147,31 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                     }
                 }
                 d.shouldReloadData()
-                print("Remove \(id) from discoverPlaylist error \($0).")
+                Log.error("Remove \(id) from discoverPlaylist error \($0).")
             }
         case .fmTrash:
             guard let id = d.selectedItems().id.first, id > 0 else { return }
             api.fmTrash(id: id, 0, false).done {
-                print("FM Trash Delected \(id).")
+                Log.info("FM Trash Delected \(id).")
                 guard d.tableViewList().type == .fmTrash else { return }
                 d.removeSuccess(ids: [id], newItem: nil)
             }.ensure {
                 sender.requesting = false
             }.catch {
                 d.shouldReloadData()
-                print("FM Trash Del error: \($0).")
+                Log.error("FM Trash Del error: \($0).")
             }
         case .favourite, .createdPlaylist:
             let ids = d.selectedItems().id
             api.playlistTracks(add: false, ids, to: playlistId).done {
                 guard list == d.tableViewList() else { return }
                 d.removeSuccess(ids: ids, newItem: nil)
-                print("Remove \(ids) from playlist \(playlistId) done.")
+                Log.info("Remove \(ids) from playlist \(playlistId) done.")
             }.ensure {
                 sender.requesting = false
             }.catch {
                 d.shouldReloadData()
-                print("Remove \(ids) from playlist \(playlistId) error \($0).")
+                Log.error("Remove \(ids) from playlist \(playlistId) error \($0).")
             }
         case .sidePlaylist:
             sender.requesting = false
@@ -196,7 +196,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             let ids = delegate?.selectedItems().id,
             ids.count > 0 else { return }
         PlayCore.shared.api.playlistTracks(add: true, ids, to: playlistId).done {
-            print("Add \(ids) to playlist \(playlistId) done.")
+            Log.info("Add \(ids) to playlist \(playlistId) done.")
             guard playlistId == d.tableViewList().id else { return }
             switch d.tableViewList().type {
             case .createdPlaylist, .favourite:
@@ -205,7 +205,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 break
             }
         }.catch {
-            print("Add \(ids) to playlist \(playlistId) error \($0).")
+            Log.error("Add \(ids) to playlist \(playlistId) error \($0).")
         }
     }
     
@@ -369,7 +369,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
                 }
             }.catch {
                 self.subscribeMenuItem.isHidden = true
-                print("check subscribe album list error \($0)")
+                Log.error("check subscribe album list error \($0)")
             }
         default:
             subscribeMenuItem.title = "Subscribe"
@@ -432,7 +432,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             item.isEnabled = false
             self.addToPlaylistMenu.addItem(item)
             self.addToPlaylistMenu.insertItem(NSMenuItem.separator(), at: 1)
-            print($0)
+            Log.error("\($0)")
         }
     }
     

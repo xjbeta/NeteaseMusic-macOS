@@ -106,7 +106,7 @@ class FMViewController: NSViewController, ContentTabViewController {
                     self.initView()
                 }
             }.catch {
-                print($0)
+                Log.error($0)
             }
         }
         
@@ -140,7 +140,7 @@ class FMViewController: NSViewController, ContentTabViewController {
             
             return p.done(on: .main) {
                 guard let fid = $0.first?.id else {
-                    print("Init fm playlist failed, Empty result.")
+                    Log.error("Init fm playlist failed, Empty result.")
                     return
                 }
                 $0.forEach {
@@ -281,9 +281,9 @@ class FMViewController: NSViewController, ContentTabViewController {
                 currentTrackId = playlist[0].id
             } else {
                 initContent().done {
-                    print("initContent")
+                    
                 }.catch {
-                    print($0)
+                    Log.error("\($0)")
                 }
             }
         }

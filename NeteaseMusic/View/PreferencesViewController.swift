@@ -113,12 +113,12 @@ class PreferencesViewController: NSViewController {
             if let tv = fr as? NSTextView,
                 let keTV = tv.superview?.superview as? KeyEquivalentTextField {
                 if !vcManager.hotKeysEnabled {
-                    print("invalidateAllHotKeys")
+                    Log.info("invalidateAllHotKeys")
                     vcManager.invalidateAllHotKeys()
                 }
             } else {
                 if vcManager.hotKeysEnabled {
-                    print("initAllHotKeys")
+                    Log.info("initAllHotKeys")
                     vcManager.initAllHotKeys()
                 }
             }
@@ -207,7 +207,7 @@ class PreferencesViewController: NSViewController {
             $0.keyEquivalentDelegate = self
             $0.delegate = self
             guard let key = textFieldsDic[$0] else {
-                print("Can't find key in textFieldsDic.")
+                Log.error("Can't find key in textFieldsDic.")
                 return
             }
             $0.isGlobal = key.isGlobal()
@@ -262,7 +262,7 @@ class PreferencesViewController: NSViewController {
 
 extension PreferencesViewController: NSTextFieldDelegate, KeyEquivalentTextFieldDelegate {
     func keyEquivalentChangeFailed(_ reason: KeyEquivalentChangeFailureReason, _ textField: KeyEquivalentTextField) {
-        print(#function, reason)
+        Log.error("\(reason)")
     }
     
     func keyEquivalentDidChanged(_ keyEquivalent: PreferencesKeyEvent, _ textField: KeyEquivalentTextField) {
@@ -283,7 +283,7 @@ extension PreferencesViewController: NSTextFieldDelegate, KeyEquivalentTextField
         }
         
         hotKeys[key] = keyEquivalent
-        print("New keyEquivalent setted, \(key)  \(keyEquivalent)")
+        Log.info("New keyEquivalent setted, \(key)  \(keyEquivalent)")
         Preferences.shared.hotKeys = hotKeys
         textField.initStringValue()
     }

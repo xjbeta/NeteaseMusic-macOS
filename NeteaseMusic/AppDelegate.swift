@@ -21,6 +21,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        Log.initLog()
+        
         
         vcm.initAllHotKeys()
         
@@ -37,14 +39,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func initCache() {
         // Music cache
-        print("Music Cache Path: \n", VideoCacheManager.directory)
+        Log.info("Music Cache Path: \(VideoCacheManager.directory)")
         let vcm = ViewControllerManager.shared
         vcm.cleanMusicCache()
         
         
         // Image cache
         ImageCache.default.cleanExpiredCache()
-        print("Image Cache Path: \n", ImageCache.default.diskStorage.directoryURL.path)
+        Log.info("Image Cache Path: \(ImageCache.default.diskStorage.directoryURL.path)")
     }
 
     @IBAction func logout(_ sender: NSMenuItem) {

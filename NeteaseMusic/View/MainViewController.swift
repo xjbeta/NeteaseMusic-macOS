@@ -102,10 +102,10 @@ class MainViewController: NSViewController {
             messageBox.animator().alphaValue = 1
         }
         messageID = id
-        print("display message \(str)")
+        Log.info("Display message \(str)")
         after(seconds: 3).done {
             guard id == self.messageID else { return }
-            print("hide message box.")
+            Log.info("Hide message box")
             self.messageBox.animator().alphaValue = 0
             self.messageID = ""
         }
@@ -156,9 +156,9 @@ class MainViewController: NSViewController {
             self.loadingProgressIndicator.stopAnimation(nil)
         }.done(on:.main) {
             self.contentTabView.selectTabViewItem(at: ctItem.rawValue)
-            print("\(ctItem) \(item.id) Content inited.")
+            Log.info("\(ctItem) \(item.id) Content inited.")
         }.catch {
-            print("\(ctItem) Content init failed.  \($0)")
+            Log.error("\(ctItem) \(item.id) Content init failed.  \($0)")
             self.loadingTabView.selectTabViewItem(at: loadingTabItems.tryAgain.rawValue)
         }
     }

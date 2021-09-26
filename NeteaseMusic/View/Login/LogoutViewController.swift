@@ -12,12 +12,12 @@ class LogoutViewController: NSViewController {
 
     @IBAction func logout(_ sender: NSButton) {
         PlayCore.shared.api.logout().done {
-            print("Logout success.")
+            Log.info("Logout success.")
             NotificationCenter.default.post(name: .updateLoginStatus, object: nil, userInfo: ["logout": true])
             }.ensure(on: .main) {
                 self.dismiss(self)
             }.catch {
-                print("Logout error \($0).")
+                Log.error("\($0)")
                 NotificationCenter.default.post(name: .updateLoginStatus, object: nil, userInfo: ["logout": false])
         }
     }

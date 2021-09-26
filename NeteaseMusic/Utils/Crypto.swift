@@ -26,7 +26,7 @@ class Crypto: NSObject {
             .replacingOccurrences(of: "\n", with: "")
         var error: Unmanaged<CFError>? = nil
         guard let keyData = Data(base64Encoded: publicKey) else {
-            print("KeyDataEncodeFailure")
+            Log.error("KeyDataEncodeFailure")
             return nil
         }
         guard let key = SecKeyCreateWithData(keyData as CFData, [
@@ -34,13 +34,13 @@ class Crypto: NSObject {
             kSecAttrKeyClass: kSecAttrKeyClassPublic,
             kSecAttrKeySizeInBits: (keyData.count * 8) as NSNumber,
             ] as CFDictionary, &error) else {
-                print("publicKeySecKeyGenerationFailure \(String(describing: error))")
+                Log.error("publicKeySecKeyGenerationFailure \(String(describing: error))")
                 return nil
         }
         
         guard let d = SecKeyCreateEncryptedData(
             key, .rsaEncryptionRaw, data as CFData, &error) else {
-                print("rsaEncryptFailure \(String(describing: error))")
+                Log.error("rsaEncryptFailure \(String(describing: error))")
                 return nil
         }
         return (d as Data).hexDescription
@@ -77,7 +77,7 @@ class Crypto: NSObject {
             p["encSecKey"] = rsaEncrypt(kk, with: publicKey)
             return p
         } catch let error {
-            print(error)
+            Log.error(error)
             return [:]
         }
     }

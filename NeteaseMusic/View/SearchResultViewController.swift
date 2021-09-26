@@ -24,7 +24,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
         initContentView().done {
             
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     
@@ -122,7 +122,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
         p?.done {
             pc.start($0)
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     
@@ -222,7 +222,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
             guard type == self.resultType,
                 offset == self.pageData.current else { return }
             
-            print("Update search result with \(keywords), page \(offset), limit \(limit).")
+            Log.info("Update search result with \(keywords), page \(offset), limit \(limit).")
             
             var pageCount = 0
             
@@ -307,7 +307,7 @@ extension SearchResultViewController: PageSegmentedControlDelegate {
         initResults(number).done {
             
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
 }

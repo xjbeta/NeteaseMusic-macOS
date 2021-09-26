@@ -5,4 +5,4 @@ github "mxcl/PromiseKit"
 github "krzyzanowskim/CryptoSwift"
 github "soffes/HotKey"
 github "onevcat/Kingfisher"
-
+github "CocoaLumberjack/CocoaLumberjack"

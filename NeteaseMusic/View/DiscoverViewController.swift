@@ -71,7 +71,7 @@ class DiscoverViewController: NSViewController, ContentTabViewController {
         }.done {
             pc.start($0)
         }.catch {
-            print($0)
+            Log.error($0)
         }
     }
     
@@ -163,7 +163,7 @@ extension DiscoverViewController: TAAPMenuDelegate {
         initContent().done {
             
         }.catch {
-            print($0)
+            Log.error($0)
         }
     }
     

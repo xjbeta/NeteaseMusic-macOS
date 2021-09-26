@@ -40,9 +40,9 @@ class ControlBarViewController: NSViewController {
                let id = pc.currentTrack?.id {
                 let seconds = Int(player.currentTime().seconds)
                 pc.api.radioSkip(id, seconds).done {
-                    print("Song skipped, id: \(id) seconds: \(seconds)")
+                    Log.info("Song skipped, id: \(id) seconds: \(seconds)")
                 }.catch {
-                    print($0)
+                    Log.error("\($0)")
                 }
             }
         case muteButton:

@@ -70,7 +70,7 @@ class SidebarViewController: NSViewController {
             self.outlineView.deselectAll(nil)
             self.outlineView.expandItem(nil, expandChildren: true)
             }.catch {
-                print($0)
+                Log.error("\($0)")
         }
     }
     
@@ -187,16 +187,8 @@ class SidebarViewController: NSViewController {
     var scrollViewObserver: NSObjectProtocol?
     var selectSidebarItemObserver: NSObjectProtocol?
     
-    private var searchMode = false {
-        didSet {
-            print("searchMode", searchMode)
-        }
-    }
-    private var savedSidebarItems = [SidebarItem]() {
-        didSet {
-            print("savedSidebarItems", savedSidebarItems.count)
-        }
-    }
+    private var searchMode = false
+    private var savedSidebarItems = [SidebarItem]()
     private var savedOutlineExpand = [Bool]()
     
     
@@ -483,7 +475,7 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         
         if searchMode {
             
-            print(item.id, item.title)
+            Log.info(item.id, item.title)
             
             let pc = PlayCore.shared
             let vcm =  ViewControllerManager.shared
@@ -495,7 +487,7 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
                     }
                     pc.playNow($0)
                     }.catch {
-                       print("Song Detail error \($0)")
+                        Log.error("\($0)")
                 }
             case .searchSuggestionCellAlbum:
                 vcm.selectSidebarItem(.album, item.id)
@@ -568,7 +560,7 @@ extension SidebarViewController: TAAPMenuDelegate {
         updatePlaylists().done {
             
         }.catch {
-            print($0)
+            Log.error("\($0)")
         }
     }
     
@@ -589,7 +581,7 @@ extension SidebarViewController: TAAPMenuDelegate {
             }.done {
                 pc.start($0)
             }.catch {
-                print($0)
+                Log.error("\($0)")
             }
         default:
             break

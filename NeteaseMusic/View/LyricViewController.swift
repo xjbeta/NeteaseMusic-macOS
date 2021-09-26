@@ -97,7 +97,7 @@ class LyricViewController: NSViewController {
             }.done(on: .main) {
                 self.tableView.reloadData()
             }.catch {
-                print($0)
+                Log.error("\($0)")
         }
     }
     

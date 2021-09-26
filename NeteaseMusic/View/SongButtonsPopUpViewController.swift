@@ -15,9 +15,9 @@ class SongButtonsPopUpViewController: NSViewController {
         guard let playlistId = playlists[safe: tableView.selectedRow]?.id else { return }
         
         PlayCore.shared.api.playlistTracks(add: true, [trackId], to: playlistId).done {
-            print("Added song: \(self.trackId) to playlist: \(playlistId).")
-            }.catch {
-                print($0)
+            Log.info("Added song: \(self.trackId) to playlist: \(playlistId).")
+        }.catch {
+            Log.error("\($0)")
         }
         dismiss(self)
     }
@@ -37,8 +37,8 @@ class SongButtonsPopUpViewController: NSViewController {
             }
             
             self?.tableView.reloadData()
-            }.catch {
-                print("Load user playlist error: \($0).")
+        }.catch {
+            Log.error("Load user playlist error: \($0).")
         }
     }
 }

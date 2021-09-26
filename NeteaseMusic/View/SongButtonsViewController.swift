@@ -28,7 +28,7 @@ class SongButtonsViewController: NSViewController {
             pc.api.like(id, !loved, time).done {
                 self.checkLikeList()
             }.catch {
-                print($0)
+                Log.error("Like error \($0)")
             }
         case deleteButton:
             deleteButton.isEnabled = false
@@ -45,11 +45,10 @@ class SongButtonsViewController: NSViewController {
                                   id: track.element.id,
                                   enterFMMode: true)
                 }
-                print("fmTrash \(id) done.")
             }.ensure(on: .main) {
                 self.deleteButton.isEnabled = true
             }.catch {
-                    print($0)
+                Log.error("fmTrash error \($0)")
             }
         case moreButton:
             if let event = NSApp.currentEvent {
@@ -127,7 +126,7 @@ class SongButtonsViewController: NSViewController {
         }.ensure(on: .main) {
             self.loveButton.isEnabled = true
         }.catch {
-            print($0)
+            Log.error("likeList error \($0)")
         }
     }
     

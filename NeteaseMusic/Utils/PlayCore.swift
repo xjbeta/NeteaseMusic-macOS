@@ -204,7 +204,7 @@ class PlayCore: NSObject {
             internalPlaylistIndex = 0
             play(track)
         } else {
-            print("Not find track to start play.")
+            Log.error("Not find track to start play.")
         }
     }
     
@@ -225,9 +225,10 @@ class PlayCore: NSObject {
         
         if fmMode {
             guard let c = currentTrack,
-               let ci = playlist.firstIndex(of: c),
-               let track = playlist[safe: ci + 1] else {
-                print("Can't find next fm track.")
+                  let ci = playlist.firstIndex(of: c),
+                  let track = playlist[safe: ci + 1]
+            else {
+                Log.error("Can't find next fm track.")
                 stop()
                 return
             }
@@ -243,8 +244,9 @@ class PlayCore: NSObject {
             updateInternalPlaylist()
             
             guard let id = internalPlaylist[safe: internalPlaylistIndex + 1],
-                  let track = playlist.first(where: { $0.id == id }) else {
-                print("Can't find next track.")
+                  let track = playlist.first(where: { $0.id == id })
+            else {
+                Log.error("Can't find next track.")
                 stop()
                 return
             }
@@ -406,7 +408,7 @@ class PlayCore: NSObject {
                 }
             }
         }.catch {
-            print("Load Song urls error: \($0)")
+            Log.error("Load Song urls error: \($0)")
         }
     }
     
@@ -495,7 +497,7 @@ class PlayCore: NSObject {
     private func updateInternalPlaylist() {
         guard !fmMode else { return }
         guard playlist.count > 0 else {
-            print("Nothing playable.")
+            Log.error("Nothing playable.")
             internalPlaylistIndex = -1
             currentTrack = nil
             return

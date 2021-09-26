@@ -21,13 +21,13 @@ class NewPlaylistViewController: NSViewController {
         guard str.count > 0 else { return }
         let privacy = privacyButton.state == .on
         PlayCore.shared.api.playlistCreate(str, privacy: privacy).done(on: .main) {
-            print("Playlist created with name \(str)")
+            Log.info("Playlist created with name \(str)")
             NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
             self.textField.stringValue = ""
             self.dismiss(self)
             }.catch {
                 ViewControllerManager.shared.displayMessage("Create new playlist failed.")
-                print("Playlist create error \($0)")
+                Log.error("Playlist create error \($0)")
         }
     }
     

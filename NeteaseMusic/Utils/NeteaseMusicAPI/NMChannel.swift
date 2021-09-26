@@ -52,9 +52,9 @@ class NMChannel: NSObject {
         
         guard let l = str?.components(separatedBy: "-36cd479b6b5-"),
               l.count == 3 else {
-            print("DeSerialData failed.  \(str ?? "")")
-            return nil
-        }
+                  Log.error("DeSerialData failed.  \(str ?? "")")
+                  return nil
+              }
         return l[1]
     }
     

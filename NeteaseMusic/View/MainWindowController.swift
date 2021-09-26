@@ -54,14 +54,14 @@ class MainWindowController: NSWindowController {
             switch $0 {
             case NeteaseMusicAPI.RequestError.errorCode((let code, let string)):
                 if code == 301 {
-                    print("should login.")
+                    Log.info("should login.")
                     vc.updateMainTabView(.login)
                     loginVC.initViews()
                 } else {
-                    print(code, string)
+                    Log.error("Unknown error: \(code), \(string)")
                 }
             default:
-                print($0)
+                Log.error("Unknown error: \($0)")
             }
         }
     }
@@ -71,7 +71,7 @@ class MainWindowController: NSWindowController {
         sidebarVC.updatePlaylists().done {
             
         }.catch {
-            print($0)
+            Log.error("InitSidebarPlaylists error: \($0)")
         }
     }
     
