@@ -283,7 +283,7 @@ class FMViewController: NSViewController, ContentTabViewController {
                 initContent().done {
                     
                 }.catch {
-                    Log.error("\($0)")
+                    Log.error($0)
                 }
             }
         }

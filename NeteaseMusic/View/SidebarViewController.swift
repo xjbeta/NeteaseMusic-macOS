@@ -70,7 +70,7 @@ class SidebarViewController: NSViewController {
             self.outlineView.deselectAll(nil)
             self.outlineView.expandItem(nil, expandChildren: true)
             }.catch {
-                Log.error("\($0)")
+                Log.error($0)
         }
     }
     
@@ -475,7 +475,7 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
         
         if searchMode {
             
-            Log.info(item.id, item.title)
+            Log.info("\(item.id) \(item.title)")
             
             let pc = PlayCore.shared
             let vcm =  ViewControllerManager.shared
@@ -487,7 +487,7 @@ extension SidebarViewController: NSOutlineViewDelegate, NSOutlineViewDataSource 
                     }
                     pc.playNow($0)
                     }.catch {
-                        Log.error("\($0)")
+                        Log.error($0)
                 }
             case .searchSuggestionCellAlbum:
                 vcm.selectSidebarItem(.album, item.id)
@@ -560,7 +560,7 @@ extension SidebarViewController: TAAPMenuDelegate {
         updatePlaylists().done {
             
         }.catch {
-            Log.error("\($0)")
+            Log.error($0)
         }
     }
     
@@ -581,7 +581,7 @@ extension SidebarViewController: TAAPMenuDelegate {
             }.done {
                 pc.start($0)
             }.catch {
-                Log.error("\($0)")
+                Log.error($0)
             }
         default:
             break

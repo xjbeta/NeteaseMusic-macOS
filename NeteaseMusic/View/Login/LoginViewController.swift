@@ -165,7 +165,7 @@ extension LoginViewController: WKNavigationDelegate, WKUIDelegate {
             evaluateLoginJS().done {
                 self.selectTab(.webView)
             }.catch {
-                Log.error("\($0)")
+                Log.error($0)
             }
         default:
             break
@@ -250,7 +250,7 @@ extension LoginViewController: WKHTTPCookieStoreObserver {
                 NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
                 self.startCookieStoreObserver(false)
             }.catch {
-                Log.error("\($0)")
+                Log.error($0)
                 self.showUnknownError()
             }
         }

@@ -24,7 +24,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
         initContentView().done {
             
         }.catch {
-            Log.error("\($0)")
+            Log.error($0)
         }
     }
     
@@ -122,7 +122,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
         p?.done {
             pc.start($0)
         }.catch {
-            Log.error("\($0)")
+            Log.error($0)
         }
     }
     
@@ -307,7 +307,7 @@ extension SearchResultViewController: PageSegmentedControlDelegate {
         initResults(number).done {
             
         }.catch {
-            Log.error("\($0)")
+            Log.error($0)
         }
     }
 }

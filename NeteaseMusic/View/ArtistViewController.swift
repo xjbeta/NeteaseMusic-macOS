@@ -36,7 +36,7 @@ class ArtistViewController: NSViewController, ContentTabViewController {
         }.ensure(on: .main) {
             sender.isEnabled = true
         }.catch {
-            Log.error("\($0)")
+            Log.error($0)
         }
     }
     
@@ -125,7 +125,7 @@ class ArtistViewController: NSViewController, ContentTabViewController {
         p?.done {
             pc.start($0)
         }.catch {
-            Log.error("\($0)")
+            Log.error($0)
         }
     }
 }

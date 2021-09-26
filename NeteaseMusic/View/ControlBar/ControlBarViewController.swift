@@ -42,7 +42,7 @@ class ControlBarViewController: NSViewController {
                 pc.api.radioSkip(id, seconds).done {
                     Log.info("Song skipped, id: \(id) seconds: \(seconds)")
                 }.catch {
-                    Log.error("\($0)")
+                    Log.error($0)
                 }
             }
         case muteButton:

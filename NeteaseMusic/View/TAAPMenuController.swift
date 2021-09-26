@@ -432,7 +432,7 @@ class TAAPMenuController: NSObject, NSMenuDelegate, NSMenuItemValidation {
             item.isEnabled = false
             self.addToPlaylistMenu.addItem(item)
             self.addToPlaylistMenu.insertItem(NSMenuItem.separator(), at: 1)
-            Log.error("\($0)")
+            Log.error($0)
         }
     }
     

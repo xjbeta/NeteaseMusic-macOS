@@ -17,7 +17,7 @@ class SongButtonsPopUpViewController: NSViewController {
         PlayCore.shared.api.playlistTracks(add: true, [trackId], to: playlistId).done {
             Log.info("Added song: \(self.trackId) to playlist: \(playlistId).")
         }.catch {
-            Log.error("\($0)")
+            Log.error($0)
         }
         dismiss(self)
     }

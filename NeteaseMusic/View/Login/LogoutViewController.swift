@@ -17,7 +17,7 @@ class LogoutViewController: NSViewController {
             }.ensure(on: .main) {
                 self.dismiss(self)
             }.catch {
-                Log.error("\($0)")
+                Log.error($0)
                 NotificationCenter.default.post(name: .updateLoginStatus, object: nil, userInfo: ["logout": false])
         }
     }

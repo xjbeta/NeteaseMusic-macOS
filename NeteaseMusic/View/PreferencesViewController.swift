@@ -262,7 +262,7 @@ class PreferencesViewController: NSViewController {
 
 extension PreferencesViewController: NSTextFieldDelegate, KeyEquivalentTextFieldDelegate {
     func keyEquivalentChangeFailed(_ reason: KeyEquivalentChangeFailureReason, _ textField: KeyEquivalentTextField) {
-        Log.error("\(reason)")
+        Log.error(reason)
     }
     
     func keyEquivalentDidChanged(_ keyEquivalent: PreferencesKeyEvent, _ textField: KeyEquivalentTextField) {

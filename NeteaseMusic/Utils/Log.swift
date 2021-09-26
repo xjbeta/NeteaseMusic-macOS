@@ -35,23 +35,23 @@ class Log: NSObject {
     }
     
     
-    static func verbose(_ str: String) {
-        DDLogVerbose(str)
+    static func verbose(_ item: Any) {
+        DDLogVerbose(item)
     }
     
-    static func debug(_ str: String) {
-        DDLogDebug(str)
+    static func debug(_ item: Any) {
+        DDLogDebug(item)
     }
     
-    static func info(_ str: String) {
-        DDLogInfo(str)
+    static func info(_ item: Any) {
+        DDLogInfo(item)
     }
     
-    static func warn(_ str: String) {
-        DDLogWarn(str)
+    static func warn(_ item: Any) {
+        DDLogWarn(item)
     }
     
-    static func error(_ str: String) {
-        DDLogError(str)
+    static func error(_ item: Any) {
+        DDLogError(item)
     }
 }
