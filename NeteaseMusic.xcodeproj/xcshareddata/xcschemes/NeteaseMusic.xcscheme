@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "01957D87224D01850006FCEC"
-               BuildableName = "NeteaseMusic.app"
+               BuildableName = "Netease Music.app"
                BlueprintName = "Netease Music"
                ReferencedContainer = "container:NeteaseMusic.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01957D87224D01850006FCEC"
-            BuildableName = "NeteaseMusic.app"
+            BuildableName = "Netease Music.app"
             BlueprintName = "Netease Music"
             ReferencedContainer = "container:NeteaseMusic.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01957D87224D01850006FCEC"
-            BuildableName = "NeteaseMusic.app"
+            BuildableName = "Netease Music.app"
             BlueprintName = "Netease Music"
             ReferencedContainer = "container:NeteaseMusic.xcodeproj">
          </BuildableReference>
@@ -88,7 +88,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "01957D87224D01850006FCEC"
-            BuildableName = "NeteaseMusic.app"
+            BuildableName = "Netease Music.app"
             BlueprintName = "Netease Music"
             ReferencedContainer = "container:NeteaseMusic.xcodeproj">
          </BuildableReference>
