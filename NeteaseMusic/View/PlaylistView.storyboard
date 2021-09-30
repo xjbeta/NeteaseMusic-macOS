@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rJU-yY-OIR">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="rJU-yY-OIR">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Playlist View Controller-->
         <scene sceneID="emX-dK-Ycu">
             <objects>
-                <viewController id="rJU-yY-OIR" customClass="PlaylistViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rJU-yY-OIR" customClass="PlaylistViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="LrU-MC-bgq">
                         <rect key="frame" x="0.0" y="0.0" width="822" height="560"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,7 +20,7 @@
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-Nf-G1i">
                                         <rect key="frame" x="125" y="12" width="179" height="97"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="plA-di-ceU">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="plA-di-ceU">
                                                 <rect key="frame" x="-2" y="72" width="72" height="25"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="_Name" usesSingleLineMode="YES" id="YPE-Pf-XZo">
                                                     <font key="font" metaFont="systemMedium" size="21"/>
@@ -69,7 +69,7 @@
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PWZ-Vv-gqv">
                                                         <rect key="frame" x="127" y="0.0" width="54" height="16"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" id="dtz-ws-bDk">
-                                                            <customFormatter key="formatter" id="oiF-Ht-WtM" customClass="PlaylistViewsFormatter" customModule="NeteaseMusic" customModuleProvider="target"/>
+                                                            <customFormatter key="formatter" id="oiF-Ht-WtM" customClass="PlaylistViewsFormatter" customModule="Netease_Music" customModuleProvider="target"/>
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -185,7 +185,7 @@
                                                     <action selector="playPlaylist:" target="rJU-yY-OIR" id="Upw-mc-B31"/>
                                                 </connections>
                                             </button>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-QW-naB" customClass="SubscribeButton" customModule="NeteaseMusic" customModuleProvider="target">
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfw-QW-naB" customClass="SubscribeButton" customModule="Netease_Music" customModuleProvider="target">
                                                 <rect key="frame" x="76" y="-2" width="89" height="32"/>
                                                 <buttonCell key="cell" type="push" title="收藏" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1ya-xl-UCE">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
