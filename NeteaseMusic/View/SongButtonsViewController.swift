@@ -107,12 +107,8 @@ class SongButtonsViewController: NSViewController {
             return
         }
         
-        var img = NSImage(named: .init(name))
-        if #available(macOS 11.0, *) {
-            img = img?.withSymbolConfiguration(.init(pointSize: button.frame.size.width, weight: .thin, scale: .large))
-        }
-        
-        button.image = img
+        name += ".Thin-L"
+        button.image = NSImage(named: .init(name))
 
     }
     

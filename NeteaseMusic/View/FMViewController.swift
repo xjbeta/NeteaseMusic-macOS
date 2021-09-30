@@ -334,12 +334,9 @@ class FMViewController: NSViewController, ContentTabViewController {
     }
     
     func updatePlayButton(_ paused: Bool) {
-        let name = paused ? "play.circle" : "pause.circle"
-        var image = NSImage(named: .init(name))
-        if #available(macOS 11.0, *) {
-            image = image?.withSymbolConfiguration(.init(pointSize: playButton.frame.width, weight: .light, scale: .large))
-        }
-        playButton.image = image?.tint(color: .nColor)
+        let name = paused ? "play.circle.Light-L" : "pause.circle.Light-L"
+        playButton.image = NSImage(named: .init(name))
+        playButton.contentTintColor = .nColor
     }
     
     func lyricViewController() -> LyricViewController? {
