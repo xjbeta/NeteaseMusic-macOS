@@ -9,7 +9,7 @@
         <!--Playing Song View Controller-->
         <scene sceneID="nQ9-yf-CZT">
             <objects>
-                <viewController showSeguePresentationStyle="single" id="gck-gy-ejJ" customClass="PlayingSongViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="gck-gy-ejJ" customClass="PlayingSongViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ZED-5h-OYA">
                         <rect key="frame" x="0.0" y="0.0" width="928" height="580"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -21,10 +21,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="aPm-xO-W1x">
-                                            <rect key="frame" x="19" y="90" width="890" height="557"/>
+                                            <rect key="frame" x="19" y="0.0" width="890" height="647"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="qM1-UE-mkv">
-                                                    <rect key="frame" x="20" y="24" width="400" height="513"/>
+                                                    <rect key="frame" x="20" y="114" width="400" height="513"/>
                                                     <subviews>
                                                         <box fixedFrame="YES" boxType="custom" borderType="none" borderWidth="0.0" cornerRadius="168" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="cCE-ZR-uHF">
                                                             <rect key="frame" x="17" y="17" width="336" height="336"/>
@@ -57,10 +57,10 @@
                                                     </constraints>
                                                 </customView>
                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5L1-8t-XVF">
-                                                    <rect key="frame" x="430" y="20" width="400" height="450"/>
+                                                    <rect key="frame" x="430" y="60" width="400" height="500"/>
                                                     <subviews>
                                                         <containerView translatesAutoresizingMaskIntoConstraints="NO" id="bfd-ZI-Qt4">
-                                                            <rect key="frame" x="0.0" y="440" width="400" height="10"/>
+                                                            <rect key="frame" x="0.0" y="490" width="400" height="10"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="250" constant="10" id="ERT-Ny-qa0"/>
                                                             </constraints>
@@ -69,7 +69,7 @@
                                                             </connections>
                                                         </containerView>
                                                         <containerView translatesAutoresizingMaskIntoConstraints="NO" id="nPL-KW-HBo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="400" height="415"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="400" height="465"/>
                                                             <connections>
                                                                 <segue destination="8xg-xg-wNy" kind="embed" id="lMO-FK-Z8x"/>
                                                             </connections>
@@ -78,7 +78,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="400" id="8My-q1-Cuc"/>
                                                         <constraint firstItem="nPL-KW-HBo" firstAttribute="width" secondItem="5L1-8t-XVF" secondAttribute="width" id="Aae-K7-Xx3"/>
-                                                        <constraint firstAttribute="height" constant="450" id="RHp-Pb-w5E"/>
+                                                        <constraint firstAttribute="height" constant="500" id="RHp-Pb-w5E"/>
                                                         <constraint firstItem="bfd-ZI-Qt4" firstAttribute="width" secondItem="5L1-8t-XVF" secondAttribute="width" id="imt-sd-1Bm"/>
                                                     </constraints>
                                                     <visibilityPriorities>
@@ -91,7 +91,7 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZz-KW-1vj">
-                                                    <rect key="frame" x="838" y="369" width="50" height="66"/>
+                                                    <rect key="frame" x="838" y="459" width="50" height="66"/>
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ceK-qy-6cy">
                                                             <rect key="frame" x="7" y="39" width="37" height="32"/>
@@ -157,7 +157,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="FZz-KW-1vj" secondAttribute="trailing" constant="2" id="HGy-ya-4qf"/>
                                                 <constraint firstItem="5L1-8t-XVF" firstAttribute="top" secondItem="aPm-xO-W1x" secondAttribute="top" constant="87" id="RQP-Vz-Hj8"/>
                                                 <constraint firstItem="qM1-UE-mkv" firstAttribute="leading" secondItem="aPm-xO-W1x" secondAttribute="leading" constant="20" id="VI5-yx-Za6"/>
-                                                <constraint firstAttribute="bottom" secondItem="5L1-8t-XVF" secondAttribute="bottom" constant="20" id="a3q-7V-4f9"/>
                                                 <constraint firstItem="FZz-KW-1vj" firstAttribute="top" secondItem="nPL-KW-HBo" secondAttribute="top" id="s7j-hv-EyK"/>
                                             </constraints>
                                         </customView>
@@ -173,6 +172,7 @@
                                         </containerView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="aPm-xO-W1x" secondAttribute="bottom" id="6RL-bD-aUx"/>
                                         <constraint firstItem="aPm-xO-W1x" firstAttribute="centerX" secondItem="zOg-JT-mFc" secondAttribute="centerX" id="ELo-LL-Dm9"/>
                                         <constraint firstItem="Fxq-aK-gfy" firstAttribute="top" secondItem="qM1-UE-mkv" secondAttribute="bottom" constant="15" id="Ici-ya-Tze"/>
                                         <constraint firstItem="Fxq-aK-gfy" firstAttribute="centerX" secondItem="6OW-aO-T6v" secondAttribute="centerX" id="baZ-Gd-IcL"/>
