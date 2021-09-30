@@ -112,11 +112,8 @@ class ControlBarViewController: NSViewController {
         previousButton.contentTintColor = .nColor
         nextButton.contentTintColor = .nColor
         
-        var musicListImage = NSImage(named: .init("music.note.list"))
-        if #available(macOS 11.0, *) {
-            musicListImage = musicListImage?.withSymbolConfiguration(.init(scale: .large))
-        }
-        playlistButton.image = musicListImage?.tint(color: .nColor)
+        playlistButton.image = NSImage(named: .init("music.note.list.Regular-M"))
+        playlistButton.contentTintColor = .nColor
         
         let pc = PlayCore.shared
         initVolumeButton()
@@ -156,13 +153,12 @@ class ControlBarViewController: NSViewController {
         }
         
         pauseStautsObserver = pc.observe(\.playerState, options: [.initial, .new]) { [weak self] pc, _ in
-            guard let button = self?.pauseButton else { return }
-            let name = pc.playerState == .playing ? "pause.circle" : "play.circle"
-            var img = NSImage(named: NSImage.Name(name))
-            if #available(macOS 11.0, *) {
-                img = img?.withSymbolConfiguration(.init(pointSize: button.frame.width, weight: .light, scale: .large))
-            }
-            button.image = img?.tint(color: .nColor)
+            guard let btn = self?.pauseButton else { return }
+            
+            let name = pc.playerState == .playing ? "pause.circle.Light-L" : "play.circle.Light-L"
+
+            btn.image = NSImage(named: .init(name))
+            btn.contentTintColor = .nColor
         }
         
         previousButtonObserver = pc.observe(\.pnItemType, options: [.initial, .new]) { [weak self] pc, _ in
@@ -262,33 +258,26 @@ class ControlBarViewController: NSViewController {
                 imageName = "speaker"
             }
         }
-        var img = NSImage(named: .init(imageName))
-        if #available(macOS 11.0, *) {
-            img = img?.withSymbolConfiguration(.init(scale: .large))
-        }
-        
-        muteButton.image = img?.tint(color: color)
+        imageName += ".Regular-M"
+        muteButton.image = NSImage(named: .init(imageName))
+        muteButton.contentTintColor = color
     }
     
     func initPlayModeButton() {
         let pref = Preferences.shared
         
-        let repeatImgName = pref.repeatMode == .repeatItem ? "repeat.1" : "repeat"
-        let shuffleImgName = "shuffle"
+        var repeatImgName = pref.repeatMode == .repeatItem ? "repeat.1" : "repeat"
+        repeatImgName += ".Regular-M"
         
-        let repeatImgColor: NSColor = pref.repeatMode == .noRepeat ? .systemGray : .nColor
-        let shuffleImgColor: NSColor = pref.shuffleMode == .noShuffle ? .systemGray : .nColor
-
-        var repeatImage = NSImage(named: .init(repeatImgName))
-        var shuffleImage = NSImage(named: .init(shuffleImgName))
+        var shuffleImgName = "shuffle"
+        shuffleImgName += ".Regular-M"
         
-        if #available(macOS 11.0, *) {
-            repeatImage = repeatImage?.withSymbolConfiguration(.init(scale: .large))
-            shuffleImage = shuffleImage?.withSymbolConfiguration(.init(scale: .large))
-        }
+        repeatModeButton.image = NSImage(named: .init(repeatImgName))
         
-        repeatModeButton.image = repeatImage?.tint(color: repeatImgColor)
-        shuffleModeButton.image = shuffleImage?.tint(color: shuffleImgColor)
+        repeatModeButton.contentTintColor = pref.repeatMode == .noRepeat ? .systemGray : .nColor
+        
+        shuffleModeButton.image = NSImage(named: .init(shuffleImgName))
+        shuffleModeButton.contentTintColor = pref.shuffleMode == .noShuffle ? .systemGray : .nColor
         
         PlayCore.shared.updateRepeatShuffleMode()
     }
