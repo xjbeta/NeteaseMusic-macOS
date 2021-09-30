@@ -44,12 +44,15 @@ class VolumeSliderCell: NSSliderCell {
     }
     
     override func drawBar(inside rect: NSRect, flipped: Bool) {
-        let slider = self.controlView as! NSSlider
+        let color1 = NSColor.nColor
+        guard let slider = self.controlView as? NSSlider,
+              let color3 = NSColor(named: .init("PlaySliderBackgroundColor"))
+        else {
+            return
+        }
+        
         let barRadius = barHeight / 2
         let r = rect
-        
-        let color1 = NSColor.nColor
-        let color3 = NSColor(red:0.96, green:0.96, blue:0.96, alpha:1.00)
         
         let valuePer = CGFloat(slider.doubleValue / (slider.maxValue - slider.minValue))
         let path = NSBezierPath(roundedRect: r, xRadius: barRadius, yRadius: barRadius)

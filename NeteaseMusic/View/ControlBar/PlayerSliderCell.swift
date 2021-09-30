@@ -14,6 +14,16 @@ class PlayerSliderCell: NSSliderCell {
     
     let barHeight: CGFloat = 4
     
+    var isDarkMode: Bool {
+        get {
+            [.darkAqua,
+             .vibrantDark,
+             .accessibilityHighContrastDarkAqua,
+             .accessibilityHighContrastVibrantDark]
+                .contains(NSApp.effectiveAppearance.name)
+        }
+    }
+    
     override func drawKnob(_ knobRect: NSRect) {
         guard mouseIn else { return }
         
@@ -22,9 +32,7 @@ class PlayerSliderCell: NSSliderCell {
                                 xRadius: knobRadius,
                                 yRadius: knobRadius)
 
-        let darkMode = NSApp.effectiveAppearance == NSAppearance(named: .darkAqua)
-
-        (darkMode ? NSColor.nColor : NSColor.nColor).setFill()
+        NSColor.nColor.setFill()
         path.fill()
     }
     
@@ -51,7 +59,12 @@ class PlayerSliderCell: NSSliderCell {
     
     
     override func drawBar(inside rect: NSRect, flipped: Bool) {
-        guard let slider = self.controlView as? PlayerSlider else { return }
+        let color1 = NSColor.nColor
+        
+        guard let slider = self.controlView as? PlayerSlider,
+              let color2 = NSColor(named: .init("PlaySliderCachedColor")),
+              let color3 = NSColor(named: .init("PlaySliderBackgroundColor"))
+        else { return }
 //        let barRadius = 0
         
         let playedPer = CGFloat(slider.doubleValue / (slider.maxValue - slider.minValue))
@@ -61,12 +74,7 @@ class PlayerSliderCell: NSSliderCell {
         
 //        let path = NSBezierPath(roundedRect: r, xRadius: barRadius, yRadius: barRadius)
         let path = NSBezierPath(rect: rect)
-        
-        let color1 = NSColor.nColor
-        let color2 = NSColor(red:0.85, green:0.85, blue:0.85, alpha:1.00)
-        let color3 = NSColor(red:0.96, green:0.96, blue:0.96, alpha:1.00)
-        
-        
+
         var gradient: NSGradient?
         if cachedPer == 1 {
             gradient = NSGradient(colorsAndLocations:
