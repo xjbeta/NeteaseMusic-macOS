@@ -21,7 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        Log.initLog()
+        Log.setUp()
+        
+        
         
         
         vcm.initAllHotKeys()
