@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Search Result View Controller-->
         <scene sceneID="b2J-FF-xR5">
             <objects>
-                <viewController id="Mzy-mQ-Wpc" customClass="SearchResultViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Mzy-mQ-Wpc" customClass="SearchResultViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="oPU-Ha-k43">
                         <rect key="frame" x="0.0" y="0.0" width="914" height="625"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +29,7 @@
                                     <action selector="selectNewType:" target="Mzy-mQ-Wpc" id="QVW-52-eR3"/>
                                 </connections>
                             </segmentedControl>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fl-gB-EYy">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fl-gB-EYy">
                                 <rect key="frame" x="0.0" y="0.0" width="914" height="563"/>
                                 <clipView key="contentView" drawsBackground="NO" id="4dy-hE-HQg">
                                     <rect key="frame" x="0.0" y="0.0" width="914" height="563"/>
@@ -108,11 +108,11 @@
                                         </view>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="YMW-hi-aZH">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="YMW-hi-aZH">
                                     <rect key="frame" x="0.0" y="547" width="914" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="4Gj-Bv-Nwc">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="4Gj-Bv-Nwc">
                                     <rect key="frame" x="898" y="0.0" width="16" height="563"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
