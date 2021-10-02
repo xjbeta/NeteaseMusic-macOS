@@ -17,6 +17,7 @@ class SidebarViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var outlineHeightLayoutConstraint: NSLayoutConstraint!
     
+    @IBOutlet var searchFieldToOutlineViewLayoutConstraint: NSLayoutConstraint!
     @IBAction func search(_ sender: NSSearchField) {
         let pc = PlayCore.shared
         let str = sender.stringValue
@@ -206,6 +207,13 @@ class SidebarViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(macOS 11, *) {
+            searchFieldToOutlineViewLayoutConstraint.constant = 4
+        } else {
+            searchFieldToOutlineViewLayoutConstraint.constant = 12
+        }
+        
         outlineView.menu = menuContainer.menu
         menuContainer.menuController?.delegate = self
         
@@ -338,8 +346,8 @@ class SidebarViewController: NSViewController {
         outlineHeightLayoutConstraint.constant = h + scrollView.pageHeader.size().height
         var size = docView.frame.size
         
-        // top - 12 - searchField - 4 - outlineView
-        size.height = h + (12 + searchField.frame.height + 4)
+        // top - 12 - searchField - 4 / 12 - outlineView
+        size.height = h + (12 + searchField.frame.height + searchFieldToOutlineViewLayoutConstraint.constant)
         
         let min = scrollView.frame.height
         
