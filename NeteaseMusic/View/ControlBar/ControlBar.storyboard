@@ -35,7 +35,7 @@
                                             </connections>
                                         </button>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1A-BQ-5Ag" userLabel="Volume Stack View">
-                                            <rect key="frame" x="531" y="19" width="138" height="20"/>
+                                            <rect key="frame" x="540" y="19" width="138" height="20"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-B2-GAl">
                                                     <rect key="frame" x="0.0" y="2" width="30" height="16"/>
@@ -72,12 +72,12 @@
                                             </customSpacing>
                                         </stackView>
                                         <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="21" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D0e-1L-ctA" userLabel="PlayMode Stack View">
-                                            <rect key="frame" x="696" y="19" width="105" height="20"/>
+                                            <rect key="frame" x="705" y="19" width="96" height="20"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ihI-ao-Zda">
-                                                    <rect key="frame" x="0.0" y="0.0" width="21" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="21" id="hyb-Ib-iND"/>
+                                                        <constraint firstAttribute="width" constant="18" id="hyb-Ib-iND"/>
                                                     </constraints>
                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="shuffle.Regular-M" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="KTH-kv-KUo">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -88,7 +88,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bjp-wf-coz">
-                                                    <rect key="frame" x="42" y="0.0" width="21" height="20"/>
+                                                    <rect key="frame" x="39" y="0.0" width="18" height="20"/>
                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="repeat.Regular-M" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="nS5-8k-cEs">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -98,7 +98,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rs6-6p-TzI">
-                                                    <rect key="frame" x="84" y="0.0" width="21" height="20"/>
+                                                    <rect key="frame" x="78" y="0.0" width="18" height="20"/>
                                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="music.note.list.Regular-M" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="k3C-YP-YuG">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -332,6 +332,6 @@
         <image name="play.circle.Light-L" width="126" height="126"/>
         <image name="repeat.Regular-M" width="106" height="88"/>
         <image name="shuffle.Regular-M" width="114" height="90"/>
-        <image name="speaker.Regular-M" width="62" height="87"/>
+        <image name="speaker.Regular-M" width="142" height="103"/>
     </resources>
 </document>
