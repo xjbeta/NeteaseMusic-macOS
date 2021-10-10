@@ -17,7 +17,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
     @IBOutlet weak var segmentedControl: NSSegmentedControl!
     @IBAction func selectNewType(_ sender: NSSegmentedControl) {
         
-        contentTabView.scroll(.init(x: 0, y: 0))
+        contentTabView.scroll(.zero)
         
         resultType = .init(rawValue: sender.selectedSegment + 1) ?? .none
         
@@ -163,10 +163,8 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
             size.height = min
         }
         
-        
-        
         docView.setFrameSize(size)
-        docView.scroll(.init(x: 0, y: size.height))
+        docView.scroll(.zero)
     }
     
     func tableViewHeight() -> CGFloat {

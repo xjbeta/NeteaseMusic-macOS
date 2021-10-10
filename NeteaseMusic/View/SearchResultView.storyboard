@@ -35,7 +35,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="914" height="563"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view id="IUM-xC-Dic">
+                                        <view id="IUM-xC-Dic" customClass="FlippedView" customModule="Netease_Music" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="899" height="548"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
