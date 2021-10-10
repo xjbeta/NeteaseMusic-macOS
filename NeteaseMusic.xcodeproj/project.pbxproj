@@ -31,7 +31,7 @@
 		012F2F462250F8DE00086870 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F2F452250F8DE00086870 /* LoginViewController.swift */; };
 		012FB7DA23337FCD007F7247 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FB7D923337FCD007F7247 /* Preferences.swift */; };
 		012FB7DD233389E1007F7247 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FB7DC233389E1007F7247 /* Preferences.storyboard */; };
-		012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FB7DE23338A00007F7247 /* PreferencesViewController.swift */; };
+		012FB7DF23338A00007F7247 /* PreferencesSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FB7DE23338A00007F7247 /* PreferencesSubViewController.swift */; };
 		012FEA602286843D00698969 /* CoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA5F2286843D00698969 /* CoverImageView.swift */; };
 		012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012FEA61228684ED00698969 /* FMCoverButton.swift */; };
 		012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012FEA662289B80F00698969 /* Sidebar.storyboard */; };
@@ -76,6 +76,8 @@
 		0148763826BE3DD100B4F754 /* ArtistButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */; };
 		0153934E22E1BA9600CD10F9 /* SongButtons.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */; };
 		0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */; };
+		015DD2B52712B4A4007D8F92 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DD2B42712B4A4007D8F92 /* PreferencesViewController.swift */; };
+		015DD2B727130D8F007D8F92 /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DD2B627130D8F007D8F92 /* FlippedView.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
 		0163F90827002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */; };
@@ -202,7 +204,7 @@
 		012F2F452250F8DE00086870 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		012FB7D923337FCD007F7247 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		012FB7DC233389E1007F7247 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
-		012FB7DE23338A00007F7247 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		012FB7DE23338A00007F7247 /* PreferencesSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesSubViewController.swift; sourceTree = "<group>"; };
 		012FEA5F2286843D00698969 /* CoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverImageView.swift; sourceTree = "<group>"; };
 		012FEA61228684ED00698969 /* FMCoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMCoverButton.swift; sourceTree = "<group>"; };
 		012FEA662289B80F00698969 /* Sidebar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sidebar.storyboard; sourceTree = "<group>"; };
@@ -254,6 +256,8 @@
 		0148763726BE3DD100B4F754 /* ArtistButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistButtonsViewController.swift; sourceTree = "<group>"; };
 		0153934D22E1BA9600CD10F9 /* SongButtons.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SongButtons.storyboard; sourceTree = "<group>"; };
 		0153934F22E4A50B00CD10F9 /* SongButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongButtonsViewController.swift; sourceTree = "<group>"; };
+		015DD2B42712B4A4007D8F92 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		015DD2B627130D8F007D8F92 /* FlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
 		0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
@@ -375,7 +379,8 @@
 			isa = PBXGroup;
 			children = (
 				012FB7DC233389E1007F7247 /* Preferences.storyboard */,
-				012FB7DE23338A00007F7247 /* PreferencesViewController.swift */,
+				015DD2B42712B4A4007D8F92 /* PreferencesViewController.swift */,
+				012FB7DE23338A00007F7247 /* PreferencesSubViewController.swift */,
 				011D41952338F898001A6F40 /* KeyEquivalentTextField.swift */,
 			);
 			name = Preferences;
@@ -618,6 +623,7 @@
 				01E920A226E7A68300B657E7 /* TrackTableView */,
 				01E920A326E7A69700B657E7 /* AlbumArtistTableView */,
 				014327AF22AA079200651064 /* UnresponsiveScrollView.swift */,
+				015DD2B627130D8F007D8F92 /* FlippedView.swift */,
 				0171427623C2E0B70051ADDF /* NetworkRequestMenuItem.swift */,
 				01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */,
 				01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */,
@@ -943,7 +949,7 @@
 				01321B0322FE74EA002A568C /* SongButtonsPopUpViewController.swift in Sources */,
 				01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */,
 				012FEA602286843D00698969 /* CoverImageView.swift in Sources */,
-				012FB7DF23338A00007F7247 /* PreferencesViewController.swift in Sources */,
+				012FB7DF23338A00007F7247 /* PreferencesSubViewController.swift in Sources */,
 				0153935022E4A50B00CD10F9 /* SongButtonsViewController.swift in Sources */,
 				012772CE2297B5E800C55537 /* EmptyStringTransformer.swift in Sources */,
 				013143A9226F5D4200B9E26F /* ViewAnimation.swift in Sources */,
@@ -958,6 +964,7 @@
 				01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */,
 				01FF8B83225DC4C2002D7906 /* ArtistsTransformer.swift in Sources */,
 				01E0F26226C8A21F005C95F9 /* NMStructs.swift in Sources */,
+				015DD2B727130D8F007D8F92 /* FlippedView.swift in Sources */,
 				01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */,
 				012C158423A66A3B004586A5 /* SubscribeButton.swift in Sources */,
 				012772CA2297AD4000C55537 /* AlbumSizeTransformer.swift in Sources */,
@@ -985,6 +992,7 @@
 				01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */,
 				01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */,
 				0131439C226C239B00B9E26F /* DailyCollectionViewItem.swift in Sources */,
+				015DD2B52712B4A4007D8F92 /* PreferencesViewController.swift in Sources */,
 				0133AC722320CDE800090D5E /* NSImage+RoundedCorners.swift in Sources */,
 				0132E1E12293D14F00484D7E /* ArtistViewController.swift in Sources */,
 				012AE96B2330883900E0CB6C /* DailyCollectionView.swift in Sources */,

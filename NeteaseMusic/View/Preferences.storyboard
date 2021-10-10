@@ -1,310 +1,510 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="a3R-Kb-fM0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="IgS-Sf-pfh">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Preferences View Controller-->
+        <!--Preferences Sub View Controller-->
         <scene sceneID="egU-kX-Zh6">
             <objects>
-                <viewController showSeguePresentationStyle="single" id="a3R-Kb-fM0" customClass="PreferencesViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Rxf-oz-0Km">
-                        <rect key="frame" x="0.0" y="0.0" width="885" height="615"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                <viewController showSeguePresentationStyle="single" id="a3R-Kb-fM0" customClass="PreferencesSubViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" id="h1x-RB-faB" userLabel="View">
+                        <rect key="frame" x="0.0" y="0.0" width="629" height="578"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-5A-l0F">
-                                <rect key="frame" x="38" y="568" width="51" height="27"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="设置" id="0eR-hk-lML">
-                                    <font key="font" size="23" name=".PingFangSC-Regular"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Wf0-Hw-cqX">
-                                <rect key="frame" x="90" y="263" width="488" height="280"/>
+                            <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1fs-gW-cpa">
+                                <rect key="frame" x="20" y="20" width="533" height="148"/>
                                 <rows>
-                                    <gridRow id="aNc-Lb-2po"/>
-                                    <gridRow id="4oL-l7-QeX"/>
-                                    <gridRow id="wC7-M9-JbQ"/>
-                                    <gridRow id="f1G-7y-VYM"/>
-                                    <gridRow id="cXo-6p-ky5"/>
-                                    <gridRow id="GsR-ry-9GL"/>
-                                    <gridRow id="Ljg-rh-RFu"/>
-                                    <gridRow id="FtO-z9-F8e"/>
-                                    <gridRow id="C9V-Ly-6lp"/>
+                                    <gridRow id="8DZ-cU-Vlc"/>
+                                    <gridRow id="g25-bM-NIe"/>
+                                    <gridRow id="SdR-ZI-PbR"/>
+                                    <gridRow id="tNH-zM-aMV"/>
+                                    <gridRow id="r1r-7o-NOE"/>
                                 </rows>
                                 <columns>
-                                    <gridColumn width="120" id="HeO-1a-HJb"/>
-                                    <gridColumn xPlacement="fill" width="160" leadingPadding="12" id="thA-9c-oac"/>
-                                    <gridColumn xPlacement="fill" width="160" leadingPadding="24" id="aJO-F0-1Bz"/>
+                                    <gridColumn width="162" id="AlG-T8-L2V"/>
+                                    <gridColumn width="365" id="0D3-n1-Mi3"/>
                                 </columns>
                                 <gridCells>
-                                    <gridCell row="aNc-Lb-2po" column="HeO-1a-HJb" id="Fae-XE-MHo">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cTk-bC-4VY">
+                                    <gridCell row="8DZ-cU-Vlc" column="AlG-T8-L2V" id="YFE-4a-rPh">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxR-U6-aOU">
+                                            <rect key="frame" x="-2" y="127" width="119" height="18"/>
+                                            <buttonCell key="cell" type="check" title="启用全局快捷键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jyV-sS-90s">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonAction:" target="a3R-Kb-fM0" id="zZg-h8-prU"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="8DZ-cU-Vlc" column="0D3-n1-Mi3" id="Ijs-Rb-UZp">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gtx-4s-r5H">
+                                            <rect key="frame" x="161" y="121" width="88" height="32"/>
+                                            <buttonCell key="cell" type="push" title="恢复默认" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AKN-4p-LXO">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonAction:" target="a3R-Kb-fM0" id="fGX-wR-xdx"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="g25-bM-NIe" column="AlG-T8-L2V" id="UDG-H2-54j">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gte-ro-VGn">
+                                            <rect key="frame" x="-2" y="96" width="119" height="18"/>
+                                            <buttonCell key="cell" type="check" title="使用系统媒体键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WQ3-Zb-mmF">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="buttonAction:" target="a3R-Kb-fM0" id="KM5-27-wYw"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="g25-bM-NIe" column="0D3-n1-Mi3" id="A6d-oM-srF">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ap2-vi-EaL">
+                                            <rect key="frame" x="166" y="97" width="95" height="14"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="(系统版本 10.13+)" id="QXc-83-qvb">
+                                                <font key="font" metaFont="label" size="11"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="SdR-ZI-PbR" column="AlG-T8-L2V" id="W6T-i6-NfO">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0yN-Mi-drr">
+                                            <rect key="frame" x="-2" y="66" width="61" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="播放音质:" id="iN5-4Q-krW">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="SdR-ZI-PbR" column="0D3-n1-Mi3" id="Oqz-Fd-LuB">
+                                        <stackView key="contentView" distribution="fill" orientation="horizontal" alignment="bottom" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ytC-hw-EZ7">
+                                            <rect key="frame" x="168" y="66" width="245" height="16"/>
+                                            <subviews>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vPx-GO-7l9">
+                                                    <rect key="frame" x="-2" y="-1" width="78" height="18"/>
+                                                    <buttonCell key="cell" type="radio" title="192kbps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ol9-gD-Hhw">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="brButtonAction:" target="a3R-Kb-fM0" id="yR5-ct-hoT"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mYj-2p-Gwq">
+                                                    <rect key="frame" x="94" y="-1" width="80" height="18"/>
+                                                    <buttonCell key="cell" type="radio" title="320kbps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2O-ll-ARu">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="brButtonAction:" target="a3R-Kb-fM0" id="42K-R5-m1n"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eiT-bo-ael">
+                                                    <rect key="frame" x="192" y="-1" width="53" height="18"/>
+                                                    <buttonCell key="cell" type="radio" title="最佳" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vty-qy-c8a">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="brButtonAction:" target="a3R-Kb-fM0" id="rF4-0c-hZj"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </gridCell>
+                                    <gridCell row="tNH-zM-aMV" column="AlG-T8-L2V" id="AK7-qW-cca">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-bI-4xe">
+                                            <rect key="frame" x="-2" y="31" width="61" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="缓存大小:" id="JJz-aO-07Y">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="tNH-zM-aMV" column="0D3-n1-Mi3" id="uc6-Ad-tYe">
+                                        <stackView key="contentView" distribution="fill" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K6Y-rl-fzN">
+                                            <rect key="frame" x="168" y="31" width="257" height="20"/>
+                                            <subviews>
+                                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eN4-Iy-CYc">
+                                                    <rect key="frame" x="-2" y="-6" width="217" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="213" id="AKY-hS-YED"/>
+                                                    </constraints>
+                                                    <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="500" maxValue="4000" doubleValue="500" tickMarkPosition="above" numberOfTickMarks="15" allowsTickMarkValuesOnly="YES" sliderType="linear" id="6FZ-k0-JsS"/>
+                                                    <connections>
+                                                        <action selector="sliderAction:" target="a3R-Kb-fM0" id="6tc-TO-kch"/>
+                                                    </connections>
+                                                </slider>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bhq-N3-Fjd">
+                                                    <rect key="frame" x="223" y="2" width="36" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="0 MB" id="tVy-rV-abf">
+                                                        <byteCountFormatter key="formatter" id="bOf-Pd-NZQ"/>
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </gridCell>
+                                    <gridCell row="r1r-7o-NOE" column="AlG-T8-L2V" id="CN1-kV-oSW">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hth-Xv-HLt">
+                                            <rect key="frame" x="-2" y="0.0" width="141" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="双击歌曲列表内单曲时:" id="uIh-oc-jIw">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="r1r-7o-NOE" column="0D3-n1-Mi3" id="VQA-9C-tcF">
+                                        <stackView key="contentView" distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waq-30-4MP">
+                                            <rect key="frame" x="168" y="0.0" width="347" height="16"/>
+                                            <subviews>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V3Q-sg-472">
+                                                    <rect key="frame" x="-2" y="-1" width="159" height="18"/>
+                                                    <buttonCell key="cell" type="radio" title="仅把单曲加入播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="bDV-9M-YiY">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="pButtonAction:" target="a3R-Kb-fM0" id="QOG-Tx-rlP"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sk9-BH-Fqp">
+                                                    <rect key="frame" x="175" y="-1" width="172" height="18"/>
+                                                    <buttonCell key="cell" type="radio" title="用歌曲列表替换播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" state="on" inset="2" id="dTN-JI-0DE">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="pButtonAction:" target="a3R-Kb-fM0" id="xuA-yz-b2H"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </gridCell>
+                                </gridCells>
+                            </gridView>
+                            <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="RHD-js-IdQ">
+                                <rect key="frame" x="20" y="193" width="533" height="280"/>
+                                <rows>
+                                    <gridRow id="fei-QO-F7b"/>
+                                    <gridRow id="2b1-I2-kKZ"/>
+                                    <gridRow id="8dK-jT-vDW"/>
+                                    <gridRow id="Wqi-Co-tFY"/>
+                                    <gridRow id="EvD-Oz-ehH"/>
+                                    <gridRow id="KuT-Hs-3ph"/>
+                                    <gridRow id="2QY-gk-w6E"/>
+                                    <gridRow id="cV5-4I-yUt"/>
+                                    <gridRow id="HSv-RP-mnc"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn width="135" id="Iyq-Qc-jfg"/>
+                                    <gridColumn xPlacement="fill" width="175" leadingPadding="12" id="d81-aA-L45"/>
+                                    <gridColumn xPlacement="fill" width="175" leadingPadding="24" id="tLQ-uq-JKo"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="fei-QO-F7b" column="Iyq-Qc-jfg" id="ic5-OE-6vH">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-5Y-B56">
                                             <rect key="frame" x="-2" y="264" width="58" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="功能说明" id="lhp-l4-Q1I">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="功能说明" id="A4c-Th-b0T">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="aNc-Lb-2po" column="thA-9c-oac" id="Grg-aF-nZg">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EhF-Km-ru3">
-                                            <rect key="frame" x="136" y="264" width="164" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="快捷键" id="ett-OB-kli">
+                                    <gridCell row="fei-QO-F7b" column="d81-aA-L45" id="9YC-NT-DeF">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="J67-Zn-dDY">
+                                            <rect key="frame" x="151" y="264" width="179" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="快捷键" id="r2b-mE-8U9">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="aNc-Lb-2po" column="aJO-F0-1Bz" id="bzh-oq-CiI">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-hi-Dvp">
-                                            <rect key="frame" x="326" y="264" width="164" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="全局快捷键" id="9Lf-do-3qw">
+                                    <gridCell row="fei-QO-F7b" column="tLQ-uq-JKo" id="on8-pl-y3s">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pcj-dk-wbh">
+                                            <rect key="frame" x="356" y="264" width="179" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="全局快捷键" id="OKp-Qg-W5q">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="4oL-l7-QeX" column="HeO-1a-HJb" id="cto-Fx-DuX">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gb7-Mt-gFd">
-                                            <rect key="frame" x="-2" y="231" width="62" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="播放/暂停" id="Kn7-bA-ZQV">
+                                    <gridCell row="2b1-I2-kKZ" column="Iyq-Qc-jfg" id="5mc-d3-As8">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yMu-Ck-VHI">
+                                            <rect key="frame" x="-2" y="231" width="65" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="播放/暂停" id="Iew-1u-QnR">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="4oL-l7-QeX" column="thA-9c-oac" id="0n3-Vq-RAN">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iow-B0-hl3" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="231" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="iuq-wh-SlF">
+                                    <gridCell row="2b1-I2-kKZ" column="d81-aA-L45" id="kYx-ce-39F">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KBY-n6-EVt" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="231" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="bgs-Wh-dnt">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="4oL-l7-QeX" column="aJO-F0-1Bz" id="dbG-vV-Xi0">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zWE-It-6cc" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="231" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="SgV-bc-CLr">
+                                    <gridCell row="2b1-I2-kKZ" column="tLQ-uq-JKo" id="8cq-kz-VvW">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g6I-GF-uoS" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="231" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="il0-Wv-vuc">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="wC7-M9-JbQ" column="HeO-1a-HJb" id="94I-mm-AIb">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BXN-w5-8q5">
+                                    <gridCell row="8dK-jT-vDW" column="Iyq-Qc-jfg" id="Izm-yx-Xxj">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-BG-2M1">
                                             <rect key="frame" x="-2" y="198" width="44" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="上一首" id="vim-WG-zhF">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="上一首" id="7NM-Jk-xaW">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="wC7-M9-JbQ" column="thA-9c-oac" id="tO1-W6-8TK">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="He6-A8-wTa" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="198" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="UaL-Xh-T4V">
+                                    <gridCell row="8dK-jT-vDW" column="d81-aA-L45" id="OlO-LQ-X3s">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s29-BS-SLg" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="198" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="z93-zf-Hoo">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="wC7-M9-JbQ" column="aJO-F0-1Bz" id="fn4-Z2-uBr">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rmk-o1-4yM" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="198" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="LPK-Jf-r5W">
+                                    <gridCell row="8dK-jT-vDW" column="tLQ-uq-JKo" id="nKH-0B-nue">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4SB-1q-TBX" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="198" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Wdl-Ua-EWO">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="f1G-7y-VYM" column="HeO-1a-HJb" id="tdv-Ac-RKF">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yam-9C-pyW">
+                                    <gridCell row="Wqi-Co-tFY" column="Iyq-Qc-jfg" id="o7c-JY-JHV">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAc-9V-NHO">
                                             <rect key="frame" x="-2" y="165" width="44" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="下一首" id="m2g-vf-8r1">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="下一首" id="buh-Gu-5mJ">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="f1G-7y-VYM" column="thA-9c-oac" id="4sL-BU-pf7">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-Iu-qun" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="165" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="RFp-Pf-hvR">
+                                    <gridCell row="Wqi-Co-tFY" column="d81-aA-L45" id="gmL-lD-G4n">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="itK-Bg-eJy" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="165" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="AfO-DC-QMB">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="f1G-7y-VYM" column="aJO-F0-1Bz" id="1bt-sj-DlL">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SC6-I9-MJv" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="165" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Vek-Lc-lau">
+                                    <gridCell row="Wqi-Co-tFY" column="tLQ-uq-JKo" id="VRY-Yg-uKO">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XH7-ha-5N8" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="165" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="l4A-It-bTl">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="cXo-6p-ky5" column="HeO-1a-HJb" id="VdK-Tv-zGu">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVL-TJ-dYz">
+                                    <gridCell row="EvD-Oz-ehH" column="Iyq-Qc-jfg" id="Jle-a6-g3D">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kmb-jj-mmD">
                                             <rect key="frame" x="-2" y="132" width="44" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="音量加" id="fLY-mA-viG">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="音量加" id="LX2-ZR-fgI">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="cXo-6p-ky5" column="thA-9c-oac" id="BYC-K4-Rtg">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kOO-vq-PHk" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="132" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="6jd-Zt-1aH">
+                                    <gridCell row="EvD-Oz-ehH" column="d81-aA-L45" id="eb9-kb-yMp">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xQH-Xe-H34" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="132" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="m2O-Pb-2mO">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="cXo-6p-ky5" column="aJO-F0-1Bz" id="sgA-5Q-KBb">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ena-Ns-qcW" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="132" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="q2g-Yp-d8G">
+                                    <gridCell row="EvD-Oz-ehH" column="tLQ-uq-JKo" id="FB2-rS-qt5">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qnf-9O-hrg" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="132" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="TtL-Sw-2gZ">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="GsR-ry-9GL" column="HeO-1a-HJb" id="iVD-qV-KQf">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="msL-Pr-5y0">
+                                    <gridCell row="KuT-Hs-3ph" column="Iyq-Qc-jfg" id="oXo-2O-lX5">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PaM-H4-Loc">
                                             <rect key="frame" x="-2" y="99" width="44" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="音量减" id="Wzk-xG-MfF">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="音量减" id="MIG-sX-ChP">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="GsR-ry-9GL" column="thA-9c-oac" id="j9l-8h-dWF">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U91-Ty-oth" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="99" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="DGR-DT-0Gd">
+                                    <gridCell row="KuT-Hs-3ph" column="d81-aA-L45" id="lSu-qJ-xPE">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5RT-IB-hZf" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="99" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Bb6-g2-hYX">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="GsR-ry-9GL" column="aJO-F0-1Bz" id="CFJ-iv-NeE">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kWE-nc-CGf" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="99" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="fLO-eM-jPo">
+                                    <gridCell row="KuT-Hs-3ph" column="tLQ-uq-JKo" id="Z3B-BC-KIg">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YRr-vZ-Jld" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="99" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="k9r-Ti-g66">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="Ljg-rh-RFu" column="HeO-1a-HJb" id="B1X-Ns-Vge">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bll-tU-bcL">
+                                    <gridCell row="2QY-gk-w6E" column="Iyq-Qc-jfg" id="GZd-cu-Q4c">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tty-WU-Egv">
                                             <rect key="frame" x="-2" y="66" width="58" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="喜欢歌曲" id="lZL-KV-v5C">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="喜欢歌曲" id="fkM-Ru-kYq">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="Ljg-rh-RFu" column="thA-9c-oac" id="Obv-Yz-u33">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-Jj-dPO" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="66" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="8ph-sL-Mvg">
+                                    <gridCell row="2QY-gk-w6E" column="d81-aA-L45" id="80W-RL-Auv">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6r0-7U-K2O" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="66" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="edN-TA-qRs">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="Ljg-rh-RFu" column="aJO-F0-1Bz" id="vYl-Ie-kPM">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9YR-8y-Pn0" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="66" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="5BV-ir-nCw">
+                                    <gridCell row="2QY-gk-w6E" column="tLQ-uq-JKo" id="bMr-i2-ezI">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Jz-Ce-vH7" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="66" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="M9L-03-qNg">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="FtO-z9-F8e" column="HeO-1a-HJb" id="wQp-LY-Oy1">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Slo-5Z-omS">
-                                            <rect key="frame" x="-2" y="33" width="88" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="打开/关闭歌词" id="rup-Sb-ccH">
+                                    <gridCell row="cV5-4I-yUt" column="Iyq-Qc-jfg" id="Ucr-Xe-gsk">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-qe-jld">
+                                            <rect key="frame" x="-2" y="33" width="91" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="打开/关闭歌词" id="eum-fx-l1c">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="FtO-z9-F8e" column="thA-9c-oac" id="jYy-nB-PW8">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sdB-8Z-kiW" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="33" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌘R" drawsBackground="YES" id="FvW-YW-qh7">
+                                    <gridCell row="cV5-4I-yUt" column="d81-aA-L45" id="F5X-Hj-nIG">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qsr-1D-YkH" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="33" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌘R" drawsBackground="YES" id="UW0-T8-6Tb">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="FtO-z9-F8e" column="aJO-F0-1Bz" id="ORD-hY-oYA">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V1h-oC-0uq" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="33" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌥⌘R" drawsBackground="YES" id="q7A-L7-VeM">
+                                    <gridCell row="cV5-4I-yUt" column="tLQ-uq-JKo" id="3N3-QF-LWd">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kB8-Mc-2dN" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="33" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌥⌘R" drawsBackground="YES" id="1X2-BW-N11">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="C9V-Ly-6lp" column="HeO-1a-HJb" id="Ynp-qH-5FS">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DEm-wC-feU">
-                                            <rect key="frame" x="-2" y="0.0" width="87" height="16"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="mini/完整模式" id="HKp-ay-WjV">
+                                    <gridCell row="HSv-RP-mnc" column="Iyq-Qc-jfg" id="8a8-wu-cLw">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="awg-P1-Ib8">
+                                            <rect key="frame" x="-2" y="0.0" width="88" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="mini/完整模式" id="drA-VA-dJM">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="C9V-Ly-6lp" column="thA-9c-oac" id="MzC-Gg-QSZ">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vbQ-sL-COW" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="138" y="0.0" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌃⌘M" drawsBackground="YES" id="dgj-vc-oaC">
+                                    <gridCell row="HSv-RP-mnc" column="d81-aA-L45" id="tdB-Q6-EOz">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aEZ-ys-Mxd" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="153" y="0.0" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title="⌃⌘M" drawsBackground="YES" id="vq0-6D-u0e">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                     </gridCell>
-                                    <gridCell row="C9V-Ly-6lp" column="aJO-F0-1Bz" id="Gag-BK-7gc">
-                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lt1-70-Tjt" customClass="KeyEquivalentTextField" customModule="NeteaseMusic" customModuleProvider="target">
-                                            <rect key="frame" x="328" y="0.0" width="160" height="21"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="apc-v1-4Bd">
+                                    <gridCell row="HSv-RP-mnc" column="tLQ-uq-JKo" id="MLg-21-cOu">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gjt-el-Jbo" customClass="KeyEquivalentTextField" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="358" y="0.0" width="175" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="usm-RS-vxe">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -313,224 +513,163 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ok2-qP-Dhz">
-                                <rect key="frame" x="245" y="209" width="94" height="32"/>
-                                <buttonCell key="cell" type="push" title="恢复默认" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BcG-6R-ywM">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="buttonAction:" target="a3R-Kb-fM0" id="Tol-LV-46d"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-td-bGv">
-                                <rect key="frame" x="88" y="217" width="115" height="18"/>
-                                <buttonCell key="cell" type="check" title="启用全局快捷键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9ML-U3-v0S">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="buttonAction:" target="a3R-Kb-fM0" id="kYD-hW-pXm"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pGa-l5-Zew">
-                                <rect key="frame" x="88" y="183" width="115" height="18"/>
-                                <buttonCell key="cell" type="check" title="使用系统媒体键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HYQ-PX-qyX">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="buttonAction:" target="a3R-Kb-fM0" id="SSv-Dl-A60"/>
-                                </connections>
-                            </button>
-                            <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xXZ-TS-ouD">
-                                <rect key="frame" x="251" y="149" width="230" height="16"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAe-xV-qCK">
+                                <rect key="frame" x="95" y="504" width="55" height="48"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ujj-PE-rPK">
-                                        <rect key="frame" x="-1" y="-1" width="74" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="192kbps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HTl-di-b2z">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MLW-XN-2Up">
+                                        <rect key="frame" x="-2" y="32" width="45" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="_name" id="GyG-65-XPY">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tcY-1R-0BP">
+                                        <rect key="frame" x="-7" y="-7" width="69" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="MTt-Fq-maj"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="注销" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nOn-to-rw1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="brButtonAction:" target="a3R-Kb-fM0" id="L7a-hD-u4Q"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-S0-fcS">
-                                        <rect key="frame" x="90" y="-1" width="76" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="320kbps" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tOr-Hf-rAh">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="brButtonAction:" target="a3R-Kb-fM0" id="twt-1u-mzQ"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="awj-i2-MS8">
-                                        <rect key="frame" x="183" y="-1" width="49" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="最佳" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iVF-at-CIc">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="brButtonAction:" target="a3R-Kb-fM0" id="jc4-0a-BqV"/>
+                                            <action selector="logoutAction:" target="a3R-Kb-fM0" id="AaG-y2-JdO"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FVa-p6-pY2">
-                                <rect key="frame" x="88" y="113" width="61" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="缓存大小:" id="K33-4r-yXp">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d4u-Vs-dJJ">
-                                <rect key="frame" x="249" y="108" width="217" height="24"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1x3-zh-nvv">
+                                <rect key="frame" x="20" y="498" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="213" id="bp0-5b-6wy"/>
+                                    <constraint firstAttribute="width" secondItem="1x3-zh-nvv" secondAttribute="height" id="S4z-n3-VjQ"/>
+                                    <constraint firstAttribute="width" constant="60" id="e1n-EB-oht"/>
                                 </constraints>
-                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="500" maxValue="4000" doubleValue="500" tickMarkPosition="above" numberOfTickMarks="15" allowsTickMarkValuesOnly="YES" sliderType="linear" id="vk6-Ba-YlL"/>
-                                <connections>
-                                    <action selector="sliderAction:" target="a3R-Kb-fM0" id="NFQ-f7-O0C"/>
-                                </connections>
-                            </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZI8-7L-lLp">
-                                <rect key="frame" x="492" y="113" width="4" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" id="WAz-Sa-pne">
-                                    <byteCountFormatter key="formatter" id="dex-3O-8ZC"/>
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="miT-az-7n1">
-                                <rect key="frame" x="249" y="185" width="95" height="14"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="(系统版本 10.13+)" id="ztg-sZ-HUr">
-                                    <font key="font" metaFont="label" size="11"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cDl-Wq-DZP">
-                                <rect key="frame" x="88" y="149" width="61" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="播放音质:" id="cKW-XZ-s27">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4wj-an-QMM">
-                                <rect key="frame" x="88" y="77" width="141" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="双击歌曲列表内单曲时:" id="g6y-6e-b19">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ZF-HK-29O">
-                                <rect key="frame" x="251" y="77" width="337" height="16"/>
-                                <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="agI-jk-VEu">
-                                        <rect key="frame" x="-1" y="-1" width="155" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="仅把单曲加入播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="BqD-rD-sHP">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="pButtonAction:" target="a3R-Kb-fM0" id="Ldx-GN-mO4"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BO8-uS-816">
-                                        <rect key="frame" x="171" y="-1" width="168" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="用歌曲列表替换播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Xpf-TU-5YY">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="pButtonAction:" target="a3R-Kb-fM0" id="mZs-Ab-rze"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="user_150" id="24E-Sa-skD"/>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="4wj-an-QMM" firstAttribute="leading" secondItem="FVa-p6-pY2" secondAttribute="leading" id="1cr-yz-WhX"/>
-                            <constraint firstItem="FVa-p6-pY2" firstAttribute="top" secondItem="cDl-Wq-DZP" secondAttribute="bottom" constant="20" id="2cR-cH-NtK"/>
-                            <constraint firstItem="Aes-td-bGv" firstAttribute="top" secondItem="Wf0-Hw-cqX" secondAttribute="bottom" constant="30" id="31f-mV-Psn"/>
-                            <constraint firstItem="4wj-an-QMM" firstAttribute="top" secondItem="FVa-p6-pY2" secondAttribute="bottom" constant="20" id="8jO-s1-vF8"/>
-                            <constraint firstItem="pGa-l5-Zew" firstAttribute="leading" secondItem="Aes-td-bGv" secondAttribute="leading" id="96S-Zs-HvW"/>
-                            <constraint firstItem="miT-az-7n1" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="9Xh-6x-KXX"/>
-                            <constraint firstItem="FVa-p6-pY2" firstAttribute="leading" secondItem="cDl-Wq-DZP" secondAttribute="leading" id="Ahv-Uo-RGS"/>
-                            <constraint firstItem="d4u-Vs-dJJ" firstAttribute="centerY" secondItem="FVa-p6-pY2" secondAttribute="centerY" id="G1H-hU-Byo"/>
-                            <constraint firstItem="cDl-Wq-DZP" firstAttribute="top" secondItem="pGa-l5-Zew" secondAttribute="bottom" constant="20" id="JJT-iY-03f"/>
-                            <constraint firstItem="ZI8-7L-lLp" firstAttribute="leading" secondItem="d4u-Vs-dJJ" secondAttribute="trailing" constant="30" id="KtY-Dv-Ksm"/>
-                            <constraint firstItem="miT-az-7n1" firstAttribute="centerY" secondItem="pGa-l5-Zew" secondAttribute="centerY" id="LuI-2E-xw0"/>
-                            <constraint firstItem="pGa-l5-Zew" firstAttribute="top" secondItem="Aes-td-bGv" secondAttribute="bottom" constant="20" id="MUe-se-8X0"/>
-                            <constraint firstItem="d4u-Vs-dJJ" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="Ndc-Yy-PEu"/>
-                            <constraint firstItem="Aes-td-bGv" firstAttribute="leading" secondItem="Wf0-Hw-cqX" secondAttribute="leading" id="Qd8-XO-kNM"/>
-                            <constraint firstItem="9ZF-HK-29O" firstAttribute="centerY" secondItem="4wj-an-QMM" secondAttribute="centerY" id="be6-jC-hgJ"/>
-                            <constraint firstItem="Wf0-Hw-cqX" firstAttribute="leading" secondItem="Rxf-oz-0Km" secondAttribute="leading" constant="90" id="dPp-5U-88p"/>
-                            <constraint firstItem="Wf0-Hw-cqX" firstAttribute="top" secondItem="TPG-5A-l0F" secondAttribute="bottom" constant="25" id="eEI-QI-wkT"/>
-                            <constraint firstItem="ok2-qP-Dhz" firstAttribute="centerY" secondItem="Aes-td-bGv" secondAttribute="centerY" id="eTb-dw-ZG2"/>
-                            <constraint firstItem="xXZ-TS-ouD" firstAttribute="leading" secondItem="miT-az-7n1" secondAttribute="leading" id="nDh-Zh-fUn"/>
-                            <constraint firstItem="TPG-5A-l0F" firstAttribute="leading" secondItem="Rxf-oz-0Km" secondAttribute="leading" constant="40" id="ovd-b9-BEa"/>
-                            <constraint firstItem="TPG-5A-l0F" firstAttribute="top" secondItem="Rxf-oz-0Km" secondAttribute="top" constant="20" id="p37-42-f1w"/>
-                            <constraint firstItem="ZI8-7L-lLp" firstAttribute="centerY" secondItem="d4u-Vs-dJJ" secondAttribute="centerY" id="qxr-Zn-r2o"/>
-                            <constraint firstItem="cDl-Wq-DZP" firstAttribute="leading" secondItem="pGa-l5-Zew" secondAttribute="leading" id="s7B-ob-EZf"/>
-                            <constraint firstItem="xXZ-TS-ouD" firstAttribute="centerY" secondItem="cDl-Wq-DZP" secondAttribute="centerY" id="sp3-gU-E0F"/>
-                            <constraint firstItem="ok2-qP-Dhz" firstAttribute="leading" secondItem="Aes-td-bGv" secondAttribute="trailing" constant="50" id="yfW-vc-fS3"/>
-                            <constraint firstItem="9ZF-HK-29O" firstAttribute="leading" secondItem="ok2-qP-Dhz" secondAttribute="leading" id="znx-Hf-SPn"/>
+                            <constraint firstItem="1x3-zh-nvv" firstAttribute="leading" secondItem="h1x-RB-faB" secondAttribute="leading" constant="20" symbolic="YES" id="Bvt-6Z-MSC"/>
+                            <constraint firstItem="RHD-js-IdQ" firstAttribute="top" secondItem="1x3-zh-nvv" secondAttribute="bottom" constant="25" id="M4i-1C-nul"/>
+                            <constraint firstItem="GAe-xV-qCK" firstAttribute="centerY" secondItem="1x3-zh-nvv" secondAttribute="centerY" id="SdK-NN-lhB"/>
+                            <constraint firstItem="1x3-zh-nvv" firstAttribute="top" secondItem="h1x-RB-faB" secondAttribute="top" constant="20" symbolic="YES" id="Xqk-VQ-UZ0"/>
+                            <constraint firstItem="1fs-gW-cpa" firstAttribute="leading" secondItem="RHD-js-IdQ" secondAttribute="leading" id="oP8-z4-tca"/>
+                            <constraint firstItem="GAe-xV-qCK" firstAttribute="leading" secondItem="1x3-zh-nvv" secondAttribute="trailing" constant="15" id="qj3-eb-WHa"/>
+                            <constraint firstItem="RHD-js-IdQ" firstAttribute="leading" secondItem="1x3-zh-nvv" secondAttribute="leading" id="r9S-BJ-8uX"/>
+                            <constraint firstItem="1fs-gW-cpa" firstAttribute="top" secondItem="RHD-js-IdQ" secondAttribute="bottom" constant="25" id="sxU-RS-aOR"/>
                         </constraints>
-                    </view>
+                    </customView>
                     <connections>
-                        <outlet property="addToPlaylistButton" destination="agI-jk-VEu" id="WLn-tA-efZ"/>
-                        <outlet property="brButton0" destination="ujj-PE-rPK" id="OtF-qH-Fnc"/>
-                        <outlet property="brButton1" destination="SVP-S0-fcS" id="IqD-wH-Kxf"/>
-                        <outlet property="brButton2" destination="awj-i2-MS8" id="H2T-pB-BKI"/>
-                        <outlet property="cacheSlider" destination="d4u-Vs-dJJ" id="G9M-TU-t91"/>
-                        <outlet property="cacheTextField" destination="ZI8-7L-lLp" id="3a9-67-MXj"/>
-                        <outlet property="enableGlobalButton" destination="Aes-td-bGv" id="Bgw-6H-q9Y"/>
-                        <outlet property="enableSystemMediaButton" destination="pGa-l5-Zew" id="1rJ-9H-Dru"/>
-                        <outlet property="gridView" destination="Wf0-Hw-cqX" id="kjj-A2-DiR"/>
-                        <outlet property="likeGlobalTextField" destination="9YR-8y-Pn0" id="veK-ao-O4J"/>
-                        <outlet property="likeTextField" destination="Bjs-Jj-dPO" id="Vpj-H0-l3B"/>
-                        <outlet property="nextGlobalTextField" destination="SC6-I9-MJv" id="sQf-sO-bPQ"/>
-                        <outlet property="nextTextField" destination="2FY-Iu-qun" id="QeV-8A-bB2"/>
-                        <outlet property="playGlobalTextField" destination="zWE-It-6cc" id="8ou-hW-q7E"/>
-                        <outlet property="playTextField" destination="iow-B0-hl3" id="he6-8i-zT6"/>
-                        <outlet property="preGlobalTextField" destination="rmk-o1-4yM" id="tuU-bv-AGq"/>
-                        <outlet property="preTextField" destination="He6-A8-wTa" id="qkb-D1-6Bk"/>
-                        <outlet property="replacePlaylistButton" destination="BO8-uS-816" id="FqC-kb-wOY"/>
-                        <outlet property="resetKeyEquicalentButton" destination="ok2-qP-Dhz" id="ky8-dd-lZ8"/>
-                        <outlet property="volumeDownGlobalTextField" destination="kWE-nc-CGf" id="Rmx-pM-bYx"/>
-                        <outlet property="volumeDownTextField" destination="U91-Ty-oth" id="BIU-21-fqV"/>
-                        <outlet property="volumeUpGlobalTextField" destination="Ena-Ns-qcW" id="31a-mb-HJM"/>
-                        <outlet property="volumeUpTextField" destination="kOO-vq-PHk" id="ZAC-GM-d3Q"/>
+                        <outlet property="addToPlaylistButton" destination="V3Q-sg-472" id="53p-0Q-eDs"/>
+                        <outlet property="brButton0" destination="vPx-GO-7l9" id="RNh-Xf-ejn"/>
+                        <outlet property="brButton1" destination="mYj-2p-Gwq" id="LOv-Lc-XIS"/>
+                        <outlet property="brButton2" destination="eiT-bo-ael" id="gFH-ea-H8F"/>
+                        <outlet property="cacheSlider" destination="eN4-Iy-CYc" id="knO-1e-l1u"/>
+                        <outlet property="cacheTextField" destination="bhq-N3-Fjd" id="X4X-rN-bLK"/>
+                        <outlet property="enableGlobalButton" destination="fxR-U6-aOU" id="fch-k9-WRR"/>
+                        <outlet property="enableSystemMediaButton" destination="gte-ro-VGn" id="z07-lw-dkw"/>
+                        <outlet property="gridView" destination="RHD-js-IdQ" id="WnJ-Bo-gFC"/>
+                        <outlet property="likeGlobalTextField" destination="1Jz-Ce-vH7" id="iDQ-cN-lRA"/>
+                        <outlet property="likeTextField" destination="6r0-7U-K2O" id="bG9-k9-xgI"/>
+                        <outlet property="nextGlobalTextField" destination="XH7-ha-5N8" id="0PI-Fd-fW5"/>
+                        <outlet property="nextTextField" destination="itK-Bg-eJy" id="oPk-s0-oc3"/>
+                        <outlet property="playGlobalTextField" destination="g6I-GF-uoS" id="ndT-yQ-elt"/>
+                        <outlet property="playTextField" destination="KBY-n6-EVt" id="60g-8z-q4y"/>
+                        <outlet property="preGlobalTextField" destination="4SB-1q-TBX" id="Xgl-Fy-nV8"/>
+                        <outlet property="preTextField" destination="s29-BS-SLg" id="Bm6-s0-gp5"/>
+                        <outlet property="replacePlaylistButton" destination="sk9-BH-Fqp" id="Vcn-xI-evd"/>
+                        <outlet property="resetKeyEquicalentButton" destination="gtx-4s-r5H" id="Qb1-uL-jBB"/>
+                        <outlet property="userImageView" destination="1x3-zh-nvv" id="fMm-y6-Rbj"/>
+                        <outlet property="userNameTextField" destination="MLW-XN-2Up" id="5Ii-nR-hK3"/>
+                        <outlet property="volumeDownGlobalTextField" destination="YRr-vZ-Jld" id="vRx-ln-xyd"/>
+                        <outlet property="volumeDownTextField" destination="5RT-IB-hZf" id="0qo-yP-Ays"/>
+                        <outlet property="volumeUpGlobalTextField" destination="Qnf-9O-hrg" id="3h0-hc-P0Y"/>
+                        <outlet property="volumeUpTextField" destination="xQH-Xe-H34" id="HWz-wv-lpZ"/>
                     </connections>
                 </viewController>
                 <customObject id="KxJ-vN-sPP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266.5" y="55.5"/>
+            <point key="canvasLocation" x="1978" y="-31"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="XTo-Px-kka">
+            <objects>
+                <viewController showSeguePresentationStyle="single" id="IgS-Sf-pfh" customClass="PreferencesViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="dVH-al-okm">
+                        <rect key="frame" x="0.0" y="0.0" width="716" height="509"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wT2-bt-2U3">
+                                <rect key="frame" x="18" y="462" width="51" height="27"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="设置" id="yLZ-Yy-IV4">
+                                    <font key="font" metaFont="system" size="23"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgO-ZG-UgV">
+                                <rect key="frame" x="40" y="20" width="656" height="432"/>
+                                <clipView key="contentView" drawsBackground="NO" id="F83-vD-V7V">
+                                    <rect key="frame" x="0.0" y="0.0" width="656" height="432"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view id="r0r-TX-7f9" customClass="FlippedView" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="631" height="497"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aRf-cq-Sc6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="631" height="497"/>
+                                                    <connections>
+                                                        <segue destination="a3R-Kb-fM0" kind="embed" id="8uD-h2-Y4l"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="aRf-cq-Sc6" secondAttribute="trailing" id="BXi-qJ-KnE"/>
+                                                <constraint firstItem="aRf-cq-Sc6" firstAttribute="top" secondItem="r0r-TX-7f9" secondAttribute="top" id="HcC-nm-lQ5"/>
+                                                <constraint firstAttribute="bottom" secondItem="aRf-cq-Sc6" secondAttribute="bottom" id="Z1V-E8-mWt"/>
+                                                <constraint firstItem="aRf-cq-Sc6" firstAttribute="leading" secondItem="r0r-TX-7f9" secondAttribute="leading" id="dug-Q0-Pjg"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="2MA-pQ-9we">
+                                    <rect key="frame" x="0.0" y="416" width="656" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="27H-Rf-Iuu">
+                                    <rect key="frame" x="640" y="0.0" width="16" height="432"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GgO-ZG-UgV" secondAttribute="bottom" constant="20" id="Fsd-WS-Hau"/>
+                            <constraint firstItem="GgO-ZG-UgV" firstAttribute="top" secondItem="wT2-bt-2U3" secondAttribute="bottom" constant="10" id="OCb-Cw-n01"/>
+                            <constraint firstItem="wT2-bt-2U3" firstAttribute="leading" secondItem="dVH-al-okm" secondAttribute="leading" constant="20" id="TiT-Kd-8xU"/>
+                            <constraint firstAttribute="trailing" secondItem="GgO-ZG-UgV" secondAttribute="trailing" constant="20" id="b5v-kY-Jo4"/>
+                            <constraint firstItem="GgO-ZG-UgV" firstAttribute="leading" secondItem="dVH-al-okm" secondAttribute="leading" constant="40" id="hZZ-1V-AGA"/>
+                            <constraint firstItem="wT2-bt-2U3" firstAttribute="top" secondItem="dVH-al-okm" secondAttribute="top" constant="20" id="yqC-9v-sNv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="GgO-ZG-UgV" id="L1s-DM-zGy"/>
+                    </connections>
+                </viewController>
+                <customObject id="bPa-uO-jf1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="-30.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="user_150" width="200" height="200"/>
+    </resources>
 </document>

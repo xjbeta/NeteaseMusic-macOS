@@ -192,6 +192,8 @@ class MainViewController: NSViewController {
                 return $0 is ArtistViewController
             case .mySubscription:
                 return $0 is SublistViewController
+            case .preferences:
+                return $0 is PreferencesViewController
             default:
                 return false
             }
