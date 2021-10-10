@@ -24,7 +24,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="481"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <view id="aOE-sb-h2i">
+                                                <view id="aOE-sb-h2i" customClass="FlippedView" customModule="Netease_Music" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="481"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -252,12 +252,14 @@
                                                 </view>
                                             </subviews>
                                         </clipView>
+                                        <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="6"/>
+                                        <edgeInsets key="scrollerInsets" left="0.0" right="0.0" top="0.0" bottom="-2"/>
                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="fPM-cc-3tJ">
                                             <rect key="frame" x="-100" y="-100" width="240" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="G4Y-AO-kV9">
-                                            <rect key="frame" x="224" y="0.0" width="16" height="478"/>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="G4Y-AO-kV9">
+                                            <rect key="frame" x="224" y="0.0" width="16" height="477"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>

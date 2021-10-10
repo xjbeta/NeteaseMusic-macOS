@@ -356,7 +356,6 @@ class SidebarViewController: NSViewController {
         }
         
         docView.setFrameSize(size)
-        docView.scroll(.init(x: 0, y: size.height))
     }
     
     deinit {
