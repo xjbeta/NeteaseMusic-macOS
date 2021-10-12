@@ -8,6 +8,7 @@
 
 import Cocoa
 import HotKey
+import WebKit
 
 class PreferencesSubViewController: NSViewController {
     
@@ -15,7 +16,26 @@ class PreferencesSubViewController: NSViewController {
     @IBOutlet var userNameTextField: NSTextField!
     
     @IBAction func logoutAction(_ sender: NSButton) {
-        
+        let pc = PlayCore.shared
+        pc.api.logout().done {
+            print("Logout success.")
+        }.ensure {
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+                records.forEach { record in
+                    WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                }
+            }
+            
+            let vc = self.presentingViewController as? PreferencesViewController
+            vc?.uid = -1
+            pc.api.uid = -1
+            pc.stop()
+            
+            NotificationCenter.default.post(name: .updateLoginStatus, object: nil)
+        }.catch {
+            print("Logout error \($0).")
+        }
         
     }
     

@@ -747,12 +747,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Logout" id="kbM-S2-HN0">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="logout:" target="Voe-Tx-rLC" id="UwN-Aw-OGB"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="pbi-9B-73T"/>
                                         <menuItem title="NeteaseMusic Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
@@ -1292,14 +1286,6 @@
                 <customObject id="FMg-gd-Zgf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1741" y="1531"/>
-        </scene>
-        <!--LogoutView-->
-        <scene sceneID="Kf9-pl-aBK">
-            <objects>
-                <controllerPlaceholder storyboardName="LogoutView" id="KKz-IG-YQx" sceneMemberID="viewController"/>
-                <customObject id="EIc-oE-crc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="717" y="233"/>
         </scene>
         <!--LoginView-->
         <scene sceneID="g2M-3h-rcr">
