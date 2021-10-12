@@ -97,8 +97,6 @@
 		018E928926CF5A0D005FBD69 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		018E928A26CF5A0D005FBD69 /* HotKey.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928226CF5A0D005FBD69 /* HotKey.xcframework */; };
 		018E928B26CF5A0D005FBD69 /* HotKey.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928226CF5A0D005FBD69 /* HotKey.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		018E928C26CF5A0D005FBD69 /* Kingfisher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */; };
-		018E928D26CF5A0D005FBD69 /* Kingfisher.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		018E928E26CF5A0D005FBD69 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */; };
 		018E928F26CF5A0D005FBD69 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		018E929026CF5A0D005FBD69 /* Sparkle.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928526CF5A0D005FBD69 /* Sparkle.xcframework */; };
@@ -116,6 +114,8 @@
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
 		01990FB026E34766002CDBAE /* ContentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01990FAF26E34766002CDBAE /* ContentTabViewController.swift */; };
+		01B5E2D82715619C0023A0D0 /* SDWebImage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */; };
+		01B5E2D92715619D0023A0D0 /* SDWebImage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01BFA88526A9B8E20075F06D /* HttpsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFA88426A9B8E20075F06D /* HttpsExtensions.swift */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
@@ -159,11 +159,11 @@
 				018E928926CF5A0D005FBD69 /* CryptoSwift.xcframework in Embed Frameworks */,
 				0163F90927002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
 				0163F90C270032800078A2F6 /* CocoaLumberjack.xcframework in Embed Frameworks */,
+				01B5E2D92715619D0023A0D0 /* SDWebImage.xcframework in Embed Frameworks */,
 				018E928F26CF5A0D005FBD69 /* PromiseKit.xcframework in Embed Frameworks */,
 				018E929526CF5BDC005FBD69 /* GSPlayer.xcframework in Embed Frameworks */,
 				018E928726CF5A0D005FBD69 /* Alamofire.xcframework in Embed Frameworks */,
 				018E929126CF5A0D005FBD69 /* Sparkle.xcframework in Embed Frameworks */,
-				018E928D26CF5A0D005FBD69 /* Kingfisher.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,7 +274,6 @@
 		018E928026CF5A0D005FBD69 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = Carthage/Build/CryptoSwift.xcframework; sourceTree = "<group>"; };
 		018E928226CF5A0D005FBD69 /* HotKey.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HotKey.xcframework; path = Carthage/Build/HotKey.xcframework; sourceTree = "<group>"; };
-		018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
 		018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromiseKit.xcframework; path = Carthage/Build/PromiseKit.xcframework; sourceTree = "<group>"; };
 		018E928526CF5A0D005FBD69 /* Sparkle.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Sparkle.xcframework; path = Carthage/Build/Sparkle.xcframework; sourceTree = "<group>"; };
 		018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GSPlayer.xcframework; path = Carthage/Build/GSPlayer.xcframework; sourceTree = "<group>"; };
@@ -292,6 +291,7 @@
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
 		01990FAF26E34766002CDBAE /* ContentTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabViewController.swift; sourceTree = "<group>"; };
+		01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SDWebImage.xcframework; path = Carthage/Build/SDWebImage.xcframework; sourceTree = "<group>"; };
 		01BFA88426A9B8E20075F06D /* HttpsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsExtensions.swift; sourceTree = "<group>"; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
@@ -327,11 +327,11 @@
 				018E928826CF5A0D005FBD69 /* CryptoSwift.xcframework in Frameworks */,
 				0163F90827002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Frameworks */,
 				0163F90B270032800078A2F6 /* CocoaLumberjack.xcframework in Frameworks */,
+				01B5E2D82715619C0023A0D0 /* SDWebImage.xcframework in Frameworks */,
 				018E928E26CF5A0D005FBD69 /* PromiseKit.xcframework in Frameworks */,
 				018E929426CF5BDC005FBD69 /* GSPlayer.xcframework in Frameworks */,
 				018E928626CF5A0D005FBD69 /* Alamofire.xcframework in Frameworks */,
 				018E929026CF5A0D005FBD69 /* Sparkle.xcframework in Frameworks */,
-				018E928C26CF5A0D005FBD69 /* Kingfisher.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,13 +593,13 @@
 		018E927F26CF5A0C005FBD69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */,
 				0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */,
 				0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */,
 				018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */,
 				018E928026CF5A0D005FBD69 /* Alamofire.xcframework */,
 				018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */,
 				018E928226CF5A0D005FBD69 /* HotKey.xcframework */,
-				018E928326CF5A0D005FBD69 /* Kingfisher.xcframework */,
 				018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */,
 				018E928526CF5A0D005FBD69 /* Sparkle.xcframework */,
 			);

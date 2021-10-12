@@ -8,7 +8,7 @@
 
 import Cocoa
 import MediaPlayer
-import Kingfisher
+import SDWebImage
 
 extension PlayCore {
     
@@ -138,12 +138,11 @@ extension PlayCore {
                 return appIcon
             }
             
-            let path = ImageCache.default.cachePath(forKey: u)
-            if ImageCache.default.isCached(forKey: key),
-               let image = NSImage(contentsOfFile: path) {
+            let path = SDImageCache.shared.cachePath(forKey: u)
+            if let image = SDImageCache.shared.imageFromMemoryCache(forKey: key) {
                 return image
             } else if let image = NSImage(contentsOf: url) {
-                ImageCache.default.store(image, forKey: key)
+                SDImageCache.shared.store(image, forKey: key, completion: nil)
                 return image
             } else {
                 return appIcon

@@ -7,14 +7,18 @@
 //
 
 import Cocoa
-import Kingfisher
+import SDWebImage
 import Alamofire
 
 class ImageLoader: NSObject {
-    static func image(_ url: String,
+    static func image(_ url: String?,
                       _ autoSize: Bool = false,
-                      _ width: CGFloat = 0) -> KF.Builder {
-        var u = url
+                      _ width: CGFloat = 0,
+                      completion: @escaping (NSImage?) -> Void) {
+        guard var u = url else {
+            completion(nil)
+            return
+        }
         
         if autoSize {
             let w = Int(width * (NSScreen.main?.backingScaleFactor ?? 1))
@@ -25,7 +29,16 @@ class ImageLoader: NSObject {
         let uu = URL(string: u)
         let key = key(uu)
         
-        return KF.url(uu, cacheKey: key)
+        let imageCache = SDImageCache.shared
+        
+        if let image = imageCache.imageFromDiskCache(forKey: key) {
+            completion(image)
+        } else {
+            SDWebImageManager.shared.loadImage(with: uu, progress: nil) { img,_,_,_,_,_ in
+                
+                completion(img)
+            }
+        }
     }
     
     static func key(_ url: URL?) -> String? {
@@ -34,27 +47,27 @@ class ImageLoader: NSObject {
         if let query = URLComponents(url: url, resolvingAgainstBaseURL: true)?.query {
             key.append(query)
         }
+        key += ".jpg"
         return key
     }
+    
 }
 
 
 extension NSImageView {
     public func setImage(_ url: String?, _ autoSize: Bool = false, _ width: CGFloat? = nil) {
         self.image = nil
-        guard let u = url, u != "" else {
-            return
+        ImageLoader.image(url, autoSize, width ?? frame.width) {
+            self.image = $0
         }
-        ImageLoader.image(u, autoSize, width ?? frame.width).set(to: self)
     }
 }
 
 extension NSButton {
     public func setImage(_ url: String?, _ autoSize: Bool = false, _ width: CGFloat? = nil) {
         self.image = nil
-        guard let u = url, u != "" else {
-            return
+        ImageLoader.image(url, autoSize, width ?? frame.width) {
+            self.image = $0
         }
-        ImageLoader.image(u, autoSize, width ?? frame.width).set(to: self)
     }
 }

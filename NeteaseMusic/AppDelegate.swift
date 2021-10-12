@@ -7,13 +7,13 @@
 //
 
 import Cocoa
-import Kingfisher
+import SDWebImage
 import GSPlayer
-import WebKit
 import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+
     @IBOutlet weak var mainMenu: MainMenu!
     let pc = PlayCore.shared
     let vcm = ViewControllerManager.shared
@@ -22,9 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         Log.setUp()
-        
-        
-        
         
         vcm.initAllHotKeys()
         
@@ -58,14 +55,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         // Image cache
-        ImageCache.default.cleanExpiredCache()
-        Log.info("Image Cache Path: \(ImageCache.default.diskStorage.directoryURL.path)")
+        Log.info("Image Cache Path: \(SDImageCache.shared.diskCachePath)")
+        SDImageCache.shared.config.maxDiskAge = 60 * 60 * 24 * 14
+        SDImageCache.shared.deleteOldFiles(completionBlock: nil)
+        
+        SDWebImageManager.shared.cacheKeyFilter = self
     }
-
-
     
     @IBAction func checkForUpdate(_ sender: NSMenuItem) {
         SUUpdater().checkForUpdates(sender)
     }
 }
 
+extension AppDelegate: SDWebImageCacheKeyFilterProtocol {
+    func cacheKey(for url: URL) -> String? {
+        ImageLoader.key(url)
+    }
+}
