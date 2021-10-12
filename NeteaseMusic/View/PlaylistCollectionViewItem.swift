@@ -35,11 +35,11 @@ class PlaylistCollectionViewItem: NSCollectionViewItem {
     func initItem(_ item: DiscoverViewController.RecommendItem) {
         imageView?.image = nil
         textField?.stringValue = item.title
-        let width = Int((imageView?.frame.width ?? 0) * 2)
+        let width = (imageView?.frame.width ?? 0) * 2
         let id = item.id
         playlistId = id
-        guard var uStr = item.imageUrl?.absoluteString else { return }
-        imageView?.setImage(uStr, true)
+        guard let str = item.imageUrl?.absoluteString else { return }
+        imageView?.setImage(str, true, width)
     }
     
     override func mouseEntered(with event: NSEvent) {

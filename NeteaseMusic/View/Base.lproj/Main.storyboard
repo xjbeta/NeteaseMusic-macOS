@@ -1279,14 +1279,6 @@
             </objects>
             <point key="canvasLocation" x="779" y="1183"/>
         </scene>
-        <!--Lyric-->
-        <scene sceneID="gEb-xR-U33">
-            <objects>
-                <controllerPlaceholder storyboardName="Lyric" id="EcZ-2V-yjC" sceneMemberID="viewController"/>
-                <customObject id="FMg-gd-Zgf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1741" y="1531"/>
-        </scene>
         <!--LoginView-->
         <scene sceneID="g2M-3h-rcr">
             <objects>

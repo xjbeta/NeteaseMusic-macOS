@@ -138,7 +138,6 @@ extension PlayCore {
                 return appIcon
             }
             
-            let path = SDImageCache.shared.cachePath(forKey: u)
             if let image = SDImageCache.shared.imageFromMemoryCache(forKey: key) {
                 return image
             } else if let image = NSImage(contentsOf: url) {

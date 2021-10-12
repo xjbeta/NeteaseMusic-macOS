@@ -115,7 +115,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
             p = pc.api.playlistDetail(item.id).compactMap {
                 $0.tracks
             }
-        } else if let items = items as? [Track.Artist] {
+        } else if items is [Track.Artist] {
             return
         }
         
@@ -144,8 +144,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
     }
     
     func updateScrollViews() {
-        guard let trackVC = trackTableVC(),
-              let docView = scrollView.documentView else {
+        guard let docView = scrollView.documentView else {
             return
         }
         

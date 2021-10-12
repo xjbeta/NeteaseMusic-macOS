@@ -621,12 +621,13 @@ class NeteaseMusicAPI: NSObject {
     }
 
     func discoveryRecommendDislike(_ id: Int, isPlaylist: Bool = false, alg: String = "") -> Promise<((Track?, RecommendResource.Playlist?))> {
-        let p: [String: Any] = [
+        var p: [String: Any] = [
             "resId": id,
             "resType": isPlaylist ? 1 : 4, // daily 4  playlist 1
-            "sceneType": isPlaylist ? nil : 1, // daily 1  playlist nil
-            "alg": isPlaylist ? alg : nil, // daily nil
         ]
+        
+        p["sceneType"] = isPlaylist ? nil : 1 // daily 1  playlist nil
+        p["alg"] = isPlaylist ? alg : nil // daily 1  playlist nil
 
         class Result: Decodable {
             let code: Int

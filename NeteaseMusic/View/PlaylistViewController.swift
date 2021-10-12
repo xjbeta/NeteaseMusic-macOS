@@ -57,18 +57,19 @@ class PlaylistViewController: NSViewController, ContentTabViewController {
         api.subscribe(id, unsubscribe: subscribed, type: type)
             .ensure(on: .main) {
                 sender.isEnabled = true
-        }.done {
-            sender.subscribed = !sender.subscribed
-            guard let vc = self.view.window?.windowController?.contentViewController as? MainViewController else { return }
-            vc.children.compactMap {
-                $0 as? SidebarViewController
-            }.first?.updatePlaylists()
-            
-            
-            Log.info("\(type) \(subscribed ? "unsubscribe" : "subscribe") success")
-        }.catch {
-            Log.error($0)
-        }
+            }.get { _ in
+                sender.subscribed = !sender.subscribed
+            }.then { _ -> Promise<()> in
+                guard let vc = self.view.window?.windowController?.contentViewController as? MainViewController else { return .init() }
+                
+                return vc.children.compactMap {
+                    $0 as? SidebarViewController
+                }.first?.updatePlaylists() ?? .init()
+            }.done {
+                Log.info("\(type) \(subscribed ? "unsubscribe" : "subscribe") success")
+            }.catch {
+                Log.error($0)
+            }
     }
     
     lazy var menuContainer: (menu: NSMenu?, menuController: TAAPMenuController?) = {

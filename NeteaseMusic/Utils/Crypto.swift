@@ -61,9 +61,9 @@ class Crypto: NSObject {
             // params
             // aesEncrypt(Buffer.from(aesEncrypt(Buffer.from(text), 'cbc', presetKey, iv).toString('base64')), 'cbc', secretKey, iv).toString('base64'),
             
-            let encrypt1 = try AES(key: presetKey, iv: iv, padding: .pkcs7).encrypt(Array(text.utf8)).toBase64() ?? ""
+            let encrypt1 = try AES(key: presetKey, iv: iv, padding: .pkcs7).encrypt(Array(text.utf8)).toBase64()
             
-            let encrypt2 = try AES(key: secretKey, iv: iv, padding: .pkcs7).encrypt(Array(encrypt1.utf8)).toBase64() ?? ""
+            let encrypt2 = try AES(key: secretKey, iv: iv, padding: .pkcs7).encrypt(Array(encrypt1.utf8)).toBase64()
             p["params"] = encrypt2
             
             // encSecKey
