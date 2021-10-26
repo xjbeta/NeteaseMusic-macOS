@@ -397,6 +397,7 @@ class PlayCore: NSObject {
         
         let br = Preferences.shared.musicBitRate.rawValue
         api.songUrl(ids, br).done(on: .main) {
+            var preloadUrls = [URL]()
             $0.forEach { song in
                 guard let track = self.playlist.first(where: { $0.id == song.id }) else { return }
                 track.song = song
@@ -405,8 +406,12 @@ class PlayCore: NSObject {
                 if self.itemWaitingToLoad == song.id {
                     self.realPlay(track)
                     self.itemWaitingToLoad = nil
+                } else if let u = song.url?.https {
+                    preloadUrls.append(u)
                 }
             }
+            let vpm = VideoPreloadManager.shared
+            vpm.set(waiting: preloadUrls)
         }.catch {
             Log.error("Load Song urls error: \($0)")
         }
