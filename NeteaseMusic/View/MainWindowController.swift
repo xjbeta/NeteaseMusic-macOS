@@ -34,6 +34,7 @@ class MainWindowController: NSWindowController {
               let loginVC = loginVC()
         else { return }
         
+        let vcm = ViewControllerManager.shared
         let napi = PlayCore.shared.api
         
         napi.nuserAccount().get {
@@ -43,12 +44,10 @@ class MainWindowController: NSWindowController {
                 throw NeteaseMusicAPI.RequestError.errorCode((301, ""))
             }
         }.then { _ in
-            when(fulfilled: [
-                discoverVC.initContent(),
-                sidebarVC.updatePlaylists()
-            ])
+            sidebarVC.updatePlaylists()
         }.done {
             vc.updateMainTabView(.main)
+            vcm.selectSidebarItem(.discover)
         }.catch(on: .main) {
             switch $0 {
             case NeteaseMusicAPI.RequestError.errorCode((let code, let string)):
