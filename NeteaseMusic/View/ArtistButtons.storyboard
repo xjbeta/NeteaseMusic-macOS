@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="bU7-R8-ocO">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Artist Buttons View Controller-->
+        <scene sceneID="PEd-7d-5j0">
+            <objects>
+                <viewController id="bU7-R8-ocO" customClass="ArtistButtonsViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="tOy-S4-hL0">
+                        <rect key="frame" x="0.0" y="0.0" width="276" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="iX9-UH-uKz">
+                                <rect key="frame" x="0.0" y="0.0" width="276" height="17"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="jTz-Eo-T5u">
+                                    <rect key="frame" x="0.0" y="0.0" width="276" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLC-9d-hcx">
+                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="17" id="Nf9-xY-wfx"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="PLC-9d-hcx" secondAttribute="bottom" id="CSN-Z7-U39"/>
+                                        <constraint firstItem="PLC-9d-hcx" firstAttribute="top" secondItem="jTz-Eo-T5u" secondAttribute="top" id="Egp-JX-7oA"/>
+                                        <constraint firstItem="PLC-9d-hcx" firstAttribute="leading" secondItem="jTz-Eo-T5u" secondAttribute="leading" id="LUo-PM-maT"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="o0H-GL-PB4">
+                                    <rect key="frame" x="-100" y="-100" width="197" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="s26-Rb-UGY">
+                                    <rect key="frame" x="-100" y="-100" width="16" height="17"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iX9-UH-uKz" secondAttribute="trailing" id="49v-L0-UWZ"/>
+                            <constraint firstItem="iX9-UH-uKz" firstAttribute="top" secondItem="tOy-S4-hL0" secondAttribute="top" id="82G-0S-Non"/>
+                            <constraint firstAttribute="bottom" secondItem="iX9-UH-uKz" secondAttribute="bottom" id="Ebp-fV-VsT"/>
+                            <constraint firstItem="iX9-UH-uKz" firstAttribute="leading" secondItem="tOy-S4-hL0" secondAttribute="leading" id="HlV-VC-1el"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="iX9-UH-uKz" id="WH7-ex-OKm"/>
+                        <outlet property="stackView" destination="PLC-9d-hcx" id="WCS-5y-uVi"/>
+                    </connections>
+                </viewController>
+                <customObject id="9uD-mB-xHs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-120" y="-36.5"/>
+        </scene>
+    </scenes>
+</document>

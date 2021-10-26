@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="G6x-Kr-Kbk">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="KVH-8G-ANh">
+            <objects>
+                <viewController id="G6x-Kr-Kbk" customClass="FMViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="rF1-MY-g98">
+                        <rect key="frame" x="0.0" y="0.0" width="840" height="580"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="8Vc-iN-v5f">
+                                <rect key="frame" x="13" y="82" width="815" height="473"/>
+                                <subviews>
+                                    <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBh-I9-HLC">
+                                        <rect key="frame" x="0.0" y="108" width="390" height="310"/>
+                                        <subviews>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="jK4-ZL-v1D" customClass="FMCoverButton" customModule="Netease_Music" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="60" width="190" height="190"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="190" id="2cl-hh-5h9"/>
+                                                    <constraint firstAttribute="width" secondItem="jK4-ZL-v1D" secondAttribute="height" multiplier="1:1" id="dvN-s4-ggv"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="aCL-AC-GzR" customClass="FMCoverButtonCell" customModule="Netease_Music" customModuleProvider="target">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="previousSong:" target="G6x-Kr-Kbk" id="W0v-4Q-tWq"/>
+                                                </connections>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="9KC-UX-vy4" customClass="FMCoverButton" customModule="Netease_Music" customModuleProvider="target">
+                                                <rect key="frame" x="40" y="40" width="230" height="230"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="9KC-UX-vy4" secondAttribute="height" multiplier="1:1" id="4ty-kQ-3bs"/>
+                                                    <constraint firstAttribute="width" constant="230" id="Ppz-ca-lQY"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="BqE-UU-8Yd" customClass="FMCoverButtonCell" customModule="Netease_Music" customModuleProvider="target">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="previousSong:" target="G6x-Kr-Kbk" id="OZI-ID-evg"/>
+                                                </connections>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="MJi-33-1gC" customClass="FMCoverButton" customModule="Netease_Music" customModuleProvider="target">
+                                                <rect key="frame" x="80" y="20" width="270" height="270"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="MJi-33-1gC" secondAttribute="height" multiplier="1:1" id="7vm-hd-Sas"/>
+                                                    <constraint firstAttribute="width" constant="270" id="K40-gj-RGl"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="MLL-uf-btj" customClass="FMCoverButtonCell" customModule="Netease_Music" customModuleProvider="target">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="previousSong:" target="G6x-Kr-Kbk" id="uDY-zu-plM"/>
+                                                </connections>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="IIS-JS-sEX" customClass="FMCoverButton" customModule="Netease_Music" customModuleProvider="target">
+                                                <rect key="frame" x="390" y="20" width="270" height="270"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="IIS-JS-sEX" secondAttribute="height" multiplier="1:1" id="dgg-r9-vD5"/>
+                                                    <constraint firstAttribute="width" constant="270" id="s7B-di-okE"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" refusesFirstResponder="YES" imageScaling="proportionallyUpOrDown" inset="2" id="vkN-9t-dR0" customClass="FMCoverButtonCell" customModule="Netease_Music" customModuleProvider="target">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="previousSong:" target="G6x-Kr-Kbk" id="Nbg-TM-O4k"/>
+                                                </connections>
+                                            </button>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Uax-7j-HB7">
+                                                <rect key="frame" x="285" y="35" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Uax-7j-HB7" secondAttribute="height" multiplier="1:1" id="GQD-xI-mjT"/>
+                                                    <constraint firstAttribute="width" constant="50" id="nNU-Xq-UvJ"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play.circle.Light-L" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Q6F-bg-lDm">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="buttonAction:" target="G6x-Kr-Kbk" id="Uz2-Ze-6CW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="310" id="Cwf-8q-Dnb"/>
+                                            <constraint firstItem="IIS-JS-sEX" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="390" id="R6i-jb-oPc"/>
+                                            <constraint firstItem="MJi-33-1gC" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="WRu-DB-FJy"/>
+                                            <constraint firstItem="Uax-7j-HB7" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="285" id="XDg-RS-I84"/>
+                                            <constraint firstAttribute="width" constant="390" id="XF5-qq-WAV"/>
+                                            <constraint firstItem="9KC-UX-vy4" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="apr-BM-ls7"/>
+                                            <constraint firstItem="jK4-ZL-v1D" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" id="icj-UD-uQ9"/>
+                                            <constraint firstItem="MJi-33-1gC" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="80" id="ire-vc-hOh"/>
+                                            <constraint firstItem="Uax-7j-HB7" firstAttribute="top" secondItem="vBh-I9-HLC" secondAttribute="top" constant="225" id="lMg-id-6wi"/>
+                                            <constraint firstItem="IIS-JS-sEX" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="sFN-I6-io1"/>
+                                            <constraint firstItem="jK4-ZL-v1D" firstAttribute="centerY" secondItem="vBh-I9-HLC" secondAttribute="centerY" id="uTc-JB-NrQ"/>
+                                            <constraint firstItem="9KC-UX-vy4" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="40" id="xgw-u5-s2S"/>
+                                        </constraints>
+                                    </customView>
+                                    <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="25" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBx-k6-lve">
+                                        <rect key="frame" x="395" y="3" width="400" height="450"/>
+                                        <subviews>
+                                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rPC-9D-SFF">
+                                                <rect key="frame" x="0.0" y="400" width="400" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="10" id="O5e-XQ-OtA"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="7mq-vH-uXY" kind="embed" id="oAO-0Z-svh"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="rOf-Ff-lT3">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="375"/>
+                                                <connections>
+                                                    <segue destination="STk-wE-vdF" kind="embed" id="bXo-gj-SLr"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rOf-Ff-lT3" firstAttribute="width" secondItem="DBx-k6-lve" secondAttribute="width" id="9nB-Ln-Azp"/>
+                                            <constraint firstAttribute="height" constant="450" id="Fi8-vr-yfH"/>
+                                            <constraint firstItem="rPC-9D-SFF" firstAttribute="width" secondItem="DBx-k6-lve" secondAttribute="width" id="UlU-oo-ZGl"/>
+                                            <constraint firstAttribute="width" constant="400" id="qyi-OK-w80"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="qww-me-ocA">
+                                        <rect key="frame" x="35" y="55" width="360" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="E1Z-aD-yny"/>
+                                            <constraint firstAttribute="width" constant="360" id="Ysa-cN-xwh"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="a5D-LU-cmc" kind="embed" id="gRu-I6-Df4"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qww-me-ocA" firstAttribute="top" secondItem="vBh-I9-HLC" secondAttribute="bottom" constant="8" symbolic="YES" id="At3-q9-Fj0"/>
+                                    <constraint firstItem="vBh-I9-HLC" firstAttribute="top" secondItem="8Vc-iN-v5f" secondAttribute="top" constant="55" id="Pqh-iv-cna"/>
+                                    <constraint firstAttribute="trailing" secondItem="DBx-k6-lve" secondAttribute="trailing" constant="20" id="ijQ-O5-1fC"/>
+                                    <constraint firstAttribute="height" constant="473" id="jA3-cu-QB2"/>
+                                    <constraint firstItem="qww-me-ocA" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="leading" constant="35" id="rCh-Ix-5Lq"/>
+                                    <constraint firstItem="DBx-k6-lve" firstAttribute="top" secondItem="8Vc-iN-v5f" secondAttribute="top" constant="20" id="t5S-nq-4EL"/>
+                                    <constraint firstItem="vBh-I9-HLC" firstAttribute="leading" secondItem="8Vc-iN-v5f" secondAttribute="leading" id="wZd-pz-Evh"/>
+                                    <constraint firstItem="DBx-k6-lve" firstAttribute="leading" secondItem="vBh-I9-HLC" secondAttribute="trailing" constant="5" id="wau-kj-GBH"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="8Vc-iN-v5f" firstAttribute="top" secondItem="rF1-MY-g98" secondAttribute="top" constant="25" id="Cyn-bd-JVQ"/>
+                            <constraint firstItem="8Vc-iN-v5f" firstAttribute="centerX" secondItem="rF1-MY-g98" secondAttribute="centerX" id="e4A-jA-GPO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="coverButton1" destination="jK4-ZL-v1D" id="gLB-j6-WsL"/>
+                        <outlet property="coverButton1LeadingLC" destination="icj-UD-uQ9" id="OV8-yd-H1k"/>
+                        <outlet property="coverButton1WidthLC" destination="2cl-hh-5h9" id="GGo-7k-iyl"/>
+                        <outlet property="coverButton2" destination="9KC-UX-vy4" id="zGF-JH-Rmp"/>
+                        <outlet property="coverButton2LeadingLC" destination="xgw-u5-s2S" id="chF-St-cHX"/>
+                        <outlet property="coverButton2WidthLC" destination="Ppz-ca-lQY" id="5Yh-Bl-Dd4"/>
+                        <outlet property="coverButton3" destination="MJi-33-1gC" id="wHu-6U-5wT"/>
+                        <outlet property="coverButton3LeadingLC" destination="ire-vc-hOh" id="5RW-RL-sdQ"/>
+                        <outlet property="coverButton3WidthLC" destination="K40-gj-RGl" id="PUl-yS-CQV"/>
+                        <outlet property="coverButton4" destination="IIS-JS-sEX" id="Gp3-k2-mVC"/>
+                        <outlet property="coverButton4LeadingLC" destination="R6i-jb-oPc" id="BSZ-DE-ZNs"/>
+                        <outlet property="coverButton4WidthLC" destination="s7B-di-okE" id="uuH-SO-58K"/>
+                        <outlet property="coversContainerView" destination="vBh-I9-HLC" id="nqw-CD-5qI"/>
+                        <outlet property="playButton" destination="Uax-7j-HB7" id="bYx-wJ-ELf"/>
+                    </connections>
+                </viewController>
+                <customObject id="xvP-58-zBn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="296" y="252"/>
+        </scene>
+        <!--SongInfoView-->
+        <scene sceneID="g51-yy-ORu">
+            <objects>
+                <controllerPlaceholder storyboardName="SongInfoView" id="7mq-vH-uXY" sceneMemberID="viewController"/>
+                <customObject id="Zeh-9E-8ap" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="937" y="222"/>
+        </scene>
+        <!--Lyric-->
+        <scene sceneID="TuC-G0-Z01">
+            <objects>
+                <controllerPlaceholder storyboardName="Lyric" id="STk-wE-vdF" sceneMemberID="viewController"/>
+                <customObject id="1y9-XY-Hlm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="269"/>
+        </scene>
+        <!--SongButtons-->
+        <scene sceneID="Zt1-ED-PVj">
+            <objects>
+                <controllerPlaceholder storyboardName="SongButtons" id="a5D-LU-cmc" sceneMemberID="viewController"/>
+                <customObject id="eaA-7s-bGz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="325"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="play.circle.Light-L" width="126" height="126"/>
+    </resources>
+</document>

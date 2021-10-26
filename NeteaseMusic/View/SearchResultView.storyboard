@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mzy-mQ-Wpc">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Result View Controller-->
+        <scene sceneID="b2J-FF-xR5">
+            <objects>
+                <viewController id="Mzy-mQ-Wpc" customClass="SearchResultViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="oPU-Ha-k43">
+                        <rect key="frame" x="0.0" y="0.0" width="914" height="625"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0qF-ht-nbs">
+                                <rect key="frame" x="329" y="582" width="256" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="Jor-iG-60G">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Songs"/>
+                                        <segment label="Albums" selected="YES" tag="1"/>
+                                        <segment label="Artists"/>
+                                        <segment label="Playlists"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="selectNewType:" target="Mzy-mQ-Wpc" id="QVW-52-eR3"/>
+                                </connections>
+                            </segmentedControl>
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fl-gB-EYy">
+                                <rect key="frame" x="0.0" y="0.0" width="914" height="563"/>
+                                <clipView key="contentView" drawsBackground="NO" id="4dy-hE-HQg">
+                                    <rect key="frame" x="0.0" y="0.0" width="914" height="563"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view id="IUM-xC-Dic" customClass="FlippedView" customModule="Netease_Music" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="899" height="548"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <tabView type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="blp-Zc-p5r">
+                                                    <rect key="frame" x="0.0" y="62" width="899" height="486"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <tabViewItems>
+                                                        <tabViewItem label="Tab" identifier="" id="yVu-zu-rBn">
+                                                            <view key="view" id="sRg-OP-tQf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="899" height="486"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Yoz-pX-hM6">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="899" height="486"/>
+                                                                        <connections>
+                                                                            <segue destination="8f4-qF-Wbu" kind="embed" id="vxm-rJ-S3C"/>
+                                                                        </connections>
+                                                                    </containerView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="Yoz-pX-hM6" secondAttribute="trailing" id="7i2-dv-9rM"/>
+                                                                    <constraint firstItem="Yoz-pX-hM6" firstAttribute="top" secondItem="sRg-OP-tQf" secondAttribute="top" id="MoS-oB-hLi"/>
+                                                                    <constraint firstItem="Yoz-pX-hM6" firstAttribute="leading" secondItem="sRg-OP-tQf" secondAttribute="leading" id="WuK-t1-lXf"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Yoz-pX-hM6" secondAttribute="bottom" id="sJK-eL-iVw"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </tabViewItem>
+                                                        <tabViewItem label="View" identifier="" id="Gpc-L1-JJe">
+                                                            <view key="view" id="MzF-9y-X3K">
+                                                                <rect key="frame" x="0.0" y="0.0" width="899" height="490"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="lhW-Wa-yZK">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="899" height="490"/>
+                                                                        <connections>
+                                                                            <segue destination="Fjy-qJ-OZj" kind="embed" id="DL1-G7-yTD"/>
+                                                                        </connections>
+                                                                    </containerView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="lhW-Wa-yZK" firstAttribute="leading" secondItem="MzF-9y-X3K" secondAttribute="leading" id="B2O-rv-gY9"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="lhW-Wa-yZK" secondAttribute="bottom" id="X35-g3-mNJ"/>
+                                                                    <constraint firstItem="lhW-Wa-yZK" firstAttribute="top" secondItem="MzF-9y-X3K" secondAttribute="top" id="gmN-7b-v2X"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="lhW-Wa-yZK" secondAttribute="trailing" id="vFO-mr-BPs"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </tabViewItem>
+                                                    </tabViewItems>
+                                                </tabView>
+                                                <containerView translatesAutoresizingMaskIntoConstraints="NO" id="2XI-uT-bjs">
+                                                    <rect key="frame" x="20" y="20" width="859" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="i6T-h1-84H"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <segue destination="OVZ-qw-fbQ" kind="embed" id="koZ-og-Aas"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2XI-uT-bjs" firstAttribute="centerX" secondItem="IUM-xC-Dic" secondAttribute="centerX" id="BNy-0x-HU6"/>
+                                                <constraint firstItem="blp-Zc-p5r" firstAttribute="top" secondItem="IUM-xC-Dic" secondAttribute="top" id="CnQ-iu-ev7"/>
+                                                <constraint firstItem="2XI-uT-bjs" firstAttribute="top" secondItem="blp-Zc-p5r" secondAttribute="bottom" constant="20" id="H7e-Qu-qXi"/>
+                                                <constraint firstAttribute="trailing" secondItem="2XI-uT-bjs" secondAttribute="trailing" constant="20" symbolic="YES" id="I9d-dd-DCl"/>
+                                                <constraint firstAttribute="trailing" secondItem="blp-Zc-p5r" secondAttribute="trailing" id="Kdj-ym-tla"/>
+                                                <constraint firstAttribute="bottom" secondItem="2XI-uT-bjs" secondAttribute="bottom" constant="20" id="LSq-rs-ynB"/>
+                                                <constraint firstItem="2XI-uT-bjs" firstAttribute="leading" secondItem="IUM-xC-Dic" secondAttribute="leading" constant="20" symbolic="YES" id="tzX-DR-4JX"/>
+                                                <constraint firstItem="blp-Zc-p5r" firstAttribute="leading" secondItem="IUM-xC-Dic" secondAttribute="leading" id="wXu-li-WC6"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="YMW-hi-aZH">
+                                    <rect key="frame" x="0.0" y="547" width="914" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="4Gj-Bv-Nwc">
+                                    <rect key="frame" x="898" y="0.0" width="16" height="563"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="1fl-gB-EYy" firstAttribute="leading" secondItem="oPU-Ha-k43" secondAttribute="leading" id="0bI-dT-Xp6"/>
+                            <constraint firstItem="0qF-ht-nbs" firstAttribute="top" secondItem="oPU-Ha-k43" secondAttribute="top" constant="20" id="2yk-MK-WqH"/>
+                            <constraint firstItem="0qF-ht-nbs" firstAttribute="centerX" secondItem="oPU-Ha-k43" secondAttribute="centerX" id="D0y-SU-JkS"/>
+                            <constraint firstAttribute="trailing" secondItem="1fl-gB-EYy" secondAttribute="trailing" id="M9x-qg-YaU"/>
+                            <constraint firstAttribute="bottom" secondItem="1fl-gB-EYy" secondAttribute="bottom" id="mgh-Pu-xHU"/>
+                            <constraint firstItem="1fl-gB-EYy" firstAttribute="top" secondItem="0qF-ht-nbs" secondAttribute="bottom" constant="20" id="xd2-Os-jAD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentTabView" destination="blp-Zc-p5r" id="QEg-Ne-u6h"/>
+                        <outlet property="scrollView" destination="1fl-gB-EYy" id="9cc-pv-yKu"/>
+                        <outlet property="segmentedControl" destination="0qF-ht-nbs" id="4L7-wv-1pV"/>
+                    </connections>
+                </viewController>
+                <customObject id="44R-aO-9v0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="393" y="-66.5"/>
+        </scene>
+        <!--TrackTableView-->
+        <scene sceneID="aiu-J4-BkN">
+            <objects>
+                <controllerPlaceholder storyboardName="TrackTableView" id="8f4-qF-Wbu" sceneMemberID="viewController"/>
+                <customObject id="C6s-ur-zoa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1027" y="-183"/>
+        </scene>
+        <!--AlbumArtistTableView-->
+        <scene sceneID="8xA-3z-47y">
+            <objects>
+                <controllerPlaceholder storyboardName="AlbumArtistTableView" id="Fjy-qJ-OZj" sceneMemberID="viewController"/>
+                <customObject id="a9T-6e-5sb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047" y="-110"/>
+        </scene>
+        <!--PageSegmentedControlView-->
+        <scene sceneID="7rY-sB-lFl">
+            <objects>
+                <controllerPlaceholder storyboardName="PageSegmentedControlView" id="OVZ-qw-fbQ" sceneMemberID="viewController"/>
+                <customObject id="M10-OS-nqT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066" y="-44"/>
+        </scene>
+    </scenes>
+</document>

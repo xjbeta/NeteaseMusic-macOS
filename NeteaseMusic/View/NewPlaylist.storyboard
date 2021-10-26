@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Gpn-Pg-lIF">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Playlist View Controller-->
+        <scene sceneID="djw-cc-Tp4">
+            <objects>
+                <customObject id="mCr-YG-KmV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="NewPlaylistViewController" showSeguePresentationStyle="single" id="Gpn-Pg-lIF" customClass="NewPlaylistViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="gXr-Z0-Crp">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="186"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zeq-J0-g3S">
+                                <rect key="frame" x="125" y="149" width="111" height="25"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="New Playlist" id="ZME-xL-fFX">
+                                    <font key="font" metaFont="system" size="21"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nhc-aW-6L5">
+                                <rect key="frame" x="14" y="5" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qqj-Bu-UF5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancel:" target="Gpn-Pg-lIF" id="b8N-oP-FXH"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="cgI-GF-RGT">
+                                <rect key="frame" x="20" y="71" width="320" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="6Xn-TQ-GjO"/>
+                                    <constraint firstAttribute="height" constant="66" id="Hlv-WM-2Yt"/>
+                                </constraints>
+                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="New playlist name." drawsBackground="YES" id="iNm-oM-Mzt">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wFf-lB-fqi">
+                                <rect key="frame" x="18" y="43" width="113" height="18"/>
+                                <buttonCell key="cell" type="check" title="Privacy Playlist" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FAn-ii-TM9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QzT-TO-kJ2">
+                                <rect key="frame" x="264" y="5" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ag0-5V-NCQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="create:" target="Gpn-Pg-lIF" id="WE1-HT-Lvc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="QzT-TO-kJ2" firstAttribute="bottom" secondItem="nhc-aW-6L5" secondAttribute="bottom" id="0pg-MK-HGB"/>
+                            <constraint firstItem="wFf-lB-fqi" firstAttribute="leading" secondItem="cgI-GF-RGT" secondAttribute="leading" id="2wv-Iq-kZ8"/>
+                            <constraint firstItem="nhc-aW-6L5" firstAttribute="leading" secondItem="gXr-Z0-Crp" secondAttribute="leading" constant="20" id="MSn-W0-Nt6"/>
+                            <constraint firstItem="Zeq-J0-g3S" firstAttribute="centerX" secondItem="gXr-Z0-Crp" secondAttribute="centerX" id="Rin-4b-tb8"/>
+                            <constraint firstItem="nhc-aW-6L5" firstAttribute="top" secondItem="wFf-lB-fqi" secondAttribute="bottom" constant="12" id="TEb-6v-stE"/>
+                            <constraint firstItem="cgI-GF-RGT" firstAttribute="leading" secondItem="gXr-Z0-Crp" secondAttribute="leading" constant="20" id="YtG-c0-Piq"/>
+                            <constraint firstItem="QzT-TO-kJ2" firstAttribute="width" secondItem="nhc-aW-6L5" secondAttribute="width" id="Zpo-C4-UtH"/>
+                            <constraint firstAttribute="bottom" secondItem="nhc-aW-6L5" secondAttribute="bottom" constant="12" id="fm0-AR-aWS"/>
+                            <constraint firstItem="cgI-GF-RGT" firstAttribute="top" secondItem="Zeq-J0-g3S" secondAttribute="bottom" constant="12" id="h8O-I1-2kb"/>
+                            <constraint firstItem="wFf-lB-fqi" firstAttribute="top" secondItem="cgI-GF-RGT" secondAttribute="bottom" constant="12" id="sLG-fw-bOJ"/>
+                            <constraint firstAttribute="trailing" secondItem="cgI-GF-RGT" secondAttribute="trailing" constant="20" id="ujv-yX-OLx"/>
+                            <constraint firstAttribute="trailing" secondItem="QzT-TO-kJ2" secondAttribute="trailing" constant="20" id="vUB-Q4-O7U"/>
+                            <constraint firstItem="Zeq-J0-g3S" firstAttribute="top" secondItem="gXr-Z0-Crp" secondAttribute="top" constant="12" id="wDz-Og-Lda"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="privacyButton" destination="wFf-lB-fqi" id="K9s-pt-5bz"/>
+                        <outlet property="textField" destination="cgI-GF-RGT" id="wI7-Qg-Jf6"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-74" y="-104"/>
+        </scene>
+    </scenes>
+</document>

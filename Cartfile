@@ -1,0 +1,8 @@
+github "xjbeta/GSPlayer" "master"
+github "sparkle-project/Sparkle"
+github "Alamofire/Alamofire"
+github "mxcl/PromiseKit"
+github "krzyzanowskim/CryptoSwift"
+github "soffes/HotKey"
+github "SDWebImage/SDWebImage"
+github "CocoaLumberjack/CocoaLumberjack"

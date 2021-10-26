@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="EqJ-eC-jmV">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sublist View Controller-->
+        <scene sceneID="xcD-zE-1e0">
+            <objects>
+                <viewController id="EqJ-eC-jmV" customClass="SublistViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="BOe-vR-Bcu">
+                        <rect key="frame" x="0.0" y="0.0" width="746" height="491"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YWu-a4-OOG">
+                                <rect key="frame" x="18" y="448" width="134" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="kyO-9z-wkT"/>
+                                </constraints>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="giX-kx-h9l">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="专辑" selected="YES"/>
+                                        <segment label="歌手" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="actions:" target="EqJ-eC-jmV" id="a8z-zn-gzM"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qT9-SM-9g5">
+                                <rect key="frame" x="339" y="232" width="68" height="27"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Empty" id="5de-MS-yhE">
+                                    <font key="font" metaFont="system" size="23"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="dfd-fD-Wjt">
+                                <rect key="frame" x="0.0" y="0.0" width="746" height="429"/>
+                                <connections>
+                                    <segue destination="sGH-ys-CUG" kind="embed" id="6dQ-VN-k1M"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="dfd-fD-Wjt" firstAttribute="leading" secondItem="BOe-vR-Bcu" secondAttribute="leading" id="0KR-E0-ZG4"/>
+                            <constraint firstItem="qT9-SM-9g5" firstAttribute="centerX" secondItem="BOe-vR-Bcu" secondAttribute="centerX" id="4fu-ZT-7cS"/>
+                            <constraint firstAttribute="trailing" secondItem="dfd-fD-Wjt" secondAttribute="trailing" id="5wj-3e-hqq"/>
+                            <constraint firstItem="dfd-fD-Wjt" firstAttribute="top" secondItem="YWu-a4-OOG" secondAttribute="bottom" constant="20" id="Oup-Uu-Bnv"/>
+                            <constraint firstItem="YWu-a4-OOG" firstAttribute="top" secondItem="BOe-vR-Bcu" secondAttribute="top" constant="20" id="P00-V9-dvD"/>
+                            <constraint firstItem="YWu-a4-OOG" firstAttribute="leading" secondItem="BOe-vR-Bcu" secondAttribute="leading" constant="20" id="nO8-J3-sSl"/>
+                            <constraint firstItem="qT9-SM-9g5" firstAttribute="centerY" secondItem="BOe-vR-Bcu" secondAttribute="centerY" id="uqY-oL-KdI"/>
+                            <constraint firstAttribute="bottom" secondItem="dfd-fD-Wjt" secondAttribute="bottom" id="xr2-uC-y5R"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="dfd-fD-Wjt" id="Jac-Gy-UNY"/>
+                        <outlet property="segmentedControl" destination="YWu-a4-OOG" id="tJI-oy-WiL"/>
+                    </connections>
+                </viewController>
+                <customObject id="wev-9A-UMt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="177" y="165.5"/>
+        </scene>
+        <!--AlbumArtistTableView-->
+        <scene sceneID="Az4-EO-3Hi">
+            <objects>
+                <controllerPlaceholder storyboardName="AlbumArtistTableView" id="sGH-ys-CUG" sceneMemberID="viewController"/>
+                <customObject id="SkN-Ic-gf4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="165"/>
+        </scene>
+    </scenes>
+</document>

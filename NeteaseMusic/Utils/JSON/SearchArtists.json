@@ -1,0 +1,21 @@
+{
+    "result": {
+        "artistCount": 1,
+        "artists": [{
+            "id": 6452,
+            "name": "周杰伦",
+            "picUrl": "https://p1.music.126.net/ql3nSwy0XKow_HAoZzRZgw==/109951163111196186.jpg",
+            "alias": ["Jay Chou"],
+            "albumSize": 33,
+            "picId": 109951163111196186,
+            "img1v1Url": "https://p1.music.126.net/o-FjCrUlhyFC96xiVvJZ8g==/109951163111191410.jpg",
+            "img1v1": 109951163111191410,
+            "mvSize": 8,
+            "followed": false,
+            "alg": "alg_artist_basic",
+            "alia": ["Jay Chou"],
+            "trans": null
+        }]
+    },
+    "code": 200
+}
