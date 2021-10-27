@@ -288,14 +288,14 @@ class SidebarViewController: NSViewController {
             
             // top - 12 - searchField
             if y > 12,
-               veView.shadow == nil {
+               veView.shadow != nil {
+                veView.shadow = nil
+            } else if y <= 12, veView.shadow == nil {
                 let s = NSShadow()
                 s.shadowColor = .black
                 s.shadowOffset = .init(width: 0, height: 2)
                 s.shadowBlurRadius = 2
                 veView.shadow = s
-            } else if y <= 12, veView.shadow != nil {
-                veView.shadow = nil
             }
         }
         
