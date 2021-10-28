@@ -67,11 +67,18 @@ class SidebarViewController: NSViewController {
                 items.append(item)
             }
             
-            self.sidebarItems = items
-            self.outlineView.deselectAll(nil)
-            self.outlineView.expandItem(nil, expandChildren: true)
-            }.catch {
-                Log.error($0)
+            if items.count == 0 {
+                ViewControllerManager.shared.selectSidebarItem(.searchSuggestionHeaderSongs, -1)
+                usleep(useconds_t(500))
+                self.searchField.stringValue = ""
+                self.searchFieldDidEndSearching(self.searchField)
+            } else {
+                self.sidebarItems = items
+                self.outlineView.deselectAll(nil)
+                self.outlineView.expandItem(nil, expandChildren: true)
+            }
+        }.catch {
+            Log.error($0)
         }
     }
     
