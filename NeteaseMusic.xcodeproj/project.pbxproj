@@ -80,29 +80,12 @@
 		015DD2B727130D8F007D8F92 /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015DD2B627130D8F007D8F92 /* FlippedView.swift */; };
 		01603086225B82C00064EC88 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603085225B82C00064EC88 /* Identifiers.swift */; };
 		01603088225B850B0064EC88 /* SafeSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01603087225B850B0064EC88 /* SafeSubscript.swift */; };
-		0163F90827002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */; };
-		0163F90927002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0163F90B270032800078A2F6 /* CocoaLumberjack.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */; };
-		0163F90C270032800078A2F6 /* CocoaLumberjack.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0163F90E2700339C0078A2F6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163F90D2700339C0078A2F6 /* Log.swift */; };
 		01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B99228C0D1400D11190 /* LyricScroller.swift */; };
 		01677B9F228CF3D200D11190 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01677B9E228CF3D200D11190 /* ViewControllerManager.swift */; };
 		0171427523C18E660051ADDF /* PlayableColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171427423C18E660051ADDF /* PlayableColorTransformer.swift */; };
 		0171427723C2E0B70051ADDF /* NetworkRequestMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171427623C2E0B70051ADDF /* NetworkRequestMenuItem.swift */; };
 		0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */; };
-		018E927D26CF565D005FBD69 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 018E927C26CF565D005FBD69 /* Cartfile */; };
-		018E928626CF5A0D005FBD69 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928026CF5A0D005FBD69 /* Alamofire.xcframework */; };
-		018E928726CF5A0D005FBD69 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928026CF5A0D005FBD69 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		018E928826CF5A0D005FBD69 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */; };
-		018E928926CF5A0D005FBD69 /* CryptoSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		018E928A26CF5A0D005FBD69 /* HotKey.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928226CF5A0D005FBD69 /* HotKey.xcframework */; };
-		018E928B26CF5A0D005FBD69 /* HotKey.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928226CF5A0D005FBD69 /* HotKey.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		018E928E26CF5A0D005FBD69 /* PromiseKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */; };
-		018E928F26CF5A0D005FBD69 /* PromiseKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		018E929026CF5A0D005FBD69 /* Sparkle.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928526CF5A0D005FBD69 /* Sparkle.xcframework */; };
-		018E929126CF5A0D005FBD69 /* Sparkle.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E928526CF5A0D005FBD69 /* Sparkle.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		018E929426CF5BDC005FBD69 /* GSPlayer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */; };
-		018E929526CF5BDC005FBD69 /* GSPlayer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01909522239E339A00647F80 /* SublistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01909521239E339A00647F80 /* SublistView.storyboard */; };
 		0190952423A0913F00647F80 /* TrackTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0190952323A0913E00647F80 /* TrackTableView.storyboard */; };
 		0190952623A0914F00647F80 /* AlbumArtistTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */; };
@@ -114,9 +97,16 @@
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
 		01990FB026E34766002CDBAE /* ContentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01990FAF26E34766002CDBAE /* ContentTabViewController.swift */; };
-		01B5E2D82715619C0023A0D0 /* SDWebImage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */; };
-		01B5E2D92715619D0023A0D0 /* SDWebImage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		01BFA88526A9B8E20075F06D /* HttpsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFA88426A9B8E20075F06D /* HttpsExtensions.swift */; };
+		01C02C6927F4146500AB94DE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C6827F4146500AB94DE /* SDWebImage */; };
+		01C02C6C27F414A300AB94DE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C6B27F414A300AB94DE /* Alamofire */; };
+		01C02C6F27F4167C00AB94DE /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C6E27F4167C00AB94DE /* Sparkle */; };
+		01C02C7227F4181400AB94DE /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7127F4181400AB94DE /* PromiseKit */; };
+		01C02C7527F4189F00AB94DE /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7427F4189F00AB94DE /* CryptoSwift */; };
+		01C02C7827F4190500AB94DE /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7727F4190500AB94DE /* HotKey */; };
+		01C02C7B27F5555D00AB94DE /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7A27F5555D00AB94DE /* CocoaLumberjack */; };
+		01C02C7D27F5555D00AB94DE /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7C27F5555D00AB94DE /* CocoaLumberjackSwift */; };
+		01C02C8027F5560400AB94DE /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7F27F5560400AB94DE /* GSPlayer */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
 		01E0F26226C8A21F005C95F9 /* NMStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F26126C8A21F005C95F9 /* NMStructs.swift */; };
@@ -155,15 +145,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				018E928B26CF5A0D005FBD69 /* HotKey.xcframework in Embed Frameworks */,
-				018E928926CF5A0D005FBD69 /* CryptoSwift.xcframework in Embed Frameworks */,
-				0163F90927002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Embed Frameworks */,
-				0163F90C270032800078A2F6 /* CocoaLumberjack.xcframework in Embed Frameworks */,
-				01B5E2D92715619D0023A0D0 /* SDWebImage.xcframework in Embed Frameworks */,
-				018E928F26CF5A0D005FBD69 /* PromiseKit.xcframework in Embed Frameworks */,
-				018E929526CF5BDC005FBD69 /* GSPlayer.xcframework in Embed Frameworks */,
-				018E928726CF5A0D005FBD69 /* Alamofire.xcframework in Embed Frameworks */,
-				018E929126CF5A0D005FBD69 /* Sparkle.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,8 +241,6 @@
 		015DD2B627130D8F007D8F92 /* FlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
 		01603085225B82C00064EC88 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		01603087225B850B0064EC88 /* SafeSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeSubscript.swift; sourceTree = "<group>"; };
-		0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjackSwift.xcframework; path = Carthage/Build/CocoaLumberjackSwift.xcframework; sourceTree = "<group>"; };
-		0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CocoaLumberjack.xcframework; path = Carthage/Build/CocoaLumberjack.xcframework; sourceTree = "<group>"; };
 		0163F90D2700339C0078A2F6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		01677B99228C0D1400D11190 /* LyricScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricScroller.swift; sourceTree = "<group>"; };
 		01677B9C228C133D00D11190 /* Album.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Album.json; sourceTree = "<group>"; };
@@ -270,13 +249,6 @@
 		0171427623C2E0B70051ADDF /* NetworkRequestMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestMenuItem.swift; sourceTree = "<group>"; };
 		017AB6EC227AB19E00A2EF36 /* SearchSuggest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchSuggest.json; sourceTree = "<group>"; };
 		0188295D23B1D4D400913821 /* FMCoverButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMCoverButtonCell.swift; sourceTree = "<group>"; };
-		018E927C26CF565D005FBD69 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
-		018E928026CF5A0D005FBD69 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
-		018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = Carthage/Build/CryptoSwift.xcframework; sourceTree = "<group>"; };
-		018E928226CF5A0D005FBD69 /* HotKey.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HotKey.xcframework; path = Carthage/Build/HotKey.xcframework; sourceTree = "<group>"; };
-		018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromiseKit.xcframework; path = Carthage/Build/PromiseKit.xcframework; sourceTree = "<group>"; };
-		018E928526CF5A0D005FBD69 /* Sparkle.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Sparkle.xcframework; path = Carthage/Build/Sparkle.xcframework; sourceTree = "<group>"; };
-		018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GSPlayer.xcframework; path = Carthage/Build/GSPlayer.xcframework; sourceTree = "<group>"; };
 		01909521239E339A00647F80 /* SublistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SublistView.storyboard; sourceTree = "<group>"; };
 		0190952323A0913E00647F80 /* TrackTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackTableView.storyboard; sourceTree = "<group>"; };
 		0190952523A0914F00647F80 /* AlbumArtistTableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumArtistTableView.storyboard; sourceTree = "<group>"; };
@@ -291,7 +263,6 @@
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01957D95224D01860006FCEC /* NeteaseMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NeteaseMusic.entitlements; sourceTree = "<group>"; };
 		01990FAF26E34766002CDBAE /* ContentTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabViewController.swift; sourceTree = "<group>"; };
-		01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SDWebImage.xcframework; path = Carthage/Build/SDWebImage.xcframework; sourceTree = "<group>"; };
 		01BFA88426A9B8E20075F06D /* HttpsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpsExtensions.swift; sourceTree = "<group>"; };
 		01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSlider.swift; sourceTree = "<group>"; };
 		01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSliderCell.swift; sourceTree = "<group>"; };
@@ -323,15 +294,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				018E928A26CF5A0D005FBD69 /* HotKey.xcframework in Frameworks */,
-				018E928826CF5A0D005FBD69 /* CryptoSwift.xcframework in Frameworks */,
-				0163F90827002EE00078A2F6 /* CocoaLumberjackSwift.xcframework in Frameworks */,
-				0163F90B270032800078A2F6 /* CocoaLumberjack.xcframework in Frameworks */,
-				01B5E2D82715619C0023A0D0 /* SDWebImage.xcframework in Frameworks */,
-				018E928E26CF5A0D005FBD69 /* PromiseKit.xcframework in Frameworks */,
-				018E929426CF5BDC005FBD69 /* GSPlayer.xcframework in Frameworks */,
-				018E928626CF5A0D005FBD69 /* Alamofire.xcframework in Frameworks */,
-				018E929026CF5A0D005FBD69 /* Sparkle.xcframework in Frameworks */,
+				01C02C7B27F5555D00AB94DE /* CocoaLumberjack in Frameworks */,
+				01C02C8027F5560400AB94DE /* GSPlayer in Frameworks */,
+				01C02C7827F4190500AB94DE /* HotKey in Frameworks */,
+				01C02C7527F4189F00AB94DE /* CryptoSwift in Frameworks */,
+				01C02C6927F4146500AB94DE /* SDWebImage in Frameworks */,
+				01C02C7D27F5555D00AB94DE /* CocoaLumberjackSwift in Frameworks */,
+				01C02C7227F4181400AB94DE /* PromiseKit in Frameworks */,
+				01C02C6C27F414A300AB94DE /* Alamofire in Frameworks */,
+				01C02C6F27F4167C00AB94DE /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,15 +564,6 @@
 		018E927F26CF5A0C005FBD69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				01B5E2D72715619C0023A0D0 /* SDWebImage.xcframework */,
-				0163F90A270032800078A2F6 /* CocoaLumberjack.xcframework */,
-				0163F90727002EDF0078A2F6 /* CocoaLumberjackSwift.xcframework */,
-				018E929326CF5BDC005FBD69 /* GSPlayer.xcframework */,
-				018E928026CF5A0D005FBD69 /* Alamofire.xcframework */,
-				018E928126CF5A0D005FBD69 /* CryptoSwift.xcframework */,
-				018E928226CF5A0D005FBD69 /* HotKey.xcframework */,
-				018E928426CF5A0D005FBD69 /* PromiseKit.xcframework */,
-				018E928526CF5A0D005FBD69 /* Sparkle.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -656,7 +618,6 @@
 				01957D8B224D01850006FCEC /* AppDelegate.swift */,
 				01957D8D224D01850006FCEC /* ViewController.swift */,
 				01957D8F224D01860006FCEC /* Assets.xcassets */,
-				018E927C26CF565D005FBD69 /* Cartfile */,
 				013EF12B22563C5400E4D7D8 /* View */,
 				012F2F44225061AB00086870 /* Utils */,
 				01957D94224D01860006FCEC /* Info.plist */,
@@ -754,7 +715,6 @@
 				01957D84224D01850006FCEC /* Sources */,
 				01957D85224D01850006FCEC /* Frameworks */,
 				01957D86224D01850006FCEC /* Resources */,
-				018E927E26CF590B005FBD69 /* Carthage outdated check Script */,
 				018E929226CF5A0D005FBD69 /* Embed Frameworks */,
 				0163F90F270086270078A2F6 /* Build number Script */,
 			);
@@ -764,6 +724,15 @@
 			);
 			name = "Netease Music";
 			packageProductDependencies = (
+				01C02C6827F4146500AB94DE /* SDWebImage */,
+				01C02C6B27F414A300AB94DE /* Alamofire */,
+				01C02C6E27F4167C00AB94DE /* Sparkle */,
+				01C02C7127F4181400AB94DE /* PromiseKit */,
+				01C02C7427F4189F00AB94DE /* CryptoSwift */,
+				01C02C7727F4190500AB94DE /* HotKey */,
+				01C02C7A27F5555D00AB94DE /* CocoaLumberjack */,
+				01C02C7C27F5555D00AB94DE /* CocoaLumberjackSwift */,
+				01C02C7F27F5560400AB94DE /* GSPlayer */,
 			);
 			productName = NeteaseMusic;
 			productReference = 01957D88224D01850006FCEC /* Netease Music.app */;
@@ -817,6 +786,14 @@
 			);
 			mainGroup = 01957D7F224D01850006FCEC;
 			packageReferences = (
+				01C02C6727F4146500AB94DE /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				01C02C6A27F414A300AB94DE /* XCRemoteSwiftPackageReference "Alamofire" */,
+				01C02C6D27F4167C00AB94DE /* XCRemoteSwiftPackageReference "Sparkle" */,
+				01C02C7027F4181400AB94DE /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				01C02C7327F4189F00AB94DE /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				01C02C7627F4190500AB94DE /* XCRemoteSwiftPackageReference "HotKey" */,
+				01C02C7927F5555D00AB94DE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				01C02C7E27F5560400AB94DE /* XCRemoteSwiftPackageReference "GSPlayer" */,
 			);
 			productRefGroup = 01957D89224D01850006FCEC /* Products */;
 			projectDirPath = "";
@@ -836,7 +813,6 @@
 				0116E1B923248E5A00606C6C /* LogoutView.storyboard in Resources */,
 				01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */,
 				012772E1229B9E4400C55537 /* SearchResultView.storyboard in Resources */,
-				018E927D26CF565D005FBD69 /* Cartfile in Resources */,
 				01467E922283F2C30037B49D /* Lyric.storyboard in Resources */,
 				012FEA672289B80F00698969 /* Sidebar.storyboard in Resources */,
 				01467E9722846B050037B49D /* FM.storyboard in Resources */,
@@ -891,24 +867,6 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nBUILD_NUMBER=`git rev-list --all --count`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILD_NUMBER\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n";
-		};
-		018E927E26CF590B005FBD69 /* Carthage outdated check Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Carthage outdated check Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings 2>/dev/null\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1279,6 +1237,121 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01C02C6727F4146500AB94DE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		01C02C6A27F414A300AB94DE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		01C02C6D27F4167C00AB94DE /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		01C02C7027F4181400AB94DE /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		01C02C7327F4189F00AB94DE /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		01C02C7627F4190500AB94DE /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
+		01C02C7927F5555D00AB94DE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		01C02C7E27F5560400AB94DE /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/xjbeta/GSPlayer";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01C02C6827F4146500AB94DE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C6727F4146500AB94DE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		01C02C6B27F414A300AB94DE /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C6A27F414A300AB94DE /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		01C02C6E27F4167C00AB94DE /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C6D27F4167C00AB94DE /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		01C02C7127F4181400AB94DE /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C7027F4181400AB94DE /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		01C02C7427F4189F00AB94DE /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C7327F4189F00AB94DE /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+		01C02C7727F4190500AB94DE /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C7627F4190500AB94DE /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
+		};
+		01C02C7A27F5555D00AB94DE /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C7927F5555D00AB94DE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		01C02C7C27F5555D00AB94DE /* CocoaLumberjackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C7927F5555D00AB94DE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwift;
+		};
+		01C02C7F27F5560400AB94DE /* GSPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01C02C7E27F5560400AB94DE /* XCRemoteSwiftPackageReference "GSPlayer" */;
+			productName = GSPlayer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01957D80224D01850006FCEC /* Project object */;
 }

@@ -6,12 +6,7 @@
 
 ## Building
 
-1. Install third-party libraries.
-   ```
-   $ brew install carthage
-   $ carthage update --platform macOS --use-xcframeworks --new-resolver
-   ```
-2. Open NeteaseMusic.xcodeproj.
+ - Open NeteaseMusic.xcodeproj.
 
 ## Acknowledgements
 
