@@ -93,7 +93,6 @@
 		0190952C23A0CA9100647F80 /* AlbumArtistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190952A23A0CA9100647F80 /* AlbumArtistTableViewController.swift */; };
 		0190952F23A100BB00647F80 /* SublistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190952E23A100BB00647F80 /* SublistViewController.swift */; };
 		01957D8C224D01850006FCEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8B224D01850006FCEC /* AppDelegate.swift */; };
-		01957D8E224D01850006FCEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957D8D224D01850006FCEC /* ViewController.swift */; };
 		01957D90224D01860006FCEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01957D8F224D01860006FCEC /* Assets.xcassets */; };
 		01957D93224D01860006FCEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01957D91224D01860006FCEC /* Main.storyboard */; };
 		01990FB026E34766002CDBAE /* ContentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01990FAF26E34766002CDBAE /* ContentTabViewController.swift */; };
@@ -257,7 +256,6 @@
 		0190952E23A100BB00647F80 /* SublistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SublistViewController.swift; sourceTree = "<group>"; };
 		01957D88224D01850006FCEC /* Netease Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netease Music.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01957D8B224D01850006FCEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01957D8D224D01850006FCEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01957D8F224D01860006FCEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01957D92224D01860006FCEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01957D94224D01860006FCEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -616,7 +614,6 @@
 			isa = PBXGroup;
 			children = (
 				01957D8B224D01850006FCEC /* AppDelegate.swift */,
-				01957D8D224D01850006FCEC /* ViewController.swift */,
 				01957D8F224D01860006FCEC /* Assets.xcassets */,
 				013EF12B22563C5400E4D7D8 /* View */,
 				012F2F44225061AB00086870 /* Utils */,
@@ -892,7 +889,6 @@
 				013143A3226DC43B00B9E26F /* PlayingSongViewController.swift in Sources */,
 				01677B9A228C0D1400D11190 /* LyricScroller.swift in Sources */,
 				0188295E23B1D4D400913821 /* FMCoverButtonCell.swift in Sources */,
-				01957D8E224D01850006FCEC /* ViewController.swift in Sources */,
 				013143A1226D65AA00B9E26F /* CDBackgroundView.swift in Sources */,
 				01BFA88526A9B8E20075F06D /* HttpsExtensions.swift in Sources */,
 				012FEA62228684ED00698969 /* FMCoverButton.swift in Sources */,
