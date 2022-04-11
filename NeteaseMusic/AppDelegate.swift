@@ -62,9 +62,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         SDWebImageManager.shared.cacheKeyFilter = self
     }
     
-    @IBAction func checkForUpdate(_ sender: NSMenuItem) {
-        SUUpdater().checkForUpdates(sender)
-    }
 }
 
 extension AppDelegate: SDWebImageCacheKeyFilterProtocol {
