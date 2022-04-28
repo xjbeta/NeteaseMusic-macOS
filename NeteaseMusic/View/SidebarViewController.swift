@@ -67,11 +67,18 @@ class SidebarViewController: NSViewController {
                 items.append(item)
             }
             
-            self.sidebarItems = items
-            self.outlineView.deselectAll(nil)
-            self.outlineView.expandItem(nil, expandChildren: true)
-            }.catch {
-                Log.error($0)
+            if items.count == 0 {
+                ViewControllerManager.shared.selectSidebarItem(.searchSuggestionHeaderSongs, -1)
+                usleep(useconds_t(500))
+                self.searchField.stringValue = ""
+                self.searchFieldDidEndSearching(self.searchField)
+            } else {
+                self.sidebarItems = items
+                self.outlineView.deselectAll(nil)
+                self.outlineView.expandItem(nil, expandChildren: true)
+            }
+        }.catch {
+            Log.error($0)
         }
     }
     
@@ -288,14 +295,14 @@ class SidebarViewController: NSViewController {
             
             // top - 12 - searchField
             if y > 12,
-               veView.shadow == nil {
+               veView.shadow != nil {
+                veView.shadow = nil
+            } else if y <= 12, veView.shadow == nil {
                 let s = NSShadow()
                 s.shadowColor = .black
                 s.shadowOffset = .init(width: 0, height: 2)
                 s.shadowBlurRadius = 2
                 veView.shadow = s
-            } else if y <= 12, veView.shadow != nil {
-                veView.shadow = nil
             }
         }
         
