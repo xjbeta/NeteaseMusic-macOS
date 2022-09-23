@@ -54,6 +54,7 @@ class MainWindowController: NSWindowController {
                 if code == 301 {
                     Log.info("should login.")
                     vc.updateMainTabView(.login)
+                    loginVC.clearCookies()
                     loginVC.initViews()
                 } else {
                     Log.error("Unknown error: \(code), \(string)")
