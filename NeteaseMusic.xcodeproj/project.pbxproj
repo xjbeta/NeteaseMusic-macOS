@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -105,7 +105,6 @@
 		01C02C7827F4190500AB94DE /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7727F4190500AB94DE /* HotKey */; };
 		01C02C7B27F5555D00AB94DE /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7A27F5555D00AB94DE /* CocoaLumberjack */; };
 		01C02C7D27F5555D00AB94DE /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7C27F5555D00AB94DE /* CocoaLumberjackSwift */; };
-		01C02C8027F5560400AB94DE /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01C02C7F27F5560400AB94DE /* GSPlayer */; };
 		01C3CAEF2262EE20003D3FE0 /* PlayerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3CAEE2262EE20003D3FE0 /* PlayerSlider.swift */; };
 		01D5EA80238EAACD00950B9A /* VolumeSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5EA7F238EAACD00950B9A /* VolumeSliderCell.swift */; };
 		01E0F26226C8A21F005C95F9 /* NMStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0F26126C8A21F005C95F9 /* NMStructs.swift */; };
@@ -113,6 +112,7 @@
 		01E40FE922C1DF4600864118 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E40FE822C1DF4600864118 /* ImageLoader.swift */; };
 		01E7C9D4228BB697004D80AD /* IdButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E7C9D3228BB697004D80AD /* IdButton.swift */; };
 		01EE1FCA26CB6D9400B441D0 /* NMChannelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EE1FC926CB6D9400B441D0 /* NMChannelTests.swift */; };
+		01EF06A029038D9800CDE9EA /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 01EF069F29038D9800CDE9EA /* GSPlayer */; };
 		01F51BDF23C5B67B00C8D35F /* TAAPMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51BDE23C5B67B00C8D35F /* TAAPMenuController.swift */; };
 		01F51BE323C5BC1800C8D35F /* TAAPMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F51BE223C5BC1800C8D35F /* TAAPMenu.xib */; };
 		01FF76E523F8FAA70052E9D7 /* TrackPlayStateTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FF76E423F8FAA70052E9D7 /* TrackPlayStateTransformer.swift */; };
@@ -293,13 +293,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				01C02C7B27F5555D00AB94DE /* CocoaLumberjack in Frameworks */,
-				01C02C8027F5560400AB94DE /* GSPlayer in Frameworks */,
 				01C02C7827F4190500AB94DE /* HotKey in Frameworks */,
 				01C02C7527F4189F00AB94DE /* CryptoSwift in Frameworks */,
 				01C02C6927F4146500AB94DE /* SDWebImage in Frameworks */,
 				01C02C7D27F5555D00AB94DE /* CocoaLumberjackSwift in Frameworks */,
 				01C02C7227F4181400AB94DE /* PromiseKit in Frameworks */,
 				01C02C6C27F414A300AB94DE /* Alamofire in Frameworks */,
+				01EF06A029038D9800CDE9EA /* GSPlayer in Frameworks */,
 				01C02C6F27F4167C00AB94DE /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,7 +729,7 @@
 				01C02C7727F4190500AB94DE /* HotKey */,
 				01C02C7A27F5555D00AB94DE /* CocoaLumberjack */,
 				01C02C7C27F5555D00AB94DE /* CocoaLumberjackSwift */,
-				01C02C7F27F5560400AB94DE /* GSPlayer */,
+				01EF069F29038D9800CDE9EA /* GSPlayer */,
 			);
 			productName = NeteaseMusic;
 			productReference = 01957D88224D01850006FCEC /* Netease Music.app */;
@@ -790,7 +790,7 @@
 				01C02C7327F4189F00AB94DE /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				01C02C7627F4190500AB94DE /* XCRemoteSwiftPackageReference "HotKey" */,
 				01C02C7927F5555D00AB94DE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
-				01C02C7E27F5560400AB94DE /* XCRemoteSwiftPackageReference "GSPlayer" */,
+				01EF069E29038D9800CDE9EA /* XCRemoteSwiftPackageReference "GSPlayer" */,
 			);
 			productRefGroup = 01957D89224D01850006FCEC /* Products */;
 			projectDirPath = "";
@@ -1120,7 +1120,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1147,7 +1147,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xjbeta.NeteaseMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1280,7 +1280,7 @@
 			repositoryURL = "https://github.com/soffes/HotKey";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
+				minimumVersion = 0.2.0;
 			};
 		};
 		01C02C7927F5555D00AB94DE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
@@ -1288,15 +1288,15 @@
 			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 3.8.0;
 			};
 		};
-		01C02C7E27F5560400AB94DE /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
+		01EF069E29038D9800CDE9EA /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xjbeta/GSPlayer";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = revision;
+				revision = b0b5033fbb15f5470c031d29b12009ef26ff1d67;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1342,9 +1342,9 @@
 			package = 01C02C7927F5555D00AB94DE /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwift;
 		};
-		01C02C7F27F5560400AB94DE /* GSPlayer */ = {
+		01EF069F29038D9800CDE9EA /* GSPlayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 01C02C7E27F5560400AB94DE /* XCRemoteSwiftPackageReference "GSPlayer" */;
+			package = 01EF069E29038D9800CDE9EA /* XCRemoteSwiftPackageReference "GSPlayer" */;
 			productName = GSPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
