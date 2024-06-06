@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UqW-00-WoN">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="UqW-00-WoN">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Discover View Controller-->
         <scene sceneID="KU1-9M-FDB">
             <objects>
-                <viewController showSeguePresentationStyle="single" id="UqW-00-WoN" customClass="DiscoverViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="UqW-00-WoN" customClass="DiscoverViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="edI-Rm-lOn">
                         <rect key="frame" x="0.0" y="0.0" width="836" height="592"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zcx-bq-AIK">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zcx-bq-AIK">
                                 <rect key="frame" x="18" y="547" width="90" height="25"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="发现音乐" id="dts-en-6uB">
-                                    <font key="font" size="21" name=".PingFangSC-Regular"/>
+                                    <font key="font" metaFont="system" size="21"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -28,7 +28,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="796" height="497"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView selectable="YES" id="feH-qR-OPd" customClass="DailyCollectionView" customModule="NeteaseMusic" customModuleProvider="target">
+                                        <collectionView selectable="YES" id="feH-qR-OPd" customClass="DailyCollectionView" customModule="Netease_Music" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="796" height="497"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="8" minimumLineSpacing="8" id="w9e-0Q-zYx">

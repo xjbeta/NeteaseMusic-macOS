@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmA-py-oK2">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SmA-py-oK2">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +28,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="481"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bq-Cn-cYr">
+                                                        <searchField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bq-Cn-cYr">
                                                             <rect key="frame" x="12" y="439" width="216" height="30"/>
                                                             <searchFieldCell key="cell" controlSize="large" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="b9y-wR-LLL">
                                                                 <font key="font" metaFont="system"/>
@@ -68,7 +68,7 @@
                                                                                         <rect key="frame" x="11" y="6" width="200" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
-                                                                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zkO-XQ-qAq">
+                                                                                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zkO-XQ-qAq">
                                                                                                 <rect key="frame" x="0.0" y="1" width="200" height="15"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="OAe-AY-64l">
                                                                                                     <font key="font" metaFont="systemSemibold" size="12"/>
@@ -94,7 +94,7 @@
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
                                                                                             <imageView translatesAutoresizingMaskIntoConstraints="NO" id="HS7-Vp-Pg9">
-                                                                                                <rect key="frame" x="0.0" y="-2" width="16" height="22"/>
+                                                                                                <rect key="frame" x="0.0" y="-4" width="16" height="27"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" constant="16" id="F2p-k6-cQb"/>
                                                                                                     <constraint firstAttribute="width" secondItem="HS7-Vp-Pg9" secondAttribute="height" multiplier="1:1" id="OOS-cd-UyO"/>
@@ -105,7 +105,7 @@
                                                                                                     <binding destination="Hcm-a1-mgv" name="value" keyPath="objectValue.icon" id="5gO-Rr-e7O"/>
                                                                                                 </connections>
                                                                                             </imageView>
-                                                                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="apS-b2-TlA">
+                                                                                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="apS-b2-TlA">
                                                                                                 <rect key="frame" x="18" y="1" width="96" height="16"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="zS7-5J-vIN">
                                                                                                     <font key="font" metaFont="system"/>
@@ -133,7 +133,7 @@
                                                                                         <rect key="frame" x="11" y="64" width="200" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
-                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="viS-5V-bgE">
+                                                                                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="viS-5V-bgE">
                                                                                                 <rect key="frame" x="0.0" y="1" width="200" height="15"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Search Header Cell" id="VaV-hY-D4q">
                                                                                                     <font key="font" metaFont="systemMedium" size="12"/>
@@ -158,7 +158,7 @@
                                                                                         <rect key="frame" x="11" y="93" width="200" height="17"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
-                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="252" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5B-2g-JZz">
+                                                                                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="252" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j5B-2g-JZz">
                                                                                                 <rect key="frame" x="0.0" y="1" width="96" height="16"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ufl-IP-Sfg">
                                                                                                     <font key="font" metaFont="system"/>
@@ -169,7 +169,7 @@
                                                                                                     <binding destination="1u9-zI-G32" name="value" keyPath="objectValue.title" id="EmF-Kf-Bee"/>
                                                                                                 </connections>
                                                                                             </textField>
-                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP1-9w-kUe">
+                                                                                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP1-9w-kUe">
                                                                                                 <rect key="frame" x="94" y="1" width="11" height="16"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="T1B-CU-DE2">
                                                                                                     <font key="font" metaFont="system"/>
@@ -184,7 +184,7 @@
                                                                                                     </binding>
                                                                                                 </connections>
                                                                                             </textField>
-                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wJp-pd-eUh">
+                                                                                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="wJp-pd-eUh">
                                                                                                 <rect key="frame" x="103" y="1" width="35" height="15"/>
                                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="BNx-H0-PWy">
                                                                                                     <font key="font" metaFont="cellTitle"/>
@@ -258,7 +258,7 @@
                                             <rect key="frame" x="-100" y="-100" width="240" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="G4Y-AO-kV9">
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="G4Y-AO-kV9">
                                             <rect key="frame" x="224" y="0.0" width="16" height="477"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -307,6 +307,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSActionTemplate" width="20" height="20"/>
     </resources>
 </document>
