@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
@@ -46,7 +46,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="收藏" id="hRL-lG-HQ8">
                         <items>
-                            <menuItem title="新建歌单" id="gob-TS-Ri1" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                            <menuItem title="新建歌单" id="gob-TS-Ri1" customClass="NetworkRequestMenuItem" customModule="Netease_Music" customModuleProvider="target">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="newPlaylist:" target="48W-pb-Hku" id="8ac-7K-8bD"/>
@@ -64,14 +64,14 @@
                         <action selector="copyLink:" target="48W-pb-Hku" id="1pa-ZL-mSg"/>
                     </connections>
                 </menuItem>
-                <menuItem title="收藏" id="eU7-V4-rwk" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                <menuItem title="收藏" id="eU7-V4-rwk" customClass="NetworkRequestMenuItem" customModule="Netease_Music" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="subscribe:" target="48W-pb-Hku" id="3dP-Sf-wq3"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="qNN-vu-G3b"/>
-                <menuItem title="删除" id="I6h-h1-Lgu" customClass="NetworkRequestMenuItem" customModule="NeteaseMusic" customModuleProvider="target">
+                <menuItem title="删除" id="I6h-h1-Lgu" customClass="NetworkRequestMenuItem" customModule="Netease_Music" customModuleProvider="target">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="remove:" target="48W-pb-Hku" id="hNA-cO-Bd8"/>
@@ -83,7 +83,7 @@
             </connections>
             <point key="canvasLocation" x="139" y="285"/>
         </menu>
-        <customObject id="48W-pb-Hku" customClass="TAAPMenuController" customModule="NeteaseMusic" customModuleProvider="target">
+        <customObject id="48W-pb-Hku" customClass="TAAPMenuController" customModule="Netease_Music" customModuleProvider="target">
             <connections>
                 <outlet property="addToPlaylistMenu" destination="hRL-lG-HQ8" id="02F-5N-Ufb"/>
                 <outlet property="addToPlaylistMenuItem" destination="Qih-hd-Egk" id="09H-1h-iGc"/>

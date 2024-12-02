@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SrH-3P-WM0">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="SrH-3P-WM0">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,10 +37,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyd-iC-Rgh">
-                                        <rect key="frame" x="0.0" y="0.0" width="386" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
                                         <subviews>
                                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RZC-Cr-QN3">
-                                                <rect key="frame" x="-2" y="0.0" width="35" height="16"/>
+                                                <rect key="frame" x="-2" y="0.0" width="34" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="专辑:" id="P9E-c2-4BR">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -48,7 +48,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ogm-Ct-1It" customClass="IdButton" customModule="Netease_Music" customModuleProvider="target">
-                                                <rect key="frame" x="39" y="0.0" width="50" height="17"/>
+                                                <rect key="frame" x="38" y="0.0" width="50" height="17"/>
                                                 <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" alignment="left" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" imageScaling="proportionallyDown" inset="2" id="fMe-N2-gRm">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -61,7 +61,7 @@
                                                 </connections>
                                             </button>
                                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JHq-x5-WWg">
-                                                <rect key="frame" x="95" y="0.0" width="35" height="16"/>
+                                                <rect key="frame" x="94" y="0.0" width="34" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="歌手:" id="CGe-Lp-jnG">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -69,7 +69,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="J0r-fc-9rm">
-                                                <rect key="frame" x="136" y="0.0" width="250" height="17"/>
+                                                <rect key="frame" x="134" y="0.0" width="250" height="17"/>
                                                 <connections>
                                                     <segue destination="bK1-DN-Nlz" kind="embed" id="gzq-Mi-NAP"/>
                                                 </connections>

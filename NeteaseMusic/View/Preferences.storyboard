@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="IgS-Sf-pfh">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="IgS-Sf-pfh">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +30,7 @@
                                 <gridCells>
                                     <gridCell row="8DZ-cU-Vlc" column="AlG-T8-L2V" id="YFE-4a-rPh">
                                         <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fxR-U6-aOU">
-                                            <rect key="frame" x="-2" y="127" width="119" height="18"/>
+                                            <rect key="frame" x="-2" y="127" width="117" height="18"/>
                                             <buttonCell key="cell" type="check" title="启用全局快捷键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jyV-sS-90s">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -42,7 +42,7 @@
                                     </gridCell>
                                     <gridCell row="8DZ-cU-Vlc" column="0D3-n1-Mi3" id="Ijs-Rb-UZp">
                                         <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gtx-4s-r5H">
-                                            <rect key="frame" x="161" y="121" width="88" height="32"/>
+                                            <rect key="frame" x="161" y="121" width="86" height="32"/>
                                             <buttonCell key="cell" type="push" title="恢复默认" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AKN-4p-LXO">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -54,7 +54,7 @@
                                     </gridCell>
                                     <gridCell row="g25-bM-NIe" column="AlG-T8-L2V" id="UDG-H2-54j">
                                         <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gte-ro-VGn">
-                                            <rect key="frame" x="-2" y="96" width="119" height="18"/>
+                                            <rect key="frame" x="-2" y="96" width="117" height="18"/>
                                             <buttonCell key="cell" type="check" title="使用系统媒体键" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WQ3-Zb-mmF">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -66,7 +66,7 @@
                                     </gridCell>
                                     <gridCell row="g25-bM-NIe" column="0D3-n1-Mi3" id="A6d-oM-srF">
                                         <textField key="contentView" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ap2-vi-EaL">
-                                            <rect key="frame" x="166" y="97" width="95" height="14"/>
+                                            <rect key="frame" x="166" y="97" width="94" height="14"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="(系统版本 10.13+)" id="QXc-83-qvb">
                                                 <font key="font" metaFont="label" size="11"/>
                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -76,7 +76,7 @@
                                     </gridCell>
                                     <gridCell row="SdR-ZI-PbR" column="AlG-T8-L2V" id="W6T-i6-NfO">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0yN-Mi-drr">
-                                            <rect key="frame" x="-2" y="66" width="61" height="16"/>
+                                            <rect key="frame" x="-2" y="66" width="60" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="播放音质:" id="iN5-4Q-krW">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -86,7 +86,7 @@
                                     </gridCell>
                                     <gridCell row="SdR-ZI-PbR" column="0D3-n1-Mi3" id="Oqz-Fd-LuB">
                                         <stackView key="contentView" distribution="fill" orientation="horizontal" alignment="bottom" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ytC-hw-EZ7">
-                                            <rect key="frame" x="168" y="66" width="245" height="16"/>
+                                            <rect key="frame" x="168" y="66" width="244" height="16"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vPx-GO-7l9">
                                                     <rect key="frame" x="-2" y="-1" width="78" height="18"/>
@@ -109,7 +109,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eiT-bo-ael">
-                                                    <rect key="frame" x="192" y="-1" width="53" height="18"/>
+                                                    <rect key="frame" x="192" y="-1" width="52" height="18"/>
                                                     <buttonCell key="cell" type="radio" title="最佳" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vty-qy-c8a">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -133,7 +133,7 @@
                                     </gridCell>
                                     <gridCell row="tNH-zM-aMV" column="AlG-T8-L2V" id="AK7-qW-cca">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wCU-bI-4xe">
-                                            <rect key="frame" x="-2" y="31" width="61" height="16"/>
+                                            <rect key="frame" x="-2" y="31" width="60" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="缓存大小:" id="JJz-aO-07Y">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -177,7 +177,7 @@
                                     </gridCell>
                                     <gridCell row="r1r-7o-NOE" column="AlG-T8-L2V" id="CN1-kV-oSW">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hth-Xv-HLt">
-                                            <rect key="frame" x="-2" y="0.0" width="141" height="16"/>
+                                            <rect key="frame" x="-2" y="0.0" width="137" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="双击歌曲列表内单曲时:" id="uIh-oc-jIw">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -187,10 +187,10 @@
                                     </gridCell>
                                     <gridCell row="r1r-7o-NOE" column="0D3-n1-Mi3" id="VQA-9C-tcF">
                                         <stackView key="contentView" distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waq-30-4MP">
-                                            <rect key="frame" x="168" y="0.0" width="347" height="16"/>
+                                            <rect key="frame" x="168" y="0.0" width="339" height="16"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V3Q-sg-472">
-                                                    <rect key="frame" x="-2" y="-1" width="159" height="18"/>
+                                                    <rect key="frame" x="-2" y="-1" width="155" height="18"/>
                                                     <buttonCell key="cell" type="radio" title="仅把单曲加入播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="bDV-9M-YiY">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -200,7 +200,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sk9-BH-Fqp">
-                                                    <rect key="frame" x="175" y="-1" width="172" height="18"/>
+                                                    <rect key="frame" x="171" y="-1" width="168" height="18"/>
                                                     <buttonCell key="cell" type="radio" title="用歌曲列表替换播放列表" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" state="on" inset="2" id="dTN-JI-0DE">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
@@ -243,7 +243,7 @@
                                 <gridCells>
                                     <gridCell row="fei-QO-F7b" column="Iyq-Qc-jfg" id="ic5-OE-6vH">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kOz-5Y-B56">
-                                            <rect key="frame" x="-2" y="264" width="58" height="16"/>
+                                            <rect key="frame" x="-2" y="264" width="56" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="功能说明" id="A4c-Th-b0T">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -273,7 +273,7 @@
                                     </gridCell>
                                     <gridCell row="2b1-I2-kKZ" column="Iyq-Qc-jfg" id="5mc-d3-As8">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yMu-Ck-VHI">
-                                            <rect key="frame" x="-2" y="231" width="65" height="16"/>
+                                            <rect key="frame" x="-2" y="231" width="63" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="播放/暂停" id="Iew-1u-QnR">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -303,7 +303,7 @@
                                     </gridCell>
                                     <gridCell row="8dK-jT-vDW" column="Iyq-Qc-jfg" id="Izm-yx-Xxj">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-BG-2M1">
-                                            <rect key="frame" x="-2" y="198" width="44" height="16"/>
+                                            <rect key="frame" x="-2" y="198" width="43" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="上一首" id="7NM-Jk-xaW">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -333,7 +333,7 @@
                                     </gridCell>
                                     <gridCell row="Wqi-Co-tFY" column="Iyq-Qc-jfg" id="o7c-JY-JHV">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LAc-9V-NHO">
-                                            <rect key="frame" x="-2" y="165" width="44" height="16"/>
+                                            <rect key="frame" x="-2" y="165" width="43" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="下一首" id="buh-Gu-5mJ">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -363,7 +363,7 @@
                                     </gridCell>
                                     <gridCell row="EvD-Oz-ehH" column="Iyq-Qc-jfg" id="Jle-a6-g3D">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kmb-jj-mmD">
-                                            <rect key="frame" x="-2" y="132" width="44" height="16"/>
+                                            <rect key="frame" x="-2" y="132" width="43" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="音量加" id="LX2-ZR-fgI">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -393,7 +393,7 @@
                                     </gridCell>
                                     <gridCell row="KuT-Hs-3ph" column="Iyq-Qc-jfg" id="oXo-2O-lX5">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PaM-H4-Loc">
-                                            <rect key="frame" x="-2" y="99" width="44" height="16"/>
+                                            <rect key="frame" x="-2" y="99" width="43" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="音量减" id="MIG-sX-ChP">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -423,7 +423,7 @@
                                     </gridCell>
                                     <gridCell row="2QY-gk-w6E" column="Iyq-Qc-jfg" id="GZd-cu-Q4c">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tty-WU-Egv">
-                                            <rect key="frame" x="-2" y="66" width="58" height="16"/>
+                                            <rect key="frame" x="-2" y="66" width="56" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="喜欢歌曲" id="fkM-Ru-kYq">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -453,7 +453,7 @@
                                     </gridCell>
                                     <gridCell row="cV5-4I-yUt" column="Iyq-Qc-jfg" id="Ucr-Xe-gsk">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-qe-jld">
-                                            <rect key="frame" x="-2" y="33" width="91" height="16"/>
+                                            <rect key="frame" x="-2" y="33" width="89" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="打开/关闭歌词" id="eum-fx-l1c">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -483,7 +483,7 @@
                                     </gridCell>
                                     <gridCell row="HSv-RP-mnc" column="Iyq-Qc-jfg" id="8a8-wu-cLw">
                                         <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="awg-P1-Ib8">
-                                            <rect key="frame" x="-2" y="0.0" width="88" height="16"/>
+                                            <rect key="frame" x="-2" y="0.0" width="87" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="mini/完整模式" id="drA-VA-dJM">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -608,7 +608,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wT2-bt-2U3">
-                                <rect key="frame" x="18" y="462" width="51" height="27"/>
+                                <rect key="frame" x="18" y="462" width="48" height="27"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="设置" id="yLZ-Yy-IV4">
                                     <font key="font" metaFont="system" size="23"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
