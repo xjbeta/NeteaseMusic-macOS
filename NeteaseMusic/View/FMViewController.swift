@@ -292,9 +292,15 @@ class FMViewController: NSViewController, ContentTabViewController {
             let b = $0.element.button
             b.index = $0.offset
             let c = coverList[safe: $0.offset]
+            
             if let id = c?.id {
-                b.alphaValue = 1
-                b.isHidden = false
+                if $0.offset == 3 {
+                    b.alphaValue = 0
+                    b.isHidden = true
+                } else {
+                    b.alphaValue = 1
+                    b.isHidden = false
+                }
                 if b.coverAlbumID != id {
                     b.setImage(c?.url, false, imageWidth)
                     b.coverAlbumID = id
