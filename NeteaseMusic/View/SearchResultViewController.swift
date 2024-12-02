@@ -172,17 +172,7 @@ class SearchResultViewController: NSViewController, ContentTabViewController {
             return 0
         }
         
-        if table.numberOfRows == 0 {
-            return table.headerView?.frame.height ?? 0
-        }
-        
-        var height = table.rowHeight * CGFloat(table.numberOfRows)
-        height += CGFloat(table.numberOfRows) * table.intercellSpacing.height
-        
-        height += table.headerView?.frame.height ?? 0
-        
-        height += 15
-        return height
+        return table.enclosingScrollView?.documentView?.frame.height ?? 0
     }
     
     func initContentView() -> Promise<()> {
