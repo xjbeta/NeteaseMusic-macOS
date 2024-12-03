@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="maI-Rk-sVu">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="maI-Rk-sVu">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Track Table View Controller-->
         <scene sceneID="Eia-4Y-xyS">
             <objects>
-                <viewController id="maI-Rk-sVu" customClass="TrackTableViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="maI-Rk-sVu" customClass="TrackTableViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="Pau-jy-CVT">
                         <rect key="frame" x="0.0" y="0.0" width="766" height="313"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView identifier="PlaylistPop" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="kNU-Vp-yim" customClass="UnresponsiveScrollView" customModule="NeteaseMusic" customModuleProvider="target">
+                            <scrollView identifier="PlaylistPop" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="kNU-Vp-yim" customClass="UnresponsiveScrollView" customModule="Netease_Music" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="766" height="313"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="5kC-gC-SWj">
@@ -45,7 +45,7 @@
                                                             <rect key="frame" x="11" y="1" width="35" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="msm-Qq-2fv">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="msm-Qq-2fv">
                                                                     <rect key="frame" x="0.0" y="5" width="35" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="00" id="SN6-JG-wHs">
                                                                         <font key="font" metaFont="system"/>
@@ -117,7 +117,7 @@
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5gn-CU-Dv2">
                                                                     <rect key="frame" x="2" y="5" width="129" height="16"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oro-6y-Ouq">
+                                                                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oro-6y-Ouq">
                                                                             <rect key="frame" x="-2" y="0.0" width="96" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="DGY-Hp-Rt9">
                                                                                 <font key="font" metaFont="system"/>
@@ -133,7 +133,7 @@
                                                                                 </binding>
                                                                             </connections>
                                                                         </textField>
-                                                                        <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="8PQ-IB-xgt">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="8PQ-IB-xgt">
                                                                             <rect key="frame" x="94" y="0.0" width="37" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="T9A-0G-SSS">
                                                                                 <font key="font" metaFont="system"/>
@@ -188,7 +188,7 @@
                                                             <rect key="frame" x="271.5" y="1" width="150" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="i8I-7i-FwL">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="i8I-7i-FwL">
                                                                     <rect key="frame" x="0.0" y="5" width="150" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="pJa-9s-DCE">
                                                                         <font key="font" metaFont="system"/>
@@ -237,7 +237,7 @@
                                                             <rect key="frame" x="424.5" y="1" width="152" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Y5a-rH-Sxr">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Y5a-rH-Sxr">
                                                                     <rect key="frame" x="0.0" y="5" width="152" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="EZ5-3R-3rG">
                                                                         <font key="font" metaFont="system"/>
@@ -314,7 +314,7 @@
                                                             <rect key="frame" x="662" y="1" width="92" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-1a-vZo">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PFR-1a-vZo">
                                                                     <rect key="frame" x="0.0" y="5" width="92" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TJP-nm-Iya">
                                                                         <font key="font" metaFont="system"/>

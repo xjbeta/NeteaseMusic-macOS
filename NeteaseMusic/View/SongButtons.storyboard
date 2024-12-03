@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fWa-K8-Ifq">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,27 +19,27 @@
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOR-mh-aew">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Qc3-5j-XQA"/>
-                                            <constraint firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="height" multiplier="1:1" id="eSK-te-dJm"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="heart.circle.Thin-L" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="32I-T2-s1e">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Qc3-5j-XQA"/>
+                                            <constraint firstAttribute="width" secondItem="TOR-mh-aew" secondAttribute="height" multiplier="1:1" id="eSK-te-dJm"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="ie7-cx-zIT"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DfE-Kp-XmY">
                                         <rect key="frame" x="75" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="DfE-Kp-XmY" secondAttribute="height" multiplier="1:1" id="Eh9-2w-nCO"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="plus.circle.Thin-L" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="waE-2W-uIv">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DfE-Kp-XmY" secondAttribute="height" multiplier="1:1" id="Eh9-2w-nCO"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="gJR-z4-yQs"/>
                                             <segue destination="Jxs-w0-R7T" kind="popover" popoverAnchorView="DfE-Kp-XmY" popoverBehavior="t" preferredEdge="minY" id="eZd-Rf-phE"/>
@@ -47,39 +47,39 @@
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sd8-dW-QcA">
                                         <rect key="frame" x="150" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Sd8-dW-QcA" secondAttribute="height" multiplier="1:1" id="6xJ-gT-gCA"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="trash.circle.Thin-L" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="7cL-Si-k7b">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Sd8-dW-QcA" secondAttribute="height" multiplier="1:1" id="6xJ-gT-gCA"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="MHg-jj-oRd"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7h6-0X-CdX">
                                         <rect key="frame" x="225" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="7h6-0X-CdX" secondAttribute="height" id="a9F-uv-fNw"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="link.circle.Thin-L" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="82Q-zF-Zcu">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="7h6-0X-CdX" secondAttribute="height" id="a9F-uv-fNw"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="copyLink:" target="fWa-K8-Ifq" id="hse-ct-HxD"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rJI-wi-O3H">
                                         <rect key="frame" x="300" y="0.0" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" id="fg7-9w-oHX"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ellipsis.circle.Thin-L" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="P7C-k5-oyy">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rJI-wi-O3H" secondAttribute="height" id="fg7-9w-oHX"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="buttonsAction:" target="fWa-K8-Ifq" id="sGT-H4-TcY"/>
                                         </connections>
@@ -150,7 +150,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="318" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ce9-D4-p8I">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ce9-D4-p8I">
                                 <rect key="frame" x="82" y="317" width="154" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="O49-rV-WiS"/>
@@ -199,7 +199,7 @@
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="EDA-xQ-WX1"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="EuQ-gg-2al">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="EuQ-gg-2al">
                                                                     <rect key="frame" x="62" y="35" width="108" height="19"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="KL9-Tf-wdM">
                                                                         <font key="font" metaFont="system" size="15"/>
@@ -210,7 +210,7 @@
                                                                         <binding destination="uZv-Ar-EHd" name="value" keyPath="objectValue.name" id="zWc-UU-oP6"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="31c-CM-5aD">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="31c-CM-5aD">
                                                                     <rect key="frame" x="62" y="17" width="37" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="rT0-8a-b9V">
                                                                         <font key="font" metaFont="system"/>

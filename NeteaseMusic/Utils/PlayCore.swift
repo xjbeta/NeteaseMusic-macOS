@@ -18,6 +18,7 @@ class PlayCore: NSObject {
     private override init() {
         player = AVPlayer()
         player.automaticallyWaitsToMinimizeStalling = false
+        VideoPreloadManager.shared.preloadByteCount *= 2
         super.init()
         initPlayerObservers()
     }
@@ -63,6 +64,9 @@ class PlayCore: NSObject {
     var periodicTimeObserverToken: Any?
     var timeControlStautsObserver: NSKeyValueObservation?
     
+    
+    private var playerReloadTimer: Timer?
+    private var isTryingToReload = false
     
     var playerShouldNextObserver: NSObjectProtocol?
     var playerStateObserver: NSKeyValueObservation?
@@ -410,6 +414,7 @@ class PlayCore: NSObject {
                     preloadUrls.append(u)
                 }
             }
+            
             let vpm = VideoPreloadManager.shared
             vpm.set(waiting: preloadUrls)
         }.catch {
@@ -536,6 +541,54 @@ class PlayCore: NSObject {
         initInternalPlaylist(currentTrack?.id ?? -1)
     }
     
+    func startPlayerReloadTimer() {
+        print("startPlayerReloadTimer")
+        playerReloadTimer?.invalidate()
+        playerReloadTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] timer in
+            guard let self,
+                  player.timeControlStatus == .waitingToPlayAtSpecifiedRate else {
+                self?.stopPlayerReloadTimer()
+                return
+            }
+            
+            print("Player reloading")
+            
+            guard let manager = api.reachabilityManager,
+                  manager.isReachable,
+                  let track = currentTrack,
+                  let song = track.song,
+                  let url = song.url?.https else {
+                return
+            }
+            
+            let time = player.currentItem?.currentTime()
+            
+            playerQueue.async {
+                let item = AVPlayerItem(loader: url)
+                item.canUseNetworkResourcesForLiveStreamingWhilePaused = true
+                
+                DispatchQueue.main.async {
+                    self.player.replaceCurrentItem(with: item)
+                    if let time {
+                        self.player.seek(to: time)
+                    }
+                    
+                    self.player.play()
+                    self.playerState = .playing
+                    self.initNowPlayingInfo()
+                }
+            }
+        }
+        self.isTryingToReload = true
+    }
+    
+    func stopPlayerReloadTimer() {
+        print("stopPlayerReloadTimer")
+        playerReloadTimer?.invalidate()
+        playerReloadTimer = nil
+        isTryingToReload = false
+    }
+    
 // MARK: - System Media Keys
     
     func setupSystemMediaKeys() {
@@ -550,8 +603,22 @@ class PlayCore: NSObject {
     
 // MARK: - Observers
     func initPlayerObservers() {
+        
         timeControlStautsObserver = player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
-            self?.timeControlStatus = player.timeControlStatus
+            
+            guard let self else { return }
+            
+            let newStatus = player.timeControlStatus
+            
+            if newStatus == .waitingToPlayAtSpecifiedRate {
+                if !isTryingToReload {
+                    startPlayerReloadTimer()
+                }
+            } else if isTryingToReload {
+                stopPlayerReloadTimer()
+            }
+            
+            timeControlStatus = newStatus
         }
         
         let timeScale = CMTimeScale(NSEC_PER_SEC)

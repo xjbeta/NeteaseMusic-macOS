@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="aAV-Fa-brE">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="aAV-Fa-brE">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Album Artist Table View Controller-->
         <scene sceneID="P4E-Wn-3sg">
             <objects>
-                <viewController id="aAV-Fa-brE" customClass="AlbumArtistTableViewController" customModule="NeteaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aAV-Fa-brE" customClass="AlbumArtistTableViewController" customModule="Netease_Music" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="N9v-SD-vWA">
                         <rect key="frame" x="0.0" y="0.0" width="820" height="450"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="82" horizontalPageScroll="10" verticalLineScroll="82" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="LVb-h9-Rje" customClass="UnresponsiveScrollView" customModule="NeteaseMusic" customModuleProvider="target">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="82" horizontalPageScroll="10" verticalLineScroll="82" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="LVb-h9-Rje" customClass="UnresponsiveScrollView" customModule="Netease_Music" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="820" height="450"/>
                                 <clipView key="contentView" id="DnV-yJ-yXC">
                                     <rect key="frame" x="0.0" y="0.0" width="820" height="450"/>
@@ -77,7 +77,7 @@
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Srg-cC-A5t">
                                                                     <rect key="frame" x="100" y="31" width="250" height="19"/>
                                                                     <subviews>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TZS-gO-e6d">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TZS-gO-e6d">
                                                                             <rect key="frame" x="-2" y="0.0" width="42" height="19"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="name" id="Zxf-S7-LQC">
                                                                                 <font key="font" metaFont="label" size="15"/>
@@ -88,7 +88,7 @@
                                                                                 <binding destination="Zf0-Ka-YCC" name="value" keyPath="objectValue.name" id="3h8-og-6wz"/>
                                                                             </connections>
                                                                         </textField>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ijh-RE-nCg">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ijh-RE-nCg">
                                                                             <rect key="frame" x="48" y="0.0" width="204" height="16"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="200" id="kAY-MI-CEK"/>
@@ -140,7 +140,7 @@
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="Elk-3H-2Ua"/>
                                                                         </imageView>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dxi-yV-MWY">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dxi-yV-MWY">
                                                                             <rect key="frame" x="70" y="21" width="375" height="19"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="name" id="VFV-FB-1X8">
                                                                                 <font key="font" metaFont="label" size="15"/>
@@ -151,7 +151,7 @@
                                                                                 <binding destination="BaK-fz-YRs" name="value" keyPath="objectValue.name" id="Dht-lP-9cF"/>
                                                                             </connections>
                                                                         </textField>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fxe-yu-lff">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fxe-yu-lff">
                                                                             <rect key="frame" x="453" y="22" width="104" height="16"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="100" id="2gq-Pm-tk8"/>
@@ -169,7 +169,7 @@
                                                                                 </binding>
                                                                             </connections>
                                                                         </textField>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r3E-58-vFs" userLabel="by xxx">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r3E-58-vFs" userLabel="by xxx">
                                                                             <rect key="frame" x="565" y="22" width="204" height="16"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="200" id="Zdu-Ci-jZe"/>
@@ -222,7 +222,7 @@
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="XiJ-Bj-1Y1"/>
                                                                         </imageView>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-Kz-iPO">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-Kz-iPO">
                                                                             <rect key="frame" x="70" y="21" width="42" height="19"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="name" id="hPD-N6-mee">
                                                                                 <font key="font" metaFont="label" size="15"/>
@@ -233,7 +233,7 @@
                                                                                 <binding destination="o89-u5-2IW" name="value" keyPath="objectValue.name" id="zdM-6Y-8SI"/>
                                                                             </connections>
                                                                         </textField>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KT8-Xz-cgu">
+                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KT8-Xz-cgu">
                                                                             <rect key="frame" x="120" y="22" width="84" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="secondName" id="LlN-FR-c24">
                                                                                 <font key="font" metaFont="system"/>

@@ -51,7 +51,22 @@ class MainViewController: NSViewController {
         guard let item = ViewControllerManager.shared.selectedSidebarItem else {
             return
         }
-        updateContentTabView(item)
+
+        sender.isEnabled = false
+        
+        let napi = PlayCore.shared.api
+        napi.nuserAccount().get {
+            if let id = $0?.userId {
+                self.updateContentTabView(item)
+                NotificationCenter.default.post(name: .initSidebarPlaylists, object: nil)
+            } else {
+                throw NeteaseMusicAPI.RequestError.errorCode((301, ""))
+            }
+        }.ensure(on: .main) {
+            sender.isEnabled = true
+        }.catch {
+            Log.error($0)
+        }
     }
     
 // MARK: - viewDidLoad

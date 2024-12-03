@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="DailyCollectionViewItem" customModule="NeteaseMusic" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="DailyCollectionViewItem" customModule="Netease_Music" customModuleProvider="target">
             <connections>
                 <outlet property="dateTextField" destination="z5e-L0-z9J" id="WPc-k0-B12"/>
                 <outlet property="imageView" destination="vmO-lG-H7D" id="DnE-N4-Lee"/>
@@ -27,19 +28,19 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="calendar_bg" id="dGC-Uq-n1d"/>
                 </imageView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="j4L-xc-yKH">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="j4L-xc-yKH">
                     <rect key="frame" x="6" y="6" width="158" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="xEY-kw-vcz"/>
                     </constraints>
                     <textFieldCell key="cell" truncatesLastVisibleLine="YES" alignment="center" id="LzG-Fa-PXW">
-                        <font key="font" metaFont="system" size="12"/>
+                        <font key="font" metaFont="cellTitle"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z5e-L0-z9J">
-                    <rect key="frame" x="52" y="77" width="66" height="61"/>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z5e-L0-z9J">
+                    <rect key="frame" x="52" y="77" width="67" height="60"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="00" id="3oY-XS-UF8">
                         <font key="font" metaFont="system" size="51"/>
                         <color key="textColor" red="0.82745098039215681" green="0.22745098039215686" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,7 +70,7 @@
             </constraints>
             <point key="canvasLocation" x="-397" y="169"/>
         </customView>
-        <customObject id="aSg-Ag-OCa" customClass="DailyCollectionViewItem" customModule="NeteaseMusic" customModuleProvider="target"/>
+        <customObject id="aSg-Ag-OCa" customClass="DailyCollectionViewItem" customModule="Netease_Music" customModuleProvider="target"/>
     </objects>
     <resources>
         <image name="calendar_bg" width="500" height="500"/>
