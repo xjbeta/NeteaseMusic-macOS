@@ -110,6 +110,10 @@ class NeteaseMusicAPI: NSObject {
             [:],
             Result.self).map {
                 $0.profile
+            }.get {
+                if self.uid == -1, let id = $0?.userId {
+                    self.uid = id
+                }
             }
     }
     
